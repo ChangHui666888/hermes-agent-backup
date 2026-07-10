@@ -1,0 +1,111 @@
+{
+  "_description": "资产影响图谱。当新闻命中 asset 时，关联 stocks 自动加分。",
+  "GPU": {
+    "stocks": ["NVIDIA", "AMD", "TSMC", "ASML", "Intel", "Broadcom"],
+    "weight": 20
+  },
+  "AI芯片": {
+    "stocks": ["NVIDIA", "AMD", "TSMC", "Broadcom"],
+    "weight": 20
+  },
+  "出口管制": {
+    "stocks": ["NVIDIA", "AMD", "TSMC", "ASML", "SMIC"],
+    "weight": 20
+  },
+  "chip export": {
+    "stocks": ["NVIDIA", "AMD", "TSMC", "ASML"],
+    "weight": 20
+  },
+  "石油": {
+    "stocks": ["Exxon", "Chevron", "Shell", "BP", "ConocoPhillips"],
+    "commodities": ["CL1:COM", "BZ1:COM"],
+    "weight": 18
+  },
+  "oil": {
+    "stocks": ["Exxon", "Chevron", "Shell", "BP"],
+    "commodities": ["CL1:COM", "BZ1:COM"],
+    "weight": 18
+  },
+  "降息": {
+    "stocks": ["JPMorgan", "Goldman Sachs", "Bank of America", "Wells Fargo"],
+    "indices": ["S&P 500", "NASDAQ", "Dow Jones"],
+    "weight": 20
+  },
+  "rate cut": {
+    "stocks": ["JPMorgan", "Goldman Sachs", "Bank of America"],
+    "indices": ["S&P 500", "NASDAQ"],
+    "weight": 20
+  },
+  "加息": {
+    "stocks": ["JPMorgan", "Goldman Sachs", "Bank of America"],
+    "indices": ["S&P 500", "NASDAQ"],
+    "weight": 20
+  },
+  "rate hike": {
+    "stocks": ["JPMorgan", "Goldman Sachs", "Bank of America"],
+    "weight": 20
+  },
+  "电动车": {
+    "stocks": ["Tesla", "比亚迪", "NIO", "XPeng", "Rivian", "Lucid"],
+    "weight": 15
+  },
+  "EV": {
+    "stocks": ["Tesla", "BYD", "Rivian", "Lucid"],
+    "weight": 15
+  },
+  "半导体": {
+    "stocks": ["TSMC", "NVIDIA", "AMD", "Intel", "ASML", "Qualcomm", "Samsung"],
+    "weight": 18
+  },
+  "semiconductor": {
+    "stocks": ["TSMC", "NVIDIA", "AMD", "Intel", "ASML"],
+    "weight": 18
+  },
+  "加密货币": {
+    "stocks": ["Coinbase", "MicroStrategy", "Marathon Digital"],
+    "crypto": ["BTC", "ETH"],
+    "weight": 15
+  },
+  "crypto": {
+    "stocks": ["Coinbase", "MicroStrategy"],
+    "crypto": ["BTC", "ETH"],
+    "weight": 15
+  },
+  "Bitcoin": {
+    "stocks": ["Coinbase", "MicroStrategy", "Marathon Digital"],
+    "crypto": ["BTC"],
+    "weight": 18
+  },
+  "国防": {
+    "stocks": ["Lockheed Martin", "RTX", "Northrop Grumman", "Boeing"],
+    "weight": 18
+  },
+  "defense": {
+    "stocks": ["Lockheed Martin", "RTX", "Northrop Grumman"],
+    "weight": 18
+  },
+  "战争": {
+    "stocks": ["Lockheed Martin", "RTX", "Northrop Grumman", "Exxon", "Chevron"],
+    "weight": 18
+  },
+  "war": {
+    "stocks": ["Lockheed Martin", "RTX", "Exxon", "Chevron"],
+    "weight": 18
+  },
+  "云计算": {
+    "stocks": ["Amazon", "Microsoft", "Google", "Oracle"],
+    "weight": 12
+  },
+  "cloud": {
+    "stocks": ["Amazon", "Microsoft", "Google"],
+    "weight": 12
+  },
+  "制药": {
+    "stocks": ["Pfizer", "Moderna", "Johnson & Johnson", "Merck", "Eli Lilly"],
+    "weight": 12
+  },
+  "pharma": {
+    "stocks": ["Pfizer", "Moderna", "Eli Lilly", "Merck"],
+    "weight": 12
+  }
+}

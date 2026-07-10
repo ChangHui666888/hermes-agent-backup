@@ -1,0 +1,85 @@
+{
+  "jobs": [
+    {
+      "id": "11c75cf059f3",
+      "name": "token-breaker",
+      "prompt": "",
+      "skills": [],
+      "skill": null,
+      "model": null,
+      "provider": null,
+      "provider_snapshot": null,
+      "model_snapshot": null,
+      "base_url": null,
+      "script": "token-breaker-cron.py",
+      "no_agent": true,
+      "context_from": null,
+      "schedule": {
+        "kind": "interval",
+        "minutes": 10,
+        "display": "every 10m"
+      },
+      "schedule_display": "every 10m",
+      "repeat": {
+        "times": null,
+        "completed": 236
+      },
+      "enabled": false,
+      "state": "paused",
+      "paused_at": "2026-07-05T19:39:50.333896+08:00",
+      "paused_reason": null,
+      "created_at": "2026-07-01T23:36:39.186277+08:00",
+      "next_run_at": "2026-07-05T19:49:42.668621+08:00",
+      "last_run_at": "2026-07-05T19:39:42.668621+08:00",
+      "last_status": "ok",
+      "last_error": null,
+      "last_delivery_error": null,
+      "deliver": "local",
+      "origin": null,
+      "enabled_toolsets": null,
+      "workdir": null,
+      "fire_claim": null
+    },
+    {
+      "id": "e99b184c3917",
+      "name": "rss-scan",
+      "prompt": "",
+      "skills": [],
+      "skill": null,
+      "model": null,
+      "provider": null,
+      "provider_snapshot": null,
+      "model_snapshot": null,
+      "base_url": null,
+      "script": "rss-scanner.py",
+      "no_agent": true,
+      "context_from": null,
+      "schedule": {
+        "kind": "interval",
+        "minutes": 5,
+        "display": "every 5m"
+      },
+      "schedule_display": "every 5m",
+      "repeat": {
+        "times": null,
+        "completed": 24
+      },
+      "enabled": false,
+      "state": "paused",
+      "paused_reason": null,
+      "created_at": "2026-07-03T19:51:02.110080+08:00",
+      "next_run_at": "2026-07-05T19:40:58.178144+08:00",
+      "last_run_at": "2026-07-05T19:35:58.178144+08:00",
+      "last_status": "ok",
+      "last_error": null,
+      "last_delivery_error": null,
+      "deliver": "local",
+      "origin": null,
+      "enabled_toolsets": null,
+      "workdir": null,
+      "fire_claim": null,
+      "paused_at": "2026-07-05T19:40:52.325528+08:00"
+    }
+  ],
+  "updated_at": "2026-07-05T19:40:52.330539+08:00"
+}

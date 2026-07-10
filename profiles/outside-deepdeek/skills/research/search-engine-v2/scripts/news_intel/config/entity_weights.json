@@ -1,0 +1,48 @@
+{
+  "_description": "实体权重评分 (满分20)。命中多个取最高。",
+  "companies": {
+    "NVIDIA": 20, "Apple": 15, "Microsoft": 15, "Google": 15,
+    "Amazon": 14, "Meta": 14, "Tesla": 18, "OpenAI": 20,
+    "Anthropic": 16, "DeepSeek": 16, "ByteDance": 14,
+    "TSMC": 20, "台积电": 20, "ASML": 18, "Samsung": 14,
+    "Intel": 14, "AMD": 15, "Qualcomm": 14, "Broadcom": 14,
+    "JPMorgan": 16, "Goldman Sachs": 16, "Morgan Stanley": 15,
+    "BlackRock": 16, "Vanguard": 14,
+    "Berkshire Hathaway": 16, "伯克希尔": 16,
+    "Exxon": 14, "Shell": 13, "BP": 13, "Chevron": 13,
+    "SpaceX": 18, "Boeing": 14, "Lockheed": 14,
+    "Pfizer": 13, "Moderna": 13, "Johnson": 12,
+    "阿里巴巴": 14, "腾讯": 14, "华为": 18, "比亚迪": 15,
+    "字节跳动": 14, "美团": 12, "拼多多": 12
+  },
+  "persons": {
+    "Trump": 20, "特朗普": 20, "川普": 20,
+    "Powell": 20, "鲍威尔": 20, "Kevin Warsh": 20, "Warsh": 20, "凯文·沃什": 20, "凯文沃什": 20, "沃什": 18, "凯文沃舎": 20, "沃舎": 18, "Federal Reserve": 20, "美联储": 20,
+    "Biden": 15, "拜登": 15,
+    "Musk": 18, "马斯克": 18,
+    "Sam Altman": 18, "Altman": 16,
+    "Jensen Huang": 18, "黄仁勋": 18,
+    "Buffett": 16, "巴菲特": 16,
+    "Yellen": 16, "耶伦": 16,
+    "Xi": 20, "习近平": 20,
+    "Putin": 18, "普京": 18,
+    "Zelensky": 16, "泽连斯基": 16,
+    "Gates": 14, "盖茨": 14,
+    "Dimon": 16, "戴蒙": 16
+  },
+  "countries": {
+    "United States": 15, "US": 15, "美国": 15,
+    "China": 18, "中国": 18,
+    "Russia": 18, "俄罗斯": 18,
+    "Iran": 18, "伊朗": 18,
+    "North Korea": 20, "朝鲜": 20,
+    "India": 14, "印度": 14,
+    "Japan": 14, "日本": 14,
+    "UK": 13, "英国": 13,
+    "Germany": 13, "德国": 13,
+    "France": 12, "法国": 12,
+    "Ukraine": 18, "乌克兰": 18,
+    "Israel": 17, "以色列": 17,
+    "Taiwan": 18, "台湾": 18
+  }
+}

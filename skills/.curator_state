@@ -1,0 +1,9 @@
+{
+  "last_report_path": "C:\\Users\\ChangHui\\AppData\\Local\\hermes\\logs\\curator\\20260706-013448",
+  "last_run_at": "2026-07-06T01:34:48.086173+00:00",
+  "last_run_duration_seconds": 3.624933,
+  "last_run_summary": "auto: no changes; llm: skipped (consolidation off)",
+  "last_run_summary_shown_at": null,
+  "paused": false,
+  "run_count": 3
+}

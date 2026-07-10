@@ -1,0 +1,49 @@
+{
+  "unlocks": {
+    "claude_confidant": {
+      "evidence": null,
+      "first_tier": "Copper",
+      "unlocked_at": 1782714269
+    },
+    "config_surgeon": {
+      "evidence": null,
+      "first_tier": "Copper",
+      "unlocked_at": 1782714269
+    },
+    "five_model_flight": {
+      "evidence": null,
+      "first_tier": "Copper",
+      "unlocked_at": 1782714269
+    },
+    "model_sommelier": {
+      "evidence": null,
+      "first_tier": "Silver",
+      "unlocked_at": 1782714269
+    },
+    "open_weights_pilgrim": {
+      "evidence": null,
+      "first_tier": "Silver",
+      "unlocked_at": 1782714269
+    },
+    "provider_polyglot": {
+      "evidence": null,
+      "first_tier": "Silver",
+      "unlocked_at": 1782714269
+    },
+    "screenshot_hunter": {
+      "evidence": null,
+      "first_tier": "Silver",
+      "unlocked_at": 1782714269
+    },
+    "test_suite_tamer": {
+      "evidence": null,
+      "first_tier": "Copper",
+      "unlocked_at": 1782714269
+    },
+    "toolset_cartographer": {
+      "evidence": null,
+      "first_tier": "Silver",
+      "unlocked_at": 1782714269
+    }
+  }
+}

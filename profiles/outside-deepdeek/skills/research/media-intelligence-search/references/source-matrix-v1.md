@@ -1,0 +1,119 @@
+# Source Matrix v1.0 — 74 RSS 订阅源
+
+## 分类统计
+
+| 大类 | 源数 | 等级 | 付费墙 |
+|:----|:----|:-----|:-------|
+| 通讯社 | 9 | S | 付费/部分 |
+| 国家媒体 | 17 | A | 免费为主 |
+| 金融媒体 | 11 | S/A/B | 付费/部分/免费 |
+| 科技媒体 | 12 | A | 免费为主 |
+| 地缘媒体 | 5 | A | 免费为主 |
+| 政府机构 | 11 | S | 全部免费 |
+| 科研/开源 | 6 | S/A | 全部免费 |
+| 实时信号 | 3 | B | 全部免费 |
+
+## 完整清单
+
+### 一、通讯社 (9)
+| 名称 | RSS URL | 等级 | 付费 |
+|:-----|:--------|:----|:----|
+| Reuters Top | https://feeds.reuters.com/reuters/topNews | S | ✅ |
+| Reuters World | https://feeds.reuters.com/reuters/worldNews | S | ✅ |
+| Reuters Business | https://feeds.reuters.com/reuters/businessNews | S | ✅ |
+| AP Top News | https://apnews.com/hub/ap-top-news?output=rss | S | 部分 |
+| AP World | https://apnews.com/hub/world-news?output=rss | S | 部分 |
+| Bloomberg Markets | https://feeds.bloomberg.com/markets/news.rss | S | ✅ |
+
+### 二、国家媒体 (17)
+| 名称 | RSS URL |
+|:-----|:--------|
+| BBC News | https://feeds.bbci.co.uk/news/rss.xml |
+| BBC World | https://feeds.bbci.co.uk/news/world/rss.xml |
+| BBC Business | https://feeds.bbci.co.uk/news/business/rss.xml |
+| CNN Edition | http://rss.cnn.com/rss/edition.rss |
+| CNN World | http://rss.cnn.com/rss/edition_world.rss |
+| NBC News | https://feeds.nbcnews.com/feeds/topstories |
+| CBS News | https://www.cbsnews.com/latest/rss/main |
+| ABC News | http://feeds.abcnews.com/abcnews/topstories |
+| NYT Home | http://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml |
+| NPR News | http://www.npr.org/rss/rss.php?id=1003 |
+| Politico | http://www.politico.com/rss/politicopicks.xml |
+| The Hill | http://thehill.com/rss/syndicator/19110 |
+| Newsweek | https://www.newsweek.com/rss |
+| Sky News | https://feeds.skynews.com/feeds/rss/world.xml |
+| France 24 | https://www.france24.com/en/rss |
+| WaPo World | http://feeds.washingtonpost.com/rss/world |
+| WaPo Business | http://feeds.washingtonpost.com/rss/business |
+
+### 三、金融媒体 (11)
+| 名称 | RSS URL |
+|:-----|:--------|
+| FT World | https://www.ft.com/world?format=rss |
+| FT Markets | https://www.ft.com/markets?format=rss |
+| WSJ World | https://feeds.a.dj.com/rss/RSSWorldNews.xml |
+| WSJ Markets | https://feeds.a.dj.com/rss/RSSMarketsMain.xml |
+| Economist | https://www.economist.com/feeds/print-sections/77/business.xml |
+| CNBC | https://www.cnbc.com/id/100003114/device/rss/rss.html |
+| MarketWatch | https://www.marketwatch.com/rss/topstories |
+| Barrons | https://www.barrons.com/feed |
+| Seeking Alpha | https://seekingalpha.com/feed.xml |
+| Investing.com | https://www.investing.com/rss/news.rss |
+| Yahoo Finance | https://finance.yahoo.com/news/rssindex |
+
+### 四、科技媒体 (12)
+| 名称 | RSS URL |
+|:-----|:--------|
+| TechCrunch | https://techcrunch.com/feed/ |
+| The Verge | https://www.theverge.com/rss/index.xml |
+| Wired | https://www.wired.com/feed/rss |
+| Ars Technica | https://feeds.arstechnica.com/arstechnica/index |
+| MIT Tech Review | https://www.technologyreview.com/feed/ |
+| Engadget | https://www.engadget.com/rss.xml |
+| VentureBeat | https://venturebeat.com/feed/ |
+| Space.com | https://www.space.com/feeds/all |
+| SpaceNews | https://spacenews.com/feed/ |
+| Electrek | https://electrek.co/feed/ |
+| CleanTechnica | https://cleantechnica.com/feed/ |
+| IEEE Spectrum | https://spectrum.ieee.org/feed |
+
+### 五、地缘媒体 (5)
+| 名称 | RSS URL |
+|:-----|:--------|
+| Guardian World | https://www.theguardian.com/world/rss |
+| DW News | https://rss.dw.com/rdf/rss-en-all |
+| Le Monde EN | https://www.lemonde.fr/en/rss_full.xml |
+| Al Jazeera | https://www.aljazeera.com/xml/rss/all.xml |
+| SCMP | https://www.scmp.com/rss/91/feed |
+
+### 六、政府机构 (11)
+| 名称 | RSS URL |
+|:-----|:--------|
+| White House | https://www.whitehouse.gov/briefing-room/feed/ |
+| Fed Press | https://www.federalreserve.gov/feeds/press_all.xml |
+| ECB Press | https://www.ecb.europa.eu/rss/press.html |
+| SEC Press | https://www.sec.gov/rss/news/press.xml |
+| UN News | https://news.un.org/feed/subscribe/en/news/all/rss.xml |
+| NASA News | https://www.nasa.gov/rss/dyn/breaking_news.rss |
+| UK Gov | https://www.gov.uk/government/feed |
+| BoE | https://www.bankofengland.co.uk/rss |
+| IMF News | https://www.imf.org/en/News/RSS |
+| World Bank | https://www.worldbank.org/en/news/rss |
+| OECD News | https://www.oecd.org/newsroom/rss/ |
+
+### 七、科研/开源 (6)
+| 名称 | RSS URL |
+|:-----|:--------|
+| arXiv AI | https://export.arxiv.org/rss/cs.AI |
+| arXiv ML | https://export.arxiv.org/rss/cs.LG |
+| OpenAI Blog | https://openai.com/blog/rss/ |
+| Google AI | https://blog.research.google/feed/ |
+| GitHub Blog | https://github.blog/feed/ |
+| GitHub Releases | https://github.com/openai/openai-cookbook/releases.atom |
+
+### 八、实时信号 (3)
+| 名称 | RSS URL |
+|:-----|:--------|
+| Hacker News | https://news.ycombinator.com/rss |
+| Reddit WorldNews | https://www.reddit.com/r/worldnews/.rss |
+| Reddit Tech | https://www.reddit.com/r/technology/.rss |

@@ -1,0 +1,60 @@
+# Credentials
+.env
+*.key
+*.pem
+auth.json
+
+# Runtime / cache
+audio_cache/
+image_cache/
+cache/
+sessions/
+logs/
+*.log
+state-snapshots/
+runtime/
+sandboxes/
+state.db*
+
+# Node / installs
+node/
+node_modules/
+hermes-agent/
+lsp/
+mcp-installs/
+gateway-service/
+
+# Temp / backup
+workspace/
+__pycache__/
+*.pyc
+.pairing/
+pending/
+kanban/
+*.bak
+.hermes_history
+SOUL.md
+bk/
+新建文件夹/
+
+# Cron output (保留 jobs.json)
+cron/output/
+cron/.jobs.lock
+cron/.tick.lock
+cron/ticker_*
+
+# Embedded repos
+news-intel-platform/
+
+# Large binaries
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+*.exe
+*.dll
+*.pyd
+
+# OS
+.DS_Store
+Thumbs.db
