@@ -27,7 +27,7 @@ rsync -av --exclude='node_modules/' \
           "$SOURCE/" "$DEST/$BACKUP_NAME/" 2>&1
 
 # 删除 7 天前的旧备份
-find "$DEST" -maxdepth 1 -name "hermes_*" -type d -mtime +7 -exec rm -rf {} \; 2>/dev/null || true
+find "$DEST" -maxdepth 1 -name "hermes_*" -type d -mtime +15 -exec rm -rf {} \; 2>/dev/null || true
 
 echo ""
 echo "✅ 备份完成: $DEST/$BACKUP_NAME"
