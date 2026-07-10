@@ -6,6 +6,8 @@ echo ============================================
 echo   Hermes 一键恢复脚本
 echo ============================================
 echo.
+echo ⚠️  警告：此操作将覆盖当前 Hermes 目录！
+echo.
 
 set SOURCE=F:\hermes-backup
 set TARGET=%LOCALAPPDATA%\hermes
@@ -34,6 +36,34 @@ echo 最新备份: %LATEST%
 echo 目标位置: %TARGET%
 echo.
 
+REM ============================================
+REM 第一次确认
+REM ============================================
+set /p CONFIRM1="输入 YES 确认要进行恢复操作: "
+if /i not "%CONFIRM1%"=="YES" (
+    echo 已取消。
+    pause
+    exit /b 0
+)
+
+echo.
+echo 即将从以下备份恢复:
+echo   %LATEST%
+echo.
+echo 当前 %TARGET% 将被备份到 %TARGET%_old_%date:~0,4%%date:~5,2%%date:~8,2%
+echo.
+
+REM ============================================
+REM 第二次确认
+REM ============================================
+set /p CONFIRM2="再次输入 YES 确认（此操作不可撤销）: "
+if /i not "%CONFIRM2%"=="YES" (
+    echo 已取消。
+    pause
+    exit /b 0
+)
+
+echo.
 echo [1/3] 停止 Hermes 相关进程...
 taskkill /f /im "hermes.exe" >nul 2>&1
 taskkill /f /im "python.exe" >nul 2>&1
@@ -52,7 +82,7 @@ echo ============================================
 echo   恢复完成！
 echo ============================================
 echo   Hermes 目录: %TARGET%
-echo   当前版本已备份到: %TARGET%_old_*
+echo   当前版本已备份到: %TARGET%_old_%date:~0,4%%date:~5,2%%date:~8,2%
 echo.
 echo 请手动重启 Hermes。
 pause

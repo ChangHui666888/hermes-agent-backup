@@ -322,3 +322,64 @@ hermes gateway status
 - **SOCKS5 + Go incompatibility**: Go's `HTTP_PROXY` does not support SOCKS5. Use Python scanner for proxy-routed feeds. blogwatcher-cli (Go) is for feed list management only.
 - **Profile scripts path**: Cron `--script` reads from `profiles/<name>/scripts/`, NOT `~/.hermes/scripts/`. Always copy scripts to both locations.
 - **UAC blocks gateway install**: `hermes gateway install` needs admin rights for Windows Scheduled Task. If UAC prompt can't be answered, use `hermes-start.cmd` + VBS as the boot startup method instead.
+
+## 7. Cron Engineering Template
+
+所有 cron job 遵循统一模板。
+
+### 7a. 文件结构
+
+```
+~/.hermes/scripts/          ← --workdir 指向这里（最稳定）
+├── rss-scanner.py           ← 业务脚本
+├── news-pipeline.py         ← wrapper: argparse + logging + run_xxx()
+├── git-backup.sh            ← 简单启动器
+└── logs/
+    └── news-pipeline.log
+```
+
+### 7b. Shell 启动器
+
+```bash
+#!/usr/bin/env bash
+set -Eeuo pipefail
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+python "$SCRIPT_DIR/xxx.py" "$@"
+```
+
+### 7c. Python Wrapper 模板
+
+```python
+import argparse, logging, os, sys, traceback
+os.environ["PYTHONUNBUFFERED"] = "1"
+LOG_FILE = os.path.join(os.path.dirname(__file__), "logs", "xxx.log")
+logging.basicConfig(level=logging.INFO, handlers=[
+    logging.FileHandler(LOG_FILE, encoding="utf-8"),
+    logging.StreamHandler(sys.stdout)
+])
+# exit codes: 0=OK, 1=Pipeline, 2=Import
+```
+
+### 7d. 业务模块返回 Report dict → 写 JSON
+
+```python
+report = {"batch_input": N, "batch_new": N, "total_articles": N, "duration_sec": 1.0}
+with open(os.path.expanduser("~/.hermes/xxx-report.json"), "w") as f:
+    json.dump(report, f)
+```
+
+### 7e. ⚠️ `"30m"` vs `"every 30m"` 陷阱
+
+```powershell
+# ❌ 只执行一次！
+hermes cron create "30m"  → Schedule: once in 30m, Repeat: 0/1
+
+# ✅ 循环执行
+hermes cron add "every 30m" → Schedule: every 30m, Repeat: ∞
+```
+
+### 7f. 创建命令（推荐形式）
+
+```powershell
+hermes cron add "every 30m" --name xxx --script xxx.py --workdir "C:\Users\<user>\AppData\Local\hermes\scripts" --no-agent
+```

@@ -142,6 +142,13 @@ def run_pipeline(hours: int = 2, limit: int = 200, do_fetch: bool = False):
     for t in tc:
         tier_counts[t["tier"]] = t["cnt"]
 
+    # 累计统计（全库）— 必须在 db.close() 之前
+    cum = db.execute("""
+        SELECT tier, COUNT(*) as cnt FROM news_intelligence GROUP BY tier
+    """).fetchall()
+    cumulative = {r["tier"]: r["cnt"] for r in cum}
+    total_articles = db.execute("SELECT COUNT(*) FROM news_content").fetchone()[0]
+
     db.close()
 
     # ── 推送到云端 FastAPI ──────────────────────────
@@ -195,13 +202,6 @@ def run_pipeline(hours: int = 2, limit: int = 200, do_fetch: bool = False):
     print(f"  增强处理:         {enhanced:>4}篇")
     print(f"  总成本:           ${sum(r.get('llm_cost', 0) for r in []) * enhanced:.4f}")
     print(f"{'='*60}")
-
-    # 累计统计（全库）
-    cum = db.execute("""
-        SELECT tier, COUNT(*) as cnt FROM news_intelligence GROUP BY tier
-    """).fetchall()
-    cumulative = {r["tier"]: r["cnt"] for r in cum}
-    total_articles = db.execute("SELECT COUNT(*) FROM news_content").fetchone()[0]
 
     report = {
         "timestamp": time.strftime("%Y-%m-%dT%H:%M:%S"),
