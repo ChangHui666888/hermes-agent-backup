@@ -559,8 +559,8 @@ mcp_servers:
     enabled: true
     command: C:\Users\ChangHui\AppData\Local\hermes\node\node.exe
     args:
-      - C:\Users\ChangHui\AppData\Local\hermes\node\node_modules\hermes-web-ui\bin\hermes-studio-mcp.mjs
-      - api
+    - C:\Users\ChangHui\AppData\Local\hermes\node\node_modules\hermes-web-ui\bin\hermes-studio-mcp.mjs
+    - api
     env:
       HERMES_WEB_UI_URL: http://127.0.0.1:8648
       HERMES_WEB_UI_HOME: C:\Users\ChangHui\.hermes-web-ui
@@ -568,13 +568,13 @@ mcp_servers:
       HERMES_WEB_UI_PROFILE: default
       HERMES_MCP_SERVER_NAME: hermes-studio-api
       HERMES_MCP_TOOLSET: api
-      HERMES_WEB_UI_MANAGED_MCP: "1"
+      HERMES_WEB_UI_MANAGED_MCP: '1'
   hermes-studio-devices:
     enabled: true
     command: C:\Users\ChangHui\AppData\Local\hermes\node\node.exe
     args:
-      - C:\Users\ChangHui\AppData\Local\hermes\node\node_modules\hermes-web-ui\bin\hermes-studio-mcp.mjs
-      - devices
+    - C:\Users\ChangHui\AppData\Local\hermes\node\node_modules\hermes-web-ui\bin\hermes-studio-mcp.mjs
+    - devices
     env:
       HERMES_WEB_UI_URL: http://127.0.0.1:8648
       HERMES_WEB_UI_HOME: C:\Users\ChangHui\.hermes-web-ui
@@ -582,13 +582,13 @@ mcp_servers:
       HERMES_WEB_UI_PROFILE: default
       HERMES_MCP_SERVER_NAME: hermes-studio-devices
       HERMES_MCP_TOOLSET: devices
-      HERMES_WEB_UI_MANAGED_MCP: "1"
+      HERMES_WEB_UI_MANAGED_MCP: '1'
   hermes-studio-use:
     enabled: true
     command: C:\Users\ChangHui\AppData\Local\hermes\node\node.exe
     args:
-      - C:\Users\ChangHui\AppData\Local\hermes\node\node_modules\hermes-web-ui\bin\hermes-studio-mcp.mjs
-      - use
+    - C:\Users\ChangHui\AppData\Local\hermes\node\node_modules\hermes-web-ui\bin\hermes-studio-mcp.mjs
+    - use
     env:
       HERMES_WEB_UI_URL: http://127.0.0.1:8648
       HERMES_WEB_UI_HOME: C:\Users\ChangHui\.hermes-web-ui
@@ -596,7 +596,7 @@ mcp_servers:
       HERMES_WEB_UI_PROFILE: default
       HERMES_MCP_SERVER_NAME: hermes-studio-use
       HERMES_MCP_TOOLSET: use
-      HERMES_WEB_UI_MANAGED_MCP: "1"
+      HERMES_WEB_UI_MANAGED_MCP: '1'
   unreal-engine:
     enabled: false
     url: http://127.0.0.1:8000/mcp

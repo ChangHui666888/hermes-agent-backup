@@ -177,7 +177,7 @@ hermes cron add "every 30m" --name news-pipeline --script news-pipeline.py --wor
 
 **日志**: `scripts/logs/news-pipeline.log`（完整 traceback）。PowerShell: `Get-Content .\logs\news-pipeline.log -Tail 50`。
 
-详见 `references/cron-engineering-standards.md` 和 `references/pipeline-optimizations.md`。
+详见 `references/cron-engineering-standards.md`、`references/pipeline-bugfixes.md` 和 `references/pipeline-optimizations.md`。
 
 ## ⚠️ 已知问题与规避
 

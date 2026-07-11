@@ -378,8 +378,29 @@ hermes cron create "30m"  → Schedule: once in 30m, Repeat: 0/1
 hermes cron add "every 30m" → Schedule: every 30m, Repeat: ∞
 ```
 
-### 7f. 创建命令（推荐形式）
+## 8. Backup Strategy (Task Scheduler + Cron)
+
+循环任务 → Hermes Cron，固定时间 → **Windows Task Scheduler**。
+
+### 备份 Cron
 
 ```powershell
-hermes cron add "every 30m" --name xxx --script xxx.py --workdir "C:\Users\<user>\AppData\Local\hermes\scripts" --no-agent
+schtasks /create /tn "Hermes-Git-Backup"  /tr "C:\Users\<user>\AppData\Local\hermes\scripts\git-backup.sh"  /sc daily /st 12:00 /f
+schtasks /create /tn "Hermes-Full-Backup" /tr "C:\Users\<user>\AppData\Local\hermes\scripts\full-backup.sh" /sc daily /st 18:00 /f
 ```
+
+### 恢复
+
+双击 `restore.bat` → 两次 YES 确认 → 停止 hermes-gateway → `/MIR` 镜像恢复。
+
+### 全量备份脚本要求
+
+- Windows 绝对路径（不用 `$HOME`）
+- 日志落盘 `logs/full-backup.log`
+- `backup.ok` 成功标记文件
+- 14 天保留策略
+- `rsync` 失败明确 exit 1
+
+### `"30m"` vs `"every 30m"` 陷阱
+
+`hermes cron create "30m"` → once（只执行一次）。`hermes cron add "every 30m"` → 循环。
