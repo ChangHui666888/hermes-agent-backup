@@ -274,7 +274,11 @@ def build_fingerprint(article: dict, global_idf: dict = None, topic_idf_map: dic
     obj_candidates.sort(key=lambda x: x[1], reverse=True)
     obj = obj_candidates[0][0] if obj_candidates else ""
 
-    # Participants
+    # Primary country for hard constraint
+    countries = entities.get("countries", [])
+    country = _canonicalize(countries[0]) if countries else None
+
+    # Participants (全部相关国家)
     participants = _extract_participants(entities, text)
 
     # SAO Anchor
@@ -287,6 +291,7 @@ def build_fingerprint(article: dict, global_idf: dict = None, topic_idf_map: dic
         "event_type": event_type,
         "primary_topic": primary,
         "secondary_topic": secondary,
+        "country": country,
         "participants": frozenset(participants),
         "anchor": anchor,
     }
@@ -294,14 +299,10 @@ def build_fingerprint(article: dict, global_idf: dict = None, topic_idf_map: dic
 
 def fingerprint_score(fp1: dict, fp2: dict) -> int:
     """
-    V4.2: 重平衡分值
-    - Participants 交集为空且两者均非空 → 减分（非硬阻断）
+    V4.2.1: Location 硬约束 + Participants 加分
     """
-    p1 = fp1.get("participants", frozenset())
-    p2 = fp2.get("participants", frozenset())
-
-    # 参与者完全不重叠且两者都有参与者 → 重度惩罚
-    if p1 and p2 and not (p1 & p2):
+    # ── Hard constraint: 主要国家不同 → 0 ──
+    if fp1.get("country") and fp2.get("country") and fp1["country"] != fp2["country"]:
         return 0
 
     # Anchor 完全匹配 → 强行满分
@@ -310,7 +311,7 @@ def fingerprint_score(fp1: dict, fp2: dict) -> int:
 
     score = 0
 
-    # Action (25, V4.2 下调)
+    # Action (25)
     if fp1["action"] == fp2["action"] and fp1["action"] != "OTHER":
         score += 25
 
@@ -319,7 +320,7 @@ def fingerprint_score(fp1: dict, fp2: dict) -> int:
         if fp1["subject"] == fp2["subject"] or fp1["subject"] in fp2["subject"] or fp2["subject"] in fp1["subject"]:
             score += 25
 
-    # Object (30, V4.2 上调)
+    # Object (30)
     if fp1["object"] and fp2["object"]:
         if fp1["object"] == fp2["object"] or fp1["object"] in fp2["object"] or fp2["object"] in fp1["object"]:
             score += 30
@@ -330,11 +331,13 @@ def fingerprint_score(fp1: dict, fp2: dict) -> int:
     elif fp1["secondary_topic"] and fp2["secondary_topic"] and fp1["secondary_topic"] == fp2["secondary_topic"]:
         score += 5
 
-    # Event Type (10, V4.2 上调)
+    # Event Type (10)
     if fp1["event_type"] == fp2["event_type"]:
         score += 10
 
-    # Participants 重叠加分
+    # Participants 重叠加分 (bonus only)
+    p1 = fp1.get("participants", frozenset())
+    p2 = fp2.get("participants", frozenset())
     if p1 and p2:
         overlap = len(p1 & p2)
         if overlap >= 2:
@@ -346,11 +349,11 @@ def fingerprint_score(fp1: dict, fp2: dict) -> int:
 
 
 # ═══════════════════════════════════════════════════════════
-# Event-Centric Clustering V4.2
+# Event-Centric Clustering V4.2.1
 # ═══════════════════════════════════════════════════════════
 
 EVENT_THRESHOLD = 50
-MERGE_THRESHOLD = 70
+MERGE_THRESHOLD = 75
 
 
 def _parse_date(date_str) -> datetime | None:
