@@ -2,7 +2,7 @@ Wiki at C:/Users/ChangHui/wiki. SCHEMA.md, index.md, log.md, .obsidian/app.json,
 §
 RSS系统: 94源, cron每5min, no_agent。隔离: 连续失败≥3→隔离30min(1800s)。重置: rm ~/.hermes/rss-scanner-state.json。Nitter 18源+中文央媒6源。开机自启+保活已配。SOCKS5代理境外源,国内直连。
 §
-search-engine-v2 v2.3: news_intel五维评分+Tier A≥90(DS)/B60-89(Qwen3 1024tokens 60s超时)/C<60(Python规则,合并3调用为1). RSS隔离3次失败→30min. 云推送5s超时/3次fail跳过. Cloud: 100.107.117.23(Docker:FastAPI:8001+Vue:80+PG内网). Cron: hermes cron add "every Xm"(非"once"), --repeat 99999, --no-agent, scripts在~/.hermes/scripts/. git-backup(每日)+full-backup(每3天F:\hermes-backup). restore.bat需双YES确认. Qwen3 system角色→400→改用user角色. bcrypt→hashlib. Docker绕过UFW→DOCKER-USER链.
+search-engine-v2 v2.4: news_intel五维评分+Tier A≥90(DS Flash)/B60-89(Qwen3 1024tokens 60s超时合并1调用)/C<60(Python规则). aggregator v2: 导语Jaccard≥0.20+shared_ent≥2, HTML过滤. L9: Tier A→DeepSeek, 其余→Qwen3. L8/L9待集成pipeline(先手动验证). V1 Schema: PostgreSQL event-centric(11新表), 迁移完成: 24sources/35entities/210links. Cloud: 100.107.117.23(Docker:FastAPI:8001+Vue:80+PG内网). Cron: "every Xm"非"once", --repeat 99999, --no-agent. Backup: git(每日12:00 TaskScheduler)+full(F盘每日18:00,保留14天). restore.bat双YES确认+backup.ok验证.
 §
 执行铁律: 读过skill后同一轮必须发出第一个工具调用，不得停在计划阶段等用户批准下一步。plan→execute断裂是严重违例。写计划可以，但必须紧接着执行工具调用。"If you have tools available to accomplish the task, use them instead of telling the user what you would do."
 §

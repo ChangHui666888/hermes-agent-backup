@@ -26,8 +26,8 @@ def main():
     db.row_factory = lambda c, r: dict(zip([col[0] for col in c.description], r))
 
     rows = db.execute(f"""
-        SELECT nc.id, rr.title, ni.score_total, ni.tier,
-               ni.entities, rr.published_at
+        SELECT nc.id, rr.title, nc.summary_cn, nc.summary_en, rr.description,
+               ni.score_total, ni.tier, ni.entities, rr.published_at, rr.source_name
         FROM news_content nc
         JOIN news_intelligence ni ON nc.intel_id = ni.id
         JOIN rss_raw rr ON ni.raw_id = rr.id
@@ -43,9 +43,12 @@ def main():
         except: pass
         articles.append({
             "id": r["id"], "title": r["title"],
+            "description": r["description"] or r["summary_cn"] or r["summary_en"] or "",
+            "summary_cn": r["summary_cn"] or "",
             "score_total": r["score_total"], "tier": r["tier"],
             "entities": ents,
             "published_at": r["published_at"],
+            "source_name": r["source_name"] or "",
         })
 
     if not articles:

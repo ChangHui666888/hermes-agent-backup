@@ -179,7 +179,27 @@ hermes cron add "every 30m" --name news-pipeline --script news-pipeline.py --wor
 
 详见 `references/cron-engineering-standards.md`、`references/pipeline-bugfixes.md` 和 `references/pipeline-optimizations.md`。
 
-## ⚠️ 已知问题与规避
+### Hermes Cron 关键陷阱 🆕
+
+```powershell
+# ❌ 只执行一次 — Once in 30m, Repeat: 0/1
+hermes cron create "30m" ...
+
+# ✅ 循环执行 — Every 30m, Repeat: ∞
+hermes cron add "every 30m" ...
+```
+
+`hermes cron create "30m"` 创建的是 "once in 30m"（30分钟后执行一次），不是 "每30分钟"。
+
+### Cron 日志位置
+
+```powershell
+# 详细日志（含 traceback）
+Get-Content C:\Users\ChangHui\AppData\Local\hermes\scripts\logs\news-pipeline.log -Tail 50
+
+# Cron 运行记录
+dir C:\Users\ChangHui\AppData\Local\hermes\cron\output\<job_id>\
+```
 
 ### Cron 超时 (120s 硬超时)
 
@@ -388,15 +408,22 @@ print(result['confidence'])
 - `scripts/core/extractor.py` — 🆕 纯脚本结构化抽取（标题/日期/作者/摘要/要点，0.78ms/篇）
 - `scripts/batch.py` — 独立 CLI 入口（cron 友好）
 
-### 🆕 News Intelligence 层（评分 + 路由 + 增强 + 云端推送）
-- `scripts/news_intel/scorer.py` — 五维评分引擎
-- `scripts/news_intel/router.py` — Intelligence Router（3路分流）
-- `scripts/news_intel/enhancers.py` — 三层增强器（Python/Qwen3/DeepSeek）
-- `scripts/news_intel/db.py` — 三表 SQLite schema
-- `scripts/news_intel/sync.py` — RSS 同步脚本
-- `scripts/news_intel/pipeline.py` — 主编排入口
-- `scripts/news_intel/pusher.py` — 🆕 Hermes → 云端 FastAPI 推送器
-- `scripts/news_intel/config/` — 4个评分配置 JSON
+## 🆕 L8 事件聚合器 (`news_intel/aggregator.py`)
+
+将文章聚类为事件。采用**导语文本 Jaccard + 实体辅助**，优于仅用标题：
+
+```
+规则 1: 导语 Jaccard ≥ 0.20 → 同事件
+规则 2: 共享 2+ 实体 → 同事件
+```
+
+导语提取优先级: `description` > `summary_cn` > `summary`，自动过滤纯 HTML（Reddit 源）。窗口可配置 (`window_hours`)。聚合后由 `generator.py` 生成 Insight（Tier A→DeepSeek, 其余→Qwen3）。
+
+详见 `references/event-aggregation-v2.md`。
+
+## 🆕 V1 Schema 升级（Event-centric）
+
+PostgreSQL 从 Article-center 升级为 Event-center，新增 11 张表（sources/entities/events/insights 及关联表）。迁移脚本: `api/migrate_v1.sql` + `api/migrate_data.py`。详见 `references/v1-schema-upgrade.md`。
 
 ### 🆕 云端部署（FastAPI + Vue + PostgreSQL + Docker）
 详见 `references/cloud-deployment.md`。项目代码: `scripts/news-intel-platform/`。
