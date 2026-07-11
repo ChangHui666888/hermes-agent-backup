@@ -408,18 +408,41 @@ print(result['confidence'])
 - `scripts/core/extractor.py` — 🆕 纯脚本结构化抽取（标题/日期/作者/摘要/要点，0.78ms/篇）
 - `scripts/batch.py` — 独立 CLI 入口（cron 友好）
 
-## 🆕 L8 事件聚合器 (`news_intel/aggregator.py`)
+## 🆕 L8 事件聚合器 V4 (`news_intel/aggregator.py`)
 
-将文章聚类为事件。采用**导语文本 Jaccard + 实体辅助**，优于仅用标题：
+**V4 已冻结**。Event-Centric 3-phase 聚类，替代早期 Jaccard + Embedding 方案：
 
 ```
-规则 1: 导语 Jaccard ≥ 0.20 → 同事件
-规则 2: 共享 2+ 实体 → 同事件
+Phase 1: Article → Event (按时间升序, EventFingerprint 得分≥50)
+Phase 2: Event → Event 合并 (指纹≥70 + 时间窗口)
+Phase 3: Filter singles + impact_level
 ```
 
-导语提取优先级: `description` > `summary_cn` > `summary`，自动过滤纯 HTML（Reddit 源）。窗口可配置 (`window_hours`)。聚合后由 `generator.py` 生成 Insight（Tier A→DeepSeek, 其余→Qwen3）。
+**EventFingerprint (SAEO)**:
+- Subject(25) + Action(35) + Object(20) + Topic(15) + Type(5) = 100
+- Location 硬约束: 不同国家 → 直接 0 分
+- Action 词库: SUES/ATTACKS/SANCTIONS/NEGOTIATES/ANNOUNCES/DIES 等 15 类
+- Topic 词库: Legal/Military/Diplomacy/Economic/Finance/Politics/Technology 等 12 类
+- None 时间: 跳过时间检查（兼容截断的 RSS 日期）
 
-详见 `references/event-aggregation-v2.md`。
+**验证命令**:
+```bash
+python test_aggregator.py --hours 24 --window 12 --limit 50           # 仅聚合
+python test_aggregator.py --hours 24 --window 12 --limit 50 --insight # 聚合 + Insight
+```
+
+实测 50 篇 → 15 事件 (0.0s, 42% 覆盖率, 全部规则引擎, 🚫零 LLM)。
+
+## 🆕 L9 洞察生成器 (`news_intel/generator.py`)
+
+事件 → Insight。`generate_for_event()` 自动路由:
+- Tier A 事件 → DeepSeek V4 Flash
+- 其余 → Qwen3-1.7B 本地
+- 不可用 → 降级跳过
+
+⚠️ `.format()` 陷阱: prompt 中的 JSON 花括号必须双写 `{{` `}}` 转义。
+
+详见 `references/event-aggregation-v4.md`。
 
 ## 🆕 V1 Schema 升级（Event-centric）
 
