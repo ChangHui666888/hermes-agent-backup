@@ -79,9 +79,9 @@ def aggregate_events(articles: list[dict], window_hours: int = 6) -> list[dict]:
             jac = jaccard(fp_i, fp_j)
             shared_ent = len(ent_i & ent_j)
 
-            if shared_ent >= 2 and jac >= 0.3:
+            if shared_ent >= 2:
                 union(i, j)
-            elif jac >= 0.5:
+            elif jac >= 0.45:
                 union(i, j)
 
     # 分组
