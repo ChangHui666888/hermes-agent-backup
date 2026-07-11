@@ -9,7 +9,7 @@ import sys, os, json, argparse, time
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from news_intel.aggregator import aggregate_events
-from news_intel.generator import generate_insight
+from news_intel.generator import generate_for_event
 from news_intel.db import get_db, init_db
 
 
@@ -67,9 +67,9 @@ def main():
         articles_with_event = sum(1 for a in articles if a["id"] in ev["article_ids"])
         print(f"事件 #{i}: {ev['title'][:80]}")
         print(f"  级别: {ev['impact_level']} | 文章: {articles_with_event}篇 | 实体: {', '.join(ev['entities'][:5])}")
-        if args.insight and ev["impact_level"] == "HIGH":
+        if args.insight:
             t0 = time.time()
-            insight = generate_insight(ev, force_deepseek=True)
+            insight = generate_for_event(ev)
             t1 = time.time() - t0
             if insight:
                 print(f"  🤖 Insight ({t1:.1f}s): {insight.get('summary','')[:100]}")
