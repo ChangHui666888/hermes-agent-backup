@@ -12,13 +12,13 @@ QWEN_BASE = "http://127.0.0.1:1234/v1"
 DEEPSEEK_BASE = "https://api.deepseek.com/v1"
 
 INSIGHT_PROMPT = """分析以下事件，输出JSON:
-{
+{{
   "summary": "事件一句话概述(50字)",
   "impact_analysis": "对市场/行业/地缘的直接影响(100字)",
   "drivers": "关键驱动因素(50字)",
   "sentiment": "positive/neutral/negative",
   "confidence": 0.0-1.0
-}
+}}
 
 事件标题: {title}
 涉及实体: {entities}
