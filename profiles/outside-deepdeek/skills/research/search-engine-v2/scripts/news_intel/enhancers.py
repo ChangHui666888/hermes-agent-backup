@@ -166,9 +166,7 @@ QMERGE_PROMPT = """分析以下新闻，只输出JSON:
 def enhance_qwen(title: str, description: str, content_md: str = "",
                  entities: dict = None, categories: list = None) -> dict:
     """
-    Qwen3-1.7B 本地增强：标签 + 实体 + 短摘要（1次调用）
-
-    Returns: {tags, entities, summary_cn, summary_en, category, method, llm_model, llm_cost}
+    V4.2: Qwen3-1.7B 增强 — 标签 + 实体(含countries/organizations) + 动作 + 事件提示
     """
     text = f"标题: {title}\n摘要: {description}"[:600]
 
@@ -179,16 +177,20 @@ def enhance_qwen(title: str, description: str, content_md: str = "",
     if isinstance(tags, str): tags = [tags]
 
     merged = _merge_entities(entities or {}, title + description)
-    for key in ("companies", "persons"):
+    for key in ("companies", "persons", "countries", "organizations"):
         merged.setdefault(key, [])
         for item in (data.get(key) or []):
             if item not in merged[key]: merged[key].append(item)
 
+    actions = data.get("actions", [])
+    event_hint = data.get("event_hint", "")
     summary = data.get("summary_cn", "")
 
     return {
         "tags": tags,
         "entities": merged,
+        "actions": actions if isinstance(actions, list) else [],
+        "event_hint": event_hint,
         "summary_cn": (summary or _rule_summary_cn(description or title))[:100],
         "summary_en": _rule_summary_en(description or title),
         "category": (categories or ["general"])[0] if categories else "general",

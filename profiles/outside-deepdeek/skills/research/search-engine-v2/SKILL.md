@@ -409,30 +409,41 @@ print(result['confidence'])
 - `scripts/core/extractor.py` — 🆕 纯脚本结构化抽取（标题/日期/作者/摘要/要点，0.78ms/篇）
 - `scripts/batch.py` — 独立 CLI 入口（cron 友好）
 
-## 🆕 L8 事件聚合器 V4 (`news_intel/aggregator.py`)
+## 🆕 L8 事件聚合器 V4.2 (`news_intel/aggregator.py`)
 
-**V4 已冻结**。Event-Centric 3-phase 聚类，替代早期 Jaccard + Embedding 方案：
+**V4.2 (2026-07-11 冻结)**。Event-Centric 3-phase + Entity Intelligence Layer。
 
-```
-Phase 1: Article → Event (按时间升序, EventFingerprint 得分≥50)
-Phase 2: Event → Event 合并 (指纹≥70 + 时间窗口)
-Phase 3: Filter singles + impact_level
-```
+**V4.2 新增机制**:
+1. Entity Alias V2 — 30+映射, 含 Government/Military 别名 (White House→US Government, Kremlin→Russian Government)
+2. Entity Type Weight — Country=1.0, Government=1.0, Military=1.0, Person=0.5
+3. Topic IDF — global_idf × topic_idf 双维度降权
+4. Action Hierarchy — 21种动作 (拆分 CEASEFIRE/PEACE_DEAL/RATE_CUT/RATE_HIKE)
+5. Score 重平衡 — Object 30, Action 25, Topic 10, EventType 10
+6. Event Participants — 替代 Location 硬约束, 交集≥1 加分
 
-**EventFingerprint (SAEO)**:
-- Subject(25) + Action(35) + Object(20) + Topic(15) + Type(5) = 100
-- Location 硬约束: 不同国家 → 直接 0 分
-- Action 词库: SUES/ATTACKS/SANCTIONS/NEGOTIATES/ANNOUNCES/DIES 等 15 类
-- Topic 词库: Legal/Military/Diplomacy/Economic/Finance/Politics/Technology 等 12 类
-- None 时间: 跳过时间检查（兼容截断的 RSS 日期）
+**Phase 1**: Article → Event (按时间升序, fingerprint_score ≥ 50)
+**Phase 2**: Event → Event 合并 (fingerprint ≥ 70 + 时间窗口)
+**Phase 3**: Filter singles + impact_level (HIGH≥85, MEDIUM 60-84)
+
+**fingerprint_score 分值 (V4.2)**:
+- Anchor 完全匹配 → 100 (强满分)
+- Participants 无交集 → 0 (硬阻断)
+- Action 相同 → +25 (OTHER除外)
+- Subject 相同 → +25
+- Object 相同 → +30
+- Topic 相同 → +10 (primary) / +5 (secondary)
+- EventType 相同 → +10
+- Participants 重叠≥2 → +10, =1 → +5
 
 **验证命令**:
 ```bash
-python test_aggregator.py --hours 24 --window 12 --limit 50           # 仅聚合
-python test_aggregator.py --hours 24 --window 12 --limit 50 --insight # 聚合 + Insight
+python test_aggregator.py --hours 24 --window 12 --limit 50           # 聚合
+python test_aggregator.py --hours 24 --window 12 --limit 50 --insight # 聚合+Insight
 ```
 
-实测 50 篇 → 15 事件 (0.0s, 42% 覆盖率, 全部规则引擎, 🚫零 LLM)。
+**已知局限**: RSS 实体提取标签过宽（Trump 被默认打标导致链式污染）。根因在 L1 评分层实体提取，非聚合算法。修复方向: 实体置信度 + 高频实体降权(已实现IDF) + 主题关联过滤。
+
+详见 `references/event-aggregation-v4.md`, `references/event-aggregation-v4.1.md`。
 
 ## 🆕 L9 洞察生成器 (`news_intel/generator.py`)
 
