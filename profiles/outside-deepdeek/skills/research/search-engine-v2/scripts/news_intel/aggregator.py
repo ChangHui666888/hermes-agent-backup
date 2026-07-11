@@ -1,12 +1,13 @@
 """
-news_intel/aggregator.py — L8 事件聚合器 v4.1
+news_intel/aggregator.py — L8 事件聚合器 v4.2
 
-V4.1 新增 (Entity Intelligence Layer):
-  1. Entity Canonicalizer (US→United States, UK→United Kingdom)
-  2. Entity Type Weight (Country=1.0, Person=0.3, Company=0.8)
-  3. Entity IDF (高频实体自动降权)
-  4. SAO Anchor (规范化事件锚点)
-  5. Entity Confidence (低置信度实体不参与聚合)
+V4.2 改进:
+  1. Entity Alias V2 (Government/Military/Org aliases)
+  2. Entity Type Weight 调整 (Person→0.5, Gov=1.0, Military=1.0)
+  3. Topic IDF (global_idf × topic_idf)
+  4. Action Hierarchy (二级动作拆分)
+  5. Score 重平衡 (Object↑30, Action↓25)
+  6. Event Participants (替代 Location 硬约束)
 """
 import re, json, logging, math
 from datetime import datetime, timedelta
@@ -15,66 +16,101 @@ from collections import defaultdict, Counter
 logger = logging.getLogger(__name__)
 
 # ═══════════════════════════════════════════════════════════
-# V4.1: Entity Canonicalizer
+# V4.2: Entity Alias Dictionary V2
 # ═══════════════════════════════════════════════════════════
 
 ENTITY_CANONICAL = {
+    # Countries
     "US": "United States", "USA": "United States", "U.S.": "United States",
-    "America": "United States", "Washington": "United States",
+    "America": "United States",
     "UK": "United Kingdom", "Britain": "United Kingdom", "Great Britain": "United Kingdom",
     "Russia": "Russian Federation", "Russian": "Russian Federation",
     "China": "China", "PRC": "China", "Mainland China": "China",
     "Iran": "Iran", "Islamic Republic of Iran": "Iran", "Tehran": "Iran",
     "North Korea": "North Korea", "DPRK": "North Korea",
     "South Korea": "South Korea", "Korea": "South Korea",
-    "Germany": "Germany", "FRG": "Germany",
-    "France": "France",
-    "Japan": "Japan",
-    "India": "India",
-    "Israel": "Israel",
-    "Ukraine": "Ukraine",
+    "Germany": "Germany", "France": "France", "Japan": "Japan", "India": "India",
+    "Israel": "Israel", "Ukraine": "Ukraine",
     "European Union": "European Union", "EU": "European Union",
     "United Nations": "United Nations", "UN": "United Nations",
     "NATO": "NATO",
+    # Government aliases
+    "White House": "United States Government", "Washington": "United States Government",
+    "Kremlin": "Russian Federation Government", "Moscow": "Russian Federation Government",
+    "Beijing": "Chinese Government",
+    "Tehran": "Iranian Government",
+    "Pyongyang": "North Korean Government",
+    "Pentagon": "United States Department of Defense",
+    "Centcom": "United States Central Command",
+    "IRGC": "Islamic Revolutionary Guard Corps",
+    "IDF": "Israel Defense Forces",
+    # Finance
     "Federal Reserve": "Federal Reserve", "Fed Chair": "Federal Reserve",
-    "ECB": "European Central Bank",
+    "ECB": "European Central Bank", "BOE": "Bank of England", "BoE": "Bank of England",
+    "IMF": "International Monetary Fund", "World Bank": "World Bank",
+    # Organizations
+    "OPEC": "OPEC", "WHO": "World Health Organization", "WTO": "World Trade Organization",
 }
 
 ENTITY_TYPE_WEIGHT = {
     "Country": 1.0,
+    "Government": 1.0,
+    "Military": 1.0,
     "Organization": 0.8,
     "Company": 0.8,
-    "Person": 0.3,
-    "Other": 0.5,
+    "Person": 0.5,
+    "Location": 0.4,
+    "Other": 0.2,
 }
 
-_known_entity_types = {}  # name → type (populated at aggregation time)
+_known_entity_types = {}
 
 
 def _canonicalize(name: str) -> str:
     return ENTITY_CANONICAL.get(name, name)
 
 
+def _infer_entity_type(name: str, raw_entities: dict) -> str:
+    """推断实体类型（含 Government/Military 扩展）"""
+    # 先检查原始分类
+    for cat, etype in [("countries", "Country"), ("companies", "Company"), ("persons", "Person")]:
+        if name in (raw_entities or {}).get(cat, []):
+            return etype
+    # 关键字推断
+    canonical = _canonicalize(name)
+    if any(kw in canonical for kw in ["Government", "Department", "Ministry", "Administration"]):
+        return "Government"
+    if any(kw in canonical for kw in ["Defense", "Military", "Army", "Navy", "Guard", "Forces"]):
+        return "Military"
+    return "Other"
+
+
 # ═══════════════════════════════════════════════════════════
-# Action Map (unchanged)
+# V4.2: Action Hierarchy (一级16种 + 二级子类)
 # ═══════════════════════════════════════════════════════════
 
 ACTION_MAP = {
-    "SUES":       ("Legal",      [r"\b(sues?|suing|lawsuit|litigation|sue|alleges?|accuses?|files?\s+(a\s+)?lawsuit|complaint|indictment|trade\s+secret)\b"]),
-    "ATTACKS":    ("Military",   [r"\b(attacks?|strikes?|bomb(?:s|ed|ing)|missile|drone\s+strike|airstrike|assault|offensive)\b"]),
-    "SANCTIONS":  ("Economic",   [r"\b(sanctions?|tariffs?|embargo|blacklist|restricts?|bans?|blocks?)\b"]),
-    "NEGOTIATES": ("Diplomacy",  [r"\b(talks?|negotiat(?:es?|ion)|diploma(?:cy|tic)|ceasefire|truce|peace\s+deal|agreement)\b"]),
-    "ANNOUNCES":  ("Politics",   [r"\b(announces?|declares?|reveals?|unveils?|launches?|releases?|presents?)\b"]),
-    "ELECTS":     ("Politics",   [r"\b(elect(?:s|ed|ion)|votes?|voting|ballot|campaign|candidate)\b"]),
-    "DIES":       ("Leadership", [r"\b(dies?|dead|killed|death|funeral|burial|assassinated|mourns?)\b"]),
-    "CRASHES":    ("Finance",    [r"\b(crash(?:es|ed)?|plunge(?:s|d)?|plummets?|tumbles?|slides?|sell.?off)\b"]),
-    "SURGES":     ("Finance",    [r"\b(surges?|soars?|jumps?|rall(?:y|ies|ied)|climbs?|rises?)\b"]),
-    "CUTS":       ("Economic",   [r"\b(cuts?|reduces?|slashes?|lowers?|drops?)\b"]),
-    "REPORTS":    ("Finance",    [r"\b(reports?|earnings|revenue|profit|quarterly|fiscal)\b"]),
-    "DEVELOPS":   ("Technology", [r"\b(develops?|builds?|creates?|produces?|manufactures?)\b"]),
-    "BANS":       ("Legal",      [r"\b(bans?|prohibits?|outlaws?|restricts?|blocks?)\b"]),
-    "FUNDS":      ("Economic",   [r"\b(funds?|funding|invests?|investment|financ(?:es?|ing)|grant)\b"]),
-    "WARNS":      ("Politics",   [r"\b(warns?|cautions?|alerts?|advises?)\b"]),
+    "SUES":        ("Legal",     [r"\b(sues?|suing|lawsuit|litigation|files?\s+(a\s+)?lawsuit|complaint|indictment|trade\s+secret)\b"]),
+    "ACCUSES":     ("Legal",     [r"\b(alleges?|accuses?|charges?)\b"]),
+    "ATTACKS":     ("Military",  [r"\b(attacks?|strikes?|bomb(?:s|ed|ing)|missile|drone\s+strike|airstrike|assault|offensive)\b"]),
+    "CEASEFIRE":   ("Diplomacy", [r"\b(ceasefire|truce)\b"]),
+    "PEACE_DEAL":  ("Diplomacy", [r"\b(peace\s+deal|peace\s+agreement|peace\s+treaty)\b"]),
+    "NEGOTIATES":  ("Diplomacy", [r"\b(talks?|negotiat(?:es?|ion)|diploma(?:cy|tic))\b"]),
+    "SANCTIONS":   ("Economic",  [r"\b(sanctions?|embargo|blacklist)\b"]),
+    "TARIFFS":     ("Economic",  [r"\b(tariffs?|trade\s+war|import\s+duty)\b"]),
+    "RATE_CUT":    ("Finance",   [r"\b(cuts?\s+(interest\s+)?rates?|lowers?\s+(interest\s+)?rates?|rate\s+cut)\b"]),
+    "RATE_HIKE":   ("Finance",   [r"\b(raises?\s+(interest\s+)?rates?|hikes?\s+(interest\s+)?rates?|rate\s+hike)\b"]),
+    "ANNOUNCES":   ("Politics",  [r"\b(announces?|declares?|reveals?|unveils?|launches?|releases?|presents?)\b"]),
+    "ELECTS":      ("Politics",  [r"\b(elect(?:s|ed|ion)|votes?|voting|ballot|campaign|candidate)\b"]),
+    "DIES":        ("Leadership",[r"\b(dies?|dead|killed|death|funeral|burial|assassinated|mourns?)\b"]),
+    "CRASHES":     ("Finance",   [r"\b(crash(?:es|ed)?|plunge(?:s|d)?|plummets?|tumbles?|slides?|sell.?off)\b"]),
+    "SURGES":      ("Finance",   [r"\b(surges?|soars?|jumps?|rall(?:y|ies|ied)|climbs?|rises?|record\s+high)\b"]),
+    "CUTS":        ("Economic",  [r"\b(cuts?|reduces?|slashes?|lowers?|drops?)\b"]),
+    "REPORTS":     ("Finance",   [r"\b(reports?|earnings|revenue|profit|quarterly|fiscal)\b"]),
+    "DEVELOPS":    ("Technology",[r"\b(develops?|builds?|creates?|manufactures?)\b"]),
+    "BANS":        ("Legal",     [r"\b(bans?|prohibits?|outlaws?|restricts?|blocks?)\b"]),
+    "FUNDS":       ("Economic",  [r"\b(funds?|funding|invests?|investment|financ(?:es?|ing)|grant)\b"]),
+    "WARNS":       ("Politics",  [r"\b(warns?|cautions?|alerts?|advises?|threatens?\s+to)\b"]),
 }
 
 
@@ -88,7 +124,7 @@ def _detect_action(text: str) -> tuple[str, str]:
 
 
 # ═══════════════════════════════════════════════════════════
-# Topic classification (unchanged)
+# Topic classification
 # ═══════════════════════════════════════════════════════════
 
 TOPIC_SIGNALS = {
@@ -121,7 +157,7 @@ def _classify_topics(text: str) -> tuple[str, str]:
 
 
 # ═══════════════════════════════════════════════════════════
-# Country extraction
+# Country / Participants
 # ═══════════════════════════════════════════════════════════
 
 COUNTRIES = [
@@ -136,55 +172,67 @@ COUNTRIES = [
 ]
 
 
-def _extract_country(entities: dict, text: str) -> str | None:
+def _extract_participants(entities: dict, text: str) -> set:
+    """V4.2: 提取事件参与国 (actor + target + affected)"""
+    participants = set()
     e = entities or {}
-    countries = [_canonicalize(c) for c in e.get("countries", [])]
-    if countries:
-        return countries[0]
+    for c in e.get("countries", []):
+        participants.add(_canonicalize(c))
     for c in COUNTRIES:
         if re.search(rf"\b{re.escape(c)}\b", text, re.IGNORECASE):
-            return _canonicalize(c)
-    return None
+            participants.add(_canonicalize(c))
+    return participants
 
 
 # ═══════════════════════════════════════════════════════════
-# V4.1: Entity IDF
+# V4.2: Entity IDF with Topic IDF
 # ═══════════════════════════════════════════════════════════
 
-def _compute_entity_idf(articles: list[dict]) -> dict[str, float]:
-    """计算每个实体的 IDF 权重。出现越多权重越低。"""
+def _compute_entity_idf(articles: list[dict]) -> tuple[dict[str, float], dict[str, dict[str, float]]]:
+    """返回 (global_idf, topic_idf_map)"""
     N = len(articles)
-    if N == 0: return {}
-    counter = Counter()
+    if N == 0:
+        return {}, {}
+    global_counter = Counter()
+    topic_counters = defaultdict(Counter)
+    topic_total = defaultdict(int)
+
     for a in articles:
+        text = _get_text(a)
+        primary, _ = _classify_topics(text)
+        topic_total[primary] += 1
+
         e = a.get("entities", {}) or {}
         names = set()
         for cat in ("companies", "persons", "countries"):
             for name in e.get(cat, []):
                 names.add(_canonicalize(name))
-        counter.update(names)
-    return {name: math.log(N / max(freq, 1)) for name, freq in counter.items()}
+        global_counter.update(names)
+        for name in names:
+            topic_counters[primary][name] += 1
+
+    global_idf = {name: math.log(N / max(freq, 1)) for name, freq in global_counter.items()}
+    topic_idf = {}
+    for topic, counter in topic_counters.items():
+        total = topic_total[topic]
+        topic_idf[topic] = {name: math.log(total / max(freq, 1)) for name, freq in counter.items()}
+
+    return global_idf, topic_idf
 
 
-def _entity_weight(name: str, idf: dict[str, float]) -> float:
-    """实体综合权重 = type_weight × min(idf, 2.0) / 2.0"""
+def _entity_weight(name: str, global_idf: dict, topic_idf_map: dict, primary_topic: str) -> float:
+    """V4.2: type_weight × global_idf × topic_idf"""
     canonical = _canonicalize(name)
     etype = _known_entity_types.get(canonical, "Other")
-    type_w = ENTITY_TYPE_WEIGHT.get(etype, 0.5)
-    idf_w = min(idf.get(canonical, 1.0), 2.0) / 2.0  # IDF归一化到0-1
-    return type_w * (0.3 + 0.7 * idf_w)  # 保留30%基础权重
-
-
-def _get_entity_type(name: str, entities: dict) -> str:
-    """推断实体类型"""
-    for cat in ("countries", "companies", "persons"):
-        if name in (entities or {}).get(cat, []):
-            return {"countries": "Country", "companies": "Company", "persons": "Person"}.get(cat, "Other")
-    return "Other"
+    type_w = ENTITY_TYPE_WEIGHT.get(etype, 0.2)
+    g_idf = min(global_idf.get(canonical, 1.0), 2.0) / 2.0
+    t_idf_map = topic_idf_map.get(primary_topic, {})
+    t_idf = min(t_idf_map.get(canonical, 1.0), 2.0) / 2.0
+    return type_w * (0.2 + 0.4 * g_idf + 0.4 * t_idf)
 
 
 # ═══════════════════════════════════════════════════════════
-# V4.1: EventFingerprint with weighted entity selection
+# V4.2: EventFingerprint
 # ═══════════════════════════════════════════════════════════
 
 def _get_text(a: dict) -> str:
@@ -197,39 +245,39 @@ def _get_text(a: dict) -> str:
     return desc + " " + (a.get("title") or "")
 
 
-def build_fingerprint(article: dict, idf: dict[str, float] = None) -> dict:
-    """
-    V4.1: 构建事件指纹 — 实体按类型+IDF加权选择
-    """
-    idf = idf or {}
+def build_fingerprint(article: dict, global_idf: dict = None, topic_idf_map: dict = None) -> dict:
+    global_idf = global_idf or {}
+    topic_idf_map = topic_idf_map or {}
     text = _get_text(article)
     action, event_type = _detect_action(text)
     primary, secondary = _classify_topics(text)
 
     entities = article.get("entities", {}) or {}
 
-    # ── 加权选择 Subject ──
+    # 加权选择 Subject
     candidates = []
     for name in entities.get("companies", []) + entities.get("persons", []):
         canonical = _canonicalize(name)
-        w = _entity_weight(name, idf)
+        w = _entity_weight(name, global_idf, topic_idf_map, primary)
         candidates.append((canonical, w))
     candidates.sort(key=lambda x: x[1], reverse=True)
     subject = candidates[0][0] if candidates else ""
 
-    # ── 加权选择 Object ──
+    # 加权选择 Object
     obj_candidates = []
     for name in entities.get("countries", []) + entities.get("companies", []):
         canonical = _canonicalize(name)
-        if canonical == subject: continue
-        w = _entity_weight(name, idf)
+        if canonical == subject:
+            continue
+        w = _entity_weight(name, global_idf, topic_idf_map, primary)
         obj_candidates.append((canonical, w))
     obj_candidates.sort(key=lambda x: x[1], reverse=True)
     obj = obj_candidates[0][0] if obj_candidates else ""
 
-    country = _extract_country(entities, text)
+    # Participants
+    participants = _extract_participants(entities, text)
 
-    # ── SAO Anchor ──
+    # SAO Anchor
     anchor = f"{subject}|{action}|{obj}|{primary}" if subject and action != "OTHER" else ""
 
     return {
@@ -239,50 +287,66 @@ def build_fingerprint(article: dict, idf: dict[str, float] = None) -> dict:
         "event_type": event_type,
         "primary_topic": primary,
         "secondary_topic": secondary,
-        "country": country,
+        "participants": frozenset(participants),
         "anchor": anchor,
     }
 
 
 def fingerprint_score(fp1: dict, fp2: dict) -> int:
     """
-    V4.1: 指纹匹配分 (0-100)
-    - Location 不同 → 0
-    - Anchor 完全匹配 → 100 (V4.1 新增)
+    V4.2: 重平衡分值
+    - Participants 交集为空且两者均非空 → 减分（非硬阻断）
     """
-    if fp1["country"] and fp2["country"] and fp1["country"] != fp2["country"]:
+    p1 = fp1.get("participants", frozenset())
+    p2 = fp2.get("participants", frozenset())
+
+    # 参与者完全不重叠且两者都有参与者 → 重度惩罚
+    if p1 and p2 and not (p1 & p2):
         return 0
 
-    # ── Anchor 完全匹配 → 强行满分 ──
+    # Anchor 完全匹配 → 强行满分
     if fp1.get("anchor") and fp2.get("anchor") and fp1["anchor"] == fp2["anchor"]:
         return 100
 
     score = 0
 
+    # Action (25, V4.2 下调)
     if fp1["action"] == fp2["action"] and fp1["action"] != "OTHER":
-        score += 35
+        score += 25
 
+    # Subject (25)
     if fp1["subject"] and fp2["subject"]:
         if fp1["subject"] == fp2["subject"] or fp1["subject"] in fp2["subject"] or fp2["subject"] in fp1["subject"]:
             score += 25
 
+    # Object (30, V4.2 上调)
     if fp1["object"] and fp2["object"]:
         if fp1["object"] == fp2["object"] or fp1["object"] in fp2["object"] or fp2["object"] in fp1["object"]:
-            score += 20
+            score += 30
 
+    # Topic (10)
     if fp1["primary_topic"] == fp2["primary_topic"]:
-        score += 15
+        score += 10
     elif fp1["secondary_topic"] and fp2["secondary_topic"] and fp1["secondary_topic"] == fp2["secondary_topic"]:
         score += 5
 
+    # Event Type (10, V4.2 上调)
     if fp1["event_type"] == fp2["event_type"]:
-        score += 5
+        score += 10
+
+    # Participants 重叠加分
+    if p1 and p2:
+        overlap = len(p1 & p2)
+        if overlap >= 2:
+            score += 10
+        elif overlap == 1:
+            score += 5
 
     return score
 
 
 # ═══════════════════════════════════════════════════════════
-# Event-Centric Clustering V4.1
+# Event-Centric Clustering V4.2
 # ═══════════════════════════════════════════════════════════
 
 EVENT_THRESHOLD = 50
@@ -291,43 +355,42 @@ MERGE_THRESHOLD = 70
 
 def _parse_date(date_str) -> datetime | None:
     from email.utils import parsedate_to_datetime
-    if not date_str: return None
-    try: return datetime.fromisoformat(date_str.replace("Z", "+00:00"))
-    except: pass
-    try: return parsedate_to_datetime(date_str.strip())
-    except: return None
+    if not date_str:
+        return None
+    try:
+        return datetime.fromisoformat(date_str.replace("Z", "+00:00"))
+    except Exception:
+        pass
+    try:
+        return parsedate_to_datetime(date_str.strip())
+    except Exception:
+        return None
 
 
 def aggregate_events(articles: list[dict], window_hours: int = 24) -> list[dict]:
-    """
-    V4.1: 三阶段聚类 + Entity Intelligence Layer
-    """
     if not articles:
         return []
 
-    # ── V4.1: 初始化实体类型 + IDF ──
+    # 初始化实体类型
     global _known_entity_types
     _known_entity_types = {}
     for a in articles:
         e = a.get("entities", {}) or {}
         for cat in ("companies", "persons", "countries"):
             for name in e.get(cat, []):
-                _known_entity_types[_canonicalize(name)] = {"companies": "Company", "persons": "Person", "countries": "Country"}.get(cat, "Other")
+                _known_entity_types[_canonicalize(name)] = _infer_entity_type(name, e)
 
-    entity_idf = _compute_entity_idf(articles)
+    global_idf, topic_idf_map = _compute_entity_idf(articles)
 
-    # ── 按时间升序 ──
+    # 按时间升序
     parsed = []
     for a in articles:
         ts = _parse_date(a.get("published_at"))
-        fp = build_fingerprint(a, idf=entity_idf)
+        fp = build_fingerprint(a, global_idf=global_idf, topic_idf_map=topic_idf_map)
         parsed.append((a, ts, fp))
     parsed.sort(key=lambda x: (x[1] is None, x[1] or datetime.min))
 
-    # ═══════════════════════════════════════════════════
     # Phase 1: Article → Event
-    # ═══════════════════════════════════════════════════
-
     events = []
     for a, ts, fp in parsed:
         best_score = 0
@@ -371,10 +434,7 @@ def aggregate_events(articles: list[dict], window_hours: int = 24) -> list[dict]
                 "best_title": a.get("title", ""),
             })
 
-    # ═══════════════════════════════════════════════════
     # Phase 2: Event → Event 合并
-    # ═══════════════════════════════════════════════════
-
     n = len(events)
     parent = list(range(n))
 
@@ -386,7 +446,8 @@ def aggregate_events(articles: list[dict], window_hours: int = 24) -> list[dict]
 
     def union(x, y):
         px, py = find(x), find(y)
-        if px != py: parent[px] = py
+        if px != py:
+            parent[px] = py
 
     for i in range(n):
         for j in range(i + 1, n):
@@ -401,7 +462,8 @@ def aggregate_events(articles: list[dict], window_hours: int = 24) -> list[dict]
     done = set()
     for i in range(n):
         root = find(i)
-        if root in done: continue
+        if root in done:
+            continue
         done.add(root)
         group = [j for j in range(n) if find(j) == root]
         if len(group) == 1:
@@ -421,13 +483,11 @@ def aggregate_events(articles: list[dict], window_hours: int = 24) -> list[dict]
                     m["best_title"] = ej["best_title"]
             merged.append(m)
 
-    # ═══════════════════════════════════════════════════
     # Phase 3: Output
-    # ═══════════════════════════════════════════════════
-
     result = []
     for ev in merged:
-        if len(ev["article_ids"]) < 2: continue
+        if len(ev["article_ids"]) < 2:
+            continue
         impact = "HIGH" if ev["max_score"] >= 85 else ("MEDIUM" if ev["max_score"] >= 60 else "LOW")
         result.append({
             "title": ev["best_title"],

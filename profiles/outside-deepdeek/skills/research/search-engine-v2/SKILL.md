@@ -393,8 +393,9 @@ print(result['confidence'])
 - Docker 绕过 UFW → DOCKER-USER 链白名单
 - passlib/bcrypt 版本冲突 → hashlib 替代
 - Qwen3 system 角色 400 → 只用 user role，30s 超时
-- RSS 隔离 3次失败→30min，重置删 state.json
-- Hermes cron PowerShell 单行 + `--repeat 99999` + 末尾 `""`
+- **RSS 隔离 3次失败→30min，重置删 state.json**
+- **RSS 截断日期 "Fri, 10 Ju" → `email.utils.parsedate_to_datetime` 兜底**
+- **Hermes cron PowerShell 单行 + `--repeat 99999` + 末尾 `""`**
 
 ### 纯算法层（Agent + Standalone 共享）
 - `scripts/config/domain_profiles.py` — 域名画像知识库（17个域名）
@@ -442,7 +443,7 @@ python test_aggregator.py --hours 24 --window 12 --limit 50 --insight # 聚合 +
 
 ⚠️ `.format()` 陷阱: prompt 中的 JSON 花括号必须双写 `{{` `}}` 转义。
 
-详见 `references/event-aggregation-v4.md`。
+详见 `references/event-aggregation-v4.md` 和 `references/event-aggregation-v4.1.md`。
 
 ## 🆕 V1 Schema 升级（Event-centric）
 

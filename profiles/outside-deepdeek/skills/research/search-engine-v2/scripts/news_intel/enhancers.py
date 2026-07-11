@@ -155,7 +155,11 @@ QMERGE_PROMPT = """分析以下新闻，只输出JSON:
   "tags": ["标签1", "标签2"],
   "companies": ["公司名"],
   "persons": ["人名"],
-  "summary_cn": "20字以内中文摘要"
+  "countries": ["国家"],
+  "organizations": ["组织名"],
+  "actions": ["动作关键词"],
+  "summary_cn": "20字以内中文摘要",
+  "event_hint": "事件类型提示(如: 诉讼/谈判/军事冲突/财报/政策/科技发布)"
 }"""
 
 

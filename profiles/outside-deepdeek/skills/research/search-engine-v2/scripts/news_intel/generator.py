@@ -11,12 +11,22 @@ logger = logging.getLogger(__name__)
 QWEN_BASE = "http://127.0.0.1:1234/v1"
 DEEPSEEK_BASE = "https://api.deepseek.com/v1"
 
-INSIGHT_PROMPT = """分析以下事件，输出JSON:
+INSIGHT_PROMPT = """你是国际新闻分析师。基于以下事件时间线生成洞察分析。
+
+要求:
+1. 不添加未出现的事实
+2. 区分事实和推测
+3. 标记影响范围(市场/地缘/行业)
+
+输出JSON:
 {{
   "summary": "事件一句话概述(50字)",
-  "impact_analysis": "对市场/行业/地缘的直接影响(100字)",
-  "drivers": "关键驱动因素(50字)",
-  "sentiment": "positive/neutral/negative",
+  "timeline": "关键时间节点(50字)",
+  "key_drivers": "关键驱动因素(50字)",
+  "impact": "对市场/行业/地缘的直接影响(100字)",
+  "market_effect": "bullish|bearish|neutral",
+  "geopolitical_effect": "escalation|deescalation|neutral",
+  "uncertainty": "low|medium|high",
   "confidence": 0.0-1.0
 }}
 
