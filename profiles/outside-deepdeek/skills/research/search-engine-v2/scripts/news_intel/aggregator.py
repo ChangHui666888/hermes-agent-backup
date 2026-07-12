@@ -55,7 +55,7 @@ ENTITY_TYPE_WEIGHT = {
     "Person": 0.5, "Location": 0.4, "Other": 0.2,
 }
 
-MIN_SUBJECT_WEIGHT = 0.22
+MIN_SUBJECT_WEIGHT = 0.15
 HUB_RATIO = 0.15
 
 _known_entity_types = {}
@@ -256,13 +256,13 @@ def build_fingerprint(article: dict, global_idf: dict = None, topic_idf_map: dic
 
     entities = article.get("entities", {}) or {}
 
-    # P1: Subject hub dampening + MIN_SUBJECT_WEIGHT
+    # P1: Subject — hub entities 降权但不禁用
     candidates = []
     for name in entities.get("companies", []) + entities.get("persons", []):
         canonical = _canonicalize(name)
-        if canonical in hub_entities:
-            continue
         w = _entity_weight(name, global_idf, topic_idf_map, primary)
+        if canonical in hub_entities:
+            w *= 0.3  # hub实体降权70%，但不排除
         candidates.append((canonical, w))
     candidates.sort(key=lambda x: x[1], reverse=True)
     if candidates and candidates[0][1] >= MIN_SUBJECT_WEIGHT:
@@ -276,9 +276,11 @@ def build_fingerprint(article: dict, global_idf: dict = None, topic_idf_map: dic
     obj_candidates = []
     for name in entities.get("countries", []) + entities.get("companies", []):
         canonical = _canonicalize(name)
-        if canonical == subject or canonical in hub_entities:
+        if canonical == subject:
             continue
         w = _entity_weight(name, global_idf, topic_idf_map, primary)
+        if canonical in hub_entities:
+            w *= 0.3
         obj_candidates.append((canonical, w))
     obj_candidates.sort(key=lambda x: x[1], reverse=True)
     if obj_candidates:
@@ -358,6 +360,30 @@ def fingerprint_score(fp1: dict, fp2: dict) -> int:
 
 EVENT_THRESHOLD = 50
 MERGE_THRESHOLD = 75
+
+
+def _extract_action_detail(text: str, action: str) -> str | None:
+    """从文本中提取动作细节（动作词后紧跟的描述）"""
+    if action == "OTHER" or not text:
+        return None
+    patterns = ACTION_MAP.get(action, ("", []))[1]
+    for pat in patterns:
+        m = re.search(pat, text, re.IGNORECASE)
+        if m:
+            # 取匹配词后紧跟的 80 字符作为 detail
+            end = m.end()
+            detail = text[end:end+80].strip(" ,.;:\"'").strip()
+            return detail[:50] if detail else None
+    return None
+
+
+def _infer_actor_roles(entity_refs: list, action: str, obj: str) -> list:
+    """根据动作类型推断实体角色"""
+    roles = []
+    for i, ent in enumerate(entity_refs[:5]):
+        role = "Initiator" if i == 0 else ("Target" if ent["name"] == obj else "Participant")
+        roles.append({"entity": ent["name"], "type": ent["type"], "role": role})
+    return roles
 
 
 def _parse_date(date_str) -> datetime | None:
@@ -475,27 +501,105 @@ def aggregate_events(articles: list[dict], window_hours: int = 24) -> list[dict]
 
     # Phase 3: Output
     result = []
-    for ev in merged:
+    for idx, ev in enumerate(merged):
         if len(ev["article_ids"]) < 2: continue
 
-        # P2: 簇内一致性校验
+        # 成员数据
+        members = [a for a, _, _ in parsed if a["id"] in ev["article_ids"]]
         fps = ev.get("fingerprints", [ev["fingerprint"]])
+
+        # ── Coherence ──
         coherence = 0
         if len(fps) >= 2:
             scores = [fingerprint_score(fps[i], fps[j]) for i, j in combinations(range(len(fps)), 2)]
             coherence = sum(scores) / len(scores) if scores else 0
 
+        # ── Impact ──
         impact = "HIGH" if ev["max_score"] >= 85 else ("MEDIUM" if ev["max_score"] >= 60 else "LOW")
         if coherence < MERGE_THRESHOLD and impact == "HIGH":
             impact = "MEDIUM"
 
+        # ── Entity ID 映射 ──
+        entity_refs = []
+        for name in ev["all_entities"]:
+            etype = _known_entity_types.get(name, "Other")
+            entity_refs.append({"name": name, "type": etype})
+
+        # ── Source ──
+        source_names = list(set(a.get("source_name", "") for a in members if a.get("source_name")))
+        try:
+            from news_intel.scorer import score_source
+            source_scores_list = [score_source(s) for s in source_names]
+        except ImportError:
+            source_scores_list = [5] * len(source_names)
+        max_auth = max(source_scores_list) if source_scores_list else 5
+        primary_src = source_names[0] if source_names else ""
+
+        # ── Confidence ──
+        src_auth_norm = min(max_auth / 20.0, 1.0)
+        coh_norm = min(coherence / 100.0, 1.0)
+        diversity = min(len(source_names) / 5.0, 1.0)
+        count_factor = min(len(members) / 10.0, 1.0)
+        confidence = round(0.4 * src_auth_norm + 0.3 * coh_norm + 0.2 * diversity + 0.1 * count_factor, 2)
+
+        # ── Stage ──
+        now = datetime.utcnow()
+        if ev["start_time"]:
+            age_hours = (now - ev["start_time"]).total_seconds() / 3600
+            if age_hours <= 2: stage = "breaking"
+            elif age_hours <= 24: stage = "developing"
+            elif age_hours <= 168: stage = "active"
+            elif age_hours <= 720: stage = "stable"
+            else: stage = "closed"
+        else:
+            stage = "developing"
+
+        # ── Event ID ──
+        ts = ev["start_time"] or datetime.utcnow()
+        event_id = f"EVT-{ts.strftime('%Y%m%d')}-{idx+1:03d}"
+
+        # ── Summary ──
+        raw_summaries = []
+        for a in members[:3]:
+            s = a.get("summary_cn") or a.get("description", "") or ""
+            if not s.startswith("<table") and not s.startswith("<tr"):
+                if (s.count("<") + s.count(">")) / max(len(s), 1) < 0.3:
+                    raw_summaries.append(s[:100])
+        summary = " | ".join(s for s in raw_summaries if s)
+
+        # ── First Source ──
+        timed_members = [(a, _parse_date(a.get("published_at"))) for a in members]
+        timed_members = [(a, t) for a, t in timed_members if t is not None]
+        first_article = min(timed_members, key=lambda x: x[1])[0] if timed_members else (members[0] if members else None)
+        first_source = first_article.get("source_name", "") if first_article else ""
+
+        # ── Action detail ──
+        fp_centroid = ev["fingerprint"]
+        action_detail = _extract_action_detail(
+            " ".join(a.get("title", "") + " " + (a.get("description") or "")[:200] for a in members[:2]),
+            fp_centroid["action"]
+        )
+
         result.append({
-            "title": ev["best_title"], "article_ids": ev["article_ids"],
-            "article_count": len(ev["article_ids"]), "entities": list(ev["all_entities"]),
-            "impact_level": impact, "max_score": ev["max_score"],
-            "actions": list(ev["actions"]), "topics": list(ev["topics"]),
-            "start_time": ev["start_time"], "last_time": ev["last_time"],
-            "coherence": round(coherence, 1),
+            "event_id": event_id,
+            "subject": {"name": fp_centroid["subject"], "type": _known_entity_types.get(fp_centroid["subject"], "Other")},
+            "action": {"type": fp_centroid["action"], "detail": action_detail},
+            "object": {"name": fp_centroid["object"], "type": _known_entity_types.get(fp_centroid["object"], "Other")},
+            "event_type": fp_centroid["event_type"],
+            "event_time": ev["start_time"].isoformat() if ev["start_time"] else None,
+            "location": {"country": fp_centroid.get("country"), "region": None},
+            "source": {"primary_source": first_source or primary_src, "authority": max_auth,
+                       "source_count": len(source_names), "sources": source_names[:10]},
+            "doc_refs": [{"url": a.get("url", ""), "title": a.get("title", "")} for a in members[:5]],
+            "actors": _infer_actor_roles(entity_refs, fp_centroid["action"], fp_centroid.get("object", "")),
+            "title": ev["best_title"], "summary": summary or ev["best_title"],
+            "keywords": list(ev.get("topics", set())),
+            "confidence": confidence, "coherence": round(coherence, 1),
+            "extraction_method": "v4.3-saeo",
+            "related_entities": [{"name": e["name"], "type": e["type"]} for e in entity_refs[:20]],
+            "article_count": len(ev["article_ids"]), "article_ids": ev["article_ids"], "stage": stage,
+            "first_seen": ev["start_time"].isoformat() if ev["start_time"] else None,
+            "last_updated": ev["last_time"].isoformat() if ev["last_time"] else None,
         })
 
     result.sort(key=lambda e: e["article_count"], reverse=True)

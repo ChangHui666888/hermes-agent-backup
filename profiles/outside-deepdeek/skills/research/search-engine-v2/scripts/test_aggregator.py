@@ -122,11 +122,14 @@ def main():
             print(f"事件数={len(events)}, #{args.single} 不存在")
             return
         ev = events[args.single - 1]
-        print(f"=== 事件 #{args.single}: {ev['title'][:80]} ===")
-        print(f"级别: {ev['impact_level']} | 文章: {ev['article_count']}篇"
-              f" | 一致性: {ev.get('coherence', 'N/A')}")
-        print(f"实体: {', '.join(ev['entities'][:10])}")
-        print(f"动作: {ev.get('actions',[])} | 主题: {ev.get('topics',[])}")
+        print(f"=== 事件 #{args.single}: {ev.get('event_id','?')} | {ev['title'][:70]} ===")
+        print(f"级别: {ev.get('stage','?')} | 文章: {ev['article_count']}篇"
+              f" | 一致性: {ev.get('coherence','N/A')} | 置信度: {ev.get('confidence','N/A')}")
+        print(f"SAO: {ev['subject']['name']} → {ev['action']['type']} → {ev['object']['name']}")
+        print(f"detail: {ev['action'].get('detail','N/A')}")
+        print(f"source: primary={ev['source']['primary_source']} auth={ev['source']['authority']} diversity={ev['source']['source_count']}")
+        print(f"actors: {json.dumps(ev.get('actors',[]), ensure_ascii=False)}")
+        print(f"summary: {(ev.get('summary','') or ev['title'])[:150]}")
         print()
         members = [a for a in articles if a["id"] in ev["article_ids"]]
         member_fps = [fps[i] for i, a in enumerate(articles) if a["id"] in ev["article_ids"]]
@@ -164,20 +167,19 @@ def main():
         members = [a for a in articles if a["id"] in ev["article_ids"]]
         sources = sorted(set(a["source_name"][:12] for a in members))
 
-        print(f"事件 #{i}: {ev['title'][:80]}")
-        print(f"  级别: {ev['impact_level']} | 文章: {len(members)}篇"
-              f" | 一致性: {ev.get('coherence','N/A')}")
-        print(f"  实体: {', '.join(ev['entities'][:10])}")
-        print(f"  动作: {ev.get('actions',[])} | 主题: {ev.get('topics',[])}")
-
-        if args.verbose:
-            member_fps = [fps[j] for j, a in enumerate(articles) if a["id"] in ev["article_ids"]]
-            for a, fp in zip(members, member_fps):
-                print(f"    [{a['source_name'][:12]}] {a['title'][:60]}")
-                print(f"      subj={fp['subject']}(w={fp.get('subject_weight',0):.3f})"
-                      f" act={fp['action']} obj={fp['object']} top={fp['primary_topic']}")
-        else:
-            print(f"  来源: {', '.join(sources[:8])}")
+        print(f"事件 #{i}: {ev.get('event_id','?')} | {ev['title'][:70]}")
+        print(f"  级别: {ev.get('stage','?')} | 文章: {ev['article_count']}篇"
+              f" | 一致性: {ev.get('coherence','N/A')} | 置信度: {ev.get('confidence','N/A')}")
+        print(f"  SAO: {ev['subject']['name']} → {ev['action']['type']} → {ev['object']['name']}")
+        if ev['action'].get('detail'):
+            print(f"  detail: {ev['action']['detail'][:60]}")
+        print(f"  source: {ev['source']['primary_source'][:20]}"
+              f" | authority={ev['source']['authority']}"
+              f" | diversity={ev['source']['source_count']}")
+        if ev.get('actors'):
+            print(f"  actors: {', '.join(a['entity']+'('+a['role']+')' for a in ev['actors'][:5])}")
+        print(f"  entity: {', '.join(e['name'] for e in ev.get('related_entities',[])[:8])}")
+        print(f"  summary: {(ev.get('summary','') or ev['title'])[:100]}")
 
         if args.insight:
             t1 = time.time()
