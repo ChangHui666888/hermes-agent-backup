@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>News Intelligence — 各阶段输入输出字段详解 v4.3</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'JetBrains Mono',monospace;background:#0f172a;color:#e2e8f0;padding:2rem;line-height:1.6}
+.container{max-width:1400px;margin:0 auto}
+h1{font-size:1.4rem;font-weight:700;margin-bottom:.25rem;color:#f8fafc}
+h2{font-size:1.1rem;font-weight:600;color:#22d3ee;margin:2rem 0 .75rem;padding-top:1rem;border-top:1px solid #1e293b}
+h3{font-size:.9rem;font-weight:600;color:#e2e8f0;margin:1rem 0 .5rem}
+.subtitle{color:#64748b;font-size:.8rem;margin-bottom:2rem}
+
+/* Phase header */
+.phase-header{display:flex;align-items:center;gap:.75rem;margin-bottom:.5rem}
+.phase-badge{font-size:.7rem;padding:2px 10px;border-radius:12px;font-weight:600}
+.badge-running{background:rgba(34,197,94,.15);color:#22c55e;border:1px solid rgba(34,197,94,.3)}
+.badge-llm{background:rgba(251,146,60,.15);color:#fb923c;border:1px solid rgba(251,146,60,.3)}
+.badge-agent{background:rgba(251,113,133,.15);color:#fb7185;border:1px solid rgba(251,113,133,.3)}
+.badge-todo{background:rgba(100,116,139,.15);color:#64748b;border:1px solid rgba(100,116,139,.3)}
+
+/* Table styles */
+table{width:100%;border-collapse:collapse;margin:.5rem 0 1.25rem;font-size:.75rem}
+th{background:#1e293b;color:#94a3b8;padding:8px 12px;text-align:left;font-weight:600;font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;border-bottom:2px solid #334155}
+td{padding:7px 12px;border-bottom:1px solid #1e293b;vertical-align:top}
+tr:nth-child(even){background:rgba(15,23,42,.4)}
+.col-field{color:#f8fafc;font-weight:500;white-space:nowrap;font-size:.73rem}
+.col-type{color:#94a3b8;font-size:.7rem}
+.col-source{color:#22d3ee;font-size:.7rem}
+.col-note{color:#64748b;font-size:.7rem}
+code{background:#1e293b;padding:1px 5px;border-radius:3px;font-size:.7rem;color:#38bdf8}
+
+/* Summary row */
+.summary-row{background:rgba(34,211,238,.06)!important}
+.summary-row td{border-top:2px solid rgba(34,211,238,.3);font-weight:600}
+
+/* IO block */
+.io-block{margin:.5rem 0 1rem;padding:.75rem 1rem;background:rgba(15,23,42,.5);border-radius:8px;border:1px solid #1e293b}
+.io-block dt{color:#64748b;font-size:.7rem;margin-bottom:.25rem}
+.io-block dd{color:#94a3b8;font-size:.73rem;margin-bottom:.5rem;padding-left:.5rem;border-left:2px solid #334155}
+
+.footer{text-align:center;margin-top:2rem;color:#475569;font-size:.7rem;border-top:1px solid #1e293b;padding-top:1rem}
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>News Intelligence Platform — 各阶段输入/输出字段详解 v4.3</h1>
+<p class="subtitle">按代码实际调用链逐级追踪 · 每一列均可从代码中找到对应赋值语句</p>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<h2>
+  <span class="phase-badge badge-running">✅</span>
+  Phase 0 → 1: RSS Scanner → rss-archive.db
+</h2>
+<p style="color:#64748b;font-size:.75rem;margin-bottom:.5rem">Python独立进程 · 每30min cron触发 · 输出: ~/.hermes/rss-archive.db (rss_articles表)</p>
+
+<table>
+<tr><th style="width:22%">字段</th><th style="width:10%">类型</th><th style="width:38%">来源 / 备注</th><th style="width:30%">示例值</th></tr>
+<tr>
+  <td class="col-field">source</td><td class="col-type">TEXT</td>
+  <td class="col-source">RSS feed 名称</td>
+  <td class="col-note">Reuters, DW News, BBC</td>
+</tr>
+<tr>
+  <td class="col-field">title</td><td class="col-type">TEXT</td>
+  <td class="col-source">feedparser entry.title</td>
+  <td class="col-note">Apple calls OpenAI's hardware business 'rotten...'</td>
+</tr>
+<tr>
+  <td class="col-field">summary</td><td class="col-type">TEXT</td>
+  <td class="col-source">feedparser entry.summary (HTML stripped)</td>
+  <td class="col-note">Apple has accused the company behind ChatGPT...</td>
+</tr>
+<tr>
+  <td class="col-field">link</td><td class="col-type">TEXT</td>
+  <td class="col-source">feedparser entry.link → 唯一键</td>
+  <td class="col-note">https://www.dw.com/en/apple-sues-openai/a-123456</td>
+</tr>
+<tr>
+  <td class="col-field">category</td><td class="col-type">TEXT</td>
+  <td class="col-source">RSS feed 原生分类标签</td>
+  <td class="col-note">World, Technology, Business</td>
+</tr>
+<tr>
+  <td class="col-field">date</td><td class="col-type">TEXT</td>
+  <td class="col-source">feedparser entry.published_parsed</td>
+  <td class="col-note">2026-07-10T08:30:00Z</td>
+</tr>
+<tr class="summary-row"><td colspan="4">📤 输出 → Phase 1 sync.py 读取: <code>source, title, summary, link, category, date</code></td></tr>
+</table>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<h2>
+  <span class="phase-badge badge-running">✅</span>
+  Phase 1.1: sync.py + scorer.py → news_intel.db (评分)
+</h2>
+<p style="color:#64748b;font-size:.75rem;margin-bottom:.5rem">sync.py 读取 rss-archive.db → 调 scorer.score_article() → 写入 news_intel.db 三表</p>
+
+<h3>📥 输入 (sync_recent 读取)</h3>
+<table>
+<tr><th style="width:22%">输入字段</th><th style="width:10%">来自</th><th style="width:68%">用途</th></tr>
+<tr><td class="col-field">source</td><td class="col-source">rss-archive.db</td><td class="col-note">→ source_name 传给 score_source() 查权威度</td></tr>
+<tr><td class="col-field">title</td><td class="col-source">rss-archive.db</td><td class="col-note">→ 传给 score_impact() + compute_velocity()</td></tr>
+<tr><td class="col-field">summary</td><td class="col-source">rss-archive.db</td><td class="col-note">→ description 传给 score_impact() → 关键词匹配</td></tr>
+<tr><td class="col-field">link</td><td class="col-source">rss-archive.db</td><td class="col-note">→ article_url 写入 rss_raw + URL指纹去重</td></tr>
+<tr><td class="col-field">category</td><td class="col-source">rss-archive.db</td><td class="col-note">→ category_raw 写入 rss_raw</td></tr>
+<tr><td class="col-field">date</td><td class="col-source">rss-archive.db</td><td class="col-note">→ published_at 写入 rss_raw</td></tr>
+</table>
+
+<h3>score_article() 五维评分输出</h3>
+<table>
+<tr><th style="width:20%">字段</th><th style="width:10%">分数区间</th><th style="width:35%">评分逻辑</th><th style="width:35%">示例</th></tr>
+<tr><td class="col-field">total</td><td class="col-type">0–100</td><td class="col-source">五维: source+impact+entity+market+velocity</td><td class="col-note">92</td></tr>
+<tr><td class="col-field">source</td><td class="col-type">0–20</td><td class="col-source">查表: source_scores.json</td><td class="col-note">UK Gov=20, Reuters=18, DW News=16, 未知=5</td></tr>
+<tr><td class="col-field">impact</td><td class="col-type">0–30</td><td class="col-source">event_keywords.json 关键词正则命中</td><td class="col-note">战争/制裁/ceasefire → 30, 财报 → 15</td></tr>
+<tr><td class="col-field">entity</td><td class="col-type">0–20</td><td class="col-source">entity_weights.json 实体权重查表</td><td class="col-note">US Federal Reserve=20, 小公司=3</td></tr>
+<tr><td class="col-field">market</td><td class="col-type">0–20</td><td class="col-source">asset_graph.json 市场关联匹配</td><td class="col-note">NVDA→半导体=18, 无关=0</td></tr>
+<tr><td class="col-field">velocity</td><td class="col-type">0–10</td><td class="col-source">compute_velocity() ±30min窗口词集Jaccard相似度</td><td class="col-note">5篇同事件=10, 孤立=0</td></tr>
+</table>
+
+<h3>score_article() 额外输出</h3>
+<table>
+<tr><th style="width:20%">字段</th><th style="width:10%">类型</th><th style="width:70%">说明</th></tr>
+<tr><td class="col-field">tier</td><td class="col-type">TEXT</td><td class="col-note">'A'(>90) | 'B'(60-90) | 'C'(<60)</td></tr>
+<tr><td class="col-field">categories</td><td class="col-type">list[str]</td><td class="col-note">关键词命中的分类: e.g. [Military, Diplomatic, Economic]</td></tr>
+<tr><td class="col-field">entities</td><td class="col-type">dict</td><td class="col-note">{companies:[], persons:[], countries:[]} — entity_weights.json 查表提取</td></tr>
+<tr><td class="col-field">market_assets</td><td class="col-type">list[str]</td><td class="col-note">asset_graph.json 匹配到的资产/股票代码</td></tr>
+<tr><td class="col-field">velocity_count</td><td class="col-type">int</td><td class="col-note">同期(Jaccard≥0.5) 内同事件报道数</td></tr>
+</table>
+
+<h3>📤 写入 news_intel.db 三表</h3>
+
+<dl class="io-block">
+<dt>→ rss_raw (18字段)</dt>
+<dd>guid(link), source_name, source_domain, article_url, title, description, published_at, category_raw, …</dd>
+<dt>→ news_intelligence (14字段)</dt>
+<dd>raw_id, score_total, score_source, score_impact, score_entity, score_market, score_velocity, tier, category, tags(JSON), entities(JSON), velocity_count, scored_at</dd>
+<dt>→ news_content (本阶段仅占位，Phase 2填充)</dt>
+<dd>intel_id, article_url, content_md, … (见 Phase 2 输出)</dd>
+</dl>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<h2>
+  <span class="phase-badge badge-running">✅</span>
+  Phase 2: batch.py + core/fetchers.py (全文抓取)
+</h2>
+<p style="color:#64748b;font-size:.75rem;margin-bottom:.5rem">独立运行 · 零Agent · python batch.py --urls urls.txt --out results.jsonl</p>
+
+<h3>📥 输入</h3>
+<table>
+<tr><th style="width:20%">输入</th><th style="width:10%">来源</th><th style="width:70%">格式</th></tr>
+<tr><td class="col-field">URL 列表</td><td class="col-source">文件 / stdin / pipeline.py</td><td class="col-note">每行一个URL，空行跳过，#开头为注释</td></tr>
+<tr><td class="col-field">--llm-extract (可选)</td><td class="col-source">CLI 标志</td><td class="col-note">启用则调 DeepSeek 做结构化抽取，否则纯脚本</td></tr>
+<tr><td class="col-field">DEEPSEEK_API_KEY</td><td class="col-source">环境变量</td><td class="col-note">仅 --llm-extract 时需要</td></tr>
+</table>
+
+<h3>batch.py extract_url() 输出 (JSONL 每行一条)</h3>
+<table>
+<tr><th style="width:22%">字段</th><th style="width:10%">类型</th><th style="width:68%">说明</th></tr>
+<tr><td class="col-field">ok</td><td class="col-type">bool</td><td class="col-note">是否成功获取到有效正文</td></tr>
+<tr><td class="col-field">url</td><td class="col-type">str</td><td class="col-note">原始输入URL</td></tr>
+<tr><td class="col-field">domain</td><td class="col-type">str</td><td class="col-note">从 get_profile(url) 提取</td></tr>
+<tr><td class="col-field">content</td><td class="col-type">str</td><td class="col-note">Markdown 正文 (trafilatura/readability-lxml 提取)</td></tr>
+<tr><td class="col-field">strategy_used</td><td class="col-type">str</td><td class="col-note">成功策略: direct|archive|google_cache|scrapling|browser</td></tr>
+<tr><td class="col-field">total_cost</td><td class="col-type">int</td><td class="col-note">成本总和: direct=1, archive=1, scrapling=2, browser=3</td></tr>
+<tr><td class="col-field">cost_trace</td><td class="col-type">list[dict]</td><td class="col-note">每个尝试策略的 {strategy, cost, ok, error?, content_len?}</td></tr>
+<tr><td colspan="3" style="color:#475569;font-size:.7rem">── 以下为成功后附加字段 ──</td></tr>
+<tr><td class="col-field">structured</td><td class="col-type">dict|None</td><td class="col-note">纯脚本: {headline, subheadline, author, published_at, summary, key_points}<br>LLM: +tags, entities, event_hint, actions, organizations</td></tr>
+<tr><td class="col-field">temporal_check</td><td class="col-type">dict</td><td class="col-note">validate_temporal() → {freshness_mode, risk, warnings[], score}</td></tr>
+<tr><td colspan="3" style="color:#475569;font-size:.7rem">── 失败时替代字段 ──</td></tr>
+<tr><td class="col-field">error</td><td class="col-type">str</td><td class="col-note">失败原因: "所有策略均失败" / "内容为空/过短" / 异常信息</td></tr>
+<tr><td class="col-field">strategies_tried</td><td class="col-type">list[str]</td><td class="col-note">实际尝试过的策略名称列表</td></tr>
+</table>
+
+<h3>→ pipeline.py 写入 news_content 表</h3>
+<table>
+<tr><th style="width:22%">DB字段</th><th style="width:10%">类型</th><th style="width:68%">映射自 batch.py 输出</th></tr>
+<tr><td class="col-field">intel_id</td><td class="col-type">INT</td><td class="col-note">news_intelligence.id（关联评分）</td></tr>
+<tr><td class="col-field">article_url</td><td class="col-type">TEXT</td><td class="col-note">batch结果 .url</td></tr>
+<tr><td class="col-field">content_md</td><td class="col-type">TEXT</td><td class="col-note">batch结果 .content (Markdown正文)</td></tr>
+<tr><td class="col-field">content_len</td><td class="col-type">INT</td><td class="col-note">len(content_md)</td></tr>
+<tr><td class="col-field">fetch_strategy</td><td class="col-type">TEXT</td><td class="col-note">batch结果 .strategy_used</td></tr>
+<tr><td class="col-field">fetch_cost</td><td class="col-type">INT</td><td class="col-note">batch结果 .total_cost</td></tr>
+<tr><td class="col-field">fetch_at</td><td class="col-type">TEXT</td><td class="col-note">抓取时间戳</td></tr>
+<tr><td class="col-field">summary_cn</td><td class="col-type">TEXT</td><td class="col-note">structured.summary_cn (来自 enhancer)</td></tr>
+<tr><td class="col-field">summary_en</td><td class="col-type">TEXT</td><td class="col-note">structured.summary_en (来自 enhancer)</td></tr>
+<tr><td class="col-field">key_points</td><td class="col-type">JSON</td><td class="col-note">structured.key_points (JSON数组)</td></tr>
+<tr><td class="col-field">source_headline</td><td class="col-type">TEXT</td><td class="col-note">structured.headline</td></tr>
+<tr><td class="col-field">published_at</td><td class="col-type">TEXT</td><td class="col-note">structured.published_at</td></tr>
+<tr><td class="col-field">author_name</td><td class="col-type">TEXT</td><td class="col-note">structured.author</td></tr>
+<tr><td class="col-field">extraction_method</td><td class="col-type">TEXT</td><td class="col-note">rule_based | qwen3 | deepseek-flash | deepseek-pro</td></tr>
+<tr><td class="col-field">llm_model</td><td class="col-type">TEXT</td><td class="col-note">enhancer.model: deepseek-v4-flash | qwen3-1.7b</td></tr>
+<tr><td class="col-field">llm_cost</td><td class="col-type">REAL</td><td class="col-note">enhancer.llm_cost (DeepSeek 按耗时估算)</td></tr>
+<tr><td class="col-field">temporal_check</td><td class="col-type">JSON</td><td class="col-note">batch结果 .temporal_check</td></tr>
+</table>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<h2>
+  <span class="phase-badge badge-agent">⚠️</span>
+  Phase 2 (Agent模式): cascade.py + HermesToolbox
+</h2>
+<p style="color:#64748b;font-size:.75rem;margin-bottom:.5rem">仅人工交互触发 · 需要Hermes Agent会话注入 web_extract / browser_navigate 等工具函数</p>
+
+<h3>📥 输入</h3>
+<table>
+<tr><th style="width:20%">输入</th><th style="width:80%">说明</th></tr>
+<tr><td class="col-field">HermesToolbox 注入</td><td class="col-note">8个Optional[Callable]: web_search, web_extract, web_extract_arch, scrapling_fetch, browser_navigate, computer_use, llm_extract, search_snippet</td></tr>
+<tr><td class="col-field">URL / 搜索词</td><td class="col-note">Agent 交互中用户提供</td></tr>
+</table>
+
+<h3>📤 输出 (与 batch.py 结构等价，但底层实现不同)</h3>
+<table>
+<tr><th style="width:20%">字段</th><th style="width:80%">与 batch.py 差异</th></tr>
+<tr><td class="col-field">content</td><td class="col-note">来自 web_extract() Agent工具 → trafilatura 提取</td></tr>
+<tr><td class="col-field">strategy_used</td><td class="col-note">可能包含 browser_navigate / computer_use (batch.py 中禁用)</td></tr>
+<tr><td class="col-field">total_cost</td><td class="col-note">computer_use=5, browser=3 (更贵)</td></tr>
+</table>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<h2>
+  <span class="phase-badge badge-running">✅</span>
+  Phase 3: aggregator.py v4.3 (事件聚合 · 零LLM)
+</h2>
+<p style="color:#64748b;font-size:.75rem;margin-bottom:.5rem">读 news_intel.db → build_fingerprint → cluster → merge → 输出21字段 Event Object</p>
+
+<h3>📥 输入 (test_aggregator.py 跨三表 JOIN)</h3>
+<table>
+<tr><th style="width:22%">输入字段</th><th style="width:12%">来自表</th><th style="width:66%">聚合中使用</th></tr>
+<tr><td class="col-field">id</td><td class="col-source">news_content</td><td class="col-note">article_ids 追溯</td></tr>
+<tr><td class="col-field">title</td><td class="col-source">rss_raw</td><td class="col-note">→ _detect_action() 动作检测 → 计数排序</td></tr>
+<tr><td class="col-field">summary_cn</td><td class="col-source">news_content</td><td class="col-note">→ _classify_topics() 话题分类 → 摘要拼接</td></tr>
+<tr><td class="col-field">description</td><td class="col-source">rss_raw</td><td class="col-note">→ _get_text() 全文检索 → topic + action detail</td></tr>
+<tr><td class="col-field">score_total</td><td class="col-source">news_intelligence</td><td class="col-note">→ 用于排序 (高分文章优先作为 centroid)</td></tr>
+<tr><td class="col-field">tier</td><td class="col-source">news_intelligence</td><td class="col-note">→ 参考 (仅A/B级参与)</td></tr>
+<tr><td class="col-field">entities</td><td class="col-source">news_intelligence</td><td class="col-note">→ build_fingerprint 的 Subject/Object 来源 (JSON: companies/persons/countries)</td></tr>
+<tr><td class="col-field">published_at</td><td class="col-source">rss_raw</td><td class="col-note">→ 时间窗过滤 + stage 计算</td></tr>
+<tr><td class="col-field">source_name</td><td class="col-source">rss_raw</td><td class="col-note">→ source.primary_source + source.sources[]</td></tr>
+</table>
+
+<h3>内部指纹结构 build_fingerprint()</h3>
+<table>
+<tr><th style="width:20%">字段</th><th style="width:10%">类型</th><th style="width:70%">生成逻辑</th></tr>
+<tr><td class="col-field">subject</td><td class="col-type">str</td><td class="col-note">companies/persons 中 entity_weight 最大的 (hub×0.3, ≥MIN_SUBJECT_WEIGHT=0.15)</td></tr>
+<tr><td class="col-field">subject_weight</td><td class="col-type">float</td><td class="col-note">global_IDF × topic_IDF × entity_type_weight 的最终值</td></tr>
+<tr><td class="col-field">action</td><td class="col-type">str</td><td class="col-note">14类动作枚举: ATTACKS|DIES|SUES|NEGOTIATES|… → 计数排序取最多</td></tr>
+<tr><td class="col-field">object</td><td class="col-type">str</td><td class="col-note">countries/companies 中加权最高 (不含 subject, hub×0.3)</td></tr>
+<tr><td class="col-field">object_weight</td><td class="col-type">float</td><td class="col-note">同 subject_weight 逻辑</td></tr>
+<tr><td class="col-field">event_type</td><td class="col-type">str</td><td class="col-note">ACTION_MAP[action][0]: Military|Legal|Political|Diplomatic|…</td></tr>
+<tr><td class="col-field">primary_topic</td><td class="col-type">str</td><td class="col-note">TOPIC_SIGNALS 命中数最多的分类</td></tr>
+<tr><td class="col-field">secondary_topic</td><td class="col-type">str</td><td class="col-note">TOPIC_SIGNALS 命中数次多的分类</td></tr>
+<tr><td class="col-field">country</td><td class="col-type">str|None</td><td class="col-note">entities.countries[0] canonicalized → location 硬约束</td></tr>
+<tr><td class="col-field">participants</td><td class="col-type">frozenset</td><td class="col-note">_extract_participants(): entities.countries + COUNTRIES正则</td></tr>
+<tr><td class="col-field">anchor</td><td class="col-type">str</td><td class="col-note">{subject}|{action}|{object}|{primary} → 快速完全匹配捷径</td></tr>
+</table>
+
+<h3>fingerprint_score() 评分维度</h3>
+<table>
+<tr><th style="width:20%">维度</th><th style="width:10%">分数</th><th style="width:70%">条件</th></tr>
+<tr><td class="col-field">location 硬约束</td><td class="col-type">return 0</td><td class="col-note">不同 country → 直接 0 分 (硬拒绝)</td></tr>
+<tr><td class="col-field">anchor 快速通道</td><td class="col-type">return 100</td><td class="col-note">完全相同的 SAO+Topic → 立即合并</td></tr>
+<tr><td class="col-field">Action</td><td class="col-type">25</td><td class="col-note">同动作类型 (非OTHER)</td></tr>
+<tr><td class="col-field">Subject</td><td class="col-type">10~25</td><td class="col-note">同名 + 稀有度加权 (subject_weight越高分越高)</td></tr>
+<tr><td class="col-field">Object</td><td class="col-type">10~30</td><td class="col-note">同名 + 稀有度加权</td></tr>
+<tr><td class="col-field">Topic</td><td class="col-type">10</td><td class="col-note">primary 相同=10, secondary相同=5</td></tr>
+<tr><td class="col-field">Event Type</td><td class="col-type">10</td><td class="col-note">同 event_type</td></tr>
+<tr><td class="col-field">Participants bonus</td><td class="col-type">5~10</td><td class="col-note">≥2个国家重叠=10, 1个=5</td></tr>
+<tr class="summary-row"><td>阈值</td><td>≥50→事件 | ≥75→强合并 |</td><td></td></tr>
+</table>
+
+<h3>📤 输出: 21字段 Event Object</h3>
+<p style="color:#64748b;font-size:.7rem;margin-bottom:.25rem">(参考 SCHEMA.md 和架构图 — 完整 JSON Schema 已在上轮给出)</p>
+
+<table>
+<tr><th style="width:20%">字段</th><th style="width:10%">类型</th><th style="width:70%">生成逻辑</th></tr>
+<tr><td class="col-field">event_id</td><td class="col-type">str</td><td class="col-note">EVT-{YYYYMMDD}-{idx+1:03d}</td></tr>
+<tr><td class="col-field">subject{name,type}</td><td class="col-type">obj</td><td class="col-note">fingerprint centroid → _known_entity_types 查类型</td></tr>
+<tr><td class="col-field">action{type,detail}</td><td class="col-type">obj</td><td class="col-note">fingerprint centroid + _extract_action_detail() 正则后50字符</td></tr>
+<tr><td class="col-field">object{name,type}</td><td class="col-type">obj</td><td class="col-note">fingerprint centroid → _known_entity_types</td></tr>
+<tr><td class="col-field">event_type</td><td class="col-type">str</td><td class="col-note">fingerprint centroid</td></tr>
+<tr><td class="col-field">event_time</td><td class="col-type">str|null</td><td class="col-note">ev.start_time.isoformat()</td></tr>
+<tr><td class="col-field">location{country,region}</td><td class="col-type">obj</td><td class="col-note">fingerprint.country + region(null 预留)</td></tr>
+<tr><td class="col-field">source{primary,authority,count,sources[]}</td><td class="col-type">obj</td><td class="col-note">first_article.source_name + max权威度 + 去重计数</td></tr>
+<tr><td class="col-field">doc_refs[{url,title}]</td><td class="col-type">list</td><td class="col-note">前5篇成员 article_url + title</td></tr>
+<tr><td class="col-field">actors[{entity,type,role}]</td><td class="col-type">list</td><td class="col-note">_infer_actor_roles(): #1=Initiator, obj_match=Target, 其余=Participant</td></tr>
+<tr><td class="col-field">title</td><td class="col-type">str</td><td class="col-note">ev.best_title (合并cluster中最描述性的)</td></tr>
+<tr><td class="col-field">summary</td><td class="col-type">str</td><td class="col-note">前3篇 summary_cn/description 拼接 (HTML过滤, <30%标签)</td></tr>
+<tr><td class="col-field">keywords</td><td class="col-type">list</td><td class="col-note">ev.topics 聚合</td></tr>
+<tr><td class="col-field">confidence</td><td class="col-type">float</td><td class="col-note">0.4×auth/20 + 0.3×coherence/100 + 0.2×diversity + 0.1×volume</td></tr>
+<tr><td class="col-field">coherence</td><td class="col-type">float</td><td class="col-note">成员间平均 pairwise 相似度</td></tr>
+<tr><td class="col-field">extraction_method</td><td class="col-type">str</td><td class="col-note">固定: "v4.3-saeo"</td></tr>
+<tr><td class="col-field">related_entities[{name,type}]</td><td class="col-type">list</td><td class="col-note">前20个 entity_refs</td></tr>
+<tr><td class="col-field">article_count</td><td class="col-type">int</td><td class="col-note">len(ev.article_ids)</td></tr>
+<tr><td class="col-field">article_ids</td><td class="col-type">list[int]</td><td class="col-note">ev.article_ids (DB主键)</td></tr>
+<tr><td class="col-field">stage</td><td class="col-type">str</td><td class="col-note">距 first_seen: <2h=breaking | 2-24h=developing | 24h-7d=active | 7-30d=stable | >30d=closed</td></tr>
+<tr><td class="col-field">first_seen</td><td class="col-type">str|null</td><td class="col-note">ev.start_time.isoformat()</td></tr>
+<tr><td class="col-field">last_updated</td><td class="col-type">str|null</td><td class="col-note">ev.last_time.isoformat()</td></tr>
+</table>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<h2>
+  <span class="phase-badge badge-llm">⚠️</span>
+  Phase 4: enhancers.py (三级增强)
+</h2>
+
+<h3>Tier C (<60分 · ✅ 零依赖)</h3>
+<table>
+<tr><th style="width:22%">输入</th><th style="width:78%">输出 (enhance_python)</th></tr>
+<tr>
+  <td class="col-field">title, description, entities, categories</td>
+  <td class="col-note">{tags[], entities{companies,persons,countries}, summary_cn, summary_en, category, method:"python", llm_model:null, llm_cost:0}</td>
+</tr>
+</table>
+
+<h3>Tier B (60-90分 · ⚠️ 需 QWEN_API_KEY 或本地 LM Studio)</h3>
+<table>
+<tr><th style="width:22%">输入</th><th style="width:78%">输出 (enhance_qwen → QMERGE_PROMPT)</th></tr>
+<tr>
+  <td class="col-field">title + description (前600字符)</td>
+  <td class="col-note">{tags[], entities{companies,persons,countries,organizations}, actions[], event_hint, summary_cn(≤20字), category, method:"qwen3", llm_model:"qwen3-1.7b", llm_cost:0}</td>
+</tr>
+</table>
+
+<h3>Tier A (>90分 · ⚠️ 需 DEEPSEEK_API_KEY)</h3>
+<table>
+<tr><th style="width:22%">输入</th><th style="width:78%">输出 (enhance_deepseek → ANALYSIS_PROMPT)</th></tr>
+<tr>
+  <td class="col-field">title + description + content_md (前3000字符)</td>
+  <td class="col-note">{event, impact, companies[], assets[], market_signal("bullish|bearish|neutral|uncertain"), risk_level("low|medium|high|critical"), future_watch, confidence(0-1), tags[], entities{}, summary_cn, summary_en, method:"deepseek-flash", llm_model:"deepseek-v4-flash", llm_cost}</td>
+</tr>
+</table>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<h2>
+  <span class="phase-badge badge-running">✅</span>
+  Phase 5.1: generator.py (事件洞察 · ⚠️ 需LLM)
+</h2>
+<table>
+<tr><th style="width:22%">输入</th><th style="width:78%">输出 (generate_for_event → INSIGHT_PROMPT)</th></tr>
+<tr>
+  <td class="col-field">event dict (21字段) + --insight 标志</td>
+  <td class="col-note">{summary(50字), timeline, key_drivers, impact(100字), market_effect(bullish|bearish|neutral), geopolitical_effect(escalation|de-escalation|neutral), uncertainty(low|medium|high), confidence(0-1)}</td>
+</tr>
+</table>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<h2>
+  <span class="phase-badge badge-running">✅</span>
+  Phase 5.2: pusher.py (批量推送)
+</h2>
+
+<table>
+<tr><th style="width:22%">输入字段</th><th style="width:10%">来自</th><th style="width:68%">映射为 HTTP JSON 字段</th></tr>
+<tr><td class="col-field">url</td><td class="col-source">article</td><td class="col-note">→ "url"</td></tr>
+<tr><td class="col-field">structured.headline / title</td><td class="col-source">article</td><td class="col-note">→ "title"</td></tr>
+<tr><td class="col-field">content</td><td class="col-source">article</td><td class="col-note">→ "content_md"</td></tr>
+<tr><td class="col-field">structured.published_at</td><td class="col-source">article</td><td class="col-note">→ "published_at"</td></tr>
+<tr><td class="col-field">source_name / domain</td><td class="col-source">article</td><td class="col-note">→ "source_name", "source_domain"</td></tr>
+<tr><td class="col-field">scores.categories[0] / category</td><td class="col-source">article</td><td class="col-note">→ "category"</td></tr>
+<tr><td class="col-field">structured.tags / scores.categories</td><td class="col-source">article</td><td class="col-note">→ "tags" (JSON array)</td></tr>
+<tr><td class="col-field">scores.entities / structured.entities</td><td class="col-source">article</td><td class="col-note">→ "entities" (JSON object)</td></tr>
+<tr><td class="col-field">scores.total</td><td class="col-source">article</td><td class="col-note">→ "score_total"</td></tr>
+<tr><td class="col-field">scores (完整dict)</td><td class="col-source">article</td><td class="col-note">→ "score_breakdown"</td></tr>
+<tr><td class="col-field">scores.tier</td><td class="col-source">article</td><td class="col-note">→ "tier"</td></tr>
+<tr><td class="col-field">analysis</td><td class="col-source">article</td><td class="col-note">→ "analysis"</td></tr>
+<tr><td class="col-field">structured.summary_cn</td><td class="col-source">article</td><td class="col-note">→ "summary_cn"</td></tr>
+<tr><td class="col-field">structured.summary</td><td class="col-source">article</td><td class="col-note">→ "summary"</td></tr>
+<tr><td class="col-field">structured.key_points</td><td class="col-source">article</td><td class="col-note">→ "key_points"</td></tr>
+<tr><td class="col-field">structured.method / _extraction_method</td><td class="col-source">article</td><td class="col-note">→ "extraction_method"</td></tr>
+<tr><td class="col-field">strategy_used</td><td class="col-source">article</td><td class="col-note">→ "fetch_strategy"</td></tr>
+<tr><td class="col-field">total_cost</td><td class="col-source">article</td><td class="col-note">→ "fetch_cost"</td></tr>
+</table>
+<p style="color:#64748b;font-size:.7rem">📤 HTTP POST → {NEWS_API_BASE}/internal/news/batch · Headers: X-Internal-Token</p>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<h2>
+  <span class="phase-badge badge-todo">❌</span>
+  Phase 5.3: Phase 2 情报分析 (规划中)
+</h2>
+<table>
+<tr><th style="width:40%">规划能力</th><th style="width:60%">说明</th></tr>
+<tr><td class="col-field">事件持久化</td><td class="col-note">当前聚合结果仅在内存中，需落盘到文件或DB</td></tr>
+<tr><td class="col-field">delta detection radar</td><td class="col-note">对比新旧 snapshot → 发现新增/更新/消退事件</td></tr>
+<tr><td class="col-field">事件关系图谱</td><td class="col-note">related_entities 连接 → 因果链分析</td></tr>
+<tr><td class="col-field">趋势仪表盘</td><td class="col-note">entity/action/topic 时序统计</td></tr>
+</table>
+
+<p class="footer">News Intelligence Platform v4.3 · 各阶段输入输出逐字段追踪 · 所有字段名均可从代码中 grep 找到赋值语句</p>
+</div>
+</body>
+</html>

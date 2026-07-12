@@ -180,6 +180,18 @@ def main():
             print(f"  actors: {', '.join(a['entity']+'('+a['role']+')' for a in ev['actors'][:5])}")
         print(f"  entity: {', '.join(e['name'] for e in ev.get('related_entities',[])[:8])}")
         print(f"  summary: {(ev.get('summary','') or ev['title'])[:100]}")
+        if ev.get('evidence'):
+            eq = ev['evidence'][0]
+            print(f"  evidence: [{eq.get('source','')}] {eq.get('quote','')[:80]}")
+        if ev.get('source_chain'):
+            break_src = next((sc for sc in ev['source_chain'] if sc.get('role')=='break'), None)
+            if break_src:
+                print(f"  first break: {break_src['source_name']} @ {break_src.get('time','?')}")
+            follows = [sc for sc in ev['source_chain'] if sc.get('role')=='follow']
+            if follows:
+                print(f"  follow sources: {', '.join(sc['source_name'][:15] for sc in follows[:4])}")
+        if ev.get('timeline'):
+            print(f"  timeline: {len(ev['timeline'])} key moments")
 
         if args.insight:
             t1 = time.time()

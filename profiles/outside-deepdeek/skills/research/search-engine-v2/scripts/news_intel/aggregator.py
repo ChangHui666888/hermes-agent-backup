@@ -10,7 +10,7 @@ P2 fixes:
   - fingerprint_score 按稀有度加权
   - impact_level 一致性校验
 """
-import re, json, logging, math
+import re, json, logging, math, os
 from datetime import datetime, timedelta
 from collections import defaultdict, Counter
 from itertools import combinations
@@ -558,49 +558,234 @@ def aggregate_events(articles: list[dict], window_hours: int = 24) -> list[dict]
         ts = ev["start_time"] or datetime.utcnow()
         event_id = f"EVT-{ts.strftime('%Y%m%d')}-{idx+1:03d}"
 
+        # ── Fingerprint centroid ──
+        fp_centroid = ev["fingerprint"]
+
+        # ── Source authority ──
+        source_auth_map = _load_source_scores()
+        primary_src = members[0].get("source_name", "") if members else ""
+        source_names = list(set(a.get("source_name", "") for a in members if a.get("source_name")))
+        max_auth = max((source_auth_map.get(sn, 5) for sn in source_names), default=5)
+
         # ── Summary ──
         raw_summaries = []
+        evidence_quotes = []
         for a in members[:3]:
             s = a.get("summary_cn") or a.get("description", "") or ""
             if not s.startswith("<table") and not s.startswith("<tr"):
                 if (s.count("<") + s.count(">")) / max(len(s), 1) < 0.3:
                     raw_summaries.append(s[:100])
+            desc = a.get("description", "") or ""
+            if len(desc) > 30 and not desc.startswith("<"):
+                evidence_quotes.append({
+                    "quote": desc[:150],
+                    "source": a.get("source_name", ""),
+                    "url": a.get("url", ""),
+                })
         summary = " | ".join(s for s in raw_summaries if s)
 
-        # ── First Source ──
+        # ── Source Chain (new v4.4) ──
         timed_members = [(a, _parse_date(a.get("published_at"))) for a in members]
         timed_members = [(a, t) for a, t in timed_members if t is not None]
-        first_article = min(timed_members, key=lambda x: x[1])[0] if timed_members else (members[0] if members else None)
-        first_source = first_article.get("source_name", "") if first_article else ""
+        sorted_by_time = sorted(timed_members, key=lambda x: x[1])
+        first_article = sorted_by_time[0][0] if sorted_by_time else (members[0] if members else None)
+        first_source_name = first_article.get("source_name", "") if first_article else ""
+        first_source_id = _source_name_to_id(first_source_name)
+
+        source_chain = []
+        for a, t in sorted_by_time[:10]:
+            sn = a.get("source_name", "")
+            source_chain.append({
+                "source_id": _source_name_to_id(sn),
+                "source_name": sn,
+                "time": t.isoformat() if t else None,
+                "role": "break" if sn == first_source_name else "follow",
+                "url": a.get("url", ""),
+            })
+
+        # ── Timeline (new v4.4) ──
+        timeline = []
+        seen_times = set()
+        for a, t in sorted_by_time[:8]:
+            ts_key = t.strftime("%Y-%m-%dT%H:00") if t else None
+            if ts_key and ts_key not in seen_times:
+                seen_times.add(ts_key)
+                timeline.append({
+                    "time": t.isoformat() if t else None,
+                    "update": (a.get("title", "") or "")[:80],
+                    "source": a.get("source_name", ""),
+                })
+
+        # ── Entity IDs (new v4.4) ──
+        subject_entity_id = _entity_name_to_id(fp_centroid["subject"]) if fp_centroid["subject"] else None
+        object_entity_id = _entity_name_to_id(fp_centroid["object"]) if fp_centroid["object"] else None
+        related_with_ids = []
+        for e in entity_refs[:20]:
+            related_with_ids.append({
+                "entity_id": _entity_name_to_id(e["name"]),
+                "name": e["name"],
+                "type": e["type"],
+            })
 
         # ── Action detail ──
-        fp_centroid = ev["fingerprint"]
         action_detail = _extract_action_detail(
             " ".join(a.get("title", "") + " " + (a.get("description") or "")[:200] for a in members[:2]),
             fp_centroid["action"]
         )
 
-        result.append({
+        event_obj = {
             "event_id": event_id,
-            "subject": {"name": fp_centroid["subject"], "type": _known_entity_types.get(fp_centroid["subject"], "Other")},
+            "subject": {"entity_id": subject_entity_id, "name": fp_centroid["subject"],
+                        "type": _known_entity_types.get(fp_centroid["subject"], "Other")},
             "action": {"type": fp_centroid["action"], "detail": action_detail},
-            "object": {"name": fp_centroid["object"], "type": _known_entity_types.get(fp_centroid["object"], "Other")},
+            "object": {"entity_id": object_entity_id, "name": fp_centroid["object"],
+                       "type": _known_entity_types.get(fp_centroid["object"], "Other")},
             "event_type": fp_centroid["event_type"],
             "event_time": ev["start_time"].isoformat() if ev["start_time"] else None,
             "location": {"country": fp_centroid.get("country"), "region": None},
-            "source": {"primary_source": first_source or primary_src, "authority": max_auth,
-                       "source_count": len(source_names), "sources": source_names[:10]},
+            "source": {
+                "primary_source": first_source_name or primary_src,
+                "primary_source_id": first_source_id,
+                "authority": max_auth,
+                "source_count": len(source_names),
+                "sources": source_names[:10],
+            },
             "doc_refs": [{"url": a.get("url", ""), "title": a.get("title", "")} for a in members[:5]],
             "actors": _infer_actor_roles(entity_refs, fp_centroid["action"], fp_centroid.get("object", "")),
-            "title": ev["best_title"], "summary": summary or ev["best_title"],
+            "title": ev["best_title"],
+            "summary": summary or ev["best_title"],
             "keywords": list(ev.get("topics", set())),
-            "confidence": confidence, "coherence": round(coherence, 1),
-            "extraction_method": "v4.3-saeo",
-            "related_entities": [{"name": e["name"], "type": e["type"]} for e in entity_refs[:20]],
-            "article_count": len(ev["article_ids"]), "article_ids": ev["article_ids"], "stage": stage,
+            "confidence": confidence,
+            "coherence": round(coherence, 1),
+            "extraction_method": "v4.4-saeo",
+            "related_entities": related_with_ids,
+            "article_count": len(ev["article_ids"]),
+            "article_ids": ev["article_ids"],
+            "stage": stage,
             "first_seen": ev["start_time"].isoformat() if ev["start_time"] else None,
             "last_updated": ev["last_time"].isoformat() if ev["last_time"] else None,
-        })
+            # ── New v4.4 fields ──
+            "evidence": evidence_quotes[:5],
+            "source_chain": source_chain,
+            "timeline": timeline,
+        }
+
+        result.append(event_obj)
+
+        # Persist to event_registry (new v4.4)
+        _persist_event(event_obj)
+
+        # Register sources in source_registry
+        _register_event_sources(source_names, source_auth_map)
+
+        # Register entities in entity_registry
+        _register_event_entities(related_with_ids)
 
     result.sort(key=lambda e: e["article_count"], reverse=True)
+    _close_persist_db()
     return result
+
+# ── v4.4 Helpers ─────────────────────────────────────────────────
+
+_db = None  # module-level lazy connection for aggregate_events
+_source_scores_cache = None
+
+
+def _get_persist_db():
+    """Lazy init: open DB once per aggregation run."""
+    global _db
+    if _db is None:
+        from news_intel.db import init_db, get_db
+        init_db()
+        _db = get_db()
+    return _db
+
+
+def _close_persist_db():
+    global _db
+    if _db is not None:
+        _db.close()
+        _db = None
+
+
+def _persist_event(event_obj: dict):
+    try:
+        db = _get_persist_db()
+        from news_intel.db import upsert_event
+        upsert_event(db, event_obj)
+    except Exception:
+        pass
+
+
+def _register_event_sources(source_names: list, source_auth_map: dict):
+    try:
+        db = _get_persist_db()
+        from news_intel.db import upsert_source
+        for sn in source_names[:10]:
+            sid = _source_name_to_id(sn)
+            authority = source_auth_map.get(sn, 5)
+            source_type = _infer_source_type_from_name(sn)
+            upsert_source(db, sid, sn, source_type=source_type, authority=authority)
+    except Exception:
+        pass
+
+
+def _register_event_entities(related_with_ids: list):
+    try:
+        db = _get_persist_db()
+        from news_intel.db import upsert_entity
+        for e in related_with_ids[:10]:
+            upsert_entity(db, e["entity_id"], e["name"], entity_type=e["type"],
+                          importance=_known_entity_importance.get(e["name"], 50))
+    except Exception:
+        pass
+
+
+def _load_source_scores() -> dict:
+    global _source_scores_cache
+    if _source_scores_cache is None:
+        try:
+            config_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                                      "news_intel", "config")
+            with open(os.path.join(config_dir, "source_scores.json"), encoding="utf-8") as f:
+                _source_scores_cache = json.load(f).get("scores", {})
+        except Exception:
+            _source_scores_cache = {}
+    return _source_scores_cache
+
+
+def _source_name_to_id(name: str) -> str:
+    clean = name.upper().replace(" ", "_").replace("-", "_").replace("'", "")
+    clean = "".join(c for c in clean if c.isalnum() or c == "_")
+    return f"SRC_{clean}" if clean else "SRC_UNKNOWN"
+
+
+def _entity_name_to_id(name: str) -> str:
+    clean = name.upper().replace(" ", "_").replace("-", "_").replace("'", "")
+    clean = "".join(c for c in clean if c.isalnum() or c == "_")
+    entity_type = _known_entity_types.get(name, "OTHER")
+    prefix = {"Company": "COMP", "Person": "PERS", "Country": "CTRY",
+              "Organization": "ORG", "Location": "LOC"}.get(entity_type, "ENT")
+    return f"{prefix}_{clean}" if clean else f"ENT_UNKNOWN"
+
+
+def _infer_source_type_from_name(name: str) -> str:
+    gov_patterns = ["White House", "Fed ", "Federal Reserve", "SEC", "UN ", "UK Gov",
+                    "ECB", "IMF", "World Bank", "OECD", "Bank of England", "BoE",
+                    "NASA", "人民网", "新华网", "央视", "CCTV", "中国新闻网", "中国日报", "环球网"]
+    for p in gov_patterns:
+        if p in name:
+            return "GOVERNMENT"
+    if name in ("OpenAI", "Google AI", "GitHub", "ArXiv", "MIT Technology Review"):
+        return "RESEARCH"
+    if name in ("Reddit", "Hacker News"):
+        return "SOCIAL"
+    return "MEDIA"
+
+
+_known_entity_importance = {
+    "United States": 100, "China": 95, "Russia": 90, "Iran": 85, "Ukraine": 80,
+    "United Kingdom": 80, "France": 75, "Germany": 75, "Israel": 80,
+    "Donald Trump": 95, "OpenAI": 90, "Apple": 85, "NVIDIA": 85, "Tesla": 80,
+    "Federal Reserve": 90, "European Union": 85, "NATO": 85, "UN": 80,
+}

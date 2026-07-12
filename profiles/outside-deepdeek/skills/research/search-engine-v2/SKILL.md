@@ -28,9 +28,19 @@ category: research
 
 `news_intel/` 子系统实现从"抓全文"到"判断价值→按价值分流处理"的升级：
 
-```\nRSS → 五维评分(0-100) → Tier C(<60): Python规则 → Tier B(60-89): Qwen3本地 → Tier A(≥90): DeepSeek Flash\n```\n\n**五维评分引擎** (`news_intel/scorer.py`):\n- Source Authority (20, 上限20) — 来源权威度，70+源预配置\n- Event Impact (30, 上限30, 同类取最高不累加) — 关键词匹配，5领域\n- Entity Importance (20, 上限20) — 实体权重库（公司/人物/国家）\n- Market Relevance (20, 上限20) — 资产影响图谱（20+资产链）\n- Velocity (10, 上限10) — Jaccard 0.5 标题指纹聚类 + 30min时间窗口\n- **Total 硬上限 100**
+```
+RSS → 五维评分(0-100) → Tier C(<60): Python规则 → Tier B(60-89): Qwen3本地 → Tier A(≥90): DeepSeek Flash
+```
 
-**三层增强器** (`news_intel/enhancers.py`):
+### 📐 架构 & Schema 文档
+
+| 文件 | 内容 |
+|------|------|
+| `news_intel/architecture.html` | 5层宏观架构图 (Layer 0→5, SVG) |
+| `news_intel/detail-flow.html` | **详细业务流程图** — 双模式(A/B) + 每步依赖标注 + 启用状态 |
+| `news_intel/io-fields.html` | **各阶段输入/输出字段逐表追踪** — 所有字段名可从代码 grep 确认 |
+| `news_intel/SCHEMA.md` | 21字段完整 JSON Schema + 置信度公式 + Action 枚举 |
+| `references/io-field-trace.md` | 全阶段字段逐表追踪 (6个Phase, 每个字段的代码位置) |
 - Tier C: `enhance_python()` — 零成本规则（标签/实体/摘要）
 - Tier B: `enhance_qwen()` — Qwen3-1.7B 本地（LM Studio, 60s超时, max_tokens=1024, 单次合并 prompt）
 - Tier A: `enhance_deepseek()` — DeepSeek V4 Flash 深度分析（事件/影响/市场信号/风险）
@@ -409,19 +419,19 @@ print(result['confidence'])
 - `scripts/core/extractor.py` — 🆕 纯脚本结构化抽取（标题/日期/作者/摘要/要点，0.78ms/篇）
 - `scripts/batch.py` — 独立 CLI 入口（cron 友好）
 
-## 🆕 L8 事件聚合器 V4.2.1 (`news_intel/aggregator.py`) — 当前生产版本
+## 🆕 L8 事件聚合器 V4.3 (`news_intel/aggregator.py`) — 当前生产版本
 
-**V4.2.1 (2026-07-11 冻结)**。Event-Centric 3-phase + Entity Intelligence Layer + Location 硬约束。
+**V4.3 (2026-07-11 冻结)**。Event-Centric 3-phase + Entity Intelligence Layer + Location 硬约束 + Action 计数排序。
 
 **核心规则** (`aggregator.py:300-348`, `fingerprint_score`):
 
-| 维度 | 分值 | 说明 |
+| 维度 | 分值 | V4.3 变化 |
 |------|:--:|------|
 | Location 硬约束 | 阻断 | country不同 → return 0 |
-| Anchor 完全匹配 | 100 | `subject\|action\|object\|topic` 全等 |
+| Anchor 完全匹配 | 100 | `subject|action|object|topic` 全等 |
 | Action 相同 | +25 | OTHER除外 |
-| Subject 相同 | +25 | 含子串匹配 |
-| Object 相同 | +30 | 含子串匹配 |
+| Subject 相同 | +10~25 | **按稀有度加权** (subject_weight) |
+| Object 相同 | +10~30 | **按稀有度加权** (object_weight) |
 | Primary Topic 相同 | +10 | |
 | Event Type 相同 | +10 | |
 | Participants 交集≥2 | +10 | bonus only |
@@ -429,26 +439,63 @@ print(result['confidence'])
 
 **三阶段阈值**: EVENT_THRESHOLD=50, MERGE_THRESHOLD=75, 时间窗口=24h。
 
-**Entity Intelligence Layer** (V4.2):
-1. Entity Alias V2 — 54映射 (含 Government/Military 别名: White House→US Government, Kremlin→Russian Government, Pentagon→US DoD)
-2. Entity Type Weight — Country=1.0, Government=1.0, Military=1.0, Organization=0.8, Company=0.8, Person=0.5, Location=0.4, Other=0.2
-3. Topic IDF — `type_weight × (0.2 + 0.4 × global_idf + 0.4 × topic_idf)`
-4. Action Hierarchy — 21种动作 (SUES/ACCUSES/ATTACKS/CEASEFIRE/PEACE_DEAL/NEGOTIATES/SANCTIONS/TARIFFS/RATE_CUT/RATE_HIKE/ANNOUNCES/ELECTS/DIES/CRASHES/SURGES/CUTS/REPORTS/DEVELOPS/BANS/FUNDS/WARNS)
-5. 12类 Topic 分类 (Legal/Military/Diplomacy/Economic/Finance/Politics/Technology/Energy/Health/Sports/Leadership/Disaster)
-6. SAO Anchor — `{subject}|{action}|{object}|{topic}`
+**V4.3 P0/P1/P2 关键修复** (vs V4.2.1):
+1. `_detect_action` 改为**计数排序**（非首次命中）— 解决 ATTACKS 抢走 CEASEFIRE/NEGOTIATES 的 bug
+2. Tehran 重复 key 移除 — 解决 country 精确比较静默拒绝合并
+3. DIES 正则补全 (`assassinat(?:ed?|es?|ion)|killing|mourning`) — 解决死亡类新闻误判 ATTACKS
+4. Hub dampening — 高频实体(>15%且≥5次)降权70%但不禁用 + MIN_SUBJECT_WEIGHT=0.15
+5. Coherence 一致性校验 — 低一致性簇禁止评 HIGH
+6. **Frozen Event Schema** — 21字段输出（见下节）
 
-**V4.1→V4.2.1 关键修复**: Location 硬约束在 V4.2 中被错误替换为软 Participants 判断，导致 Iran 大事件(11篇误聚合)。V4.2.1 恢复 Location 硬阻断 + Participants 仅作为加分项。
+**Entity Intelligence Layer** (继承 V4.2):
+- Entity Alias V2 — 54映射 (White House→US Government, Kremlin→Russian Gov, Pentagon→US DoD)
+- Entity Type Weight — Country=1.0, Gov=1.0, Military=1.0, Org=0.8, Company=0.8, Person=0.5
+- Topic IDF — `type_weight × (0.2 + 0.4 × global_idf + 0.4 × topic_idf)`
+- Action Hierarchy — 21种动作 (SUES/ACCUSES/ATTACKS/CEASEFIRE/PEACE_DEAL/NEGOTIATES/...)
+- 12类 Topic (Legal/Military/Diplomacy/Economic/Finance/Politics/Technology/Energy/Health/Sports/Leadership/Disaster)
 
 **审计命令**:
 ```bash
-python test_aggregator.py --hours 24 --window 6 --limit 20           # 事件列表
-python test_aggregator.py --hours 24 --window 6 --limit 20 -v         # 完整指纹+评分矩阵
-python test_aggregator.py --hours 24 --window 6 --limit 20 --single 1 # 单事件深度分析
+python test_aggregator.py --hours 24 --window 6 --limit 100                  # 事件列表+新Schema
+python test_aggregator.py --hours 24 --window 6 --limit 20 -v                # 完整指纹+评分矩阵(含IDF)
+python test_aggregator.py --hours 24 --window 6 --limit 20 --single 1        # 单事件深度分析
+python test_aggregator.py --hours 24 --window 6 --limit 20 --single 1 --insight  # +LLM洞察
 ```
 
-**已知局限**: (1) RSS 实体提取标签过宽（Trump 默认打标导致链式污染），根因在 L1 评分层。 (2) `"Fri, 10 Ju"` 截断 RSS 日期无法解析→跳过时间窗口。 (3) Qwen3 输出自由文本动作需规范化为枚举值。
+⚠️ `--single N` 模式输出**真实聚类指纹**（test_aggregator.py 已修复为传 IDF 参数，不再失真）。
 
-详见 `references/event-aggregation-v4.1.md`。
+**已知局限**: RSS 实体提取标签过宽（Trump 默认打标）；RSS 日期截断 ("Fri, 10 Ju")；Qwen3 自由文本动作需规范为枚举。
+
+详见 `references/event-aggregation-v4.2.1.md`。
+
+## 🆕 Frozen Event Schema (V4.3 Phase 3 输出)
+
+每个事件输出 21 字段的标准化 JSON：
+
+```json
+{
+  "event_id": "EVT-20260710-006",
+  "subject": {"name": "Apple", "type": "Company"},
+  "action":  {"type": "SUES", "detail": "OpenAI over stealing trade secrets"},
+  "object":  {"name": "OpenAI", "type": "Company"},
+  "event_type": "Legal",
+  "source": {"primary_source": "DW News", "authority": 16, "source_count": 8},
+  "actors": [{"entity": "Apple", "type": "Company", "role": "Initiator"}],
+  "confidence": 0.89, "coherence": 95.7,
+  "stage": "active",
+  "summary": "...", "keywords": [...], "related_entities": [...],
+  "article_count": 8, "article_ids": [...],
+  "extraction_method": "v4.3-saeo"
+}
+```
+
+**confidence 公式**: `0.4 × source_authority + 0.3 × coherence + 0.2 × diversity + 0.1 × count_factor`
+
+**stage 规则**: ≤2h→breaking, ≤24h→developing, ≤7d→active, ≤30d→stable, >30d→closed
+
+这是 Phase 1 (信息→事件) 与 Phase 2 (事件→情报分析) 之间的"事实契约层"。
+
+详见 `references/event-aggregation-v4.2.1.md`。
 
 ## 🆕 L9 洞察生成器 (`news_intel/generator.py`)
 
