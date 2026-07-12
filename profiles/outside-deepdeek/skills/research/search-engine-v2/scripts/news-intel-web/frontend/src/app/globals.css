@@ -1,0 +1,100 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ── News Intelligence Dark Theme v1.0 ────────────────────── */
+
+@theme inline {
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-jetbrains-mono);
+  --font-heading: var(--font-sans);
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.625rem;
+}
+
+:root {
+  /* Default: dark (app is always dark) */
+  --background: oklch(0.08 0.005 260);    /* #080B12 */
+  --foreground: oklch(0.98 0 0);           /* #F8FAFC */
+  --card: oklch(0.13 0.008 260);           /* #151B26 */
+  --card-foreground: oklch(0.98 0 0);
+  --popover: oklch(0.13 0.008 260);
+  --popover-foreground: oklch(0.98 0 0);
+  --primary: oklch(0.55 0.025 260);          /* muted blue for active nav */
+  --primary-foreground: oklch(0.98 0 0);
+  --secondary: oklch(0.13 0.015 260);      /* #111827 */
+  --secondary-foreground: oklch(0.98 0 0);
+  --muted: oklch(0.13 0.015 260);
+  --muted-foreground: oklch(0.6 0.01 260); /* #64748B */
+  --accent: oklch(0.15 0.01 260);          /* #1E293B */
+  --accent-foreground: oklch(0.98 0 0);
+  --destructive: oklch(0.55 0.25 25);      /* #EF4444 */
+  --border: oklch(0.18 0.01 260);          /* #263244 */
+  --input: oklch(0.18 0.01 260);
+  --ring: oklch(0.55 0.18 260);
+
+  /* Status + accent */
+  --accent-amber: #F59E0B;
+  --accent-blue: #3B82F6;
+  --status-critical: oklch(0.55 0.25 25);  /* red #EF4444 */
+  --status-high: oklch(0.6 0.18 45);       /* orange #F97316 */
+  --status-success: oklch(0.55 0.15 145);   /* green #22C55E */
+
+  --sidebar: oklch(0.13 0.015 260);        /* #111827 */
+  --sidebar-foreground: oklch(0.6 0.01 260);
+  --sidebar-primary: oklch(0.48 0.2 260);  /* #1D4ED8 */
+  --sidebar-primary-foreground: oklch(0.98 0 0);
+  --sidebar-accent: oklch(0.15 0.01 260);
+  --sidebar-accent-foreground: oklch(0.98 0 0);
+  --sidebar-border: oklch(0.18 0.01 260);
+  --sidebar-ring: oklch(0.55 0.18 260);
+
+  /* Charts */
+  --chart-1: oklch(0.55 0.18 260);
+  --chart-2: oklch(0.55 0.25 25);
+  --chart-3: oklch(0.6 0.18 45);
+  --chart-4: oklch(0.7 0.15 105);
+  --chart-5: oklch(0.55 0.15 145);
+
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    outline-color: var(--ring);
+    outline-width: 0;
+  }
+  *:focus-visible {
+    outline-width: 2px;
+  }
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    min-width: 1024px;
+  }
+  html {
+    @apply font-sans;
+  }
+}
+
+/* ── Utility ─────────────────────────────────────────────── */
+
+.text-accent-amber { color: var(--accent-amber); }
+.text-accent-blue { color: var(--accent-blue); }
+.bg-accent-amber { background-color: var(--accent-amber); }
+.bg-accent-blue { background-color: var(--accent-blue); }
+.border-accent-amber { border-color: var(--accent-amber); }
+.border-accent-blue { border-color: var(--accent-blue); }
+.status-critical { color: var(--status-critical); }
+.status-high { color: var(--status-high); }
+.status-success { color: var(--status-success); }
+.bg-critical { background-color: var(--status-critical); }
+.bg-high { background-color: var(--status-high); }
+.bg-success { background-color: var(--status-success); }
+.bg-info { background-color: var(--accent-blue); }

@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>News Intelligence Platform — System Architecture v4.4</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'JetBrains Mono',monospace;background:#080B12;min-height:100vh;padding:1.5rem;color:#F8FAFC}
+.container{max-width:1500px;margin:0 auto}
+h1{font-size:1.2rem;font-weight:700;margin-bottom:.25rem}
+.subtitle{color:#64748B;font-size:.7rem;margin-bottom:1.5rem}
+.diagram{border:1px solid #1E2A3A;border-radius:12px;padding:1rem;overflow-x:auto;margin-bottom:1.5rem}
+.legend{display:flex;gap:1.5rem;flex-wrap:wrap;color:#94A3B8;font-size:.65rem;margin-bottom:1rem}
+.legend-item{display:flex;align-items:center;gap:.4rem}
+.legend-dot{width:10px;height:10px;border-radius:3px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:.75rem;margin:1.5rem 0}
+.card{background:#141925;border:1px solid #1E2A3A;border-radius:10px;padding:1rem}
+.card h3{font-size:.8rem;font-weight:600;margin-bottom:.5rem;display:flex;align-items:center;gap:.4rem}
+.card .dot{width:8px;height:8px;border-radius:50%}
+.card ul{list-style:none;color:#94A3B8;font-size:.7rem}
+.card li{margin-bottom:.25rem}
+.card .val{color:#F59E0B}
+.footer{text-align:center;margin-top:1rem;color:#475569;font-size:.65rem}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>News Intelligence Platform — System Architecture</h1>
+<p class="subtitle">v4.4 Pipeline (local) + v1.0 Cloud Deployment · July 2026</p>
+
+<div class="diagram">
+<svg viewBox="0 0 1500 950">
+
+<defs>
+<marker id="ma" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0,9 3.5,0 7" fill="#64748B"/></marker>
+<marker id="mg" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0,9 3.5,0 7" fill="#22C55E"/></marker>
+<marker id="mc" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0,9 3.5,0 7" fill="#3B82F6"/></marker>
+<marker id="mv" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0,9 3.5,0 7" fill="#A78BFA"/></marker>
+<marker id="mo" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0,9 3.5,0 7" fill="#F59E0B"/></marker>
+<marker id="mr" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0,9 3.5,0 7" fill="#EF4444"/></marker>
+<pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0L0 0 0 40" fill="none" stroke="#1E2A3A" stroke-width=".5"/></pattern>
+</defs>
+<rect width="100%" height="100%" fill="url(#grid)"/>
+
+<!-- ============================================================ -->
+<!-- LEFT COLUMN: LOCAL (WINDOWS/HERMES) -->
+<!-- ============================================================ -->
+
+<!-- Region box -->
+<rect x="10" y="5" width="730" height="935" rx="8" fill="transparent" stroke="#3B82F6" stroke-width="1.5" stroke-dasharray="8,3"/>
+<text x="26" y="22" fill="#3B82F6" font-size="10" font-weight="700">LOCAL · Windows 10 · Hermes Agent</text>
+
+<!-- Layer 0: Data Sources -->
+<rect x="24" y="34" width="702" height="80" rx="6" fill="transparent" stroke="#22C55E" stroke-width="1" stroke-dasharray="4,2"/>
+<text x="40" y="50" fill="#22C55E" font-size="9" font-weight="600">Layer 0 — Data Sources (46 RSS + 18 Nitter + 6 Chinese Official)</text>
+
+<rect x="40" y="60" width="140" height="42" rx="4" fill="rgba(34,197,94,.08)" stroke="#22C55E" stroke-width=".8"/>
+<text x="110" y="78" fill="#22C55E" font-size="8" text-anchor="middle">RSS Feeds (46)</text>
+<text x="110" y="93" fill="#64748B" font-size="7" text-anchor="middle">Reuters/AP/DW/BBC/CNN</text>
+
+<rect x="195" y="60" width="130" height="42" rx="4" fill="rgba(34,197,94,.08)" stroke="#22C55E" stroke-width=".8"/>
+<text x="260" y="78" fill="#22C55E" font-size="8" text-anchor="middle">Nitter (18)</text>
+<text x="260" y="93" fill="#64748B" font-size="7" text-anchor="middle">Trump/Musk/Gates/Putin</text>
+
+<rect x="340" y="60" width="140" height="42" rx="4" fill="rgba(34,197,94,.08)" stroke="#22C55E" stroke-width=".8"/>
+<text x="410" y="78" fill="#22C55E" font-size="8" text-anchor="middle">Chinese Official (6)</text>
+<text x="410" y="93" fill="#64748B" font-size="7" text-anchor="middle">人民网/新华网/央视/...</text>
+
+<rect x="495" y="60" width="100" height="42" rx="4" fill="rgba(34,197,94,.08)" stroke="#22C55E" stroke-width=".8"/>
+<text x="545" y="78" fill="#22C55E" font-size="8" text-anchor="middle">SearXNG</text>
+<text x="545" y="93" fill="#64748B" font-size="7" text-anchor="middle">meta-search</text>
+
+<rect x="608" y="60" width="100" height="42" rx="4" fill="rgba(34,197,94,.08)" stroke="#22C55E" stroke-width=".8"/>
+<text x="658" y="78" fill="#22C55E" font-size="8" text-anchor="middle">Tavily</text>
+<text x="658" y="93" fill="#64748B" font-size="7" text-anchor="middle">AI search</text>
+
+<!-- Arrows: Sources → RSS Scanner -->
+<line x1="110" y1="102" x2="110" y2="130" stroke="#22C55E" stroke-width="1.5" marker-end="url(#mg)"/>
+<line x1="260" y1="102" x2="260" y2="130" stroke="#22C55E" stroke-width="1.5" marker-end="url(#mg)"/>
+<line x1="410" y1="102" x2="410" y2="130" stroke="#22C55E" stroke-width="1.5" marker-end="url(#mg)"/>
+
+<!-- Layer 1: RSS Scanner + DB -->
+<rect x="24" y="122" width="702" height="55" rx="6" fill="transparent" stroke="#A78BFA" stroke-width="1" stroke-dasharray="4,2"/>
+<text x="40" y="138" fill="#A78BFA" font-size="9" font-weight="600">Layer 1 — RSS Scanner (cron 30min) → rss-archive.db → sync.py/scorer.py → news_intel.db</text>
+
+<rect x="40" y="148" width="160" height="22" rx="3" fill="rgba(167,139,250,.08)" stroke="#A78BFA" stroke-width=".8"/>
+<text x="120" y="163" fill="#A78BFA" font-size="8" text-anchor="middle">RSS Scanner (feedparser)</text>
+
+<rect x="210" y="148" width="120" height="22" rx="3" fill="rgba(167,139,250,.08)" stroke="#A78BFA" stroke-width=".8"/>
+<text x="270" y="163" fill="#A78BFA" font-size="8" text-anchor="middle">rss-archive.db</text>
+
+<rect x="340" y="148" width="130" height="22" rx="3" fill="rgba(167,139,250,.08)" stroke="#A78BFA" stroke-width=".8"/>
+<text x="405" y="163" fill="#A78BFA" font-size="8" text-anchor="middle">sync.py + scorer.py</text>
+
+<rect x="480" y="148" width="130" height="22" rx="3" fill="rgba(167,139,250,.08)" stroke="#A78BFA" stroke-width=".8"/>
+<text x="545" y="163" fill="#A78BFA" font-size="8" text-anchor="middle">news_intel.db (3表)</text>
+
+<rect x="620" y="148" width="90" height="22" rx="3" fill="rgba(251,146,60,.08)" stroke="#F59E0B" stroke-width=".8"/>
+<text x="665" y="163" fill="#F59E0B" font-size="8" text-anchor="middle">Qwen3 classify</text>
+
+<line x1="200" y1="159" x2="208" y2="159" stroke="#A78BFA" stroke-width="1" marker-end="url(#mv)"/>
+<line x1="330" y1="159" x2="338" y2="159" stroke="#A78BFA" stroke-width="1" marker-end="url(#mv)"/>
+<line x1="470" y1="159" x2="478" y2="159" stroke="#A78BFA" stroke-width="1" marker-end="url(#mv)"/>
+
+<!-- Layer 2: Content Fetch -->
+<rect x="24" y="185" width="702" height="55" rx="6" fill="transparent" stroke="#F59E0B" stroke-width="1" stroke-dasharray="4,2"/>
+<text x="40" y="201" fill="#F59E0B" font-size="9" font-weight="600">Layer 2 — Content Fetch (batch.py · fetchers.py · httpx/trafilatura/Scrapling/Playwright)</text>
+
+<rect x="40" y="211" width="180" height="22" rx="3" fill="rgba(251,146,60,.08)" stroke="#F59E0B" stroke-width=".8"/>
+<text x="130" y="226" fill="#F59E0B" font-size="8" text-anchor="middle">batch.py (ThreadPool)</text>
+
+<rect x="235" y="211" width="160" height="22" rx="3" fill="rgba(251,146,60,.08)" stroke="#F59E0B" stroke-width=".8"/>
+<text x="315" y="226" fill="#F59E0B" font-size="8" text-anchor="middle">fetchers.py (4策略)</text>
+
+<rect x="410" y="211" width="160" height="22" rx="3" fill="rgba(251,146,60,.08)" stroke="#F59E0B" stroke-width=".8"/>
+<text x="490" y="226" fill="#F59E0B" font-size="8" text-anchor="middle">domain_profiles (16)</text>
+
+<rect x="585" y="211" width="125" height="22" rx="3" fill="rgba(167,139,250,.08)" stroke="#A78BFA" stroke-width=".8"/>
+<text x="647" y="226" fill="#A78BFA" font-size="8" text-anchor="middle">news_content 表</text>
+
+<line x1="220" y1="222" x2="233" y2="222" stroke="#F59E0B" stroke-width="1" marker-end="url(#mo)"/>
+<line x1="395" y1="222" x2="408" y2="222" stroke="#F59E0B" stroke-width="1" marker-end="url(#mo)"/>
+
+<!-- Layer 3: Aggregation -->
+<rect x="24" y="248" width="702" height="80" rx="6" fill="transparent" stroke="#3B82F6" stroke-width="1" stroke-dasharray="4,2"/>
+<text x="40" y="264" fill="#3B82F6" font-size="9" font-weight="600">Layer 3 — Event Aggregation v4.4 (aggregator.py · 零LLM · SAEO extraction)</text>
+
+<rect x="40" y="276" width="200" height="42" rx="4" fill="rgba(59,130,246,.08)" stroke="#3B82F6" stroke-width="1"/>
+<text x="140" y="294" fill="#3B82F6" font-size="8" text-anchor="middle">build_fingerprint()</text>
+<text x="140" y="310" fill="#64748B" font-size="7" text-anchor="middle">SAO + topic + country</text>
+
+<rect x="255" y="276" width="180" height="42" rx="4" fill="rgba(59,130,246,.08)" stroke="#3B82F6" stroke-width="1"/>
+<text x="345" y="294" fill="#3B82F6" font-size="8" text-anchor="middle">fingerprint_score()</text>
+<text x="345" y="310" fill="#64748B" font-size="7" text-anchor="middle">MERGE=75 EVENT=50</text>
+
+<rect x="450" y="276" width="160" height="42" rx="4" fill="rgba(59,130,246,.08)" stroke="#3B82F6" stroke-width="1"/>
+<text x="530" y="294" fill="#3B82F6" font-size="8" text-anchor="middle">aggregate_events()</text>
+<text x="530" y="310" fill="#64748B" font-size="7" text-anchor="middle">21-field Event Object</text>
+
+<rect x="625" y="276" width="85" height="42" rx="4" fill="rgba(167,139,250,.08)" stroke="#A78BFA" stroke-width="1"/>
+<text x="667" y="294" fill="#A78BFA" font-size="8" text-anchor="middle">event_registry</text>
+<text x="667" y="310" fill="#64748B" font-size="7" text-anchor="middle">+ source/entity</text>
+
+<line x1="240" y1="297" x2="253" y2="297" stroke="#3B82F6" stroke-width="1" marker-end="url(#mc)"/>
+<line x1="435" y1="297" x2="448" y2="297" stroke="#3B82F6" stroke-width="1" marker-end="url(#mc)"/>
+<line x1="610" y1="297" x2="623" y2="297" stroke="#3B82F6" stroke-width="1" marker-end="url(#mc)"/>
+
+<!-- Layer 3.5: Event Registry + Dossier -->
+<text x="40" y="342" fill="#94A3B8" font-size="8" font-weight="600">Layer 3.5 — Event Dossier (evidence · source_chain · timeline · llm_analysis)</text>
+<rect x="40" y="350" width="165" height="18" rx="3" fill="rgba(59,130,246,.05)" stroke="#3B82F6" stroke-width=".6"/>
+<text x="122" y="363" fill="#94A3B8" font-size="7" text-anchor="middle">evidence[quote+source+url]</text>
+<rect x="215" y="350" width="175" height="18" rx="3" fill="rgba(59,130,246,.05)" stroke="#3B82F6" stroke-width=".6"/>
+<text x="302" y="363" fill="#94A3B8" font-size="7" text-anchor="middle">source_chain[break/follow]</text>
+<rect x="400" y="350" width="165" height="18" rx="3" fill="rgba(59,130,246,.05)" stroke="#3B82F6" stroke-width=".6"/>
+<text x="482" y="363" fill="#94A3B8" font-size="7" text-anchor="middle">timeline[time+update]</text>
+<rect x="575" y="350" width="135" height="18" rx="3" fill="rgba(251,146,60,.05)" stroke="#F59E0B" stroke-width=".6"/>
+<text x="642" y="363" fill="#94A3B8" font-size="7" text-anchor="middle">llm_analysis</text>
+
+<!-- ============================================================ -->
+<!-- THE BRIDGE: pusher.py → Cloud -->
+<!-- ============================================================ -->
+
+<!-- Push arrow -->
+<rect x="24" y="380" width="702" height="30" rx="4" fill="rgba(239,68,68,.06)" stroke="#EF4444" stroke-width="1" stroke-dasharray="3,2"/>
+<text x="120" y="400" fill="#EF4444" font-size="8" font-weight="600">pusher.py → POST /internal/news/batch → Cloud API</text>
+<text x="500" y="400" fill="#94A3B8" font-size="7">data bridge — SQLite → PostgreSQL migration</text>
+
+<line x1="375" y1="410" x2="750" y2="410" stroke="#EF4444" stroke-width="2" marker-end="url(#mr)"/>
+
+<!-- ============================================================ -->
+<!-- RIGHT COLUMN: CLOUD (UBUNTU/DOCKER) -->
+<!-- ============================================================ -->
+
+<rect x="750" y="5" width="740" height="935" rx="8" fill="transparent" stroke="#F59E0B" stroke-width="1.5" stroke-dasharray="8,3"/>
+<text x="766" y="22" fill="#F59E0B" font-size="10" font-weight="700">CLOUD · Ubuntu 24.04 · Docker · 100.107.117.23</text>
+
+<!-- Cloud Layer 1: Docker Host -->
+<rect x="764" y="40" width="712" height="100" rx="6" fill="transparent" stroke="#22C55E" stroke-width="1" stroke-dasharray="4,2"/>
+<text x="780" y="56" fill="#22C55E" font-size="9" font-weight="600">Infrastructure — Docker Compose (3 services for news-intel)</text>
+
+<rect x="780" y="66" width="140" height="30" rx="4" fill="rgba(34,197,94,.08)" stroke="#22C55E" stroke-width=".8"/>
+<text x="850" y="86" fill="#22C55E" font-size="8" text-anchor="middle">UFW Firewall</text>
+
+<rect x="935" y="66" width="140" height="30" rx="4" fill="rgba(34,197,94,.08)" stroke="#22C55E" stroke-width=".8"/>
+<text x="1005" y="86" fill="#22C55E" font-size="8" text-anchor="middle">Docker 29.5.3</text>
+
+<rect x="1090" y="66" width="140" height="30" rx="4" fill="rgba(34,197,94,.08)" stroke="#22C55E" stroke-width=".8"/>
+<text x="1160" y="86" fill="#22C55E" font-size="8" text-anchor="middle">Git 2.43.0</text>
+
+<rect x="780" y="102" width="200" height="28" rx="4" fill="rgba(34,197,94,.05)" stroke="#22C55E" stroke-width=".6"/>
+<text x="880" y="120" fill="#94A3B8" font-size="7" text-anchor="middle">磁盘: 63G (48G free) · RAM: 3.9G</text>
+
+<rect x="995" y="102" width="200" height="28" rx="4" fill="rgba(34,197,94,.05)" stroke="#22C55E" stroke-width=".6"/>
+<text x="1095" y="120" fill="#94A3B8" font-size="7" text-anchor="middle">公网: 80/443/8080 · API: 8001(白名单)</text>
+
+<rect x="1210" y="102" width="160" height="28" rx="4" fill="rgba(34,197,94,.05)" stroke="#22C55E" stroke-width=".6"/>
+<text x="1290" y="120" fill="#94A3B8" font-size="7" text-anchor="middle">Python 3.12 · 无Node.js</text>
+
+<!-- Cloud Layer 2: Docker Containers -->
+<rect x="764" y="148" width="712" height="160" rx="6" fill="transparent" stroke="#A78BFA" stroke-width="1" stroke-dasharray="4,2"/>
+<text x="780" y="164" fill="#A78BFA" font-size="9" font-weight="600">news-intel-platform (3 containers — ALL DOWN since 2026-07-11)</text>
+
+<!-- PostgreSQL -->
+<rect x="780" y="176" width="200" height="55" rx="4" fill="rgba(167,139,250,.08)" stroke="#A78BFA" stroke-width="1"/>
+<text x="880" y="194" fill="#A78BFA" font-size="8" text-anchor="middle">postgres:16-alpine</text>
+<text x="880" y="210" fill="#64748B" font-size="7" text-anchor="middle">DB: news_intel / news_admin</text>
+<text x="880" y="224" fill="#64748B" font-size="7" text-anchor="middle">port 5432 (internal only)</text>
+
+<!-- FastAPI -->
+<rect x="1000" y="176" width="200" height="55" rx="4" fill="rgba(167,139,250,.08)" stroke="#A78BFA" stroke-width="1"/>
+<text x="1100" y="194" fill="#A78BFA" font-size="8" text-anchor="middle">FastAPI (Python 3.11)</text>
+<text x="1100" y="210" fill="#64748B" font-size="7" text-anchor="middle">port 8001→8000</text>
+<text x="1100" y="224" fill="#64748B" font-size="7" text-anchor="middle">SQLAlchemy + JWT auth</text>
+
+<!-- Vue.js Web -->
+<rect x="1220" y="176" width="200" height="55" rx="4" fill="rgba(167,139,250,.08)" stroke="#A78BFA" stroke-width="1"/>
+<text x="1320" y="194" fill="#A78BFA" font-size="8" text-anchor="middle">Web (Vite + nginx)</text>
+<text x="1320" y="210" fill="#64748B" font-size="7" text-anchor="middle">port 80→80</text>
+<text x="1320" y="224" fill="#64748B" font-size="7" text-anchor="middle">Vue.js SPA</text>
+
+<!-- Status: DOWN -->
+<rect x="780" y="240" width="640" height="22" rx="3" fill="rgba(239,68,68,.1)" stroke="#EF4444" stroke-width=".8" stroke-dasharray="3,2"/>
+<text x="1100" y="256" fill="#EF4444" font-size="8" text-anchor="middle">⚠ ALL 3 containers EXITED 9h ago · docker compose up needed</text>
+
+<!-- Existing Routes -->
+<rect x="780" y="270" width="310" height="32" rx="3" fill="rgba(167,139,250,.04)" stroke="#A78BFA" stroke-width=".5"/>
+<text x="935" y="290" fill="#64748B" font-size="7" text-anchor="middle">Routes: news · internal · auth · admin · ads · categories</text>
+
+<!-- Cloud Layer 3: Other Services -->
+<rect x="764" y="315" width="712" height="65" rx="6" fill="transparent" stroke="#64748B" stroke-width="1" stroke-dasharray="4,2"/>
+<text x="780" y="331" fill="#64748B" font-size="9" font-weight="600">Other Running Services (not part of news-intel)</text>
+
+<rect x="780" y="342" width="130" height="30" rx="3" fill="rgba(100,116,139,.08)" stroke="#64748B" stroke-width=".8"/>
+<text x="845" y="362" fill="#94A3B8" font-size="7" text-anchor="middle">n8n ✅ running</text>
+<rect x="925" y="342" width="130" height="30" rx="3" fill="rgba(100,116,139,.08)" stroke="#64748B" stroke-width=".8"/>
+<text x="990" y="362" fill="#94A3B8" font-size="7" text-anchor="middle">SearXNG ✅ running</text>
+<rect x="1070" y="342" width="130" height="30" rx="3" fill="rgba(100,116,139,.08)" stroke="#64748B" stroke-width=".8"/>
+<text x="1135" y="362" fill="#94A3B8" font-size="7" text-anchor="middle">Scrapling ✅ running</text>
+<rect x="1215" y="342" width="130" height="30" rx="3" fill="rgba(100,116,139,.08)" stroke="#64748B" stroke-width=".8"/>
+<text x="1280" y="362" fill="#94A3B8" font-size="7" text-anchor="middle">sing-box ✅ running</text>
+
+<!-- Cloud Layer 4: NEW v4.4 Web (待部署) -->
+<rect x="764" y="395" width="712" height="130" rx="6" fill="transparent" stroke="#3B82F6" stroke-width="2" stroke-dasharray="8,3"/>
+<text x="780" y="412" fill="#3B82F6" font-size="9" font-weight="700">NEW v4.4 Web — 待部署 (developed, built, tested locally ✅)</text>
+
+<rect x="780" y="424" width="220" height="55" rx="4" fill="rgba(59,130,246,.08)" stroke="#3B82F6" stroke-width="1"/>
+<text x="890" y="442" fill="#3B82F6" font-size="8" text-anchor="middle">FastAPI Read Adapter</text>
+<text x="890" y="458" fill="#94A3B8" font-size="7" text-anchor="middle">6 endpoints · SQLite read-only</text>
+<text x="890" y="472" fill="#64748B" font-size="7" text-anchor="middle">dashboard/events/map/sources/search</text>
+
+<rect x="1020" y="424" width="220" height="55" rx="4" fill="rgba(59,130,246,.08)" stroke="#3B82F6" stroke-width="1"/>
+<text x="1130" y="442" fill="#3B82F6" font-size="8" text-anchor="middle">Next.js 16 Frontend</text>
+<text x="1130" y="458" fill="#94A3B8" font-size="7" text-anchor="middle">15 components · 6 pages</text>
+<text x="1130" y="472" fill="#64748B" font-size="7" text-anchor="middle">Dark Intelligence Theme</text>
+
+<!-- Pages -->
+<rect x="780" y="490" width="110" height="18" rx="2" fill="rgba(59,130,246,.04)" stroke="#3B82F6" stroke-width=".4"/>
+<text x="835" y="503" fill="#94A3B8" font-size="7" text-anchor="middle">Dashboard</text>
+<rect x="898" y="490" width="110" height="18" rx="2" fill="rgba(59,130,246,.04)" stroke="#3B82F6" stroke-width=".4"/>
+<text x="953" y="503" fill="#94A3B8" font-size="7" text-anchor="middle">Detail ⭐</text>
+<rect x="1016" y="490" width="110" height="18" rx="2" fill="rgba(59,130,246,.04)" stroke="#3B82F6" stroke-width=".4"/>
+<text x="1071" y="503" fill="#94A3B8" font-size="7" text-anchor="middle">Explorer</text>
+<rect x="1134" y="490" width="110" height="18" rx="2" fill="rgba(59,130,246,.04)" stroke="#3B82F6" stroke-width=".4"/>
+<text x="1189" y="503" fill="#94A3B8" font-size="7" text-anchor="middle">Map</text>
+<rect x="1252" y="490" width="110" height="18" rx="2" fill="rgba(59,130,246,.04)" stroke="#3B82F6" stroke-width=".4"/>
+<text x="1307" y="503" fill="#94A3B8" font-size="7" text-anchor="middle">Sources</text>
+<rect x="780" y="510" width="110" height="18" rx="2" fill="rgba(59,130,246,.04)" stroke="#3B82F6" stroke-width=".4"/>
+<text x="835" y="523" fill="#94A3B8" font-size="7" text-anchor="middle">Search</text>
+
+<!-- ============================================================ -->
+<!-- DATA FLOW SUMMARY -->
+<!-- ============================================================ -->
+<rect x="764" y="535" width="712" height="200" rx="6" fill="transparent" stroke="#22C55E" stroke-width="1" stroke-dasharray="4,2"/>
+<text x="780" y="552" fill="#22C55E" font-size="9" font-weight="600">Data Flow</text>
+
+<!-- Flow chain -->
+<rect x="780" y="565" width="95" height="35" rx="4" fill="rgba(34,197,94,.08)" stroke="#22C55E" stroke-width=".8"/>
+<text x="827" y="580" fill="#22C55E" font-size="7" text-anchor="middle">RSS Sources</text>
+<text x="827" y="594" fill="#64748B" font-size="6" text-anchor="middle">70 feeds</text>
+
+<line x1="875" y1="582" x2="900" y2="582" stroke="#22C55E" stroke-width="1.5" marker-end="url(#mg)"/>
+
+<rect x="902" y="565" width="95" height="35" rx="4" fill="rgba(167,139,250,.08)" stroke="#A78BFA" stroke-width=".8"/>
+<text x="949" y="580" fill="#A78BFA" font-size="7" text-anchor="middle">Scorer</text>
+<text x="949" y="594" fill="#64748B" font-size="6" text-anchor="middle">5-dim score</text>
+
+<line x1="997" y1="582" x2="1022" y2="582" stroke="#A78BFA" stroke-width="1.5" marker-end="url(#mv)"/>
+
+<rect x="1024" y="565" width="95" height="35" rx="4" fill="rgba(251,146,60,.08)" stroke="#F59E0B" stroke-width=".8"/>
+<text x="1071" y="580" fill="#F59E0B" font-size="7" text-anchor="middle">Fetcher</text>
+<text x="1071" y="594" fill="#64748B" font-size="6" text-anchor="middle">batch.py</text>
+
+<line x1="1119" y1="582" x2="1144" y2="582" stroke="#F59E0B" stroke-width="1.5" marker-end="url(#mo)"/>
+
+<rect x="1146" y="565" width="95" height="35" rx="4" fill="rgba(59,130,246,.08)" stroke="#3B82F6" stroke-width=".8"/>
+<text x="1193" y="580" fill="#3B82F6" font-size="7" text-anchor="middle">Aggregator</text>
+<text x="1193" y="594" fill="#64748B" font-size="6" text-anchor="middle">v4.4 SAEO</text>
+
+<line x1="1241" y1="582" x2="1266" y2="582" stroke="#3B82F6" stroke-width="1.5" marker-end="url(#mc)"/>
+
+<rect x="1268" y="565" width="100" height="35" rx="4" fill="rgba(167,139,250,.08)" stroke="#A78BFA" stroke-width=".8"/>
+<text x="1318" y="580" fill="#A78BFA" font-size="7" text-anchor="middle">Event Registry</text>
+<text x="1318" y="594" fill="#64748B" font-size="6" text-anchor="middle">SQLite</text>
+
+<line x1="1368" y1="582" x2="1393" y2="582" stroke="#EF4444" stroke-width="1.5" marker-end="url(#mr)"/>
+
+<rect x="780" y="560" width="20" height="45" rx="2" fill="transparent" stroke="#EF4444" stroke-width=".8"/>
+<text x="770" y="585" fill="#EF4444" font-size="7" text-anchor="middle">← pusher.py →</text>
+
+<!-- Down arrows for deployment -->
+<line x1="319" y1="582" x2="319" y2="617" stroke="#64748B" stroke-width="1" stroke-dasharray="3,3"/>
+<text x="335" y="608" fill="#94A3B8" font-size="7">push</text>
+
+<rect x="1000" y="612" width="200" height="22" rx="3" fill="rgba(239,68,68,.08)" stroke="#EF4444" stroke-width=".6"/>
+<text x="1100" y="627" fill="#EF4444" font-size="7" text-anchor="middle">POST /internal/news/batch</text>
+
+<line x1="1100" y1="634" x2="1100" y2="658" stroke="#EF4444" stroke-width="1.5" marker-end="url(#mr)"/>
+
+<rect x="950" y="662" width="300" height="30" rx="4" fill="rgba(167,139,250,.08)" stroke="#A78BFA" stroke-width="1"/>
+<text x="1100" y="680" fill="#A78BFA" font-size="8" text-anchor="middle">Cloud PostgreSQL (news_intel DB)</text>
+
+<!-- Data volume notes -->
+<text x="780" y="712" fill="#64748B" font-size="7">SQLite (local): 80 articles · 9 events · 12 sources</text>
+<text x="780" y="726" fill="#64748B" font-size="7">PostgreSQL (cloud): persisted via pusher.py POST /internal/news/batch</text>
+
+<!-- ============================================================ -->
+<!-- DEPLOYMENT GAP -->
+<!-- ============================================================ -->
+<rect x="764" y="740" width="712" height="80" rx="6" fill="transparent" stroke="#EF4444" stroke-width="1.5" stroke-dasharray="6,3"/>
+<text x="780" y="757" fill="#EF4444" font-size="9" font-weight="700">Deployment Gap — 待解决</text>
+
+<text x="780" y="777" fill="#EF4444" font-size="7">1. 云端无 Node.js → Next.js 需要 Node 或 Docker 容器化</text>
+<text x="780" y="792" fill="#EF4444" font-size="7">2. v4.4 读 SQLite · 旧版用 PostgreSQL — 两个后端并存还是替换？</text>
+<text x="780" y="807" fill="#EF4444" font-size="7">3. 当前 3 个 Docker 容器全部 Exited — 需要 docker compose up 重启</text>
+
+<!-- ============================================================ -->
+<!-- CODEBASE LOCATIONS -->
+<!-- ============================================================ -->
+<rect x="24" y="830" width="730" height="100" rx="6" fill="transparent" stroke="#64748B" stroke-width="1" stroke-dasharray="4,2"/>
+<text x="40" y="848" fill="#94A3B8" font-size="9" font-weight="600">Local Codebase Locations</text>
+
+<text x="40" y="870" fill="#64748B" font-size="7">search-engine-v2/scripts/news-intel/     Pipeline (aggregator.py · batch.py · db.py · scorer.py · enhancers.py)</text>
+<text x="40" y="886" fill="#64748B" font-size="7">search-engine-v2/scripts/news-intel-platform/  Old Cloud Deploy (Vue.js + PostgreSQL · deploy2.py → cloud)</text>
+<text x="40" y="902" fill="#3B82F6" font-size="7">~/workspace/news-intel-web/             NEW v4.4 Web (FastAPI + Next.js 16 · built ✅ · not deployed)</text>
+<text x="40" y="918" fill="#64748B" font-size="7">~/.hermes/rss-archive.db                RSS raw data (70 feeds · SOCKS5 proxy)</text>
+
+</svg>
+</div>
+
+<div class="legend">
+<span class="legend-item"><span class="legend-dot" style="background:#22C55E"></span> Data Sources/Ingest</span>
+<span class="legend-item"><span class="legend-dot" style="background:#A78BFA"></span> Database/Persist</span>
+<span class="legend-item"><span class="legend-dot" style="background:#F59E0B"></span> Content Fetch</span>
+<span class="legend-item"><span class="legend-dot" style="background:#3B82F6"></span> Aggregation/New Web</span>
+<span class="legend-item"><span class="legend-dot" style="background:#EF4444"></span> Bridge/Deploy Gap</span>
+</div>
+
+<div class="cards">
+<div class="card">
+<h3><span class="dot" style="background:#3B82F6"></span>Local Pipeline (v4.4)</h3>
+<ul>
+<li>70 sources → RSS Scanner → <span class="val">80 articles</span></li>
+<li>5-dim scorer → tier A/B/C classification</li>
+<li>batch.py fetcher → 4-strategy cascade</li>
+<li>aggregator v4.4 → <span class="val">9 events</span> · 21-field Dossier</li>
+<li>event_registry + source_registry + entity_registry</li>
+</ul>
+</div>
+<div class="card">
+<h3><span class="dot" style="background:#EF4444"></span>Data Bridge</h3>
+<ul>
+<li>pusher.py → POST /internal/news/batch</li>
+<li>SQLite (local) → PostgreSQL (cloud)</li>
+<li>Article-level push (existing)</li>
+<li>Event-level push (push_events() ready)</li>
+</ul>
+</div>
+<div class="card">
+<h3><span class="dot" style="background:#F59E0B"></span>Cloud Deployment (DOWN)</h3>
+<ul>
+<li>3 Docker containers: pg + api + web</li>
+<li>all EXITED 2026-07-11 (9h ago)</li>
+<li>Vue.js frontend + FastAPI backend</li>
+<li>PostgreSQL 16 with existing data</li>
+<li>Firewall: 80/443 open, 8001 whitelist</li>
+</ul>
+</div>
+<div class="card">
+<h3><span class="dot" style="background:#22C55E"></span>NEW v4.4 Web (ready, not deployed)</h3>
+<ul>
+<li>FastAPI Read Adapter (6 endpoints)</li>
+<li>Next.js 16 (15 components · 6 pages)</li>
+<li>Dark Intelligence Theme</li>
+<li>Dashboard: Map + Heat + Feed</li>
+<li>Detail: Facts → Evidence → Flow</li>
+<li>Built ✅ · Not on cloud ❌</li>
+</ul>
+</div>
+</div>
+
+<p style="color:#94A3B8;font-size:.7rem">Key: <span style="color:#3B82F6">Local Pipeline (Windows)</span> → <span style="color:#EF4444">pusher.py bridge</span> → <span style="color:#F59E0B">Cloud Docker (Ubuntu)</span> · <span style="color:#EF4444">New v4.4 Web not yet deployed</span></p>
+<p class="footer">News Intelligence Platform · System Architecture v4.4 · July 2026</p>
+</div>
+</body>
+</html>
