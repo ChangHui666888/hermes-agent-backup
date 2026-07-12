@@ -1,6 +1,6 @@
-# 各阶段输入/输出字段完整追踪 (v4.3)
+# 各阶段输入/输出字段完整追踪 (v4.4)
 
-> 从 RSS 扫描到 21字段 Event Object 的完整字段流。
+> 从 RSS 扫描到 24字段 Event Dossier + 云端推送 的完整字段流。
 > 所有字段名均可从代码中找到赋值语句。
 
 ---
@@ -94,7 +94,7 @@ batch结果 → upsert_content(): content_md, content_len, fetch_strategy, fetch
 
 ---
 
-## Phase 3: aggregator.py v4.3 (事件聚合 · 零LLM)
+## Phase 3: aggregator.py v4.4 (事件聚合 · 零LLM + 持久化)
 
 ### 📥 输入 (test_aggregator.py 跨三表 JOIN, `test_aggregator.py:27-38`)
 
@@ -186,34 +186,53 @@ batch结果 → upsert_content(): content_md, content_len, fetch_strategy, fetch
 
 **输入**: title + description + content_md (前3000字符)
 **输出** (`enhancers.py:242-320`): event, impact, companies[], assets[], market_signal, risk_level, future_watch, confidence(0-1), tags[], entities{}, summary_cn, summary_en, method:"deepseek-flash", llm_model:"deepseek-v4-flash", llm_cost
+| extraction_method | str | "v4.4-saeo" |
+| related_entities[{entity_id,name,type}] | list | 前20 entity_refs + entity_id |
+| article_count | int | len(ev.article_ids) |
+| article_ids | list[int] | DB主键 |
+| stage | str | <2h=breaking, 2-24h=developing, 24h-7d=active, 7-30d=stable, >30d=closed |
+| first_seen | str\|null | ev.start_time.isoformat() |
+| last_updated | str\|null | ev.last_time.isoformat() |
+| **evidence** [{quote,source,url}] | list | 🆕 v4.4: 前5篇 description 摘录 |
+| **source_chain** [{source_id,source_name,time,role,url}] | list | 🆕 v4.4: break/follow 链 |
+| **timeline** [{time,update,source}] | list | 🆕 v4.4: 按小时去重的关键节点 |
+
+→ **自动持久化**: event_registry + source_registry + entity_registry
 
 ---
 
-## Phase 5.1: generator.py (事件洞察 · ⚠️ LLM)
+## Phase 3.5: Event Registry (🆕 v4.4 · 自动)
 
-**输入**: event dict (21字段) + --insight 标志
-**输出**: summary(50字), timeline, key_drivers, impact(100字), market_effect, geopolitical_effect, uncertainty, confidence
-
----
-
-## Phase 5.2: pusher.py (批量推送)
-
-**输入**: article dict + structured dict + scores dict
-**输出** (`pusher.py:16-41`): HTTP POST → {NEWS_API_BASE}/internal/news/batch
-17字段: url, title, content_md, published_at, source_name, source_domain, category, tags, entities, score_total, score_breakdown, tier, analysis, summary_cn, summary, key_points, extraction_method, fetch_strategy, fetch_cost
+**写入**: aggregate_events() → `upsert_event()` → event_registry 表
+**注册**: `upsert_source()` → source_registry, `upsert_entity()` → entity_registry
 
 ---
 
-## 关键数据流速查
+## Phase 5.3: Event Push (🆕 v4.4)
+
+**输入**: event dict (24字段) 或 event_registry 中的事件
+**输出** (`pusher.py:82-112`): `push_events()` → POST `{NEWS_API_BASE}/internal/events/batch`
+28字段: event_id, title, summary, event_type, stage, confidence, coherence,
+  subject(JSON), action(JSON), object(JSON), location_country,
+  primary_source, primary_source_id, source_authority, source_count, sources(JSON),
+  article_count, article_ids(JSON), doc_refs(JSON),
+  actors(JSON), keywords(JSON), related_entities(JSON),
+  evidence(JSON), source_chain(JSON), timeline(JSON),
+  llm_analysis(JSON), event_time, first_seen, last_updated, extraction_method
+
+---
+
+## 关键数据流速查 (v4.4)
 
 ```
-rss-archive.db {source,title,summary,link,category,date}
-    → score_article() → {total,source,impact,entity,market,velocity,tier,entities,categories}
-    → news_intel.db 三表 (rss_raw=18, intel=14, content=19)
-    → batch.py {url[]} → {ok,url,domain,content,strategy_used,total_cost,cost_trace,structured,temporal_check}
-    → news_content填充
-    → 三表JOIN → build_fingerprint {subject,action,object,event_type,topic,country,participants}
-    → cluster (fingerprint_score ≥50) → merge (≥75)
+rss-archive.db → score_article() → news_intel.db 三表
+    → batch.py → 正文 → news_content
+    → 三表JOIN → build_fingerprint → cluster → merge
+    → 24字段 Event Dossier (v4.4: +evidence +source_chain +timeline)
+    → 自动持久化: event_registry + source_registry + entity_registry
+    → 可选: generate_intel() event-level LLM 分析
+    → 可选: push_events() → POST /internal/events/batch → 云端 PostgreSQL
+```
     → 21字段 Event Object
     → 可选: enhancer (3 tier) + generator (insight)
     → pusher.py → POST /internal/news/batch

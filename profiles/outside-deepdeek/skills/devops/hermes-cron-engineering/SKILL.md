@@ -148,8 +148,11 @@ schtasks /create /tn "Hermes-Git-Backup" /tr "<script-path>" /sc daily /st 12:00
 |------|:--:|------|------|
 | rss-scan | 5min | Hermes Cron | rss-scanner.py |
 | news-pipeline | 30min | Hermes Cron | news-pipeline.py |
+| db-cloud-sync | 30min | Hermes Cron | cron-sync.py |
 | git-backup | 每日12:00 | Task Scheduler | git-backup.sh |
 | full-backup | 每日18:00 | Task Scheduler | full-backup.sh |
+
+DB-to-Cloud sync: aggregates events + SCP uploads SQLite + restarts cloud backend. See `references/db-cloud-sync-pattern.md`.
 
 ## 七、Report JSON 规范
 

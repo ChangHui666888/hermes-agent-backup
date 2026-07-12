@@ -259,6 +259,19 @@
     "use_count": 1,
     "view_count": 1
   },
+  "docker-web-deployment": {
+    "archived_at": null,
+    "created_at": "2026-07-12T11:39:36.823289+00:00",
+    "created_by": "agent",
+    "last_patched_at": "2026-07-12T13:03:30.104756+00:00",
+    "last_used_at": "2026-07-12T13:02:55.538245+00:00",
+    "last_viewed_at": "2026-07-12T13:02:55.523334+00:00",
+    "patch_count": 6,
+    "pinned": false,
+    "state": "active",
+    "use_count": 2,
+    "view_count": 2
+  },
   "dogfood": {
     "archived_at": null,
     "created_at": "2026-06-26T17:29:32.168613+00:00",
@@ -445,14 +458,14 @@
     "archived_at": null,
     "created_at": "2026-07-10T17:22:05.668862+00:00",
     "created_by": "agent",
-    "last_patched_at": "2026-07-10T17:22:18.699993+00:00",
-    "last_used_at": null,
-    "last_viewed_at": null,
-    "patch_count": 1,
+    "last_patched_at": "2026-07-12T13:55:42.234038+00:00",
+    "last_used_at": "2026-07-12T13:54:36.186281+00:00",
+    "last_viewed_at": "2026-07-12T13:54:36.167381+00:00",
+    "patch_count": 3,
     "pinned": false,
     "state": "active",
-    "use_count": 0,
-    "view_count": 0
+    "use_count": 1,
+    "view_count": 1
   },
   "hermes-fullstack-knowledge": {
     "archived_at": null,
@@ -531,6 +544,19 @@
     "state": "active",
     "use_count": 0,
     "view_count": 0
+  },
+  "intelligence-dashboard": {
+    "archived_at": null,
+    "created_at": "2026-07-12T09:34:01.747037+00:00",
+    "created_by": "agent",
+    "last_patched_at": "2026-07-12T09:34:37.018354+00:00",
+    "last_used_at": "2026-07-12T12:27:19.996768+00:00",
+    "last_viewed_at": "2026-07-12T12:27:19.979680+00:00",
+    "patch_count": 3,
+    "pinned": false,
+    "state": "active",
+    "use_count": 1,
+    "view_count": 1
   },
   "jupyter-live-kernel": {
     "archived_at": null,
@@ -926,14 +952,14 @@
     "archived_at": null,
     "created_at": "2026-07-08T01:36:44.390843+00:00",
     "created_by": null,
-    "last_patched_at": "2026-07-12T08:05:20.102579+00:00",
-    "last_used_at": "2026-07-12T08:03:55.266554+00:00",
-    "last_viewed_at": "2026-07-12T08:03:55.230577+00:00",
-    "patch_count": 90,
+    "last_patched_at": "2026-07-12T11:12:23.435877+00:00",
+    "last_used_at": "2026-07-12T11:11:50.535114+00:00",
+    "last_viewed_at": "2026-07-12T11:11:50.531183+00:00",
+    "patch_count": 101,
     "pinned": false,
     "state": "active",
-    "use_count": 33,
-    "view_count": 33
+    "use_count": 39,
+    "view_count": 39
   },
   "segment-anything-model": {
     "archived_at": null,
@@ -1077,6 +1103,32 @@
     "state": "active",
     "use_count": 0,
     "view_count": 0
+  },
+  "web-docker-deploy": {
+    "archived_at": null,
+    "created_at": "2026-07-12T12:12:54.542049+00:00",
+    "created_by": "agent",
+    "last_patched_at": "2026-07-12T13:54:59.681681+00:00",
+    "last_used_at": "2026-07-12T13:54:18.930628+00:00",
+    "last_viewed_at": "2026-07-12T13:54:18.915722+00:00",
+    "patch_count": 6,
+    "pinned": false,
+    "state": "active",
+    "use_count": 3,
+    "view_count": 3
+  },
+  "web-intelligence-dashboard": {
+    "archived_at": null,
+    "created_at": "2026-07-12T09:11:35.736252+00:00",
+    "created_by": "agent",
+    "last_patched_at": "2026-07-12T13:16:21.580030+00:00",
+    "last_used_at": "2026-07-12T13:54:27.388267+00:00",
+    "last_viewed_at": "2026-07-12T13:54:27.373371+00:00",
+    "patch_count": 11,
+    "pinned": false,
+    "state": "active",
+    "use_count": 6,
+    "view_count": 6
   },
   "web-scraping-pipeline": {
     "archived_at": null,

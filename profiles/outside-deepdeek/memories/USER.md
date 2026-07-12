@@ -7,3 +7,5 @@
 用户是严谨的流程/架构导向型工程师。要求数据抓取优先选优雅工具（Scrapling > 浏览器），出错后必须做根因分析并建立永久防护机制（规则+技能+记忆三步）。偏好伪代码形式的硬规则（V1修复版风格），而非软建议。对时间线/数据一致性有强迫级要求，不接受"看起来对"的模糊结果。重视知识沉淀——成功和失败的策略都要写入 skill + memory，关键词必须精准确保下次匹配。
 §
 工程规范: 所有cron脚本遵循统一模板—Shell仅定位+启动Python, Python仅argparse+logging+调用业务函数, 业务返回report dict写入JSON。循环任务用Hermes Cron(every 5m/30m), 固定时间用Task Scheduler(12:00/18:00)。Shell和.py必须同目录(rss-scan模式)。create "30m"=once, add "every 30m"=循环。所有cron脚本放~/.hermes/scripts/。RSS隔离: 3次失败→隔离30分钟。Qwen超时60s, max_tokens=1024。评分阈值: Tier A≥90, B=60-89, C<60。备份: Git每日+全量F盘每3天, 保留15天, restore.bat双YES确认。PYTHONUNBUFFERED=1保证cron日志。
+§
+News Intelligence Platform 架构师/自媒体内容生产专家。偏好冻结 Schema 后逐层验证，不做规划只要求交付。执行风格：先验证真实数据再开发，Event-centric 设计（不是 Article-centric），严格分离数据生产链和 Web 展示层。决策模式：给出结构化选项并标注推荐，要求每个 Task 有明确的输入/输出和验收标准。review 时提供逐项 gap 分析+具体修改指令，不接收模糊建议。

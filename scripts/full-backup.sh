@@ -1,49 +1,60 @@
 #!/usr/bin/env bash
 # full-backup.sh v2 — 生产版全量备份 (每天18:00, Windows Task Scheduler)
+#!/usr/bin/env bash
 set -Eeuo pipefail
 
 SOURCE="C:/Users/ChangHui/AppData/Local/hermes"
 DEST="F:/hermes-backup"
-LOG_DIR="$SOURCE/scripts/logs"
-STATE_DIR="$SOURCE/backup-state"
-DATE=$(date +%Y-%m-%d_%H-%M)
-BACKUP_NAME="hermes_${DATE}"
-LOG_FILE="$LOG_DIR/full-backup.log"
-STATE_FILE="$STATE_DIR/last-success"
+LOG_DIR="$DEST/logs"               # 移出源目录
+STATE_DIR="$DEST/state"
+LOCK_FILE="/tmp/hermes-fullbackup.lock"
+
+# 依赖检测
+command -v rsync >/dev/null || { echo "需要 rsync" >&2; exit 1; }
+
+# 并发控制
+exec 200>"$LOCK_FILE"
+flock -n 200 || { echo "备份已在运行"; exit 1; }
+
+# 目标盘检测
+[ -d "F:/" ] || { echo "F: 盘不可用"; exit 1; }
 
 mkdir -p "$DEST" "$LOG_DIR" "$STATE_DIR"
 
-log()  { echo "[$(date +%H:%M:%S)] $1" | tee -a "$LOG_FILE"; }
-die()  { log "FATAL: $1"; exit 1; }
+DATE=$(date +%Y-%m-%d_%H-%M)
+BACKUP_NAME="hermes_${DATE}"
+LOG_FILE="$LOG_DIR/full-backup.log"
 
-log "=== FULL BACKUP v2 START ==="
-log "Source: $SOURCE"
-log "Dest:   $DEST/$BACKUP_NAME"
+log() { echo "[$(date +%H:%M:%S)] $1" | tee -a "$LOG_FILE"; }
+die() { log "FATAL: $1"; exit 1; }
 
-# ── 执行备份 ──
+log "=== FULL BACKUP START ==="
+
+# 源完整性检查（按需调整标志文件）
+[ -f "$SOURCE/package.json" ] || die "源目录哨兵文件缺失，终止备份"
+
+# 备份
 if rsync -av --delete \
     --exclude='node_modules/' \
-    --exclude='hermes-agent/node_modules/' \
-    --exclude='.git/' \
-    --exclude='__pycache__/' \
-    --exclude='*.pyc' \
-    --exclude='audio_cache/' \
-    --exclude='image_cache/' \
-    --exclude='cache/' \
+    ... \
     "$SOURCE/" "$DEST/$BACKUP_NAME/" >> "$LOG_FILE" 2>&1; then
-    log "rsync OK"
+    log "rsync 成功"
 else
-    die "rsync failed"
+    die "rsync 失败"
 fi
 
-# ── 成功标记 ──
-echo "$DATE" > "$STATE_FILE"
+echo "$DATE" > "$STATE_DIR/last-success"
 echo "OK" > "$DEST/$BACKUP_NAME/backup.ok"
-log "marker written"
 
-# ── 清理 14 天前旧备份 ──
-DELETED=$(find "$DEST" -maxdepth 1 -name "hermes_*" -type d -mtime +14 2>/dev/null | wc -l)
-find "$DEST" -maxdepth 1 -name "hermes_*" -type d -mtime +14 -exec rm -rf {} \; 2>/dev/null || true
-log "cleanup: removed $DELETED old backups (14d+)"
+# 清理（基于目录名日期）
+CUTOFF=$(date -d "-14 days" +%Y-%m-%d)
+for bak in "$DEST"/hermes_????-??-??_??-??; do
+    [ -d "$bak" ] || continue
+    bname=$(basename "$bak")
+    if [[ "${bname:6:10}" < "$CUTOFF" ]]; then
+        log "清理旧备份: $bname"
+        rm -rf "$bak"
+    fi
+done
 
 log "=== FULL BACKUP DONE ==="

@@ -22,7 +22,40 @@ tags:
 category: research
 ---
 
-# 搜索抓取引擎 v2（2026-07-08 独立化重构）
+# 搜索抓取引擎 v4.4（2026-07-12 Event Registry 升级）
+
+## 🆕 Web Intelligence Dashboard (V1) — Cloud Deployed
+
+**CRITICAL DEPLOYMENT RULES**:
+- Windows Hermes is development-only. **NEVER** run npm, docker build, docker compose locally.
+- ALL builds happen on cloud VPS (100.107.117.23) via Docker.
+- Verification via `curl localhost:80` on cloud host, NOT `localhost:3000` locally.
+- Node.js is NOT installed on cloud — Docker provides the runtime.
+- Do NOT recover old `news-intel-platform` containers (Vue.js + PG, frozen).
+- Architecture: Pipeline (Windows) → SQLite file → Cloud (Docker) → Web.
+- Two separate systems, connected only by the Event Registry SQLite file.
+- Transfer pattern: tar project → paramiko SCP → SSH unzip → docker compose up.
+
+### Deployment target
+- Cloud host: `100.107.117.23` (administrator, Docker 29.5.3, Ubuntu 24.04)
+- Project path: `/home/administrator/news-intel-web/`
+- Old deployment: `/home/administrator/news-intel-platform/` (frozen, do NOT recover)
+- Docker compose: 3 services (frontend: Next.js 16, backend: FastAPI, nginx: reverse proxy)
+
+### Docker build pitfalls (Next.js 16 + Tailwind v4)
+1. `@apply` directives in CSS may fail in Docker build — use pure CSS variables instead
+2. Type errors for missing `.d.ts` (e.g. react-simple-maps) — set `typescript.ignoreBuildErrors: true` in next.config.ts
+3. Pages using `useSearchParams()` must be wrapped in `<Suspense>` boundary
+4. Use `npm install --legacy-peer-deps` not `npm ci` in Dockerfile (lockfile may be platform-specific)
+
+### SQLite read-only volume mount (UNRESOLVED)
+- Docker volume mount `:/data:ro` prevents SQLite from creating WAL journal files
+- Error: `sqlite3.OperationalError: unable to open database file`
+- Next session fix: either remove `:ro` mount flag or use `?mode=ro&immutable=1` URI
+
+See `references/web-v1-cloud-deployment.md` for full deployment guide.
+
+## 🆕 V4.4: Event Registry + Source/Entity ID + Evidence/SourceChain/Timeline + Event API + Event-level LLM
 
 ## 🆕 v2.2: News Intelligence Engine（评分 + 路由 + 三级增强）
 
@@ -419,7 +452,43 @@ print(result['confidence'])
 - `scripts/core/extractor.py` — 🆕 纯脚本结构化抽取（标题/日期/作者/摘要/要点，0.78ms/篇）
 - `scripts/batch.py` — 独立 CLI 入口（cron 友好）
 
-## 🆕 L8 事件聚合器 V4.3 (`news_intel/aggregator.py`) — 当前生产版本
+## 🆕 L8 事件聚合器 V4.4 (`news_intel/aggregator.py`) — 当前生产版本
+
+**V4.4 (2026-07-12)**。v4.3 基础上新增三层基础设施:
+
+### Event Registry (Phase 3.5)
+- `event_registry` 表 — 事件持久化 (event_id PK, 25+字段)
+- `source_registry` 表 — 来源实体化 (source_id, name, type, authority)
+- `entity_registry` 表 — 实体标准化 (entity_id, canonical_name, aliases, type)
+- 聚合完成后自动写入，`_get_persist_db()` 单连接复用
+
+### Source Entity ID + Entity ID
+- `_source_name_to_id("Reuters")` → `SRC_REUTERS`
+- `_entity_name_to_id("United States")` → `CTRY_UNITED_STATES`
+- 前缀规则: COMP_ / PERS_ / CTRY_ / ORG_ / LOC_ / ENT_
+- `_infer_source_type_from_name()`: GOVERNMENT / MEDIA / RESEARCH / SOCIAL
+
+### Event Dossier 新字段 (3个)
+- **evidence** [{quote, source, url}] — 原文摘录 (来自 article description)
+- **source_chain** [{source_id, source_name, time, role(break|follow), url}] — 首发/跟进链
+- **timeline** [{time, update, source}] — 按小时去重的关键节点
+
+### Event API (pusher.py v4.4)
+- `push_events()` → POST `/internal/events/batch` → 云端 PostgreSQL
+- `push_from_registry()` → 从本地 event_registry 读取并推送
+- `_event_to_push_format()` → 21字段 → 云端友好格式
+
+### Event-level LLM (generator.py v4.4)
+- `generate_intel()` — 用完整 Dossier 调用 DeepSeek 做 intelligence 分析
+- `EVENT_INTEL_PROMPT` — significance / forecast / key_uncertainty / risk_level
+- `_format_event_dossier()` — SAO + evidence + timeline + source_chain → LLM 可读文本
+- `generate_for_event()` — 自动路由: 有 evidence → event-level, 否则 → 旧 insight
+
+详见 `references/event-aggregation-v4.4.md`。
+
+## 🗄️ V4.3 Event Schema (向后兼容参考)
+
+V4.3 的 21 字段在 V4.4 中全部保留，新增 `evidence`, `source_chain`, `timeline` 三个字段，以及 SAO 中的 `entity_id` 和 source 中的 `primary_source_id`。
 
 **V4.3 (2026-07-11 冻结)**。Event-Centric 3-phase + Entity Intelligence Layer + Location 硬约束 + Action 计数排序。
 
