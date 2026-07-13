@@ -1,7 +1,7 @@
 ---
 name: web-docker-deploy
 description: Deploy Next.js + FastAPI + SQLite web apps to cloud Docker. NEVER build locally.
-version: 1.0.0
+version: 1.1.0
 category: devops
 platforms: [linux, macos, windows]
 metadata:
@@ -18,7 +18,9 @@ Deploy a Next.js + FastAPI + SQLite stack to a remote Docker host. All builds ha
 1. **NEVER build locally.** No `npm run dev`, no `docker build`, no `docker compose up` on Windows.
 2. **All verification via cloud curl**, never `localhost:3000`.
 3. **SQLite needs `immutable=1`** for Docker read-only volume mounts.
-4. **`NEXT_PUBLIC_API_URL` must be inlined at build time** — set in Dockerfile ENV AND next.config.ts `env` block.
+4. **`NEXT_PUBLIC_API_URL` must be inlined at build time** — set in BOTH Dockerfile ENV AND next.config.ts `env` block.
+5. **After every frontend rebuild, restart nginx**: `docker compose restart nginx`.
+6. **Never use `--no-cache`** on small VMs (3.9GB RAM). Incremental build works.
 
 ## Project Structure
 
@@ -27,25 +29,24 @@ project/
 ├── docker-compose.yml
 ├── nginx.conf
 ├── frontend/
-│   ├── Dockerfile
+│   ├── Dockerfile           ← ENV NEXT_PUBLIC_API_URL=/api/v1 BEFORE COPY+BUILD
 │   ├── .dockerignore
-│   ├── next.config.ts     ← MUST have env: { NEXT_PUBLIC_API_URL: "/api/v1" }
+│   ├── next.config.ts       ← env: { NEXT_PUBLIC_API_URL: "/api/v1" }
 │   ├── package.json
 │   └── src/
-│       ├── app/           ← pages
-│       ├── components/    ← React components
-│       ├── lib/api.ts     ← API_BASE = process.env.NEXT_PUBLIC_API_URL || "/api/v1"
-│       └── contracts/     ← TypeScript interfaces (frozen)
+│       ├── app/             ← pages (client components for SSR avoidance)
+│       ├── components/
+│       ├── lib/api.ts       ← hardcoded /api/v1, NO localhost fallback
+│       └── contracts/
 └── backend/
     ├── Dockerfile
-    ├── main.py            ← FastAPI entry
-    ├── db.py              ← SQLite connect with immutable mode
-    ├── models/schemas.py  ← Pydantic models matching contracts
-    ├── api/               ← route modules
+    ├── main.py
+    ├── db.py                ← immutable=1 for Docker
+    ├── api/
     └── requirements.txt
 ```
 
-## Critical Files
+## Key File Templates
 
 ### frontend/Dockerfile
 
@@ -53,8 +54,8 @@ project/
 FROM node:22-alpine AS builder
 WORKDIR /app
 COPY package.json ./
-RUN npm install --legacy-peer-deps
-ENV NEXT_PUBLIC_API_URL=/api/v1    # ← MUST be before COPY+BUILD
+RUN npm install --legacy-peer-deps      # NOT npm ci
+ENV NEXT_PUBLIC_API_URL=/api/v1         # MUST be before COPY+BUILD
 COPY . .
 RUN npm run build
 
@@ -75,7 +76,7 @@ CMD ["npx", "next", "start", "-p", "3000"]
 import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   typescript: { ignoreBuildErrors: true },
-  env: { NEXT_PUBLIC_API_URL: "/api/v1" },  // ← build-time inlining
+  env: { NEXT_PUBLIC_API_URL: "/api/v1" },
 };
 export default nextConfig;
 ```
@@ -83,10 +84,15 @@ export default nextConfig;
 ### frontend/src/lib/api.ts
 
 ```typescript
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || "/api/v1";  // ← NEVER localhost fallback
+async function fetchAPI<T>(path: string): Promise<T> {
+  const res = await fetch(`/api/v1${path}`);  // hardcoded, NO env var
+  if (!res.ok) throw new Error(`API error: ${res.status}`);
+  return res.json();
+}
+export { fetchAPI };
 ```
 
-### backend/db.py — SQLite Read-Only
+### backend/db.py
 
 ```python
 import sqlite3, os
@@ -101,74 +107,31 @@ def get_db() -> sqlite3.Connection:
         db = sqlite3.connect(f"file:{PIPELINE_DB}?mode=ro", uri=True)
     db.row_factory = sqlite3.Row
     return db
-```python
-
-### nginx.conf
-
-```nginx
-server {
-    listen 80;
-    location /api/ { proxy_pass http://backend:8000/api/; }
-    location / { proxy_pass http://frontend:3000; }
-}
-```
-
-### docker-compose.yml
-
-```yaml
-services:
-  backend:
-    build: ./backend
-    volumes:
-      - ${EVENT_REGISTRY_PATH:-./data}:/data:ro
-    environment:
-      - DB_PATH=/data/news_intel.db
-
-  frontend:
-    build: ./frontend
-    environment:
-      - NEXT_PUBLIC_API_URL=/api/v1
-
-  nginx:
-    image: nginx:alpine
-    volumes:
-      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
-    ports:
-      - "80:80"
 ```
 
 ## Deployment Workflow
 
-```bash
-# 1. Write code locally (Windows)
-# 2. Tar + SCP to cloud (paramiko) — see references/paramiko-deploy-pattern.md for Python snippet
-# 3. On cloud: docker compose up -d --build
-# 4. Verify: curl localhost:80/api/v1/dashboard
 ```
-
-## Cloud Crash Recovery
-
-If the cloud VPS becomes unreachable after a build (common with `--no-cache` on small VMs):
-1. Wait for the host to reboot (K8s worker nodes auto-recover)
-2. SSH in and check with `docker compose ps`
-3. If containers are down: `docker compose up -d` (no rebuild needed, images exist)
-4. Always `docker compose restart nginx` after frontend container IP change
+1. Write code locally (Windows)
+2. Tar + SCP to cloud (paramiko)
+3. docker compose up -d --build    ← NEVER --no-cache
+4. docker compose restart nginx    ← ALWAYS after frontend build
+5. curl localhost:80/api/v1/dashboard
+6. Browser verify: browser_navigate(http://IP)
+```
 
 ## Common Pitfalls
 
-| Symptom | Root Cause | Fix |
-|---------|-----------|-----|
-| "API unavailable" in browser | `NEXT_PUBLIC_API_URL` not inlined, falls back to localhost | Set in Dockerfile ENV + next.config.ts env |
-| `sqlite3.OperationalError: unable to open database file` | WAL mode needs write access on read-only mount | Add `&immutable=1` to URI |
-| `useSearchParams` prerender error | Server Component using client hook | Wrap in `<Suspense>` or make client component |
-| Tailwind v4 `@apply` errors (`border-border`, `bg-background`) | `@apply` with shadcn/Tailwind v4 incompatibility | Use vanilla CSS instead of `@apply` |
-| `npm ci` fails on Alpine | Platform-locked package-lock.json | Use `npm install --legacy-peer-deps` instead |
-| 502 after frontend rebuild | Nginx caches old upstream IP | `docker compose restart nginx` |
-| SSR page shows API error | Server Component fetch() runs on frontend container (no API) | Convert page to client component with useEffect fetch |
-| Cloud crashes on `--no-cache` build | Full rebuild exhausts RAM (~3.9GB) | Never use `--no-cache`; incremental rebuild works |
-| `npm ci` fails on Alpine | Platform-locked package-lock.json from Windows | Use `npm install --legacy-peer-deps` (NOT `npm ci`) |
-| `npm ci` fails on Alpine | Platform-locked package-lock.json from Windows | Use `npm install --legacy-peer-deps` (NOT `npm ci`) |
-| TypeScript type error on `react-simple-maps` | No `@types/react-simple-maps` | `typescript: { ignoreBuildErrors: true }` in next.config.ts |
-| DB corrupted after git reset or SFTP copy | SQLite WAL mode mismatch between local and Docker | Restore via cloud: `src.connect("file:db?mode=ro&immutable=1", uri=True).backup(dst)` |
-
-For the complete 10-issue pitfalls reference, see `references/sqlite-readonly-docker.md`.`,
+| Symptom | Cause | Fix |
+|---------|-------|-----|
+| "API unavailable" | `NEXT_PUBLIC_API_URL` not inlined | Set in Dockerfile ENV + next.config.ts + hardcode in api.ts |
+| `sqlite3.OperationalError` | WAL mode on ro mount | `mode=ro&immutable=1` in URI |
+| `useSearchParams` prerender error | Server Component | Wrap in `<Suspense>` |
+| Tailwind v4 `@apply` errors | shadcn/v4 incompatibility | Use vanilla CSS instead of @apply |
+| `npm ci` fails on Alpine | Cross-platform lockfile | Use `npm install --legacy-peer-deps` |
+| 502 after rebuild | Nginx cached upstream | `docker compose restart nginx` |
+| SSR page API error | fetch() on frontend container | Convert to client component + useEffect |
+| Cloud crash on build | `--no-cache` OOM | Never use --no-cache |
+| TypeScript errors | Missing @types/* | `ignoreBuildErrors: true` |
+| DB corrupted after SFTP download | Immutable mode vs local open | Restore via `src.backup(dst)` |
+| Page empty/grep shows 0 content | Client components not in grep output | Verify with browser_navigate, not curl grep |

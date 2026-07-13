@@ -485,13 +485,13 @@
     "created_at": "2026-06-28T15:24:55.404196+00:00",
     "created_by": null,
     "last_patched_at": "2026-07-11T08:03:45.955094+00:00",
-    "last_used_at": "2026-07-11T08:02:49.182506+00:00",
-    "last_viewed_at": "2026-07-11T08:02:49.157815+00:00",
+    "last_used_at": "2026-07-13T03:33:27.552406+00:00",
+    "last_viewed_at": "2026-07-13T03:33:27.537063+00:00",
     "patch_count": 6,
     "pinned": false,
     "state": "active",
-    "use_count": 6,
-    "view_count": 6
+    "use_count": 7,
+    "view_count": 7
   },
   "himalaya": {
     "archived_at": null,
@@ -1108,27 +1108,27 @@
     "archived_at": null,
     "created_at": "2026-07-12T12:12:54.542049+00:00",
     "created_by": "agent",
-    "last_patched_at": "2026-07-13T03:18:21.553205+00:00",
-    "last_used_at": "2026-07-13T03:16:37.456072+00:00",
-    "last_viewed_at": "2026-07-13T03:16:37.441648+00:00",
-    "patch_count": 7,
+    "last_patched_at": "2026-07-13T03:34:36.814139+00:00",
+    "last_used_at": "2026-07-13T03:33:40.797715+00:00",
+    "last_viewed_at": "2026-07-13T03:33:40.781665+00:00",
+    "patch_count": 8,
     "pinned": false,
     "state": "active",
-    "use_count": 4,
-    "view_count": 4
+    "use_count": 5,
+    "view_count": 5
   },
   "web-intelligence-dashboard": {
     "archived_at": null,
     "created_at": "2026-07-12T09:11:35.736252+00:00",
     "created_by": "agent",
     "last_patched_at": "2026-07-13T03:18:13.185929+00:00",
-    "last_used_at": "2026-07-13T03:16:50.368750+00:00",
-    "last_viewed_at": "2026-07-13T03:16:50.352623+00:00",
+    "last_used_at": "2026-07-13T03:34:45.669149+00:00",
+    "last_viewed_at": "2026-07-13T03:34:45.653817+00:00",
     "patch_count": 18,
     "pinned": false,
     "state": "active",
-    "use_count": 8,
-    "view_count": 8
+    "use_count": 9,
+    "view_count": 9
   },
   "web-scraping-pipeline": {
     "archived_at": null,
