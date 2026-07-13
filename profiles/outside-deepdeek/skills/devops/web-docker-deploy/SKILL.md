@@ -167,6 +167,8 @@ If the cloud VPS becomes unreachable after a build (common with `--no-cache` on 
 | SSR page shows API error | Server Component fetch() runs on frontend container (no API) | Convert page to client component with useEffect fetch |
 | Cloud crashes on `--no-cache` build | Full rebuild exhausts RAM (~3.9GB) | Never use `--no-cache`; incremental rebuild works |
 | `npm ci` fails on Alpine | Platform-locked package-lock.json from Windows | Use `npm install --legacy-peer-deps` (NOT `npm ci`) |
+| `npm ci` fails on Alpine | Platform-locked package-lock.json from Windows | Use `npm install --legacy-peer-deps` (NOT `npm ci`) |
 | TypeScript type error on `react-simple-maps` | No `@types/react-simple-maps` | `typescript: { ignoreBuildErrors: true }` in next.config.ts |
+| DB corrupted after git reset or SFTP copy | SQLite WAL mode mismatch between local and Docker | Restore via cloud: `src.connect("file:db?mode=ro&immutable=1", uri=True).backup(dst)` |
 
 For the complete 10-issue pitfalls reference, see `references/sqlite-readonly-docker.md`.`,

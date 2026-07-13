@@ -275,6 +275,7 @@ Construct this path with `os.path.expanduser()` and `os.path.join()` — never h
 
 - `references/docker-cloud-deployment.md` — Full Docker Compose deploy: nginx, SQLite immutable, paramiko transfer
 - `references/cron-cloud-sync.md` — Hermes cron for pipeline-to-cloud DB sync every 30 minutes
+- `references/profile-landscape-analysis.md` — How to scan a Hermes profile to understand project relationships before building
 - `references/acceptance-criteria.md` — V1 acceptance checklist
 - `references/situational-awareness-pattern.md` — Dashboard V2 design pattern
 - `references/tasks.md` — Frozen 8-task development plan
@@ -289,3 +290,4 @@ Construct this path with `os.path.expanduser()` and `os.path.join()` — never h
 17. **Browser verification for client-side fetch**: Dashboard pages that fetch API data MUST be client components (`"use client"` with `useEffect`). Server Components doing SSR will try to resolve `/api/v1/dashboard` against `localhost:3000` (the Next.js server) instead of through nginx to the backend. Always verify in-browser, not just via `curl` from the server.
 18. **Git push rejection for files >100MB**: GitHub rejects pushes containing files over 100MB. If a large file (e.g. `.rar`, `.tar.gz`) was accidentally committed, use `git reset --soft <last-good-commit>` to squash, then `git rm --cached <large-file>` before recommitting and pushing.
 19. **DB path in Docker**: The backend's `db.py` must accept `DB_PATH` from environment variables for Docker mounts. Default to the Windows pipeline path, override to `/data/news_intel.db` in `docker-compose.yml`.
+20. **Git reset corrupts DB**: If `news_intel.db` is tracked in git, `git reset --hard` reverts it to an old committed snapshot, losing pipeline data. Recovery: download the cloud copy via SFTP, then fix corruption with `sqlite3.connect("file:db?mode=ro&immutable=1", uri=True).backup(dst)` if needed.
