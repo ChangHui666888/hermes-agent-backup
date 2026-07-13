@@ -305,7 +305,7 @@ def fetch_scrapling(
         from scrapling import StealthyFetcher
 
         fetcher = StealthyFetcher()
-        resp = fetcher.fetch(url, timeout=timeout)
+        resp = fetcher.fetch(url, timeout=int(timeout * 1000))
 
         if resp is None:
             return None
