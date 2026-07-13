@@ -263,14 +263,14 @@
     "archived_at": null,
     "created_at": "2026-07-12T11:39:36.823289+00:00",
     "created_by": "agent",
-    "last_patched_at": "2026-07-13T07:02:49.104535+00:00",
-    "last_used_at": "2026-07-13T07:01:37.415153+00:00",
-    "last_viewed_at": "2026-07-13T07:01:37.397029+00:00",
-    "patch_count": 12,
+    "last_patched_at": "2026-07-13T07:25:29.492987+00:00",
+    "last_used_at": "2026-07-13T07:25:05.045865+00:00",
+    "last_viewed_at": "2026-07-13T07:25:05.030110+00:00",
+    "patch_count": 13,
     "pinned": false,
     "state": "active",
-    "use_count": 5,
-    "view_count": 5
+    "use_count": 6,
+    "view_count": 6
   },
   "dogfood": {
     "archived_at": null,
@@ -1121,14 +1121,14 @@
     "archived_at": null,
     "created_at": "2026-07-12T09:11:35.736252+00:00",
     "created_by": "agent",
-    "last_patched_at": "2026-07-13T06:38:18.837447+00:00",
-    "last_used_at": "2026-07-13T06:37:22.182370+00:00",
-    "last_viewed_at": "2026-07-13T06:37:22.167510+00:00",
-    "patch_count": 20,
+    "last_patched_at": "2026-07-13T07:25:47.849682+00:00",
+    "last_used_at": "2026-07-13T07:26:00.991270+00:00",
+    "last_viewed_at": "2026-07-13T07:26:00.976685+00:00",
+    "patch_count": 21,
     "pinned": false,
     "state": "active",
-    "use_count": 10,
-    "view_count": 10
+    "use_count": 12,
+    "view_count": 12
   },
   "web-scraping-pipeline": {
     "archived_at": null,

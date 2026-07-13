@@ -260,7 +260,7 @@ Construct this path with `os.path.expanduser()` and `os.path.join()` — never h
 
 ## Pitfalls
 
-1. **create-next-app conflicts**: If frontend/ already has files (e.g. contracts/), move them to /tmp first, create the app, then restore.
+1. **Git commit after every task**: The user requires `git add -A && git commit && git push` after completing each task phase. Never batch multiple phases into one commit. This provides rollback points and review checkpoints.
 2. **shadcn-ui deprecation**: Use `npx shadcn@latest init -d` (not shadcn-ui). The `--style new-york --base-color slate` flags no longer work in shadcn v4.
 3. **shadcn v4 overwrites globals.css**: After `npx shadcn@latest init -d`, the generated `globals.css` uses Tailwind v4's default theme. You MUST completely rewrite it with the Dark Intelligence Theme tokens. The original should be replaced, not patched.
 4. **@tailwindcss/postcss missing**: Install separately with `npm install @tailwindcss/postcss` after create-next-app.

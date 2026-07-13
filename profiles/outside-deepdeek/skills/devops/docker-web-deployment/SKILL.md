@@ -303,7 +303,39 @@ docker compose logs backend --tail=20
 
 ## Additional Docker Build Pitfalls
 
-### Nginx 502 after frontend rebuild
+### PYTHONPATH for non-root Python projects
+
+When the FastAPI app is organized as `apps/api/` (not at repo root), the Docker container needs `PYTHONPATH=/app` so `from apps.api.database import ...` works:
+
+```dockerfile
+FROM python:3.12-slim
+WORKDIR /app
+ENV PYTHONPATH=/app          # ← REQUIRED for nested app structure
+COPY apps/api/requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+COPY . .
+CMD ["uvicorn", "apps.api.main:app", "--host", "0.0.0.0", "--port", "8000"]
+```
+
+Without `PYTHONPATH`, module resolution fails with `ModuleNotFoundError: No module named 'apps'`.
+
+### Docker cp for one-off migrations
+
+For one-time operations (DB migration, data seeding) inside running containers without rebuilding:
+
+```bash
+# 1. Create script locally, upload to cloud host
+# 2. Copy into container
+docker cp /tmp/migrate.py container-name:/tmp/
+
+# 3. Execute with required env
+docker exec -e PYTHONPATH=/app container-name python3 /tmp/migrate.py
+
+# 4. Verify
+curl localhost:80/api/v1/dashboard
+```
+
+This avoids rebuilding the entire image for one-off schema changes or data migrations.
 
 When frontend container is rebuilt, nginx holds stale upstream connection to old container IP. Symptom: `502 Bad Gateway` while all containers show UP.
 
