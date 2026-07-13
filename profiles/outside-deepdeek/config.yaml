@@ -423,13 +423,14 @@ approvals:
   mcp_reload_confirm: true
   destructive_slash_confirm: true
 command_allowlist:
-  - stop/restart hermes gateway (kills running agents)
-  - recursive delete
+  - SQL DROP
+  - delete in root path
   - script execution via -e/-c flag
+  - stop/restart hermes gateway (kills running agents)
   - shell command via -c/-lc flag
+  - recursive delete
   - execute_code
   - script execution via heredoc
-  - delete in root path
 hooks_auto_accept: false
 security:
   allow_private_urls: false

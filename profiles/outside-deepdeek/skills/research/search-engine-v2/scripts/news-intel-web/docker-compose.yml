@@ -1,10 +1,28 @@
 services:
-  backend:
-    build: ./backend
-    volumes:
-      - ${EVENT_REGISTRY_PATH:-./data}:/data:ro
+  postgres:
+    image: postgres:16-alpine
     environment:
-      - DB_PATH=/data/news_intel.db
+      POSTGRES_DB: news_intel
+      POSTGRES_USER: news_admin
+      POSTGRES_PASSWORD: news_pass
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U news_admin -d news_intel"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  backend:
+    build: ../news-platform-v8
+    environment:
+      DATABASE_URL: postgresql://news_admin:news_pass@postgres:5432/news_intel
+      INTERNAL_TOKEN: ${INTERNAL_TOKEN:-v8-pipeline-token-2026-xK9mP2sR7wQ}
+      JWT_SECRET: ${JWT_SECRET:-v8-jwt-secret-2026-nY4fT8bV3mL}
+    depends_on:
+      postgres:
+        condition: service_healthy
     restart: unless-stopped
 
   frontend:
@@ -24,3 +42,8 @@ services:
     restart: unless-stopped
     depends_on:
       - frontend
+
+volumes:
+  pgdata:
+    external: true
+    name: news-intel-platform_pgdata

@@ -279,6 +279,19 @@ Construct this path with `os.path.expanduser()` and `os.path.join()` — never h
 - `references/acceptance-criteria.md` — V1 acceptance checklist
 - `references/situational-awareness-pattern.md` — Dashboard V2 design pattern
 - `references/tasks.md` — Frozen 8-task development plan
+- `references/v8-unified-architecture.md` — V8 unified platform pattern: SFTP→HTTP, single PG source, dual-instance merge decision tree
+
+## Pitfalls
+
+21. **SFTP data sync is fragile**: SCP'ing SQLite files to cloud + SSH restart creates race conditions, file corruption, and requires paramiko. Replace with HTTP POST `/internal/events/batch` — the pipeline pushes events via `httpx` to the same FastAPI that serves the web. No restart needed, immediate visibility.
+
+22. **Hardcoded secrets kill production**: Always audit with `grep -rn "secret\|token\|password"` before deploying. Migrate all secrets to `.env` + `.gitignore`. Rotate any keys that appeared in code reviews or public repos.
+
+23. **PG volume recovery**: If a Docker PostgreSQL container was deleted but the named volume still exists (`docker volume ls`), the data is recoverable. Start a new container pointing to the same volume, then `pg_dump`.
+
+24. **Dual-instance merge evaluation**: Before merging two web platforms, compare (a) backend frameworks, (b) frontend frameworks, (c) data sources. Only merge if backends share a framework AND the primary DB can absorb the secondary. Side-by-side is faster but creates long-term maintenance debt. See `references/v8-unified-architecture.md` for the full decision tree.
+
+25. **Client-side fetch requires `\"use client\"`**: Dashboard and pages that fetch API data MUST be client components with `useEffect`. Server Components doing SSR will resolve relative URLs against `localhost:3000` (the Next.js server, not the API backend). Always verify in-browser, not just via `curl`.
 
 ## Pitfalls
 

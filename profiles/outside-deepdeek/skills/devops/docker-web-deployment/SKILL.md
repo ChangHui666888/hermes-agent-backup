@@ -305,6 +305,31 @@ browser_console(expression="fetch('/api/v1/dashboard')...")  # test client fetch
 
 **Root cause**: Next.js client components do API fetches in the browser, not during SSR. Server-side curl only captures the initial HTML shell.
 
+### SFTP data sync is fragile — use HTTP POST instead
+
+Pattern: avoid SCP/SSH file transfer for data sync. Replace with HTTP POST to the same FastAPI that serves the web:
+
+```python
+# BEFORE (fragile): cron-sync.py
+aggregate_events() → SCP entire SQLite file → SSH docker restart
+# Risk: file corruption, container restart needed, paramiko dependency
+
+# AFTER (robust): cron-sync.py
+aggregate_events() → httpx.POST /internal/events/batch
+# Benefit: atomic PG transaction, immediate visibility, no restart, no paramiko
+```
+
+The pipeline pushes events via HTTP to `/internal/events/batch` which does an upsert into PostgreSQL. No file transfer, no container restart, immediate visibility on the dashboard.
+
+### Git reset --hard corrupts tracked database files
+
+If the SQLite database file is tracked in git, `git reset --hard` reverts it to an old committed snapshot, losing all pipeline data. Recovery steps:
+
+1. Download cloud copy via SFTP: `sftp.get('/data/news_intel.db', 'local.db')`
+2. If corrupted: repair via `sqlite3.connect("file:db?mode=ro&immutable=1", uri=True).backup(dst)`
+3. Never track `.db` files in git — add to `.gitignore`
+4. Always verify DB integrity after git operations that touch the pipeline directory
+
 `npm install` inside Alpine may miss transitive deps. Common fixes:
 
 ```bash\nnpm install prop-types --legacy-peer-deps\nnpm install @tailwindcss/postcss --legacy-peer-deps\n```
