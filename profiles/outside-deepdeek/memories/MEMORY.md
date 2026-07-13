@@ -17,3 +17,5 @@ Sentinel V8 (news-platform-v8/): PG唯一数据源, SFTP退休→HTTP POST。Fas
 V8决策: PG唯一源/SFTP废除/HTTP统一/密钥.env/VIP保留/广告保留/鉴权Dashboard公开admin需登录/article.category暂字符串/Alembic版本化迁移。
 §
 每完成一个任务/子任务，代码修改后必须立即 git add -A && git commit && git push 到 GitHub。不得批量累积后统一提交。commit message 需标注对应 Phase（如 P0-1, P1 等）。
+§
+V8部署规则：Docker Compose卷external:true引用已有pgdata。前端fetch路径无/api/前缀（/news/ /auth/ /admin/）。SQLite→PG需DROP CASCADE。passlib+bcrypt在Py3.12不兼容，用hashlib.sha256作fallback。
