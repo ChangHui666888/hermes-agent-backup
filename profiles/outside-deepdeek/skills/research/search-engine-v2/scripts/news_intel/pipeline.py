@@ -31,7 +31,7 @@ from news_intel.router import route
 from news_intel.sync import sync_recent
 
 
-def run_pipeline(hours: int = 2, limit: int = 200, do_fetch: bool = False):
+def run_pipeline(hours: int = 2, limit: int = 50, do_fetch: bool = False):
     """
     运行完整流水线。
 
@@ -56,14 +56,14 @@ def run_pipeline(hours: int = 2, limit: int = 200, do_fetch: bool = False):
         return
     run_duplicate = stats.get("duplicate", 0)
 
-    # 3. 为 Tier A/B 文章做增强（跳过已增强的）
+    # 3. 为 Tier A/B 文章做增强（跳过已增强的） WHERE ni.tier IN ('A', 'B')
     rows = db.execute("""
         SELECT ni.id as intel_id, ni.tier, ni.score_total,
                rr.title, rr.description, rr.article_url, rr.source_name
         FROM news_intelligence ni
         JOIN rss_raw rr ON ni.raw_id = rr.id
         LEFT JOIN news_content nc ON nc.intel_id = ni.id
-        WHERE ni.tier IN ('A', 'B')
+        WHERE ni.tier IN ('A')
           AND (nc.id IS NULL OR nc.content_md IS NULL OR nc.content_md = '')
         ORDER BY ni.score_total DESC
         LIMIT ?
