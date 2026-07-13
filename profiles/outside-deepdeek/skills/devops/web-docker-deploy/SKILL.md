@@ -135,3 +135,33 @@ def get_db() -> sqlite3.Connection:
 | TypeScript errors | Missing @types/* | `ignoreBuildErrors: true` |
 | DB corrupted after SFTP download | Immutable mode vs local open | Restore via `src.backup(dst)` |
 | Page empty/grep shows 0 content | Client components not in grep output | Verify with browser_navigate, not curl grep |
+| Old `/api/` prefix on unified routes | V8 backend serves /news/ /auth/ directly | Remove /api/ prefix from old-platform page fetches |
+| SQLAlchemy 2.0 raw SQL error | `db.execute("SQL")` without text() | Use `db.execute(text("SQL"))` |
+| PG events table mismatch | Old PG has different schema than ORM model | Drop+recreate with CASCADE, then migrate SQLite→PG |
+| Scrapling always times out | Timeout passed in seconds, expects ms | `timeout * 1000` — see references/fetch-engine-optimization.md |
+| France24/investing 403 on direct | Missing Sec-Fetch-* headers | Add browser fingerprint headers — see references/fetch-engine-optimization.md |
+
+## Workflow Rules
+
+1. **NEVER make code changes without asking.** Present analysis + proposed fix, wait for explicit approval.
+2. **All Docker operations on cloud only.** No local npm, docker build, or docker compose.
+3. **After every change, commit + push to git.**
+4. **Verify with browser_navigate AND curl.**
+5. **nginx.conf must route ALL backend paths** (/news/, /auth/, /admin/, /internal/, /docs).
+
+## Related References
+
+- `references/paramiko-deploy-pattern.md` — SCP upload via paramiko
+- `references/sqlite-readonly-docker.md` — SQLite immutable mode
+- `references/fetch-engine-optimization.md` — Scrapling timeout fix, header optimization, retry patterns
+| Old `/api/` prefix on unified routes | V8 backend serves /news/ /auth/ directly | Remove /api/ prefix from old-platform page fetches |
+| SQLAlchemy 2.0 raw SQL error | `db.execute("SQL")` without text() | Use `db.execute(text("SQL"))` |
+| PG events table mismatch | Old PG has different schema than ORM model | Drop+recreate with CASCADE, then migrate SQLite→PG |
+
+## Workflow Rules
+
+1. **NEVER make code changes without asking.** Present the analysis, proposed fix, and wait for explicit approval. This includes patches, file writes, and terminal commands that modify code.
+2. **All Docker operations on cloud only.** No local npm, docker build, or docker compose.
+3. **After every change, commit + push to git.** Both hermes-agent-backup AND the project's own repo if separate.
+4. **Verify with browser_navigate AND curl.** Client-rendered pages won't show content in grep/curl alone.
+5. **nginx.conf must route ALL backend paths**, not just /api/*. Include /news/, /auth/, /admin/, /internal/, /docs etc.

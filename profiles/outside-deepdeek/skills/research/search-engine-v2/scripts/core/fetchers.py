@@ -66,6 +66,64 @@ class RateLimiter:
         self._last_request[domain] = time.monotonic()
 
 
+# ── Client Pool (domain-level client reuse) ────────────────────────
+
+class DirectClientPool:
+    """Domain-isolated httpx.Client pool for fetch_direct.
+
+    Reuses Client per domain for cookie persistence.
+    Thread-safe via lock. LRU eviction at max_domains.
+    Does NOT apply to archive/google_cache/scrapling/browser.
+    """
+
+    def __init__(self, max_domains: int = 50):
+        self._clients: dict[str, httpx.Client] = {}
+        self._access: dict[str, float] = {}
+        self._max = max_domains
+        self._lock = __import__("threading").Lock()
+
+    def get(self, url: str) -> httpx.Client:
+        domain = self._extract_domain(url)
+        with self._lock:
+            if domain not in self._clients:
+                if len(self._clients) >= self._max:
+                    self._evict_lru()
+                self._clients[domain] = _make_client(url=url)
+            self._access[domain] = time.monotonic()
+            return self._clients[domain]
+
+    def _extract_domain(self, url: str) -> str:
+        return urlparse(url).netloc
+
+    def _evict_lru(self):
+        if not self._access:
+            return
+        oldest = min(self._access, key=self._access.get)
+        try:
+            self._clients[oldest].close()
+        except Exception:
+            pass
+        del self._clients[oldest]
+        del self._access[oldest]
+
+    def close_all(self):
+        with self._lock:
+            for c in self._clients.values():
+                try:
+                    c.close()
+                except Exception:
+                    pass
+            self._clients.clear()
+            self._access.clear()
+
+    def __len__(self) -> int:
+        return len(self._clients)
+
+
+# Module-level singleton pool
+_direct_client_pool = DirectClientPool(max_domains=50)
+
+
 # ── Extraction helpers ─────────────────────────────────────────────
 def _extract_main_text(html: str, url: str = "") -> str:
     """
@@ -196,7 +254,7 @@ def fetch_direct(
     if rate_limiter:
         rate_limiter.wait(domain)
 
-    client = _make_client(url=url)
+    client = _direct_client_pool.get(url)
     try:
         for attempt in range(MAX_RETRIES):
             try:
@@ -224,8 +282,6 @@ def fetch_direct(
     except Exception as e:
         logger.warning(f"[direct] {type(e).__name__}: {e}")
         return None
-    finally:
-        client.close()
 
 
 def fetch_archive(
