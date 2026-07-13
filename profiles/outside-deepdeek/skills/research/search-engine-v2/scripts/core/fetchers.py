@@ -139,33 +139,40 @@ def _is_chinese_domain(url: str) -> bool:
     return False
 
 
-def _make_client(timeout: float = 30.0, url: str | None = None) -> httpx.Client:
-    """Create an httpx client with realistic browser headers and proxy awareness.
+# ── Frozen Headers ────────────────────────────────────────────────
 
-    境外域名自动走本机代理（HTTPS_PROXY），国内域名直连。
-    """
+DEFAULT_HEADERS = {
+    "User-Agent": (
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+        "AppleWebKit/537.36 "
+        "Chrome/131.0.0.0 Safari/537.36"
+    ),
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "Accept-Language": "en-US,en;q=0.9",
+    "Accept-Encoding": "gzip, deflate",
+    "Sec-Fetch-Dest": "document",
+    "Sec-Fetch-Mode": "navigate",
+    "Sec-Fetch-Site": "none",
+    "Upgrade-Insecure-Requests": "1",
+}
+
+RETRY_STATUS = {408, 429, 500, 502, 503, 504}
+MAX_RETRIES = 3
+
+
+def _make_client(url: str | None = None) -> httpx.Client:
+    """Create an httpx client with frozen browser headers and proxy awareness."""
     import os
 
     kwargs = {
-        "timeout": timeout,
+        "headers": DEFAULT_HEADERS,
         "follow_redirects": True,
-        "headers": {
-            "User-Agent": (
-                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-                "AppleWebKit/537.36 (KHTML, like Gecko) "
-                "Chrome/131.0.0.0 Safari/537.36"
-            ),
-            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-            "Accept-Language": "en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7",
-            "Accept-Encoding": "gzip, deflate, br",
-        },
+        "timeout": httpx.Timeout(connect=5, read=15, write=10, pool=5),
     }
 
-    # 境外域名 → 走代理；国内域名 → 直连
-    if url and _is_chinese_domain(url):
-        pass  # 国内直连
-    else:
-        proxy = os.environ.get("HTTPS_PROXY") or os.environ.get("https_proxy") or os.environ.get("HTTP_PROXY") or os.environ.get("http_proxy")
+    if url and not _is_chinese_domain(url):
+        proxy = (os.environ.get("HTTPS_PROXY") or os.environ.get("https_proxy")
+                 or os.environ.get("HTTP_PROXY") or os.environ.get("http_proxy"))
         if proxy:
             kwargs["proxy"] = proxy
 
@@ -181,32 +188,44 @@ def fetch_direct(
     rate_limiter: RateLimiter | None = None,
     timeout: float = 30.0,
 ) -> str | None:
-    """
-    Strategy: direct (cost=1)
-    Plain httpx GET + trafilatura content extraction.
-    Works for most non-bot-protected sites.
+    """Strategy: direct (cost=1). httpx GET + trafilatura extraction.
+
+    Cookie persistence via reused Client. Retry on 408/429/5xx (NOT 403).
     """
     domain = urlparse(url).netloc
     if rate_limiter:
         rate_limiter.wait(domain)
 
+    client = _make_client(url=url)
     try:
-        with _make_client(timeout=timeout, url=url) as client:
-            resp = client.get(url)
-            resp.raise_for_status()
-            html = resp.text
-
-        text = _extract_main_text(html, url=url)
-        if text:
-            return text
-        # If extraction produced nothing useful, return raw text as fallback
-        return _extract_main_text(html) or html[:5000]
-    except httpx.HTTPStatusError as e:
-        logger.warning(f"[direct] HTTP {e.response.status_code} for {url}")
+        for attempt in range(MAX_RETRIES):
+            try:
+                resp = client.get(url)
+                if resp.status_code in RETRY_STATUS:
+                    wait = 2 ** attempt
+                    logger.info(f"[direct] {resp.status_code}, retry in {wait}s ({attempt+1}/{MAX_RETRIES})")
+                    time.sleep(wait)
+                    continue
+                resp.raise_for_status()
+                html = resp.text
+                text = _extract_main_text(html, url=url)
+                if text:
+                    return text
+                return _extract_main_text(html) or html[:5000]
+            except httpx.HTTPStatusError as e:
+                if e.response.status_code in RETRY_STATUS and attempt < MAX_RETRIES - 1:
+                    wait = 2 ** attempt
+                    logger.info(f"[direct] {e.response.status_code}, retry in {wait}s")
+                    time.sleep(wait)
+                    continue
+                logger.warning(f"[direct] HTTP {e.response.status_code} for {url}")
+                return None
         return None
     except Exception as e:
         logger.warning(f"[direct] {type(e).__name__}: {e}")
         return None
+    finally:
+        client.close()
 
 
 def fetch_archive(
@@ -226,7 +245,7 @@ def fetch_archive(
         rate_limiter.wait(domain)
 
     try:
-        with _make_client(timeout=timeout, url=url) as client:
+        with _make_client(url=url) as client:
             resp = client.get(archive_url)
             resp.raise_for_status()
             html = resp.text
@@ -265,7 +284,7 @@ def fetch_google_cache(
         rate_limiter.wait(domain)
 
     try:
-        with _make_client(timeout=timeout, url=url) as client:
+        with _make_client(url=url) as client:
             resp = client.get(cache_url)
             resp.raise_for_status()
             html = resp.text
