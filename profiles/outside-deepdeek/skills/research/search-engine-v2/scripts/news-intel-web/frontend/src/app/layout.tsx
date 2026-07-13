@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Header from "@/components/layout/Header";
 import Sidebar from "@/components/layout/Sidebar";
+import { AuthProvider } from "@/lib/auth";
 import "./globals.css";
 
 const inter = Inter({
@@ -22,6 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} h-full`}>
       <body className="h-full bg-background text-foreground antialiased flex flex-col">
+        <AuthProvider>
         <Header />
         <div className="flex flex-1 overflow-hidden">
           <Sidebar />
@@ -29,6 +31,7 @@ export default function RootLayout({
             {children}
           </main>
         </div>
+        </AuthProvider>
       </body>
     </html>
   );

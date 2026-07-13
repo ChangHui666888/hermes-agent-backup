@@ -5,6 +5,12 @@ import { usePathname } from "next/navigation";
 
 const MENU_SECTIONS = [
   {
+    label: "NEWS",
+    items: [
+      { href: "/articles", label: "Articles", icon: "📰" },
+    ],
+  },
+  {
     label: "INTELLIGENCE",
     items: [
       { href: "/", label: "Situation", icon: "◉" },
