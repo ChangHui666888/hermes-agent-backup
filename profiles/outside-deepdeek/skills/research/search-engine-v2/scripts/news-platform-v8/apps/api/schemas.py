@@ -45,9 +45,12 @@ class ArticleOut(BaseModel):
     category: Optional[str] = None
     tier: Optional[str] = None
     score_total: Optional[int] = None
-    tags: Optional[list] = None
-    entities: Optional[dict] = None
+    tags: Optional[list | str] = None
+    entities: Optional[dict | str] = None
     extraction_method: Optional[str] = None
+
+    class Config:
+        from_attributes = True
 
 
 class ArticleDetail(ArticleOut):
