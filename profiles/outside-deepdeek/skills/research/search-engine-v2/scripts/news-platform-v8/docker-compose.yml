@@ -15,7 +15,9 @@ services:
     restart: unless-stopped
 
   backend:
-    build: ../news-platform-v8
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
     environment:
       DATABASE_URL: postgresql://news_admin:news_pass@postgres:5432/news_intel
       INTERNAL_TOKEN: ${INTERNAL_TOKEN:-v8-pipeline-token-2026-xK9mP2sR7wQ}
