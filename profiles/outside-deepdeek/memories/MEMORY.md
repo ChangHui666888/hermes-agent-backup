@@ -12,6 +12,6 @@ RSS: 94源(46RSS+18Nitter+6央媒),cron 5min, SOCKS5. Pipeline→~/.hermes/xxx-r
 §
 User is a product-oriented engineer building intelligence platforms. Values: efficiency, real verification, structured decision-making, delivering running systems. Prefers Chinese. Insists on cloud-only deployment (no local builds), frozen architecture before execution, and product polish (renamed to Sentinel Intelligence).
 §
-Cloud: 100.107.117.23 (Ubuntu 24.04 Docker 29.5.3). SSH: administrator / root123root!@. Deploy at /home/administrator/news-intel-web/. SQLite at data/news_intel.db (ro+immutable mount). 3 containers: frontend(node:22-alpine), backend(python:3.12-slim), nginx(nginx:alpine). No Node.js on host. V1 uses SQLite only, no PG. Old platform (Vue+PG) permanently frozen.
+Sentinel V8 (news-platform-v8/): PG唯一数据源, SFTP退休→HTTP POST。FastAPI 11路由+Next.js 16。Docker nginx+frontend+backend+postgres :80。密钥.env, Alembic。VIP+广告保留。
 §
-Git push超时: 大文件>100MB(.rar/.tar.gz)被拒→reset--soft+rm--cached+.gitignore排除规则。每次改完必须add+commit+push。代理socks5h://127.0.0.1:10808用于github.com。
+V8决策: PG唯一源/SFTP废除/HTTP统一/密钥.env/VIP保留/广告保留/鉴权Dashboard公开admin需登录/article.category暂字符串/Alembic版本化迁移。

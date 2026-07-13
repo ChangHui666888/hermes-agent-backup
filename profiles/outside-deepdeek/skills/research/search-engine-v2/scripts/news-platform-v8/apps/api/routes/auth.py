@@ -1,10 +1,11 @@
-"""routes/auth.py — Login/Register/Auth. NO hardcoded secrets."""
+"""routes/auth.py — Login/Register/Auth. bcrypt password hashing."""
 
-import os, hashlib, secrets
+import os
 from datetime import datetime, timedelta
 from fastapi import APIRouter, Depends, HTTPException, Header
 from sqlalchemy.orm import Session
 from jose import jwt, JWTError
+from passlib.hash import bcrypt
 from apps.api.database import get_db
 from apps.api.models import User, Subscription
 from apps.api.schemas import LoginIn, TokenOut, SubscribeIn
@@ -19,13 +20,19 @@ ALGORITHM = "HS256"
 
 
 def hash_password(password: str) -> str:
-    salt = secrets.token_hex(16)
-    return salt + ":" + hashlib.sha256((salt + password).encode()).hexdigest()
+    return bcrypt.hash(password)
 
 
 def verify_password(password: str, hashed: str) -> bool:
-    salt, h = hashed.split(":", 1)
-    return hashlib.sha256((salt + password).encode()).hexdigest() == h
+    # Compatible with old SHA256 format (salt:hash) — auto-upgrade on login
+    if ":" in hashed and not hashed.startswith("$2"):
+        salt, h = hashed.split(":", 1)
+        import hashlib
+        return hashlib.sha256((salt + password).encode()).hexdigest() == h
+    try:
+        return bcrypt.verify(password, hashed)
+    except ValueError:
+        return False
 
 
 def create_token(user_id: int, level: str) -> str:
