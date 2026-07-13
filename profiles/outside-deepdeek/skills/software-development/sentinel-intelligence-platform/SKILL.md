@@ -56,16 +56,30 @@ location /ads/     { proxy_pass http://backend:8000/ads/; }
 location /categories { proxy_pass http://backend:8000/categories; }
 ```
 
+## Project Structure
+
+Single directory (no cross-directory build references):
+```
+news-platform-v8/
+├── apps/api/          ← FastAPI backend (23 routes, PG)
+├── frontend/          ← Next.js 16 (12 pages, 15 components)
+├── docs/              ← Architecture, Deployment, V1 Acceptance
+├── docker-compose.yml ← build: ./frontend + build: . + Dockerfile.backend
+├── Dockerfile.backend ← python:3.12-slim, PYTHONPATH=/app
+├── nginx.conf         ← proxy /api/*, /news/*, /auth/*, /admin/*, /ads/*
+└── .env               ← INTERNAL_TOKEN, JWT_SECRET (gitignored)
+```
+
 ## Deployment
 
 ```
 # On cloud VPS:
-cd /home/administrator/news-intel-web
+cd /home/administrator/news-platform-v8
 docker compose up -d --build
 docker compose restart nginx  # after config changes
 
-# Upload code from Windows:
-tar czf project.tar.gz --exclude node_modules --exclude .next .
+# Upload code from Windows (never build locally):
+tar czf project.tar.gz --exclude node_modules --exclude .next --exclude __pycache__ .
 # Upload via paramiko/SFTP, extract, then docker compose up -d --build
 ```
 
@@ -74,6 +88,8 @@ tar czf project.tar.gz --exclude node_modules --exclude .next .
 | Issue | Fix |
 |-------|-----|
 | Frontend pages empty (no data) | Check fetch URL prefix — old routes use `/news/` not `/api/news/` |
+| Frontend "API unavailable" (Dashboard) | Page is Server Component; make it `"use client"` with useEffect fetch. SSR resolves `/api/v1` against `localhost:3000` which has no API |
+| SQLite "unable to open database file" in Docker | Use `sqlite3.connect("file:/path?mode=ro&immutable=1", uri=True)` — immutable=1 prevents WAL/SHM file creation on read-only volume |
 | 502 Bad Gateway | `docker compose restart nginx` (stale upstream cache) |
 | SQLAlchemy 2.0 raw SQL error | Wrap in `text()`: `from sqlalchemy import text; db.execute(text("..."))` |
 | PG FK cascade on DROP | Use `DROP TABLE ... CASCADE` for tables with FK dependencies |
@@ -82,6 +98,8 @@ tar czf project.tar.gz --exclude node_modules --exclude .next .
 | GitHub push timeout | Files are too large; check with `git rev-list --objects` |
 | Docker build cache stale | `docker compose build --no-cache frontend` |
 | Port 80 conflict | Only one nginx on :80; old platform on alternate port |
+| Next.js dev port conflict (Windows) | Port 3000/8648 EADDRINUSE: `taskkill //F //IM node.exe` then restart |
+| `NEXT_PUBLIC_API_URL` not inlined | Hardcode `/api/v1` in fetch paths; add `env.NEXT_PUBLIC_API_URL` in next.config.ts |
 
 ## Task Plan Pattern
 
@@ -95,3 +113,10 @@ Always use structured phases with acceptance criteria:
 7. **P6 Deploy**: docker-compose, cleanup old instances
 
 Each phase: verify ALL endpoints, commit, push, then continue.
+
+## References
+
+- `references/pg-migration-pattern.md` — SQLite → PG data migration with upsert
+- `references/sftp-to-http-sync.md` — Replace SFTP with HTTP POST for data sync
+- `references/cloud-deploy-pattern.md` — Cloud deployment workflow
+- `references/v8-architecture.md` — V8 architecture details
