@@ -110,23 +110,117 @@ services:
       - frontend
 ```
 
-## nginx.conf
+## nginx.conf — Extended Multi-Route Pattern
+
+When the backend serves multiple route prefixes (not just `/api/`), each needs an explicit nginx location block. Do NOT rely on `/` catch-all — it conflicts with Next.js:
 
 ```nginx
 server {
     listen 80;
 
-    location /api/ {
-        proxy_pass http://backend:8000/api/;
-        proxy_set_header Host $host;
-    }
+    # Backend routes — list ALL prefixes explicitly
+    location /api/      { proxy_pass http://backend:8000/api/; }
+    location /internal/ { proxy_pass http://backend:8000/internal/; }
+    location /auth/     { proxy_pass http://backend:8000/auth/; }
+    location /admin/    { proxy_pass http://backend:8000/admin/; }
+    location /news/     { proxy_pass http://backend:8000/news/; }
+    location /ads/      { proxy_pass http://backend:8000/ads/; }
+    location /categories { proxy_pass http://backend:8000/categories; }
+    location /docs      { proxy_pass http://backend:8000/docs; }
+    location /openapi.json { proxy_pass http://backend:8000/openapi.json; }
 
+    # Frontend — must be last
     location / {
         proxy_pass http://frontend:3000;
-        proxy_set_header Host $host;
     }
 }
 ```
+
+**Pitfall**: Missing a route prefix → 502 or 404 (Next.js tries to handle it). Add explicit blocks for every backend path prefix.
+
+## PostgreSQL with External Volume
+
+When reusing an existing PostgreSQL data volume from a previous deployment:
+
+```yaml
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: news_intel
+      POSTGRES_USER: news_admin
+      POSTGRES_PASSWORD: news_pass
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U news_admin -d news_intel"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  pgdata:
+    external: true
+    name: news-intel-platform_pgdata   # existing volume name
+```
+
+**Pitfall**: The volume name must match EXACTLY what `docker volume ls` shows. External volumes are not created by docker compose — they must already exist.
+
+## PostgreSQL Table Migration with FK Constraints
+
+When recreating tables that have foreign key dependencies, use `CASCADE`:
+
+```python
+from sqlalchemy import text
+from apps.api.database import engine
+
+# Drop dependent tables with CASCADE
+with engine.connect() as conn:
+    conn.execute(text("DROP TABLE IF EXISTS event_article, event_entity, insights, events CASCADE"))
+    conn.commit()
+
+# Recreate via ORM
+from apps.api.models import Event, Entity, Insight, EventArticle, EventEntity
+for table in [Event.__table__, Entity.__table__, Insight.__table__,
+              EventArticle.__table__, EventEntity.__table__]:
+    table.create(engine, checkfirst=True)
+```
+
+**Pitfall**: ORM `table.drop()` fails with `DependentObjectsStillExist` when other tables have FK references. Raw SQL `CASCADE` is required.
+
+## SQLAlchemy 2.0 Raw SQL: text() Required
+
+SQLAlchemy 2.0 requires all raw SQL strings wrapped in `text()`:
+
+```python
+# BEFORE (SQLAlchemy 1.x — no longer works):
+db.execute("SELECT * FROM events WHERE id = :id", {"id": 1})
+
+# AFTER (SQLAlchemy 2.0):
+from sqlalchemy import text
+db.execute(text("SELECT * FROM events WHERE id = :id"), {"id": 1})
+```
+
+Without `text()`, you get: `Textual SQL expression ... should be explicitly declared as text()`.
+
+## SFTP Data Sync → HTTP POST Migration
+
+Replace fragile file-transfer sync with HTTP API calls:
+
+```python
+# BEFORE: SFTP + SSH restart (fragile, requires paramiko, container downtime)
+aggregate_events()
+sftp.put(local_db, remote_path)
+ssh.exec_command("docker compose restart backend")
+
+# AFTER: HTTP POST (atomic, immediate, no restart needed)
+aggregate_events()
+httpx.post(f"{API}/internal/events/batch",
+    json=events,
+    headers={"X-Internal-Token": os.environ["INTERNAL_TOKEN"]})
+```
+
+Benefits: no Docker restart, immediate dashboard visibility, no paramiko dependency, atomic PG transaction.
 
 ## SQLite Read-Only in Docker
 

@@ -62,14 +62,14 @@
       "schedule_display": "every 5m",
       "repeat": {
         "times": null,
-        "completed": 802
+        "completed": 805
       },
       "enabled": true,
       "state": "scheduled",
       "paused_reason": null,
       "created_at": "2026-07-03T19:51:02.110080+08:00",
-      "next_run_at": "2026-07-13T15:01:04.008329+08:00",
-      "last_run_at": "2026-07-13T14:56:04.008329+08:00",
+      "next_run_at": "2026-07-13T15:19:09.938944+08:00",
+      "last_run_at": "2026-07-13T15:14:09.938944+08:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -109,7 +109,7 @@
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-07-11T11:12:51.726135+08:00",
-      "next_run_at": "2026-07-13T15:17:46.682100+08:00",
+      "next_run_at": "2026-07-13T15:46:39.788343+08:00",
       "last_run_at": "2026-07-13T14:44:46.682100+08:00",
       "last_status": "error",
       "last_error": "Script timed out after 120s: C:\\Users\\ChangHui\\AppData\\Local\\hermes\\scripts\\news-pipeline.py",
@@ -118,8 +118,11 @@
       "origin": null,
       "enabled_toolsets": null,
       "workdir": null,
-      "fire_claim": null
+      "fire_claim": {
+        "at": "2026-07-13T15:13:39.788343+08:00",
+        "by": "DESKTOP-IU8HLAO:13472"
+      }
     }
   ],
-  "updated_at": "2026-07-13T14:56:04.008329+08:00"
+  "updated_at": "2026-07-13T15:14:09.938944+08:00"
 }
