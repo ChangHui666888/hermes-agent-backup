@@ -275,16 +275,39 @@ const nextConfig: NextConfig = {
 
 Or create `src/types/react-simple-maps.d.ts` with `declare module 'react-simple-maps' { ... }`.
 
-### Missing peer dependencies in Docker
+### SFTP-downloaded SQLite appears corrupted
+
+After SFTP download, `sqlite3.connect()` reports `database disk image is malformed`. The DB is fine on the server but the file transfer creates WAL inconsistencies. Repair by copying through Python:
+
+```python
+import sqlite3
+src = sqlite3.connect("file:corrupted.db?mode=ro&immutable=1", uri=True)
+dst = sqlite3.connect("repair.db")
+src.backup(dst)
+dst.close(); src.close()
+# repair.db is now clean
+```
+
+**Root cause**: SQLite in immutable mode keeps WAL state that corrupts on raw file copy. Python's `backup()` API copies the logical database content cleanly.
+
+### Empty page / skeleton only when browser opens
+
+When curl shows HTML but the browser renders only header/sidebar (no dashboard content), the issue is client-side fetch failing. Diagnose differently from server-side debugging:
+
+```bash
+# Server-side (won't catch client fetch issues):
+curl localhost:80 | grep "Global Situation"   # → 0 (page IS rendering, but content is loaded by JS)
+
+# Correct diagnosis:
+browser_navigate(http://IP)                   # → shows "API unavailable" in snapshot
+browser_console(expression="fetch('/api/v1/dashboard')...")  # test client fetch
+```
+
+**Root cause**: Next.js client components do API fetches in the browser, not during SSR. Server-side curl only captures the initial HTML shell.
 
 `npm install` inside Alpine may miss transitive deps. Common fixes:
 
-```bash
-npm install prop-types --legacy-peer-deps
-npm install @tailwindcss/postcss --legacy-peer-deps
-```
-
-### shadcn/ui v4 init
+```bash\nnpm install prop-types --legacy-peer-deps\nnpm install @tailwindcss/postcss --legacy-peer-deps\n```
 
 The old `shadcn-ui` package is deprecated. Use:
 

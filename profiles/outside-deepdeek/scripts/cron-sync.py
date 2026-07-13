@@ -1,27 +1,27 @@
 #!/usr/bin/env python3
-"""cron-sync.py — Pipeline aggregation + cloud DB sync
+"""cron-sync.py — Pipeline aggregation + HTTP push to V8 cloud backend.
 
-Finds the pipeline scripts relative to the profile root.
-Runs: aggregate -> sync-db-to-cloud -> restart cloud backend.
+V8 version: No SFTP. No SSH. No paramiko.
+Uses HTTP POST /internal/events/batch + /internal/news/batch.
 
 Called by Hermes cron every 30 minutes.
 """
 
-import sys, os, time, subprocess
+import sys, os, time, json
+import httpx
 
-# Paths — profile root is parent of scripts/
+# Paths
 PROFILE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PIPELINE = os.path.join(
-    PROFILE, "skills", "research", "search-engine-v2", "scripts"
-)
-SYNC_SCRIPT = os.path.join(PROFILE, "scripts", "sync-db-to-cloud.py")
-
+PIPELINE = os.path.join(PROFILE, "skills", "research", "search-engine-v2", "scripts")
 sys.path.insert(0, PIPELINE)
 
-print(f"[cron] Pipeline: {PIPELINE}")
-print(f"[cron] Sync script: {SYNC_SCRIPT}")
+API_BASE = os.environ.get("NEWS_API_BASE", "http://100.107.117.23")
+INTERNAL_TOKEN = os.environ.get("NEWS_API_TOKEN", "v8-pipeline-token-2026-xK9mP2sR7wQ")
 
-# 1. Aggregate events
+print(f"[cron] Pipeline: {PIPELINE}")
+print(f"[cron] API: {API_BASE}")
+
+# ── 1. Aggregate events ──────────────────────────────────────
 try:
     from news_intel.db import init_db
     from news_intel.aggregator import aggregate_events
@@ -43,32 +43,49 @@ try:
     db.close()
 except Exception as e:
     print(f"[cron] Aggregation: {e}")
+    events = []
 
-# 2. Sync to cloud
-try:
-    result = subprocess.run(
-        [sys.executable, SYNC_SCRIPT],
-        capture_output=True, text=True, timeout=60,
-    )
-    print(result.stdout.strip())
-    if result.stderr:
-        print(f"[cron] Sync stderr: {result.stderr[:200]}")
-except Exception as e:
-    print(f"[cron] Sync failed: {e}")
+# ── 2. Push events to cloud via HTTP ──────────────────────────
+if events:
+    try:
+        body = []
+        for ev in events:
+            item = {
+                "event_id": ev.get("event_id"),
+                "title": ev.get("title", ""),
+                "summary": ev.get("summary", ""),
+                "event_type": ev.get("event_type"),
+                "stage": ev.get("stage", "active"),
+                "confidence": ev.get("confidence", 0.0),
+                "coherence": ev.get("coherence", 0.0),
+                "subject": ev.get("subject", {}),
+                "action": ev.get("action", {}),
+                "object": ev.get("object", {}),
+                "location": ev.get("location", {}),
+                "source": ev.get("source", {}),
+                "actors": ev.get("actors", []),
+                "keywords": ev.get("keywords", []),
+                "related_entities": ev.get("related_entities", []),
+                "article_count": ev.get("article_count", 0),
+                "article_ids": ev.get("article_ids", []),
+                "doc_refs": ev.get("doc_refs", []),
+                "evidence": ev.get("evidence", []),
+                "source_chain": ev.get("source_chain", []),
+                "timeline": ev.get("timeline", []),
+                "llm_analysis": ev.get("llm_analysis"),
+                "first_seen": ev.get("first_seen"),
+                "last_updated": ev.get("last_updated"),
+            }
+            body.append({k: v for k, v in item.items() if v is not None})
 
-# 3. Restart cloud backend
-try:
-    import paramiko
-    client = paramiko.SSHClient()
-    client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-    client.connect("100.107.117.23", username="administrator",
-                   password="root123root!@", timeout=15)
-    stdin, stdout, stderr = client.exec_command(
-        "cd /home/administrator/news-intel-web && docker compose restart backend 2>&1"
-    )
-    print(f"[cron] Cloud restart: {stdout.read().decode().strip()}")
-    client.close()
-except Exception as e:
-    print(f"[cron] Cloud restart failed: {e}")
+        resp = httpx.post(
+            f"{API_BASE}/internal/events/batch",
+            json=body,
+            headers={"X-Internal-Token": INTERNAL_TOKEN},
+            timeout=30,
+        )
+        print(f"[cron] Events push: {resp.status_code} {resp.json()}")
+    except Exception as e:
+        print(f"[cron] Events push failed: {e}")
 
 print(f"[cron] Done at {time.strftime('%H:%M:%S')}")
