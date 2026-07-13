@@ -1,344 +1,1512 @@
 #!/usr/bin/env python3
-"""
-pipeline_check.py — Pipeline CLI: check / run / individual stages.
+# -*- coding: utf-8 -*-
 
-Agent-readable YAML-style output.
+"""
+pipeline_check.py V2.1
+
+News Intelligence Pipeline Operator
+
+功能:
+
+1. Pipeline 健康检查
+2. 手动执行阶段
+3. Agent 可执行诊断输出
 
 Usage:
-  python pipeline_check.py check       Full health check
-  python pipeline_check.py rss         Run RSS scanner
-  python pipeline_check.py scorer      Run scorer
-  python pipeline_check.py fetcher     Run content fetcher
-  python pipeline_check.py aggregator  Run event aggregator
-  python pipeline_check.py sync        Sync to cloud API
-  python pipeline_check.py run         Full pipeline execution
+
+python pipeline_check.py check
+
+python pipeline_check.py rss
+
+python pipeline_check.py pipeline
+
+python pipeline_check.py fetcher
+
+python pipeline_check.py aggregator
+
+python pipeline_check.py sync
+
+python pipeline_check.py run
 """
 
-import sys
+
 import os
-import subprocess
-import sqlite3
-import time
+import sys
 import json
+import time
+import sqlite3
+import subprocess
 import urllib.request
-import urllib.error
+from pathlib import Path
 
-# ── CONFIG ──────────────────────────────────────────────────────
 
-SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-PIPELINE_DIR = os.path.dirname(SCRIPT_DIR)  # search-engine-v2/scripts
-DB_PATH = os.path.join(SCRIPT_DIR, "news_intel.db")
-CLOUD_API = "http://100.107.117.23/api/v1/dashboard"
-CLOUD_INTERNAL = "http://100.107.117.23/internal/events/batch"
-INTERNAL_TOKEN = os.environ.get("NEWS_API_TOKEN", "v8-pipeline-token-2026-xK9mP2sR7wQ")
 
-COMMAND_MAP = {
-    "rss": {
-        "label": "RSS",
-        "script": os.path.join(PIPELINE_DIR, "rss-scanner.py"),
+# ============================================================
+# ENVIRONMENT
+# ============================================================
+
+
+USER_HOME = Path.home()
+
+
+# Hermes 主目录候选
+
+HERMES_CANDIDATES = [
+
+    USER_HOME / ".hermes",
+
+    USER_HOME / "AppData" / "Local" / "hermes",
+
+]
+
+
+def find_hermes_home():
+
+    current = Path(__file__).resolve()
+
+
+    # 从当前脚本向上寻找 hermes
+    for parent in current.parents:
+
+        if parent.name == "hermes":
+
+            return parent
+
+
+    # fallback
+
+    for path in HERMES_CANDIDATES:
+
+        if path.exists():
+
+            return path
+
+
+    return HERMES_CANDIDATES[-1]
+
+
+
+HERMES_HOME = find_hermes_home()
+
+
+
+# scripts目录
+
+SCRIPT_HOME = (
+    HERMES_HOME /
+    "scripts"
+)
+
+
+
+# search-engine-v2
+
+SEARCH_ENGINE_HOME = (
+    HERMES_HOME /
+    "profiles" /
+    "outside-deepdeek" /
+    "skills" /
+    "research" /
+    "search-engine-v2" /
+    "scripts"
+)
+
+
+
+# ============================================================
+# DATABASE DISCOVERY
+# ============================================================
+
+
+RSS_DB_CANDIDATES = [
+
+    USER_HOME /
+    ".hermes" /
+    "rss-archive.db",
+
+
+    HERMES_HOME /
+    "rss-archive.db",
+
+]
+
+
+PIPELINE_DB_CANDIDATES = [
+
+    # 当前脚本同目录（最高优先级）
+    Path(__file__).parent /
+    "news_intel.db",
+
+
+    # search-engine-v2/scripts/news_intel
+    SEARCH_ENGINE_HOME /
+    "news_intel.db",
+
+
+    # 备用
+    SEARCH_ENGINE_HOME /
+    "news_intel" /
+    "news_intel.db",
+
+]
+
+
+
+def find_existing(candidates):
+
+    for db in candidates:
+
+        if db.exists():
+
+            return db
+
+    return None
+
+
+
+def get_rss_db():
+
+    return find_existing(
+        RSS_DB_CANDIDATES
+    )
+
+
+
+def get_pipeline_db():
+
+    return find_existing(
+        PIPELINE_DB_CANDIDATES
+    )
+
+
+
+# ============================================================
+# CLOUD
+# ============================================================
+
+
+CLOUD_API = (
+    os.environ.get(
+        "NEWS_API_BASE",
+        "http://100.107.117.23:8001"
+    )
+    +
+    "/api/v1/dashboard"
+)
+
+
+
+# ============================================================
+# COMMANDS
+# ============================================================
+
+
+COMMANDS = {
+
+
+    "rss":
+
+    {
+        "label":"RSS",
+
+        "cmd":[
+
+            "python",
+
+            str(
+                SCRIPT_HOME /
+                "rss-scanner.py"
+            )
+
+        ]
     },
-    "scorer": {
-        "label": "SCORER",
-        "script": os.path.join(SCRIPT_DIR, "sync.py"),
-        "args": "--hours 2",
+
+
+
+    "pipeline":
+
+    {
+        "label":"PIPELINE",
+
+        "cmd":[
+
+            "python",
+
+            str(
+                SEARCH_ENGINE_HOME /
+                "news-pipeline.py"
+            )
+
+        ]
     },
-    "fetcher": {
-        "label": "FETCHER",
-        "script": os.path.join(PIPELINE_DIR, "batch.py"),
-        "args": "--help",
-        "real_cmd": f"cd {PIPELINE_DIR} && python batch.py --help",
+
+
+
+    "fetcher":
+
+    {
+        "label":"FETCHER",
+
+        "cmd":[
+
+            "python",
+
+            str(
+                SEARCH_ENGINE_HOME /
+                "news_intel" /
+                "batch.py"
+            )
+
+        ]
     },
-    "aggregator": {
-        "label": "AGGREGATOR",
-        "script": os.path.join(SCRIPT_DIR, "aggregator.py"),
+
+
+
+    "aggregator":
+
+    {
+        "label":"AGGREGATOR",
+
+        "cmd":[
+
+            "python",
+
+            str(
+                SEARCH_ENGINE_HOME /
+                "test_aggregator.py"
+            ),
+
+            "--hours",
+            "24",
+
+            "--window",
+            "12",
+
+            "--limit",
+            "50"
+
+        ]
     },
-    "sync": {
-        "label": "SYNC",
-        "script": os.path.join(PIPELINE_DIR, "cron-sync.py"),
-    },
+
+
+
+    "sync":
+
+    {
+        "label":"SYNC",
+
+        "cmd":[
+
+            "python",
+
+            str(
+                SEARCH_ENGINE_HOME /
+                "cron-sync.py"
+            )
+
+        ]
+    }
+
+
 }
 
-# ── OUTPUT HELPERS ──────────────────────────────────────────────
 
-def yaml_block(status: str, **fields):
-    """Print YAML-style output block."""
-    lines = [f"STATUS: {status}"]
-    for k, v in fields.items():
-        if v is not None:
-            lines.append(f"{k}: {v}")
-    print("\n".join(lines))
 
-def yaml_ok(stage: str, detail: str = "", **extra):
-    yaml_block("SUCCESS", PIPELINE="news-intel", STAGE=stage, RESULT="PASS",
-               DETAIL=detail, NEXT="continue", **{k: v for k, v in extra.items() if v})
 
-def yaml_fail(stage: str, error_type: str, reason: str, action: str = "",
-              command: str = "", verify: str = "", **extra):
-    yaml_block("FAILED", PIPELINE="news-intel", FAILED_STAGE=stage,
-               ERROR_TYPE=error_type, REASON=reason,
-               IMPACT=action, ACTION="retry",
-               COMMAND=command or f"python pipeline_check.py {stage.lower()}",
-               VERIFY=verify or "python pipeline_check.py check",
-               STOP="true", **{k: v for k, v in extra.items() if v})
+# ============================================================
+# OUTPUT
+# ============================================================
 
-# ── SQLite HELPERS ──────────────────────────────────────────────
 
-def db_query(sql: str) -> int | None:
-    if not os.path.exists(DB_PATH):
-        return None
-    try:
-        conn = sqlite3.connect(DB_PATH)
-        r = conn.execute(sql).fetchone()
-        conn.close()
-        return r[0] if r else 0
-    except Exception:
-        return None
-
-def db_size_kb() -> str:
-    if not os.path.exists(DB_PATH):
-        return "0KB"
-    return f"{os.path.getsize(DB_PATH)/1024:.0f}KB"
-
-# ── HTTP HELPERS ────────────────────────────────────────────────
-
-def http_get(url: str, timeout: int = 5) -> dict | None:
-    try:
-        r = urllib.request.urlopen(url, timeout=timeout)
-        return json.loads(r.read())
-    except Exception:
-        return None
-
-def http_post(url: str, body: list, timeout: int = 30) -> dict | None:
-    try:
-        data = json.dumps(body).encode()
-        req = urllib.request.Request(url, data=data, headers={
-            "Content-Type": "application/json",
-            "X-Internal-Token": INTERNAL_TOKEN,
-        })
-        r = urllib.request.urlopen(req, timeout=timeout)
-        return json.loads(r.read())
-    except Exception:
-        return None
-
-# ── HEALTH CHECKS ───────────────────────────────────────────────
-
-def check_rss() -> tuple[bool, str]:
-    raw = db_query("SELECT COUNT(*) FROM rss_raw")
-    if raw and raw > 0:
-        return True, f"articles={raw}"
-    return False, f"articles={raw or 0}"
-
-def check_scorer() -> tuple[bool, str]:
-    scored = db_query("SELECT COUNT(*) FROM news_intelligence WHERE score_total > 0")
-    total = db_query("SELECT COUNT(*) FROM news_intelligence")
-    if scored and scored > 0:
-        return True, f"scored={scored}/{total}"
-    return False, f"scored=0/{total or 0}"
-
-def check_fetcher() -> tuple[bool, str]:
-    total = db_query("SELECT COUNT(*) FROM news_content") or 0
-    fetched = db_query("SELECT COUNT(*) FROM news_content WHERE content_md IS NOT NULL AND content_md != ''") or 0
-    missing = total - fetched
-    if fetched > 0 and missing == 0:
-        return True, f"articles={total} content_missing=0"
-    elif fetched > 0:
-        return False, f"articles={total} content_missing={missing}"
-    else:
-        return False, f"articles={total} content_missing={total}"
-
-def check_aggregator() -> tuple[bool, str]:
-    events = db_query("SELECT COUNT(*) FROM event_registry")
-    if events and events > 0:
-        return True, f"events={events}"
-    return False, "events=0"
-
-def check_sqlite() -> tuple[bool, str]:
-    if not os.path.exists(DB_PATH):
-        return False, "db_not_found"
-    size = db_size_kb()
-    raw = db_query("SELECT COUNT(*) FROM rss_raw") or 0
-    events = db_query("SELECT COUNT(*) FROM event_registry") or 0
-    return True, f"size={size} raw={raw} events={events}"
-
-def check_sync() -> tuple[bool, str]:
-    local = db_query("SELECT COUNT(*) FROM event_registry") or 0
-    cloud_data = http_get(CLOUD_API)
-    if cloud_data is None:
-        return False, "cloud_unreachable"
-    cloud = cloud_data.get("metrics", {}).get("active_events", 0)
-    if cloud == local:
-        return True, f"local={local} cloud={cloud}"
-    return False, f"local={local} cloud={cloud}"
-
-def check_api() -> tuple[bool, str]:
-    data = http_get(CLOUD_API)
-    if data is None:
-        return False, "api_unreachable"
-    events = data.get("metrics", {}).get("active_events", -1)
-    return True, f"events={events}"
-
-# ── TASK RUNNERS ────────────────────────────────────────────────
-
-def run_stage(name: str) -> bool:
-    """Run a pipeline stage. Returns True on success."""
-    cfg = COMMAND_MAP[name]
-    label = cfg["label"]
-    script = cfg.get("script", "")
-
-    if not os.path.exists(script):
-        print(f"SKIP {label}: script not found ({script})")
-        return True  # not a failure
-
-    cmd = f"cd {PIPELINE_DIR} && python {script} {cfg.get('args', '')}"
-    print(f"RUN {label}: {cmd}")
-
-    start = time.time()
-    try:
-        result = subprocess.run(cmd, shell=True, capture_output=True, text=True, timeout=120)
-        elapsed = time.time() - start
-        if result.returncode == 0:
-            print(f"OK {label} ({elapsed:.1f}s)")
-            return True
-        else:
-            err = result.stderr.strip()[-200:] if result.stderr else "unknown error"
-            print(f"FAIL {label}: {err}")
-            return False
-    except subprocess.TimeoutExpired:
-        print(f"TIMEOUT {label} (>120s)")
-        return False
-    except Exception as e:
-        print(f"ERROR {label}: {e}")
-        return False
-
-def run_aggregator():
-    """Run aggregator via Python import (no subprocess needed)."""
-    print("RUN AGGREGATOR: importing aggregator...")
-    try:
-        sys.path.insert(0, SCRIPT_DIR)
-        from news_intel.db import init_db, get_db
-        from news_intel.aggregator import aggregate_events
-        init_db()
-        db = get_db()
-        db.row_factory = lambda c, r: dict(zip([col[0] for col in c.description], r))
-        rows = db.execute("""
-            SELECT nc.id, rr.title, nc.summary_cn, rr.description,
-                   ni.score_total, ni.tier, ni.entities, rr.published_at, rr.source_name
-            FROM news_content nc
-            JOIN news_intelligence ni ON nc.intel_id = ni.id
-            JOIN rss_raw rr ON ni.raw_id = rr.id
-            WHERE ni.tier IN ('A','B')
-            ORDER BY nc.id DESC LIMIT 100
-        """).fetchall()
-        events = aggregate_events(rows, window_hours=24)
-        db.close()
-        print(f"OK AGGREGATOR: {len(events)} events")
-        return True
-    except Exception as e:
-        print(f"FAIL AGGREGATOR: {e}")
-        return False
-
-# ── COMMANDS ─────────────────────────────────────────────────────
-
-def cmd_check():
-    """Full health check: all 8 stages."""
-    stages = [
-        ("RSS",         check_rss),
-        ("SCORER",      check_scorer),
-        ("FETCHER",     check_fetcher),
-        ("AGGREGATOR",  check_aggregator),
-        ("SQLITE",      check_sqlite),
-        ("SYNC",        check_sync),
-        ("API",         check_api),
-    ]
-
-    failed = None
-    for name, fn in stages:
-        ok, detail = fn()
-        if not ok and failed is None:
-            failed = (name, ok, detail)
-        print(f"CHECK {name}: {'PASS' if ok else 'FAIL'} ({detail})")
+def print_environment():
 
     print()
-    if failed:
-        name, _, detail = failed
-        if name == "RSS":
-            yaml_fail("RSS", "EMPTY_SOURCE", f"No RSS data ({detail})",
-                      action="Pipeline cannot start", command="python pipeline_check.py rss")
-        elif name == "SCORER":
-            yaml_fail("SCORER", "NO_SCORES", f"Articles not scored ({detail})",
-                      action="Fetcher may skip articles", command="python pipeline_check.py scorer")
-        elif name == "FETCHER":
-            missing = detail.split("content_missing=")[-1] if "content_missing=" in detail else "?"
-            yaml_fail("FETCHER", "EMPTY_CONTENT", f"{detail}",
-                      action="Aggregator may create incomplete events",
-                      command="python pipeline_check.py fetcher")
-        elif name == "AGGREGATOR":
-            yaml_fail("AGGREGATOR", "NO_EVENTS", f"No events ({detail})",
-                      action="Dashboard will be empty", command="python pipeline_check.py aggregator")
-        elif name == "SQLITE":
-            yaml_fail("SQLITE", "DB_ERROR", f"Database issue ({detail})",
-                      action="Cannot proceed", command="python pipeline_check.py check")
-        elif name == "SYNC":
-            yaml_fail("SYNC", "OUT_OF_SYNC", f"Cloud mismatch ({detail})",
-                      action="Web data is stale", command="python pipeline_check.py sync")
-        elif name == "API":
-            yaml_fail("API", "API_DOWN", f"Cloud API unreachable ({detail})",
-                      action="Web is down", command="ssh cloud && docker compose ps")
-    else:
-        events = db_query("SELECT COUNT(*) FROM event_registry") or 0
-        yaml_ok("ALL", f"pipeline_healthy events={events} size={db_size_kb()}")
 
-def cmd_run():
-    """Run full pipeline."""
-    print("=" * 50)
-    print("PIPELINE RUN")
-    print("=" * 50)
+    print("ENVIRONMENT")
 
-    stages = ["rss", "scorer", "fetcher", "aggregator", "sync"]
-    ok_count = 0
-    for i, name in enumerate(stages, 1):
-        print(f"\n[{i}/{len(stages)}] {name.upper()}")
-        if name == "aggregator":
-            ok = run_aggregator()
-        else:
-            ok = run_stage(name)
+    print("-"*40)
+
+    print(
+        f"HERMES_HOME: {HERMES_HOME}"
+    )
+
+    print(
+        f"RSS_DB: {get_rss_db()}"
+    )
+
+    print(
+        f"PIPELINE_DB: {get_pipeline_db()}"
+    )
+
+    print(
+        f"CLOUD_API: {CLOUD_API}"
+    )
+
+    print()
+
+
+
+def success_output(
+        stage,
+        detail
+):
+
+    print()
+
+    print(
+        "STATUS: SUCCESS"
+    )
+
+    print(
+        "PIPELINE: news-intel"
+    )
+
+    print(
+        f"STAGE: {stage}"
+    )
+
+    print(
+        "RESULT: PASS"
+    )
+
+    print(
+        f"DETAIL: {detail}"
+    )
+
+    print(
+        "NEXT: continue"
+    )
+
+
+
+def failed_output(
+        stage,
+        error_type,
+        reason,
+        impact,
+        action,
+        command
+):
+
+    print()
+
+    print(
+        "STATUS: FAILED"
+    )
+
+    print(
+        "PIPELINE: news-intel"
+    )
+
+    print(
+        f"FAILED_STAGE: {stage}"
+    )
+
+    print(
+        f"ERROR_TYPE: {error_type}"
+    )
+
+    print(
+        f"REASON: {reason}"
+    )
+
+    print(
+        f"IMPACT: {impact}"
+    )
+
+    print(
+        f"ACTION: {action}"
+    )
+
+    print(
+        f"COMMAND: {command}"
+    )
+
+    print(
+        "VERIFY: python pipeline_check.py check"
+    )
+
+    print(
+        "STOP: true"
+    )
+
+
+
+def skipped_output(
+        stage,
+        reason
+):
+
+    print(
+        f"CHECK {stage}: SKIPPED ({reason})"
+    )
+
+
+
+# ============================================================
+# SQLITE
+# ============================================================
+
+
+def query_db(
+        db,
+        sql
+):
+
+    if db is None:
+
+        return None
+
+
+    try:
+
+        conn = sqlite3.connect(
+            str(db)
+        )
+
+        result = conn.execute(
+            sql
+        ).fetchone()
+
+        conn.close()
+
+
+        if result:
+
+            return result[0]
+
+
+        return 0
+
+
+
+    except Exception as e:
+
+
+        print()
+
+        print(
+            f"DB_ERROR: {db}"
+        )
+
+        print(
+            f"SQL_ERROR: {e}"
+        )
+
+        print()
+
+
+        return None
+
+
+
+def table_exists(
+        db,
+        table
+):
+
+    if db is None:
+
+        return False
+
+
+    try:
+
+        conn = sqlite3.connect(
+            str(db)
+        )
+
+
+        result = conn.execute(
+            """
+            SELECT name
+            FROM sqlite_master
+            WHERE type='table'
+            AND name=?
+            """,
+            (table,)
+        ).fetchone()
+
+
+        conn.close()
+
+
+        return result is not None
+
+
+    except Exception:
+
+        return False
+        
+# ============================================================
+# HTTP
+# ============================================================
+
+
+def http_get(url):
+
+    try:
+
+        with urllib.request.urlopen(
+            url,
+            timeout=5
+        ) as response:
+
+            return json.loads(
+                response.read()
+            )
+
+
+    except Exception as e:
+
+        return None
+
+
+
+# ============================================================
+# CHECK RSS
+# ============================================================
+
+
+def check_rss():
+
+    db = get_rss_db()
+
+
+    if db is None:
+
+        return False, (
+            "RSS_DB_MISSING",
+            "rss archive database not found"
+        )
+
+
+    if not table_exists(
+        db,
+        "rss_articles"
+    ):
+
+        return False, (
+            "RSS_SCHEMA_MISSING",
+            "rss_articles table missing"
+        )
+
+
+
+    total = query_db(
+        db,
+        """
+        SELECT COUNT(*)
+        FROM rss_articles
+        """
+    )
+
+
+    if total is None:
+
+        return False, (
+            "RSS_DB_ERROR",
+            "cannot query rss_articles"
+        )
+
+
+    if total > 0:
+
+        latest = query_db(
+            db,
+            """
+            SELECT COUNT(*)
+            FROM rss_articles
+            WHERE created_at >= datetime('now','-1 day')
+            """
+        )
+
+        return True, (
+            "",
+            f"articles={total} latest24h={latest}"
+        )
+
+
+    return False, (
+        "NO_ARTICLES",
+        "rss_articles empty"
+    )
+
+
+
+# ============================================================
+# CHECK PIPELINE
+# ============================================================
+
+
+def check_pipeline():
+
+    db = get_pipeline_db()
+
+
+    if db is None:
+
+        return False, (
+            "PIPELINE_DB_MISSING",
+            "news_intel database not found"
+        )
+
+
+    if not table_exists(
+        db,
+        "news_intelligence"
+    ):
+
+        return False, (
+            "PIPELINE_SCHEMA_MISSING",
+            "news_intelligence missing"
+        )
+
+
+    total = query_db(
+        db,
+        """
+        SELECT COUNT(*)
+        FROM news_intelligence
+        """
+    )
+
+
+    scored = query_db(
+        db,
+        """
+        SELECT COUNT(*)
+        FROM news_intelligence
+        WHERE score_total IS NOT NULL
+        """
+    )
+
+
+    if total is not None and scored == total:
+
+        return True, (
+            "",
+            f"articles={total} scored={scored}"
+        )
+
+
+    return False, (
+        "SCORER_INCOMPLETE",
+        f"articles={total} scored={scored}"
+    )
+
+
+
+# ============================================================
+# CHECK FETCHER
+# ============================================================
+
+
+def check_fetcher():
+
+    db = get_pipeline_db()
+
+
+    if db is None:
+
+        return False, (
+            "PIPELINE_DB_MISSING",
+            "news_intel database missing"
+        )
+
+
+    if not table_exists(
+        db,
+        "news_content"
+    ):
+
+        return False, (
+            "FETCHER_SCHEMA_MISSING",
+            "news_content missing"
+        )
+
+
+    intel_total = query_db(
+        db,
+        """
+        SELECT COUNT(*)
+        FROM news_intelligence
+        """
+    )
+
+
+    content_total = query_db(
+        db,
+        """
+        SELECT COUNT(*)
+        FROM news_content
+        """
+    )
+
+
+    content_ok = query_db(
+        db,
+        """
+        SELECT COUNT(*)
+        FROM news_content
+        WHERE content_md IS NOT NULL
+        AND content_md!=''
+        """
+    )
+
+
+    if content_total is None or content_ok is None:
+
+        return False, (
+            "FETCHER_DB_ERROR",
+            "cannot query news_content"
+        )
+
+
+    missing = content_total - content_ok
+
+
+    # 没有需要抓取的数据
+    if intel_total == 0:
+
+        return False, (
+            "NO_PIPELINE_DATA",
+            "no articles waiting for fetch"
+        )
+
+
+    # 全部成功
+    if missing == 0:
+
+        return True, (
+            "",
+            (
+                f"intel={intel_total} "
+                f"content={content_total} "
+                f"content_ok={content_ok}"
+            )
+        )
+
+
+    # 部分或全部失败
+
+    return False, (
+        "FETCHER_EMPTY_CONTENT",
+        (
+            f"intel={intel_total} "
+            f"content={content_total} "
+            f"content_ok={content_ok} "
+            f"missing={missing}"
+        )
+    )
+
+
+
+# ============================================================
+# CHECK AGGREGATOR
+# ============================================================
+
+
+def check_aggregator():
+
+    db = get_pipeline_db()
+
+
+    if db is None:
+
+        return False, (
+            "PIPELINE_DB_MISSING",
+            "database missing"
+        )
+
+
+    if not table_exists(
+        db,
+        "event_registry"
+    ):
+
+        return False, (
+            "AGGREGATOR_SCHEMA_MISSING",
+            "event_registry missing"
+        )
+
+
+    events = query_db(
+        db,
+        """
+        SELECT COUNT(*)
+        FROM event_registry
+        """
+    )
+
+
+    articles = query_db(
+        db,
+        """
+        SELECT COUNT(*)
+        FROM news_intelligence
+        """
+    )
+
+
+    if events and events > 0:
+
+
+        ratio = round(
+            events / articles * 100,
+            2
+        ) if articles else 0
+
+
+        return True, (
+            "",
+            (
+                f"events={events} "
+                f"articles={articles} "
+                f"ratio={ratio}%"
+            )
+        )
+
+
+    return False, (
+        "NO_EVENTS",
+        "event_registry empty"
+    )
+
+
+
+# ============================================================
+# CHECK SQLITE
+# ============================================================
+
+
+def check_sqlite():
+
+    db = get_pipeline_db()
+
+
+    if db is None:
+
+        return False, (
+            "DB_MISSING",
+            "database missing"
+        )
+
+
+    try:
+
+        size = (
+            db.stat().st_size
+            /
+            1024
+        )
+
+        return True, (
+            "",
+            f"size={size:.0f}KB"
+        )
+
+
+    except Exception as e:
+
+        return False, (
+            "DB_ERROR",
+            str(e)
+        )
+
+
+
+# ============================================================
+# CHECK SYNC
+# ============================================================
+
+
+def check_sync():
+
+    db = get_pipeline_db()
+
+
+    local = query_db(
+        db,
+        """
+        SELECT COUNT(*)
+        FROM event_registry
+        """
+    )
+
+
+    cloud = http_get(
+        CLOUD_API
+    )
+
+
+    if cloud is None:
+
+        return False, (
+            "CLOUD_UNREACHABLE",
+            "cloud api unavailable"
+        )
+
+
+    remote = (
+        cloud
+        .get(
+            "metrics",
+            {}
+        )
+        .get(
+            "active_events",
+            0
+        )
+    )
+
+
+    if local == remote:
+
+        return True, (
+            "",
+            f"local={local} cloud={remote}"
+        )
+
+
+    return False, (
+        "DATA_MISMATCH",
+        f"local={local} cloud={remote}"
+    )
+
+
+
+# ============================================================
+# CHECK API
+# ============================================================
+
+
+def check_api():
+
+
+    data = http_get(
+        CLOUD_API
+    )
+
+
+    if data is None:
+
+        return False, (
+            "API_DOWN",
+            "dashboard api unreachable"
+        )
+
+
+    events = (
+        data
+        .get(
+            "metrics",
+            {}
+        )
+        .get(
+            "active_events",
+            0
+        )
+    )
+
+
+    return True, (
+        "",
+        f"active_events={events}"
+    )
+
+
+
+# ============================================================
+# CHECK CHAIN
+# ============================================================
+
+
+CHECK_CHAIN = [
+
+    ("RSS", check_rss),
+
+    ("PIPELINE", check_pipeline),
+
+    ("FETCHER", check_fetcher),
+
+    ("AGGREGATOR", check_aggregator),
+
+    ("SQLITE", check_sqlite),
+
+    ("SYNC", check_sync),
+
+    ("API", check_api)
+
+]
+
+# ============================================================
+# CHECK COMMAND
+# ============================================================
+
+
+def cmd_check():
+
+    print_environment()
+
+
+    for index, (stage, checker) in enumerate(CHECK_CHAIN):
+
+        result = checker()
+
+
+        ok = result[0]
+
+
         if ok:
-            ok_count += 1
-        else:
-            break
 
-    print(f"\n{'='*50}")
-    print(f"COMPLETE: {ok_count}/{len(stages)} stages OK")
+            print(
+                f"CHECK {stage}: PASS ({result[1][1]})"
+            )
 
-def cmd_run_one(name: str):
-    """Run a single stage."""
-    if name == "aggregator":
-        ok = run_aggregator()
-    else:
-        ok = run_stage(name)
-    if ok:
-        yaml_ok(name.upper(), f"completed")
-    else:
-        yaml_fail(name.upper(), "EXECUTION_FAILED", "Stage did not complete successfully")
+            continue
 
-# ── MAIN ─────────────────────────────────────────────────────────
 
-def main():
-    if len(sys.argv) < 2:
-        print(__doc__)
+
+        error_type = result[1][0]
+
+        reason = result[1][1]
+
+
+        print(
+            f"CHECK {stage}: FAIL ({reason})"
+        )
+
+
+        # 后续阶段不再检查，避免误导
+
+        for next_stage, _ in CHECK_CHAIN[index + 1:]:
+
+            skipped_output(
+                next_stage,
+                f"blocked_by_{stage}"
+            )
+
+
+        failed_output(
+
+            stage,
+
+            error_type,
+
+            reason,
+
+            "Downstream results may be unreliable",
+
+            (
+                f"Repair {stage} stage "
+                "then verify again"
+            ),
+
+            (
+                f"python pipeline_check.py "
+                f"{stage.lower()}"
+            )
+
+        )
+
         return
 
-    cmd = sys.argv[1]
 
-    if cmd == "check":
+
+    success_output(
+
+        "ALL",
+
+        "pipeline healthy"
+
+    )
+
+
+
+# ============================================================
+# RUN SINGLE STAGE
+# ============================================================
+
+
+def run_stage(name):
+
+
+    if name not in COMMANDS:
+
+        print(
+            f"UNKNOWN_STAGE: {name}"
+        )
+
+        return False
+
+
+
+    cfg = COMMANDS[name]
+
+
+    label = cfg["label"]
+
+    cmd = cfg["cmd"]
+
+
+    print()
+
+    print(
+        f"RUN {label}"
+    )
+
+    print(
+        "COMMAND:"
+    )
+
+    print(
+        " ".join(cmd)
+    )
+
+    print()
+
+
+    start = time.time()
+
+
+    try:
+
+
+        result = subprocess.run(
+
+            cmd,
+
+            cwd=str(
+                SEARCH_ENGINE_HOME
+            ),
+
+            timeout=600
+
+        )
+
+
+        elapsed = (
+            time.time()
+            -
+            start
+        )
+
+
+        if result.returncode == 0:
+
+
+            success_output(
+
+                label,
+
+                (
+                    f"completed "
+                    f"{elapsed:.1f}s"
+                )
+
+            )
+
+
+            return True
+
+
+
+        failed_output(
+
+            label,
+
+            "EXECUTION_FAILED",
+
+            (
+                f"exit_code={result.returncode}"
+            ),
+
+            (
+                "Stage did not complete"
+            ),
+
+            (
+                "Check stage logs"
+            ),
+
+            (
+                " ".join(cmd)
+            )
+
+        )
+
+
+        return False
+
+
+
+    except subprocess.TimeoutExpired:
+
+
+        failed_output(
+
+            label,
+
+            "TIMEOUT",
+
+            ">600 seconds",
+
+            (
+                "Pipeline stage blocked"
+            ),
+
+            (
+                "Check process and logs"
+            ),
+
+            (
+                " ".join(cmd)
+            )
+
+        )
+
+
+        return False
+
+
+
+    except Exception as e:
+
+
+        failed_output(
+
+            label,
+
+            "EXECUTION_ERROR",
+
+            str(e),
+
+            (
+                "Stage execution failed"
+            ),
+
+            (
+                "Check environment"
+            ),
+
+            (
+                " ".join(cmd)
+            )
+
+        )
+
+
+        return False
+
+
+
+# ============================================================
+# FULL PIPELINE RUN
+# ============================================================
+
+
+def cmd_run():
+
+
+    print()
+
+    print(
+        "=" * 60
+    )
+
+    print(
+        "NEWS INTELLIGENCE PIPELINE RUN"
+    )
+
+    print(
+        "=" * 60
+    )
+
+
+    stages = [
+
+        "rss",
+
+        "pipeline",
+
+        "fetcher",
+
+        "aggregator",
+
+        "sync"
+
+    ]
+
+
+    completed = []
+
+
+    for stage in stages:
+
+
+        ok = run_stage(stage)
+
+
+        if not ok:
+
+
+            print()
+
+            print(
+                "PIPELINE STOP"
+            )
+
+            print(
+                f"FAILED_STAGE: {stage}"
+            )
+
+            return
+
+
+
+        completed.append(stage)
+
+
+
+    print()
+
+    print(
+        "=" * 60
+    )
+
+    print(
+        "PIPELINE COMPLETE"
+    )
+
+    print(
+        "STAGES:"
+        +
+        ",".join(completed)
+    )
+
+    print(
+        "=" * 60
+    )
+
+
+    print()
+
+
+    cmd_check()
+
+
+
+# ============================================================
+# STATUS COMMAND
+# ============================================================
+
+
+def cmd_status():
+
+    print_environment()
+
+
+    db = get_pipeline_db()
+
+
+    if db:
+
+
+        print(
+            "PIPELINE_DB:"
+        )
+
+        print(
+            db
+        )
+
+
+        print(
+
+            "EVENTS:",
+
+            query_db(
+
+                db,
+
+                """
+                SELECT COUNT(*)
+                FROM event_registry
+                """
+
+            )
+
+        )
+
+
+
+# ============================================================
+# MAIN
+# ============================================================
+
+
+def main():
+
+
+    if len(sys.argv) < 2:
+
+
+        print(
+            __doc__
+        )
+
+        return
+
+
+
+    command = sys.argv[1].lower()
+
+
+
+    if command == "check":
+
+
         cmd_check()
-    elif cmd == "run":
+
+
+
+    elif command == "run":
+
+
         cmd_run()
-    elif cmd in COMMAND_MAP:
-        cmd_run_one(cmd)
+
+
+
+    elif command == "status":
+
+
+        cmd_status()
+
+
+
+    elif command in COMMANDS:
+
+
+        run_stage(
+            command
+        )
+
+
+
     else:
-        print(f"Unknown: {cmd}")
-        print(__doc__)
+
+
+        print(
+            f"UNKNOWN COMMAND: {command}"
+        )
+
+        print(
+            __doc__
+        )
+
+
 
 if __name__ == "__main__":
+
     main()

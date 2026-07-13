@@ -114,6 +114,26 @@ Always use structured phases with acceptance criteria:
 
 Each phase: verify ALL endpoints, commit, push, then continue.
 
+## Pipeline Health Check
+
+Use `news_intel/pipeline_check.py` for Agent-readable diagnostics:
+
+```bash
+python pipeline_check.py check   # Full health: RSS→Scorer→Fetcher→Aggregator→SQLite→Sync→API
+python pipeline_check.py run     # Full pipeline execution
+python pipeline_check.py fetcher # Single stage
+```
+
+Output is YAML-style with STATUS, STAGE, RESULT, DETAIL, COMMAND, VERIFY fields.
+First failed stage sets STOP=true; Agent reads COMMAND to fix, VERIFY to confirm.
+
+## Workflow Rules
+
+- **Don't over-polish** — when user says "不要继续打磨", stop immediately and move to the next task.
+- **Don't deploy locally** — all builds and runs on cloud VPS. Windows is development only.
+- **Undo on request** — when user says "马上撤销", use `git reset --hard HEAD~1 && git push --force` on both repos.
+- **Verify with browser** — curl is not enough; use `browser_navigate` to confirm pages render with real data.
+
 ## References
 
 - `references/pg-migration-pattern.md` — SQLite → PG data migration with upsert
