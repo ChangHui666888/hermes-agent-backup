@@ -271,4 +271,21 @@ Construct this path with `os.path.expanduser()` and `os.path.join()` — never h
 9. **Field verification before coding**: Before any web task, verify 10 critical fields exist in event_registry with a Python query.
 10. **Color palette choice**: Use amber (#F59E0B) for emphasis, not blue. Heavy blue makes the UI look like enterprise admin, not intelligence. Card background should be warm gray (#141925), not blue-gray.
 11. **Section naming**: The Timeline component is titled "Evolution" with a stage progress bar. The SourceChain component is titled "Information Flow". These are intelligence-domain names, not developer names.
+## Related References
+
+- `references/docker-cloud-deployment.md` — Full Docker Compose deploy: nginx, SQLite immutable, paramiko transfer
+- `references/cron-cloud-sync.md` — Hermes cron for pipeline-to-cloud DB sync every 30 minutes
+- `references/acceptance-criteria.md` — V1 acceptance checklist
+- `references/situational-awareness-pattern.md` — Dashboard V2 design pattern
+- `references/tasks.md` — Frozen 8-task development plan
+
+## Pitfalls
+
 12. **Do NOT build admin-first**: If the user says "stop and think like a product manager", pause all code and freeze PRODUCT.md before resuming.
+13. **NEXT_PUBLIC_API_URL not inlined in Docker build**: Next.js `NEXT_PUBLIC_*` env vars are inlined at BUILD time, not runtime. Setting them in `docker-compose.yml` environment is too late. Fix: (a) add `ENV NEXT_PUBLIC_API_URL=/api/v1` in the Dockerfile BEFORE `RUN npm run build`, (b) add `env: { NEXT_PUBLIC_API_URL: "/api/v1" }` in `next.config.ts`, (c) hardcode `/api/v1` as the fallback in `api.ts` instead of `localhost:8000`. All three together guarantee the correct URL.
+14. **Nginx 502 after frontend rebuild**: When the frontend container is recreated (new IP on Docker network), nginx caches the old upstream address. Always run `docker compose restart nginx` after `docker compose up -d --build frontend`.
+15. **SQLite immutable mode for Docker read-only mounts**: The event_registry volume is mounted `:ro`. SQLite's WAL mode tries to create `-wal`/`-shm` files on open, which fails on read-only mounts. Fix: `sqlite3.connect("file:/data/news_intel.db?mode=ro&immutable=1", uri=True)`. The `immutable=1` parameter tells SQLite to skip WAL file creation entirely.
+16. **Cloud server crash during --no-cache builds**: The cloud VPS (3.9GB RAM) cannot handle `docker compose build --no-cache` — it exhausts memory and becomes unreachable. Always use incremental builds (`docker compose up -d --build`) on low-memory hosts.
+17. **Browser verification for client-side fetch**: Dashboard pages that fetch API data MUST be client components (`"use client"` with `useEffect`). Server Components doing SSR will try to resolve `/api/v1/dashboard` against `localhost:3000` (the Next.js server) instead of through nginx to the backend. Always verify in-browser, not just via `curl` from the server.
+18. **Git push rejection for files >100MB**: GitHub rejects pushes containing files over 100MB. If a large file (e.g. `.rar`, `.tar.gz`) was accidentally committed, use `git reset --soft <last-good-commit>` to squash, then `git rm --cached <large-file>` before recommitting and pushing.
+19. **DB path in Docker**: The backend's `db.py` must accept `DB_PATH` from environment variables for Docker mounts. Default to the Windows pipeline path, override to `/data/news_intel.db` in `docker-compose.yml`.

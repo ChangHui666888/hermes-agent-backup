@@ -62,14 +62,14 @@
       "schedule_display": "every 5m",
       "repeat": {
         "times": null,
-        "completed": 756
+        "completed": 764
       },
       "enabled": true,
       "state": "scheduled",
       "paused_reason": null,
       "created_at": "2026-07-03T19:51:02.110080+08:00",
-      "next_run_at": "2026-07-13T10:03:34.401210+08:00",
-      "last_run_at": "2026-07-13T09:58:34.401210+08:00",
+      "next_run_at": "2026-07-13T10:57:36.392896+08:00",
+      "last_run_at": "2026-07-13T10:46:52.938820+08:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -102,17 +102,17 @@
       "schedule_display": "every 33m",
       "repeat": {
         "times": null,
-        "completed": 46
+        "completed": 47
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-07-11T11:12:51.726135+08:00",
-      "next_run_at": "2026-07-13T10:20:33.910292+08:00",
-      "last_run_at": "2026-07-13T09:47:33.910292+08:00",
-      "last_status": "ok",
-      "last_error": null,
+      "next_run_at": "2026-07-13T10:55:35.111603+08:00",
+      "last_run_at": "2026-07-13T10:22:35.111603+08:00",
+      "last_status": "error",
+      "last_error": "Script timed out after 120s: C:\\Users\\ChangHui\\AppData\\Local\\hermes\\scripts\\news-pipeline.py",
       "last_delivery_error": null,
       "deliver": "local",
       "origin": null,
@@ -121,5 +121,5 @@
       "fire_claim": null
     }
   ],
-  "updated_at": "2026-07-13T09:58:34.401210+08:00"
+  "updated_at": "2026-07-13T10:52:36.395014+08:00"
 }
