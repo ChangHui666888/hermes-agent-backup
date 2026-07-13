@@ -12,7 +12,7 @@ export default function CategoryPage({ params }: { params: Promise<{ name: strin
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`/api/news?category=${encodeURIComponent(name)}&page_size=50`)
+    fetch(`/news?category=${encodeURIComponent(name)}&page_size=50`)
       .then(r => r.json()).then(d => setItems(d.items || []))
       .finally(() => setLoading(false));
   }, [name]);

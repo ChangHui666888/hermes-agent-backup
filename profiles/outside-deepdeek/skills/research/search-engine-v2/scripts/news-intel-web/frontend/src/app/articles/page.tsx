@@ -20,9 +20,9 @@ export default function ArticlesPage() {
 
   useEffect(() => {
     Promise.all([
-      fetch("/api/news/hot?limit=6").then(r => r.json()),
-      fetch("/api/news/latest?limit=12").then(r => r.json()),
-      fetch("/api/categories").then(r => r.json()),
+      fetch("/news/hot?limit=6").then(r => r.json()),
+      fetch("/news/latest?limit=12").then(r => r.json()),
+      fetch("/categories").then(r => r.json()),
     ]).then(([h, l, c]) => {
       setHot(h.items || []);
       setLatest(l.items || []);

@@ -23,7 +23,7 @@ export default function ArticleDetailPage({ params }: { params: Promise<{ id: st
   useEffect(() => {
     const headers: Record<string,string> = {};
     if (token) headers["Authorization"] = `Bearer ${token}`;
-    fetch(`/api/news/${id}`, { headers })
+    fetch(`/news/${id}`, { headers })
       .then(r => r.ok ? r.json() : Promise.reject("Not found"))
       .then(setArticle)
       .catch(() => setError("Article not found"));

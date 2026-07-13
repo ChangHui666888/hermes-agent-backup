@@ -32,7 +32,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     const saved = localStorage.getItem("token");
     if (saved) {
       setToken(saved);
-      fetch("/api/auth/me", { headers: { Authorization: `Bearer ${saved}` } })
+      fetch("/auth/me", { headers: { Authorization: `Bearer ${saved}` } })
         .then(r => r.ok ? r.json() : null)
         .then(u => u ? setUser(u) : localStorage.removeItem("token"))
         .catch(() => localStorage.removeItem("token"));
@@ -40,7 +40,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const login = useCallback(async (email: string, password: string) => {
-    const res = await fetch("/api/auth/login", {
+    const res = await fetch("/auth/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),

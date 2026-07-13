@@ -26,12 +26,12 @@ export default function PipelineConfigPage() {
 
   useEffect(() => {
     if (!token) { router.push("/login"); return; }
-    fetch("/api/admin/pipeline/config", { headers: { Authorization: `Bearer ${token}` } })
+    fetch("/admin/pipeline/config", { headers: { Authorization: `Bearer ${token}` } })
       .then(r => r.json()).then(setConfig);
   }, [token, router]);
 
   const save = async (key: string, value: any) => {
-    const res = await fetch(`/api/admin/pipeline/config/${key}`, {
+    const res = await fetch(`/admin/pipeline/config/${key}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
       body: JSON.stringify(value),

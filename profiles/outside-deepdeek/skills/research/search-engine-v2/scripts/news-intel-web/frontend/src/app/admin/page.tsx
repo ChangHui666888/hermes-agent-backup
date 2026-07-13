@@ -12,7 +12,7 @@ export default function AdminPage() {
 
   useEffect(() => {
     if (!token) { router.push("/login"); return; }
-    fetch("/api/admin/dashboard", { headers: { Authorization: `Bearer ${token}` } })
+    fetch("/admin/dashboard", { headers: { Authorization: `Bearer ${token}` } })
       .then(r => r.ok ? r.json() : null)
       .then(setStats);
   }, [token, router]);
