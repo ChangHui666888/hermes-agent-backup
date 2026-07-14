@@ -247,13 +247,15 @@ COMMANDS = {
     {
         "label":"FETCHER",
 
+        # 修复：batch.py 实际位于 SEARCH_ENGINE_HOME 根目录下，
+        # 不在 news_intel/ 子目录里。原路径会导致
+        # `python pipeline_check.py fetcher` 直接 FileNotFoundError。
         "cmd":[
 
             "python",
 
             str(
                 SEARCH_ENGINE_HOME /
-                "news_intel" /
                 "batch.py"
             )
 

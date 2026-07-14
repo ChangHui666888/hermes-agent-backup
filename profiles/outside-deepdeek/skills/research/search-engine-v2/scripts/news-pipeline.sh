@@ -16,18 +16,20 @@ if [ -f "$REPORT" ]; then
     python3 -c "
 import json
 d = json.load(open('$REPORT'))
-tiers = {'tier_a':'DeepSeek V4 Flash','tier_b':'Qwen3-1.7B','tier_c':'Python 规则'}
+tiers = {'batch_tier_a':'DeepSeek V4 Flash','batch_tier_b':'Qwen3-1.7B','batch_tier_c':'Python 规则'}
 print()
 print('📊 News Pipeline Summary')
-print(f\"  Processed  : {d.get('processed',0)}\")
+print(f\"  Batch Input   : {d.get('batch_input',0)}\")
+print(f\"  New           : {d.get('batch_new',0)}\")
+print(f\"  Duplicate     : {d.get('batch_duplicate',0)}\")
 for k,label in tiers.items():
     v = d.get(k,0)
     if v: print(f\"  {label:>16s}: {v}\")
-print(f\"  Duplicate  : {d.get('duplicate',0)}\")
-print(f\"  Enhanced   : {d.get('enhanced',0)}\")
-print(f\"  Saved      : {d.get('saved',0)}\")
-print(f\"  Failed     : {d.get('failed',0)}\")
-print(f\"  Duration   : {d.get('duration_sec',0)}s\")
+print(f\"  Enhanced      : {d.get('batch_enhanced',0)}\")
+print(f\"  Pushed        : {d.get('batch_pushed',0)}\")
+print(f\"  Push Failed   : {d.get('batch_push_failed',0)}\")
+print(f\"  Total Articles: {d.get('total_articles',0)}\")
+print(f\"  Duration      : {d.get('duration_sec',0)}s\")
 "
 fi
 

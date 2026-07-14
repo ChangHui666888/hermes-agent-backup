@@ -63,7 +63,7 @@ def run_pipeline(hours: int = 2, limit: int = 50, do_fetch: bool = False):
         FROM news_intelligence ni
         JOIN rss_raw rr ON ni.raw_id = rr.id
         LEFT JOIN news_content nc ON nc.intel_id = ni.id
-        WHERE ni.tier IN ('A')
+        WHERE ni.tier IN ('A', 'B')
           AND (nc.id IS NULL OR nc.content_md IS NULL OR nc.content_md = '')
         ORDER BY ni.score_total DESC
         LIMIT ?

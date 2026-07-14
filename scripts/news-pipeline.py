@@ -240,6 +240,24 @@ def main():
         default=200
     )
 
+    # 根因修复：run_pipeline() 的 do_fetch 参数默认 False，
+    # 而这个 wrapper 之前从未把它暴露出来传下去，导致 Windows 计划任务
+    # 触发的每一次运行都从未真正调用 batch.py 抓正文。
+    # 默认设为 True，这样计划任务命令行不用改也会自动生效；
+    # 想临时跳过抓正文（比如只想快速看评分结果）时传 --no-fetch。
+    parser.add_argument(
+        "--fetch",
+        dest="fetch",
+        action="store_true",
+        default=True
+    )
+
+    parser.add_argument(
+        "--no-fetch",
+        dest="fetch",
+        action="store_false"
+    )
+
     args = parser.parse_args()
 
 
@@ -279,15 +297,17 @@ def main():
 
 
         logger.info(
-            "Running pipeline hours=%s limit=%s",
+            "Running pipeline hours=%s limit=%s fetch=%s",
             args.hours,
-            args.limit
+            args.limit,
+            args.fetch
         )
 
 
         report = run_pipeline(
             hours=args.hours,
-            limit=args.limit
+            limit=args.limit,
+            do_fetch=args.fetch
         )
 
 

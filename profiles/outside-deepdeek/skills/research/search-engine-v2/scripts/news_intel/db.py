@@ -187,9 +187,43 @@ def init_db():
         CREATE INDEX IF NOT EXISTS idx_event_first_seen ON event_registry(first_seen);
     """)
 
+    # ---- Sync watermark (新增：修复RSS同步丢数据问题) -------------
+    # 记录"上次同步到哪了"，让 sync_recent() 从游标续拉，
+    # 而不是每次都只看"当前时间往前推N小时"的滑动窗口——
+    # 后者一旦 cron 漏跑，窗口外的文章会被永久跳过。
+    db.executescript("""
+        CREATE TABLE IF NOT EXISTS sync_state (
+            key         TEXT PRIMARY KEY,
+            value       TEXT,
+            updated_at  TEXT DEFAULT (datetime('now','localtime'))
+        );
+    """)
+
     db.commit()
     db.close()
     print(f"[db] v4.4 6-tables init: {DB_PATH}")
+
+
+# ---- Sync watermark helpers --------------------------------------
+
+def get_sync_watermark(db: sqlite3.Connection, key: str = "rss_last_synced_at"):
+    """读取上次同步游标（RSS created_at），不存在则返回 None（首次运行）。"""
+    row = db.execute(
+        "SELECT value FROM sync_state WHERE key = ?", (key,)
+    ).fetchone()
+    return row["value"] if row else None
+
+
+def set_sync_watermark(db: sqlite3.Connection, value: str, key: str = "rss_last_synced_at"):
+    """更新同步游标。value 应为已处理批次中最大的 created_at。"""
+    db.execute("""
+        INSERT INTO sync_state (key, value, updated_at)
+        VALUES (?, ?, datetime('now','localtime'))
+        ON CONFLICT(key) DO UPDATE SET
+            value = excluded.value,
+            updated_at = excluded.updated_at
+    """, (key, value))
+    db.commit()
 
 
 # ---- Article CRUD (unchanged) -----------------------------------

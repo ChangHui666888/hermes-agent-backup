@@ -201,6 +201,9 @@ def _compute_entity_idf(articles: list[dict]) -> tuple[dict, dict, set]:
         topic_total[primary] += 1
 
         e = a.get("entities", {}) or {}
+        if isinstance(e, str):
+            try: e = json.loads(e)
+            except: e = {}
         names = set()
         for cat in ("companies", "persons", "countries"):
             for name in e.get(cat, []):
@@ -255,6 +258,9 @@ def build_fingerprint(article: dict, global_idf: dict = None, topic_idf_map: dic
     primary, secondary = _classify_topics(text)
 
     entities = article.get("entities", {}) or {}
+    if isinstance(entities, str):
+        try: entities = json.loads(entities)
+        except: entities = {}
 
     # P1: Subject — hub entities 降权但不禁用
     candidates = []
@@ -403,6 +409,9 @@ def aggregate_events(articles: list[dict], window_hours: int = 24) -> list[dict]
     _known_entity_types = {}
     for a in articles:
         e = a.get("entities", {}) or {}
+        if isinstance(e, str):
+            try: e = json.loads(e)
+            except: e = {}
         for cat in ("companies", "persons", "countries"):
             for name in e.get(cat, []):
                 _known_entity_types[_canonicalize(name)] = _infer_entity_type(name, e)
@@ -435,6 +444,9 @@ def aggregate_events(articles: list[dict], window_hours: int = 24) -> list[dict]
             if ts and (ts < (best_event.get("start_time") or ts)):
                 best_event["start_time"] = ts
             e = a.get("entities", {}) or {}
+        if isinstance(e, str):
+            try: e = json.loads(e)
+            except: e = {}
             best_event["all_entities"].update(_canonicalize(n) for n in e.get("companies", []))
             best_event["all_entities"].update(_canonicalize(n) for n in e.get("persons", []))
             best_event["all_entities"].update(_canonicalize(n) for n in e.get("countries", []))
@@ -445,6 +457,9 @@ def aggregate_events(articles: list[dict], window_hours: int = 24) -> list[dict]
                 best_event["best_title"] = a["title"]
         else:
             e = a.get("entities", {}) or {}
+        if isinstance(e, str):
+            try: e = json.loads(e)
+            except: e = {}
             all_ents = set()
             all_ents.update(_canonicalize(n) for n in e.get("companies", []))
             all_ents.update(_canonicalize(n) for n in e.get("persons", []))
