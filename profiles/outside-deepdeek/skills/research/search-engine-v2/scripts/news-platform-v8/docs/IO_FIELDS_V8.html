@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>News Platform V8 — 各阶段输入输出字段详解</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'JetBrains Mono',monospace;background:#0f172a;color:#e2e8f0;padding:2rem;line-height:1.6}
+.container{max-width:1400px;margin:0 auto}
+h1{font-size:1.4rem;font-weight:700;margin-bottom:.25rem;color:#f8fafc}
+h2{font-size:1.1rem;font-weight:600;color:#22d3ee;margin:2rem 0 .75rem;padding-top:1rem;border-top:1px solid #1e293b}
+h3{font-size:.9rem;font-weight:600;color:#e2e8f0;margin:1rem 0 .5rem}
+.subtitle{color:#64748b;font-size:.8rem;margin-bottom:2rem}
+.phase-header{display:flex;align-items:center;gap:.75rem;margin-bottom:.5rem}
+.phase-badge{font-size:.7rem;padding:2px 10px;border-radius:12px;font-weight:600}
+.badge-running{background:rgba(34,197,94,.15);color:#22c55e;border:1px solid rgba(34,197,94,.3)}
+.badge-llm{background:rgba(251,146,60,.15);color:#fb923c;border:1px solid rgba(251,146,60,.3)}
+table{width:100%;border-collapse:collapse;margin:.5rem 0 1.25rem;font-size:.75rem}
+th{background:#1e293b;color:#94a3b8;padding:8px 12px;text-align:left;font-weight:600;font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;border-bottom:2px solid #334155}
+td{padding:7px 12px;border-bottom:1px solid #1e293b;vertical-align:top}
+tr:nth-child(even){background:rgba(15,23,42,.4)}
+.col-field{color:#f8fafc;font-weight:500;white-space:nowrap;font-size:.73rem}
+.col-type{color:#94a3b8;font-size:.7rem}
+.col-source{color:#22d3ee;font-size:.7rem}
+.col-note{color:#64748b;font-size:.7rem}
+code{background:#1e293b;padding:1px 5px;border-radius:3px;font-size:.7rem;color:#38bdf8}
+.summary-row{background:rgba(34,211,238,.06)!important}
+.summary-row td{border-top:2px solid rgba(34,211,238,.3);font-weight:600}
+.io-block{margin:.5rem 0 1rem;padding:.75rem 1rem;background:rgba(15,23,42,.5);border-radius:8px;border:1px solid #1e293b}
+.io-block dt{color:#64748b;font-size:.7rem;margin-bottom:.25rem}
+.io-block dd{color:#94a3b8;font-size:.73rem;margin-bottom:.5rem;padding-left:.5rem;border-left:2px solid #334155}
+.footer{text-align:center;margin-top:2rem;color:#475569;font-size:.7rem;border-top:1px solid #1e293b;padding-top:1rem}
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>News Platform V8 — 各阶段输入/输出字段详解</h1>
+<p class="subtitle">RSS → Score → Fetch → Aggregate → Sync → PG → API → Web · 2026-07-14</p>
+
+<!-- Phase 0: RSS -->
+<h2><span class="phase-badge badge-running">✅</span> Phase 0: RSS Scanner → rss-archive.db</h2>
+<p style="color:#64748b;font-size:.75rem;margin-bottom:.5rem">独立进程, Hermes cron 30min · 输出: ~/.hermes/rss-archive.db</p>
+<table>
+<tr><th style="width:22%">字段</th><th style="width:10%">类型</th><th style="width:38%">来源</th><th style="width:30%">示例</th></tr>
+<tr><td class="col-field">source</td><td class="col-type">TEXT</td><td class="col-source">RSS feed 名称</td><td class="col-note">Bloomberg, Reuters, BBC, DW</td></tr>
+<tr><td class="col-field">title</td><td class="col-type">TEXT</td><td class="col-source">feedparser entry.title</td><td class="col-note">US launches strikes on Iran...</td></tr>
+<tr><td class="col-field">summary</td><td class="col-type">TEXT</td><td class="col-source">feedparser entry.summary</td><td class="col-note">The US military launched fresh strikes...</td></tr>
+<tr><td class="col-field">link</td><td class="col-type">TEXT</td><td class="col-source">feedparser entry.link → 唯一键</td><td class="col-note">https://www.bloomberg.com/...</td></tr>
+<tr><td class="col-field">category</td><td class="col-type">TEXT</td><td class="col-source">RSS feed 原生分类</td><td class="col-note">World, Technology, Business</td></tr>
+<tr><td class="col-field">date</td><td class="col-type">TEXT</td><td class="col-source">feedparser entry.published_parsed</td><td class="col-note">2026-07-14T08:30:00Z</td></tr>
+<tr class="summary-row"><td colspan="4">📤 输出 → sync.py 读取 <code>source, title, summary, link, category, date</code> · 当前: 4,007 articles</td></tr>
+</table>
+
+<!-- Phase 1: Scorer -->
+<h2><span class="phase-badge badge-running">✅</span> Phase 1: sync.py + scorer.py → news_intel.db</h2>
+
+<h3>📥 sync_recent() 输入</h3>
+<table>
+<tr><th style="width:22%">字段</th><th style="width:10%">来自</th><th style="width:68%">用途</th></tr>
+<tr><td class="col-field">source</td><td class="col-source">rss-archive.db</td><td class="col-note">→ source_name → score_source() 查权威度</td></tr>
+<tr><td class="col-field">title</td><td class="col-source">rss-archive.db</td><td class="col-note">→ score_impact() + compute_velocity()</td></tr>
+<tr><td class="col-field">summary</td><td class="col-source">rss-archive.db</td><td class="col-note">→ description → 关键词匹配</td></tr>
+<tr><td class="col-field">link</td><td class="col-source">rss-archive.db</td><td class="col-note">→ article_url + URL 去重</td></tr>
+<tr><td class="col-field">category</td><td class="col-source">rss-archive.db</td><td class="col-note">→ category_raw</td></tr>
+<tr><td class="col-field">date</td><td class="col-source">rss-archive.db</td><td class="col-note">→ published_at</td></tr>
+</table>
+
+<h3>score_article() 五维评分输出</h3>
+<table>
+<tr><th style="width:20%">字段</th><th style="width:10%">分数</th><th style="width:35%">逻辑</th><th style="width:35%">示例</th></tr>
+<tr><td class="col-field">total</td><td class="col-type">0-100</td><td class="col-source">五维求和 min(Σ, 100)</td><td class="col-note">90 (TSMC)</td></tr>
+<tr><td class="col-field">source</td><td class="col-type">0-20</td><td class="col-source">source_scores.json 查表</td><td class="col-note">Bloomberg=20, BBC=16, unknown=5</td></tr>
+<tr><td class="col-field">impact</td><td class="col-type">0-30</td><td class="col-source">event_keywords.json 关键词正则</td><td class="col-note">war/strike/ceasefire→30</td></tr>
+<tr><td class="col-field">entity</td><td class="col-type">0-20</td><td class="col-source">entity_weights.json 查表</td><td class="col-note">Federal Reserve=20</td></tr>
+<tr><td class="col-field">market</td><td class="col-type">0-20</td><td class="col-source">asset_graph.json 资产映射</td><td class="col-note">NVDA→半导体=18</td></tr>
+<tr><td class="col-field">velocity</td><td class="col-type">0-10</td><td class="col-source">Jaccard ±30min 窗口</td><td class="col-note">5篇同事件=10, 孤立=0</td></tr>
+</table>
+
+<h3>额外输出字段</h3>
+<table>
+<tr><th style="width:20%">字段</th><th style="width:10%">类型</th><th style="width:70%">说明</th></tr>
+<tr><td class="col-field">tier</td><td class="col-type">TEXT</td><td class="col-note">A(>90) | B(60-90) | C(<60) · 当前 A=4, B=378, C=3,625</td></tr>
+<tr><td class="col-field">categories</td><td class="col-type">list[str]</td><td class="col-note">关键词命中分类</td></tr>
+<tr><td class="col-field">entities</td><td class="col-type">dict(JSON)</td><td class="col-note">{companies:[], persons:[], countries:[]}</td></tr>
+<tr><td class="col-field">market_assets</td><td class="col-type">list[str]</td><td class="col-note">匹配到的资产/股票代码</td></tr>
+<tr><td class="col-field">velocity_count</td><td class="col-type">int</td><td class="col-note">同期同事件报道数</td></tr>
+</table>
+
+<dl class="io-block">
+<dt>📤 → rss_raw (18字段)</dt><dd>guid, source_name, source_domain, article_url, title, description, published_at, category_raw, ...</dd>
+<dt>📤 → news_intelligence (14字段)</dt><dd>raw_id, score_total, score_source, score_impact, score_entity, score_market, score_velocity, tier, category, tags(JSON), entities(JSON), velocity_count, scored_at</dd>
+<dt>📤 → news_content (Phase 2填充, 当前290行, 84有内容)</dt><dd>intel_id, article_url, content_md, content_len, fetch_strategy, fetch_cost, ...</dd>
+</dl>
+
+<!-- Phase 2: Fetcher -->
+<h2><span class="phase-badge badge-running">✅</span> Phase 2: batch.py + core/fetchers.py (全文抓取)</h2>
+<p style="color:#64748b;font-size:.75rem;margin-bottom:.5rem">ThreadPoolExecutor(4) · 4级级联 · 当前 84/290 已抓取</p>
+
+<h3>📥 输入</h3>
+<table>
+<tr><th style="width:20%">输入</th><th style="width:10%">来源</th><th style="width:70%">格式</th></tr>
+<tr><td class="col-field">URL 列表</td><td class="col-source">pipeline.py 生成临时文件</td><td class="col-note">每行一个 URL, #开头为注释</td></tr>
+<tr><td class="col-field">--llm-extract</td><td class="col-source">CLI 标志</td><td class="col-note">启用 DeepSeek 结构化抽取, 否则纯脚本</td></tr>
+</table>
+
+<h3>batch.py extract_url() 输出 (JSONL)</h3>
+<table>
+<tr><th style="width:22%">字段</th><th style="width:10%">类型</th><th style="width:68%">说明</th></tr>
+<tr><td class="col-field">ok</td><td class="col-type">bool</td><td class="col-note">是否获取到有效正文 (≥200 chars)</td></tr>
+<tr><td class="col-field">url</td><td class="col-type">str</td><td class="col-note">原始 URL</td></tr>
+<tr><td class="col-field">domain</td><td class="col-type">str</td><td class="col-note">get_profile(url) 域名画像</td></tr>
+<tr><td class="col-field">content</td><td class="col-type">str</td><td class="col-note">Markdown 正文 (trafilatura/readability 提取)</td></tr>
+<tr><td class="col-field">strategy_used</td><td class="col-type">str</td><td class="col-note">成功策略: direct|archive|scrapling|browser</td></tr>
+<tr><td class="col-field">total_cost</td><td class="col-type">int</td><td class="col-note">direct=1, archive=1, scrapling=2, browser=3</td></tr>
+<tr><td class="col-field">cost_trace</td><td class="col-type">list[dict]</td><td class="col-note">每个尝试: {strategy, cost, ok, error?, content_len?}</td></tr>
+<tr><td class="col-field">structured</td><td class="col-type">dict|None</td><td class="col-note">{headline, subheadline, author, published_at, summary, key_points}</td></tr>
+</table>
+
+<h3>→ pipeline.py 写入 news_content (19字段)</h3>
+<table>
+<tr><th style="width:22%">DB字段</th><th style="width:10%">类型</th><th style="width:68%">映射</th></tr>
+<tr><td class="col-field">intel_id</td><td class="col-type">INT</td><td class="col-note">news_intelligence.id</td></tr>
+<tr><td class="col-field">article_url</td><td class="col-type">TEXT</td><td class="col-note">batch .url</td></tr>
+<tr><td class="col-field">content_md</td><td class="col-type">TEXT</td><td class="col-note">batch .content (Markdown)</td></tr>
+<tr><td class="col-field">content_len</td><td class="col-type">INT</td><td class="col-note">len(content_md)</td></tr>
+<tr><td class="col-field">fetch_strategy</td><td class="col-type">TEXT</td><td class="col-note">batch .strategy_used</td></tr>
+<tr><td class="col-field">fetch_cost</td><td class="col-type">INT</td><td class="col-note">batch .total_cost</td></tr>
+<tr><td class="col-field">fetch_at</td><td class="col-type">TEXT</td><td class="col-note">datetime timestamp</td></tr>
+<tr><td class="col-field">summary_cn</td><td class="col-type">TEXT</td><td class="col-note">structured.summary_cn</td></tr>
+<tr><td class="col-field">summary_en</td><td class="col-type">TEXT</td><td class="col-note">structured.summary_en</td></tr>
+<tr><td class="col-field">key_points</td><td class="col-type">JSON</td><td class="col-note">structured.key_points</td></tr>
+<tr><td class="col-field">source_headline</td><td class="col-type">TEXT</td><td class="col-note">structured.headline</td></tr>
+<tr><td class="col-field">published_at</td><td class="col-type">TEXT</td><td class="col-note">structured.published_at</td></tr>
+<tr><td class="col-field">author_name</td><td class="col-type">TEXT</td><td class="col-note">structured.author</td></tr>
+<tr><td class="col-field">extraction_method</td><td class="col-type">TEXT</td><td class="col-note">rule_based|qwen3|deepseek-flash</td></tr>
+<tr><td class="col-field">llm_model</td><td class="col-type">TEXT</td><td class="col-note">enhancer.model</td></tr>
+<tr><td class="col-field">llm_cost</td><td class="col-type">REAL</td><td class="col-note">enhancer.llm_cost</td></tr>
+</table>
+
+<!-- Phase 3: Aggregator -->
+<h2><span class="phase-badge badge-running">✅</span> Phase 3: aggregator.py v4.4 (事件聚合 · 零LLM)</h2>
+
+<h3>📥 输入 (三表 JOIN)</h3>
+<table>
+<tr><th style="width:22%">字段</th><th style="width:12%">来自</th><th style="width:66%">用途</th></tr>
+<tr><td class="col-field">id</td><td class="col-source">news_content</td><td class="col-note">article_ids 追溯</td></tr>
+<tr><td class="col-field">title</td><td class="col-source">rss_raw</td><td class="col-note">→ _detect_action() 计数排序</td></tr>
+<tr><td class="col-field">summary_cn</td><td class="col-source">news_content</td><td class="col-note">→ _classify_topics() + 摘要拼接</td></tr>
+<tr><td class="col-field">description</td><td class="col-source">rss_raw</td><td class="col-note">→ _get_text() 全文检索</td></tr>
+<tr><td class="col-field">score_total</td><td class="col-source">news_intelligence</td><td class="col-note">→ 排序 centroid</td></tr>
+<tr><td class="col-field">tier</td><td class="col-source">news_intelligence</td><td class="col-note">→ 仅 A/B 级参与</td></tr>
+<tr><td class="col-field">entities</td><td class="col-source">news_intelligence</td><td class="col-note">→ Subject/Object (JSON→dict 解析)</td></tr>
+<tr><td class="col-field">published_at</td><td class="col-source">rss_raw</td><td class="col-note">→ 时间窗 + stage 计算</td></tr>
+<tr><td class="col-field">source_name</td><td class="col-source">rss_raw</td><td class="col-note">→ source.primary_source</td></tr>
+</table>
+
+<h3>build_fingerprint() 内部结构</h3>
+<table>
+<tr><th style="width:20%">字段</th><th style="width:10%">类型</th><th style="width:70%">逻辑</th></tr>
+<tr><td class="col-field">subject</td><td class="col-type">str</td><td class="col-note">companies/persons 加权最大 (hub ×0.3, ≥0.15)</td></tr>
+<tr><td class="col-field">action</td><td class="col-type">str</td><td class="col-note">14 类枚举计数排序: ATTACKS|DIES|SUES|NEGOTIATES|...</td></tr>
+<tr><td class="col-field">object</td><td class="col-type">str</td><td class="col-note">countries/companies 加权最高 (排除 subject)</td></tr>
+<tr><td class="col-field">event_type</td><td class="col-type">str</td><td class="col-note">ACTION_MAP[action][0]</td></tr>
+<tr><td class="col-field">primary_topic</td><td class="col-type">str</td><td class="col-note">TOPIC_SIGNALS 命中最多</td></tr>
+<tr><td class="col-field">country</td><td class="col-type">str|None</td><td class="col-note">entities.countries[0] → location 硬约束</td></tr>
+<tr><td class="col-field">anchor</td><td class="col-type">str</td><td class="col-note">{subject}|{action}|{object}|{topic} → 快速匹配</td></tr>
+</table>
+
+<h3>fingerprint_score() 评分</h3>
+<table>
+<tr><th style="width:20%">维度</th><th style="width:10%">分数</th><th style="width:70%">条件</th></tr>
+<tr><td class="col-field">location 硬约束</td><td class="col-type">return 0</td><td class="col-note">不同 country → 直接拒绝</td></tr>
+<tr><td class="col-field">anchor 快速通道</td><td class="col-type">100</td><td class="col-note">完全相同的 SAO+Topic → 立即合并</td></tr>
+<tr><td class="col-field">Action</td><td class="col-type">25</td><td class="col-note">同动作类型</td></tr>
+<tr><td class="col-field">Subject</td><td class="col-type">10-25</td><td class="col-note">同名 + 稀有度加权</td></tr>
+<tr><td class="col-field">Object</td><td class="col-type">10-30</td><td class="col-note">同名 + 稀有度加权</td></tr>
+<tr><td class="col-field">Topic</td><td class="col-type">10</td><td class="col-note">primary=10, secondary=5</td></tr>
+<tr class="summary-row"><td>阈值</td><td>≥50 事件 | ≥75 强合并</td><td></td></tr>
+</table>
+
+<h3>📤 Event Object (21+3 字段, v4.4)</h3>
+<table>
+<tr><th style="width:20%">字段</th><th style="width:10%">类型</th><th style="width:70%">生成逻辑</th></tr>
+<tr><td class="col-field">event_id</td><td class="col-type">str</td><td class="col-note">EVT-{YYYYMMDD}-{idx:03d}</td></tr>
+<tr><td class="col-field">subject{name,type}</td><td class="col-type">obj</td><td class="col-note">fingerprint → _known_entity_types</td></tr>
+<tr><td class="col-field">action{type,detail}</td><td class="col-type">obj</td><td class="col-note">fingerprint + _extract_action_detail() 正则后50字符</td></tr>
+<tr><td class="col-field">object{name,type}</td><td class="col-type">obj</td><td class="col-note">fingerprint → _known_entity_types</td></tr>
+<tr><td class="col-field">event_type</td><td class="col-type">str</td><td class="col-note">fingerprint centroid</td></tr>
+<tr><td class="col-field">location{country}</td><td class="col-type">obj</td><td class="col-note">fingerprint.country</td></tr>
+<tr><td class="col-field">source{primary,authority,count}</td><td class="col-type">obj</td><td class="col-note">first_article.source + max权威 + 去重</td></tr>
+<tr><td class="col-field">actors[{entity,type,role}]</td><td class="col-type">list</td><td class="col-note">#1=Initiator, obj_match=Target</td></tr>
+<tr><td class="col-field">evidence[{quote,source,url}]</td><td class="col-type">list(JSON)</td><td class="col-note">文章描述摘要 (前3篇, HTML过滤)</td></tr>
+<tr><td class="col-field">source_chain[{id,name,time,role}]</td><td class="col-type">list(JSON)</td><td class="col-note">break/follow 首发识别</td></tr>
+<tr><td class="col-field">timeline[{time,update,source}]</td><td class="col-type">list(JSON)</td><td class="col-note">按小时聚合的关键节点</td></tr>
+<tr><td class="col-field">confidence</td><td class="col-type">float</td><td class="col-note">0.4×auth/20 + 0.3×coh + 0.2×div + 0.1×vol</td></tr>
+<tr><td class="col-field">stage</td><td class="col-type">str</td><td class="col-note"><2h=breaking|2-24h=developing|24h-7d=active|7-30d=stable|>30d=closed</td></tr>
+<tr class="summary-row"><td colspan="4">📤 写入 event_registry → source_registry → entity_registry · 当前: 71 events</td></tr>
+</table>
+
+<!-- Phase 4: Cloud Sync -->
+<h2><span class="phase-badge badge-running">✅</span> Phase 4: Cloud Sync (HTTP POST → V8 Backend)</h2>
+<p style="color:#64748b;font-size:.75rem;margin-bottom:.5rem">cron-sync.py (HTTP, 无SFTP) → POST /internal/events/batch → PostgreSQL</p>
+
+<h3>📤 Push Event Format</h3>
+<table>
+<tr><th style="width:22%">字段</th><th style="width:10%">来自 SQLite</th><th style="width:68%">映射到 PG 列</th></tr>
+<tr><td class="col-field">event_id</td><td class="col-source">event_registry</td><td class="col-note">events.event_id (UNIQUE INDEX)</td></tr>
+<tr><td class="col-field">title</td><td class="col-source">event_registry</td><td class="col-note">events.title</td></tr>
+<tr><td class="col-field">summary</td><td class="col-source">event_registry</td><td class="col-note">events.summary</td></tr>
+<tr><td class="col-field">event_type</td><td class="col-source">event_registry</td><td class="col-note">events.event_type</td></tr>
+<tr><td class="col-field">stage</td><td class="col-source">event_registry</td><td class="col-note">events.stage</td></tr>
+<tr><td class="col-field">confidence</td><td class="col-source">event_registry</td><td class="col-note">events.confidence</td></tr>
+<tr><td class="col-field">coherence</td><td class="col-source">event_registry</td><td class="col-note">events.coherence</td></tr>
+<tr><td class="col-field">subject{name,type}</td><td class="col-source">event_registry</td><td class="col-note">events.subject_name + subject_type</td></tr>
+<tr><td class="col-field">action{type,detail}</td><td class="col-source">event_registry</td><td class="col-note">events.action_type + action_detail</td></tr>
+<tr><td class="col-field">object{name,type}</td><td class="col-source">event_registry</td><td class="col-note">events.object_name + object_type</td></tr>
+<tr><td class="col-field">evidence</td><td class="col-source">event_registry(JSON)</td><td class="col-note">events.evidence (JSONB)</td></tr>
+<tr><td class="col-field">source_chain</td><td class="col-source">event_registry(JSON)</td><td class="col-note">events.source_chain (JSONB)</td></tr>
+<tr><td class="col-field">timeline</td><td class="col-source">event_registry(JSON)</td><td class="col-note">events.timeline (JSONB)</td></tr>
+<tr><td class="col-field">actors</td><td class="col-source">event_registry(JSON)</td><td class="col-note">events.actors (JSONB)</td></tr>
+<tr><td class="col-field">keywords</td><td class="col-source">event_registry(JSON)</td><td class="col-note">events.keywords (JSONB)</td></tr>
+<tr class="summary-row"><td colspan="4">📡 POST → V8 Backend → PG ON CONFLICT(event_id) DO UPDATE · 当前: 71/71 synced</td></tr>
+</table>
+
+<!-- Phase 5: V8 Backend API -->
+<h2><span class="phase-badge badge-running">✅</span> Phase 5: V8 Backend (FastAPI + PostgreSQL)</h2>
+<p style="color:#64748b;font-size:.75rem;margin-bottom:.5rem">23 endpoints · 4 Docker containers</p>
+
+<h3>API Endpoints (23 total)</h3>
+<table>
+<tr><th style="width:22%">Endpoint</th><th style="width:10%">方法</th><th style="width:68%">输出字段</th></tr>
+<tr><td class="col-field">/api/v1/dashboard</td><td class="col-type">GET</td><td class="col-note">{metrics:{active_events, sources, today_updates}, hot_events:[EventDossier×6], map_events:[MapEvent×N]}</td></tr>
+<tr><td class="col-field">/api/v1/events</td><td class="col-type">GET</td><td class="col-note">{total, page, limit, items:[{event_id,title,stage,confidence,SAO,source_count,last_updated}]}</td></tr>
+<tr><td class="col-field">/api/v1/events/{id}</td><td class="col-type">GET</td><td class="col-note">完整 EventDossier: {event_id,title,SAO,evidence,source_chain,timeline,actors,confidence,stage}</td></tr>
+<tr><td class="col-field">/api/v1/sources</td><td class="col-type">GET</td><td class="col-note">{items:[{source_id,name,type,authority,event_count}]}</td></tr>
+<tr><td class="col-field">/api/v1/search?q=</td><td class="col-type">GET</td><td class="col-note">{query, events:[{event_id,title,stage,SAO}]}</td></tr>
+<tr><td class="col-field">/api/v1/map/events</td><td class="col-type">GET</td><td class="col-note">{events:[{event_id,title,country,confidence}]}</td></tr>
+<tr><td class="col-field">/news</td><td class="col-type">GET</td><td class="col-note">{total, page, items:[ArticleOut]}</td></tr>
+<tr><td class="col-field">/news/{id}</td><td class="col-type">GET</td><td class="col-note">ArticleDetail (VIP: content_md + analysis)</td></tr>
+<tr><td class="col-field">/news/hot</td><td class="col-type">GET</td><td class="col-note">{items:[ArticleOut]}</td></tr>
+<tr><td class="col-field">/news/latest</td><td class="col-type">GET</td><td class="col-note">{items:[ArticleOut]}</td></tr>
+<tr><td class="col-field">/news/search?q=</td><td class="col-type">GET</td><td class="col-note">{items:[ArticleOut]}</td></tr>
+<tr><td class="col-field">/internal/news/batch</td><td class="col-type">POST</td><td class="col-note">{ok, fail} · Token: X-Internal-Token</td></tr>
+<tr><td class="col-field">/internal/events/batch</td><td class="col-type">POST</td><td class="col-note">{ok, fail} · ON CONFLICT(event_id) DO UPDATE</td></tr>
+<tr><td class="col-field">/auth/login</td><td class="col-type">POST</td><td class="col-note">{token, level} · bcrypt + JWT</td></tr>
+<tr><td class="col-field">/auth/register</td><td class="col-type">POST</td><td class="col-note">{ok} · email + password</td></tr>
+<tr><td class="col-field">/auth/me</td><td class="col-type">GET</td><td class="col-note">{id, email, level} · Bearer JWT</td></tr>
+<tr><td class="col-field">/admin/dashboard</td><td class="col-type">GET</td><td class="col-note">{articles_total, users_total, ads_active}</td></tr>
+<tr><td class="col-field">/admin/pipeline/config</td><td class="col-type">GET/PUT</td><td class="col-note">{key: value} · settings 表</td></tr>
+<tr><td class="col-field">/ads/random</td><td class="col-type">GET</td><td class="col-note">{id, title, image_url, link_url}</td></tr>
+<tr><td class="col-field">/categories</td><td class="col-type">GET</td><td class="col-note">[{name, count}]</td></tr>
+</table>
+
+<!-- Phase 6: V8 Frontend -->
+<h2><span class="phase-badge badge-running">✅</span> Phase 6: V8 Frontend (Next.js 16)</h2>
+<p style="color:#64748b;font-size:.75rem;margin-bottom:.5rem">12 pages · 15 components · Dark Intelligence Theme</p>
+
+<h3>Pages</h3>
+<table>
+<tr><th style="width:22%">页面</th><th style="width:10%">路由</th><th style="width:10%">API</th><th style="width:58%">数据字段</th></tr>
+<tr><td class="col-field">Situation</td><td class="col-type">/</td><td class="col-source">/api/v1/dashboard</td><td class="col-note">metrics, map_events, hot_events → GlobalSituation + WorldMap + EventHeat + Feed</td></tr>
+<tr><td class="col-field">Event Detail</td><td class="col-type">/events/[id]</td><td class="col-source">/api/v1/events/{id}</td><td class="col-note">EventHeader → FactPanel → Evidence → Evolution → InfoFlow → AI</td></tr>
+<tr><td class="col-field">Explorer</td><td class="col-type">/events</td><td class="col-source">/api/v1/events</td><td class="col-note">Table + Filters(Topic/Stage/Country) + Pagination</td></tr>
+<tr><td class="col-field">Geo Monitor</td><td class="col-type">/map</td><td class="col-source">/api/v1/map/events</td><td class="col-note">WorldMap 520px + markers (color by confidence)</td></tr>
+<tr><td class="col-field">Source Network</td><td class="col-type">/sources</td><td class="col-source">/api/v1/sources</td><td class="col-note">Authority gauge + event_count grid</td></tr>
+<tr><td class="col-field">Search</td><td class="col-type">/search</td><td class="col-source">/api/v1/search</td><td class="col-note">Debounced search (300ms) + results</td></tr>
+<tr><td class="col-field">Articles</td><td class="col-type">/articles</td><td class="col-source">/news/hot + /latest</td><td class="col-note">Hot 6 + Latest 12 + Category tags</td></tr>
+<tr><td class="col-field">Article Detail</td><td class="col-type">/articles/[id]</td><td class="col-source">/news/{id}</td><td class="col-note">Article + VIP content masking</td></tr>
+<tr><td class="col-field">Login</td><td class="col-type">/login</td><td class="col-source">/auth/login</td><td class="col-note">Email + Password → JWT token</td></tr>
+<tr><td class="col-field">Admin</td><td class="col-type">/admin</td><td class="col-source">/admin/dashboard</td><td class="col-note">Stats: articles, users, ads</td></tr>
+<tr><td class="col-field">Pipeline Config</td><td class="col-type">/admin/pipeline</td><td class="col-source">/admin/pipeline/config</td><td class="col-note">Scoring JSON + Aggregation thresholds</td></tr>
+</table>
+
+<p class="footer">News Platform V8 · RSS → Score → Fetch → Aggregate → Sync → PG → API → Web · 7 Phases · 2026-07-14</p>
+</div>
+</body>
+</html>
