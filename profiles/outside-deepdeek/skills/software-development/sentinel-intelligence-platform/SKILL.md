@@ -129,10 +129,45 @@ First failed stage sets STOP=true; Agent reads COMMAND to fix, VERIFY to confirm
 
 ## Workflow Rules
 
+- **NEVER make changes without approval** — before modifying any file, present the plan and wait for explicit approval. If the user says "经过我同意没有？" or "回退", you made an unauthorized change. Use `git checkout -- <file>` to revert, then ask. This is the single most important rule.
 - **Don't over-polish** — when user says "不要继续打磨", stop immediately and move to the next task.
 - **Don't deploy locally** — all builds and runs on cloud VPS. Windows is development only.
 - **Undo on request** — when user says "马上撤销", use `git reset --hard HEAD~1 && git push --force` on both repos.
 - **Verify with browser** — curl is not enough; use `browser_navigate` to confirm pages render with real data.
+- **Commit after every task** — `git add -A && git commit -m "..." && git push` after each completed phase. The user expects cloud git to be current at all times.
+
+## Fetch Engine Pitfalls
+
+### Scrapling timeout: milliseconds vs seconds
+`Scrapling.StealthyFetcher.fetch(url, timeout=...)` expects **milliseconds**, not seconds.
+Passing `timeout=45.0` (45s) is interpreted as **45ms**, causing instant timeout.
+**Fix**: `resp = fetcher.fetch(url, timeout=int(timeout * 1000))` — located in `core/fetchers.py`.
+
+### Aggregator: JSON string entities
+The `entities` field in `news_intelligence` is stored as a **JSON string**, but `aggregator.py` expects a **dict**.
+When aggregator calls `e.get("companies", [])` on a string, it raises `AttributeError: 'str' object has no attribute 'get'`.
+**Fix**: Add `if isinstance(e, str): e = json.loads(e)` before every entity access in aggregator.
+This occurs in 5 locations: `build_fingerprint()`, `_compute_entity_idf()`, and `aggregate_events()` (3 times).
+
+### Pipeline SQL: empty content rows
+`pipeline.py` fetches articles with `LEFT JOIN news_content WHERE nc.id IS NULL`.
+Articles with placeholder rows (id exists, content_md empty) are **skipped**.
+**Fix**: `WHERE nc.id IS NULL OR nc.content_md IS NULL OR nc.content_md = ''`
+This catches articles that had a row created but never fetched.
+
+### Batch results import after timeout
+When `pipeline.py` times out (300s subprocess limit), batch.py may have completed successfully
+but the results in `_fetch_tmp.jsonl` were never imported into `news_content`.
+**Fix**: Read JSONL manually and UPDATE news_content rows:
+```python
+with open('news_intel/_fetch_tmp.jsonl') as f:
+    for line in f:
+        l = json.loads(line)
+        if l['ok']:
+            db.execute('UPDATE news_content SET content_md=?, content_len=?, fetch_strategy=?, fetch_cost=?, fetch_at=datetime("now","localtime") WHERE article_url=?',
+                       (l['content'], len(l['content']), l['strategy_used'], l['total_cost'], l['url']))
+db.commit()
+```
 
 ## References
 
@@ -140,3 +175,4 @@ First failed stage sets STOP=true; Agent reads COMMAND to fix, VERIFY to confirm
 - `references/sftp-to-http-sync.md` — Replace SFTP with HTTP POST for data sync
 - `references/cloud-deploy-pattern.md` — Cloud deployment workflow
 - `references/v8-architecture.md` — V8 architecture details
+- `references/fetch-engine-optimization.md` — Fetch headers, retry, ClientPool, Scrapling timeout fix
