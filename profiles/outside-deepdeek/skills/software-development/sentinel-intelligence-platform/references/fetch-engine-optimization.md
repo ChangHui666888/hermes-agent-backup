@@ -1,6 +1,8 @@
-# Fetch Engine Optimization — Frozen Headers + Retry + Client Pool
+# Fetch Engine Optimization Patterns
 
-## Default Headers (frozen)
+## Frozen Headers
+
+Located in `core/fetchers.py`. The `DEFAULT_HEADERS` dict replaces the old `_make_client` per-call headers.
 
 ```python
 DEFAULT_HEADERS = {
@@ -15,63 +17,74 @@ DEFAULT_HEADERS = {
 }
 ```
 
-NOT included: Referer (news articles have no referrer), TLS fingerprint (httpx can't do it, leave to Scrapling), JS challenge (leave to Scrapling/Playwright).
+Key additions over basic headers:
+- `Sec-Fetch-*` headers — modern browser fingerprint required by anti-bot systems
+- Removed `br` from Accept-Encoding (brotli caused issues with some proxies)
+- Removed `zh-CN` from Accept-Language (some sites block non-English locales)
 
-## Retry Strategy
+Result: France24 went from 403 Forbidden → 200 OK.
 
-- **Retryable statuses**: `{408, 429, 500, 502, 503, 504}`
-- **NOT retried**: 403 (bot detection — retry won't help)
-- **Backoff**: exponential `2**attempt` seconds (1s, 2s, 4s)
-- **Max attempts**: 3
-
-## Timeout Configuration
+## Retry Logic
 
 ```python
-httpx.Timeout(connect=5, read=15, write=10, pool=5)
+RETRY_STATUS = {408, 429, 500, 502, 503, 504}
+MAX_RETRIES = 3
+
+for attempt in range(MAX_RETRIES):
+    resp = client.get(url)
+    if resp.status_code in RETRY_STATUS:
+        wait = 2 ** attempt  # 1s, 2s, 4s
+        time.sleep(wait)
+        continue
+    resp.raise_for_status()
 ```
 
-Per-operation timeouts instead of single global timeout.
+**403 is explicitly EXCLUDED** from retry — retrying a forbidden request won't help and wastes time.
 
-## DirectClientPool
-
-Domain-isolated httpx.Client pool for `fetch_direct` only (not archive/scrapling/browser):
-
-- Per-domain client reuse for cookie persistence
-- Thread-safe via `threading.Lock`
-- LRU eviction at max_domains (default 50)
-- Module-level singleton: `_direct_client_pool = DirectClientPool(max_domains=50)`
-
-Usage: `client = _direct_client_pool.get(url)` — returns cached or new client for the domain.
-Do NOT close the client — pool manages lifecycle.
-
-## Domain Profiles
-
-Add failing domains to `config/domain_profiles.py` to skip known-failing strategies:
+## ClientPool (Domain-Level Cookie Sharing)
 
 ```python
-"france24.com": DomainProfile(
-    domain="france24.com",
-    anti_bot="cloudflare",
-    strategy_order=["archive", "direct", "search_snippet"],
-    known_failing=["scrapling", "browser"],
+class DirectClientPool:
+    def __init__(self, max_domains=50):
+        self._clients = {}
+        self._lock = threading.Lock()
+    
+    def get(self, url):
+        domain = urlparse(url).netloc
+        if domain not in self._clients:
+            if len(self._clients) >= self._max:
+                self._evict_lru()
+            self._clients[domain] = httpx.Client(headers=DEFAULT_HEADERS, ...)
+        return self._clients[domain]
+```
+
+Benefits:
+- Same-domain requests share cookies (Set-Cookie from first request persists)
+- Thread-safe via lock
+- LRU eviction prevents memory leaks
+- Module-level singleton: `_direct_client_pool = DirectClientPool(max_domains=50)`
+
+**Scope**: fetch_direct only. archive/google_cache/scrapling do NOT use the pool.
+
+## Scrapling Timeout: Milliseconds vs Seconds
+
+Scrapling's `fetch(url, timeout=...)` expects **milliseconds**, not seconds.
+Passing 45.0 is interpreted as 45ms → instant timeout.
+
+```python
+# ❌ WRONG:
+resp = fetcher.fetch(url, timeout=45.0)  # 45ms!
+
+# ✅ CORRECT:
+resp = fetcher.fetch(url, timeout=int(45.0 * 1000))  # 45000ms = 45s
+```
+
+## httpx.Timeout (Structured)
+
+```python
+client = httpx.Client(
+    timeout=httpx.Timeout(connect=5, read=15, write=10, pool=5)
 )
 ```
 
-This prevents wasting 45s on Scrapling timeout for France24 (which always fails).
-
-## Scrapling Timeout Bug
-
-**Root cause**: `Scrapling.StealthyFetcher.fetch(url, timeout=...)` expects **milliseconds**.
-Code passed `timeout=45.0` (seconds) → interpreted as 45ms → instant timeout.
-**Fix**: `resp = fetcher.fetch(url, timeout=int(timeout * 1000))`
-Location: `core/fetchers.py`, `fetch_scrapling()` function.
-
-## Verification
-
-Use `test_fetch.py` for targeted testing:
-```bash
-python test_fetch.py                          # 10 sample URLs
-python test_fetch.py --url "https://..."      # single URL debug
-python test_fetch.py --source "France 24"     # by source name
-python test_fetch.py --all                    # all unfetched Tier A/B
-```
+Replaces the old `timeout=30.0` flat timeout. Structured timeouts prevent hanging on slow reads.
