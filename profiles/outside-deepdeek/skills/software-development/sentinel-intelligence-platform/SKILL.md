@@ -127,6 +127,46 @@ python pipeline_check.py fetcher # Single stage
 Output is YAML-style with STATUS, STAGE, RESULT, DETAIL, COMMAND, VERIFY fields.
 First failed stage sets STOP=true; Agent reads COMMAND to fix, VERIFY to confirm.
 
+## Auto-Pipeline (Cron)
+
+`auto-pipeline.py` runs every 15min via Hermes cron. 6-step pipeline with per-step logging:
+
+```
+Step 1: SYNC+SCORE     — sync new RSS articles, score them
+Step 2: RSS_FULLTEXT   — use RSS description if >=200 chars (cost=0)
+Step 3: FETCH          — batch.py cascade (with per-strategy breakdown)
+Step 3.5: SEARXNG_REC  — search alt URLs for score 80-89 (free, max 10)
+Step 3.6: TAVILY_REC   — AI search for score >=90 (paid, max 5)
+Step 4: AGGREGATE      — produce Event Dossiers
+Step 5: CLOUD_SYNC     — push events to PG via HTTP
+Step 6: CONTENT_PUSH   — push article content to PG
+```
+
+All steps write to `pipeline.log` with ok/fail counts and strategy breakdowns.
+Domain and RSS source statistics are pushed to PG `fetch_stats` table.
+
+### Cron Registration
+
+```json
+{
+  "auto-pipeline": {
+    "name": "auto-pipeline",
+    "script": "auto-pipeline.py",
+    "schedule": "once in 15m",
+    "repeat": "forever",
+    "no_agent": true,
+    "enabled": true,
+    "deliver": "local"
+  }
+}
+```
+
+### Log Viewing
+
+```bash
+tail -f scripts/pipeline.log
+```
+
 ## Workflow Rules
 
 - **NEVER make changes without approval** — before modifying any file, present the plan and wait for explicit approval. If the user says "经过我同意没有？" or "回退" or "刚才执行了什么？？？", you made an unauthorized change. Use `git checkout -- <file>` to revert immediately. Do NOT also revert the revert without asking — that compounds the error. This is the single most important rule. Applies especially to: domain_profiles, nginx, docker-compose, production config files, and ANY `.py` file in the pipeline directory.
@@ -224,7 +264,8 @@ db.commit()
 - `references/fetch-engine-optimization.md` — Fetch headers, retry, ClientPool, Scrapling timeout fix
 - `references/fetch-optimization-review.md` — 6 fetch suggestions evaluation (RSS FullText, Quality Validator, Domain Stats)
 - `references/fetch-recovery-patterns.md` — Tavily recovery for high-score articles, SearXNG API investigation
-- `references/fetch-simplify-review.md` — SearXNG/Tavily recovery evaluation (requires services)
+- `references/fetch-cascade-recovery.md` — **Complete cascade: SearXNG+Tavily recovery with per-step logging**
+- `references/pipeline-logging-stats.md` — **Auto-pipeline per-step logging + domain/source stats to PG**
 - `references/searxng-config.md` — SearXNG Docker API configuration fix (bind_address, public_instance, formats)
 - `references/rss-fulltext-pattern.md` — RSS FullText: skip HTTP for articles with usable description
 - `references/auto-pipeline-pattern.md` — Automated cron pipeline (15min, 5-step, no-agent)
