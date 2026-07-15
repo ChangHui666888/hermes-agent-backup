@@ -23,9 +23,9 @@ def ingest_fetch_stats(stats: list[dict], _=Depends(verify), db: Session = Depen
     for s in stats:
         try:
             db.execute(text("""
-                INSERT INTO fetch_stats (domain, strategy, ok_count, fail_count, run_at)
-                VALUES (:d, :s, :o, :f, :t)
-            """), {"d": s["domain"], "s": s["strategy"], "o": s["ok"], "f": s["fail"], "t": s["run_at"]})
+                INSERT INTO fetch_stats (domain, source_name, strategy, ok_count, fail_count, run_at)
+                VALUES (:d, :sn, :s, :o, :f, :t)
+            """), {"d": s.get("domain"), "sn": s.get("source_name"), "s": s["strategy"], "o": s["ok"], "f": s["fail"], "t": s["run_at"]})
             ok += 1
         except Exception:
             fail += 1

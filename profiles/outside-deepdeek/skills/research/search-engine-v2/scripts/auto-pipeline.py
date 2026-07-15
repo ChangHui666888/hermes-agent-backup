@@ -124,6 +124,7 @@ try:
             ok_count = 0
             fail_count = 0
             domain_stats = defaultdict(lambda: defaultdict(lambda: {"ok": 0, "fail": 0}))
+            source_stats = defaultdict(lambda: defaultdict(lambda: {"ok": 0, "fail": 0}))
 
             conn = sqlite3.connect(db_path)
             with open(tmp_out) as f:
@@ -132,9 +133,18 @@ try:
                     r = json.loads(line)
                     domain = r.get("domain", "?")
                     strategy = r.get("strategy_used") or "none"
+                    # Look up RSS source name
+                    src_row = conn.execute("""
+                        SELECT rr.source_name FROM rss_raw rr
+                        JOIN news_intelligence ni ON ni.raw_id = rr.id
+                        JOIN news_content nc ON nc.intel_id = ni.id
+                        WHERE nc.article_url = ?
+                    """, (r["url"],)).fetchone()
+                    src_name = src_row[0] if src_row else "?"
                     if r.get("ok"):
                         ok_count += 1
                         domain_stats[domain][strategy]["ok"] += 1
+                        source_stats[src_name][strategy]["ok"] += 1
                         intel_row = conn.execute("SELECT intel_id FROM news_content WHERE article_url=?", (r["url"],)).fetchone()
                         if intel_row:
                             conn.execute("""
@@ -145,6 +155,7 @@ try:
                     else:
                         fail_count += 1
                         domain_stats[domain][strategy]["fail"] += 1
+                        source_stats[src_name][strategy]["fail"] += 1
             conn.commit()
             conn.close()
 
@@ -161,13 +172,20 @@ try:
             step_result("FETCH", ok_count, fail_count, f"{len(urls)} URLs [{breakdown}]")
             log(f"  Strategy breakdown: {breakdown}")
 
-            # Push domain stats to PG
+            # Push domain + source stats to PG
             try:
                 stats_body = []
                 for domain, strategies in domain_stats.items():
                     for strategy, counts in strategies.items():
                         stats_body.append({
-                            "domain": domain, "strategy": strategy,
+                            "domain": domain, "source_name": None, "strategy": strategy,
+                            "ok": counts["ok"], "fail": counts["fail"],
+                            "run_at": datetime.now().isoformat(),
+                        })
+                for src_name, strategies in source_stats.items():
+                    for strategy, counts in strategies.items():
+                        stats_body.append({
+                            "domain": None, "source_name": src_name, "strategy": strategy,
                             "ok": counts["ok"], "fail": counts["fail"],
                             "run_at": datetime.now().isoformat(),
                         })
