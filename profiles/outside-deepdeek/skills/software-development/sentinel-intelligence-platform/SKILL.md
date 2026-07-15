@@ -225,6 +225,7 @@ db.commit()
 - `references/fetch-optimization-review.md` — 6 fetch suggestions evaluation (RSS FullText, Quality Validator, Domain Stats)
 - `references/fetch-recovery-patterns.md` — Tavily recovery for high-score articles, SearXNG API investigation
 - `references/fetch-simplify-review.md` — SearXNG/Tavily recovery evaluation (requires services)
+- `references/searxng-config.md` — SearXNG Docker API configuration fix (bind_address, public_instance, formats)
 - `references/rss-fulltext-pattern.md` — RSS FullText: skip HTTP for articles with usable description
 - `references/auto-pipeline-pattern.md` — Automated cron pipeline (15min, 5-step, no-agent)
 - `references/article-content-sync.md` — Push article content back to PG after fetch (Step 2.5)

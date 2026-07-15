@@ -147,7 +147,19 @@ try:
                         domain_stats[domain][strategy]["fail"] += 1
             conn.commit()
             conn.close()
-            step_result("FETCH", ok_count, fail_count, f"{len(urls)} URLs")
+
+            # Strategy breakdown
+            strat_summary = defaultdict(lambda: {"ok": 0, "fail": 0})
+            for d in domain_stats.values():
+                for s, c in d.items():
+                    strat_summary[s]["ok"] += c["ok"]
+                    strat_summary[s]["fail"] += c["fail"]
+            breakdown = " | ".join(
+                f"{s}:{c['ok']}/{c['ok']+c['fail']}"
+                for s, c in sorted(strat_summary.items())
+            )
+            step_result("FETCH", ok_count, fail_count, f"{len(urls)} URLs [{breakdown}]")
+            log(f"  Strategy breakdown: {breakdown}")
 
             # Push domain stats to PG
             try:

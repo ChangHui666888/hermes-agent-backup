@@ -140,6 +140,10 @@ def get_db() -> sqlite3.Connection:
 | PG events table mismatch | Old PG has different schema than ORM model | Drop+recreate with CASCADE, then migrate SQLite→PG |
 | Scrapling always times out | Timeout passed in seconds, expects ms | `timeout * 1000` — see references/fetch-engine-optimization.md |
 | France24/investing 403 on direct | Missing Sec-Fetch-* headers | Add browser fingerprint headers — see references/fetch-engine-optimization.md |
+| V2 npm deps not in Docker build | Dynamic imports fail, static imports missing | Use static imports, ensure packages in package.json before Docker build |
+| /news/{id} returns 401/empty | Endpoint requires JWT auth | Make auth optional with Header(None), VIP-only for content_md |
+| Article content empty in PG | SQLite→PG sync only pushes metadata | Add content push step in pipeline, ON CONFLICT(url) DO UPDATE content_md |
+| Client page shows \"empty\" in grep | Client components render via JS | Verify with browser_navigate, not curl grep |
 
 ## Workflow Rules
 
