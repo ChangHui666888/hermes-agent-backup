@@ -73,7 +73,11 @@ def _public_fields(a: Article) -> dict:
     return {
         "id": a.id, "url": a.url, "title": a.title,
         "summary_cn": a.summary_cn, "source_name": a.source_name,
-        "source_domain": a.source_domain, "published_at": str(a.published_at) if a.published_at else None,
+        "source_domain": a.source_domain,
+        "published_at": (str(a.published_at) if a.published_at
+                         else str(a.fetched_at) if a.fetched_at
+                         else str(a.created_at) if a.created_at
+                         else None),
         "category": a.category, "tier": a.tier, "score_total": a.score_total,
         "tags": a.tags, "entities": a.entities, "extraction_method": a.extraction_method,
     }
