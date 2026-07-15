@@ -150,6 +150,22 @@ Every task must pass:
 [ ] All colors use CSS variables (never hardcoded hex)
 ```
 
+## V2 Extensions (built on V1 foundation)
+
+### Article Transition Page
+For news aggregation dashboards, use the transition page pattern for external article links:
+- AI Summary first (third-person factual description)
+- Source metadata + entity tags  
+- CTA button: "→ Read Full Article on [Source]" with `rel="noopener noreferrer nofollow"`
+- VIP-only expandable full content toggle
+- See `references/article-transition-page.md` in sentinel-intelligence-platform skill
+
+### MapLibre Migration
+When SVG performance bottlenecks (>200 markers): replace react-simple-maps with `maplibre-gl` + CartoDB Dark Matter (free CDN). Use static import — dynamic `import()` fails in Docker builds.
+
+### Time Field Fallback
+Article display time priority: `published_at → fetched_at → created_at`. Apply in backend route, not frontend.
+
 ## Anti-patterns (what NOT to build in V1)
 
 - User auth / login systems

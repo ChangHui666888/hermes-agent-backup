@@ -99,6 +99,30 @@ else:
     else:
         log("Fetch: no URLs")
 
+# ── 2.5 Push articles with content to PG ─────────────────────
+log("Step 2.5/5: Push article content to PG")
+try:
+    conn = sqlite3.connect(db_path)
+    rows = conn.execute("""
+        SELECT rr.article_url, rr.title, nc.content_md, nc.content_len,
+               ni.score_total, ni.tier, rr.source_name, rr.source_domain,
+               nc.fetch_strategy, nc.fetch_cost
+        FROM news_content nc
+        JOIN news_intelligence ni ON nc.intel_id = ni.id
+        JOIN rss_raw rr ON ni.raw_id = rr.id
+        WHERE nc.content_len > 0
+    """).fetchall()
+    if rows:
+        body = [{'url':r[0],'title':r[1],'content_md':r[2],'score_total':r[4],'tier':r[5],
+                 'source_name':r[6],'source_domain':r[7],'fetch_strategy':r[8],'fetch_cost':r[9]}
+                for r in rows]
+        r = httpx.post(f"{CLOUD_API}/internal/news/batch", json=body,
+                        headers={'X-Internal-Token': TOKEN}, timeout=30)
+        log(f"Articles pushed: {r.json()}")
+    conn.close()
+except Exception as e:
+    log(f"Article push failed: {e}")
+
 # ── 3. Aggregate (fast, ~0.1s) ──────────────────────────────
 log("Step 3/5: Aggregate")
 from news_intel.db import init_db, get_db

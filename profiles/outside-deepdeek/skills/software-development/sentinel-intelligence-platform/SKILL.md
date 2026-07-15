@@ -137,6 +137,51 @@ First failed stage sets STOP=true; Agent reads COMMAND to fix, VERIFY to confirm
 - **Verify with browser** — curl is not enough; use `browser_navigate` to confirm pages render with real data.
 - **Commit after every task** — `git add -A && git commit -m "..." && git push` after each completed phase.
 
+## Article Time Display
+
+Articles have three time sources. Use this fallback chain (in `routes/news.py`):
+
+```python
+"published_at": (str(a.published_at) if a.published_at   # ① RSS original (best)
+                 else str(a.fetched_at) if a.fetched_at   # ② Fetch time (backup)
+                 else str(a.created_at) if a.created_at   # ③ Ingestion time (last resort)
+                 else None)
+```
+
+Published_at is preferred but often NULL in PG. Fetched_at is populated when batch.py completes.
+Created_at always exists as the DB default. Frontend displays `published_at.slice(0,10)` for YYYY-MM-DD format.
+
+## Article Transition Page
+
+For news article detail pages, use the **transition page pattern**:
+
+1. **AI Summary first** — show factual third-person description (not raw content)
+2. **Source + Tags** — metadata row with source name, date, tier badge, entity tags
+3. **Expandable full content** — VIP only, behind a toggle button
+4. **CTA button** — "→ Read Full Article on [Source]" — external link to original source
+5. **Security attributes** — `rel="noopener noreferrer nofollow"` on external links
+
+This preserves SEO value (rich content on your domain), collects click-through analytics,
+and avoids sending users directly to external sites from list views.
+
+## npm Packages in Docker
+
+Dynamic `import("package")` inside React components **fails silently** in Docker builds
+because Next.js can't resolve runtime imports. Use **static imports**:
+
+```tsx
+// ❌ Dynamic (fails in Docker):
+useEffect(() => { import("maplibre-gl").then(m => ...); }, []);
+
+// ✅ Static (works):
+import maplibregl from "maplibre-gl";
+import "maplibre-gl/dist/maplibre-gl.css";
+import * as d3 from "d3";
+```
+
+Add packages to `package.json` dependencies (not devDependencies) and Docker's
+`npm install --legacy-peer-deps` will pick them up during `docker compose build`.
+
 ## Fetch Engine Pitfalls
 
 ### Scrapling timeout: milliseconds vs seconds
