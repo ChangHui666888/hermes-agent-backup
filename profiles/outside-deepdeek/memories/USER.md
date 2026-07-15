@@ -9,3 +9,5 @@
 架构偏好: 先验证再开发、零LLM确定性规则优先、自动化无人值守、Event-centric(非Article-centric)。评分: Tier A≥90, B=60-89, C<60。Scrapling>浏览器作为抓取工具优先级。
 §
 产品目标: 事件情报分析平台(非新闻后台/CMS/GIS)。V1架构已冻结: RSS→Score→Fetch→Aggregate→Sync→PG→API→Web (71 events)。V2方向: MapLibre、Event-Map联动、GDELT Tone、D3关系图。geo monitor已有region/type/limit过滤。
+§
+行为铁律(最优先): ①每次修改后git commit+push双仓库(hermes-agent-backup+news-platform-v8)。②未经批准禁止修改文件(擅自patch/回退会导致用户不满)。③部署后用浏览器验证。④先输出任务清单+验收标准再执行。⑤读完skill后同一轮必须发工具调用。

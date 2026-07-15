@@ -223,3 +223,38 @@ db.commit()
 - `references/v8-architecture.md` — V8 architecture details
 - `references/fetch-engine-optimization.md` — Fetch headers, retry, ClientPool, Scrapling timeout fix
 - `references/auto-pipeline-pattern.md` — Automated cron pipeline (15min, 5-step, no-agent)
+- `references/article-content-sync.md` — Push article content back to PG after fetch (Step 2.5)
+- `references/article-transition-page.md` — Article detail transition page pattern
+- `references/v2-frontend-npm-gotchas.md` — Static vs dynamic imports in Docker builds
+- `references/v8-critical-patterns.md` — PG schema management, FK constraints, text() wrappers
+- `references/pipeline-check-pattern.md` — Agent-readable pipeline diagnostics
+
+## Article Detail Endpoint: Public + Optional VIP Auth
+
+The `/news/{id}` endpoint must allow **public access** for the transition page
+(AI summary + source metadata) while still returning **full content for VIP users**.
+
+```python
+@router.get("/{article_id}")
+def get_article(article_id: int, authorization: str = Header(None), db=Depends(get_db)):
+    # Optional auth: try JWT, fallback to public
+    user = None
+    if authorization and authorization.startswith("Bearer "):
+        try:
+            payload = jwt.decode(authorization[7:], SECRET_KEY, algorithms=[ALGORITHM])
+            user = db.query(User).filter(User.id == payload["user_id"]).first()
+        except: pass
+    
+    a = db.query(Article).filter(Article.id == article_id).first()
+    if not a: raise HTTPException(404)
+    result = _public_fields(a)  # title, summary, source, tier, tags
+    if user and user.level in ("vip", "admin"):
+        result["content_md"] = a.content_md
+        result["analysis"] = a.analysis
+        result["key_points"] = a.key_points
+    return result
+```
+
+DO NOT use `user=Depends(get_current_user)` — that blocks all public access with 401.
+Use `Header(None)` and decode the token manually. Imports needed: `from jose import jwt`,
+`from fastapi import Header`, `SECRET_KEY` and `ALGORITHM` from auth module.
