@@ -223,6 +223,31 @@ The intelligence analysis workflow: **What → Why → Facts → Evidence → Ev
 
 All event components go in `components/event/`, dashboard in `components/dashboard/`, and reusable UI in `components/common/`. Keep `components/ui/` for shadcn auto-generated components only.
 
+## Geo Monitor Filters (V2 pattern)
+
+When event count exceeds ~200, SVG WorldMap markers cause browser performance collapse. Three mitigations before WebGL migration:
+
+1. **Region filter** — map of region name → country list, `<select>` dropdown
+2. **Event type filter** — filter by `event_type` field
+3. **Limit selector** — default Top 50, configurable 25/50/100/All
+
+```tsx
+const REGIONS: Record<string, string[]> = {
+  "Middle East": ["Iran","Iraq","Israel","Saudi Arabia","Turkey",...],
+  "Europe": ["United Kingdom","France","Germany","Ukraine","Russia",...],
+  "Asia-Pacific": ["China","Japan","South Korea","India",...],
+  "Americas": ["United States","Canada","Mexico","Brazil",...],
+  "Africa": ["Egypt","Nigeria","South Africa","Kenya",...],
+};
+
+const displayed = allEvents
+  .filter(ev => region==="All" || REGIONS[region]?.includes(ev.country))
+  .filter(ev => eventType==="All" || ev.impact_level===eventType)
+  .slice(0, limit);
+```
+
+This keeps SVG rendering under 50 markers and defers MapLibre WebGL migration.
+
 ## Page Responsibility Matrix (frozen — from PRODUCT.md)
 
 Before building ANY page, first define its core responsibility and what it MUST NOT do. This prevents the dashboard from becoming a generic admin panel.

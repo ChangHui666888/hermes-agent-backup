@@ -129,7 +129,7 @@ First failed stage sets STOP=true; Agent reads COMMAND to fix, VERIFY to confirm
 
 ## Workflow Rules
 
-- **NEVER make changes without approval** — before modifying any file, present the plan and wait for explicit approval. If the user says "经过我同意没有？" or "回退", you made an unauthorized change. Use `git checkout -- <file>` to revert, then ask. This is the single most important rule. Applies especially to: domain_profiles, nginx, docker-compose, and production config files.
+- **NEVER make changes without approval** — before modifying any file, present the plan and wait for explicit approval. If the user says "经过我同意没有？" or "回退" or "刚才执行了什么？？？", you made an unauthorized change. Use `git checkout -- <file>` to revert immediately. Do NOT also revert the revert without asking — that compounds the error. This is the single most important rule. Applies especially to: domain_profiles, nginx, docker-compose, production config files, and ANY `.py` file in the pipeline directory.
 
 - **Don't over-polish** — when user says "不要继续打磨", stop immediately and move to the next task.
 - **Don't deploy locally** — all builds and runs on cloud VPS. Windows is development only.
@@ -177,3 +177,4 @@ db.commit()
 - `references/cloud-deploy-pattern.md` — Cloud deployment workflow
 - `references/v8-architecture.md` — V8 architecture details
 - `references/fetch-engine-optimization.md` — Fetch headers, retry, ClientPool, Scrapling timeout fix
+- `references/auto-pipeline-pattern.md` — Automated cron pipeline (15min, 5-step, no-agent)
