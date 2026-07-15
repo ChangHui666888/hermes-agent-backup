@@ -222,6 +222,9 @@ db.commit()
 - `references/cloud-deploy-pattern.md` — Cloud deployment workflow
 - `references/v8-architecture.md` — V8 architecture details
 - `references/fetch-engine-optimization.md` — Fetch headers, retry, ClientPool, Scrapling timeout fix
+- `references/fetch-optimization-review.md` — 6 fetch suggestions evaluation (RSS FullText, Quality Validator, Domain Stats)
+- `references/fetch-simplify-review.md` — SearXNG/Tavily recovery evaluation (requires services)
+- `references/rss-fulltext-pattern.md` — RSS FullText: skip HTTP for articles with usable description
 - `references/auto-pipeline-pattern.md` — Automated cron pipeline (15min, 5-step, no-agent)
 - `references/article-content-sync.md` — Push article content back to PG after fetch (Step 2.5)
 - `references/article-transition-page.md` — Article detail transition page pattern

@@ -30,6 +30,8 @@ from news_intel.scorer import score_article, compute_velocity
 from news_intel.router import route
 from news_intel.sync import sync_recent
 
+TAVILY_KEY = os.environ.get("TAVILY_API_KEY", "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")
+
 
 def run_pipeline(hours: int = 2, limit: int = 50, do_fetch: bool = False):
     """
@@ -126,6 +128,44 @@ def run_pipeline(hours: int = 2, limit: int = 50, do_fetch: bool = False):
                             fetched_content[data["url"]] = data.get("content", "")
                 os.remove(out_file)
             os.unlink(url_file)
+
+    # Tavily recovery: high-score articles that failed all strategies
+    tavily_recovered = 0
+    if do_fetch and TAVILY_KEY:
+        failed_high = [(url, intel_id, score) for url, intel_id, score, tier
+                       in [(u[0], u[1], row.get("score_total", 0))
+                           for u, row in zip(urls_to_fetch, rows)
+                           if u[0] not in fetched_content]
+                       if score >= 85]
+        if failed_high:
+            print(f"  [tavily] Recovering {len(failed_high)} high-score articles...")
+            import httpx
+            for url, intel_id, score in failed_high[:5]:  # max 5 per run
+                try:
+                    resp = httpx.post("https://api.tavily.com/search", json={
+                        "api_key": TAVILY_KEY, "query": url, "search_depth": "basic",
+                        "max_results": 2, "include_answer": True,
+                    }, timeout=15)
+                    data = resp.json()
+                    answer = data.get("answer", "")
+                    results = data.get("results", [])
+                    if answer and len(answer) > 100:
+                        content = f"[Tavily]\n\n{answer}"
+                    elif results:
+                        content = f"[Tavily]\n\n{results[0].get('content', results[0].get('snippet', ''))}"
+                    else:
+                        continue
+                    db.execute("""
+                        UPDATE news_content SET content_md=?, content_len=?,
+                        fetch_strategy='tavily', fetch_cost=5, fetch_at=datetime('now','localtime')
+                        WHERE intel_id=? AND (content_md IS NULL OR content_md='')
+                    """, (content, len(content), intel_id))
+                    tavily_recovered += 1
+                except Exception as e:
+                    print(f"    tavily error: {e}")
+            if tavily_recovered:
+                db.commit()
+                print(f"  [tavily] Recovered {tavily_recovered} articles")
 
     enhanced = 0
     for row in rows:
