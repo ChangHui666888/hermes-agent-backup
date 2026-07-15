@@ -1,4 +1,14 @@
 {
   "jobs": [],
-  "updated_at": "2026-07-14T15:56:34.624803+08:00"
+  "updated_at": "2026-07-14T15:56:34.624803+08:00",
+  "auto-pipeline": {
+    "name": "auto-pipeline",
+    "script": "auto-pipeline.py",
+    "schedule": "once in 15m",
+    "repeat": "forever",
+    "no_agent": true,
+    "enabled": true,
+    "state": "scheduled",
+    "deliver": "local"
+  }
 }
