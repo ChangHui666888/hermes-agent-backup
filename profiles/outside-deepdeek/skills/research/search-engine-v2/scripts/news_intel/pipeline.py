@@ -31,6 +31,7 @@ from news_intel.router import route
 from news_intel.sync import sync_recent
 
 TAVILY_KEY = os.environ.get("TAVILY_API_KEY", "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")
+SEARXNG_URL = "http://100.107.117.23:8080"
 
 
 def run_pipeline(hours: int = 2, limit: int = 50, do_fetch: bool = False):
@@ -128,6 +129,45 @@ def run_pipeline(hours: int = 2, limit: int = 50, do_fetch: bool = False):
                             fetched_content[data["url"]] = data.get("content", "")
                 os.remove(out_file)
             os.unlink(url_file)
+
+    # SearXNG recovery: find alternative URLs for failed articles (free)
+    searxng_recovered = 0
+    if do_fetch:
+        failed_mid = [(url, intel_id) for url, intel_id, score
+                      in [(u[0], u[1], row.get("score_total", 0))
+                          for u, row in zip(urls_to_fetch, rows)
+                          if u[0] not in fetched_content]
+                      if score >= 80 and score < 90][:10]
+        if failed_mid:
+            print(f"  [searxng] Searching alternative URLs for {len(failed_mid)} articles...")
+            import httpx
+            for url, intel_id in failed_mid:
+                try:
+                    title = next((r["title"] for r in rows if r["article_url"] == url), "")
+                    q = title[:80] if title else url
+                    resp = httpx.get(f"{SEARXNG_URL}/search", params={"q": q, "format": "json"},
+                                     headers={"User-Agent": "NewsIntelBot/1.0"}, timeout=10)
+                    data = resp.json()
+                    alt_urls = [r.get("url","") for r in data.get("results",[]) if r.get("url")][:2]
+                    for alt_url in alt_urls:
+                        if alt_url == url: continue
+                        r2 = httpx.get(alt_url, headers={"User-Agent": "Mozilla/5.0 Chrome/131"}, timeout=10)
+                        if r2.status_code == 200 and len(r2.text) > 500:
+                            from core.fetchers import _extract_main_text
+                            content = _extract_main_text(r2.text, url=alt_url)
+                            if content and len(content) > 200:
+                                db.execute("""
+                                    UPDATE news_content SET content_md=?, content_len=?,
+                                    fetch_strategy='searxng_alt', fetch_cost=2, fetch_at=datetime('now','localtime')
+                                    WHERE intel_id=? AND (content_md IS NULL OR content_md='')
+                                """, (content, len(content), intel_id))
+                                searxng_recovered += 1
+                                break
+                except Exception:
+                    pass
+            if searxng_recovered:
+                db.commit()
+                print(f"  [searxng] Recovered {searxng_recovered} articles")
 
     # Tavily recovery: high-score articles that failed all strategies
     tavily_recovered = 0
