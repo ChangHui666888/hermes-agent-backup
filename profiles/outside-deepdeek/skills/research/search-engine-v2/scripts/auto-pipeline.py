@@ -177,6 +177,103 @@ try:
                     log(f"  Domain stats pushed: {len(stats_body)} records")
             except Exception:
                 pass
+
+    # ── 3.5 SearXNG Recovery (score 80-89, free) ──────────────
+    searxng_ok = searxng_fail = 0
+    try:
+        conn = sqlite3.connect(db_path)
+        failed_urls = conn.execute("""
+            SELECT rr.article_url, ni.id, ni.score_total, rr.title
+            FROM news_intelligence ni
+            JOIN rss_raw rr ON ni.raw_id = rr.id
+            LEFT JOIN news_content nc ON nc.intel_id = ni.id
+            WHERE ni.tier IN ('A','B') AND ni.score_total >= 80 AND ni.score_total < 90
+              AND (nc.id IS NULL OR nc.content_md IS NULL OR nc.content_md = '')
+            LIMIT 10
+        """).fetchall()
+        conn.close()
+
+        if failed_urls:
+            import httpx
+            for url, intel_id, score, title in failed_urls:
+                try:
+                    q = (title or url)[:80]
+                    resp = httpx.get(f"http://100.107.117.23:8080/search",
+                                     params={"q": q, "format": "json"},
+                                     headers={"User-Agent": "NewsIntelBot/1.0"}, timeout=10)
+                    data = resp.json()
+                    for alt in data.get("results", [])[:2]:
+                        alt_url = alt.get("url", "")
+                        if alt_url and alt_url != url:
+                            r2 = httpx.get(alt_url, headers={"User-Agent": "Mozilla/5.0 Chrome/131"}, timeout=10)
+                            if r2.status_code == 200 and len(r2.text) > 500:
+                                from core.fetchers import _extract_main_text
+                                content = _extract_main_text(r2.text, url=alt_url)
+                                if content and len(content) > 200:
+                                    conn2 = sqlite3.connect(db_path)
+                                    conn2.execute("""
+                                        UPDATE news_content SET content_md=?, content_len=?,
+                                        fetch_strategy='searxng_alt', fetch_cost=2, fetch_at=datetime('now','localtime')
+                                        WHERE intel_id=? AND (content_md IS NULL OR content_md='')
+                                    """, (content, len(content), intel_id))
+                                    conn2.commit(); conn2.close()
+                                    searxng_ok += 1
+                                    break
+                        searxng_fail += 1
+                except Exception:
+                    searxng_fail += 1
+        if searxng_ok + searxng_fail > 0:
+            step_result("SEARXNG_RECOVERY", searxng_ok, searxng_fail)
+    except Exception as e:
+        log(f"  SearXNG: {e}")
+
+    # ── 3.6 Tavily Recovery (score >=90, paid) ────────────────
+    TAVILY_KEY = os.environ.get("TAVILY_API_KEY", "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")
+    tavily_ok = tavily_fail = 0
+    try:
+        conn = sqlite3.connect(db_path)
+        failed_high = conn.execute("""
+            SELECT rr.article_url, ni.id, ni.score_total, rr.title
+            FROM news_intelligence ni
+            JOIN rss_raw rr ON ni.raw_id = rr.id
+            LEFT JOIN news_content nc ON nc.intel_id = ni.id
+            WHERE ni.tier IN ('A','B') AND ni.score_total >= 90
+              AND (nc.id IS NULL OR nc.content_md IS NULL OR nc.content_md = '')
+            LIMIT 5
+        """).fetchall()
+        conn.close()
+
+        if failed_high:
+            import httpx
+            for url, intel_id, score, title in failed_high:
+                try:
+                    q = (title or url)[:100]
+                    resp = httpx.post("https://api.tavily.com/search", json={
+                        "api_key": TAVILY_KEY, "query": q, "search_depth": "basic",
+                        "max_results": 2, "include_answer": True,
+                    }, timeout=15)
+                    data = resp.json()
+                    answer = data.get("answer", "")
+                    content = None
+                    if answer and len(answer) > 100:
+                        content = f"[Tavily]\n\n{answer}"
+                    if content:
+                        conn2 = sqlite3.connect(db_path)
+                        conn2.execute("""
+                            UPDATE news_content SET content_md=?, content_len=?,
+                            fetch_strategy='tavily', fetch_cost=5, fetch_at=datetime('now','localtime')
+                            WHERE intel_id=? AND (content_md IS NULL OR content_md='')
+                        """, (content, len(content), intel_id))
+                        conn2.commit(); conn2.close()
+                        tavily_ok += 1
+                        continue
+                    tavily_fail += 1
+                except Exception:
+                    tavily_fail += 1
+        if tavily_ok + tavily_fail > 0:
+            step_result("TAVILY_RECOVERY", tavily_ok, tavily_fail)
+    except Exception as e:
+        log(f"  Tavily: {e}")
     else:
         step_result("FETCH", 0, 0, "no URLs to fetch")
 except Exception as e:
