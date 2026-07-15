@@ -30,7 +30,7 @@ app.add_middleware(
 )
 
 # ── Old Platform Routes ──────────────────────────────────────
-from apps.api.routes import news, internal, categories, auth, admin, ads, admin_config
+from apps.api.routes import news, internal, categories, auth, admin, ads, admin_config, fetch_stats
 
 app.include_router(internal.router)
 app.include_router(news.router)
@@ -38,6 +38,7 @@ app.include_router(categories.router)
 app.include_router(auth.router)
 app.include_router(admin.router)
 app.include_router(admin_config.router)
+app.include_router(fetch_stats.router)
 app.include_router(ads.router)
 
 # ── Sentinel V1 Routes ───────────────────────────────────────

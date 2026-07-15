@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
 """
-auto-pipeline.py — 全自动最小延时管线 (RSS→Score→Fetch→Aggregate→Cloud)
+auto-pipeline.py — 全自动管线 (RSS→Score→Fetch→Aggregate→Cloud)
 
-触发: Hermes cron 每30分钟
-延迟: ~2-5min (取决于抓取量)
-输出: 实时推送到云端, Dashboard 即时更新
+Features:
+- Per-step statistics written to pipeline.log
+- Per-domain strategy stats pushed to PG fetch_stats table
 """
 
 import sys, os, time, json, sqlite3, subprocess, httpx
+from collections import defaultdict, Counter
+from datetime import datetime
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, SCRIPT_DIR)
@@ -15,37 +17,84 @@ sys.path.insert(0, os.path.join(SCRIPT_DIR, "news_intel"))
 
 CLOUD_API = "http://100.107.117.23"
 TOKEN = os.environ.get("NEWS_API_TOKEN", "v8-pipeline-token-2026-xK9mP2sR7wQ")
-BATCH_TIMEOUT = 480  # 8 minutes max for batch.py
-
-t0 = time.time()
+BATCH_TIMEOUT = 600
+LOG_FILE = os.path.join(SCRIPT_DIR, "pipeline.log")
 db_path = os.path.join(SCRIPT_DIR, "news_intel", "news_intel.db")
 
-def log(msg):
-    print(f"[{time.strftime('%H:%M:%S')}] {msg}")
+stats = {"steps": []}
 
-# ── 1. Sync + Score (fast, ~3s) ──────────────────────────────
-log("Step 1/5: Sync + Score")
-subprocess.run([sys.executable, "-m", "news_intel.pipeline", "--hours", "2"],
-               cwd=SCRIPT_DIR, timeout=60)
-log("Done")
 
-# ── 2. Check what needs fetching ─────────────────────────────
-conn = sqlite3.connect(db_path)
-to_fetch = conn.execute("""
-    SELECT COUNT(*) FROM news_intelligence ni
-    LEFT JOIN news_content nc ON nc.intel_id = ni.id
-    WHERE ni.tier IN ('A','B')
-      AND (nc.id IS NULL OR nc.content_md IS NULL OR nc.content_md = '')
-""").fetchone()[0]
-conn.close()
+def log(msg: str):
+    ts = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    line = f"[{ts}] {msg}"
+    print(line)
+    with open(LOG_FILE, "a", encoding="utf-8") as f:
+        f.write(line + "\n")
 
-if to_fetch == 0:
-    log("Step 2/5: Fetch — nothing to fetch, skip")
-else:
-    # ── 2. Fetch (batch.py, ~2-5min) ─────────────────────────
-    log(f"Step 2/5: Fetch — {to_fetch} articles")
-    
-    # Generate URL list
+
+def step_result(name: str, ok: int, fail: int, detail: str = ""):
+    pct = f"{ok*100//max(ok+fail,1)}%"
+    log(f"  {name}: {ok} ok, {fail} fail ({pct}) {detail}")
+    stats["steps"].append({"step": name, "ok": ok, "fail": fail, "detail": detail, "time": datetime.now().isoformat()})
+
+
+# ═══════════════════════════════════════════════════════════════
+t0 = time.time()
+log("=" * 60)
+log("PIPELINE START")
+log("=" * 60)
+
+# ── 1. Sync + Score ────────────────────────────────────────
+log("Step 1/6: Sync + Score")
+try:
+    subprocess.run([sys.executable, "-m", "news_intel.pipeline", "--hours", "2"],
+                   cwd=SCRIPT_DIR, timeout=120, capture_output=True)
+    conn = sqlite3.connect(db_path)
+    new_scored = conn.execute("SELECT COUNT(*) FROM news_intelligence WHERE scored_at > datetime('now','-10 minutes','localtime')").fetchone()[0]
+    total = conn.execute("SELECT COUNT(*) FROM news_intelligence").fetchone()[0]
+    conn.close()
+    step_result("SYNC+SCORE", new_scored, 0, f"total={total}")
+except Exception as e:
+    log(f"  FAILED: {e}")
+    step_result("SYNC+SCORE", 0, 1, str(e)[:80])
+
+# ── 2. RSS FullText pre-check ──────────────────────────────
+log("Step 2/6: RSS FullText")
+try:
+    conn = sqlite3.connect(db_path)
+    rss_ok = 0
+    rows = conn.execute("""
+        SELECT ni.id, rr.article_url, rr.description
+        FROM news_intelligence ni
+        JOIN rss_raw rr ON ni.raw_id = rr.id
+        LEFT JOIN news_content nc ON nc.intel_id = ni.id
+        WHERE ni.tier IN ('A','B')
+          AND (nc.id IS NULL OR nc.content_md IS NULL OR nc.content_md = '')
+          AND rr.description IS NOT NULL AND length(rr.description) >= 200
+    """).fetchall()
+    for row in rows:
+        desc = (row[2] or "").strip()
+        html_ratio = (desc.count("<") + desc.count(">")) / max(len(desc), 1)
+        if html_ratio < 0.3:
+            conn.execute("""
+                INSERT INTO news_content (intel_id, article_url, content_md, content_len,
+                    fetch_strategy, fetch_cost, fetch_at)
+                VALUES (?, ?, ?, ?, 'rss_fulltext', 0, datetime('now','localtime'))
+                ON CONFLICT(article_url) DO UPDATE SET
+                    content_md=excluded.content_md, content_len=excluded.content_len,
+                    fetch_strategy='rss_fulltext', fetch_cost=0, fetch_at=datetime('now','localtime')
+            """, (row[0], row[1], desc, len(desc)))
+            rss_ok += 1
+    conn.commit()
+    conn.close()
+    step_result("RSS_FULLTEXT", rss_ok, 0, "skipped HTTP fetch")
+except Exception as e:
+    log(f"  FAILED: {e}")
+    step_result("RSS_FULLTEXT", 0, 0, str(e)[:80])
+
+# ── 3. Fetch (batch.py) ────────────────────────────────────
+log("Step 3/6: Fetch (batch.py)")
+try:
     conn = sqlite3.connect(db_path)
     urls = conn.execute("""
         SELECT DISTINCT rr.article_url FROM news_intelligence ni
@@ -53,60 +102,144 @@ else:
         LEFT JOIN news_content nc ON nc.intel_id = ni.id
         WHERE ni.tier IN ('A','B')
           AND (nc.id IS NULL OR nc.content_md IS NULL OR nc.content_md = '')
-          AND rr.article_url IS NOT NULL
-          AND rr.article_url != ''
+          AND rr.article_url IS NOT NULL AND rr.article_url != ''
         LIMIT 200
     """).fetchall()
     conn.close()
-    
+
     if urls:
         import tempfile
         with tempfile.NamedTemporaryFile(mode='w', suffix='.txt', delete=False, encoding='utf-8') as f:
             f.write('\n'.join(u[0] for u in urls))
             url_file = f.name
-        
+
         tmp_out = os.path.join(SCRIPT_DIR, "news_intel", "_fetch_tmp.jsonl")
-        result = subprocess.run(
-            [sys.executable, os.path.join(SCRIPT_DIR, "batch.py"),
-             "--urls", url_file, "--out", tmp_out,
-             "--rate-delay", "0.5", "--max-workers", "3", "--no-progress"],
-            cwd=SCRIPT_DIR, timeout=BATCH_TIMEOUT, capture_output=True, text=True
-        )
+        subprocess.run([sys.executable, os.path.join(SCRIPT_DIR, "batch.py"),
+                        "--urls", url_file, "--out", tmp_out,
+                        "--rate-delay", "0.5", "--max-workers", "3", "--no-progress"],
+                       cwd=SCRIPT_DIR, timeout=BATCH_TIMEOUT, capture_output=True, text=True)
         os.unlink(url_file)
-        
-        # Import results to DB
+
         if os.path.exists(tmp_out):
             ok_count = 0
+            fail_count = 0
+            domain_stats = defaultdict(lambda: defaultdict(lambda: {"ok": 0, "fail": 0}))
+
             conn = sqlite3.connect(db_path)
             with open(tmp_out) as f:
                 for line in f:
                     if not line.strip(): continue
-                    l = json.loads(line)
-                    if not l.get('ok'): continue
-                    r = conn.execute("SELECT intel_id FROM news_content WHERE article_url=?", (l['url'],)).fetchone()
-                    if r:
-                        conn.execute("""
-                            UPDATE news_content SET content_md=?, content_len=?,
-                            fetch_strategy=?, fetch_cost=?,
-                            fetch_at=datetime('now','localtime')
-                            WHERE article_url=?
-                        """, (l['content'], len(l['content']),
-                              l.get('strategy_used',''), l.get('total_cost',0), l['url']))
+                    r = json.loads(line)
+                    domain = r.get("domain", "?")
+                    strategy = r.get("strategy_used") or "none"
+                    if r.get("ok"):
                         ok_count += 1
+                        domain_stats[domain][strategy]["ok"] += 1
+                        intel_row = conn.execute("SELECT intel_id FROM news_content WHERE article_url=?", (r["url"],)).fetchone()
+                        if intel_row:
+                            conn.execute("""
+                                UPDATE news_content SET content_md=?, content_len=?,
+                                fetch_strategy=?, fetch_cost=?, fetch_at=datetime('now','localtime')
+                                WHERE article_url=?
+                            """, (r["content"], len(r["content"]), strategy, r.get("total_cost", 0), r["url"]))
+                    else:
+                        fail_count += 1
+                        domain_stats[domain][strategy]["fail"] += 1
             conn.commit()
             conn.close()
-            log(f"Fetch done: {ok_count} imported")
-    else:
-        log("Fetch: no URLs")
+            step_result("FETCH", ok_count, fail_count, f"{len(urls)} URLs")
 
-# ── 2.5 Push articles with content to PG ─────────────────────
-log("Step 2.5/5: Push article content to PG")
+            # Push domain stats to PG
+            try:
+                stats_body = []
+                for domain, strategies in domain_stats.items():
+                    for strategy, counts in strategies.items():
+                        stats_body.append({
+                            "domain": domain, "strategy": strategy,
+                            "ok": counts["ok"], "fail": counts["fail"],
+                            "run_at": datetime.now().isoformat(),
+                        })
+                if stats_body:
+                    httpx.post(f"{CLOUD_API}/internal/fetch_stats", json=stats_body,
+                               headers={"X-Internal-Token": TOKEN}, timeout=10)
+                    log(f"  Domain stats pushed: {len(stats_body)} records")
+            except Exception:
+                pass
+    else:
+        step_result("FETCH", 0, 0, "no URLs to fetch")
+except Exception as e:
+    log(f"  FAILED: {e}")
+    step_result("FETCH", 0, 1, str(e)[:80])
+
+# ── 4. Aggregate ───────────────────────────────────────────
+log("Step 4/6: Aggregate")
+try:
+    from news_intel.db import init_db, get_db
+    from news_intel.aggregator import aggregate_events
+    init_db()
+    db = get_db()
+    db.row_factory = lambda c, r: dict(zip([col[0] for col in c.description], r))
+    rows = db.execute("""
+        SELECT nc.id, rr.title, nc.summary_cn, rr.description,
+               ni.score_total, ni.tier, ni.entities, rr.published_at, rr.source_name
+        FROM news_content nc
+        JOIN news_intelligence ni ON nc.intel_id = ni.id
+        JOIN rss_raw rr ON ni.raw_id = rr.id
+        WHERE ni.tier IN ('A','B')
+        ORDER BY nc.id DESC LIMIT 300
+    """).fetchall()
+    events = aggregate_events(rows, window_hours=48)
+    db.close()
+    step_result("AGGREGATE", len(events), 0, f"{len(rows)} articles")
+except Exception as e:
+    log(f"  FAILED: {e}")
+    step_result("AGGREGATE", 0, 1, str(e)[:80])
+
+# ── 5. Cloud Sync ──────────────────────────────────────────
+log("Step 5/6: Cloud Sync")
+try:
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    rows = conn.execute("SELECT * FROM event_registry").fetchall()
+    push_events = []
+    for r in rows:
+        ev = dict(r)
+        for f in ['article_ids','doc_refs','actors','keywords','related_entities','evidence','source_chain','timeline','llm_analysis']:
+            if isinstance(ev.get(f), str):
+                try: ev[f] = json.loads(ev[f])
+                except: pass
+        push_events.append({
+            'event_id': ev.get('event_id'), 'title': ev.get('title',''), 'summary': ev.get('summary'),
+            'event_type': ev.get('event_type'), 'stage': ev.get('stage','active'),
+            'confidence': ev.get('confidence',0), 'coherence': ev.get('coherence',0),
+            'subject': {'name': ev.get('subject_name',''), 'type': ev.get('subject_type','Other')},
+            'action': {'type': ev.get('action_type','OTHER'), 'detail': ev.get('action_detail')},
+            'object': {'name': ev.get('object_name',''), 'type': ev.get('object_type','Other')},
+            'location': {'country': ev.get('location_country')},
+            'source': {'primary_source_id': ev.get('primary_source_id'), 'source_count': ev.get('source_count',0)},
+            'article_count': ev.get('article_count',0), 'article_ids': ev.get('article_ids',[]),
+            'doc_refs': ev.get('doc_refs',[]), 'actors': ev.get('actors',[]),
+            'keywords': ev.get('keywords',[]), 'related_entities': ev.get('related_entities',[]),
+            'evidence': ev.get('evidence',[]), 'source_chain': ev.get('source_chain',[]),
+            'timeline': ev.get('timeline',[]), 'llm_analysis': ev.get('llm_analysis'),
+            'first_seen': ev.get('first_seen'), 'last_updated': ev.get('last_updated'),
+        })
+    conn.close()
+    r = httpx.post(f"{CLOUD_API}/internal/events/batch", json=push_events,
+                   headers={'X-Internal-Token': TOKEN}, timeout=30)
+    result = r.json()
+    step_result("CLOUD_SYNC", result.get("ok", 0), result.get("fail", 0), f"{len(push_events)} events")
+except Exception as e:
+    log(f"  FAILED: {e}")
+    step_result("CLOUD_SYNC", 0, 1, str(e)[:80])
+
+# ── 6. Article content push ────────────────────────────────
+log("Step 6/6: Article content to PG")
 try:
     conn = sqlite3.connect(db_path)
     rows = conn.execute("""
         SELECT rr.article_url, rr.title, nc.content_md, nc.content_len,
-               ni.score_total, ni.tier, rr.source_name, rr.source_domain,
-               nc.fetch_strategy, nc.fetch_cost
+               ni.score_total, ni.tier, rr.source_name, rr.source_domain
         FROM news_content nc
         JOIN news_intelligence ni ON nc.intel_id = ni.id
         JOIN rss_raw rr ON ni.raw_id = rr.id
@@ -114,72 +247,17 @@ try:
     """).fetchall()
     if rows:
         body = [{'url':r[0],'title':r[1],'content_md':r[2],'score_total':r[4],'tier':r[5],
-                 'source_name':r[6],'source_domain':r[7],'fetch_strategy':r[8],'fetch_cost':r[9]}
-                for r in rows]
+                 'source_name':r[6],'source_domain':r[7]} for r in rows]
         r = httpx.post(f"{CLOUD_API}/internal/news/batch", json=body,
                         headers={'X-Internal-Token': TOKEN}, timeout=30)
-        log(f"Articles pushed: {r.json()}")
+        result = r.json()
+        step_result("CONTENT_PUSH", result.get("ok", 0), result.get("fail", 0), f"{len(rows)} articles")
     conn.close()
 except Exception as e:
-    log(f"Article push failed: {e}")
+    log(f"  FAILED: {e}")
+    step_result("CONTENT_PUSH", 0, 1, str(e)[:80])
 
-# ── 3. Aggregate (fast, ~0.1s) ──────────────────────────────
-log("Step 3/5: Aggregate")
-from news_intel.db import init_db, get_db
-from news_intel.aggregator import aggregate_events
-init_db()
-db = get_db()
-db.row_factory = lambda c, r: dict(zip([col[0] for col in c.description], r))
-rows = db.execute("""
-    SELECT nc.id, rr.title, nc.summary_cn, rr.description,
-           ni.score_total, ni.tier, ni.entities, rr.published_at, rr.source_name
-    FROM news_content nc
-    JOIN news_intelligence ni ON nc.intel_id = ni.id
-    JOIN rss_raw rr ON ni.raw_id = rr.id
-    WHERE ni.tier IN ('A','B')
-    ORDER BY nc.id DESC LIMIT 300
-""").fetchall()
-events = aggregate_events(rows, window_hours=48)
-db.close()
-log(f"Aggregate: {len(events)} events")
-
-# ── 4. Cloud Sync (HTTP, ~5s) ───────────────────────────────
-log("Step 4/5: Cloud Sync")
-conn = sqlite3.connect(db_path)
-conn.row_factory = sqlite3.Row
-rows = conn.execute("SELECT * FROM event_registry").fetchall()
-push_events = []
-for r in rows:
-    ev = dict(r)
-    for f in ['article_ids','doc_refs','actors','keywords','related_entities','evidence','source_chain','timeline','llm_analysis']:
-        if isinstance(ev.get(f), str):
-            try: ev[f] = json.loads(ev[f])
-            except: pass
-    push_events.append({
-        'event_id': ev.get('event_id'), 'title': ev.get('title',''), 'summary': ev.get('summary'),
-        'event_type': ev.get('event_type'), 'stage': ev.get('stage','active'),
-        'confidence': ev.get('confidence',0), 'coherence': ev.get('coherence',0),
-        'subject': {'name': ev.get('subject_name',''), 'type': ev.get('subject_type','Other')},
-        'action': {'type': ev.get('action_type','OTHER'), 'detail': ev.get('action_detail')},
-        'object': {'name': ev.get('object_name',''), 'type': ev.get('object_type','Other')},
-        'location': {'country': ev.get('location_country')},
-        'source': {'primary_source_id': ev.get('primary_source_id'), 'source_count': ev.get('source_count',0)},
-        'article_count': ev.get('article_count',0), 'article_ids': ev.get('article_ids',[]),
-        'doc_refs': ev.get('doc_refs',[]), 'actors': ev.get('actors',[]),
-        'keywords': ev.get('keywords',[]), 'related_entities': ev.get('related_entities',[]),
-        'evidence': ev.get('evidence',[]), 'source_chain': ev.get('source_chain',[]),
-        'timeline': ev.get('timeline',[]), 'llm_analysis': ev.get('llm_analysis'),
-        'first_seen': ev.get('first_seen'), 'last_updated': ev.get('last_updated'),
-    })
-conn.close()
-
-try:
-    r = httpx.post(f"{CLOUD_API}/internal/events/batch", json=push_events,
-                   headers={'X-Internal-Token': TOKEN}, timeout=30)
-    log(f"Cloud sync: {r.json()}")
-except Exception as e:
-    log(f"Cloud sync failed: {e}")
-
-# ── 5. Summary ──────────────────────────────────────────────
+# ── Summary ─────────────────────────────────────────────────
 elapsed = time.time() - t0
-log(f"Done in {elapsed:.0f}s")
+log(f"DONE in {elapsed:.0f}s")
+log("=" * 60)
