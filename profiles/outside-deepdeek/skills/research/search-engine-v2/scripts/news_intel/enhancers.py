@@ -159,8 +159,10 @@ QMERGE_PROMPT = """分析以下新闻，只输出JSON:
   "organizations": ["组织名"],
   "actions": ["动作关键词"],
   "summary_cn": "20字以内中文摘要",
-  "event_hint": "事件类型提示(如: 诉讼/谈判/军事冲突/财报/政策/科技发布)"
-}"""
+  "event_hint": "事件类型提示(如: 诉讼/谈判/军事冲突/财报/政策/科技发布)",
+  "tone": -5.0
+}
+tone字段: 正面/合作=正值(0~10), 负面/冲突=负值(-10~0), 中性=0. 例如: 战争=-8, 和平协议=+7, 财报中性=0"""
 
 
 def enhance_qwen(title: str, description: str, content_md: str = "",

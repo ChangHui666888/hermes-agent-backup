@@ -2,10 +2,10 @@
 §
 自媒体内容生产专家/管理者，精通从选题发现到策略学习的完整内容工业流程（13节点DAG）。偏好基于Hermes Agent原生集成的架构方案。中文沟通、要求工作系统必须真实可运行（不仅是规划），重视成本/Token消耗透明度、角色职责边界清晰度和系统状态可见性。严格对照规范落地（"照做"模式）。
 §
-用户: 自媒体内容生产专家/架构导向型工程师。偏好: 施工模式(直接构建), 结构化决策(选项清单), 成本透明, Agent角色边界清晰, 中文交流。要求操作命令写入wiki(BOSS_Doc目录), 输出完整路径, 有问题带方案请示, 不满足表面结论需具体分析根因。数据抓取优先优雅工具(Scrapling>浏览器), 出错后做根因分析并建立永久防护(规则+技能+记忆三步)。对时间线/数据一致性有强迫级要求。
-§
-用户是严谨的流程/架构导向型工程师。要求数据抓取优先选优雅工具（Scrapling > 浏览器），出错后必须做根因分析并建立永久防护机制（规则+技能+记忆三步）。偏好伪代码形式的硬规则（V1修复版风格），而非软建议。对时间线/数据一致性有强迫级要求，不接受"看起来对"的模糊结果。重视知识沉淀——成功和失败的策略都要写入 skill + memory，关键词必须精准确保下次匹配。
-§
 工程规范: 所有cron脚本遵循统一模板—Shell仅定位+启动Python, Python仅argparse+logging+调用业务函数, 业务返回report dict写入JSON。循环任务用Hermes Cron(every 5m/30m), 固定时间用Task Scheduler(12:00/18:00)。Shell和.py必须同目录(rss-scan模式)。create "30m"=once, add "every 30m"=循环。所有cron脚本放~/.hermes/scripts/。RSS隔离: 3次失败→隔离30分钟。Qwen超时60s, max_tokens=1024。评分阈值: Tier A≥90, B=60-89, C<60。备份: Git每日+全量F盘每3天, 保留15天, restore.bat双YES确认。PYTHONUNBUFFERED=1保证cron日志。
 §
-News Intelligence Platform 架构师/自媒体内容生产专家。偏好冻结 Schema 后逐层验证，不做规划只要求交付。执行风格：先验证真实数据再开发，Event-centric 设计（不是 Article-centric），严格分离数据生产链和 Web 展示层。决策模式：给出结构化选项并标注推荐，要求每个 Task 有明确的输入/输出和验收标准。review 时提供逐项 gap 分析+具体修改指令，不接收模糊建议。
+中文交流。Windows 10 + Hermes Agent，云端 Ubuntu VPS (100.107.117.23, 3.9G RAM, Docker)。部署规则: Docker构建只在云端，不在本地。每次代码修改必须 git commit + push (hermes-agent-backup + news-platform-v8)。未经批准禁止操作。知识库: C:/Users/ChangHui/wiki。
+§
+架构偏好: 先验证再开发、零LLM确定性规则优先、自动化无人值守、Event-centric(非Article-centric)。评分: Tier A≥90, B=60-89, C<60。Scrapling>浏览器作为抓取工具优先级。
+§
+产品目标: 事件情报分析平台(非新闻后台/CMS/GIS)。V1架构已冻结: RSS→Score→Fetch→Aggregate→Sync→PG→API→Web (71 events)。V2方向: MapLibre、Event-Map联动、GDELT Tone、D3关系图。geo monitor已有region/type/limit过滤。

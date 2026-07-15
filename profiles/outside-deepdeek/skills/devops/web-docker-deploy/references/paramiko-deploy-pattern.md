@@ -1,58 +1,51 @@
-# Paramiko SCP Deploy Pattern
+# Cloud Docker Deploy — Paramiko Upload Pattern
 
-Use this Python snippet to tar a project directory and upload to cloud via SSH.
-
+## Single File Upload
 ```python
-import paramiko, tarfile, io, os
+import paramiko
+c = paramiko.SSHClient()
+c.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+c.connect('100.107.117.23', username='administrator', password='root123root!@', timeout=30)
 
-HOST = "100.107.117.23"
-USER = "administrator"
-PASS = "your-password"
-SRC = os.path.expanduser("~/workspace/my-project")
-
-# 1. Create tar (exclude heavy dirs)
-buf = io.BytesIO()
-with tarfile.open(fileobj=buf, mode="w:gz") as tar:
-    for root, dirs, files in os.walk(SRC):
-        dirs[:] = [d for d in dirs if d not in ("node_modules", ".next", ".git", "__pycache__")]
-        for f in files:
-            if f.endswith(".pyc"):
-                continue
-            full = os.path.join(root, f)
-            tar.add(full, os.path.relpath(full, SRC))
-
-# 2. Connect
-client = paramiko.SSHClient()
-client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-client.connect(HOST, username=USER, password=PASS, timeout=15)
-
-# 3. Upload
-buf.seek(0)
-sftp = client.open_sftp()
-sftp.putfo(buf, "/tmp/project.tar.gz")
+sftp = c.open_sftp()
+with open('LOCAL_FILE', 'rb') as f:
+    sftp.putfo(f, '/home/administrator/news-platform-v8/REMOTE_PATH')
 sftp.close()
-
-# 4. Extract
-stdin, stdout, stderr = client.exec_command(
-    "rm -rf /home/administrator/project && "
-    "mkdir -p /home/administrator/project && "
-    "tar xzf /tmp/project.tar.gz -C /home/administrator/project"
-)
-
-# 5. Build and start
-stdin, stdout, stderr = client.exec_command(
-    "cd /home/administrator/project && docker compose up -d --build",
-    timeout=300
-)
-
-client.close()
 ```
 
-## Key points
+## Directory Upload (tar)
+```python
+import tarfile, io
+buf = io.BytesIO()
+with tarfile.open(fileobj=buf, mode='w:gz') as tar:
+    for root, dirs, files in os.walk(SRC):
+        dirs[:] = [d for d in dirs if d not in ('__pycache__', 'node_modules', '.next')]
+        for f in files:
+            if f.endswith('.pyc'): continue
+            tar.add(os.path.join(root, f), os.path.relpath(os.path.join(root, f), SRC))
+buf.seek(0)
+sftp.putfo(buf, '/tmp/upload.tar.gz')
+c.exec_command('cd /home/administrator/news-platform-v8 && tar xzf /tmp/upload.tar.gz')
+```
 
-- Use `buf.seek(0)` before `putfo()` — the tar buffer position must be reset
-- Use `putfo()` not `put()` to avoid Windows path escaping issues
-- `tarfile.open(fileobj=buf, mode="w:gz")` for gzip compression
-- `os.walk()` with `dirs[:]` mutation to skip directories in place
-- `timeout=300` for `docker compose build` which takes minutes on small VMs
-- NEVER use `--no-cache` on VMs with <4GB RAM — incremental builds are fine
+## Rebuild + Restart
+```python
+# Rebuild specific service
+c.exec_command('cd /home/administrator/news-platform-v8 && docker compose up -d --build frontend 2>&1', timeout=300)
+
+# Restart nginx (clears stale upstream cache)
+c.exec_command('cd /home/administrator/news-platform-v8 && docker compose restart nginx')
+```
+
+## Verify After Deploy
+```python
+stdin, stdout, stderr = c.exec_command('curl -s localhost:80/api/v1/dashboard | python3 -c "..."')
+print(stdout.read().decode())
+```
+
+## Common Pitfalls
+- `--no-cache` build can crash 3.9GB server → avoid
+- After frontend rebuild, MUST restart nginx or get 502
+- Large binary files (.rar, .zip) cause SFTP timeout → tar without them
+- Python inline strings with quotes inside exec_command need chr() encoding
+- `putfo` needs directory to exist on remote; `mkdir -p` first
