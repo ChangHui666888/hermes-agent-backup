@@ -228,6 +228,7 @@ db.commit()
 - `references/v2-frontend-npm-gotchas.md` — Static vs dynamic imports in Docker builds
 - `references/v8-critical-patterns.md` — PG schema management, FK constraints, text() wrappers
 - `references/pipeline-check-pattern.md` — Agent-readable pipeline diagnostics
+- `references/fetch-optimization-review.md` — RSS FullText + Quality Validator + Domain Statistics evaluation
 
 ## Article Detail Endpoint: Public + Optional VIP Auth
 

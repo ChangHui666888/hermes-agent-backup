@@ -550,13 +550,13 @@
     "created_at": "2026-07-12T09:34:01.747037+00:00",
     "created_by": "agent",
     "last_patched_at": "2026-07-15T15:40:11.556572+00:00",
-    "last_used_at": "2026-07-15T15:39:42.635071+00:00",
-    "last_viewed_at": "2026-07-15T15:39:42.616872+00:00",
+    "last_used_at": "2026-07-15T16:15:45.223987+00:00",
+    "last_viewed_at": "2026-07-15T16:15:45.208272+00:00",
     "patch_count": 4,
     "pinned": false,
     "state": "active",
-    "use_count": 2,
-    "view_count": 2
+    "use_count": 3,
+    "view_count": 3
   },
   "jupyter-live-kernel": {
     "archived_at": null,
@@ -978,14 +978,14 @@
     "archived_at": null,
     "created_at": "2026-07-13T07:47:35.052038+00:00",
     "created_by": "agent",
-    "last_patched_at": "2026-07-15T16:04:06.331773+00:00",
-    "last_used_at": "2026-07-15T16:03:34.472705+00:00",
-    "last_viewed_at": "2026-07-15T16:03:34.457182+00:00",
-    "patch_count": 24,
+    "last_patched_at": "2026-07-15T16:15:36.230477+00:00",
+    "last_used_at": "2026-07-15T16:15:03.605751+00:00",
+    "last_viewed_at": "2026-07-15T16:15:03.589064+00:00",
+    "patch_count": 26,
     "pinned": false,
     "state": "active",
-    "use_count": 8,
-    "view_count": 8
+    "use_count": 9,
+    "view_count": 9
   },
   "serving-llms-vllm": {
     "archived_at": null,
@@ -1122,13 +1122,13 @@
     "created_at": "2026-07-12T12:12:54.542049+00:00",
     "created_by": "agent",
     "last_patched_at": "2026-07-15T14:43:05.771367+00:00",
-    "last_used_at": "2026-07-14T08:54:45.938563+00:00",
-    "last_viewed_at": "2026-07-14T08:54:45.922674+00:00",
+    "last_used_at": "2026-07-15T16:15:55.453607+00:00",
+    "last_viewed_at": "2026-07-15T16:15:55.437574+00:00",
     "patch_count": 13,
     "pinned": false,
     "state": "active",
-    "use_count": 9,
-    "view_count": 9
+    "use_count": 10,
+    "view_count": 10
   },
   "web-intelligence-dashboard": {
     "archived_at": null,

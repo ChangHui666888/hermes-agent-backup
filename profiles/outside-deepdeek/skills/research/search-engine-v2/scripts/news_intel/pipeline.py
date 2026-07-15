@@ -71,9 +71,34 @@ def run_pipeline(hours: int = 2, limit: int = 50, do_fetch: bool = False):
 
     print(f"\n[pipeline] 增强 {len(rows)} 篇 Tier A/B 文章...")
 
-    # 提取待抓取 URL
-    urls_to_fetch = [(row["article_url"], row["intel_id"], row["tier"])
-                     for row in rows if row["article_url"]]
+    # 提取待抓取 URL — 先检查 RSS description 是否已够用
+    urls_to_fetch = []
+    rss_skip = 0
+    for row in rows:
+        url = row["article_url"]
+        desc = (row.get("description") or "").strip()
+        if url and len(desc) >= 200:
+            # Check quality: not HTML-heavy, not boilerplate
+            html_ratio = (desc.count("<") + desc.count(">")) / max(len(desc), 1)
+            if html_ratio < 0.3:
+                # RSS description is good enough, write directly to DB
+                db.execute("""
+                    INSERT INTO news_content (intel_id, article_url, content_md, content_len,
+                        fetch_strategy, fetch_cost, fetch_at)
+                    VALUES (?, ?, ?, ?, 'rss_fulltext', 0, datetime('now','localtime'))
+                    ON CONFLICT(article_url) DO UPDATE SET
+                        content_md=excluded.content_md, content_len=excluded.content_len,
+                        fetch_strategy='rss_fulltext', fetch_cost=0,
+                        fetch_at=datetime('now','localtime')
+                """, (row["intel_id"], url, desc, len(desc)))
+                rss_skip += 1
+                continue
+        if url:
+            urls_to_fetch.append((url, row["intel_id"], row["tier"]))
+
+    if rss_skip:
+        db.commit()
+        print(f"  [rss] {rss_skip} articles use RSS description, skip HTTP fetch")
 
     # 如果有正文抓取需求且 do_fetch，调用 batch.py
     fetched_content = {}
