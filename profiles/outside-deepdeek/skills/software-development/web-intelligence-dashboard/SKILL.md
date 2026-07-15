@@ -295,7 +295,9 @@ Construct this path with `os.path.expanduser()` and `os.path.join()` — never h
 
 ## Pitfalls
 
-12. **Do NOT build admin-first**: If the user says "stop and think like a product manager", pause all code and freeze PRODUCT.md before resuming.
+12. **Do NOT modify code without explicit user approval**: The user has a strict workflow — never patch files, run deployments, or change configuration without first presenting the plan and getting explicit approval. If the user says "stop", stop immediately. If you accidentally break something with an unapproved change, tell the user immediately rather than silently fixing it. This applies especially to: domain_profiles.py, docker-compose.yml, nginx.conf, and any production config.
+
+13. **Do NOT build admin-first**: If the user says "stop and think like a product manager", pause all code and freeze PRODUCT.md before resuming.
 13. **NEXT_PUBLIC_API_URL not inlined in Docker build**: Next.js `NEXT_PUBLIC_*` env vars are inlined at BUILD time, not runtime. Setting them in `docker-compose.yml` environment is too late. Fix: (a) add `ENV NEXT_PUBLIC_API_URL=/api/v1` in the Dockerfile BEFORE `RUN npm run build`, (b) add `env: { NEXT_PUBLIC_API_URL: "/api/v1" }` in `next.config.ts`, (c) hardcode `/api/v1` as the fallback in `api.ts` instead of `localhost:8000`. All three together guarantee the correct URL.
 14. **Nginx 502 after frontend rebuild**: When the frontend container is recreated (new IP on Docker network), nginx caches the old upstream address. Always run `docker compose restart nginx` after `docker compose up -d --build frontend`.
 15. **SQLite immutable mode for Docker read-only mounts**: The event_registry volume is mounted `:ro`. SQLite's WAL mode tries to create `-wal`/`-shm` files on open, which fails on read-only mounts. Fix: `sqlite3.connect("file:/data/news_intel.db?mode=ro&immutable=1", uri=True)`. The `immutable=1` parameter tells SQLite to skip WAL file creation entirely.

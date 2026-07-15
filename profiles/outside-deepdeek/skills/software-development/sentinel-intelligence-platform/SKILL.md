@@ -129,12 +129,13 @@ First failed stage sets STOP=true; Agent reads COMMAND to fix, VERIFY to confirm
 
 ## Workflow Rules
 
-- **NEVER make changes without approval** — before modifying any file, present the plan and wait for explicit approval. If the user says "经过我同意没有？" or "回退", you made an unauthorized change. Use `git checkout -- <file>` to revert, then ask. This is the single most important rule.
+- **NEVER make changes without approval** — before modifying any file, present the plan and wait for explicit approval. If the user says "经过我同意没有？" or "回退", you made an unauthorized change. Use `git checkout -- <file>` to revert, then ask. This is the single most important rule. Applies especially to: domain_profiles, nginx, docker-compose, and production config files.
+
 - **Don't over-polish** — when user says "不要继续打磨", stop immediately and move to the next task.
 - **Don't deploy locally** — all builds and runs on cloud VPS. Windows is development only.
 - **Undo on request** — when user says "马上撤销", use `git reset --hard HEAD~1 && git push --force` on both repos.
 - **Verify with browser** — curl is not enough; use `browser_navigate` to confirm pages render with real data.
-- **Commit after every task** — `git add -A && git commit -m "..." && git push` after each completed phase. The user expects cloud git to be current at all times.
+- **Commit after every task** — `git add -A && git commit -m "..." && git push` after each completed phase.
 
 ## Fetch Engine Pitfalls
 

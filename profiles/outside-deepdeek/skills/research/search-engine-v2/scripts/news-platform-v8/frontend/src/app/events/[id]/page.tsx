@@ -10,7 +10,6 @@ import Timeline from "@/components/event/Timeline";
 import EvidenceCard from "@/components/event/EvidenceCard";
 import SourceChain from "@/components/event/SourceChain";
 import IntelligencePanel from "@/components/event/IntelligencePanel";
-import RelationGraph from "@/components/event/RelationGraph";
 
 export default function EventDetailPage({
   params,
@@ -56,14 +55,6 @@ export default function EventDetailPage({
       <Timeline items={event.timeline} stage={event.stage} />
       <SourceChain items={event.source_chain} />
       <IntelligencePanel event={event} />
-      <RelationGraph nodes={[
-        { id: event.subject.name || "?", label: event.subject.name || "?", type: event.subject.type || "Other", group: 1 },
-        { id: event.event_id, label: event.action.type, type: "Event", group: 2 },
-        { id: event.object.name || "?", label: event.object.name || "?", type: event.object.type || "Other", group: 3 },
-      ].filter(n => n.id !== "?")} links={[
-        { source: event.subject.name || "?", target: event.event_id, type: event.action.type },
-        { source: event.event_id, target: event.object.name || "?", type: event.action.type },
-      ].filter(l => l.source !== "?" && l.target !== "?")} />
     </div>
   );
 }

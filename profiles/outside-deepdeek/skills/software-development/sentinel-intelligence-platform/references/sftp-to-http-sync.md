@@ -1,40 +1,47 @@
-# SFTP → HTTP Sync Replacement
+# Data Sync: SFTP → HTTP Migration
 
-Replace paramiko/SCP/SSH data sync with HTTP POST for pipeline-to-cloud data flow.
-
-## Before (Fragile)
+## Old Pattern (SFTP — DEPRECATED)
 
 ```python
-# cron-sync.py — OLD version (DO NOT USE)
-import paramiko
-# SCP upload SQLite file
-sftp.put(local_db, remote_path)
-# SSH restart container
-client.exec_command("docker compose restart backend")
+# sync-db-to-cloud.py
+sftp.put("news_intel.db", "/data/news_intel.db")
+ssh.exec_command("docker compose restart backend")
 ```
 
-## After (Robust)
+**Problems**:
+- Requires paramiko (heavy dependency)
+- Password in code
+- No atomicity — file could be partially uploaded
+- Restart required — downtime
+- SQLite file corruption on read-only mounts
+
+## New Pattern (HTTP POST)
 
 ```python
-# cron-sync.py — NEW version
-import httpx
-
-# 1. Aggregate events locally
+# cron-sync.py
 events = aggregate_events(articles)
-
-# 2. HTTP POST to cloud (no SSH, no SCP)
-resp = httpx.post(
-    f"{API_BASE}/internal/events/batch",
-    json=events,
-    headers={"X-Internal-Token": INTERNAL_TOKEN},
-    timeout=30,
-)
+httpx.post("http://cloud:80/internal/events/batch", 
+           json=events, 
+           headers={"X-Internal-Token": TOKEN})
 ```
 
-## Why
+**Advantages**:
+- No paramiko dependency
+- No password in code (token in env)
+- Atomic transaction (PG ON CONFLICT DO UPDATE)
+- No restart — data visible immediately
+- Single data source (PG, no SQLite on cloud)
 
-- No SSH key/password management
-- No hardcoded credentials in scripts
-- Atomic: transaction commits or fails, no partial state
-- No restart needed — data is live on next API call
-- HTTP is firewall-friendly, works through proxies
+## Backend Endpoint
+
+```python
+@router.post("/events/batch")
+def ingest_events(events: List[dict], _=Depends(verify_internal), db=Depends(get_db)):
+    SQL = text("""INSERT INTO events (...) VALUES (...) ON CONFLICT (event_id) DO UPDATE SET ...""")
+    for ev in events:
+        db.execute(SQL, {...})
+    db.commit()
+    return {"ok": ok, "fail": fail}
+```
+
+Must use `text()` wrapper for SQLAlchemy 2.0 raw SQL.

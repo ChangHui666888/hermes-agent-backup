@@ -3,7 +3,7 @@
 
 import { useEffect, useState, useCallback } from "react";
 import type { MapEvent } from "@/lib/types";
-import MapLibreWorldMap from "@/components/dashboard/MapLibreWorldMap";
+import WorldMap from "@/components/dashboard/WorldMap";
 import Link from "next/link";
 
 const REGIONS: Record<string, string[]> = {
@@ -69,7 +69,7 @@ export default function GeoMonitorPage() {
       {/* Map + Event List */}
       <div className="grid grid-cols-5 gap-4">
         <div className="col-span-3">
-          <MapLibreWorldMap events={displayed} height={520} />
+          <WorldMap events={displayed} height={520} />
         </div>
         <div className="col-span-2 space-y-2 max-h-[580px] overflow-y-auto">
           <h2 className="text-xs uppercase tracking-wider text-muted-foreground font-semibold sticky top-0 bg-background py-1">Events</h2>
