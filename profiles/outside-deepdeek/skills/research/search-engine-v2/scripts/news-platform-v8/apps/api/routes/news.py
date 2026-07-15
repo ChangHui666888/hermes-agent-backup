@@ -1,12 +1,13 @@
 """routes/news.py — Article queries with VIP content masking."""
 
-from fastapi import APIRouter, Depends, Query, HTTPException
+from fastapi import APIRouter, Depends, Query, HTTPException, Header
 from sqlalchemy.orm import Session
 from sqlalchemy import desc
 from apps.api.database import get_db
-from apps.api.models import Article
-from apps.api.routes.auth import get_current_user, get_vip
+from apps.api.models import Article, User
+from apps.api.routes.auth import SECRET_KEY, ALGORITHM
 from apps.api.schemas import ArticleList
+from jose import jwt
 
 router = APIRouter(prefix="/news", tags=["news"])
 
@@ -54,9 +55,18 @@ def search_news(q: str = Query(...), page: int = Query(1), db: Session = Depends
 @router.get("/{article_id}")
 def get_article(
     article_id: int,
-    user=Depends(get_current_user),
+    authorization: str = Header(None),
     db: Session = Depends(get_db),
 ):
+    # Optional auth: try to get user from token, fallback to public
+    user = None
+    if authorization and authorization.startswith("Bearer "):
+        try:
+            payload = jwt.decode(authorization[7:], SECRET_KEY, algorithms=[ALGORITHM])
+            user = db.query(User).filter(User.id == payload["user_id"]).first()
+        except Exception:
+            pass
+
     a = db.query(Article).filter(Article.id == article_id).first()
     if not a:
         raise HTTPException(status_code=404)

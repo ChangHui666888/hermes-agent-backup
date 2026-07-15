@@ -305,6 +305,7 @@ Construct this path with `os.path.expanduser()` and `os.path.join()` — never h
 - `references/situational-awareness-pattern.md` — Dashboard V2 design pattern
 - `references/tasks.md` — Frozen 8-task development plan
 - `references/v8-unified-architecture.md` — V8 unified platform pattern: SFTP→HTTP, single PG source, dual-instance merge decision tree
+- `references/v8-critical-patterns.md` — V8 pitfalls: Scrapling timeout, PG content gap, URL prefix, dynamic imports, transition page, SQLAlchemy text(), PG ALTER TABLE, SVG performance
 
 ## Pitfalls
 
