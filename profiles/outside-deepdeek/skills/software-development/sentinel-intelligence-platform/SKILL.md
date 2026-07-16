@@ -275,6 +275,38 @@ Articles with placeholder rows (id exists, content_md empty) are **skipped**.
 **Fix**: `WHERE nc.id IS NULL OR nc.content_md IS NULL OR nc.content_md = ''`
 This catches articles that had a row created but never fetched.
 
+### DataDome domains: cannot bypass (Bloomberg/WSJ/FT)
+
+DataDome + PerimeterX block ALL automated tools regardless of concurrency.
+BrowserBase cloud headless browser also gets "Are you a robot?" page.
+Only real desktop browser with residential IP + cookies + JS works.
+
+**Strategy**: Keep full strategy_order for these domains — archive.org sometimes
+works. Do NOT attempt to reduce strategies. Let SearXNG/Tavily recovery find
+alternative coverage from other news sources.
+
+See `references/structural-bug-patterns.md` pattern 12 for details.
+
+### LLM concurrency pattern
+
+Tier B articles use local Qwen3-1.7B (10-20s each on CPU). Use ThreadPoolExecutor
+for parallel LLM calls, BUT keep DB writes sequential:
+
+```python
+# ✅ Parallel LLM, sequential DB
+with ThreadPoolExecutor(max_workers=3) as ex:
+    for row in rows:
+        futures[ex.submit(route, ...)] = row
+    for fut in as_completed(futures):
+        results[fut] = fut.result()
+for row, result in results.items():
+    upsert_content(db, ...)  # single-threaded
+```
+
+**Safety**: `_qwen_available` global flag needs `threading.Lock()`.
+Default workers: 3 (configurable via `LLM_CONCURRENCY` env var).
+`max_tokens`: 500 (down from 1024 for speed).
+
 ### Batch results import after timeout
 When `pipeline.py` times out (300s subprocess limit), batch.py may have completed successfully
 but the results in `_fetch_tmp.jsonl` were never imported into `news_content`.
@@ -310,7 +342,8 @@ db.commit()
 - `references/pipeline-check-pattern.md` — Agent-readable pipeline diagnostics
 - `references/pipeline-gap-diagnosis.md` — **SQL-based diagnosis: 3-gap analysis for content shortfall**
 - `references/retry-tracking-and-recovery.md` — **Retry column, exhausted marker, comprehensive recovery pass**
-- `references/structural-bug-patterns.md` — **11 recurring bug patterns from multi-round code review**
+- `references/structural-bug-patterns.md` — **14 recurring bug patterns from multi-round code review**
+- `references/pipeline-complete-reference.md` — **Complete pipeline flow, all 7 strategies, 19 domain profiles, parameters**
 
 ## Article Detail Endpoint: Public + Optional VIP Auth
 

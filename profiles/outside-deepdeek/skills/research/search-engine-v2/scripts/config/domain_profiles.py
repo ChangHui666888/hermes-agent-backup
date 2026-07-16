@@ -86,6 +86,14 @@ KNOWN_PROFILES: dict[str, DomainProfile] = {
         notes="Investor's Business Daily — 同investing.com级别Cloudflare。浏览器可访问但headless被检测→load事件永不触发→45s超时",
     ),
 
+    "seekingalpha.com": DomainProfile(
+        domain="seekingalpha.com",
+        anti_bot="cloudflare",
+        strategy_order=["direct", "google_cache", "archive", "search_snippet"],
+        known_failing=["scrapling", "browser"],
+        notes="Seeking Alpha — Cloudflare+反爬。direct/archive/scrapling/search_snippet全失败。靠RSS描述+SearXNG恢复",
+    ),
+
     # ── 无反爬 / 友好域名 ────────────────────────────────────────────
     "reuters.com": DomainProfile(
         domain="reuters.com",

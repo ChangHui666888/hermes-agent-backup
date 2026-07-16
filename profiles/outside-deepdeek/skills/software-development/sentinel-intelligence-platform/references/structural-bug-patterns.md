@@ -224,6 +224,55 @@ stages = ["rss", "pipeline", "aggregator", "sync"]
 
 **Found in**: `pipeline_check.py` line 1358
 
+## 12. DataDome: optimizing strategy_order is counterproductive
+
+**Pattern**: Bloomberg/WSJ/FT use DataDome + PerimeterX. ALL automated tools
+are blocked — httpx (403), headless Playwright ("Are you a robot?"),
+Google Cache (429). Only a real desktop browser on residential IP works.
+
+Attempting to "optimize" by reducing strategy_order (e.g., dropping direct
+and google_cache) is WRONG — archive.org SOMETIMES works for older articles,
+and google_cache occasionally succeeds. The full cascade has value, even if
+most attempts fail. Let the cascade run; mark scrapling+browser as known_failing.
+
+**DO NOT**: Reduce strategy_order for DataDome domains.
+**DO**: Let SearXNG/Tavily recovery find alternative coverage from other sources.
+
+**Found in**: `config/domain_profiles.py` bloomberg.com, wsj.com, ft.com
+
+## 13. LLM concurrency: DB writes must be sequential
+
+**Pattern**: ThreadPoolExecutor parallelizes route() calls (which may call
+Qwen API), but sqlite3 connections are NOT thread-safe. Collect all results
+in memory, then write sequentially:
+
+```python
+# ✅ CORRECT: Parallel LLM, sequential DB
+results = {}
+with ThreadPoolExecutor(max_workers=3) as ex:
+    futures = {ex.submit(route, ...): row for row in rows}
+    for fut in as_completed(futures):
+        results[fut] = fut.result()
+
+for row, result in results.items():   # DB writes: single-threaded
+    upsert_content(db, ...)
+```
+
+Also: global `_qwen_available` flag needs `threading.Lock()` protection.
+
+**Found in**: `pipeline.py` line 227-264
+
+## 14. LLM max_tokens tradeoff: output length vs timeout
+
+**Pattern**: Qwen3-1.7B on CPU: 1024 max_tokens → ~20s per article.
+17 Tier B articles × 20s = 340s → exceeds pipeline timeout.
+
+Reducing to 500 tokens cuts per-article time to ~10s without quality loss
+for the task (tags + entities + summary + tone). The JSON output is <300
+tokens in practice.
+
+**Found in**: `enhancers.py` enhance_qwen() max_tokens parameter
+
 ## Verification Checklist
 
 After fixing ANY of the above, verify:

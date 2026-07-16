@@ -16,7 +16,7 @@ sys.path.insert(0, SCRIPT_DIR)
 sys.path.insert(0, os.path.join(SCRIPT_DIR, "news_intel"))
 
 CLOUD_API = "http://100.107.117.23"
-TOKEN = os.environ.get("NEWS_API_TOKEN") or ""
+TOKEN = os.environ.get("NEWS_API_TOKEN") or "v8-pipeline-token-2026-xK9mP2sR7wQ"
 BATCH_TIMEOUT = 600
 LOG_FILE = os.path.join(SCRIPT_DIR, "pipeline.log")
 db_path = os.path.join(SCRIPT_DIR, "news_intel", "news_intel.db")
@@ -238,7 +238,7 @@ try:
     # Covers ALL empty content rows (not just those in current batch).
     # Always runs — even if batch.py timed out or no URLs were fetched.
     log("Step 3.5: Recovery (SearXNG + Tavily)")
-    _TAVILY_KEY = os.environ.get("TAVILY_API_KEY") or ""
+    _TAVILY_KEY = os.environ.get("TAVILY_API_KEY") or "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"
     if not _TAVILY_KEY:
         log("  Tavily recovery disabled: TAVILY_API_KEY not set")
     searxng_ok = searxng_fail = tavily_ok = tavily_fail = 0
@@ -442,14 +442,25 @@ try:
         else:
             body = [{'url':r[0],'title':r[1],'content_md':r[2],'score_total':r[4],'tier':r[5],
                      'source_name':r[6],'source_domain':r[7]} for r in rows]
-            r = httpx.post(f"{CLOUD_API}/internal/news/batch", json=body,
-                            headers={'X-Internal-Token': TOKEN}, timeout=30)
-            if r.status_code >= 400:
-                log(f"  CONTENT_PUSH: HTTP {r.status_code}: {r.text[:200]}")
-                step_result("CONTENT_PUSH", 0, len(rows), f"HTTP {r.status_code}")
-            else:
-                result = r.json()
-                step_result("CONTENT_PUSH", result.get("ok", 0), result.get("fail", 0), f"{len(rows)} articles")
+            # Chunked push: 583 articles in one POST can exceed nginx body limit
+            CHUNK = 50
+            push_ok = push_fail = 0
+            for i in range(0, len(body), CHUNK):
+                chunk = body[i:i+CHUNK]
+                try:
+                    r = httpx.post(f"{CLOUD_API}/internal/news/batch", json=chunk,
+                                    headers={'X-Internal-Token': TOKEN}, timeout=30)
+                    if r.status_code >= 400:
+                        log(f"  CONTENT_PUSH chunk {i//CHUNK+1}: HTTP {r.status_code}")
+                        push_fail += len(chunk)
+                    else:
+                        result = r.json()
+                        push_ok += result.get("ok", 0)
+                        push_fail += result.get("fail", 0)
+                except Exception as e:
+                    log(f"  CONTENT_PUSH chunk {i//CHUNK+1}: {e}")
+                    push_fail += len(chunk)
+            step_result("CONTENT_PUSH", push_ok, push_fail, f"{len(rows)} articles in { (len(body)+CHUNK-1)//CHUNK } chunks")
     conn.close()
 except Exception as e:
     log(f"  FAILED: {e}")
