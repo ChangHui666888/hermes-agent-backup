@@ -61,7 +61,7 @@ def print_summary(report: dict):
 def main():
     parser = argparse.ArgumentParser(description="News Intelligence Pipeline")
     parser.add_argument("--hours", type=int, default=1)
-    parser.add_argument("--limit", type=int, default=200)
+    parser.add_argument("--limit", type=int, default=100)
     # 根因A修复：之前这里没有 --fetch 开关，run_pipeline() 的 do_fetch
     # 永远走默认值 False，导致 cron 定时任务从未真正调用 batch.py 抓正文。
     # 默认设为 True，这样即使 Windows 计划任务里没有额外加参数，抓取也会生效；

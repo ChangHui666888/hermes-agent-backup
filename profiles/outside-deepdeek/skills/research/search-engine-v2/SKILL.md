@@ -137,7 +137,7 @@ v2.1 解决方案：
 | **时间校验 v2** | temporal.py — freshness_mode 感知（breaking/market/analysis/default） |
 | **WSJ 时间戳修复** | s04_wsj.py 正则支持 MM-DD-YYYY 格式（live blog URL 如 06-30-2025） |
 
-## 域名画像表（已收录 17 个域名）
+## 域名画像表（已收录 18 个域名）
 
 | 域名 | 反爬级别 | 策略顺序 | 已知必败 |
 |------|---------|---------|---------|
@@ -146,6 +146,7 @@ v2.1 解决方案：
 | ft.com | datadome | direct → google_cache → archive → search_snippet | scrapling, browser |
 | nytimes.com | soft_paywall | direct → archive → search_snippet | — |
 | washingtonpost.com | soft_paywall | direct → archive → search_snippet | — |
+| investing.com | cloudflare | direct → google_cache → archive → search_snippet | scrapling, browser |
 | cnbc.com | cloudflare | direct → scrapling → archive → search_snippet | — |
 | businessinsider.com | cloudflare | direct → scrapling → archive → search_snippet | — |
 | reuters.com | none | direct | — |
@@ -519,7 +520,22 @@ print(result['confidence'])
 |---|------|------|
 | 1 | true_coverage 双重计数：`content_total + content_exhausted`（exhausted 已在 total 中） | 改为 `total_accounted = content_total` |
 
-**E2E 验证**：`test_e2e.py` — 7 项全绿 (40/40)，覆盖 pipeline_check、RateLimiter 序列化、ScraplingPool 并发一致性、extract_single 级联、batch 委托、auto-pipeline 守卫、true_coverage 算术。
+### Round 4: pipeline.py (3 fixes) + investing.com domain profile
+详见 `references/pipeline-py-fixes-round4.md`。
+
+| # | 问题 | 根因 | 修复 |
+|---|------|------|------|
+| 1 | `sqlite3.Row` has no `.get()` → `AttributeError` crash（3处） | `db.row_factory = sqlite3.Row` 返回的不支持 dict 方法 | `row.get("key")` → `row["key"] or default` |
+| 2 | batch.py TimeoutExpired 不捕获 → pipeline crash | investing.com 45s×3 retries 塞满 3 workers，总 147 URLs 超 300s | `try/except TimeoutExpired` + 读取部分结果 + 日志 |
+| 3 | pipeline.py 参数陈旧（0.5/3 vs auto-pipeline.py 0.1/8） | 两份脚本独立演进未同步 | 统一为 `--rate-delay 0.1 --max-workers 8` |
+| 4 | TAVILY_KEY 硬编码默认值 | 同 auto-pipeline.py Round 2 问题 | `os.environ.get("TAVILY_API_KEY") or ""` |
+| 5 | investing.com 无域名画像 → Scrapling 每 URL 浪费 135s | 未知域名默认全梯度级联 | 新增 `known_failing=["scrapling","browser"]` |
+
+**⚠️ sqlite3.Row 陷阱**：`db.execute().fetchall()` 返回的 Row 对象**不支持 `.get()` 方法**。
+只能用 `row["column"]` 或 `row[n]`。全部 `.get()` 调用会抛 `AttributeError`。
+这是跨项目的通用陷阱——**任何时候看到 `row.get(...)` 都要立刻验证 `row` 是不是 dict**。
+
+**E2E 验证**：`test_e2e.py` — 8 项全绿 (45/45)，新增 T8 验证 pipeline TimeoutExpired catch + 参数同步 + investing.com 域名画像。
 
 ```bash
 cd scripts && python test_e2e.py -v

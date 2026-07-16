@@ -1212,7 +1212,7 @@ def run_stage(name):
                 SEARCH_ENGINE_HOME
             ),
 
-            timeout=600
+            timeout=1200
 
         )
 
@@ -1281,7 +1281,7 @@ def run_stage(name):
 
             "TIMEOUT",
 
-            ">600 seconds",
+            ">1200 seconds",
 
             (
                 "Pipeline stage blocked"

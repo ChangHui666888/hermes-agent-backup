@@ -172,7 +172,7 @@ def enhance_qwen(title: str, description: str, content_md: str = "",
     """
     text = f"标题: {title}\n摘要: {description}"[:600]
 
-    raw = _call_qwen(QMERGE_PROMPT, text, max_tokens=1024)
+    raw = _call_qwen(QMERGE_PROMPT, text, max_tokens=500)
     data = _parse_json_dict(raw) or {}
 
     tags = data.get("tags") or _derive_tags(title + description, entities, categories)
