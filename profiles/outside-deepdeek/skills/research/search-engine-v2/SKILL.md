@@ -494,7 +494,7 @@ print(result['confidence'])
 
 | # | 问题 | 修复 | 可复用模式 |
 |---|------|------|-----------|
-| 1 | RateLimiter 无锁 check-then-act 竞态 | threading.Lock 双临界区 | 读写分离，sleep 在锁外 |
+| 1 | RateLimiter 无锁 check-then-act 竞态 | threading.Lock 单临界区（sleep 在锁内） | ⚠️ **sleep 必须在锁内**——initial fix 将 sleep 放在两个 `with` 之间，导致 T2 实测线程未序列化（0.05s vs 预期 0.35s） |
 | 2 | Scrapling 每URL新建 StealthyFetcher → 20s冷启动 | ScraplingPool 单例（双重检查锁+错误缓存） | 任何昂贵资源的池化模板 |
 | 3 | browser networkidle 永远等不到 | domcontentloaded + article选择器 + launch超时 | 新闻站一律 domcontentloaded |
 | 4 | fetch_direct/archive/gc 的 timeout 参数是死代码 | 删除死参数，_make_client 接受 httpx.Timeout | 不接受不生效的参数 |
@@ -512,12 +512,18 @@ print(result['confidence'])
 | 4 | TOKEN/TAVILY_KEY 硬编码默认值已进 git 历史 | 移除 fallback，无环境变量则跳过+警告 |
 | 5 | Step 5/6 无 TOKEN 守卫 → 401 静默打出 0/0 | 加 if-not-TOKEN 守卫 + HTTP 状态码检查 |
 
-### Round 3: pipeline_check.py (1 fix)
+### Round 3: pipeline_check.py (1 fix) + E2E test suite
 详见 `references/auto-pipeline-control-flow-fixes.md` Bug 6。
 
 | # | 问题 | 修复 |
 |---|------|------|
 | 1 | true_coverage 双重计数：`content_total + content_exhausted`（exhausted 已在 total 中） | 改为 `total_accounted = content_total` |
+
+**E2E 验证**：`test_e2e.py` — 7 项全绿 (40/40)，覆盖 pipeline_check、RateLimiter 序列化、ScraplingPool 并发一致性、extract_single 级联、batch 委托、auto-pipeline 守卫、true_coverage 算术。
+
+```bash
+cd scripts && python test_e2e.py -v
+```
 
 ### 零值陷阱（跨轮次反复出现的模式）
 
@@ -525,6 +531,29 @@ print(result['confidence'])
 1. **0/0 一定是 bug 不是正常状态** — 检查是否有假的 step_result 污染（else 绑定、守卫缺失、静默跳过）
 2. **100% 和 0% 同样可疑** — 检查分母是否排除了 exhausted/failed 行
 3. **硬编码密钥的 fallback 默认值禁止出现在源码中** — `os.environ.get("KEY", "sk-12345")` → `os.environ.get("KEY") or ""`
+
+### RateLimiter 线程安全模式（sleep-inside-lock）
+
+❌ **错误**（sleep 在锁外——线程漏过限速）：
+```python
+with self._lock:
+    remaining = delay - (now - last)
+if remaining > 0:           # ← 锁外 sleep：线程B在此刻也能进入上一行，
+    time.sleep(remaining)   #   看到旧 timestamp，计算 remaining≈0，并行通过
+with self._lock:
+    self._last_request[domain] = now
+```
+
+✅ **正确**（sleep 在锁内——完全序列化）：
+```python
+with self._lock:
+    remaining = delay - (now - last)
+    if remaining > 0:
+        time.sleep(remaining)   # ← 锁内 sleep：所有线程阻塞，串行通过
+    self._last_request[domain] = time.monotonic()
+```
+
+**测试验证**：8线程 × 50ms delay，错误版 0.05s 完成（并行绕过），正确版 0.35s（串行）。
 
 ## 🆕 L8 事件聚合器 V4.4 (`news_intel/aggregator.py`) — 当前生产版本
 

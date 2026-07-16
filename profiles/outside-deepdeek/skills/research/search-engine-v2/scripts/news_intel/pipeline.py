@@ -30,7 +30,7 @@ from news_intel.scorer import score_article, compute_velocity
 from news_intel.router import route
 from news_intel.sync import sync_recent
 
-TAVILY_KEY = os.environ.get("TAVILY_API_KEY", "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")
+TAVILY_KEY = os.environ.get("TAVILY_API_KEY") or ""
 SEARXNG_URL = "http://100.107.117.23:8080"
 
 
@@ -79,7 +79,7 @@ def run_pipeline(hours: int = 2, limit: int = 50, do_fetch: bool = False):
     rss_skip = 0
     for row in rows:
         url = row["article_url"]
-        desc = (row.get("description") or "").strip()
+        desc = (row["description"] or "").strip()
         if url and len(desc) >= 200:
             # Check quality: not HTML-heavy, not boilerplate
             html_ratio = (desc.count("<") + desc.count(">")) / max(len(desc), 1)
@@ -134,7 +134,7 @@ def run_pipeline(hours: int = 2, limit: int = 50, do_fetch: bool = False):
     searxng_recovered = 0
     if do_fetch:
         failed_mid = [(url, intel_id) for url, intel_id, score
-                      in [(u[0], u[1], row.get("score_total", 0))
+                      in [(u[0], u[1], (row["score_total"] or 0))
                           for u, row in zip(urls_to_fetch, rows)
                           if u[0] not in fetched_content]
                       if score >= 80 and score < 90][:10]
@@ -173,7 +173,7 @@ def run_pipeline(hours: int = 2, limit: int = 50, do_fetch: bool = False):
     tavily_recovered = 0
     if do_fetch and TAVILY_KEY:
         failed_high = [(url, intel_id, score) for url, intel_id, score, tier
-                       in [(u[0], u[1], row.get("score_total", 0))
+                       in [(u[0], u[1], (row["score_total"] or 0))
                            for u, row in zip(urls_to_fetch, rows)
                            if u[0] not in fetched_content]
                        if score >= 85]
