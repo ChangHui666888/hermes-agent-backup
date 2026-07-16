@@ -139,7 +139,7 @@ try:
         try:
             result = subprocess.run([sys.executable, os.path.join(SCRIPT_DIR, "batch.py"),
                                      "--urls", url_file, "--out", tmp_out,
-                                     "--rate-delay", "0.5", "--max-workers", "4", "--no-progress"],
+                                     "--rate-delay", "1.0", "--max-workers", "1", "--no-progress"],
                                     cwd=SCRIPT_DIR, timeout=BATCH_TIMEOUT, capture_output=True, text=True)
             if result.returncode != 0:
                 stderr_tail = (result.stderr or "")[-500:]

@@ -120,7 +120,7 @@ def run_pipeline(hours: int = 2, limit: int = 50, do_fetch: bool = False):
                 subprocess.run([
                     sys.executable, batch_script,
                     "--urls", url_file, "--out", out_file,
-                    "--rate-delay", "0.5", "--max-workers", "4", "--no-progress",
+                    "--rate-delay", "1.0", "--max-workers", "1", "--no-progress",
                 ], cwd=SCRIPT_DIR, timeout=batch_timeout)
             except subprocess.TimeoutExpired:
                 print(f"  [fetch] batch.py timed out after {batch_timeout}s — using partial results")
