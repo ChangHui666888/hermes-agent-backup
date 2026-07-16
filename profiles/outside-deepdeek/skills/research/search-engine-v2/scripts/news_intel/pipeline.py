@@ -115,12 +115,16 @@ def run_pipeline(hours: int = 2, limit: int = 50, do_fetch: bool = False):
                 url_file = tf.name
             out_file = os.path.join(os.path.dirname(__file__), "_fetch_tmp.jsonl")
             print(f"  [fetch] 抓取 {len(urls_to_fetch)} 篇全文...")
-            subprocess.run([
-                sys.executable, batch_script,
-                "--urls", url_file, "--out", out_file,
-                "--rate-delay", "0.5", "--max-workers", "3", "--no-progress",
-            ], cwd=SCRIPT_DIR, timeout=300)
-            # 读取抓取结果
+            batch_timeout = 300
+            try:
+                subprocess.run([
+                    sys.executable, batch_script,
+                    "--urls", url_file, "--out", out_file,
+                    "--rate-delay", "0.1", "--max-workers", "8", "--no-progress",
+                ], cwd=SCRIPT_DIR, timeout=batch_timeout)
+            except subprocess.TimeoutExpired:
+                print(f"  [fetch] batch.py timed out after {batch_timeout}s — using partial results")
+            # 读取抓取结果（超时时也有部分结果可读）
             if os.path.exists(out_file):
                 with open(out_file, encoding="utf-8") as f:
                     for line in f:
@@ -128,8 +132,8 @@ def run_pipeline(hours: int = 2, limit: int = 50, do_fetch: bool = False):
                         if data.get("ok"):
                             fetched_content[data["url"]] = data.get("content", "")
                 os.remove(out_file)
-            os.unlink(url_file)
-
+            if os.path.exists(url_file):
+                os.unlink(url_file)
     # SearXNG recovery: find alternative URLs for failed articles (free)
     searxng_recovered = 0
     if do_fetch:

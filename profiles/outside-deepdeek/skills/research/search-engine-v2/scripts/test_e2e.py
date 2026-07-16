@@ -375,6 +375,44 @@ def test_true_coverage():
 
 
 # ═══════════════════════════════════════════════════════════════════
+# T8: pipeline.py timeout recovery + investing.com domain profile
+# ═══════════════════════════════════════════════════════════════════
+
+def test_pipeline_timeout_recovery():
+    """Verify pipeline.py catches TimeoutExpired and investing.com in domain_profiles."""
+    print("\n── T8: pipeline timeout recovery ──")
+
+    pipeline_py = os.path.join(SCRIPT_DIR, "news_intel", "pipeline.py")
+    with open(pipeline_py) as f:
+        code = f.read()
+
+    # 8a: TimeoutExpired is caught (not propagated)
+    check("except subprocess.TimeoutExpired" in code,
+          "pipeline.py catches TimeoutExpired")
+    check("batch.py timed out" in code,
+          "pipeline.py logs timeout message")
+
+    # 8b: Uses updated batch.py params (matches auto-pipeline.py)
+    check('"0.1"' in code and '"8"' in code,
+          "pipeline.py uses rate-delay=0.1, max-workers=8")
+
+    # 8c: investing.com in domain profiles
+    profiles_py = os.path.join(SCRIPT_DIR, "config", "domain_profiles.py")
+    with open(profiles_py) as f:
+        pcode = f.read()
+    check("investing.com" in pcode,
+          "investing.com has domain profile")
+    # Verify known_failing is near investing.com in the file
+    invest_idx = pcode.index('"investing.com"')
+    # Skip the dict key, find the domain field
+    domain_idx = pcode.index('"investing.com"', invest_idx + 20)
+    section_end = pcode.index("# ── 无反爬", domain_idx)
+    invest_section = pcode[domain_idx:section_end]
+    check('known_failing' in invest_section,
+          "investing.com marks scrapling+browser as known_failing")
+
+
+# ═══════════════════════════════════════════════════════════════════
 # Runner
 # ═══════════════════════════════════════════════════════════════════
 
@@ -386,6 +424,7 @@ ALL_TESTS = {
     "T5": test_batch_delegation,
     "T6": test_auto_pipeline,
     "T7": test_true_coverage,
+    "T8": test_pipeline_timeout_recovery,
 }
 
 

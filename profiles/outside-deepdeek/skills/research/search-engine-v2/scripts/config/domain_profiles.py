@@ -70,6 +70,14 @@ KNOWN_PROFILES: dict[str, DomainProfile] = {
         notes="Cloudflare防护",
     ),
 
+    "investing.com": DomainProfile(
+        domain="investing.com",
+        anti_bot="cloudflare",
+        strategy_order=["direct", "google_cache", "archive", "search_snippet"],
+        known_failing=["scrapling", "browser"],
+        notes="Cloudflare强防护。direct返回403；scrapling超时(45s×3)。用archive+search_snippet兜底",
+    ),
+
     # ── 无反爬 / 友好域名 ────────────────────────────────────────────
     "reuters.com": DomainProfile(
         domain="reuters.com",
