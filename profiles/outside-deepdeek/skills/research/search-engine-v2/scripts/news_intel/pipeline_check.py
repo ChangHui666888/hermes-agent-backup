@@ -745,7 +745,6 @@ def check_fetcher():
         """
     )
 
-
     content_ok = query_db(
         db,
         """
@@ -755,6 +754,25 @@ def check_fetcher():
         AND content_md!=''
         """
     )
+
+    # True coverage: include exhausted rows in denominator
+    content_exhausted = query_db(
+        db,
+        """
+        SELECT COUNT(*)
+        FROM news_content
+        WHERE fetch_strategy = 'exhausted'
+        """
+    ) or 0
+
+    content_ok_total = query_db(
+        db,
+        """
+        SELECT COUNT(*)
+        FROM news_content
+        WHERE content_md IS NOT NULL AND content_md != ''
+        """
+    ) or 0
 
 
     if content_total is None or content_ok is None:
@@ -766,6 +784,9 @@ def check_fetcher():
 
 
     missing = content_total - content_ok
+    total_accounted = content_total + content_exhausted  # rows + exhausted rows = true total
+    true_coverage = f"{content_ok}/{total_accounted}" if total_accounted > 0 else "0/0"
+    true_pct = round(content_ok * 100 / max(total_accounted, 1), 1)
 
 
     # 没有需要抓取的数据
@@ -778,7 +799,7 @@ def check_fetcher():
 
 
     # 全部成功
-    if missing == 0:
+    if missing == 0 and content_exhausted == 0:
 
         return True, (
             "",
@@ -786,6 +807,20 @@ def check_fetcher():
                 f"intel={intel_total} "
                 f"content={content_total} "
                 f"content_ok={content_ok}"
+            )
+        )
+
+    # 有 exhausted 但无 missing（exhausted 不算 missing）
+    if missing == 0 and content_exhausted > 0:
+
+        return False, (
+            "FETCHER_EXHAUSTED",
+            (
+                f"intel={intel_total} "
+                f"content={content_total} "
+                f"content_ok={content_ok} "
+                f"exhausted={content_exhausted} "
+                f"true_coverage={true_coverage} ({true_pct}%)"
             )
         )
 
@@ -798,7 +833,9 @@ def check_fetcher():
             f"intel={intel_total} "
             f"content={content_total} "
             f"content_ok={content_ok} "
-            f"missing={missing}"
+            f"missing={missing} "
+            f"exhausted={content_exhausted} "
+            f"true_coverage={true_coverage} ({true_pct}%)"
         )
     )
 

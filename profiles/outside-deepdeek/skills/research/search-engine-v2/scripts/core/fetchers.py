@@ -46,24 +46,42 @@ except ImportError:
 # ── Rate Limiter (domain-aware token bucket) ───────────────────────
 @dataclass
 class RateLimiter:
-    """Per-domain token bucket rate limiter for batch scraping."""
+    """Per-domain token bucket rate limiter for batch scraping.
+
+    Thread-safe: all state access is protected by a threading.Lock.
+    """
 
     default_delay: float = 1.0          # seconds between requests (same domain)
     domain_delays: dict = field(default_factory=dict)  # per-domain overrides
     _last_request: dict = field(default_factory=dict)  # domain → timestamp
+    _lock: object = field(default_factory=__import__("threading").Lock)
 
     def set_domain_delay(self, domain: str, delay: float):
         """Override the delay for a specific domain (e.g. 0.5s for friendly sites)."""
         self.domain_delays[domain] = delay
 
     def wait(self, domain: str):
-        """Block until the per-domain cooldown elapses."""
+        """Block until the per-domain cooldown elapses. Thread-safe."""
         delay = self.domain_delays.get(domain, self.default_delay)
-        last = self._last_request.get(domain, 0)
-        elapsed = time.monotonic() - last
-        if elapsed < delay:
-            time.sleep(delay - elapsed)
-        self._last_request[domain] = time.monotonic()
+        with self._lock:
+            last = self._last_request.get(domain, 0)
+            now = time.monotonic()
+            remaining = delay - (now - last)
+        if remaining > 0:
+            time.sleep(remaining)
+        with self._lock:
+            self._last_request[domain] = time.monotonic()
+
+    def wait_for(self, key: str, delay: float):
+        """Block on a named cooldown key (e.g. 'browser:domain.com'). Thread-safe."""
+        with self._lock:
+            last = self._last_request.get(key, 0)
+            now = time.monotonic()
+            remaining = delay - (now - last)
+        if remaining > 0:
+            time.sleep(remaining)
+        with self._lock:
+            self._last_request[key] = time.monotonic()
 
 
 # ── Client Pool (domain-level client reuse) ────────────────────────
@@ -122,6 +140,48 @@ class DirectClientPool:
 
 # Module-level singleton pool
 _direct_client_pool = DirectClientPool(max_domains=50)
+
+
+# ── Scrapling Pool (StealthyFetcher instance reuse) ──────────────────
+
+class ScraplingPool:
+    """Lazily-initialized singleton StealthyFetcher.
+
+    Avoids per-URL cold start: StealthyFetcher() init (browser context,
+    TLS fingerprint setup) happens once and is reused across calls.
+    Thread-safe via lock.
+    """
+
+    def __init__(self):
+        self._fetcher: object | None = None
+        self._init_error: str | None = None
+        self._lock = __import__("threading").Lock()
+
+    def get(self):
+        if self._init_error:
+            return None
+        if self._fetcher is not None:
+            return self._fetcher
+        with self._lock:
+            if self._fetcher is not None:
+                return self._fetcher
+            if self._init_error:
+                return None
+            try:
+                from scrapling import StealthyFetcher
+                self._fetcher = StealthyFetcher()
+                logger.info("[scrapling] StealthyFetcher singleton initialized")
+            except ImportError as e:
+                self._init_error = str(e)
+                return None
+            except Exception as e:
+                self._init_error = str(e)
+                logger.warning(f"[scrapling] init failed: {e}")
+                return None
+        return self._fetcher
+
+
+_scrapling_pool = ScraplingPool()
 
 
 # ── Extraction helpers ─────────────────────────────────────────────
@@ -218,14 +278,17 @@ RETRY_STATUS = {408, 429, 500, 502, 503, 504}
 MAX_RETRIES = 3
 
 
-def _make_client(url: str | None = None) -> httpx.Client:
+def _make_client(url: str | None = None, timeout: httpx.Timeout | None = None) -> httpx.Client:
     """Create an httpx client with frozen browser headers and proxy awareness."""
     import os
+
+    if timeout is None:
+        timeout = httpx.Timeout(connect=5, read=15, write=10, pool=5)
 
     kwargs = {
         "headers": DEFAULT_HEADERS,
         "follow_redirects": True,
-        "timeout": httpx.Timeout(connect=5, read=15, write=10, pool=5),
+        "timeout": timeout,
     }
 
     if url and not _is_chinese_domain(url):
@@ -244,11 +307,11 @@ def _make_client(url: str | None = None) -> httpx.Client:
 def fetch_direct(
     url: str,
     rate_limiter: RateLimiter | None = None,
-    timeout: float = 30.0,
 ) -> str | None:
     """Strategy: direct (cost=1). httpx GET + trafilatura extraction.
 
     Cookie persistence via reused Client. Retry on 408/429/5xx (NOT 403).
+    Timeout controlled by _make_client() default (connect=5, read=15, write=10, pool=5).
     """
     domain = urlparse(url).netloc
     if rate_limiter:
@@ -287,7 +350,6 @@ def fetch_direct(
 def fetch_archive(
     url: str,
     rate_limiter: RateLimiter | None = None,
-    timeout: float = 30.0,
 ) -> str | None:
     """
     Strategy: archive (cost=1)
@@ -326,7 +388,6 @@ def fetch_archive(
 def fetch_google_cache(
     url: str,
     rate_limiter: RateLimiter | None = None,
-    timeout: float = 30.0,
 ) -> str | None:
     """
     Strategy: google_cache (cost=1)
@@ -367,19 +428,22 @@ def fetch_scrapling(
     rate_limiter: RateLimiter | None = None,
     timeout: float = 45.0,
 ) -> str | None:
-    """
-    Strategy: scrapling (cost=2)
+    """Strategy: scrapling (cost=2)
     Scrapling StealthyFetcher — TLS fingerprint randomization + browserforge headers.
     Bypasses moderate Cloudflare protections.
+
+    Uses a module-level singleton pool (ScraplingPool) to avoid per-URL
+    cold-start cost of launching a browser context.
     """
     domain = urlparse(url).netloc
     if rate_limiter:
         rate_limiter.wait(domain)
 
     try:
-        from scrapling import StealthyFetcher
+        fetcher = _scrapling_pool.get()
+        if fetcher is None:
+            return None
 
-        fetcher = StealthyFetcher()
         resp = fetcher.fetch(url, timeout=int(timeout * 1000))
 
         if resp is None:
@@ -394,9 +458,6 @@ def fetch_scrapling(
 
         text = _extract_main_text(html, url=url)
         return text or None
-    except ImportError:
-        logger.warning("[scrapling] Scrapling not installed; skipping")
-        return None
     except Exception as e:
         logger.warning(f"[scrapling] {type(e).__name__}: {e}")
         return None
@@ -407,31 +468,32 @@ def fetch_browser(
     rate_limiter: RateLimiter | None = None,
     timeout: float = 60.0,
 ) -> str | None:
-    """
-    Strategy: browser (cost=3)
+    """Strategy: browser (cost=3)
     Playwright headless Chromium — for JS-rendered / SPA pages.
     Heaviest cost, use only when direct/scrapling both fail.
+
+    Uses domcontentloaded (not networkidle) to avoid hanging forever
+    on news sites with analytics/ads that never stop loading.
     """
     domain = urlparse(url).netloc
     if rate_limiter:
         rate_limiter.wait(domain)
-
-    # browser_delay: Playwright is expensive, enforce a longer cooldown
-    if rate_limiter:
-        browser_delay = rate_limiter.domain_delays.get(domain, 5.0)
-        last = rate_limiter._last_request.get(f"browser:{domain}", 0)
-        elapsed = time.monotonic() - last
-        if elapsed < browser_delay:
-            time.sleep(browser_delay - elapsed)
-        rate_limiter._last_request[f"browser:{domain}"] = time.monotonic()
+        # Long cooldown for browser (expensive resource)
+        rate_limiter.wait_for(f"browser:{domain}", delay=5.0)
 
     try:
         from playwright.sync_api import sync_playwright
 
         with sync_playwright() as p:
-            browser = p.chromium.launch(headless=True)
+            browser = p.chromium.launch(headless=True, timeout=int(timeout * 1000))
             page = browser.new_page()
-            page.goto(url, wait_until="networkidle", timeout=timeout * 1000)
+            page.goto(url, wait_until="domcontentloaded", timeout=int(timeout * 1000))
+            # Wait for main article content if a selector pattern matches
+            try:
+                page.wait_for_selector("article, [role='main'], .article-body, .post-content",
+                                       timeout=min(5000, int(timeout * 1000 * 0.3)))
+            except Exception:
+                pass  # no explicit article container found, use what we have
             html = page.content()
             browser.close()
 
@@ -552,10 +614,10 @@ def extract_single(
     llm_api_key: str | None = None,
     llm_prompt: str | None = None,
 ) -> dict:
-    """
-    One-shot: extract a single URL with cascade + optional LLM structuring.
+    """One-shot: extract a single URL with cascade + optional LLM structuring.
+
     Returns a dict compatible with SkillResult shape:
-      {ok, url, content, strategy_used, cost_trace, structured?, temporal_check?}
+      {ok, url, domain, content, strategy_used, total_cost, cost_trace, structured?, temporal_check?}
     """
     from config.domain_profiles import get_profile
     from core.temporal import validate_temporal
@@ -577,6 +639,7 @@ def extract_single(
         "computer_use": lambda u: None,  # disabled by default
         "search_snippet": lambda u: fetch_search_snippet(u, search_func),
     }
+    COST = {"direct": 1, "archive": 1, "google_cache": 1, "search_snippet": 1, "scrapling": 2, "browser": 3, "computer_use": 5}
 
     content = None
     strategy_used = None
@@ -586,7 +649,7 @@ def extract_single(
         if fn is None:
             continue
 
-        attempt = {"strategy": strategy, "cost": {"direct": 1, "archive": 1, "search_snippet": 1, "scrapling": 2, "browser": 3, "computer_use": 5}.get(strategy, 0), "url": url}
+        attempt = {"strategy": strategy, "cost": COST.get(strategy, 0), "url": url}
         try:
             result = fn(url)
         except Exception as e:
@@ -597,7 +660,7 @@ def extract_single(
 
         if not result or len(result.strip()) < min_content_len:
             attempt["ok"] = False
-            attempt["error"] = "内容为空/过短" if result is not None else "工具返回 None"
+            attempt["error"] = "内容为空/过短" if result else "返回 None"
             cost_trace.append(attempt)
             continue
 
@@ -609,17 +672,19 @@ def extract_single(
         break
 
     if not content:
-        return {"ok": False, "url": url, "error": "所有策略均失败", "cost_trace": cost_trace}
+        return {
+            "ok": False, "url": url, "domain": profile.domain,
+            "error": "所有策略均失败", "cost_trace": cost_trace,
+            "strategies_tried": [t["strategy"] for t in cost_trace],
+        }
 
     # Structured extraction: 默认走纯脚本规则引擎（零LLM），--llm-extract 时才调DeepSeek
     structured = None
     from core.extractor import extract_structured
 
     if llm_api_key and llm_prompt:
-        # 显式要求 LLM → DeepSeek 结构化抽取
         structured = llm_extract_structured(content, llm_prompt, api_key=llm_api_key)
     else:
-        # 默认：纯脚本规则抽取（100篇 < 1秒）
         structured = extract_structured(url, content)
 
     # Temporal validation
@@ -627,11 +692,15 @@ def extract_single(
     published_at = (structured or {}).get("published_at") if isinstance(structured, dict) else None
     temporal = validate_temporal(url=url, title=headline, published_at=published_at, content_snippet=content[:500])
 
+    total_cost = sum(t.get("cost", 0) for t in cost_trace if t.get("ok"))
+
     return {
         "ok": True,
         "url": url,
+        "domain": profile.domain,
         "content": content,
         "strategy_used": strategy_used,
+        "total_cost": total_cost,
         "cost_trace": cost_trace,
         "structured": structured,
         "temporal_check": temporal,

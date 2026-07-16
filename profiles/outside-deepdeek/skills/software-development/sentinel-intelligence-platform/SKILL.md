@@ -224,7 +224,29 @@ Add packages to `package.json` dependencies (not devDependencies) and Docker's
 
 ## Fetch Engine Pitfalls
 
-### Scrapling timeout: milliseconds vs seconds
+### Empty placeholder rows (block re-fetch)
+An old pipeline version can create news_content rows with `fetch_strategy=NULL` and
+`content_md=''` (empty string, NOT NULL). These rows block the fetch queue because the
+`WHERE content_md IS NULL` check skips them. The rows have Qwen3-generated summaries
+(`extraction_method=qwen3`) but no actual content.
+
+**Diagnosis**: See `references/pipeline-gap-diagnosis.md`
+**Fix**: Delete placeholder rows with `DELETE FROM news_content WHERE fetch_strategy IS NULL AND (content_md IS NULL OR content_md='') AND retry_count>=3`.
+Then re-run pipeline — RSS_FULLTEXT will fill the URLs at cost=0.
+
+### Retry tracking (prevent infinite loops)
+Without retry tracking, paywalled/anti-bot URLs are retried every cron run indefinitely.
+
+**Fix**: `ALTER TABLE news_content ADD COLUMN retry_count INTEGER DEFAULT 0`.
+On each failure: increment. After 3 failures: `SET fetch_strategy='exhausted'`.
+Exclude `exhausted` rows from all fetch queries.
+
+**Pattern**: See `references/retry-tracking-and-recovery.md`
+
+### Scrapling batch timeout
+200 URLs with Scrapling (Playwright headless, ~10-15s per URL) exceed the 600s BATCH_TIMEOUT.
+
+**Fix**: `LIMIT 50`, `--max-workers 8`, `--rate-delay 0.1` → ~140s for 50 URLs.
 `Scrapling.StealthyFetcher.fetch(url, timeout=...)` expects **milliseconds**, not seconds.
 Passing `timeout=45.0` (45s) is interpreted as **45ms**, causing instant timeout.
 **Fix**: `resp = fetcher.fetch(url, timeout=int(timeout * 1000))` — located in `core/fetchers.py`.
@@ -274,6 +296,8 @@ db.commit()
 - `references/v2-frontend-npm-gotchas.md` — Static vs dynamic imports in Docker builds
 - `references/v8-critical-patterns.md` — PG schema management, FK constraints, text() wrappers
 - `references/pipeline-check-pattern.md` — Agent-readable pipeline diagnostics
+- `references/pipeline-gap-diagnosis.md` — **SQL-based diagnosis: 3-gap analysis for content shortfall**
+- `references/retry-tracking-and-recovery.md` — **Retry column, exhausted marker, comprehensive recovery pass**
 - `references/fetch-optimization-review.md` — RSS FullText + Quality Validator + Domain Statistics evaluation
 
 ## Article Detail Endpoint: Public + Optional VIP Auth

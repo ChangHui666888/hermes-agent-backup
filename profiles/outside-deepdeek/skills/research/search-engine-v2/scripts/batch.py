@@ -36,13 +36,10 @@ SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, SCRIPT_DIR)
 
 from core.fetchers import (
-    fetch_direct, fetch_archive, fetch_google_cache, fetch_scrapling, fetch_browser,
-    fetch_search_snippet, llm_extract_structured,
     RateLimiter,
 )
 from config.domain_profiles import get_profile
 from config.settings import get_settings
-from core.temporal import validate_temporal
 
 logger = logging.getLogger("batch")
 
@@ -56,103 +53,23 @@ def extract_url(
     llm_prompt: str | None = None,
     skip_expensive: bool = True,
 ) -> dict:
+    """Extract a single URL using the cascade engine.
+
+    Delegates to core.fetchers.extract_single() — the single authoritative
+    cascade implementation. All per-URL settings (strategy order, failing
+    strategies, min_content_len) are driven by domain_profiles + settings.
     """
-    Extract a single URL using the cascade engine.
-    Returns a result dict.
-    """
+    from core.fetchers import extract_single as _extract_single
     profile = get_profile(url)
-    order = list(profile.strategy_order)
-    failing = set(profile.known_failing)
-    if skip_expensive:
-        failing |= {"computer_use", "browser"}
-    order = [s for s in order if s not in failing]
-
-    cost_trace = []
-
-    STRATEGY_FN = {
-        "direct": lambda: fetch_direct(url, rate_limiter, timeout=settings.direct_timeout),
-        "archive": lambda: fetch_archive(url, rate_limiter, timeout=settings.archive_timeout),
-        "google_cache": lambda: fetch_google_cache(url, rate_limiter, timeout=settings.archive_timeout),
-        "scrapling": lambda: fetch_scrapling(url, rate_limiter, timeout=settings.scrapling_timeout),
-        "browser": lambda: fetch_browser(url, rate_limiter, timeout=settings.browser_timeout),
-        "computer_use": lambda: None,  # batch mode: disabled
-        "search_snippet": lambda: fetch_search_snippet(url, search_func),
-    }
-
-    COST = {"direct": 1, "archive": 1, "google_cache": 1, "search_snippet": 1, "scrapling": 2, "browser": 3, "computer_use": 5}
-
-    content = None
-    strategy_used = None
-
-    for strategy in order:
-        fn = STRATEGY_FN.get(strategy)
-        if fn is None:
-            continue
-
-        attempt = {"strategy": strategy, "cost": COST.get(strategy, 0), "url": url}
-        try:
-            result = fn()
-        except Exception as e:
-            attempt["ok"] = False
-            attempt["error"] = str(e)
-            cost_trace.append(attempt)
-            continue
-
-        min_len = settings.min_content_len_for(profile.domain)
-        if not result or len(result.strip()) < min_len:
-            attempt["ok"] = False
-            attempt["error"] = "内容为空/过短" if result else "返回 None"
-            cost_trace.append(attempt)
-            continue
-
-        attempt["ok"] = True
-        attempt["content_len"] = len(result)
-        cost_trace.append(attempt)
-        content = result
-        strategy_used = strategy
-        break
-
-    if not content:
-        return {
-            "ok": False, "url": url, "error": "所有策略均失败",
-            "cost_trace": cost_trace, "strategies_tried": [t["strategy"] for t in cost_trace],
-        }
-
-    # Structured extraction: 默认纯脚本，--llm-extract 时调 DeepSeek
-    structured = None
-    from core.extractor import extract_structured
-
-    if llm_api_key and llm_prompt:
-        structured = llm_extract_structured(
-            content, llm_prompt,
-            api_key=llm_api_key,
-            max_chars=settings.llm_max_input_chars,
-        )
-    else:
-        structured = extract_structured(url, content)
-
-    # Temporal validation
-    headline = (structured or {}).get("headline", "") if isinstance(structured, dict) else ""
-    published_at = (structured or {}).get("published_at") if isinstance(structured, dict) else None
-    temporal = validate_temporal(
-        url=url, title=headline,
-        published_at=published_at,
-        content_snippet=content[:500],
+    return _extract_single(
+        url=url,
+        rate_limiter=rate_limiter,
+        skip_expensive=skip_expensive,
+        min_content_len=settings.min_content_len_for(profile.domain),
+        search_func=search_func,
+        llm_api_key=llm_api_key,
+        llm_prompt=llm_prompt,
     )
-
-    total_cost = sum(t.get("cost", 0) for t in cost_trace if t.get("ok"))
-
-    return {
-        "ok": True,
-        "url": url,
-        "domain": profile.domain,
-        "content": content,
-        "strategy_used": strategy_used,
-        "total_cost": total_cost,
-        "cost_trace": cost_trace,
-        "structured": structured,
-        "temporal_check": temporal,
-    }
 
 
 def batch_extract(
