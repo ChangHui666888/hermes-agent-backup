@@ -192,7 +192,42 @@ computer_use  5     ❌ Standalone禁用 / Agent手动     computer_use(url)
 | `RateLimiter` | 域名感知令牌桶限速器 | 纯 Python |
 | `extract_single(url, ...)` | 一站式：级联+LLM抽取+时间校验 | 以上全部 |
 
-## 🆕 Hermes Cron 部署（⚠️ `once` vs `every` 陷阱）
+## 🆕 Pipeline 运维 & 诊断
+
+### 数据缺口根因诊断
+
+三层数据缺口（RSS→Pipeline→Content→正文）的快速诊断流程，
+含常见根因（content_md='' vs NULL 陷阱、占位行阻塞、200 LIMIT 瓶颈）和修复 SQL。
+详见 `references/pipeline-gap-diagnosis.md`。
+
+### pipeline_check.py 快速诊断
+
+```bash
+cd scripts/news_intel && python pipeline_check.py check
+# 输出: RSS → PASS/FAIL, Pipeline → PASS/FAIL, Fetcher → PASS/FAIL
+```
+
+### 清理空占位行
+
+```bash
+python -c "
+import sqlite3
+db = sqlite3.connect('news_intel/news_intel.db')
+deleted = db.execute(\"DELETE FROM news_content WHERE (content_md IS NULL OR content_md = '') AND (fetch_strategy IS NULL OR fetch_strategy = '')\").rowcount
+db.commit(); print(f'Deleted {deleted} empty placeholder rows')
+db.close()
+"
+```
+
+### content_md = '' vs NULL 陷阱
+
+备经验：`content_md IS NULL` 不会匹配 content_md = ''（空字符串）。
+所有 WHERE 条件必须同时检查二者：
+```sql
+WHERE content_md IS NULL OR content_md = ''
+```
+
+## Hermes Cron 部署（⚠️ `once` vs `every` 陷阱）
 
 **创建命令必须是 `"every 30m"`，不是 `"30m"`：**
 

@@ -44,6 +44,23 @@ log("=" * 60)
 log("PIPELINE START")
 log("=" * 60)
 
+# ── 0. Cleanup: delete empty placeholder rows ──────────────
+log("Step 0: Cleanup placeholder rows")
+try:
+    conn = sqlite3.connect(db_path)
+    deleted = conn.execute("""
+        DELETE FROM news_content
+        WHERE fetch_strategy IS NULL
+          AND (content_md IS NULL OR content_md = '')
+          AND retry_count >= 3
+    """).rowcount
+    conn.commit()
+    conn.close()
+    if deleted:
+        log(f"  CLEANUP: {deleted} exhausted placeholder rows deleted")
+except Exception as e:
+    log(f"  Cleanup: {e}")
+
 # ── 1. Sync + Score ────────────────────────────────────────
 log("Step 1/6: Sync + Score")
 try:
@@ -78,11 +95,12 @@ try:
         if html_ratio < 0.3:
             conn.execute("""
                 INSERT INTO news_content (intel_id, article_url, content_md, content_len,
-                    fetch_strategy, fetch_cost, fetch_at)
-                VALUES (?, ?, ?, ?, 'rss_fulltext', 0, datetime('now','localtime'))
+                    fetch_strategy, fetch_cost, retry_count, fetch_at)
+                VALUES (?, ?, ?, ?, 'rss_fulltext', 0, 0, datetime('now','localtime'))
                 ON CONFLICT(article_url) DO UPDATE SET
                     content_md=excluded.content_md, content_len=excluded.content_len,
-                    fetch_strategy='rss_fulltext', fetch_cost=0, fetch_at=datetime('now','localtime')
+                    fetch_strategy='rss_fulltext', fetch_cost=0, retry_count=0,
+                    fetch_at=datetime('now','localtime')
             """, (row[0], row[1], desc, len(desc)))
             rss_ok += 1
     conn.commit()
@@ -102,8 +120,9 @@ try:
         LEFT JOIN news_content nc ON nc.intel_id = ni.id
         WHERE ni.tier IN ('A','B')
           AND (nc.id IS NULL OR nc.content_md IS NULL OR nc.content_md = '')
+          AND (nc.fetch_strategy != 'exhausted' OR nc.fetch_strategy IS NULL)
           AND rr.article_url IS NOT NULL AND rr.article_url != ''
-        LIMIT 200
+        LIMIT 50
     """).fetchall()
     conn.close()
 
@@ -116,7 +135,7 @@ try:
         tmp_out = os.path.join(SCRIPT_DIR, "news_intel", "_fetch_tmp.jsonl")
         subprocess.run([sys.executable, os.path.join(SCRIPT_DIR, "batch.py"),
                         "--urls", url_file, "--out", tmp_out,
-                        "--rate-delay", "0.5", "--max-workers", "3", "--no-progress"],
+                        "--rate-delay", "0.1", "--max-workers", "8", "--no-progress"],
                        cwd=SCRIPT_DIR, timeout=BATCH_TIMEOUT, capture_output=True, text=True)
         os.unlink(url_file)
 
@@ -145,17 +164,26 @@ try:
                         ok_count += 1
                         domain_stats[domain][strategy]["ok"] += 1
                         source_stats[src_name][strategy]["ok"] += 1
-                        intel_row = conn.execute("SELECT intel_id FROM news_content WHERE article_url=?", (r["url"],)).fetchone()
-                        if intel_row:
-                            conn.execute("""
-                                UPDATE news_content SET content_md=?, content_len=?,
-                                fetch_strategy=?, fetch_cost=?, fetch_at=datetime('now','localtime')
-                                WHERE article_url=?
-                            """, (r["content"], len(r["content"]), strategy, r.get("total_cost", 0), r["url"]))
+                        conn.execute(
+                            "INSERT INTO news_content (intel_id, article_url, content_md, content_len, fetch_strategy, fetch_cost, retry_count, fetch_at) VALUES (?, ?, ?, ?, ?, ?, 0, datetime('now','localtime')) ON CONFLICT(article_url) DO UPDATE SET content_md=excluded.content_md, content_len=excluded.content_len, fetch_strategy=excluded.fetch_strategy, fetch_cost=excluded.fetch_cost, retry_count=0, fetch_at=excluded.fetch_at",
+                            (intel_row[0], r["url"], r["content"], len(r["content"]), strategy, r.get("total_cost", 0))
+                        ) if (intel_row := conn.execute("SELECT intel_id FROM news_content WHERE article_url=?", (r["url"],)).fetchone()) else conn.execute(
+                            "INSERT INTO news_content (article_url, content_md, content_len, fetch_strategy, fetch_cost, retry_count, fetch_at) VALUES (?, ?, ?, ?, ?, 0, datetime('now','localtime'))",
+                            (r["url"], r["content"], len(r["content"]), strategy, r.get("total_cost", 0))
+                        )
                     else:
                         fail_count += 1
                         domain_stats[domain][strategy]["fail"] += 1
                         source_stats[src_name][strategy]["fail"] += 1
+                        # Increment retry; mark exhausted after 3 failures
+                        conn.execute("""
+                            UPDATE news_content SET retry_count = COALESCE(retry_count,0) + 1
+                            WHERE article_url = ?
+                        """, (r["url"],))
+                        conn.execute("""
+                            UPDATE news_content SET fetch_strategy = 'exhausted'
+                            WHERE article_url = ? AND COALESCE(retry_count,0) >= 3
+                        """, (r["url"],))
             conn.commit()
             conn.close()
 
@@ -196,102 +224,115 @@ try:
             except Exception:
                 pass
 
-    # ── 3.5 SearXNG Recovery (score 80-89, free) ──────────────
-    searxng_ok = searxng_fail = 0
+    # ── 3.5 Comprehensive Recovery Pass ──────────────────────
+    # Covers ALL empty content rows (not just those in current batch)
+    log("Step 3.5: Recovery (SearXNG + Tavily)")
+    TAVILY_KEY = os.environ.get("TAVILY_API_KEY", "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")
+    searxng_ok = searxng_fail = tavily_ok = tavily_fail = 0
+
+    def _recover_searxng(title: str, intel_id: int, url: str) -> bool:
+        q = (title or url)[:80]
+        resp = httpx.get("http://100.107.117.23:8080/search",
+                          params={"q": q, "format": "json"},
+                          headers={"User-Agent": "NewsIntelBot/1.0"}, timeout=10)
+        data = resp.json()
+        for alt in data.get("results", [])[:2]:
+            alt_url = alt.get("url", "")
+            if alt_url and alt_url != url:
+                r2 = httpx.get(alt_url, headers={"User-Agent": "Mozilla/5.0 Chrome/131"}, timeout=10)
+                if r2.status_code == 200 and len(r2.text) > 500:
+                    from core.fetchers import _extract_main_text
+                    content = _extract_main_text(r2.text, url=alt_url)
+                    if content and len(content) > 200:
+                        c = sqlite3.connect(db_path)
+                        c.execute("""
+                            INSERT INTO news_content (intel_id, article_url, content_md, content_len, fetch_strategy, fetch_cost, retry_count, fetch_at)
+                            VALUES (?, ?, ?, ?, 'searxng_alt', 2, 0, datetime('now','localtime'))
+                            ON CONFLICT(article_url) DO UPDATE SET content_md=excluded.content_md, content_len=excluded.content_len,
+                            fetch_strategy='searxng_alt', fetch_cost=2, retry_count=0, fetch_at=excluded.fetch_at
+                        """, (intel_id, url, content, len(content)))
+                        c.commit(); c.close()
+                        return True
+        return False
+
+    def _recover_tavily(title: str, intel_id: int, url: str) -> bool:
+        q = (title or url)[:100]
+        resp = httpx.post("https://api.tavily.com/search", json={
+            "api_key": TAVILY_KEY, "query": q, "search_depth": "basic",
+            "max_results": 2, "include_answer": True,
+        }, timeout=15)
+        data = resp.json()
+        answer = data.get("answer", "")
+        if answer and len(answer) > 100:
+            content = f"[Tavily]\n\n{answer}"
+            c = sqlite3.connect(db_path)
+            c.execute("""
+                INSERT INTO news_content (intel_id, article_url, content_md, content_len, fetch_strategy, fetch_cost, retry_count, fetch_at)
+                VALUES (?, ?, ?, ?, 'tavily', 5, 0, datetime('now','localtime'))
+                ON CONFLICT(article_url) DO UPDATE SET content_md=excluded.content_md, content_len=excluded.content_len,
+                fetch_strategy='tavily', fetch_cost=5, retry_count=0, fetch_at=excluded.fetch_at
+            """, (intel_id, url, content, len(content)))
+            c.commit(); c.close()
+            return True
+        return False
+
     try:
         conn = sqlite3.connect(db_path)
-        failed_urls = conn.execute("""
+        # SearXNG: score 80-89, max 10
+        searxng_candidates = conn.execute("""
             SELECT rr.article_url, ni.id, ni.score_total, rr.title
             FROM news_intelligence ni
             JOIN rss_raw rr ON ni.raw_id = rr.id
             LEFT JOIN news_content nc ON nc.intel_id = ni.id
             WHERE ni.tier IN ('A','B') AND ni.score_total >= 80 AND ni.score_total < 90
+              AND (nc.fetch_strategy != 'exhausted' OR nc.fetch_strategy IS NULL)
               AND (nc.id IS NULL OR nc.content_md IS NULL OR nc.content_md = '')
+              AND (nc.retry_count IS NULL OR nc.retry_count < 3)
             LIMIT 10
         """).fetchall()
-        conn.close()
 
-        if failed_urls:
-            import httpx
-            for url, intel_id, score, title in failed_urls:
-                try:
-                    q = (title or url)[:80]
-                    resp = httpx.get(f"http://100.107.117.23:8080/search",
-                                     params={"q": q, "format": "json"},
-                                     headers={"User-Agent": "NewsIntelBot/1.0"}, timeout=10)
-                    data = resp.json()
-                    for alt in data.get("results", [])[:2]:
-                        alt_url = alt.get("url", "")
-                        if alt_url and alt_url != url:
-                            r2 = httpx.get(alt_url, headers={"User-Agent": "Mozilla/5.0 Chrome/131"}, timeout=10)
-                            if r2.status_code == 200 and len(r2.text) > 500:
-                                from core.fetchers import _extract_main_text
-                                content = _extract_main_text(r2.text, url=alt_url)
-                                if content and len(content) > 200:
-                                    conn2 = sqlite3.connect(db_path)
-                                    conn2.execute("""
-                                        UPDATE news_content SET content_md=?, content_len=?,
-                                        fetch_strategy='searxng_alt', fetch_cost=2, fetch_at=datetime('now','localtime')
-                                        WHERE intel_id=? AND (content_md IS NULL OR content_md='')
-                                    """, (content, len(content), intel_id))
-                                    conn2.commit(); conn2.close()
-                                    searxng_ok += 1
-                                    break
-                        searxng_fail += 1
-                except Exception:
+        for url, intel_id, score, title in searxng_candidates:
+            try:
+                if _recover_searxng(title, intel_id, url):
+                    searxng_ok += 1
+                else:
                     searxng_fail += 1
-        if searxng_ok + searxng_fail > 0:
-            step_result("SEARXNG_RECOVERY", searxng_ok, searxng_fail)
-    except Exception as e:
-        log(f"  SearXNG: {e}")
+                    conn.execute("UPDATE news_content SET retry_count = COALESCE(retry_count,0)+1 WHERE article_url=?", (url,))
+            except Exception:
+                searxng_fail += 1
 
-    # ── 3.6 Tavily Recovery (score >=90, paid) ────────────────
-    TAVILY_KEY = os.environ.get("TAVILY_API_KEY", "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")
-    tavily_ok = tavily_fail = 0
-    try:
-        conn = sqlite3.connect(db_path)
-        failed_high = conn.execute("""
+        # Tavily: score >=90, max 5
+        tavily_candidates = conn.execute("""
             SELECT rr.article_url, ni.id, ni.score_total, rr.title
             FROM news_intelligence ni
             JOIN rss_raw rr ON ni.raw_id = rr.id
             LEFT JOIN news_content nc ON nc.intel_id = ni.id
             WHERE ni.tier IN ('A','B') AND ni.score_total >= 90
+              AND (nc.fetch_strategy != 'exhausted' OR nc.fetch_strategy IS NULL)
               AND (nc.id IS NULL OR nc.content_md IS NULL OR nc.content_md = '')
+              AND (nc.retry_count IS NULL OR nc.retry_count < 3)
             LIMIT 5
         """).fetchall()
+
+        for url, intel_id, score, title in tavily_candidates:
+            try:
+                if _recover_tavily(title, intel_id, url):
+                    tavily_ok += 1
+                else:
+                    tavily_fail += 1
+                    conn.execute("UPDATE news_content SET retry_count = COALESCE(retry_count,0)+1 WHERE article_url=?", (url,))
+            except Exception:
+                tavily_fail += 1
+
+        conn.commit()
         conn.close()
 
-        if failed_high:
-            import httpx
-            for url, intel_id, score, title in failed_high:
-                try:
-                    q = (title or url)[:100]
-                    resp = httpx.post("https://api.tavily.com/search", json={
-                        "api_key": TAVILY_KEY, "query": q, "search_depth": "basic",
-                        "max_results": 2, "include_answer": True,
-                    }, timeout=15)
-                    data = resp.json()
-                    answer = data.get("answer", "")
-                    content = None
-                    if answer and len(answer) > 100:
-                        content = f"[Tavily]\n\n{answer}"
-                    if content:
-                        conn2 = sqlite3.connect(db_path)
-                        conn2.execute("""
-                            UPDATE news_content SET content_md=?, content_len=?,
-                            fetch_strategy='tavily', fetch_cost=5, fetch_at=datetime('now','localtime')
-                            WHERE intel_id=? AND (content_md IS NULL OR content_md='')
-                        """, (content, len(content), intel_id))
-                        conn2.commit(); conn2.close()
-                        tavily_ok += 1
-                        continue
-                    tavily_fail += 1
-                except Exception:
-                    tavily_fail += 1
+        if searxng_ok + searxng_fail > 0:
+            step_result("SEARXNG_RECOVERY", searxng_ok, searxng_fail)
         if tavily_ok + tavily_fail > 0:
             step_result("TAVILY_RECOVERY", tavily_ok, tavily_fail)
     except Exception as e:
-        log(f"  Tavily: {e}")
+        log(f"  Recovery: {e}")
     else:
         step_result("FETCH", 0, 0, "no URLs to fetch")
 except Exception as e:
