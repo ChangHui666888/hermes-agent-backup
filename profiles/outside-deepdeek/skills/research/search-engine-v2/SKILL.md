@@ -521,14 +521,26 @@ print(result['confidence'])
 | 1 | true_coverage 双重计数：`content_total + content_exhausted`（exhausted 已在 total 中） | 改为 `total_accounted = content_total` |
 
 ### Round 4: pipeline.py (3 fixes) + investing.com domain profile
-### Round 5: LLM timeout optimization (3 fixes)
-详见 `references/llm-timeout-optimization.md`。
+### Round 5: LLM timeout optimization (3 fixes) + LLM concurrency
+### Round 6: pipeline_check.py fetcher removal + API port fix
+详见 `references/llm-timeout-optimization.md` 和 `references/pipeline-check-fixes-round6.md`。
 
 | # | 问题 | 根因 | 修复 |
 |---|------|------|------|
-| R4-1 | `sqlite3.Row` has no `.get()` → `AttributeError` crash（3处） | `db.row_factory = sqlite3.Row` 返回的不支持 dict 方法 | `row.get("key")` → `row["key"] or default` |
-| R4-2 | batch.py TimeoutExpired 不捕获 → pipeline crash | investing.com 45s×3 retries 塞满 3 workers，总 147 URLs 超 300s | `try/except TimeoutExpired` + 读取部分结果 + 日志 |
-| R4-3 | pipeline.py 参数陈旧（0.5/3 vs auto-pipeline.py 0.1/8） | 两份脚本独立演进未同步 | 统一为 `--rate-delay 0.1 --max-workers 8` |
+| R5-1 | LLM 增强超时: Qwen3 max_tokens=1024 → 20s/篇, 200篇/批=340s | 总管线 timeout=600s 不够 | `max_tokens: 1024→500` (enhancers.py) |
+| R5-2 | 批次过大: 200篇→~48 Tier B | 与 R5-1 叠加 | `--limit: 200→100` (news-pipeline.py) |
+| R5-3 | 管道总超时 600s 紧 | 无容错余量 | `timeout: 600→1200` (pipeline_check.py) |
+| R5-4 | LLM 增强纯串行 → 17篇 Tier B 耗 340s | `for row: route()` 每篇阻塞 | `ThreadPoolExecutor(max_workers=4)`, `LLM_CONCURRENCY` 可配 |
+| R6-1 | `pipeline_check.py run` 在 fetcher 阶段崩溃 | `batch.py` 无 URL 参数；抓取已在 pipeline 阶段完成 | 从 stages 列表移除 `"fetcher"` |
+| R6-2 | 推送 156 篇全部失败 | `NEWS_API_BASE` 默认 `:8001`，Docker 映射到 `:80` | 改为 `http://100.107.117.23`（无端口） |
+
+**完整修复参考**:
+- `references/structural-code-review-20260716.md` — fetchers.py 6 fixes
+- `references/auto-pipeline-control-flow-fixes.md` — auto-pipeline.py 5 fixes + true_coverage fix
+- `references/pipeline-py-fixes-round4.md` — pipeline.py sqlite3.Row + TimeoutExpired + domain profile
+- `references/llm-timeout-optimization.md` — LLM max_tokens + batch size + timeout
+- `references/pipeline-check-fixes-round6.md` — fetcher stage removal + API port fix
+- `references/structural-debugging-patterns.md` — 跨轮次通用 bug 模式目录
 | R4-4 | TAVILY_KEY 硬编码默认值 | 同 auto-pipeline.py Round 2 问题 | `os.environ.get("TAVILY_API_KEY") or ""` |
 | R4-5 | investing.com 无域名画像 → Scrapling 每 URL 浪费 135s | 未知域名默认全梯度级联 | 新增 `known_failing=["scrapling","browser"]` |
 | R5-1 | LLM 增强超时: Qwen3 max_tokens=1024 → 20s/篇, 200篇/批=340s | 总管线 timeout=600s 不够 | `max_tokens: 1024→500` (enhancers.py) |
