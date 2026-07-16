@@ -755,7 +755,8 @@ def check_fetcher():
         """
     )
 
-    # True coverage: include exhausted rows in denominator
+    # True coverage: include exhausted rows in denominator.
+    # content_total is an unconditional COUNT(*) — it already includes exhausted rows.
     content_exhausted = query_db(
         db,
         """
@@ -764,16 +765,6 @@ def check_fetcher():
         WHERE fetch_strategy = 'exhausted'
         """
     ) or 0
-
-    content_ok_total = query_db(
-        db,
-        """
-        SELECT COUNT(*)
-        FROM news_content
-        WHERE content_md IS NOT NULL AND content_md != ''
-        """
-    ) or 0
-
 
     if content_total is None or content_ok is None:
 
@@ -784,7 +775,8 @@ def check_fetcher():
 
 
     missing = content_total - content_ok
-    total_accounted = content_total + content_exhausted  # rows + exhausted rows = true total
+    # content_total already includes exhausted rows — no need to add them again
+    total_accounted = content_total
     true_coverage = f"{content_ok}/{total_accounted}" if total_accounted > 0 else "0/0"
     true_pct = round(content_ok * 100 / max(total_accounted, 1), 1)
 

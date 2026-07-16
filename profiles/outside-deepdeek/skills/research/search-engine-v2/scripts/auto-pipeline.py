@@ -112,7 +112,6 @@ except Exception as e:
 
 # ── 3. Fetch (batch.py) ────────────────────────────────────
 log("Step 3/6: Fetch (batch.py)")
-fetched_something = False  # track whether any fetch happened (even if all failed)
 try:
     conn = sqlite3.connect(db_path)
     urls = conn.execute("""
@@ -131,7 +130,6 @@ try:
         log("  FETCH: no URLs to fetch (all candidates exhausted or already fetched)")
         step_result("FETCH", 0, 0, "no URLs to fetch")
     else:
-        fetched_something = True
         import tempfile
         with tempfile.NamedTemporaryFile(mode='w', suffix='.txt', delete=False, encoding='utf-8') as f:
             f.write('\n'.join(u[0] for u in urls))
@@ -241,6 +239,8 @@ try:
     # Always runs — even if batch.py timed out or no URLs were fetched.
     log("Step 3.5: Recovery (SearXNG + Tavily)")
     _TAVILY_KEY = os.environ.get("TAVILY_API_KEY") or ""
+    if not _TAVILY_KEY:
+        log("  Tavily recovery disabled: TAVILY_API_KEY not set")
     searxng_ok = searxng_fail = tavily_ok = tavily_fail = 0
 
     def _recover_searxng(title: str, intel_id: int, url: str) -> bool:
@@ -407,10 +407,18 @@ try:
             'first_seen': ev.get('first_seen'), 'last_updated': ev.get('last_updated'),
         })
     conn.close()
-    r = httpx.post(f"{CLOUD_API}/internal/events/batch", json=push_events,
-                   headers={'X-Internal-Token': TOKEN}, timeout=30)
-    result = r.json()
-    step_result("CLOUD_SYNC", result.get("ok", 0), result.get("fail", 0), f"{len(push_events)} events")
+    if not TOKEN:
+        log("  CLOUD_SYNC skipped: NEWS_API_TOKEN not set")
+        step_result("CLOUD_SYNC", 0, 0, "no token configured")
+    else:
+        r = httpx.post(f"{CLOUD_API}/internal/events/batch", json=push_events,
+                       headers={'X-Internal-Token': TOKEN}, timeout=30)
+        if r.status_code >= 400:
+            log(f"  CLOUD_SYNC: HTTP {r.status_code}: {r.text[:200]}")
+            step_result("CLOUD_SYNC", 0, len(push_events), f"HTTP {r.status_code}")
+        else:
+            result = r.json()
+            step_result("CLOUD_SYNC", result.get("ok", 0), result.get("fail", 0), f"{len(push_events)} events")
 except Exception as e:
     log(f"  FAILED: {e}")
     step_result("CLOUD_SYNC", 0, 1, str(e)[:80])
@@ -428,12 +436,20 @@ try:
         WHERE nc.content_len > 0
     """).fetchall()
     if rows:
-        body = [{'url':r[0],'title':r[1],'content_md':r[2],'score_total':r[4],'tier':r[5],
-                 'source_name':r[6],'source_domain':r[7]} for r in rows]
-        r = httpx.post(f"{CLOUD_API}/internal/news/batch", json=body,
-                        headers={'X-Internal-Token': TOKEN}, timeout=30)
-        result = r.json()
-        step_result("CONTENT_PUSH", result.get("ok", 0), result.get("fail", 0), f"{len(rows)} articles")
+        if not TOKEN:
+            log("  CONTENT_PUSH skipped: NEWS_API_TOKEN not set")
+            step_result("CONTENT_PUSH", 0, 0, "no token configured")
+        else:
+            body = [{'url':r[0],'title':r[1],'content_md':r[2],'score_total':r[4],'tier':r[5],
+                     'source_name':r[6],'source_domain':r[7]} for r in rows]
+            r = httpx.post(f"{CLOUD_API}/internal/news/batch", json=body,
+                            headers={'X-Internal-Token': TOKEN}, timeout=30)
+            if r.status_code >= 400:
+                log(f"  CONTENT_PUSH: HTTP {r.status_code}: {r.text[:200]}")
+                step_result("CONTENT_PUSH", 0, len(rows), f"HTTP {r.status_code}")
+            else:
+                result = r.json()
+                step_result("CONTENT_PUSH", result.get("ok", 0), result.get("fail", 0), f"{len(rows)} articles")
     conn.close()
 except Exception as e:
     log(f"  FAILED: {e}")

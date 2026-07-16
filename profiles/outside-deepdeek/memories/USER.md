@@ -1,8 +1,8 @@
 不要手动修改 Windows 注册表中的 HTTP_PROXY/HTTPS_PROXY 代理环境变量。代理由代理软件（如 Clash/V2Ray）自身管理，不要去配置或删除。如需处理代理相关问题，让用户自己操作代理软件。
 §
-自媒体内容生产专家/管理者，精通从选题发现到策略学习的完整内容工业流程（13节点DAG）。偏好基于Hermes Agent原生集成的架构方案。中文沟通、要求工作系统必须真实可运行（不仅是规划），重视成本/Token消耗透明度、角色职责边界清晰度和系统状态可见性。严格对照规范落地（"照做"模式）。
+自媒体/情报平台专家，精通13节点DAG。偏好Hermes原生集成。中文沟通。要求系统真实可运行。重视成本透明、角色边界清晰、状态可见。严格照做模式。代码审查做多轮结构化审计：逐行逐文件，不接受绕过的修复要求拆除根因。对指标真实性有强迫要求(分母陷阱、全零信号)。多次强调硬编码密钥进git是严重问题。
 §
-工程规范: 所有cron脚本遵循统一模板—Shell仅定位+启动Python, Python仅argparse+logging+调用业务函数, 业务返回report dict写入JSON。循环任务用Hermes Cron(every 5m/30m), 固定时间用Task Scheduler(12:00/18:00)。Shell和.py必须同目录(rss-scan模式)。create "30m"=once, add "every 30m"=循环。所有cron脚本放~/.hermes/scripts/。RSS隔离: 3次失败→隔离30分钟。Qwen超时60s, max_tokens=1024。评分阈值: Tier A≥90, B=60-89, C<60。备份: Git每日+全量F盘每3天, 保留15天, restore.bat双YES确认。PYTHONUNBUFFERED=1保证cron日志。
+工程规范: cron脚本统一模板(Shell定位→Python argparse+logging→返回JSON report)。循环任务Hermes Cron(every 5m/30m), 固定时间Task Scheduler(12:00/18:00)。Shell+.py同目录。RSS隔离3次失败→30min。Qwen超时60s/max_tokens=1024。评分Tier A≥90 B=60-89 C<60。PYTHONUNBUFFERED=1。exhausted机制: retry_count≥3→fetch_strategy='exhausted'不再重试。true_coverage含exhausted分母。
 §
 中文交流。Windows 10 + Hermes Agent，云端 Ubuntu VPS (100.107.117.23, 3.9G RAM, Docker)。部署规则: Docker构建只在云端，不在本地。每次代码修改必须 git commit + push (hermes-agent-backup + news-platform-v8)。未经批准禁止操作。知识库: C:/Users/ChangHui/wiki。
 §
