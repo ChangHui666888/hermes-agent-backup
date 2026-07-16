@@ -547,6 +547,15 @@ cd scripts && python test_e2e.py -v
 
 ### 零值陷阱（跨轮次反复出现的模式）
 
+通用隐蔽 bug 模式目录见 `references/structural-debugging-patterns.md`。包含:
+1. Python `else:` 绑定到错误 try/except → 虚假日志
+2. 双重计数（已包含的子集被再次相加）
+3. RateLimiter sleep 必须在锁内
+4. 测试断言类型不匹配（tuple vs string）
+5. 硬编码密钥 fallback 默认值
+6. `sqlite3.Row` 没有 `.get()` 方法
+7. LLM 增强串行瓶颈 → ThreadPoolExecutor 并发
+
 四条诊断铁律：
 1. **0/0 一定是 bug 不是正常状态** — 检查是否有假的 step_result 污染（else 绑定、守卫缺失、静默跳过）
 2. **100% 和 0% 同样可疑** — 检查分母是否排除了 exhausted/failed 行

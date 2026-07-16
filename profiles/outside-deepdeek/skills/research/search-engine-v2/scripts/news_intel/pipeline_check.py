@@ -1361,8 +1361,6 @@ def cmd_run():
 
         "pipeline",
 
-        "fetcher",
-
         "aggregator",
 
         "sync"

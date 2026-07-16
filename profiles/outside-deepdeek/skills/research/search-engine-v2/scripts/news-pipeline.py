@@ -9,7 +9,7 @@ import os
 import sys
 
 os.environ["PYTHONUNBUFFERED"] = "1"
-os.environ.setdefault("NEWS_API_BASE", "http://100.107.117.23:8001")
+os.environ.setdefault("NEWS_API_BASE", "http://100.107.117.23")
 
 logging.basicConfig(
     level=logging.INFO,
