@@ -483,9 +483,22 @@ print(result['confidence'])
 - `scripts/core/temporal.py` — 时间一致性校验
 
 ### 🆕 Standalone 网络层（无需 Agent）
-- `scripts/core/fetchers.py` — 所有策略的真实网络实现 + RateLimiter + 代理路由
-- `scripts/core/extractor.py` — 🆕 纯脚本结构化抽取（标题/日期/作者/摘要/要点，0.78ms/篇）
-- `scripts/batch.py` — 独立 CLI 入口（cron 友好）
+- `scripts/core/fetchers.py` — 所有策略的真实网络实现 + RateLimiter + 代理路由 + 🆕 ScraplingPool
+- `scripts/core/extractor.py` — 纯脚本结构化抽取（标题/日期/作者/摘要/要点，0.78ms/篇）
+- `scripts/batch.py` — 独立 CLI 入口（cron 友好，🆕 委托 extract_single 单一级联实现）
+
+### 🆕 Structural Fixes (2026-07-16) — Critical Patterns
+
+详见 `references/structural-code-review-20260716.md`。六个结构性修复：
+
+| # | 问题 | 修复 | 可复用模式 |
+|---|------|------|-----------|
+| 1 | RateLimiter 无锁 check-then-act 竞态 | threading.Lock 双临界区 | 读写分离，sleep 在锁外 |
+| 2 | Scrapling 每URL新建 StealthyFetcher → 20s冷启动 | ScraplingPool 单例（双重检查锁+错误缓存） | 任何昂贵资源的池化模板 |
+| 3 | browser networkidle 永远等不到 | domcontentloaded + article选择器 + launch超时 | 新闻站一律 domcontentloaded |
+| 4 | fetch_direct/archive/gc 的 timeout 参数是死代码 | 删除死参数，_make_client 接受 httpx.Timeout | 不接受不生效的参数 |
+| 5 | extract_url/extract_single 两份级联实现 | batch.py 委托 fetchers.extract_single() | 一份权威实现，其他委托 |
+| 6 | "100%填充率" 排除 exhausted 行 | true_coverage=N/M 含全部行 | 100% 和 0% 一样可疑
 
 ## 🆕 L8 事件聚合器 V4.4 (`news_intel/aggregator.py`) — 当前生产版本
 

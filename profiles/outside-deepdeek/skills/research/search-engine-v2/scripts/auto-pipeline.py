@@ -16,7 +16,7 @@ sys.path.insert(0, SCRIPT_DIR)
 sys.path.insert(0, os.path.join(SCRIPT_DIR, "news_intel"))
 
 CLOUD_API = "http://100.107.117.23"
-TOKEN = os.environ.get("NEWS_API_TOKEN", "v8-pipeline-token-2026-xK9mP2sR7wQ")
+TOKEN = os.environ.get("NEWS_API_TOKEN") or ""
 BATCH_TIMEOUT = 600
 LOG_FILE = os.path.join(SCRIPT_DIR, "pipeline.log")
 db_path = os.path.join(SCRIPT_DIR, "news_intel", "news_intel.db")
@@ -112,6 +112,7 @@ except Exception as e:
 
 # ── 3. Fetch (batch.py) ────────────────────────────────────
 log("Step 3/6: Fetch (batch.py)")
+fetched_something = False  # track whether any fetch happened (even if all failed)
 try:
     conn = sqlite3.connect(db_path)
     urls = conn.execute("""
@@ -126,17 +127,27 @@ try:
     """).fetchall()
     conn.close()
 
-    if urls:
+    if not urls:
+        log("  FETCH: no URLs to fetch (all candidates exhausted or already fetched)")
+        step_result("FETCH", 0, 0, "no URLs to fetch")
+    else:
+        fetched_something = True
         import tempfile
         with tempfile.NamedTemporaryFile(mode='w', suffix='.txt', delete=False, encoding='utf-8') as f:
             f.write('\n'.join(u[0] for u in urls))
             url_file = f.name
 
         tmp_out = os.path.join(SCRIPT_DIR, "news_intel", "_fetch_tmp.jsonl")
-        subprocess.run([sys.executable, os.path.join(SCRIPT_DIR, "batch.py"),
-                        "--urls", url_file, "--out", tmp_out,
-                        "--rate-delay", "0.1", "--max-workers", "8", "--no-progress"],
-                       cwd=SCRIPT_DIR, timeout=BATCH_TIMEOUT, capture_output=True, text=True)
+        try:
+            result = subprocess.run([sys.executable, os.path.join(SCRIPT_DIR, "batch.py"),
+                                     "--urls", url_file, "--out", tmp_out,
+                                     "--rate-delay", "0.1", "--max-workers", "8", "--no-progress"],
+                                    cwd=SCRIPT_DIR, timeout=BATCH_TIMEOUT, capture_output=True, text=True)
+            if result.returncode != 0:
+                stderr_tail = (result.stderr or "")[-500:]
+                log(f"  batch.py exited {result.returncode}: {stderr_tail}")
+        except subprocess.TimeoutExpired:
+            log(f"  batch.py timed out after {BATCH_TIMEOUT}s — recovery will still run")
         os.unlink(url_file)
 
         if os.path.exists(tmp_out):
@@ -201,33 +212,35 @@ try:
             log(f"  Strategy breakdown: {breakdown}")
 
             # Push domain + source stats to PG
-            try:
-                stats_body = []
-                for domain, strategies in domain_stats.items():
-                    for strategy, counts in strategies.items():
-                        stats_body.append({
-                            "domain": domain, "source_name": None, "strategy": strategy,
-                            "ok": counts["ok"], "fail": counts["fail"],
-                            "run_at": datetime.now().isoformat(),
-                        })
-                for src_name, strategies in source_stats.items():
-                    for strategy, counts in strategies.items():
-                        stats_body.append({
-                            "domain": None, "source_name": src_name, "strategy": strategy,
-                            "ok": counts["ok"], "fail": counts["fail"],
-                            "run_at": datetime.now().isoformat(),
-                        })
-                if stats_body:
-                    httpx.post(f"{CLOUD_API}/internal/fetch_stats", json=stats_body,
-                               headers={"X-Internal-Token": TOKEN}, timeout=10)
-                    log(f"  Domain stats pushed: {len(stats_body)} records")
-            except Exception:
-                pass
+            if TOKEN:
+                try:
+                    stats_body = []
+                    for domain, strategies in domain_stats.items():
+                        for strategy, counts in strategies.items():
+                            stats_body.append({
+                                "domain": domain, "source_name": None, "strategy": strategy,
+                                "ok": counts["ok"], "fail": counts["fail"],
+                                "run_at": datetime.now().isoformat(),
+                            })
+                    for src_name, strategies in source_stats.items():
+                        for strategy, counts in strategies.items():
+                            stats_body.append({
+                                "domain": None, "source_name": src_name, "strategy": strategy,
+                                "ok": counts["ok"], "fail": counts["fail"],
+                                "run_at": datetime.now().isoformat(),
+                            })
+                    if stats_body:
+                        httpx.post(f"{CLOUD_API}/internal/fetch_stats", json=stats_body,
+                                   headers={"X-Internal-Token": TOKEN}, timeout=10)
+                        log(f"  Domain stats pushed: {len(stats_body)} records")
+                except Exception:
+                    pass
 
     # ── 3.5 Comprehensive Recovery Pass ──────────────────────
-    # Covers ALL empty content rows (not just those in current batch)
+    # Covers ALL empty content rows (not just those in current batch).
+    # Always runs — even if batch.py timed out or no URLs were fetched.
     log("Step 3.5: Recovery (SearXNG + Tavily)")
-    TAVILY_KEY = os.environ.get("TAVILY_API_KEY", "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")
+    _TAVILY_KEY = os.environ.get("TAVILY_API_KEY") or ""
     searxng_ok = searxng_fail = tavily_ok = tavily_fail = 0
 
     def _recover_searxng(title: str, intel_id: int, url: str) -> bool:
@@ -256,9 +269,11 @@ try:
         return False
 
     def _recover_tavily(title: str, intel_id: int, url: str) -> bool:
+        if not _TAVILY_KEY:
+            return False
         q = (title or url)[:100]
         resp = httpx.post("https://api.tavily.com/search", json={
-            "api_key": TAVILY_KEY, "query": q, "search_depth": "basic",
+            "api_key": _TAVILY_KEY, "query": q, "search_depth": "basic",
             "max_results": 2, "include_answer": True,
         }, timeout=15)
         data = resp.json()
@@ -301,28 +316,29 @@ try:
             except Exception:
                 searxng_fail += 1
 
-        # Tavily: score >=90, max 5
-        tavily_candidates = conn.execute("""
-            SELECT rr.article_url, ni.id, ni.score_total, rr.title
-            FROM news_intelligence ni
-            JOIN rss_raw rr ON ni.raw_id = rr.id
-            LEFT JOIN news_content nc ON nc.intel_id = ni.id
-            WHERE ni.tier IN ('A','B') AND ni.score_total >= 90
-              AND (nc.fetch_strategy != 'exhausted' OR nc.fetch_strategy IS NULL)
-              AND (nc.id IS NULL OR nc.content_md IS NULL OR nc.content_md = '')
-              AND (nc.retry_count IS NULL OR nc.retry_count < 3)
-            LIMIT 5
-        """).fetchall()
+        # Tavily: score >=90, max 5 (only if key is configured)
+        if _TAVILY_KEY:
+            tavily_candidates = conn.execute("""
+                SELECT rr.article_url, ni.id, ni.score_total, rr.title
+                FROM news_intelligence ni
+                JOIN rss_raw rr ON ni.raw_id = rr.id
+                LEFT JOIN news_content nc ON nc.intel_id = ni.id
+                WHERE ni.tier IN ('A','B') AND ni.score_total >= 90
+                  AND (nc.fetch_strategy != 'exhausted' OR nc.fetch_strategy IS NULL)
+                  AND (nc.id IS NULL OR nc.content_md IS NULL OR nc.content_md = '')
+                  AND (nc.retry_count IS NULL OR nc.retry_count < 3)
+                LIMIT 5
+            """).fetchall()
 
-        for url, intel_id, score, title in tavily_candidates:
-            try:
-                if _recover_tavily(title, intel_id, url):
-                    tavily_ok += 1
-                else:
+            for url, intel_id, score, title in tavily_candidates:
+                try:
+                    if _recover_tavily(title, intel_id, url):
+                        tavily_ok += 1
+                    else:
+                        tavily_fail += 1
+                        conn.execute("UPDATE news_content SET retry_count = COALESCE(retry_count,0)+1 WHERE article_url=?", (url,))
+                except Exception:
                     tavily_fail += 1
-                    conn.execute("UPDATE news_content SET retry_count = COALESCE(retry_count,0)+1 WHERE article_url=?", (url,))
-            except Exception:
-                tavily_fail += 1
 
         conn.commit()
         conn.close()
@@ -333,8 +349,6 @@ try:
             step_result("TAVILY_RECOVERY", tavily_ok, tavily_fail)
     except Exception as e:
         log(f"  Recovery: {e}")
-    else:
-        step_result("FETCH", 0, 0, "no URLs to fetch")
 except Exception as e:
     log(f"  FAILED: {e}")
     step_result("FETCH", 0, 1, str(e)[:80])
