@@ -487,9 +487,10 @@ print(result['confidence'])
 - `scripts/core/extractor.py` — 纯脚本结构化抽取（标题/日期/作者/摘要/要点，0.78ms/篇）
 - `scripts/batch.py` — 独立 CLI 入口（cron 友好，🆕 委托 extract_single 单一级联实现）
 
-### 🆕 Structural Fixes (2026-07-16) — Critical Patterns
+### 🆕 Structural Fixes (2026-07-16) — Three-Round Code Review
 
-详见 `references/structural-code-review-20260716.md`。六个结构性修复：
+### Round 1: fetchers.py (6 fixes)
+详见 `references/structural-code-review-20260716.md`。
 
 | # | 问题 | 修复 | 可复用模式 |
 |---|------|------|-----------|
@@ -498,7 +499,32 @@ print(result['confidence'])
 | 3 | browser networkidle 永远等不到 | domcontentloaded + article选择器 + launch超时 | 新闻站一律 domcontentloaded |
 | 4 | fetch_direct/archive/gc 的 timeout 参数是死代码 | 删除死参数，_make_client 接受 httpx.Timeout | 不接受不生效的参数 |
 | 5 | extract_url/extract_single 两份级联实现 | batch.py 委托 fetchers.extract_single() | 一份权威实现，其他委托 |
-| 6 | "100%填充率" 排除 exhausted 行 | true_coverage=N/M 含全部行 | 100% 和 0% 一样可疑
+| 6 | "100%填充率" 排除 exhausted 行 | true_coverage=N/M 含全部行 | 100% 和 0% 一样可疑 |
+
+### Round 2: auto-pipeline.py (5 fixes)
+详见 `references/auto-pipeline-control-flow-fixes.md`。
+
+| # | 问题 | 修复 |
+|---|------|------|
+| 1 | `else:` 绑定到 recovery try 而非 `if urls:` → 虚假 FETCH 0/0 日志 | 重构为 if-not-urls/else，recovery 独立运行 |
+| 2 | subprocess.run 返回值丢弃 → 非零退出静默失败 | 捕获 returncode，打印 stderr 尾部 |
+| 3 | TimeoutExpired 跳过 Step 3.5 recovery | subprocess.run 单独 try/except，超时后继续 |
+| 4 | TOKEN/TAVILY_KEY 硬编码默认值已进 git 历史 | 移除 fallback，无环境变量则跳过+警告 |
+| 5 | Step 5/6 无 TOKEN 守卫 → 401 静默打出 0/0 | 加 if-not-TOKEN 守卫 + HTTP 状态码检查 |
+
+### Round 3: pipeline_check.py (1 fix)
+详见 `references/auto-pipeline-control-flow-fixes.md` Bug 6。
+
+| # | 问题 | 修复 |
+|---|------|------|
+| 1 | true_coverage 双重计数：`content_total + content_exhausted`（exhausted 已在 total 中） | 改为 `total_accounted = content_total` |
+
+### 零值陷阱（跨轮次反复出现的模式）
+
+三条诊断铁律：
+1. **0/0 一定是 bug 不是正常状态** — 检查是否有假的 step_result 污染（else 绑定、守卫缺失、静默跳过）
+2. **100% 和 0% 同样可疑** — 检查分母是否排除了 exhausted/failed 行
+3. **硬编码密钥的 fallback 默认值禁止出现在源码中** — `os.environ.get("KEY", "sk-12345")` → `os.environ.get("KEY") or ""`
 
 ## 🆕 L8 事件聚合器 V4.4 (`news_intel/aggregator.py`) — 当前生产版本
 

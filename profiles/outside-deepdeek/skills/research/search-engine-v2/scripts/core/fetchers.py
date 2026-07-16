@@ -61,15 +61,19 @@ class RateLimiter:
         self.domain_delays[domain] = delay
 
     def wait(self, domain: str):
-        """Block until the per-domain cooldown elapses. Thread-safe."""
+        """Block until the per-domain cooldown elapses. Thread-safe.
+
+        Sleep is inside the lock — threads serialize completely. This is intentional:
+        the lock must be held across check+wait+write to prevent the check-then-act
+        race where two threads both see the old timestamp and proceed simultaneously.
+        """
         delay = self.domain_delays.get(domain, self.default_delay)
         with self._lock:
             last = self._last_request.get(domain, 0)
             now = time.monotonic()
             remaining = delay - (now - last)
-        if remaining > 0:
-            time.sleep(remaining)
-        with self._lock:
+            if remaining > 0:
+                time.sleep(remaining)
             self._last_request[domain] = time.monotonic()
 
     def wait_for(self, key: str, delay: float):
@@ -78,9 +82,8 @@ class RateLimiter:
             last = self._last_request.get(key, 0)
             now = time.monotonic()
             remaining = delay - (now - last)
-        if remaining > 0:
-            time.sleep(remaining)
-        with self._lock:
+            if remaining > 0:
+                time.sleep(remaining)
             self._last_request[key] = time.monotonic()
 
 

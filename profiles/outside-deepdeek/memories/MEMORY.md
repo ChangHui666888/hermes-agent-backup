@@ -17,3 +17,5 @@ fetch优化方向已冻结：①DEFAULT_HEADERS含Sec-Fetch-*头(france24/invest
 铁律(最高优先级): ①修改代码前必须获明确批准(禁止擅自patch/回退/改配置)。②每次代码修改后立即git add+commit+push(不累积)。③读完skill后同一轮必须发工具调用，不空等。④云部署优先于本地。⑤大文件>100MB→.gitignore。⑥commit标注Phase(P0-1,P1)。⑦中文沟通。⑧冻结架构后才执行。用户角色:新闻情报平台构建者·产品导向·结构化决策(选项清单)·施工模式(直接执行)。
 §
 代码审查教训(V1+V2): (1)Python else/except绑定问题—else跟随最近同级try,不继承外层if。控制流重构用if-not-early-return避免歧义。(2)subprocess.TimeoutExpired会跳出整个try块→超时恢复通道失效。关键路径必须独立try/except。(3)死代码参数(timeout)误导调用方,要么真接线要么删除。(4)指标分母陷阱: exhausted行被SQL排除导致填充率100%,需上报true_coverage。
+§
+密钥铁律: os.environ.get("KEY", "hardcoded-fallback") 禁止出现在源码中。硬编码默认值会在 git push 后永久泄露。正确: os.environ.get("KEY") or ""，无值则跳过+log警告。改代码不能撤销已泄露的密钥——必须到服务商后台轮换。TOKEN 和 TAVILY_KEY 已硬编码过，需轮换。
