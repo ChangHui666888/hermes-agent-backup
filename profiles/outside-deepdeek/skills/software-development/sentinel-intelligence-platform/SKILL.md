@@ -251,6 +251,18 @@ Exclude `exhausted` rows from all fetch queries.
 Passing `timeout=45.0` (45s) is interpreted as **45ms**, causing instant timeout.
 **Fix**: `resp = fetcher.fetch(url, timeout=int(timeout * 1000))` — located in `core/fetchers.py`.
 
+### Structural bug patterns (recurring across files)
+See `references/structural-bug-patterns.md` for the complete catalog. Key patterns:
+
+| Pattern | File(s) | Quick Check |
+|---------|---------|-------------|
+| else attaches to wrong try | auto-pipeline, pipeline | Look for `else: step_result("FETCH"...` after recovery code |
+| sqlite3.Row has no .get() | pipeline.py | grep `row.get(` |
+| RateLimiter sleep outside lock | fetchers.py | 8 workers finish in <0.05s = broken |
+| subprocess TimeoutExpired uncaught | pipeline, auto-pipeline | grep `subprocess.run` → no try/except |
+| API port mismatch | news-pipeline vs auto-pipeline | :8001 vs :80 |
+| Fetch concurrency → 403/429 | batch.py params | `--max-workers 8` = rate limit trigger |
+
 ### Aggregator: JSON string entities
 The `entities` field in `news_intelligence` is stored as a **JSON string**, but `aggregator.py` expects a **dict**.
 When aggregator calls `e.get("companies", [])` on a string, it raises `AttributeError: 'str' object has no attribute 'get'`.
@@ -298,7 +310,7 @@ db.commit()
 - `references/pipeline-check-pattern.md` — Agent-readable pipeline diagnostics
 - `references/pipeline-gap-diagnosis.md` — **SQL-based diagnosis: 3-gap analysis for content shortfall**
 - `references/retry-tracking-and-recovery.md` — **Retry column, exhausted marker, comprehensive recovery pass**
-- `references/fetch-optimization-review.md` — RSS FullText + Quality Validator + Domain Statistics evaluation
+- `references/structural-bug-patterns.md` — **11 recurring bug patterns from multi-round code review**
 
 ## Article Detail Endpoint: Public + Optional VIP Auth
 
