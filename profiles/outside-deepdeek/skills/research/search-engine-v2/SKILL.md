@@ -75,7 +75,7 @@ RSS → 五维评分(0-100) → Tier C(<60): Python规则 → Tier B(60-89): Qwe
 | `news_intel/SCHEMA.md` | 21字段完整 JSON Schema + 置信度公式 + Action 枚举 |
 | `references/io-field-trace.md` | 全阶段字段逐表追踪 (6个Phase, 每个字段的代码位置) |
 - Tier C: `enhance_python()` — 零成本规则（标签/实体/摘要）
-- Tier B: `enhance_qwen()` — Qwen3-1.7B 本地（LM Studio, 60s超时, max_tokens=1024, 单次合并 prompt）
+- Tier B: `enhance_qwen()` — Qwen3-1.7B 本地（LM Studio, 60s超时, max_tokens=500, 单次合并 prompt）
 - Tier A: `enhance_deepseek()` — DeepSeek V4 Flash 深度分析（事件/影响/市场信号/风险）
 
 实测 60 篇 RSS (2026-07-10): Tier A (≥90) ~1%, Tier B (60-89) ~10%, Tier C (<60) ~89% — 接近零成本。
@@ -521,21 +521,25 @@ print(result['confidence'])
 | 1 | true_coverage 双重计数：`content_total + content_exhausted`（exhausted 已在 total 中） | 改为 `total_accounted = content_total` |
 
 ### Round 4: pipeline.py (3 fixes) + investing.com domain profile
-详见 `references/pipeline-py-fixes-round4.md`。
+### Round 5: LLM timeout optimization (3 fixes)
+详见 `references/llm-timeout-optimization.md`。
 
 | # | 问题 | 根因 | 修复 |
 |---|------|------|------|
-| 1 | `sqlite3.Row` has no `.get()` → `AttributeError` crash（3处） | `db.row_factory = sqlite3.Row` 返回的不支持 dict 方法 | `row.get("key")` → `row["key"] or default` |
-| 2 | batch.py TimeoutExpired 不捕获 → pipeline crash | investing.com 45s×3 retries 塞满 3 workers，总 147 URLs 超 300s | `try/except TimeoutExpired` + 读取部分结果 + 日志 |
-| 3 | pipeline.py 参数陈旧（0.5/3 vs auto-pipeline.py 0.1/8） | 两份脚本独立演进未同步 | 统一为 `--rate-delay 0.1 --max-workers 8` |
-| 4 | TAVILY_KEY 硬编码默认值 | 同 auto-pipeline.py Round 2 问题 | `os.environ.get("TAVILY_API_KEY") or ""` |
-| 5 | investing.com 无域名画像 → Scrapling 每 URL 浪费 135s | 未知域名默认全梯度级联 | 新增 `known_failing=["scrapling","browser"]` |
+| R4-1 | `sqlite3.Row` has no `.get()` → `AttributeError` crash（3处） | `db.row_factory = sqlite3.Row` 返回的不支持 dict 方法 | `row.get("key")` → `row["key"] or default` |
+| R4-2 | batch.py TimeoutExpired 不捕获 → pipeline crash | investing.com 45s×3 retries 塞满 3 workers，总 147 URLs 超 300s | `try/except TimeoutExpired` + 读取部分结果 + 日志 |
+| R4-3 | pipeline.py 参数陈旧（0.5/3 vs auto-pipeline.py 0.1/8） | 两份脚本独立演进未同步 | 统一为 `--rate-delay 0.1 --max-workers 8` |
+| R4-4 | TAVILY_KEY 硬编码默认值 | 同 auto-pipeline.py Round 2 问题 | `os.environ.get("TAVILY_API_KEY") or ""` |
+| R4-5 | investing.com 无域名画像 → Scrapling 每 URL 浪费 135s | 未知域名默认全梯度级联 | 新增 `known_failing=["scrapling","browser"]` |
+| R5-1 | LLM 增强超时: Qwen3 max_tokens=1024 → 20s/篇, 200篇/批=340s | 总管线 timeout=600s 不够 | `max_tokens: 1024→500` (enhancers.py) |
+| R5-2 | 批次过大: 200篇→~48 Tier B | 与 R5-1 叠加 | `--limit: 200→100` (news-pipeline.py) |
+| R5-3 | 管道总超时 600s 紧 | 无容错余量 | `timeout: 600→1200` (pipeline_check.py) |
 
 **⚠️ sqlite3.Row 陷阱**：`db.execute().fetchall()` 返回的 Row 对象**不支持 `.get()` 方法**。
 只能用 `row["column"]` 或 `row[n]`。全部 `.get()` 调用会抛 `AttributeError`。
 这是跨项目的通用陷阱——**任何时候看到 `row.get(...)` 都要立刻验证 `row` 是不是 dict**。
 
-**E2E 验证**：`test_e2e.py` — 8 项全绿 (45/45)，新增 T8 验证 pipeline TimeoutExpired catch + 参数同步 + investing.com 域名画像。
+**E2E 验证**：`test_e2e.py` — 8 项全绿 (45/45+5=50/50)，新增 T8 验证 pipeline TimeoutExpired catch + 参数同步 + investing.com 域名画像。
 
 ```bash
 cd scripts && python test_e2e.py -v
@@ -543,10 +547,11 @@ cd scripts && python test_e2e.py -v
 
 ### 零值陷阱（跨轮次反复出现的模式）
 
-三条诊断铁律：
+四条诊断铁律：
 1. **0/0 一定是 bug 不是正常状态** — 检查是否有假的 step_result 污染（else 绑定、守卫缺失、静默跳过）
 2. **100% 和 0% 同样可疑** — 检查分母是否排除了 exhausted/failed 行
 3. **硬编码密钥的 fallback 默认值禁止出现在源码中** — `os.environ.get("KEY", "sk-12345")` → `os.environ.get("KEY") or ""`
+4. **⚠️ `sqlite3.Row` 不支持 `.get()`** — `db.execute().fetchall()` 返回的 Row 对象只有 `row["col"]` 和 `row[n]` 两种访问方式。任何时候看到 `row.get(...)` 都要立刻验证 row 类型，不是 dict 就会抛 `AttributeError`。
 
 ### RateLimiter 线程安全模式（sleep-inside-lock）
 

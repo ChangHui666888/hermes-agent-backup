@@ -212,6 +212,8 @@ def run_pipeline(hours: int = 2, limit: int = 50, do_fetch: bool = False):
                 print(f"  [tavily] Recovered {tavily_recovered} articles")
 
     enhanced = 0
+    # Pre-fetch entities/tags for all rows before concurrent LLM calls
+    row_data = []
     for row in rows:
         intel = db.execute(
             "SELECT entities, tags FROM news_intelligence WHERE id=?",
@@ -219,22 +221,39 @@ def run_pipeline(hours: int = 2, limit: int = 50, do_fetch: bool = False):
         ).fetchone()
         entities = json.loads(intel["entities"]) if intel and intel["entities"] else {}
         tags = json.loads(intel["tags"]) if intel and intel["tags"] else []
-
-        # 获取正文
         content_md = fetched_content.get(row["article_url"], "")
+        row_data.append((row, entities, tags, content_md))
 
-        result = route(
-            title=row["title"] or "",
-            description=row["description"] or "",
-            scores={"tier": row["tier"], "entities": entities, "categories": tags},
-            content_md=content_md,
-        )
+    # Concurrent LLM calls — 4 workers for local Qwen3-1.7B
+    from concurrent.futures import ThreadPoolExecutor, as_completed
+    results = {}
+    llm_concurrency = int(os.environ.get("LLM_CONCURRENCY", "4"))
+    with ThreadPoolExecutor(max_workers=llm_concurrency) as executor:
+        futures = {}
+        for row, entities, tags, content_md in row_data:
+            fut = executor.submit(
+                route,
+                title=row["title"] or "",
+                description=row["description"] or "",
+                scores={"tier": row["tier"], "entities": entities, "categories": tags},
+                content_md=content_md,
+            )
+            futures[fut] = row
+        for fut in as_completed(futures):
+            row = futures[fut]
+            try:
+                result = fut.result()
+            except Exception as e:
+                print(f"  [llm] enhance failed for {row['title'][:50]}: {e}")
+                continue
+            results[row["intel_id"]] = (row, result)
 
-        # 写入 content 层
-        upsert_content(db, row["intel_id"], {
+    # Sequential DB writes (sqlite3 is not thread-safe)
+    for intel_id, (row, result) in results.items():
+        upsert_content(db, intel_id, {
             "article_url": row["article_url"],
-            "content_md": content_md,
-            "content_len": len(content_md),
+            "content_md": fetched_content.get(row["article_url"], ""),
+            "content_len": len(fetched_content.get(row["article_url"], "")),
             "summary_cn": result.get("summary_cn", ""),
             "summary_en": result.get("summary_en", ""),
             "extraction_method": result.get("method", "unknown"),
