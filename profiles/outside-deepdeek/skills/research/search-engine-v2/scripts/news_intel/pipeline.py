@@ -120,7 +120,7 @@ def run_pipeline(hours: int = 2, limit: int = 50, do_fetch: bool = False):
                 subprocess.run([
                     sys.executable, batch_script,
                     "--urls", url_file, "--out", out_file,
-                    "--rate-delay", "0.1", "--max-workers", "8", "--no-progress",
+                    "--rate-delay", "0.5", "--max-workers", "4", "--no-progress",
                 ], cwd=SCRIPT_DIR, timeout=batch_timeout)
             except subprocess.TimeoutExpired:
                 print(f"  [fetch] batch.py timed out after {batch_timeout}s — using partial results")
@@ -224,10 +224,10 @@ def run_pipeline(hours: int = 2, limit: int = 50, do_fetch: bool = False):
         content_md = fetched_content.get(row["article_url"], "")
         row_data.append((row, entities, tags, content_md))
 
-    # Concurrent LLM calls — 4 workers for local Qwen3-1.7B
+    # Concurrent LLM calls — 3 workers for local Qwen3-1.7B
     from concurrent.futures import ThreadPoolExecutor, as_completed
     results = {}
-    llm_concurrency = int(os.environ.get("LLM_CONCURRENCY", "4"))
+    llm_concurrency = int(os.environ.get("LLM_CONCURRENCY", "3"))
     with ThreadPoolExecutor(max_workers=llm_concurrency) as executor:
         futures = {}
         for row, entities, tags, content_md in row_data:

@@ -414,8 +414,8 @@ def test_pipeline_timeout_recovery():
           "pipeline.py logs timeout message")
 
     # 8b: Uses updated batch.py params (matches auto-pipeline.py)
-    check('"0.1"' in code and '"8"' in code,
-          "pipeline.py uses rate-delay=0.1, max-workers=8")
+    check('"0.5"' in code and '"4"' in code,
+          "pipeline.py uses rate-delay=0.5, max-workers=4")
 
     # 8c: investing.com in domain profiles
     profiles_py = os.path.join(SCRIPT_DIR, "config", "domain_profiles.py")
