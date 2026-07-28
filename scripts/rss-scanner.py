@@ -27,7 +27,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 # =========================
 
 PROXY = "socks5://127.0.0.1:10808"
-MAX_WORKERS = 8
+MAX_WORKERS = 14
 TIMEOUT = 10
 HOT_TIMEOUT = 6
 COLD_TIMEOUT = 15

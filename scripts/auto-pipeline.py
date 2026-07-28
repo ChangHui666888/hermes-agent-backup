@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Cron wrapper: dispatches to the real auto-pipeline.py in outside-deepdeek profile."""
+"""Cron wrapper: dispatches to real auto-pipeline.py in outside-deepdeek profile.
+   Hermes cron requires scripts in ~/.hermes/scripts/, referenced by filename only."""
 import sys, os, subprocess
 
 REAL = os.path.join(
@@ -8,7 +9,7 @@ REAL = os.path.join(
 )
 
 if not os.path.exists(REAL):
-    print(f"[FATAL] auto-pipeline.py not found at {REAL}", file=sys.stderr)
+    print("[FATAL] auto-pipeline.py not found at %s" % REAL, file=sys.stderr)
     sys.exit(1)
 
 os.chdir(os.path.dirname(REAL))

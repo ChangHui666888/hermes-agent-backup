@@ -143,6 +143,88 @@ known_failing=["scrapling", "browser"]  # Skip these entirely
 ```
 This prevents wasting 30-60s per URL on strategies known to fail.
 
+## BrowserPool: 半持久化 Playwright 实例
+
+### 问题
+`fetch_browser` 每次调用都 `sync_playwright()` → `chromium.launch()` → 抓取 → `browser.close()`。
+单次 launch 开销 3-5 秒，连续抓数百篇时累计可观。
+
+### 方案：进程级单例 BrowserPool
+```python
+class BrowserPool:
+    _instance = None
+    _browser = None
+    _launch_count = 0  # 类变量，跨实例共享
+
+    @classmethod
+    def get_browser(cls):
+        # 双重检查锁 + 崩溃检测 → 自动 relaunch
+        ...
+        return cls._instance._browser
+```
+
+`fetch_browser()` 改为从 pool 取 browser 实例，创建轻量 `context` 和 `page`，用完 `context.close()` 但不关闭 browser。进程退出时 `atexit.register(BrowserPool.close_all)` 清理。
+
+### 崩溃恢复
+`_ensure_browser()` 中每次获取前调用 `browser.is_connected()`，失败时自动 re-launch 并输出 `[browser_pool] browser crashed` 警告。无需外部监控。
+
+### 限制
+- `max-workers=1` 场景下 pool 仅服务单线程，主要节省重复 launch 开销
+- `max-workers=N` 时多个 context 共享同一 browser 进程，需注意 `context` 并发安全
+
+## cascade_timeout: 单 URL 级联总超时
+
+### 问题
+默认 cascade 会尝试完所有策略（最多 6-7 个）。当某些策略自身超时较长时，一个难抓的 URL 可拖 200s+。
+
+### 方案：软截止
+```python
+def extract_single(url, ..., cascade_timeout=90.0):
+    deadline = time.monotonic() + cascade_timeout
+    for strategy in order:
+        if time.monotonic() >= deadline:
+            break  # 保留之前策略已获取的 partial content
+        result = fn(url)
+```
+
+**软截止**：不中断正在执行的单个策略，仅在策略间检查。实际总耗时可能比 `cascade_timeout` 多出一个最长策略的自身超时（当前最大约 30s）。
+
+### 配合 batch.py 的 future.timeout
+batch.py 已有 `future.result(timeout=120)` 作为最后防线。cascade_timeout=90s 先于 120s 触发。
+
+## CONTENT_PUSH: 全量→增量
+
+### 问题
+Step 6 每次推送全部 ~780 篇文章（16 chunks × 50 篇），云主机负载过高返回 502/10054/10061。
+
+### 修复
+```sql
+WHERE nc.content_len > 0
+  AND (nc.fetch_at > ? OR nc.created_at > ?)  -- 仅本轮新增
+```
+基于 pipeline 启动时间 `t0` 过滤，每 15 分钟 cron 周期通常新增 5-20 篇，1 个 chunk 完成。
+
+## 架构原则：Single URL > Batch > Pipeline
+
+### 分层依赖
+```
+URL  ← 唯一核心：extract_single()
+ ↓
+Batch ← 调度器：submit(extract_single) → collect
+ ↓
+Pipeline ← 编排：cron → sync → batch → aggregate → push
+```
+
+**约束**：
+1. 所有抓取逻辑必须通过 `extract_single()` 调用。不允许裸 httpx/curl 在编排层出现。
+2. Recovery 也是 cascade 策略——`searxng_alt`、`tavily` 注册在 `STRATEGY_FN` 中。
+3. Pipeline 层只做编排，不包含任何 HTTP 请求（除自家云 API 外）。
+
+### 验证
+```bash
+grep "WHERE nc.content_len" auto-pipeline.py | grep "fetch_at"
+# 应输出含 `AND (nc.fetch_at > ? OR nc.created_at > ?)` 的行
+```
 ## Clean Architecture: Recovery as Cascade Strategy
 
 ### Before (violation)

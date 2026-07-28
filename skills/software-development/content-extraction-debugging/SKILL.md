@@ -70,9 +70,83 @@ for t in result.get("cost_trace", []):
     print(f"{t['strategy']}: ok={t.get('ok')} error={t.get('error','')}")
 ```
 
+## Core Design Principle: Single URL → Batch → Pipeline
+
+Content extraction systems must be optimized **bottom-up**, not top-down:
+
+```
+  1. Single URL Engine (extract_single)  ← most important
+  2. Batch Scheduler (batch.py)          ← only concurrency + result collection
+  3. Pipeline Orchestrator (pipeline)    ← only throughput
+```
+
+### Why
+
+- A broken Single URL Engine cannot be fixed by adding more workers or larger batches
+- Batch SHOULD NOT know about strategies, retries, or anti-bot bypass — it submits URLs and collects results
+- Pipeline SHOULD NOT contain HTTP requests, search API calls, or extraction logic — only orchestration (check DB → call batch → write DB → push to cloud)
+
+### Violations to Avoid
+
+| Violation | Where It Happens | Fix |
+|-----------|-----------------|-----|
+| Pipeline calls HTTP directly | `news_intel/pipeline.py` SearXNG/Tavily recovery | Replace with `extract_single(force_strategy=...)` |
+| Pipeline owns strategy logic | `auto-pipeline.py` Step 3.5 Recovery | Already fixed: calls `batch.py --force-strategy` |
+| Batch contains business-domain DB writes | `batch.py` writing to `news_content` | Keep batch.py output-only (JSONL); callers own DB persistence |
+
+### Single URL Engine Pattern
+
+```
+extract_single(url, rate_limiter, force_strategy_order, title, cascade_timeout)
+  → dict {ok, url, content, strategy_used, cost_trace, ...}
+```
+
+Everything — RSS recovery, API calls, manual CLI test, batch processing — calls the same function. Never duplicate fetch logic.
+
 ## Phase 2: Common Failure Modes and Fixes
 
-### 2.1 httpx Proxy/SSL Issues (Most Common on Windows)
+### 2.0 Windows-Specific Process Lock Failure
+
+**Symptom:** `acquire_lock()` crashes with `OSError: [WinError 87] 参数错误` when checking if a lock-holding process is alive.
+
+**Root cause:** `os.kill(pid, 0)` is Unix-specific. On Windows, signal 0 is unsupported — raises `WinError 87` even for **alive** processes. The `except OSError` handler doesn't catch it (it hits `SystemError` first).
+
+**Fix:** Replace PID-based alive-check with **timestamp-based staleness**:
+
+```python
+# Before (broken on Windows):
+def acquire_lock():
+    ...
+    os.kill(pid, 0)  # ProcessLookupError on Unix, WinError 87 on Windows
+    ...
+
+# After (Windows-compatible):
+def acquire_lock():
+    ...
+    mtime = os.path.getmtime(LOCK_FILE)
+    age = time.time() - mtime
+    if age < BATCH_TIMEOUT:
+        log(f"[SKIP] pipeline running ({age:.0f}s ago)")
+        return False
+    # stale lock → clean up and retry
+    os.remove(LOCK_FILE)
+    return acquire_lock()
+```
+
+### 2.1 Step 1 (Sync+Score) Subprocess Timeout
+
+**Symptom:** `SYNC+SCORE: FAILED: Command '...news_intel.pipeline --hours 2' timed out after 120 seconds`
+
+**Root cause:** `news_intel.pipeline` includes LLM enhancement steps that call Qwen3 (local model). When Qwen3 is unavailable (LM Studio loaded gemma not qwen), it retries 3+ times accumulating ~121s of timeout — just over the 120s hard limit.
+
+**Fix:** Increase the subprocess timeout:
+```python
+# auto-pipeline.py
+subprocess.run([..., "-m", "news_intel.pipeline", "--hours", "2"],
+               timeout=240, ...)  # was 120
+```
+
+### 2.2 httpx Proxy/SSL Issues (Most Common on Windows)
 
 **Symptom:** `ConnectTimeout: _ssl.c:989: The handshake operation timed out` intermittently.
 
@@ -176,15 +250,112 @@ print("Got", len(text) if text else "None", "chars")
 | Slow page load | Use `wait_until="commit"` not "load" | `page.goto(url, wait_until="commit")` |
 | Random crashes | Add `--no-sandbox`, `--disable-dev-shm-usage` | Chromium launch args |
 
-**Verification:**
+**Known results (from testing on 2026-07-27/28):**
+| Site | Browser Strategy | Fallback |
+|------|-----------------|----------|
+| Bloomberg | ✅ Works (706 chars) | archive.org |
+| Reuters | ❌ Target crashed | archive.org (old snapshots) |
+| MarketWatch | ❌ Target crashed | None (all strategies fail) |
+| WSJ | ❌ Target crashed | archive.org |
+
+### 3.3 BrowserPool Singleton
+
+**Problem:** Each `fetch_browser()` call does `sync_playwright() → p.chromium.launch() → ... → browser.close()`. This adds 3-5s startup time per URL and leaks resources.
+
+**Solution:** Process-level singleton that launches once and reuses the browser for all URLs:
+
 ```python
-from core.fetchers import fetch_browser, RateLimiter
-text = fetch_browser("https://heavy-anti-bot-site.com/article", RateLimiter(), timeout=30)
-print("Got", len(text) if text else "None", "chars")
+class BrowserPool:
+    _instance = None
+    _lock = threading.Lock()
+    _launch_count = 0  # class-level stats
+    _crash_count = 0
+
+    @classmethod
+    def get_browser(cls):
+        if cls._instance is None:
+            with cls._lock:
+                if cls._instance is None:
+                    instance = cls.__new__(cls)
+                    instance._playwright = None
+                    instance._browser = None
+                    instance._ensure_browser()
+                    cls._instance = instance
+        else:
+            cls._instance._ensure_browser()
+        return cls._instance._browser
+
+    def _ensure_browser(self):
+        try:
+            if self._browser and self._browser.is_connected():
+                return
+        except Exception:
+            self.__class__._crash_count += 1
+            logger.warning("[browser_pool] crash detected, re-launching")
+        if self._playwright is None:
+            self._playwright = sync_playwright().start()
+        self._browser = self._playwright.chromium.launch(...)
+        self.__class__._launch_count += 1
+
+    @classmethod
+    def close_all(cls):
+        ...  # cleanup + reset counters
 ```
 
-**Known results (from testing on 2026-07-27):**
-| Site | Browser Strategy | Fallback |
+**Key details:**
+- `_launch_count` and `_crash_count` are **class variables**, not instance variables — they survive `__init__` and are meaningful from any reference
+- `__new__` instead of `__init__` avoids double-initialization on second call
+- Crashes auto-detect via `is_connected()` exception → log + re-launch
+- `atexit.register(BrowserPool.close_all)` ensures cleanup on process exit
+
+**Usage in fetch_browser:**
+```python
+def fetch_browser(url, rate_limiter=None, timeout=30.0):
+    browser = BrowserPool.get_browser()
+    context = browser.new_context(...)
+    page = context.new_page()
+    ...  # anti-detection, goto, scroll, extract
+    context.close()  # NOT browser.close() — pool owns the browser
+    return text
+```
+
+**Verification:**
+```python
+from core.fetchers import BrowserPool
+b = BrowserPool.get_browser()
+print(f"Connected: {b.is_connected()}")
+print(f"Launches: {BrowserPool._launch_count}")
+BrowserPool.close_all()
+```
+
+### 3.3 Cascade Timeout (Soft Deadline)
+
+**Problem:** A single URL can cascade through 6+ strategies, each with 15-30s timeout. Total may exceed 200s, blocking a batch worker.
+
+**Solution:** Add `cascade_timeout` parameter to `extract_single`. Check elapsed time **between** strategies (not in-flight):
+
+```python
+def extract_single(url, ..., cascade_timeout=90.0):
+    deadline = time.monotonic() + cascade_timeout
+    for strategy in order:
+        # 级联总超时（软截止）：不中断正在执行的单个策略，
+        # 仅在策略间检查。实际总耗时可能比 cascade_timeout
+        # 多出一个最长策略的自身超时（当前最大约 30s）。
+        if time.monotonic() >= deadline:
+            attempt = {"ok": False, "error": "cascade_timeout"}
+            cost_trace.append(attempt)
+            logger.info(f"[cascade] timeout after {cascade_timeout:.0f}s, "
+                        f"tried {len(cost_trace)-1} strategies, "
+                        f"partial={len(content or ''):d}c")
+            break
+        ...
+```
+
+**Behavior:**
+- If content already obtained before timeout → return `ok: True` with partial content ✅
+- If no content yet → return `ok: False` with `cost_trace` ending in `cascade_timeout`
+- Normal (fast) URLs finish in <90s → unaffected
+- Hard URLs that would have taken 200s → now terminate at ~90-120s (soft) ### 3.4 fetch_jina_reader — Zero-Cost Third-Party API
 |------|-----------------|----------|
 | Bloomberg | ✅ Works (706 chars) | archive.org |
 | Reuters | ❌ Target crashed | archive.org (old snapshots) |
@@ -266,8 +437,12 @@ python batch.py --urls _t.txt --out _r.jsonl --max-workers 1 --rate-delay 0.3 --
 
 ## References
 
-See `references/content-extraction-session-2026-07-27.md` for the full debugging session that produced this skill, including:
-- httpx 0.28 + Windows + proxy diagnostics
-- 8-round test results with before/after metrics
-- Domain profile evolution (why browser was removed from Reuters/MarketWatch)
-- Jina Reader availability test on restricted networks
+See `references/content-extraction-session-2026-07-27.md` for the initial debugging session that produced this skill.
+
+See `references/content-extraction-session-2026-07-28.md` for P0 implementation details including:
+- BrowserPool singleton design and crash recovery
+- cascade_timeout soft deadline mechanism and measurements
+- Windows process lock fix (timestamp-based, not os.kill)
+- Incremental CONTENT_PUSH optimization (full→delta)
+- Step1 sync+score timeout 120→240s (Qwen3 unavailable)
+- V2 Fetcher architecture principles documentation
