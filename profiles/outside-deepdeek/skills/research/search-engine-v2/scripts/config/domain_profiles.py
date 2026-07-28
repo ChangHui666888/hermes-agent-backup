@@ -98,9 +98,9 @@ KNOWN_PROFILES: dict[str, DomainProfile] = {
     "investing.com": DomainProfile(
     domain="investing.com",
     anti_bot="cloudflare",
-    strategy_order=["browser", "direct", "google_cache", "archive", "search_snippet"],
-    known_failing=["scrapling"],
-    notes="Cloudflare强防护。direct/403, google_cache/429, archive/404。启用browser策略。",
+    strategy_order=["browser", "jina", "tavily", "search_snippet"],
+    known_failing=["scrapling", "direct", "google_cache", "archive"],
+    notes="Cloudflare强防护。browser 约50%成功率；direct/google_cache/archive 已知全部失败(403/429/404)，跳过直接走 jina/tavily",
     ),
 
     "investors.com": DomainProfile(
