@@ -67,6 +67,7 @@ KNOWN_PROFILES: dict[str, DomainProfile] = {
     # ── DW（无特殊反爬但 scrapling 挂起）──────────────────────
     "dw.com": DomainProfile(
         domain="dw.com",
+        anti_bot="none",
         strategy_order=["direct", "archive", "google_cache", "search_snippet"],
         known_failing=["scrapling", "browser"],
         notes="DW 直连友好，跳过 scrapling/browser 避免挂起",
@@ -207,11 +208,9 @@ KNOWN_PROFILES: dict[str, DomainProfile] = {
 DEFAULT_STRATEGY_ORDER = [
     "direct",         # cost=1 ⚡  最便宜，先试
     "archive",        # cost=1 ⚡  同样便宜，常见于内容已下线
-    "scrapling",      # cost=2 🔶  Cloudflare等中等防护
-    "browser",        # cost=3 🔴  需JS渲染/表单交互
+    "google_cache",   # cost=1 ⚡  搜索引擎缓存
     "jina",           # cost=2 🔶  第三方API，自带反爬绕过
     "tavily",         # cost=3 🔶  AI 搜索摘要，高价值兜底
-    "computer_use",   # cost=5 💀  终极兜底，模拟真人，贵
     "search_snippet", # cost=1 ⚡  彻底兜底，拿摘要总比空手强
 ]
 
