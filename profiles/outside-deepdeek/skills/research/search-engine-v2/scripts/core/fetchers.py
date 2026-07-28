@@ -39,6 +39,81 @@ except ImportError:
     HAS_PLAYWRIGHT = False
     logger.warning("Playwright not installed; browser strategy disabled")
 
+# ── Browser Pool (单例，避免每次 launch/close 开销) ────────────
+import threading as _threading
+
+class BrowserPool:
+    """进程级单例 Playwright 浏览器池。
+    
+    一个 Chromium 实例可连续抓取数千个页面。
+    崩溃后自动重启。
+    """
+    _instance = None
+    _lock = _threading.Lock()
+
+    def __init__(self):
+        self._playwright = None
+        self._browser = None
+        self._launch_count = 0
+        self._crash_count = 0
+
+    @classmethod
+    def get_browser(cls):
+        if cls._instance is None:
+            with cls._lock:
+                if cls._instance is None:
+                    cls._instance = cls()
+                    cls._instance._ensure_browser()
+        else:
+            cls._instance._ensure_browser()
+        return cls._instance._browser
+
+    def _ensure_browser(self):
+        try:
+            if self._browser and self._browser.is_connected():
+                return
+        except Exception:
+            pass  # connection lost or crashed
+        # Launch fresh
+        if self._playwright is None:
+            self._playwright = sync_playwright().start()
+        self._browser = self._playwright.chromium.launch(
+            headless=True,
+            args=[
+                '--disable-blink-features=AutomationControlled',
+                '--disable-features=IsolateOrigins,site-per-process',
+                '--no-sandbox', '--disable-dev-shm-usage', '--disable-gpu',
+                '--disable-setuid-sandbox', '--disable-web-security',
+                '--disable-features=BlockInsecurePrivateNetworkRequests',
+                '--disable-ipc-flooding-protection', '--disable-renderer-backgrounding',
+                '--disable-backgrounding-occluded-windows', '--disable-background-timer-throttling',
+                '--disable-client-side-phishing-detection', '--disable-popup-blocking',
+                '--disable-prompt-on-repost', '--disable-hang-monitor', '--disable-sync',
+                '--disable-default-apps', '--disable-extensions', '--disable-plugins',
+            ])
+        self._launch_count += 1
+
+    @classmethod
+    def close_all(cls):
+        if cls._instance and cls._instance._browser:
+            try:
+                cls._instance._browser.close()
+            except Exception:
+                pass
+        if cls._instance and cls._instance._playwright:
+            try:
+                cls._instance._playwright.stop()
+            except Exception:
+                pass
+        cls._instance = None
+
+    @property
+    def stats(self):
+        return {"launches": self._launch_count, "crashes": self._crash_count}
+
+import atexit
+atexit.register(BrowserPool.close_all)
+
 # ── Rate Limiter ──────────────────────────────────────────────────
 @dataclass
 class RateLimiter:
@@ -339,10 +414,7 @@ def fetch_scrapling(url: str, rate_limiter: RateLimiter | None = None, timeout: 
 
 def fetch_browser(url: str, rate_limiter: RateLimiter | None = None, timeout: float = 30.0) -> str | None:
     """
-    Playwright browser with anti-detection and resource-blocking optimization.
-    - Blocks images/fonts/CSS/trackers for 3-5x speedup + lower detection surface
-    - Uses wait_until='commit' then waits for content selectors
-    - Reduces timeout from 60s→30s to fail fast on detected bots
+    Playwright browser with BrowserPool singleton (avoids 3-5s launch per call).
     """
     if not HAS_PLAYWRIGHT:
         logger.warning("[browser] Playwright not installed")
@@ -354,128 +426,76 @@ def fetch_browser(url: str, rate_limiter: RateLimiter | None = None, timeout: fl
         rate_limiter.wait_for(f"browser:{domain}", delay=5.0)
 
     try:
-        with sync_playwright() as p:
-            browser = p.chromium.launch(
-                headless=True,
-                args=[
-                    '--disable-blink-features=AutomationControlled',
-                    '--disable-features=IsolateOrigins,site-per-process',
-                    '--no-sandbox',
-                    '--disable-dev-shm-usage',
-                    '--disable-gpu',
-                    '--disable-setuid-sandbox',
-                    '--disable-web-security',
-                    '--disable-features=BlockInsecurePrivateNetworkRequests',
-                    '--disable-ipc-flooding-protection',
-                    '--disable-renderer-backgrounding',
-                    '--disable-backgrounding-occluded-windows',
-                    '--disable-background-timer-throttling',
-                    '--disable-client-side-phishing-detection',
-                    '--disable-popup-blocking',
-                    '--disable-prompt-on-repost',
-                    '--disable-hang-monitor',
-                    '--disable-sync',
-                    '--disable-default-apps',
-                    '--disable-extensions',
-                    '--disable-plugins',
-                ]
-            )
-            context = browser.new_context(
-                viewport={'width': 1920, 'height': 1080},
-                user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36',
-                locale='en-US',
-                timezone_id='America/New_York',
-                permissions=['geolocation'],
-                device_scale_factor=1,
-                has_touch=False,
-                is_mobile=False,
-                java_script_enabled=True,
-            )
-            page = context.new_page()
+        browser = BrowserPool.get_browser()
+        context = browser.new_context(
+            viewport={'width': 1920, 'height': 1080},
+            user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36',
+            locale='en-US',
+            timezone_id='America/New_York',
+            permissions=['geolocation'],
+            device_scale_factor=1,
+            has_touch=False, is_mobile=False,
+            java_script_enabled=True,
+        )
+        page = context.new_page()
 
-            # Block heavy resources: images, fonts, css, media, trackers
-            BLOCK_PATTERNS = [r'\.(png|jpg|jpeg|gif|svg|ico|webp|woff2?|ttf|eot|mp4|mp3)(\?|$)',
-                              r'(google-analytics|gtag|fbcdn|doubleclick|amazon-adsystem)']
-            async def _block_route(route):
-                url_lower = route.request.url.lower()
-                for pat in BLOCK_PATTERNS:
-                    import re
-                    if re.search(pat, url_lower):
-                        await route.abort()
-                        return
-                rtype = route.request.resource_type
-                if rtype in ('image', 'font', 'media', 'stylesheet', 'other'):
-                    await route.abort()
-                else:
-                    await route.continue_()
+        # Anti-detection script
+        page.add_init_script("""
+            Object.defineProperty(navigator, 'webdriver', { get: () => undefined });
+            Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3, 4, 5] });
+            Object.defineProperty(navigator, 'languages', { get: () => ['en-US', 'en'] });
+            Object.defineProperty(navigator, 'hardwareConcurrency', { get: () => 8 });
+            const getParameter = WebGLRenderingContext.prototype.getParameter;
+            WebGLRenderingContext.prototype.getParameter = function(p) {
+                if (p === 37445) return 'Intel Inc.';
+                if (p === 37446) return 'Intel Iris OpenGL Engine';
+                return getParameter(p);
+            };
+            window.chrome = { runtime: {} };
+        """)
 
-            import asyncio
+        try:
+            page.goto(url, wait_until="commit", timeout=int(timeout * 1000))
+        except PlaywrightTimeoutError:
+            logger.warning(f"[browser] commit timeout for {url}, retrying with domcontentloaded")
             try:
-                loop = asyncio.get_running_loop()
-                page.route("**/*", lambda route: asyncio.run_coroutine_threadsafe(_block_route(route), loop))
-            except RuntimeError:
-                pass  # no running loop, skip interception
+                page.goto(url, wait_until="domcontentloaded", timeout=int(timeout * 1000))
+            except Exception:
+                return None
 
-            # Anti-detection script
-            page.add_init_script("""
-                Object.defineProperty(navigator, 'webdriver', { get: () => undefined });
-                Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3, 4, 5] });
-                Object.defineProperty(navigator, 'languages', { get: () => ['en-US', 'en'] });
-                Object.defineProperty(navigator, 'hardwareConcurrency', { get: () => 8 });
-                // WebGL vendor/renderer spoofing
-                const getParameter = WebGLRenderingContext.prototype.getParameter;
-                WebGLRenderingContext.prototype.getParameter = function(p) {
-                    if (p === 37445) return 'Intel Inc.';
-                    if (p === 37446) return 'Intel Iris OpenGL Engine';
-                    return getParameter(p);
-                };
-                window.chrome = { runtime: {} };
-            """)
-
+        # Wait for content container
+        content_selectors = [
+            "article", "[role='main']", ".article-body", ".post-content",
+            "div.article", ".content", ".news-content", ".article-content",
+            "main", ".story-body", ".story-content"
+        ]
+        found = False
+        for selector in content_selectors:
             try:
-                page.goto(url, wait_until="commit", timeout=int(timeout * 1000))
-            except PlaywrightTimeoutError:
-                logger.warning(f"[browser] commit timeout for {url}, retrying with domcontentloaded")
-                try:
-                    page.goto(url, wait_until="domcontentloaded", timeout=int(timeout * 1000))
-                except Exception:
-                    return None
+                page.wait_for_selector(selector, timeout=8000)
+                found = True
+                break
+            except:
+                continue
 
-            # Wait for content container
-            content_selectors = [
-                "article", "[role='main']", ".article-body", ".post-content",
-                "div.article", ".content", ".news-content", ".article-content",
-                "main", ".story-body", ".story-content"
-            ]
-            found = False
-            for selector in content_selectors:
-                try:
-                    page.wait_for_selector(selector, timeout=8000)
-                    found = True
-                    break
-                except:
-                    continue
+        page.evaluate("window.scrollTo(0, document.body.scrollHeight * 0.5)")
+        page.wait_for_timeout(1500 + random.randint(0, 1000))
+        page.evaluate("window.scrollTo(0, 0)")
+        page.wait_for_timeout(800 + random.randint(0, 500))
 
-            # Brief human-like scroll
-            page.evaluate("window.scrollTo(0, document.body.scrollHeight * 0.5)")
-            page.wait_for_timeout(1500 + random.randint(0, 1000))
-            page.evaluate("window.scrollTo(0, 0)")
-            page.wait_for_timeout(800 + random.randint(0, 500))
+        if not found:
+            page.wait_for_timeout(3000)
 
-            # If no content selector found, wait a bit more for JS rendering
-            if not found:
-                page.wait_for_timeout(3000)
+        html = page.content()
+        context.close()
 
-            html = page.content()
-            browser.close()
-
-            text = _extract_main_text(html, url=url)
-            if text and len(text.strip()) > 200:
-                if "robot" in text.lower() or "please click" in text.lower():
-                    logger.warning(f"[browser] Verification page detected for {url}")
-                    return None
-                return text
-            return None
+        text = _extract_main_text(html, url=url)
+        if text and len(text.strip()) > 200:
+            if "robot" in text.lower() or "please click" in text.lower():
+                logger.warning(f"[browser] Verification page detected for {url}")
+                return None
+            return text
+        return None
     except Exception as e:
         logger.warning(f"[browser] {type(e).__name__}: {e}")
         return None
@@ -652,6 +672,7 @@ def extract_single(
     llm_api_key: str | None = None,
     llm_prompt: str | None = None,
     title: str | None = None,
+    cascade_timeout: float = 90.0,
 ) -> dict:
     from config.domain_profiles import get_profile
     from core.temporal import validate_temporal
@@ -660,7 +681,7 @@ def extract_single(
     order = force_strategy_order or list(profile.strategy_order)
     failing = set(profile.known_failing)
     if skip_expensive:
-        failing.add("computer_use")   # 只移除 computer_use，保留 browser
+        failing.add("computer_use")
     order = [s for s in order if s not in failing]
 
     cost_trace = []
@@ -681,8 +702,18 @@ def extract_single(
 
     content = None
     strategy_used = None
+    deadline = time.monotonic() + cascade_timeout
 
     for strategy in order:
+        # 级联总超时：单 URL 最多 cascade_timeout 秒
+        if time.monotonic() >= deadline:
+            attempt = {"strategy": strategy, "cost": COST.get(strategy, 0), "url": url,
+                       "ok": False, "error": "cascade_timeout"}
+            cost_trace.append(attempt)
+            logger.info(f"[cascade] timeout after {cascade_timeout:.0f}s on {strategy}, "
+                        f"tried {len(cost_trace)-1} strategies, "
+                        f"got partial={len(content or ''):d}c")
+            break
         fn = STRATEGY_FN.get(strategy)
         if fn is None:
             continue

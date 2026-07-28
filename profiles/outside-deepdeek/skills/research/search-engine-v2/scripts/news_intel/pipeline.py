@@ -134,7 +134,10 @@ def run_pipeline(hours: int = 2, limit: int = 50, do_fetch: bool = False):
                 os.remove(out_file)
             if os.path.exists(url_file):
                 os.unlink(url_file)
-    # SearXNG recovery: find alternative URLs for failed articles (free)
+    # SearXNG + Tavily recovery: 统一通过 core.fetchers.extract_single 走（与 auto-pipeline 同路径）
+    # 不再使用裸 httpx 调用（消除 httpx SSL 兼容性问题和策略复制）
+    from core.fetchers import extract_single as _cascade_extract
+
     searxng_recovered = 0
     if do_fetch:
         failed_mid = [(url, intel_id) for url, intel_id, score
@@ -142,74 +145,49 @@ def run_pipeline(hours: int = 2, limit: int = 50, do_fetch: bool = False):
                           for u, row in zip(urls_to_fetch, rows)
                           if u[0] not in fetched_content]
                       if score >= 80 and score < 90][:10]
-        if failed_mid:
-            print(f"  [searxng] Searching alternative URLs for {len(failed_mid)} articles...")
-            import httpx
-            for url, intel_id in failed_mid:
-                try:
-                    title = next((r["title"] for r in rows if r["article_url"] == url), "")
-                    q = title[:80] if title else url
-                    resp = httpx.get(f"{SEARXNG_URL}/search", params={"q": q, "format": "json"},
-                                     headers={"User-Agent": "NewsIntelBot/1.0"}, timeout=10)
-                    data = resp.json()
-                    alt_urls = [r.get("url","") for r in data.get("results",[]) if r.get("url")][:2]
-                    for alt_url in alt_urls:
-                        if alt_url == url: continue
-                        r2 = httpx.get(alt_url, headers={"User-Agent": "Mozilla/5.0 Chrome/131"}, timeout=10)
-                        if r2.status_code == 200 and len(r2.text) > 500:
-                            from core.fetchers import _extract_main_text
-                            content = _extract_main_text(r2.text, url=alt_url)
-                            if content and len(content) > 200:
-                                db.execute("""
-                                    UPDATE news_content SET content_md=?, content_len=?,
-                                    fetch_strategy='searxng_alt', fetch_cost=2, fetch_at=datetime('now','localtime')
-                                    WHERE intel_id=? AND (content_md IS NULL OR content_md='')
-                                """, (content, len(content), intel_id))
-                                searxng_recovered += 1
-                                break
-                except Exception:
-                    pass
-            if searxng_recovered:
-                db.commit()
-                print(f"  [searxng] Recovered {searxng_recovered} articles")
+        for url, intel_id in failed_mid:
+            try:
+                title = next((r["title"] for r in rows if r["article_url"] == url), "")
+                result = _cascade_extract(url, force_strategy_order=["searxng_alt", "tavily"],
+                                          title=title, cascade_timeout=30)
+                if result.get("ok"):
+                    content = result.get("content", "")
+                    strategy = result.get("strategy_used", "searxng_alt")
+                    db.execute("""UPDATE news_content SET content_md=?, content_len=?,
+                        fetch_strategy=?, fetch_cost=?, fetch_at=datetime('now','localtime')
+                        WHERE intel_id=? AND (content_md IS NULL OR content_md='')""",
+                        (content, len(content), strategy, result.get("total_cost", 2), intel_id))
+                    searxng_recovered += 1
+            except Exception:
+                pass
+        if searxng_recovered:
+            db.commit()
+            print(f"  [searxng] Recovered {searxng_recovered} articles")
 
-    # Tavily recovery: high-score articles that failed all strategies
     tavily_recovered = 0
-    if do_fetch and TAVILY_KEY:
+    if do_fetch:
         failed_high = [(url, intel_id, score) for url, intel_id, score, tier
                        in [(u[0], u[1], (row["score_total"] or 0))
                            for u, row in zip(urls_to_fetch, rows)
                            if u[0] not in fetched_content]
-                       if score >= 85]
-        if failed_high:
-            print(f"  [tavily] Recovering {len(failed_high)} high-score articles...")
-            import httpx
-            for url, intel_id, score in failed_high[:5]:  # max 5 per run
-                try:
-                    resp = httpx.post("https://api.tavily.com/search", json={
-                        "api_key": TAVILY_KEY, "query": url, "search_depth": "basic",
-                        "max_results": 2, "include_answer": True,
-                    }, timeout=15)
-                    data = resp.json()
-                    answer = data.get("answer", "")
-                    results = data.get("results", [])
-                    if answer and len(answer) > 100:
-                        content = f"[Tavily]\n\n{answer}"
-                    elif results:
-                        content = f"[Tavily]\n\n{results[0].get('content', results[0].get('snippet', ''))}"
-                    else:
-                        continue
-                    db.execute("""
-                        UPDATE news_content SET content_md=?, content_len=?,
-                        fetch_strategy='tavily', fetch_cost=5, fetch_at=datetime('now','localtime')
-                        WHERE intel_id=? AND (content_md IS NULL OR content_md='')
-                    """, (content, len(content), intel_id))
+                       if score >= 85][:5]
+        for url, intel_id, score in failed_high:
+            try:
+                title = next((r["title"] for r in rows if r["article_url"] == url), "")
+                result = _cascade_extract(url, force_strategy_order=["tavily"],
+                                          title=title, cascade_timeout=20)
+                if result.get("ok"):
+                    content = result.get("content", "")
+                    db.execute("""UPDATE news_content SET content_md=?, content_len=?,
+                        fetch_strategy='tavily', fetch_cost=?, fetch_at=datetime('now','localtime')
+                        WHERE intel_id=? AND (content_md IS NULL OR content_md='')""",
+                        (content, len(content), result.get("total_cost", 5), intel_id))
                     tavily_recovered += 1
-                except Exception as e:
-                    print(f"    tavily error: {e}")
-            if tavily_recovered:
-                db.commit()
-                print(f"  [tavily] Recovered {tavily_recovered} articles")
+            except Exception as e:
+                print(f"    tavily error: {e}")
+        if tavily_recovered:
+            db.commit()
+            print(f"  [tavily] Recovered {tavily_recovered} articles")
 
     enhanced = 0
     # Pre-fetch entities/tags for all rows before concurrent LLM calls
