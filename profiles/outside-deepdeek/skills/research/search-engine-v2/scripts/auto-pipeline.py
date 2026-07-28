@@ -17,11 +17,45 @@ sys.path.insert(0, os.path.join(SCRIPT_DIR, "news_intel"))
 
 CLOUD_API = "http://100.107.117.23"
 TOKEN = os.environ.get("NEWS_API_TOKEN") or "v8-pipeline-token-2026-xK9mP2sR7wQ"
-BATCH_TIMEOUT = 600
+BATCH_TIMEOUT = 300
 LOG_FILE = os.path.join(SCRIPT_DIR, "pipeline.log")
 db_path = os.path.join(SCRIPT_DIR, "news_intel", "news_intel.db")
 
 stats = {"steps": []}
+
+# ── 进程锁（防多实例并发）────────────────────────────────────
+LOCK_FILE = os.path.join(SCRIPT_DIR, ".pipeline.lock")
+
+def acquire_lock() -> bool:
+    """非阻塞获取进程锁。已有实例在跑则返回 False。"""
+    try:
+        fd = os.open(LOCK_FILE, os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+        os.write(fd, str(os.getpid()).encode())
+        os.close(fd)
+        return True
+    except FileExistsError:
+        try:
+            with open(LOCK_FILE) as f:
+                pid = int(f.read().strip())
+            os.kill(pid, 0)  # 进程还在
+            log(f"[SKIP] 已有 pipeline 在跑 (PID={pid})，跳过本次")
+            return False
+        except (ProcessLookupError, ValueError, OSError):
+            # 旧进程已死，清理锁
+            try:
+                os.remove(LOCK_FILE)
+            except FileNotFoundError:
+                pass
+            return acquire_lock()
+
+def release_lock():
+    try:
+        os.remove(LOCK_FILE)
+    except FileNotFoundError:
+        pass
+
+import atexit
+atexit.register(release_lock)
 
 
 def log(msg: str):
@@ -43,6 +77,10 @@ t0 = time.time()
 log("=" * 60)
 log("PIPELINE START")
 log("=" * 60)
+
+# 进程锁：已有实例则跳过
+if not acquire_lock():
+    sys.exit(0)
 
 # ── 0. Cleanup: delete empty placeholder rows ──────────────
 log("Step 0: Cleanup placeholder rows")
@@ -122,7 +160,7 @@ try:
           AND (nc.id IS NULL OR nc.content_md IS NULL OR nc.content_md = '')
           AND (nc.fetch_strategy != 'exhausted' OR nc.fetch_strategy IS NULL)
           AND rr.article_url IS NOT NULL AND rr.article_url != ''
-        LIMIT 50
+        LIMIT 5
     """).fetchall()
     conn.close()
 
@@ -148,7 +186,7 @@ try:
             log(f"  batch.py timed out after {BATCH_TIMEOUT}s — recovery will still run")
         os.unlink(url_file)
 
-        if os.path.exists(tmp_out):
+        if os.path.exists(tmp_out) and os.path.getsize(tmp_out) > 0:
             ok_count = 0
             fail_count = 0
             domain_stats = defaultdict(lambda: defaultdict(lambda: {"ok": 0, "fail": 0}))
@@ -468,5 +506,6 @@ except Exception as e:
 
 # ── Summary ─────────────────────────────────────────────────
 elapsed = time.time() - t0
+release_lock()
 log(f"DONE in {elapsed:.0f}s")
 log("=" * 60)

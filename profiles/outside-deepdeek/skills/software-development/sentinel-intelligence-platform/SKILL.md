@@ -129,17 +129,17 @@ First failed stage sets STOP=true; Agent reads COMMAND to fix, VERIFY to confirm
 
 ## Auto-Pipeline (Cron)
 
-`auto-pipeline.py` runs every 15min via Hermes cron. 6-step pipeline with per-step logging:
+`auto-pipeline.py` runs every 15min via Hermes cron. 8-step pipeline with per-step logging:
 
 ```
-Step 1: SYNC+SCORE     — sync new RSS articles, score them
-Step 2: RSS_FULLTEXT   — use RSS description if >=200 chars (cost=0)
-Step 3: FETCH          — batch.py cascade (with per-strategy breakdown)
-Step 3.5: SEARXNG_REC  — search alt URLs for score 80-89 (free, max 10)
-Step 3.6: TAVILY_REC   — AI search for score >=90 (paid, max 5)
-Step 4: AGGREGATE      — produce Event Dossiers
-Step 5: CLOUD_SYNC     — push events to PG via HTTP
-Step 6: CONTENT_PUSH   — push article content to PG
+Step 0: CLEANUP         — delete exhausted placeholder rows (retry_count≥3)
+Step 1: SYNC+SCORE      — sync new RSS articles, score them
+Step 2: RSS_FULLTEXT    — use RSS description if ≥200 chars (cost=0)
+Step 3: FETCH           — batch.py cascade, serial (max-workers=1, rate-delay=1.0s)
+Step 3.5: RECOVERY      — SearXNG (score 80-89, max 10) + Tavily (score ≥90, max 5)
+Step 4: AGGREGATE       — produce Event Dossiers
+Step 5: CLOUD_SYNC      — push events to PG via HTTP
+Step 6: CONTENT_PUSH    — push articles to PG in 50-article chunks
 ```
 
 All steps write to `pipeline.log` with ok/fail counts and strategy breakdowns.
@@ -306,6 +306,83 @@ for row, result in results.items():
 **Safety**: `_qwen_available` global flag needs `threading.Lock()`.
 Default workers: 3 (configurable via `LLM_CONCURRENCY` env var).
 `max_tokens`: 500 (down from 1024 for speed).
+
+### true_coverage double-counting bug
+
+`true_coverage` was calculated as `content_ok / (content_total + content_exhausted)`.
+But `content_total` is an unconditional `COUNT(*)` — it ALREADY includes exhausted rows.
+Double-counting made true_coverage appear lower than reality (e.g. 283/711=39.8% vs correct 283/497=57%).
+
+**Fix**: `total_accounted = content_total` (already includes exhausted rows).
+Exhausted count is for reporting only, not for arithmetic.
+
+### Domain profiles (21 as of 2026-07-16)
+
+| Category | Count | Domains |
+|----------|-------|---------|
+| DataDome (impenetrable) | 3 | wsj.com, bloomberg.com, ft.com |
+| Cloudflare (scrapling fail) | 5 | cnbc.com, businessinsider.com, investing.com, investors.com, seekingalpha.com |
+| No anti-bot (friendly) | 9 | reuters.com, apnews.com, newsweek.com, aljazeera.com, theguardian.com, bbc.com, bbc.co.uk, cnn.com, arxiv.org |
+| Soft paywall | 2 | nytimes.com, washingtonpost.com |
+| Unknown (default) | 2 | everything else → DEFAULT_STRATEGY_ORDER |
+
+### RateLimiter thread safety: sleep MUST be inside the lock
+
+The `RateLimiter.wait()` method splits the check+sleep+write across two `with self._lock` blocks:
+```python
+# ❌ BROKEN: sleep outside lock → check-then-act race
+with self._lock:
+    remaining = delay - (now - last)
+if remaining > 0:
+    time.sleep(remaining)          # other threads run here unchecked
+with self._lock:
+    self._last_request[domain] = now
+```
+8 concurrent workers finish in 0.05s instead of 0.35s (no serialization).
+
+**Fix**: Entire check+sleep+write under ONE lock:
+```python
+# ✅ FIXED: sleep inside lock — complete serialization
+with self._lock:
+    remaining = delay - (now - last)
+    if remaining > 0:
+        time.sleep(remaining)
+    self._last_request[domain] = time.monotonic()
+```
+Tradeoff: sleep holds lock → blocks other domains too. Acceptable for short waits (0.1-1.0s).
+
+### CONTENT_PUSH chunking (WinError 10054)
+
+583 articles × ~5KB content = ~3MB request body. One POST exceeds nginx body limit
+or backend timeout. Server closes connection → `WinError 10054`.
+
+**Fix**: Chunk into batches of 50:
+```python
+CHUNK = 50
+for i in range(0, len(body), CHUNK):
+    chunk = body[i:i+CHUNK]
+    r = httpx.post(f"{CLOUD_API}/internal/news/batch", json=chunk, ...)
+    push_ok += r.json()["ok"]
+```
+
+### Fetch concurrency → 403/429 flood
+
+batch.py `--max-workers 8` sends 8 parallel requests to same domain (Bloomberg, investing.com).
+Google Cache returns 429; direct returns 403; archive returns 404. Not a coincidence —
+these are rate-limit responses from detecting concurrent access patterns.
+
+**Fix**: `--max-workers 1 --rate-delay 1.0` (serial fetch, 1s between requests).
+This alone won't fix DataDome domains (they still return 403), but it prevents
+rate-limiting on Google Cache and other shared services.
+
+### DataDome domains: confirmed impenetrable
+
+BrowserBase cloud headless browser tested on bloomberg.com → "Are you a robot?" page.
+PerimeterX (px-cloud.net) script detected. Block reference ID issued.
+Only real desktop browser with residential IP + cookies + JS works.
+
+**Strategy**: Keep full strategy_order for these domains. Do NOT reduce strategies.
+archive.org sometimes works. SearXNG/Tavily recovery handles high-score articles.
 
 ### Batch results import after timeout
 When `pipeline.py` times out (300s subprocess limit), batch.py may have completed successfully

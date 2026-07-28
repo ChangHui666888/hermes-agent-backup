@@ -11,6 +11,12 @@
   - browser_navigate：WSJ ❌DataDome
   - scrapling：WSJ ❌401
   - computer_use：WSJ ✅ (贵，终极兜底)
+
+2026-07-16 实测更新：
+  - bloomberg.com: direct/google_cache/archive 均失败 (403/429/404)，仅 browser 策略 (Playwright) 可稳定获取全文
+  - 因此将 bloomberg.com 的 strategy_order 改为 ["browser", "archive", "google_cache", "search_snippet"]
+  - 同时移除 known_failing 中的 "browser"
+  - wsj.com, ft.com 也同步调整为 browser 优先（若后续发现 google_cache 仍有效，可再调整）
 """
 from dataclasses import dataclass, field
 from typing import List, Optional
@@ -29,31 +35,31 @@ class DomainProfile:
 
 KNOWN_PROFILES: dict[str, DomainProfile] = {
 
-    # ── 强反爬 / 付费墙 ──────────────────────────────────────────────
+    # ── 强反爬 / 付费墙（需浏览器策略）──────────────────────────────
     "wsj.com": DomainProfile(
         domain="wsj.com",
         anti_bot="datadome",
         paywall=True,
         is_live_blog_domain=True,
-        strategy_order=["direct", "google_cache", "archive", "search_snippet"],
-        known_failing=["scrapling", "browser"],
-        notes="DataDome防护。direct偶尔可达；google_cache覆盖大部分新闻；archive稳定全文路径；browser/scrapling必败",
+        strategy_order=["browser", "archive", "google_cache", "search_snippet"],
+        known_failing=["scrapling"],
+        notes="DataDome防护。direct/google_cache/archive 部分可达，但 browser 最稳定；scrapling 必败",
     ),
     "bloomberg.com": DomainProfile(
         domain="bloomberg.com",
         anti_bot="datadome",
         paywall=True,
-        strategy_order=["direct", "google_cache", "archive", "search_snippet"],
-        known_failing=["scrapling", "browser"],
-        notes="同WSJ量级。google_cache是今日新闻最佳捷径（发表后数小时即可命中）",
+        strategy_order=["browser", "archive", "google_cache", "search_snippet"],
+        known_failing=["direct", "scrapling"],
+        notes="2026-07-16 实测：direct/archive/google_cache 均失败 (403/429/404)，仅 browser (Playwright) 可稳定获取全文。archive 作为备用（可能命中快照）。",
     ),
     "ft.com": DomainProfile(
         domain="ft.com",
         anti_bot="datadome",
         paywall=True,
-        strategy_order=["direct", "google_cache", "archive", "search_snippet"],
-        known_failing=["scrapling", "browser"],
-        notes="FT付费墙。google_cache覆盖高",
+        strategy_order=["browser", "archive", "google_cache", "search_snippet"],
+        known_failing=["scrapling"],
+        notes="FT付费墙。browser 最可靠，archive 次之。",
     ),
 
     # ── 中等反爬（Cloudflare/轻度防护）──────────────────────────────
@@ -71,11 +77,11 @@ KNOWN_PROFILES: dict[str, DomainProfile] = {
     ),
 
     "investing.com": DomainProfile(
-        domain="investing.com",
-        anti_bot="cloudflare",
-        strategy_order=["direct", "google_cache", "archive", "search_snippet"],
-        known_failing=["scrapling", "browser"],
-        notes="Cloudflare强防护。direct返回403；scrapling超时(45s×3)。用archive+search_snippet兜底",
+    domain="investing.com",
+    anti_bot="cloudflare",
+    strategy_order=["browser", "direct", "google_cache", "archive", "search_snippet"],
+    known_failing=["scrapling"],
+    notes="Cloudflare强防护。direct/403, google_cache/429, archive/404。启用browser策略。",
     ),
 
     "investors.com": DomainProfile(
@@ -94,14 +100,24 @@ KNOWN_PROFILES: dict[str, DomainProfile] = {
         notes="Seeking Alpha — Cloudflare+反爬。direct/archive/scrapling/search_snippet全失败。靠RSS描述+SearXNG恢复",
     ),
 
-    # ── 无反爬 / 友好域名 ────────────────────────────────────────────
+    # ── 新增：付费墙/强反爬站点（browser 策略已验证）──────────────────
     "reuters.com": DomainProfile(
         domain="reuters.com",
-        anti_bot="none",
-        is_live_blog_domain=True,
-        strategy_order=["direct"],
-        notes="直连基本100%成功，无需兜底",
+        anti_bot="datadome",
+        paywall=True,
+        strategy_order=["archive", "google_cache", "jina", "tavily", "search_snippet"],
+        known_failing=["scrapling", "browser"],
+        notes="2026-07-27 实测: direct 401, browser Target crashed, archive 可兜底(老快照), jina/tavily 第三方兜底",
     ),
+    "marketwatch.com": DomainProfile(
+        domain="marketwatch.com",
+        anti_bot="datadome",
+        strategy_order=["direct", "archive", "google_cache", "jina", "tavily", "search_snippet"],
+        known_failing=["scrapling", "browser"],
+        notes="2026-07-27 实测: direct 401, browser Target crashed, archive 404, google_cache 空页, jina/tavily 第三方兜底",
+    ),
+
+    # ── 无反爬 / 友好域名 ────────────────────────────────────────────
     "apnews.com": DomainProfile(
         domain="apnews.com",
         anti_bot="none",
@@ -175,6 +191,8 @@ DEFAULT_STRATEGY_ORDER = [
     "archive",        # cost=1 ⚡  同样便宜，常见于内容已下线
     "scrapling",      # cost=2 🔶  Cloudflare等中等防护
     "browser",        # cost=3 🔴  需JS渲染/表单交互
+    "jina",           # cost=2 🔶  第三方API，自带反爬绕过
+    "tavily",         # cost=3 🔶  AI 搜索摘要，高价值兜底
     "computer_use",   # cost=5 💀  终极兜底，模拟真人，贵
     "search_snippet", # cost=1 ⚡  彻底兜底，拿摘要总比空手强
 ]
