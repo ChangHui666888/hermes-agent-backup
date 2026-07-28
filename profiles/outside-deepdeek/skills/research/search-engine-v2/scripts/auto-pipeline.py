@@ -27,7 +27,13 @@ stats = {"steps": []}
 LOCK_FILE = os.path.join(SCRIPT_DIR, ".pipeline.lock")
 
 def acquire_lock() -> bool:
-    """非阻塞获取进程锁。已有实例在跑则返回 False。"""
+    """非阻塞获取进程锁。已有实例在跑则返回 False。
+
+    Windows-compatible: 不使用 os.kill(pid,0)（Windows 不支持 signal 0，
+    对存活进程也会报错）。改用文件时间戳 + BATCH_TIMEOUT 判断：
+    如果锁文件存在且修改时间距今 < BATCH_TIMEOUT，视为活跃锁。
+    """
+    import time
     try:
         fd = os.open(LOCK_FILE, os.O_CREAT | os.O_EXCL | os.O_WRONLY)
         os.write(fd, str(os.getpid()).encode())
@@ -35,18 +41,19 @@ def acquire_lock() -> bool:
         return True
     except FileExistsError:
         try:
-            with open(LOCK_FILE) as f:
-                pid = int(f.read().strip())
-            os.kill(pid, 0)  # 进程还在
-            log(f"[SKIP] 已有 pipeline 在跑 (PID={pid})，跳过本次")
-            return False
-        except (ProcessLookupError, ValueError, OSError):
-            # 旧进程已死，清理锁
-            try:
-                os.remove(LOCK_FILE)
-            except FileNotFoundError:
-                pass
-            return acquire_lock()
+            mtime = os.path.getmtime(LOCK_FILE)
+            age = time.time() - mtime
+            if age < BATCH_TIMEOUT:
+                log(f"[SKIP] 已有 pipeline 在跑 ({age:.0f}s 前开始)，跳过本次")
+                return False
+        except OSError:
+            pass
+        # 锁文件已过期，清理并重试
+        try:
+            os.remove(LOCK_FILE)
+        except FileNotFoundError:
+            pass
+        return acquire_lock()
 
 def release_lock():
     try:
