@@ -63,6 +63,14 @@ KNOWN_PROFILES: dict[str, DomainProfile] = {
         known_failing=["scrapling", "browser"],
         notes="2026-07-28 实测：direct 有时超时(SSL)，跳过 scrapling(挂起)和 browser(被检测)，jina/tavily 兜底",
     ),
+
+    # ── DW（无特殊反爬但 scrapling 挂起）──────────────────────
+    "dw.com": DomainProfile(
+        domain="dw.com",
+        strategy_order=["direct", "archive", "google_cache", "search_snippet"],
+        known_failing=["scrapling", "browser"],
+        notes="DW 直连友好，跳过 scrapling/browser 避免挂起",
+    ),
     "ft.com": DomainProfile(
         domain="ft.com",
         anti_bot="datadome",
