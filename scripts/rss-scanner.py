@@ -350,6 +350,20 @@ def write_wiki_daily(articles, scan_date):
 
 def main():
     start = time.time()
+    
+    # 检测 auto-pipeline 是否正在运行（抢代理带宽）
+    pipeline_lock = os.path.expanduser(
+        "~/.hermes/profiles/outside-deepdeek/skills/research/"
+        "search-engine-v2/scripts/.pipeline.lock")
+    if os.path.exists(pipeline_lock):
+        try:
+            age = time.time() - os.path.getmtime(pipeline_lock)
+            if age < 300:  # pipeline 锁 5 分钟内有效
+                print(f"[SKIP] auto-pipeline 正在运行（锁龄{age:.0f}s），跳过本次 RSS 扫描")
+                return
+        except OSError:
+            pass
+    
     init_db()
     conn = sqlite3.connect(DB_FILE)
     state = normalize_state(load_state())
