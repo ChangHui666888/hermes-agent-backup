@@ -53,6 +53,16 @@ KNOWN_PROFILES: dict[str, DomainProfile] = {
         known_failing=["direct", "scrapling", "browser"],
         notes="2026-07-28 实测：browser 30s timeout 不够；direct 401；archive/jina/tavily 取代 browser 策略",
     ),
+
+    # ── BBC（大量待抓取，scrapling/browser 均不可用）───────────────────
+    "bbc.co.uk": DomainProfile(
+        domain="bbc.co.uk",
+        anti_bot="cloudflare",
+        is_live_blog_domain=True,
+        strategy_order=["direct", "jina", "tavily", "search_snippet"],
+        known_failing=["scrapling", "browser"],
+        notes="2026-07-28 实测：direct 有时超时(SSL)，跳过 scrapling(挂起)和 browser(被检测)，jina/tavily 兜底",
+    ),
     "ft.com": DomainProfile(
         domain="ft.com",
         anti_bot="datadome",
