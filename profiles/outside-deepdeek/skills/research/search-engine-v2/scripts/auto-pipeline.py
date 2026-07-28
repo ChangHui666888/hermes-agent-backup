@@ -470,6 +470,7 @@ except Exception as e:
 log("Step 6/6: Article content to PG")
 try:
     conn = sqlite3.connect(db_path)
+    show_start = datetime.fromtimestamp(t0).strftime("%Y-%m-%d %H:%M:%S")
     rows = conn.execute("""
         SELECT rr.article_url, rr.title, nc.content_md, nc.content_len,
                ni.score_total, ni.tier, rr.source_name, rr.source_domain
@@ -477,7 +478,8 @@ try:
         JOIN news_intelligence ni ON nc.intel_id = ni.id
         JOIN rss_raw rr ON ni.raw_id = rr.id
         WHERE nc.content_len > 0
-    """).fetchall()
+          AND (nc.fetch_at > ? OR nc.created_at > ?)
+    """, (show_start, show_start)).fetchall()
     if rows:
         if not TOKEN:
             log("  CONTENT_PUSH skipped: NEWS_API_TOKEN not set")
