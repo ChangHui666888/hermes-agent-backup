@@ -62,14 +62,14 @@
       "schedule_display": "every 5m",
       "repeat": {
         "times": null,
-        "completed": 1243
+        "completed": 1597
       },
       "enabled": true,
       "state": "scheduled",
       "paused_reason": null,
       "created_at": "2026-07-03T19:51:02.110080+08:00",
-      "next_run_at": "2026-07-16T20:07:55.033245+08:00",
-      "last_run_at": "2026-07-16T20:02:55.033245+08:00",
+      "next_run_at": "2026-07-28T12:02:59.413334+08:00",
+      "last_run_at": "2026-07-28T11:57:59.413334+08:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -102,27 +102,64 @@
       "schedule_display": "every 33m",
       "repeat": {
         "times": null,
-        "completed": 72
+        "completed": 77
       },
       "enabled": false,
       "state": "paused",
-      "paused_at": "2026-07-15T23:06:18.895106+08:00",
+      "paused_at": "2026-07-27T23:41:16.861271+08:00",
       "paused_reason": null,
       "created_at": "2026-07-11T11:12:51.726135+08:00",
-      "next_run_at": "2026-07-15T23:39:15.304247+08:00",
-      "last_run_at": "2026-07-14T15:28:26.204370+08:00",
-      "last_status": "ok",
-      "last_error": null,
+      "next_run_at": "2026-07-28T00:08:01.265284+08:00",
+      "last_run_at": "2026-07-27T23:35:01.265284+08:00",
+      "last_status": "error",
+      "last_error": "Script timed out after 120s: C:\\Users\\ChangHui\\AppData\\Local\\hermes\\scripts\\news-pipeline.py",
       "last_delivery_error": null,
       "deliver": "local",
       "origin": null,
       "enabled_toolsets": null,
       "workdir": null,
-      "fire_claim": {
-        "at": "2026-07-14T15:40:57.861510+08:00",
-        "by": "DESKTOP-IU8HLAO:18508"
-      }
+      "fire_claim": null
+    },
+    {
+      "id": "bf112bc12ebf",
+      "name": "auto-pipeline",
+      "prompt": "",
+      "skills": [],
+      "skill": null,
+      "model": null,
+      "provider": null,
+      "provider_snapshot": null,
+      "model_snapshot": null,
+      "base_url": null,
+      "script": "auto-pipeline.py",
+      "no_agent": true,
+      "context_from": null,
+      "schedule": {
+        "kind": "interval",
+        "minutes": 15,
+        "display": "every 15m"
+      },
+      "schedule_display": "every 15m",
+      "repeat": {
+        "times": null,
+        "completed": 33
+      },
+      "enabled": false,
+      "state": "paused",
+      "paused_at": "2026-07-28T11:24:15.256141+08:00",
+      "paused_reason": null,
+      "created_at": "2026-07-27T23:45:15.354591+08:00",
+      "next_run_at": "2026-07-28T11:35:31.392492+08:00",
+      "last_run_at": "2026-07-28T09:42:27.355496+08:00",
+      "last_status": "error",
+      "last_error": "Script timed out after 120s: C:\\Users\\ChangHui\\AppData\\Local\\hermes\\scripts\\auto-pipeline.py",
+      "last_delivery_error": null,
+      "deliver": "local",
+      "origin": null,
+      "enabled_toolsets": null,
+      "workdir": null,
+      "fire_claim": null
     }
   ],
-  "updated_at": "2026-07-16T20:02:55.033778+08:00"
+  "updated_at": "2026-07-28T11:57:59.413334+08:00"
 }

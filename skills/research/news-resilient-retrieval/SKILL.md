@@ -120,6 +120,19 @@ curl -sL "https://news.google.com/rss/search?q=SPECIFIC_TOPIC&hl=en-US&gl=US&cei
 
 **不要反复用 web_extract 重试已失败的站点。** 同一站点失败 ≥2 次后，接受只能从 RSS 摘要中获取信息。
 
+### 生产环境补充：Cascade 降级链路
+
+如果本系统内置了 `auto-pipeline`（生产级爬虫），其 Step 3 的 cascade 引擎支持以下降级策略（按尝试顺序）：
+
+| 策略 | 作用 | 补充说明 |
+|------|------|---------|
+| `archive` | web.archive.org 快照 | 可获取已删除/付费墙文章的旧版本 |
+| `google_cache` | Google 网页缓存 | 被墙/临时不可用时的替代 |
+| `jina` | r.jina.ai 第三方 API | 免费，自带 Cloudflare 绕过（需 `curl -4` 强制 IPv4） |
+| `tavily` | api.tavily.com AI 搜索 | 返回 AI 摘要，付费墙站点的最后一层兜底 |
+
+详见 `references/cascade-fetch-engine.md`。
+
 ## Step 4: 时间范围覆盖
 
 如果需要覆盖完整一周：

@@ -49,9 +49,9 @@ KNOWN_PROFILES: dict[str, DomainProfile] = {
         domain="bloomberg.com",
         anti_bot="datadome",
         paywall=True,
-        strategy_order=["browser", "archive", "google_cache", "search_snippet"],
-        known_failing=["direct", "scrapling"],
-        notes="2026-07-16 实测：direct/archive/google_cache 均失败 (403/429/404)，仅 browser (Playwright) 可稳定获取全文。archive 作为备用（可能命中快照）。",
+        strategy_order=["archive", "google_cache", "jina", "tavily", "search_snippet"],
+        known_failing=["direct", "scrapling", "browser"],
+        notes="2026-07-28 实测：browser 30s timeout 不够；direct 401；archive/jina/tavily 取代 browser 策略",
     ),
     "ft.com": DomainProfile(
         domain="ft.com",

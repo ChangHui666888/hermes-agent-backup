@@ -15,6 +15,19 @@
 | 稳定性 | 无 | 3次失败→24h quarantine 自动隔离 |
 | 报告 | 无 | 标准 JSON 格式（feeds_detail, errors, duration） |
 
+## ⚠️ Windows + http2 兼容性警告
+
+**Windows 上 `http2=True` 会导致间歇性 SSL 握手超时。** httpx 0.28 在 Windows + 代理环境下，HTTP/2 连接复用会损坏 SSL 状态，表现为同一直连 URL 有时 200 OK 有时 `ConnectTimeout: _ssl.c:989 handshake timed out`。
+
+| 场景 | http2=True | http2=False |
+|------|-----------|------------|
+| Linux 直连 | ✅ 正常 | ✅ 正常 |
+| Windows 直连 | ⚠️ 间歇超时 | ✅ 正常 |
+| Windows + SOCKS5 | ⚠️ 间歇超时 | ✅ 稳定 |
+| Windows + HTTP CONNECT | ❌ 频繁超时 | ✅ 稳定 |
+
+**建议：** 在 `create_client()` 中显式设置 `http2=False` 或 `http2=True`，不要依赖默认值（httpx 0.28 默认 True）。
+
 ## 依赖安装
 
 ```bash

@@ -12,7 +12,7 @@ MAX_WORKERS = 10
 TIMEOUT = 10
 
 def create_client(for_domestic=False):
-    kwargs = {"timeout": httpx.Timeout(TIMEOUT), "http2": True,
+    kwargs = {"timeout": httpx.Timeout(TIMEOUT), "http2": False,  # Windows+proxy: use http2=False to avoid SSL hangs
               "headers": {"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/122.0.0.0 Safari/537.36"}}
     if not for_domestic:
         kwargs["proxy"] = httpx.Proxy(url=PROXY)

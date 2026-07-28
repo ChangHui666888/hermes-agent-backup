@@ -74,9 +74,41 @@ The system's output side: RSS/local material → LLM rewrite → legal sandbox �
 - `references/media-pipeline.md` — Chinese-friendly graphic/podcast/short-video pipeline.
 - `references/hermes-gotchas.md` — profile/config/env pitfalls hit this session.
 
+## Profile health audit (check these when troubleshooting or onboarding)
+
+Every profile is a standalone agent "user." Run this checklist to verify each profile is correctly configured:
+
+### 1. AGENTS.md deployment
+- **Must be at profile root**: `profiles/<name>/AGENTS.md` (Hermes auto-injects this into the agent's system prompt)
+- **NOT sufficient**: `workspace/roles/<name>/AGENTS.md` — that's just a regular file in the working directory, not auto-injected
+- **SSoT location**: Keep the authoritative `AGENTS.md` in `Obsidian Vault/_governance/agents_md/` and deploy via a `deploy-agents.sh` script to each profile
+- **Check existing**: `ls -la profiles/<name>/AGENTS.md` → if missing, the role instructions never reach the agent
+
+### 2. SOUL.md differentiation
+- Each profile that represents a distinct role should have a **different SOUL.md** describing that role's boundaries
+- If all profiles share the same SOUL.md, they have no role identity — they're just clones with different models
+- The SOUL.md should include: role name, can-do/cannot-do, model routing rule, knowledge base paths
+
+### 3. Cron job distribution
+- Cron jobs run under the profile that owns them (stored in `profiles/<name>/cron/jobs.json`)
+- Check which profile actually has active cron jobs: `ls profiles/*/cron/jobs.json`
+- Tick files (ticker_heartbeat, ticker_last_success) exist even for profiles with no active cron — don't confuse them with actual jobs
+- The auto-pipeline cron should live in the profile that has the pipeline code (outside-deepdeek on this system)
+
+### 4. Skills isolation
+- Profiles can have different skill sets — use them to enforce role boundaries
+- Check: `ls profiles/<name>/skills/` — are DEV and MED teams really different?
+- MED should NOT have skills for deploying infrastructure; DEV should NOT have content-production skills
+- If all profiles have the same skills, there's no security boundary between roles (constitution violation)
+
+### 5. Channel directory
+- `profiles/<name>/channel_directory.json` shows which platforms the profile connects to
+- If all fields are empty arrays, the profile is CLI-only — no Telegram/Discord/Slack connectivity
+- This is a deliberate state for local-only agent sessions; external connectivity is opt-in
+
 ## Top pitfalls (full list in references/hermes-gotchas.md)
 1. `.env` is a protected file — `patch`/`write_file` refuse it; edit via shell `sed`/append.
-2. Hermes venv python has **no pip/third-party libs** — use the system Python (`C:\Users\<u>\AppData\Local\Programs\Python\Python311\python.exe` on this host) for scripts needing pyyaml/paramiko/psutil/playwright/edge-tts.
+2. Hermes venv python has **no pip/third-party libs** — use the system Python (`C:\\Users\\<u>\\AppData\\Local\\Programs\\Python\\Python311\\python.exe` on this host) for scripts needing pyyaml/paramiko/psutil/playwright/edge-tts.
 3. `hermes config set` has no `--profile`; use global `hermes -p <profile> config set …`.
 4. Provider/model changes only apply to NEW sessions (prompt caching) — the running session keeps its model.
 5. Always verify a provider is reachable BEFORE switching to it, or you can brick the whole system.
