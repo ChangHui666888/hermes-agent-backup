@@ -189,7 +189,7 @@ try:
         try:
             result = subprocess.run([sys.executable, os.path.join(SCRIPT_DIR, "batch.py"),
                                      "--urls", url_file, "--out", tmp_out,
-                                     "--rate-delay", "0.3", "--max-workers", "2", "--no-progress"],
+                                     "--rate-delay", "0.3", "--max-workers", "1", "--no-progress"],
                                     cwd=SCRIPT_DIR, timeout=BATCH_TIMEOUT, capture_output=True, text=True)
             if result.returncode != 0:
                 stderr_tail = (result.stderr or "")[-500:]
@@ -317,7 +317,7 @@ def _run_recovery_batch(candidates, strategy_order, timeout_s, label):
             [sys.executable, os.path.join(SCRIPT_DIR, "batch.py"),
              "--urls", url_file, "--out", out_file,
              "--force-strategy", strategy_order,
-             "--rate-delay", "0.3", "--max-workers", "2", "--no-progress"],
+             "--rate-delay", "0.3", "--max-workers", "1", "--no-progress"],
             cwd=SCRIPT_DIR, timeout=timeout_s, capture_output=True, text=True)
         if result.returncode != 0:
             stderr_tail = (result.stderr or "")[-500:]
