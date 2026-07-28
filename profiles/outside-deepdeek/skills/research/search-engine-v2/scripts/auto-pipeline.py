@@ -260,6 +260,16 @@ try:
             step_result("FETCH", ok_count, fail_count, f"{len(candidates)} URLs [{breakdown}]")
             log(f"  Strategy breakdown: {breakdown}")
 
+            # 成功抓取的 URL 列表日志
+            for line in open(tmp_out):
+                if not line.strip(): continue
+                r = json.loads(line)
+                if r.get("ok"):
+                    url = r.get("url", "")[:65]
+                    strat = r.get("strategy_used", "?")
+                    clen = len(r.get("content", "") or "")
+                    log(f"    ✅ [{strat}] {clen}c {url}")
+
             # Push domain + source stats to PG
             if TOKEN:
                 try:
