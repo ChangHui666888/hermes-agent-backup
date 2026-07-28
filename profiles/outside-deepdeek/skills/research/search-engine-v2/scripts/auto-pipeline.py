@@ -169,7 +169,7 @@ try:
           AND (nc.id IS NULL OR nc.content_md IS NULL OR nc.content_md = '')
           AND (nc.fetch_strategy != 'exhausted' OR nc.fetch_strategy IS NULL)
           AND rr.article_url IS NOT NULL AND rr.article_url != ''
-        LIMIT 5
+        LIMIT 8
     """).fetchall()
     conn.close()
     # url -> intel_id，直接来自本次查询，落库时不再反查，避免漏写 intel_id
