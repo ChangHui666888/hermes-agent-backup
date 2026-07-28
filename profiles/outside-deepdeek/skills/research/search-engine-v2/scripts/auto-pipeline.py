@@ -110,7 +110,7 @@ except Exception as e:
 log("Step 1/6: Sync + Score")
 try:
     subprocess.run([sys.executable, "-m", "news_intel.pipeline", "--hours", "2"],
-                   cwd=SCRIPT_DIR, timeout=120, capture_output=True)
+                   cwd=SCRIPT_DIR, timeout=240, capture_output=True)
     conn = sqlite3.connect(db_path)
     new_scored = conn.execute("SELECT COUNT(*) FROM news_intelligence WHERE scored_at > datetime('now','-10 minutes','localtime')").fetchone()[0]
     total = conn.execute("SELECT COUNT(*) FROM news_intelligence").fetchone()[0]
