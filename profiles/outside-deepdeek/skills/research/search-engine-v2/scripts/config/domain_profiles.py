@@ -106,17 +106,17 @@ KNOWN_PROFILES: dict[str, DomainProfile] = {
     "investors.com": DomainProfile(
         domain="investors.com",
         anti_bot="cloudflare",
-        strategy_order=["direct", "google_cache", "archive", "search_snippet"],
-        known_failing=["scrapling", "browser"],
-        notes="Investor's Business Daily — 同investing.com级别Cloudflare。浏览器可访问但headless被检测→load事件永不触发→45s超时",
+        strategy_order=["browser", "jina", "tavily", "search_snippet"],
+        known_failing=["scrapling", "direct", "google_cache", "archive"],
+        notes="Cloudflare强防护。direct/google_cache/archive 已知全失败。browser(可能成功) → jina/tavily 兜底",
     ),
 
     "seekingalpha.com": DomainProfile(
         domain="seekingalpha.com",
         anti_bot="cloudflare",
-        strategy_order=["direct", "google_cache", "archive", "search_snippet"],
-        known_failing=["scrapling", "browser"],
-        notes="Seeking Alpha — Cloudflare+反爬。direct/archive/scrapling/search_snippet全失败。靠RSS描述+SearXNG恢复",
+        strategy_order=["browser", "jina", "tavily", "search_snippet"],
+        known_failing=["scrapling", "direct", "google_cache", "archive"],
+        notes="Cloudflare强防护。旧配置全失败；启用browser(可能成功) → jina/tavily 兜底",
     ),
 
     # ── 新增：付费墙/强反爬站点（browser 策略已验证）──────────────────
