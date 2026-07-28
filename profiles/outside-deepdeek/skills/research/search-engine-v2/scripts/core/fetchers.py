@@ -524,18 +524,65 @@ def fetch_jina_reader(url: str, rate_limiter: RateLimiter | None = None, timeout
         return None
 
 
-# ── Tavily (AI 摘要 API, 自带搜索+反爬绕过) ────────────────────
-TAVILY_DEV_KEY = "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"
+# ── SearXNG 替代源恢复 (搜同一事件的其它报道源再抓取) ──────────
+SEARXNG_BASE = os.environ.get("SEARXNG_BASE") or "http://100.107.117.23:8080"
 
-def fetch_tavily(url: str, rate_limiter: RateLimiter | None = None, timeout: float = 10.0) -> str | None:
-    """Tavily search API via curl (httpx has SSL/SNI issues on this network)."""
+def fetch_searxng_alt(url: str, rate_limiter: RateLimiter | None = None,
+                       timeout: float = 10.0, title: str | None = None) -> str | None:
+    """当原始 URL 抓取失败时，用 SearXNG 搜索同一标题/事件的替代报道源，
+    取前 2 个非原 URL 的结果直接请求并抽取正文。找不到替代源或替代源本身
+    抓取失败时返回 None（会被上层级联当作本策略失败，继续尝试下一策略）。
+    """
     domain = urlparse(url).netloc
     if rate_limiter:
         rate_limiter.wait(domain)
-    from urllib.parse import urlparse as _up
-    path = _up(url).path
-    segments = [s.replace('-', ' ') for s in path.split('/') if s and len(s) > 6]
-    query = ' '.join(segments[:4]) if segments else url[:100]
+    q = (title or url)[:80]
+    try:
+        with httpx.Client(timeout=timeout) as client:
+            resp = client.get(f"{SEARXNG_BASE}/search", params={"q": q, "format": "json"},
+                               headers={"User-Agent": "NewsIntelBot/1.0"})
+        data = resp.json()
+    except Exception as e:
+        logger.warning(f"[searxng_alt] search failed: {type(e).__name__}: {e}")
+        return None
+
+    for alt in data.get("results", [])[:2]:
+        alt_url = alt.get("url", "")
+        if not alt_url or alt_url == url:
+            continue
+        try:
+            with _make_client(url=alt_url) as client:
+                r2 = client.get(alt_url)
+            if r2.status_code == 200 and len(r2.text) > 500:
+                text = _extract_main_text(r2.text, url=alt_url)
+                if text and len(text) > 200:
+                    return f"[SearXNG alt-source: {alt_url}]\n\n{text}"
+        except Exception as e:
+            logger.info(f"[searxng_alt] fetch {alt_url} failed: {type(e).__name__}: {e}")
+            continue
+    return None
+
+
+# ── Tavily (AI 摘要 API, 自带搜索+反爬绕过) ────────────────────
+TAVILY_DEV_KEY = "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"
+
+def fetch_tavily(url: str, rate_limiter: RateLimiter | None = None, timeout: float = 10.0,
+                  title: str | None = None) -> str | None:
+    """Tavily search API via curl (httpx has SSL/SNI issues on this network).
+
+    Prefers the article title for the search query when available — it's a much
+    stronger signal than URL path segments (falls back to URL-derived query otherwise).
+    """
+    domain = urlparse(url).netloc
+    if rate_limiter:
+        rate_limiter.wait(domain)
+    if title and title.strip():
+        query = title.strip()[:100]
+    else:
+        from urllib.parse import urlparse as _up
+        path = _up(url).path
+        segments = [s.replace('-', ' ') for s in path.split('/') if s and len(s) > 6]
+        query = ' '.join(segments[:4]) if segments else url[:100]
     import json, subprocess
     payload = json.dumps({
         "api_key": TAVILY_DEV_KEY, "query": query,
@@ -604,6 +651,7 @@ def extract_single(
     search_func=None,
     llm_api_key: str | None = None,
     llm_prompt: str | None = None,
+    title: str | None = None,
 ) -> dict:
     from config.domain_profiles import get_profile
     from core.temporal import validate_temporal
@@ -623,12 +671,13 @@ def extract_single(
         "scrapling": lambda u: fetch_scrapling(u, rate_limiter),
         "browser": lambda u: fetch_browser(u, rate_limiter),
         "jina": lambda u: fetch_jina_reader(u, rate_limiter),
-        "tavily": lambda u: fetch_tavily(u, rate_limiter),
+        "tavily": lambda u: fetch_tavily(u, rate_limiter, title=title),
+        "searxng_alt": lambda u: fetch_searxng_alt(u, rate_limiter, title=title),
         "computer_use": lambda u: None,
         "search_snippet": lambda u: fetch_search_snippet(u, search_func),
     }
     COST = {"direct": 1, "archive": 1, "google_cache": 1, "search_snippet": 1,
-            "scrapling": 2, "jina": 2, "tavily": 3, "browser": 3, "computer_use": 5}
+            "scrapling": 2, "jina": 2, "tavily": 3, "searxng_alt": 2, "browser": 3, "computer_use": 5}
 
     content = None
     strategy_used = None

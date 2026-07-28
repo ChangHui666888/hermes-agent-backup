@@ -149,11 +149,13 @@ except Exception as e:
     step_result("RSS_FULLTEXT", 0, 0, str(e)[:80])
 
 # ── 3. Fetch (batch.py) ────────────────────────────────────
+# auto-pipeline.py 只负责：查候选 → 调 batch.py 子进程 → 解析结果写 DB → 记日志。
+# 任何实际抓取（HTTP 请求、搜索 API、正文抽取）都必须在 batch.py / core.fetchers 里实现。
 log("Step 3/6: Fetch (batch.py)")
 try:
     conn = sqlite3.connect(db_path)
-    urls = conn.execute("""
-        SELECT DISTINCT rr.article_url FROM news_intelligence ni
+    candidates = conn.execute("""
+        SELECT DISTINCT rr.article_url, ni.id FROM news_intelligence ni
         JOIN rss_raw rr ON ni.raw_id = rr.id
         LEFT JOIN news_content nc ON nc.intel_id = ni.id
         WHERE ni.tier IN ('A','B')
@@ -163,17 +165,20 @@ try:
         LIMIT 5
     """).fetchall()
     conn.close()
+    # url -> intel_id，直接来自本次查询，落库时不再反查，避免漏写 intel_id
+    url_to_intel = {u: i for u, i in candidates}
 
-    if not urls:
+    if not candidates:
         log("  FETCH: no URLs to fetch (all candidates exhausted or already fetched)")
         step_result("FETCH", 0, 0, "no URLs to fetch")
     else:
         import tempfile
         with tempfile.NamedTemporaryFile(mode='w', suffix='.txt', delete=False, encoding='utf-8') as f:
-            f.write('\n'.join(u[0] for u in urls))
+            f.write('\n'.join(u for u, i in candidates))
             url_file = f.name
+        with tempfile.NamedTemporaryFile(mode='w', suffix='.jsonl', delete=False, encoding='utf-8') as f:
+            tmp_out = f.name
 
-        tmp_out = os.path.join(SCRIPT_DIR, "news_intel", "_fetch_tmp.jsonl")
         try:
             result = subprocess.run([sys.executable, os.path.join(SCRIPT_DIR, "batch.py"),
                                      "--urls", url_file, "--out", tmp_out,
@@ -183,8 +188,9 @@ try:
                 stderr_tail = (result.stderr or "")[-500:]
                 log(f"  batch.py exited {result.returncode}: {stderr_tail}")
         except subprocess.TimeoutExpired:
-            log(f"  batch.py timed out after {BATCH_TIMEOUT}s — recovery will still run")
-        os.unlink(url_file)
+            log(f"  batch.py timed out after {BATCH_TIMEOUT}s")
+        finally:
+            os.unlink(url_file)
 
         if os.path.exists(tmp_out) and os.path.getsize(tmp_out) > 0:
             ok_count = 0
@@ -199,24 +205,24 @@ try:
                     r = json.loads(line)
                     domain = r.get("domain", "?")
                     strategy = r.get("strategy_used") or "none"
-                    # Look up RSS source name
+                    intel_id = url_to_intel.get(r["url"])
+                    # Look up RSS source name (for stats breakdown only)
                     src_row = conn.execute("""
                         SELECT rr.source_name FROM rss_raw rr
                         JOIN news_intelligence ni ON ni.raw_id = rr.id
-                        JOIN news_content nc ON nc.intel_id = ni.id
-                        WHERE nc.article_url = ?
-                    """, (r["url"],)).fetchone()
+                        WHERE ni.id = ?
+                    """, (intel_id,)).fetchone() if intel_id is not None else None
                     src_name = src_row[0] if src_row else "?"
                     if r.get("ok"):
                         ok_count += 1
                         domain_stats[domain][strategy]["ok"] += 1
                         source_stats[src_name][strategy]["ok"] += 1
                         conn.execute(
-                            "INSERT INTO news_content (intel_id, article_url, content_md, content_len, fetch_strategy, fetch_cost, retry_count, fetch_at) VALUES (?, ?, ?, ?, ?, ?, 0, datetime('now','localtime')) ON CONFLICT(article_url) DO UPDATE SET content_md=excluded.content_md, content_len=excluded.content_len, fetch_strategy=excluded.fetch_strategy, fetch_cost=excluded.fetch_cost, retry_count=0, fetch_at=excluded.fetch_at",
-                            (intel_row[0], r["url"], r["content"], len(r["content"]), strategy, r.get("total_cost", 0))
-                        ) if (intel_row := conn.execute("SELECT intel_id FROM news_content WHERE article_url=?", (r["url"],)).fetchone()) else conn.execute(
-                            "INSERT INTO news_content (article_url, content_md, content_len, fetch_strategy, fetch_cost, retry_count, fetch_at) VALUES (?, ?, ?, ?, ?, 0, datetime('now','localtime'))",
-                            (r["url"], r["content"], len(r["content"]), strategy, r.get("total_cost", 0))
+                            "INSERT INTO news_content (intel_id, article_url, content_md, content_len, fetch_strategy, fetch_cost, retry_count, fetch_at) "
+                            "VALUES (?, ?, ?, ?, ?, ?, 0, datetime('now','localtime')) "
+                            "ON CONFLICT(article_url) DO UPDATE SET content_md=excluded.content_md, content_len=excluded.content_len, "
+                            "fetch_strategy=excluded.fetch_strategy, fetch_cost=excluded.fetch_cost, retry_count=0, fetch_at=excluded.fetch_at",
+                            (intel_id, r["url"], r["content"], len(r["content"]), strategy, r.get("total_cost", 0))
                         )
                     else:
                         fail_count += 1
@@ -244,7 +250,7 @@ try:
                 f"{s}:{c['ok']}/{c['ok']+c['fail']}"
                 for s, c in sorted(strat_summary.items())
             )
-            step_result("FETCH", ok_count, fail_count, f"{len(urls)} URLs [{breakdown}]")
+            step_result("FETCH", ok_count, fail_count, f"{len(candidates)} URLs [{breakdown}]")
             log(f"  Strategy breakdown: {breakdown}")
 
             # Push domain + source stats to PG
@@ -271,125 +277,117 @@ try:
                         log(f"  Domain stats pushed: {len(stats_body)} records")
                 except Exception:
                     pass
-
-    # ── 3.5 Comprehensive Recovery Pass ──────────────────────
-    # Covers ALL empty content rows (not just those in current batch).
-    # Always runs — even if batch.py timed out or no URLs were fetched.
-    log("Step 3.5: Recovery (SearXNG + Tavily)")
-    _TAVILY_KEY = os.environ.get("TAVILY_API_KEY") or "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"
-    if not _TAVILY_KEY:
-        log("  Tavily recovery disabled: TAVILY_API_KEY not set")
-    searxng_ok = searxng_fail = tavily_ok = tavily_fail = 0
-
-    def _recover_searxng(title: str, intel_id: int, url: str) -> bool:
-        q = (title or url)[:80]
-        resp = httpx.get("http://100.107.117.23:8080/search",
-                          params={"q": q, "format": "json"},
-                          headers={"User-Agent": "NewsIntelBot/1.0"}, timeout=10)
-        data = resp.json()
-        for alt in data.get("results", [])[:2]:
-            alt_url = alt.get("url", "")
-            if alt_url and alt_url != url:
-                r2 = httpx.get(alt_url, headers={"User-Agent": "Mozilla/5.0 Chrome/131"}, timeout=10)
-                if r2.status_code == 200 and len(r2.text) > 500:
-                    from core.fetchers import _extract_main_text
-                    content = _extract_main_text(r2.text, url=alt_url)
-                    if content and len(content) > 200:
-                        c = sqlite3.connect(db_path)
-                        c.execute("""
-                            INSERT INTO news_content (intel_id, article_url, content_md, content_len, fetch_strategy, fetch_cost, retry_count, fetch_at)
-                            VALUES (?, ?, ?, ?, 'searxng_alt', 2, 0, datetime('now','localtime'))
-                            ON CONFLICT(article_url) DO UPDATE SET content_md=excluded.content_md, content_len=excluded.content_len,
-                            fetch_strategy='searxng_alt', fetch_cost=2, retry_count=0, fetch_at=excluded.fetch_at
-                        """, (intel_id, url, content, len(content)))
-                        c.commit(); c.close()
-                        return True
-        return False
-
-    def _recover_tavily(title: str, intel_id: int, url: str) -> bool:
-        if not _TAVILY_KEY:
-            return False
-        q = (title or url)[:100]
-        resp = httpx.post("https://api.tavily.com/search", json={
-            "api_key": _TAVILY_KEY, "query": q, "search_depth": "basic",
-            "max_results": 2, "include_answer": True,
-        }, timeout=15)
-        data = resp.json()
-        answer = data.get("answer", "")
-        if answer and len(answer) > 100:
-            content = f"[Tavily]\n\n{answer}"
-            c = sqlite3.connect(db_path)
-            c.execute("""
-                INSERT INTO news_content (intel_id, article_url, content_md, content_len, fetch_strategy, fetch_cost, retry_count, fetch_at)
-                VALUES (?, ?, ?, ?, 'tavily', 5, 0, datetime('now','localtime'))
-                ON CONFLICT(article_url) DO UPDATE SET content_md=excluded.content_md, content_len=excluded.content_len,
-                fetch_strategy='tavily', fetch_cost=5, retry_count=0, fetch_at=excluded.fetch_at
-            """, (intel_id, url, content, len(content)))
-            c.commit(); c.close()
-            return True
-        return False
-
-    try:
-        conn = sqlite3.connect(db_path)
-        # SearXNG: score 80-89, max 10
-        searxng_candidates = conn.execute("""
-            SELECT rr.article_url, ni.id, ni.score_total, rr.title
-            FROM news_intelligence ni
-            JOIN rss_raw rr ON ni.raw_id = rr.id
-            LEFT JOIN news_content nc ON nc.intel_id = ni.id
-            WHERE ni.tier IN ('A','B') AND ni.score_total >= 80 AND ni.score_total < 90
-              AND (nc.fetch_strategy != 'exhausted' OR nc.fetch_strategy IS NULL)
-              AND (nc.id IS NULL OR nc.content_md IS NULL OR nc.content_md = '')
-              AND (nc.retry_count IS NULL OR nc.retry_count < 3)
-            LIMIT 10
-        """).fetchall()
-
-        for url, intel_id, score, title in searxng_candidates:
-            try:
-                if _recover_searxng(title, intel_id, url):
-                    searxng_ok += 1
-                else:
-                    searxng_fail += 1
-                    conn.execute("UPDATE news_content SET retry_count = COALESCE(retry_count,0)+1 WHERE article_url=?", (url,))
-            except Exception:
-                searxng_fail += 1
-
-        # Tavily: score >=90, max 5 (only if key is configured)
-        if _TAVILY_KEY:
-            tavily_candidates = conn.execute("""
-                SELECT rr.article_url, ni.id, ni.score_total, rr.title
-                FROM news_intelligence ni
-                JOIN rss_raw rr ON ni.raw_id = rr.id
-                LEFT JOIN news_content nc ON nc.intel_id = ni.id
-                WHERE ni.tier IN ('A','B') AND ni.score_total >= 90
-                  AND (nc.fetch_strategy != 'exhausted' OR nc.fetch_strategy IS NULL)
-                  AND (nc.id IS NULL OR nc.content_md IS NULL OR nc.content_md = '')
-                  AND (nc.retry_count IS NULL OR nc.retry_count < 3)
-                LIMIT 5
-            """).fetchall()
-
-            for url, intel_id, score, title in tavily_candidates:
-                try:
-                    if _recover_tavily(title, intel_id, url):
-                        tavily_ok += 1
-                    else:
-                        tavily_fail += 1
-                        conn.execute("UPDATE news_content SET retry_count = COALESCE(retry_count,0)+1 WHERE article_url=?", (url,))
-                except Exception:
-                    tavily_fail += 1
-
-        conn.commit()
-        conn.close()
-
-        if searxng_ok + searxng_fail > 0:
-            step_result("SEARXNG_RECOVERY", searxng_ok, searxng_fail)
-        if tavily_ok + tavily_fail > 0:
-            step_result("TAVILY_RECOVERY", tavily_ok, tavily_fail)
-    except Exception as e:
-        log(f"  Recovery: {e}")
+        os.unlink(tmp_out)
 except Exception as e:
     log(f"  FAILED: {e}")
     step_result("FETCH", 0, 1, str(e)[:80])
+
+# ── 3.5 Comprehensive Recovery Pass ──────────────────────
+# 独立的 try 块：Step 3 出异常不会跳过本步骤。
+# 覆盖全部空内容行（不只是本轮 batch 里的），batch.py 超时或没有可抓 URL 时也照常执行。
+# 本步骤只做：查候选 → 调 batch.py（--force-strategy 走恢复策略）→ 解析结果写 DB → 记日志。
+# 不在这里直接发任何 HTTP 请求 —— 抓取逻辑全部在 core/fetchers.py 的 searxng_alt / tavily 策略里。
+log("Step 3.5: Recovery (SearXNG + Tavily)")
+
+
+def _run_recovery_batch(candidates, strategy_order, timeout_s, label):
+    """调用 batch.py 子进程完成一批恢复抓取，返回 (ok_count, fail_count)。
+    candidates: [(article_url, intel_id, title), ...]
+    """
+    if not candidates:
+        return 0, 0
+
+    import tempfile
+    with tempfile.NamedTemporaryFile(mode='w', suffix='.txt', delete=False, encoding='utf-8') as f:
+        for url, intel_id, title in candidates:
+            f.write(f"{url}\t{(title or '').replace(chr(9), ' ')}\n")
+        url_file = f.name
+    with tempfile.NamedTemporaryFile(mode='w', suffix='.jsonl', delete=False, encoding='utf-8') as f:
+        out_file = f.name
+
+    try:
+        result = subprocess.run(
+            [sys.executable, os.path.join(SCRIPT_DIR, "batch.py"),
+             "--urls", url_file, "--out", out_file,
+             "--force-strategy", strategy_order,
+             "--rate-delay", "1.0", "--max-workers", "1", "--no-progress"],
+            cwd=SCRIPT_DIR, timeout=timeout_s, capture_output=True, text=True)
+        if result.returncode != 0:
+            stderr_tail = (result.stderr or "")[-500:]
+            log(f"  {label} batch.py exited {result.returncode}: {stderr_tail}")
+    except subprocess.TimeoutExpired:
+        log(f"  {label} batch.py timed out after {timeout_s}s")
+    finally:
+        os.unlink(url_file)
+
+    url_to_intel = {u: i for u, i, t in candidates}
+    ok = fail = 0
+    if os.path.exists(out_file) and os.path.getsize(out_file) > 0:
+        conn2 = sqlite3.connect(db_path)
+        with open(out_file) as f:
+            for line in f:
+                if not line.strip():
+                    continue
+                r = json.loads(line)
+                intel_id = url_to_intel.get(r["url"])
+                if r.get("ok"):
+                    ok += 1
+                    conn2.execute("""
+                        INSERT INTO news_content (intel_id, article_url, content_md, content_len, fetch_strategy, fetch_cost, retry_count, fetch_at)
+                        VALUES (?, ?, ?, ?, ?, ?, 0, datetime('now','localtime'))
+                        ON CONFLICT(article_url) DO UPDATE SET content_md=excluded.content_md, content_len=excluded.content_len,
+                        fetch_strategy=excluded.fetch_strategy, fetch_cost=excluded.fetch_cost, retry_count=0, fetch_at=excluded.fetch_at
+                    """, (intel_id, r["url"], r["content"], len(r["content"]), r.get("strategy_used") or label, r.get("total_cost", 0)))
+                else:
+                    fail += 1
+                    conn2.execute("UPDATE news_content SET retry_count = COALESCE(retry_count,0)+1 WHERE article_url=?", (r["url"],))
+        conn2.commit()
+        conn2.close()
+    if os.path.exists(out_file):
+        os.unlink(out_file)
+    return ok, fail
+
+
+try:
+    conn = sqlite3.connect(db_path)
+    # SearXNG 替代源: score 80-89, max 10
+    searxng_candidates = conn.execute("""
+        SELECT rr.article_url, ni.id, rr.title
+        FROM news_intelligence ni
+        JOIN rss_raw rr ON ni.raw_id = rr.id
+        LEFT JOIN news_content nc ON nc.intel_id = ni.id
+        WHERE ni.tier IN ('A','B') AND ni.score_total >= 80 AND ni.score_total < 90
+          AND (nc.fetch_strategy != 'exhausted' OR nc.fetch_strategy IS NULL)
+          AND (nc.id IS NULL OR nc.content_md IS NULL OR nc.content_md = '')
+          AND (nc.retry_count IS NULL OR nc.retry_count < 3)
+        LIMIT 10
+    """).fetchall()
+    # Tavily: score >=90, max 5
+    tavily_candidates = conn.execute("""
+        SELECT rr.article_url, ni.id, rr.title
+        FROM news_intelligence ni
+        JOIN rss_raw rr ON ni.raw_id = rr.id
+        LEFT JOIN news_content nc ON nc.intel_id = ni.id
+        WHERE ni.tier IN ('A','B') AND ni.score_total >= 90
+          AND (nc.fetch_strategy != 'exhausted' OR nc.fetch_strategy IS NULL)
+          AND (nc.id IS NULL OR nc.content_md IS NULL OR nc.content_md = '')
+          AND (nc.retry_count IS NULL OR nc.retry_count < 3)
+        LIMIT 5
+    """).fetchall()
+    conn.close()
+
+    searxng_ok, searxng_fail = _run_recovery_batch(
+        searxng_candidates, "searxng_alt,tavily", BATCH_TIMEOUT, "SEARXNG_RECOVERY")
+    tavily_ok, tavily_fail = _run_recovery_batch(
+        tavily_candidates, "tavily", BATCH_TIMEOUT, "TAVILY_RECOVERY")
+
+    if searxng_ok + searxng_fail > 0:
+        step_result("SEARXNG_RECOVERY", searxng_ok, searxng_fail)
+    if tavily_ok + tavily_fail > 0:
+        step_result("TAVILY_RECOVERY", tavily_ok, tavily_fail)
+except Exception as e:
+    log(f"  Recovery: {e}")
+
 
 # ── 4. Aggregate ───────────────────────────────────────────
 log("Step 4/6: Aggregate")

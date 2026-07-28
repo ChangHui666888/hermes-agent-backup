@@ -44,6 +44,18 @@ from config.settings import get_settings
 logger = logging.getLogger("batch")
 
 
+def _parse_url_line(line: str) -> tuple[str, str | None]:
+    """解析 URL 列表文件的一行。支持两种格式：
+    - "https://..."              (纯 URL，title=None)
+    - "https://...\\t标题文本"    (tab 分隔，用于恢复抓取传入标题以提升搜索命中率)
+    """
+    parts = line.split("\t", 1)
+    if len(parts) == 2:
+        u, t = parts[0].strip(), parts[1].strip()
+        return u, (t or None)
+    return line.strip(), None
+
+
 def extract_url(
     url: str,
     rate_limiter: RateLimiter,
@@ -52,12 +64,19 @@ def extract_url(
     llm_api_key: str | None = None,
     llm_prompt: str | None = None,
     skip_expensive: bool = True,
+    force_strategy_order: list[str] | None = None,
+    title: str | None = None,
 ) -> dict:
     """Extract a single URL using the cascade engine.
 
     Delegates to core.fetchers.extract_single() — the single authoritative
     cascade implementation. All per-URL settings (strategy order, failing
     strategies, min_content_len) are driven by domain_profiles + settings.
+
+    force_strategy_order / title exist to support recovery-style callers
+    (e.g. auto-pipeline.py's Step 3.5) that want to force a specific
+    strategy (searxng_alt, tavily) instead of the domain's default cascade,
+    and can supply the article title for a better search query.
     """
     from core.fetchers import extract_single as _extract_single
     profile = get_profile(url)
@@ -69,11 +88,13 @@ def extract_url(
         search_func=search_func,
         llm_api_key=llm_api_key,
         llm_prompt=llm_prompt,
+        force_strategy_order=force_strategy_order,
+        title=title,
     )
 
 
 def batch_extract(
-    urls: list[str],
+    urls: list[str] | list[tuple[str, str | None]],
     out_path: str,
     settings=None,
     max_workers: int = 4,
@@ -81,9 +102,18 @@ def batch_extract(
     llm_prompt: str | None = None,
     verbose: bool = False,
     progress: bool = True,
+    force_strategy_order: list[str] | None = None,
 ) -> dict:
-    """Batch extract multiple URLs concurrently. Returns summary stats."""
+    """Batch extract multiple URLs concurrently. Returns summary stats.
+
+    `urls` accepts either plain URL strings or (url, title) tuples — the
+    latter lets recovery-style callers pass a title for better search-based
+    strategies (tavily / searxng_alt) without changing the common path.
+    """
     settings = settings or get_settings()
+    norm_urls: list[tuple[str, str | None]] = [
+        u if isinstance(u, tuple) else (u, None) for u in urls
+    ]
     rate_limiter = RateLimiter(default_delay=settings.rate_limit_default_delay)
 
     # Apply per-domain delays from settings
@@ -110,8 +140,10 @@ def batch_extract(
                     llm_api_key=llm_api_key,
                     llm_prompt=llm_prompt,
                     skip_expensive=True,
+                    force_strategy_order=force_strategy_order,
+                    title=title,
                 ): url
-                for url in urls
+                for url, title in norm_urls
             }
 
             for i, future in enumerate(as_completed(future_map), 1):
@@ -133,24 +165,24 @@ def batch_extract(
                 f.flush()
 
                 if progress:
-                    print(f"\r[{i}/{len(urls)}] ✅{ok_count} ❌{fail_count}  "
+                    print(f"\r[{i}/{len(norm_urls)}] ✅{ok_count} ❌{fail_count}  "
                           f"cost={total_cost}  {url[:80]}", end="", file=sys.stderr)
 
     elapsed = time.monotonic() - start_time
 
     summary = {
-        "total": len(urls),
+        "total": len(norm_urls),
         "ok": ok_count,
         "failed": fail_count,
         "total_cost": total_cost,
         "elapsed_seconds": round(elapsed, 1),
-        "urls_per_second": round(len(urls) / elapsed, 2) if elapsed > 0 else 0,
+        "urls_per_second": round(len(norm_urls) / elapsed, 2) if elapsed > 0 else 0,
         "output": out_path,
     }
 
     if progress:
         print(f"\n{'='*60}", file=sys.stderr)
-        print(f"完成: {ok_count}/{len(urls)} 成功, {fail_count} 失败", file=sys.stderr)
+        print(f"完成: {ok_count}/{len(norm_urls)} 成功, {fail_count} 失败", file=sys.stderr)
         print(f"总耗时: {elapsed:.1f}s | 总成本: {total_cost} | 速率: {summary['urls_per_second']} urls/s", file=sys.stderr)
         print(f"输出: {out_path}", file=sys.stderr)
 
@@ -167,20 +199,28 @@ def main():
   %(prog)s --urls urls.txt --out results.jsonl
   %(prog)s --urls urls.txt --out results.jsonl --llm-extract
   echo "https://reuters.com/..." | %(prog)s --stdin --out results.jsonl
+
+  # 恢复抓取模式：强制指定策略顺序（忽略域名 profile 默认顺序），
+  # urls.txt 每行支持 "URL\\t标题" 格式以提升 tavily/searxng_alt 命中率
+  %(prog)s --urls recovery_urls.txt --out recovery.jsonl --force-strategy searxng_alt,tavily
         """,
     )
     parser.add_argument("--url", help="单个 URL 提取（调试模式）")
-    parser.add_argument("--urls", help="URL 列表文件，每行一个 URL")
-    parser.add_argument("--stdin", action="store_true", help="从 stdin 读取 URL 列表")
+    parser.add_argument("--title", help="配合 --url 使用：文章标题，用于提升 tavily/searxng_alt 等搜索类策略的查询质量")
+    parser.add_argument("--urls", help="URL 列表文件，每行一个 URL，也支持 'URL\\t标题' 格式")
+    parser.add_argument("--stdin", action="store_true", help="从 stdin 读取 URL 列表（同样支持 'URL\\t标题' 格式）")
     parser.add_argument("--out", default="results.jsonl", help="输出 JSONL 文件路径")
     parser.add_argument("--llm-extract", action="store_true", help="使用 LLM 做结构化抽取（需 DEEPSEEK_API_KEY）")
     parser.add_argument("--llm-prompt", help="自定义 LLM 抽取 prompt 文件路径")
+    parser.add_argument("--force-strategy", help="强制指定级联策略顺序（逗号分隔，如 searxng_alt,tavily），忽略域名 profile 默认顺序；用于恢复抓取场景")
     parser.add_argument("--max-workers", type=int, default=4, help="并行线程数 (default: 4)")
     parser.add_argument("--min-content-len", type=int, default=200, help="最小有效正文长度 (default: 200)")
     parser.add_argument("--rate-delay", type=float, default=1.0, help="同域名请求间隔秒数 (default: 1.0)")
     parser.add_argument("--no-progress", action="store_true", help="不显示进度条（cron 友好）")
     parser.add_argument("--verbose", "-v", action="store_true", help="详细日志")
     args = parser.parse_args()
+
+    force_strategy_order = args.force_strategy.split(",") if args.force_strategy else None
 
     # Update settings from CLI
     from config.settings import update_settings
@@ -213,17 +253,18 @@ def main():
         result = extract_url(
             args.url, rate_limiter, settings,
             llm_api_key=llm_api_key, llm_prompt=llm_prompt,
+            force_strategy_order=force_strategy_order, title=args.title,
         )
         print(json.dumps(result, ensure_ascii=False, indent=2))
         sys.exit(0 if result["ok"] else 1)
 
-    # Collect URLs
-    urls = []
+    # Collect URLs (each entry: (url, title|None))
+    urls: list[tuple[str, str | None]] = []
     if args.urls:
         with open(args.urls, "r", encoding="utf-8") as f:
-            urls = [line.strip() for line in f if line.strip() and not line.startswith("#")]
+            urls = [_parse_url_line(line) for line in f if line.strip() and not line.startswith("#")]
     elif args.stdin:
-        urls = [line.strip() for line in sys.stdin if line.strip() and not line.startswith("#")]
+        urls = [_parse_url_line(line) for line in sys.stdin if line.strip() and not line.startswith("#")]
 
     if not urls:
         print("错误: 需要 --url, --urls, 或 --stdin 提供 URL", file=sys.stderr)
@@ -236,6 +277,7 @@ def main():
         llm_api_key=llm_api_key, llm_prompt=llm_prompt,
         verbose=args.verbose,
         progress=not args.no_progress,
+        force_strategy_order=force_strategy_order,
     )
 
     # Print summary to stdout (for piping)
