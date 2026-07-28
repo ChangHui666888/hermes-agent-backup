@@ -260,15 +260,24 @@ try:
             step_result("FETCH", ok_count, fail_count, f"{len(candidates)} URLs [{breakdown}]")
             log(f"  Strategy breakdown: {breakdown}")
 
-            # 成功抓取的 URL 列表日志
+            # URL 列表日志（成功+失败）
             for line in open(tmp_out):
                 if not line.strip(): continue
                 r = json.loads(line)
+                url = r.get("url", "")[:65]
                 if r.get("ok"):
-                    url = r.get("url", "")[:65]
                     strat = r.get("strategy_used", "?")
                     clen = len(r.get("content", "") or "")
                     log(f"    ✅ [{strat}] {clen}c {url}")
+                else:
+                    ct = r.get("cost_trace", [])
+                    # 取最后一个尝试的策略和错误
+                    last = ct[-1] if ct else {}
+                    last_strat = last.get("strategy", "?")
+                    last_err = (last.get("error", "") or "")[:30]
+                    # 策略链摘要
+                    chain = "→".join([t["strategy"] for t in ct])
+                    log(f"    ❌ [{last_strat}] {last_err}  chain={chain}  {url}")
 
             # Push domain + source stats to PG
             if TOKEN:
