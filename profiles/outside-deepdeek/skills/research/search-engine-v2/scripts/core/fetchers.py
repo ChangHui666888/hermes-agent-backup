@@ -50,19 +50,21 @@ class BrowserPool:
     """
     _instance = None
     _lock = _threading.Lock()
+    _launch_count = 0  # 类级别统计
+    _crash_count = 0
 
     def __init__(self):
         self._playwright = None
         self._browser = None
-        self._launch_count = 0
-        self._crash_count = 0
 
     @classmethod
     def get_browser(cls):
         if cls._instance is None:
             with cls._lock:
                 if cls._instance is None:
-                    cls._instance = cls()
+                    cls._instance = cls.__new__(cls)
+                    cls._instance._playwright = None
+                    cls._instance._browser = None
                     cls._instance._ensure_browser()
         else:
             cls._instance._ensure_browser()
@@ -73,7 +75,8 @@ class BrowserPool:
             if self._browser and self._browser.is_connected():
                 return
         except Exception:
-            pass  # connection lost or crashed
+            self.__class__._crash_count += 1
+            logger.warning(f"[browser_pool] browser crashed (total crashes={self.__class__._crash_count}), re-launching")
         # Launch fresh
         if self._playwright is None:
             self._playwright = sync_playwright().start()
@@ -91,7 +94,7 @@ class BrowserPool:
                 '--disable-prompt-on-repost', '--disable-hang-monitor', '--disable-sync',
                 '--disable-default-apps', '--disable-extensions', '--disable-plugins',
             ])
-        self._launch_count += 1
+        self.__class__._launch_count += 1
 
     @classmethod
     def close_all(cls):
@@ -106,6 +109,8 @@ class BrowserPool:
             except Exception:
                 pass
         cls._instance = None
+        cls._launch_count = 0
+        cls._crash_count = 0
 
     @property
     def stats(self):
@@ -705,7 +710,9 @@ def extract_single(
     deadline = time.monotonic() + cascade_timeout
 
     for strategy in order:
-        # 级联总超时：单 URL 最多 cascade_timeout 秒
+        # 级联总超时（软截止）：不中断正在执行的单个策略，
+        # 仅在策略间检查。实际总耗时可能比 cascade_timeout
+        # 多出一个最长策略的自身超时（当前最大约 30s）。
         if time.monotonic() >= deadline:
             attempt = {"strategy": strategy, "cost": COST.get(strategy, 0), "url": url,
                        "ok": False, "error": "cascade_timeout"}
