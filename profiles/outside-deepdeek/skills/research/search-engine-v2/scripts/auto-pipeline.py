@@ -5,19 +5,37 @@ auto-pipeline.py — 全自动管线 (RSS→Score→Fetch→Aggregate→Cloud)
 Features:
 - Per-step statistics written to pipeline.log
 - Per-domain strategy stats pushed to PG fetch_stats table
+- 配置从本地 ~/.hermes/pipeline-config.json 读取 (由 config-agent 同步)
 """
 
 import sys, os, time, json, sqlite3, subprocess, httpx
 from collections import defaultdict, Counter
 from datetime import datetime
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, SCRIPT_DIR)
 sys.path.insert(0, os.path.join(SCRIPT_DIR, "news_intel"))
 
-CLOUD_API = "http://100.107.117.23"
-TOKEN = os.environ.get("NEWS_API_TOKEN") or "v8-pipeline-token-2026-xK9mP2sR7wQ"
-BATCH_TIMEOUT = 600
+# 读取本地配置（VPS挂了也能用最近配置）
+try:
+    from config.loader import load_config, get_setting
+    CONFIG = load_config()
+except Exception:
+    CONFIG = {}
+
+def cfg(key, default):
+    return get_setting(CONFIG, key, default) if CONFIG else default
+
+# 环境参数（IP 等不硬编码）
+try:
+    from config.env import CLOUD_API, INTERNAL_TOKEN
+except Exception:
+    CLOUD_API = "http://100.107.117.23"
+    INTERNAL_TOKEN = "v8-pipeline-token-2026-xK9mP2sR7wQ"
+
+TOKEN = os.environ.get("NEWS_API_TOKEN") or INTERNAL_TOKEN
+BATCH_TIMEOUT = cfg("pipeline.batch_timeout", 600)
 LOG_FILE = os.path.join(SCRIPT_DIR, "pipeline.log")
 db_path = os.path.join(SCRIPT_DIR, "news_intel", "news_intel.db")
 
@@ -106,10 +124,42 @@ try:
 except Exception as e:
     log(f"  Cleanup: {e}")
 
+# ── 0.5. Backlog Report ───────────────────────────────────
+log("Step 0.5: Backlog report")
+try:
+    conn = sqlite3.connect(db_path)
+    backlog_rows = conn.execute("""
+        SELECT
+            CASE
+                WHEN ni.score_total >= 90 THEN 'A (90-100)'
+                WHEN ni.score_total >= 80 THEN 'B+ (80-89)'
+                WHEN ni.score_total >= 70 THEN 'B (70-79)'
+                WHEN ni.score_total >= 60 THEN 'B- (60-69)'
+                ELSE 'C (<60)'
+            END as bucket,
+            COUNT(*) as cnt
+        FROM news_intelligence ni
+        LEFT JOIN news_content nc ON nc.intel_id = ni.id
+        WHERE (nc.id IS NULL OR nc.content_md IS NULL OR nc.content_md = '')
+        GROUP BY bucket
+        ORDER BY AVG(ni.score_total) DESC
+    """).fetchall()
+    exhausted = conn.execute("""
+        SELECT COUNT(*) FROM news_content
+        WHERE (content_md IS NULL OR content_md = '')
+          AND retry_count >= 3
+    """).fetchone()[0]
+    conn.close()
+    parts = ['{}={}'.format(bucket, int(cnt)) for bucket, cnt in backlog_rows if int(cnt) > 0]
+    log("  BACKLOG: " + ' | '.join(parts))
+    log("  EXHAUSTED: {} (3次失败, 不再重试)".format(exhausted))
+except Exception as e:
+    log("  Backlog: " + str(e))
+
 # ── 1. Sync + Score ────────────────────────────────────────
 log("Step 1/6: Sync + Score")
 try:
-    subprocess.run([sys.executable, "-m", "news_intel.pipeline", "--hours", "2"],
+    subprocess.run([sys.executable, "-m", "news_intel.pipeline", "--hours", str(cfg("pipeline.sync_hours", 2))],
                    cwd=SCRIPT_DIR, timeout=240, capture_output=True)
     conn = sqlite3.connect(db_path)
     new_scored = conn.execute("SELECT COUNT(*) FROM news_intelligence WHERE scored_at > datetime('now','-10 minutes','localtime')").fetchone()[0]
@@ -169,8 +219,10 @@ try:
           AND (nc.id IS NULL OR nc.content_md IS NULL OR nc.content_md = '')
           AND (nc.fetch_strategy != 'exhausted' OR nc.fetch_strategy IS NULL)
           AND rr.article_url IS NOT NULL AND rr.article_url != ''
-        LIMIT 8
-    """).fetchall()
+          AND rr.article_url NOT LIKE '%/video/%'
+          AND rr.article_url NOT LIKE '%/videos/%'
+        LIMIT {}
+    """.format(cfg("pipeline.batch_size", 20))).fetchall()
     conn.close()
     # url -> intel_id，直接来自本次查询，落库时不再反查，避免漏写 intel_id
     url_to_intel = {u: i for u, i in candidates}
@@ -189,7 +241,8 @@ try:
         try:
             result = subprocess.run([sys.executable, os.path.join(SCRIPT_DIR, "batch.py"),
                                      "--urls", url_file, "--out", tmp_out,
-                                     "--rate-delay", "0.3", "--max-workers", "3", "--no-progress"],
+                                     "--rate-delay", str(cfg("pipeline.rate_delay", 0.3)),
+                                     "--max-workers", str(cfg("pipeline.max_workers", 5)), "--no-progress"],
                                     cwd=SCRIPT_DIR, timeout=BATCH_TIMEOUT, capture_output=True, text=True)
             if result.returncode != 0:
                 stderr_tail = (result.stderr or "")[-500:]
@@ -316,9 +369,10 @@ except Exception as e:
 log("Step 3.5: Recovery (SearXNG + Tavily)")
 
 
-def _run_recovery_batch(candidates, strategy_order, timeout_s, label):
+def _run_recovery_batch(candidates, strategy_order, timeout_s, label, video=False, workers=3):
     """调用 batch.py 子进程完成一批恢复抓取，返回 (ok_count, fail_count)。
     candidates: [(article_url, intel_id, title), ...]
+    video=True → 传 --video 走视频专用链路 (browser+stealth 抓转写)。
     """
     if not candidates:
         return 0, 0
@@ -332,12 +386,13 @@ def _run_recovery_batch(candidates, strategy_order, timeout_s, label):
         out_file = f.name
 
     try:
-        result = subprocess.run(
-            [sys.executable, os.path.join(SCRIPT_DIR, "batch.py"),
-             "--urls", url_file, "--out", out_file,
-             "--force-strategy", strategy_order,
-             "--rate-delay", "0.3", "--max-workers", "3", "--no-progress"],
-            cwd=SCRIPT_DIR, timeout=timeout_s, capture_output=True, text=True)
+        cmd = [sys.executable, os.path.join(SCRIPT_DIR, "batch.py"),
+               "--urls", url_file, "--out", out_file,
+               "--force-strategy", strategy_order,
+               "--rate-delay", "0.3", "--max-workers", str(workers), "--no-progress"]
+        if video:
+            cmd.append("--video")
+        result = subprocess.run(cmd, cwd=SCRIPT_DIR, timeout=timeout_s, capture_output=True, text=True)
         if result.returncode != 0:
             stderr_tail = (result.stderr or "")[-500:]
             log(f"  {label} batch.py exited {result.returncode}: {stderr_tail}")
@@ -348,6 +403,7 @@ def _run_recovery_batch(candidates, strategy_order, timeout_s, label):
 
     url_to_intel = {u: i for u, i, t in candidates}
     ok = fail = 0
+    strat_summary = defaultdict(lambda: {"ok": 0, "fail": 0})
     if os.path.exists(out_file) and os.path.getsize(out_file) > 0:
         conn2 = sqlite3.connect(db_path)
         with open(out_file) as f:
@@ -356,19 +412,34 @@ def _run_recovery_batch(candidates, strategy_order, timeout_s, label):
                     continue
                 r = json.loads(line)
                 intel_id = url_to_intel.get(r["url"])
+                url_short = (r.get("url") or "")[:65]
                 if r.get("ok"):
                     ok += 1
+                    strat = r.get("strategy_used") or label
+                    strat_summary[strat]["ok"] += 1
                     conn2.execute("""
                         INSERT INTO news_content (intel_id, article_url, content_md, content_len, fetch_strategy, fetch_cost, retry_count, fetch_at)
                         VALUES (?, ?, ?, ?, ?, ?, 0, datetime('now','localtime'))
                         ON CONFLICT(article_url) DO UPDATE SET content_md=excluded.content_md, content_len=excluded.content_len,
                         fetch_strategy=excluded.fetch_strategy, fetch_cost=excluded.fetch_cost, retry_count=0, fetch_at=excluded.fetch_at
-                    """, (intel_id, r["url"], r["content"], len(r["content"]), r.get("strategy_used") or label, r.get("total_cost", 0)))
+                    """, (intel_id, r["url"], r["content"], len(r["content"]), strat, r.get("total_cost", 0)))
+                    log(f"    ✅ [{strat}] {len(r['content'])}c {url_short}")
                 else:
                     fail += 1
+                    ct = r.get("cost_trace", [])
+                    last = ct[-1] if ct else {}
+                    last_strat = last.get("strategy", "?")
+                    last_err = (last.get("error", "") or "")[:30]
+                    chain = "→".join([t["strategy"] for t in ct]) or "?"
+                    strat_summary[last_strat]["fail"] += 1
                     conn2.execute("UPDATE news_content SET retry_count = COALESCE(retry_count,0)+1 WHERE article_url=?", (r["url"],))
+                    log(f"    ❌ [{last_strat}] {last_err}  chain={chain}  {url_short}")
         conn2.commit()
         conn2.close()
+        # 策略明细 (类似 Step 3)
+        breakdown = " | ".join(f"{s}:{c['ok']}/{c['ok']+c['fail']}" for s, c in sorted(strat_summary.items()))
+        if breakdown:
+            log(f"  {label} Strategy breakdown: {breakdown}")
     if os.path.exists(out_file):
         os.unlink(out_file)
     return ok, fail
@@ -386,9 +457,10 @@ try:
           AND (nc.fetch_strategy != 'exhausted' OR nc.fetch_strategy IS NULL)
           AND (nc.id IS NULL OR nc.content_md IS NULL OR nc.content_md = '')
           AND (nc.retry_count IS NULL OR nc.retry_count < 3)
+          AND rr.article_url NOT LIKE '%/video/%' AND rr.article_url NOT LIKE '%/videos/%'
         LIMIT 10
     """).fetchall()
-    # Tavily: score >=90, max 5
+    # Tavily: score >=90, max 5 (视频由 Step 3.6 专属处理)
     tavily_candidates = conn.execute("""
         SELECT rr.article_url, ni.id, rr.title
         FROM news_intelligence ni
@@ -398,21 +470,68 @@ try:
           AND (nc.fetch_strategy != 'exhausted' OR nc.fetch_strategy IS NULL)
           AND (nc.id IS NULL OR nc.content_md IS NULL OR nc.content_md = '')
           AND (nc.retry_count IS NULL OR nc.retry_count < 3)
+          AND rr.article_url NOT LIKE '%/video/%' AND rr.article_url NOT LIKE '%/videos/%'
         LIMIT 5
     """).fetchall()
     conn.close()
 
-    searxng_ok, searxng_fail = _run_recovery_batch(
-        searxng_candidates, "searxng_alt,tavily", BATCH_TIMEOUT, "SEARXNG_RECOVERY")
-    tavily_ok, tavily_fail = _run_recovery_batch(
-        tavily_candidates, "tavily", BATCH_TIMEOUT, "TAVILY_RECOVERY")
-
-    if searxng_ok + searxng_fail > 0:
-        step_result("SEARXNG_RECOVERY", searxng_ok, searxng_fail)
-    if tavily_ok + tavily_fail > 0:
-        step_result("TAVILY_RECOVERY", tavily_ok, tavily_fail)
+    if not searxng_candidates and not tavily_candidates:
+        log("  RECOVERY: no backlog articles to recover (all caught up)")
+    else:
+        if searxng_candidates:
+            searxng_ok, searxng_fail = _run_recovery_batch(
+                searxng_candidates, "searxng_alt,tavily", BATCH_TIMEOUT, "SEARXNG_RECOVERY")
+            if searxng_ok + searxng_fail > 0:
+                step_result("SEARXNG_RECOVERY", searxng_ok, searxng_fail)
+        if tavily_candidates:
+            tavily_ok, tavily_fail = _run_recovery_batch(
+                tavily_candidates, "tavily", BATCH_TIMEOUT, "TAVILY_RECOVERY")
+            if tavily_ok + tavily_fail > 0:
+                step_result("TAVILY_RECOVERY", tavily_ok, tavily_fail)
 except Exception as e:
     log(f"  Recovery: {e}")
+
+
+# ── 3.6. Video Fetch (browser+stealth, 受预算上限) ──────────
+# 视频 URL 在 Step 3 主批被 SQL 排除，单独在此处理：
+# 仅 A/B 级、score≥video_min_score、无内容、非 exhausted、每轮上限 video_batch_size。
+# 走 browser+stealth 抓转写，2 worker 并发，子批超时最多 5 分钟，防撑爆 15 分钟 cron 预算。
+log("Step 3.6: Video Fetch (browser)")
+if cfg("crawl.video_enabled", True):
+    try:
+        video_patterns = cfg("crawl.video_patterns", ["/video/", "/videos/"])
+        like_conds = " OR ".join("rr.article_url LIKE ?" for _ in video_patterns)
+        like_params = [f"%{p}%" for p in video_patterns]
+        conn = sqlite3.connect(db_path)
+        vids = conn.execute(f"""
+            SELECT rr.article_url, ni.id, rr.title
+            FROM news_intelligence ni
+            JOIN rss_raw rr ON ni.raw_id = rr.id
+            LEFT JOIN news_content nc ON nc.intel_id = ni.id
+            WHERE ni.tier IN ('A','B')
+              AND ni.score_total >= ?
+              AND (nc.fetch_strategy != 'exhausted' OR nc.fetch_strategy IS NULL)
+              AND (nc.id IS NULL OR nc.content_md IS NULL OR nc.content_md = '')
+              AND (nc.retry_count IS NULL OR nc.retry_count < 3)
+              AND ({like_conds})
+            ORDER BY ni.score_total DESC
+            LIMIT ?
+        """, (cfg("crawl.video_min_score", 60), *like_params, cfg("crawl.video_batch_size", 6))).fetchall()
+        conn.close()
+
+        if not vids:
+            log("  VIDEO_FETCH: 无待抓视频 (backlog 清空)")
+        else:
+            video_strategy = ",".join(cfg("crawl.video_strategy", ["browser", "archive", "jina", "tavily"]))
+            vworkers = cfg("crawl.video_workers", 2)
+            vtimeout = int(cfg("crawl.video_timeout", 420))  # 视频子批超时 (默认 7 分钟, browser 挂起+兜底单条可达 ~110s)
+            vok, vfail = _run_recovery_batch(
+                vids, video_strategy, vtimeout, "VIDEO_FETCH", video=True, workers=vworkers)
+            if vok + vfail > 0:
+                step_result("VIDEO_FETCH", vok, vfail, f"{len(vids)} videos [{video_strategy}]")
+    except Exception as e:
+        log(f"  VIDEO_FETCH FAILED: {e}")
+        step_result("VIDEO_FETCH", 0, 1, str(e)[:80])
 
 
 # ── 4. Aggregate ───────────────────────────────────────────
@@ -439,81 +558,100 @@ except Exception as e:
     log(f"  FAILED: {e}")
     step_result("AGGREGATE", 0, 1, str(e)[:80])
 
-# ── 5. Cloud Sync ──────────────────────────────────────────
-log("Step 5/6: Cloud Sync")
-try:
-    conn = sqlite3.connect(db_path)
-    conn.row_factory = sqlite3.Row
-    rows = conn.execute("SELECT * FROM event_registry").fetchall()
-    push_events = []
-    for r in rows:
-        ev = dict(r)
-        for f in ['article_ids','doc_refs','actors','keywords','related_entities','evidence','source_chain','timeline','llm_analysis']:
-            if isinstance(ev.get(f), str):
-                try: ev[f] = json.loads(ev[f])
-                except: pass
-        push_events.append({
-            'event_id': ev.get('event_id'), 'title': ev.get('title',''), 'summary': ev.get('summary'),
-            'event_type': ev.get('event_type'), 'stage': ev.get('stage','active'),
-            'confidence': ev.get('confidence',0), 'coherence': ev.get('coherence',0),
-            'subject': {'name': ev.get('subject_name',''), 'type': ev.get('subject_type','Other')},
-            'action': {'type': ev.get('action_type','OTHER'), 'detail': ev.get('action_detail')},
-            'object': {'name': ev.get('object_name',''), 'type': ev.get('object_type','Other')},
-            'location': {'country': ev.get('location_country')},
-            'source': {'primary_source_id': ev.get('primary_source_id'), 'source_count': ev.get('source_count',0)},
-            'article_count': ev.get('article_count',0), 'article_ids': ev.get('article_ids',[]),
-            'doc_refs': ev.get('doc_refs',[]), 'actors': ev.get('actors',[]),
-            'keywords': ev.get('keywords',[]), 'related_entities': ev.get('related_entities',[]),
-            'evidence': ev.get('evidence',[]), 'source_chain': ev.get('source_chain',[]),
-            'timeline': ev.get('timeline',[]), 'llm_analysis': ev.get('llm_analysis'),
-            'first_seen': ev.get('first_seen'), 'last_updated': ev.get('last_updated'),
-        })
-    conn.close()
-    if not TOKEN:
-        log("  CLOUD_SYNC skipped: NEWS_API_TOKEN not set")
-        step_result("CLOUD_SYNC", 0, 0, "no token configured")
-    else:
-        r = httpx.post(f"{CLOUD_API}/internal/events/batch", json=push_events,
-                       headers={'X-Internal-Token': TOKEN}, timeout=30)
-        if r.status_code >= 400:
-            log(f"  CLOUD_SYNC: HTTP {r.status_code}: {r.text[:200]}")
-            step_result("CLOUD_SYNC", 0, len(push_events), f"HTTP {r.status_code}")
-        else:
-            result = r.json()
-            step_result("CLOUD_SYNC", result.get("ok", 0), result.get("fail", 0), f"{len(push_events)} events")
-except Exception as e:
-    log(f"  FAILED: {e}")
-    step_result("CLOUD_SYNC", 0, 1, str(e)[:80])
-
-# ── 6. Article content push ────────────────────────────────
-log("Step 6/6: Article content to PG")
-try:
-    conn = sqlite3.connect(db_path)
-    show_start = datetime.fromtimestamp(t0).strftime("%Y-%m-%d %H:%M:%S")
-    rows = conn.execute("""
-        SELECT rr.article_url, rr.title, nc.content_md, nc.content_len,
-               ni.score_total, ni.tier, rr.source_name, rr.source_domain
-        FROM news_content nc
-        JOIN news_intelligence ni ON nc.intel_id = ni.id
-        JOIN rss_raw rr ON ni.raw_id = rr.id
-        WHERE nc.content_len > 0
-          AND (nc.fetch_at > ? OR nc.created_at > ?)
-    """, (show_start, show_start)).fetchall()
-    if rows:
+# ── 5+6. Cloud Sync + Content Push (并行) ─────────────────
+log("Step 5+6/6: Cloud Sync + Content Push (并行)")
+def _do_step5():
+    """Cloud Sync - 只读 event_registry + HTTP POST"""
+    try:
+        conn = sqlite3.connect(db_path)
+        conn.row_factory = sqlite3.Row
+        rows = conn.execute("""
+            SELECT * FROM event_registry
+            WHERE last_updated > datetime('now', '-48 hours', 'localtime')
+               OR first_seen > datetime('now', '-48 hours', 'localtime')
+        """).fetchall()
+        push_events = []
+        for r in rows:
+            ev = dict(r)
+            for f in ['article_ids','doc_refs','actors','keywords','related_entities','evidence','source_chain','timeline','llm_analysis']:
+                if isinstance(ev.get(f), str):
+                    try: ev[f] = json.loads(ev[f])
+                    except: pass
+            push_events.append({
+                'event_id': ev.get('event_id'), 'title': ev.get('title',''), 'summary': ev.get('summary'),
+                'event_type': ev.get('event_type'), 'stage': ev.get('stage','active'),
+                'confidence': ev.get('confidence',0), 'coherence': ev.get('coherence',0),
+                'subject': {'name': ev.get('subject_name',''), 'type': ev.get('subject_type','Other')},
+                'action': {'type': ev.get('action_type','OTHER'), 'detail': ev.get('action_detail')},
+                'object': {'name': ev.get('object_name',''), 'type': ev.get('object_type','Other')},
+                'location': {'country': ev.get('location_country')},
+                'source': {'primary_source_id': ev.get('primary_source_id'), 'source_count': ev.get('source_count',0)},
+                'article_count': ev.get('article_count',0), 'article_ids': ev.get('article_ids',[]),
+                'doc_refs': ev.get('doc_refs',[]), 'actors': ev.get('actors',[]),
+                'keywords': ev.get('keywords',[]), 'related_entities': ev.get('related_entities',[]),
+                'evidence': ev.get('evidence',[]), 'source_chain': ev.get('source_chain',[]),
+                'timeline': ev.get('timeline',[]), 'llm_analysis': ev.get('llm_analysis'),
+                'first_seen': ev.get('first_seen'), 'last_updated': ev.get('last_updated'),
+            })
+        conn.close()
         if not TOKEN:
-            log("  CONTENT_PUSH skipped: NEWS_API_TOKEN not set")
-            step_result("CONTENT_PUSH", 0, 0, "no token configured")
-        else:
+            log("  CLOUD_SYNC skipped: NEWS_API_TOKEN not set")
+            step_result("CLOUD_SYNC", 0, 0, "no token configured")
+            return
+        # 网络延迟 ~5s, 每次POST是主要耗时
+        # 事件单个体积~800B, 50个仅~40KB, 远低于nginx 50MB限制
+        CHUNK = cfg("pipeline.cloud_chunk", 50)
+        push_ok = push_fail = 0
+        for i in range(0, len(push_events), CHUNK):
+            chunk = push_events[i:i+CHUNK]
+            try:
+                r = httpx.post(f"{CLOUD_API}/internal/events/batch", json=chunk,
+                               headers={'X-Internal-Token': TOKEN}, timeout=60)
+                if r.status_code >= 400:
+                    log(f"  CLOUD_SYNC chunk {i//CHUNK+1}: HTTP {r.status_code}")
+                    push_fail += len(chunk)
+                else:
+                    result = r.json()
+                    push_ok += result.get("ok", 0)
+                    push_fail += result.get("fail", 0)
+            except Exception as e:
+                log(f"  CLOUD_SYNC chunk {i//CHUNK+1}: {e}")
+                push_fail += len(chunk)
+        step_result("CLOUD_SYNC", push_ok, push_fail, f"{len(push_events)} events in {(len(push_events)+CHUNK-1)//CHUNK} chunks")
+    except Exception as e:
+        log(f"  CLOUD_SYNC FAILED: {e}")
+        step_result("CLOUD_SYNC", 0, 1, str(e)[:80])
+
+def _do_step6():
+    """Content Push - 只读 news_content + HTTP POST"""
+    try:
+        conn = sqlite3.connect(db_path)
+        show_start = datetime.fromtimestamp(t0).strftime("%Y-%m-%d %H:%M:%S")
+        rows = conn.execute("""
+            SELECT rr.article_url, rr.title, nc.content_md, nc.content_len,
+                   ni.score_total, ni.tier, rr.source_name, rr.source_domain
+            FROM news_content nc
+            JOIN news_intelligence ni ON nc.intel_id = ni.id
+            JOIN rss_raw rr ON ni.raw_id = rr.id
+            WHERE nc.content_len > 0
+              AND (nc.fetch_at > ? OR nc.created_at > ?)
+        """, (show_start, show_start)).fetchall()
+        conn.close()
+        if rows:
+            if not TOKEN:
+                log("  CONTENT_PUSH skipped: NEWS_API_TOKEN not set")
+                step_result("CONTENT_PUSH", 0, 0, "no token configured")
+                return
             body = [{'url':r[0],'title':r[1],'content_md':r[2],'score_total':r[4],'tier':r[5],
                      'source_name':r[6],'source_domain':r[7]} for r in rows]
-            # Chunked push: 583 articles in one POST can exceed nginx body limit
-            CHUNK = 50
+            # 网络延迟~5s, 增大chunk减少往返
+            CHUNK = cfg("pipeline.content_chunk", 200)
             push_ok = push_fail = 0
             for i in range(0, len(body), CHUNK):
                 chunk = body[i:i+CHUNK]
                 try:
                     r = httpx.post(f"{CLOUD_API}/internal/news/batch", json=chunk,
-                                    headers={'X-Internal-Token': TOKEN}, timeout=30)
+                                    headers={'X-Internal-Token': TOKEN}, timeout=60)
                     if r.status_code >= 400:
                         log(f"  CONTENT_PUSH chunk {i//CHUNK+1}: HTTP {r.status_code}")
                         push_fail += len(chunk)
@@ -524,11 +662,20 @@ try:
                 except Exception as e:
                     log(f"  CONTENT_PUSH chunk {i//CHUNK+1}: {e}")
                     push_fail += len(chunk)
-            step_result("CONTENT_PUSH", push_ok, push_fail, f"{len(rows)} articles in { (len(body)+CHUNK-1)//CHUNK } chunks")
-    conn.close()
-except Exception as e:
-    log(f"  FAILED: {e}")
-    step_result("CONTENT_PUSH", 0, 1, str(e)[:80])
+            step_result("CONTENT_PUSH", push_ok, push_fail, f"{len(rows)} articles in {(len(body)+CHUNK-1)//CHUNK} chunks")
+    except Exception as e:
+        log(f"  CONTENT_PUSH FAILED: {e}")
+        step_result("CONTENT_PUSH", 0, 1, str(e)[:80])
+
+# 并行执行 Step 5 + Step 6 (都是 DB只读 + HTTP, 无写冲突)
+with ThreadPoolExecutor(max_workers=2) as executor:
+    futures = {executor.submit(_do_step5): "CLOUD_SYNC",
+               executor.submit(_do_step6): "CONTENT_PUSH"}
+    for future in as_completed(futures):
+        try:
+            future.result()
+        except Exception as e:
+            log(f"  {futures[future]} thread failed: {e}")
 
 # ── Summary ─────────────────────────────────────────────────
 elapsed = time.time() - t0

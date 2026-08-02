@@ -3,18 +3,66 @@
 > RSS 只提供标题+摘要。当需要文章全文时，使用 cascade 引擎逐级尝试。
 > 对应 pipeline: `auto-pipeline.py Step 3 (batch.py) → core/fetchers.py`
 
-## 架构
+## 架构（v2 — 重构后）
 
 ```
 rss-scanner.py → rss-archive.db（摘要）
    ↓
 auto-pipeline.py
+  Step 0: Cleanup ← 清理空占位行 (fetch_strategy IS NULL + retry≥3)
   Step 1: Sync+Score ← news_intel.pipeline（评分）
   Step 2: RSS FullText ← 摘要≥200字直接入库（0成本）
-  Step 3: Fetch (batch.py) ← cascade 降级链路 ↓
-    3.5 Recovery ← SearXNG / Tavily 兜底
+  Step 3: Fetch (batch.py) ← cascade 降级链路（独立 try 块）
+  Step 3.5: Recovery ← batch.py --force-strategy（独立 try 块，Step3失败不影响）
   Step 4: Aggregate ← SAO 事件聚类
   Step 5-6: Cloud Sync/Push
+```
+
+### 进程锁（防多实例并发）
+
+`auto-pipeline.py` 内置时间戳式进程锁，避免 cron 重叠：
+
+```python
+# 锁文件: .pipeline.lock（在 SCRIPT_DIR 下）
+def acquire_lock():
+    # O_CREAT | O_EXCL → 原子创建
+    # 锁已存在 → 检查 mtime 距今是否 < BATCH_TIMEOUT
+    #   是 → [SKIP] 退出（已有实例在跑）
+    #   否 → 清理旧锁，重试 acquire
+
+# atexit 注册自动清理
+import atexit
+atexit.register(release_lock)
+```
+
+Windows 兼容性：`os.kill(pid, 0)` 在 Windows 上不支持 signal 0（对存活进程也报 WinError 87），改用 `os.path.getmtime()` + `BATCH_TIMEOUT` 判定。详见 `references/windows-compatibility.md`。
+
+### Step 3 → Step 3.5 独立 try 块
+
+v2 重构将 Step 3 和 Step 3.5 拆为两个独立 `try` 块：
+- Step 3 (batch.py) 异常 → 不影响 Step 3.5 Recovery
+- Step 3.5 现在也是调 `batch.py --force-strategy searxng_alt,tavily`，不再直接发 HTTP
+- 临时文件使用 `tempfile.NamedTemporaryFile`，不再硬编码 `_fetch_tmp.jsonl`
+
+### intel_id 不漏写
+
+Step 3 的 SQL 查询现在直接取出 `ni.id`：
+
+```sql
+SELECT DISTINCT rr.article_url, ni.id FROM news_intelligence ni ...
+--                                    ^^^^^^  直接带出 intel_id
+```
+
+存入 `url_to_intel` 字典，落库时直接引用，不再反查 SELECT + walrus 三元。
+
+### Step 3.5 Recovery
+
+```python
+def _run_recovery_batch(candidates, strategy_order, timeout_s, label):
+    # 1. 写 url\t标题 临时文件
+    # 2. subprocess call batch.py --force-strategy searxng_alt,tavily
+    # 3. 解析 JSONL → 写 DB
+    # candidates: [(article_url, intel_id, title), ...]
 ```
 
 ## Cascade 策略列表（按优先级）
@@ -37,10 +85,10 @@ auto-pipeline.py
 `config/domain_profiles.py` 维护每个网站的反爬画像：
 
 ```python
-# 强反爬/付费墙 → browser 优先
+# 强反爬/付费墙 → archive/jina/tavily 优先（browser 30s timeout不够）
 "bloomberg.com": DomainProfile(
-    strategy_order=["browser", "archive", "google_cache", "search_snippet"],
-    known_failing=["direct", "scrapling"],
+    strategy_order=["archive", "google_cache", "jina", "tavily", "search_snippet"],
+    known_failing=["direct", "scrapling", "browser"],
 )
 "wsj.com": DomainProfile(
     strategy_order=["browser", "archive", "google_cache", "search_snippet"],
@@ -149,13 +197,33 @@ UA: "Chrome/131.0.0.0"  # 从 124 升级
 ## batch.py 参数
 
 ```python
-# auto-pipeline.py Step 3
-"--rate-delay", "0.3",        # RateLimiter 已有域名级锁
-"--max-workers", "1",          # 保守单线程
-"LIMIT 5"                      # SQL 中: 每批次 5 URL
+# auto-pipeline.py Step 3（主抓取）
+"--rate-delay", "0.3",          # RateLimiter 已有域名级锁
+"--max-workers", "1",            # 保守单线程
+"LIMIT 5"                        # SQL 中: 每批次 5 URL
+
+# auto-pipeline.py Step 3.5（恢复抓取）
+"--rate-delay", "0.3",
+"--max-workers", "1",
+"--force-strategy", "searxng_alt,tavily"  # 忽略域名profile，强制恢复策略
 ```
 
-先跑 `LIMIT 5` 验证稳定性，确认后再逐步加到 10-20。
+### 命令行新参数（batch.py）
+
+| 参数 | 用途 | 示例 |
+|------|------|------|
+| `--force-strategy` | 逗号分隔，强制级联顺序，忽略域名profile | `--force-strategy searxng_alt,tavily` |
+| `--title` | 配合 `--url` 单条模式传递标题 | `--url "https://..." --title "Article Title"` |
+| URL文件格式 | `url\ttitle` tab分隔行，纯URL向后兼容 | `https://...\tGaza ceasefire` |
+
+### 调优路径
+
+```
+1. 固定 max-workers=1, rate-delay=0.3（保守启动）
+2. 5 URL 批次稳定 < 120s → 加 LIMIT 到 8
+3. 每改一个参数，测 2 轮
+4. 并发（max-workers=2）留到最后——Bloomberg/FT等硬站会阻塞整批
+```
 
 ## Hermes Cron 管理
 

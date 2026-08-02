@@ -5,18 +5,12 @@
   命中已知域名画像后，直接给出"最优策略顺序"，
   提前跳过"明知会失败"的工具，不做无用调用。
 
-数据来源：Hermes 工具文档《WSJ 场景各工具对比》实测结论：
-  - web_extract 直连：WSJ主页面✅偶尔 / 子卡片❌DataDome
-  - archive.org：WSJ ✅稳定
-  - browser_navigate：WSJ ❌DataDome
-  - scrapling：WSJ ❌401
-  - computer_use：WSJ ✅ (贵，终极兜底)
-
-2026-07-16 实测更新：
-  - bloomberg.com: direct/google_cache/archive 均失败 (403/429/404)，仅 browser 策略 (Playwright) 可稳定获取全文
-  - 因此将 bloomberg.com 的 strategy_order 改为 ["browser", "archive", "google_cache", "search_snippet"]
-  - 同时移除 known_failing 中的 "browser"
-  - wsj.com, ft.com 也同步调整为 browser 优先（若后续发现 google_cache 仍有效，可再调整）
+单一来源原则 (2026-07-31 重构):
+  - 域名策略链 (strategy_order) 和失败名单 (known_failing) 的规范默认值
+    在 `news-platform-v8/config/domain_strategies.json` (与后端 admin_config.py 共享)。
+  - 本文件的 KNOWN_PROFILES 只保留反爬类型/付费墙/直播等元数据。
+  - get_profile 的策略顺序 = 配置中心 (pipeline-config.json, 由 config-agent 同步)
+    → loader 默认 (JSON) → 通用默认, 不再有第二份硬编码策略列表。
 """
 from dataclasses import dataclass, field
 from typing import List, Optional
@@ -33,176 +27,42 @@ class DomainProfile:
     known_failing: List[str] = field(default_factory=list)
 
 
-KNOWN_PROFILES: dict[str, DomainProfile] = {
-
-    # ── 强反爬 / 付费墙（需浏览器策略）──────────────────────────────
-    "wsj.com": DomainProfile(
-        domain="wsj.com",
-        anti_bot="datadome",
-        paywall=True,
-        is_live_blog_domain=True,
-        strategy_order=["browser", "archive", "google_cache", "search_snippet"],
-        known_failing=["scrapling"],
-        notes="DataDome防护。direct/google_cache/archive 部分可达，但 browser 最稳定；scrapling 必败",
-    ),
-    "bloomberg.com": DomainProfile(
-        domain="bloomberg.com",
-        anti_bot="datadome",
-        paywall=True,
-        strategy_order=["archive", "google_cache", "jina", "tavily", "search_snippet"],
-        known_failing=["direct", "scrapling", "browser"],
-        notes="2026-07-28 实测：browser 30s timeout 不够；direct 401；archive/jina/tavily 取代 browser 策略",
-    ),
-
-    # ── BBC（大量待抓取，scrapling/browser 均不可用）───────────────────
-    "bbc.co.uk": DomainProfile(
-        domain="bbc.co.uk",
-        anti_bot="cloudflare",
-        is_live_blog_domain=True,
-        strategy_order=["direct", "jina", "tavily", "search_snippet"],
-        known_failing=["scrapling", "browser"],
-        notes="2026-07-28 实测：direct 有时超时(SSL)，跳过 scrapling(挂起)和 browser(被检测)，jina/tavily 兜底",
-    ),
-
-    # ── DW（无特殊反爬但 scrapling 挂起）──────────────────────
-    "dw.com": DomainProfile(
-        domain="dw.com",
-        anti_bot="none",
-        strategy_order=["direct", "archive", "google_cache", "search_snippet"],
-        known_failing=["scrapling", "browser"],
-        notes="DW 直连友好，跳过 scrapling/browser 避免挂起",
-    ),
-    "ft.com": DomainProfile(
-        domain="ft.com",
-        anti_bot="datadome",
-        paywall=True,
-        strategy_order=["browser", "archive", "google_cache", "search_snippet"],
-        known_failing=["scrapling"],
-        notes="FT付费墙。browser 最可靠，archive 次之。",
-    ),
-
-    # ── 中等反爬（Cloudflare/轻度防护）──────────────────────────────
-    "cnbc.com": DomainProfile(
-        domain="cnbc.com",
-        anti_bot="cloudflare",
-        strategy_order=["direct", "scrapling", "archive", "search_snippet"],
-        notes="Cloudflare防护，Scrapling StealthyFetcher一般可绕过",
-    ),
-    "businessinsider.com": DomainProfile(
-        domain="businessinsider.com",
-        anti_bot="cloudflare",
-        strategy_order=["direct", "scrapling", "archive", "search_snippet"],
-        notes="Cloudflare防护",
-    ),
-
-    "investing.com": DomainProfile(
-    domain="investing.com",
-    anti_bot="cloudflare",
-    strategy_order=["browser", "jina", "tavily", "search_snippet"],
-    known_failing=["scrapling", "direct", "google_cache", "archive"],
-    notes="Cloudflare强防护。browser 约50%成功率；direct/google_cache/archive 已知全部失败(403/429/404)，跳过直接走 jina/tavily",
-    ),
-
-    "investors.com": DomainProfile(
-        domain="investors.com",
-        anti_bot="cloudflare",
-        strategy_order=["browser", "jina", "tavily", "search_snippet"],
-        known_failing=["scrapling", "direct", "google_cache", "archive"],
-        notes="Cloudflare强防护。direct/google_cache/archive 已知全失败。browser(可能成功) → jina/tavily 兜底",
-    ),
-
-    "seekingalpha.com": DomainProfile(
-        domain="seekingalpha.com",
-        anti_bot="cloudflare",
-        strategy_order=["browser", "jina", "tavily", "search_snippet"],
-        known_failing=["scrapling", "direct", "google_cache", "archive"],
-        notes="Cloudflare强防护。旧配置全失败；启用browser(可能成功) → jina/tavily 兜底",
-    ),
-
-    # ── 新增：付费墙/强反爬站点（browser 策略已验证）──────────────────
-    "reuters.com": DomainProfile(
-        domain="reuters.com",
-        anti_bot="datadome",
-        paywall=True,
-        strategy_order=["archive", "google_cache", "jina", "tavily", "search_snippet"],
-        known_failing=["scrapling", "browser"],
-        notes="2026-07-27 实测: direct 401, browser Target crashed, archive 可兜底(老快照), jina/tavily 第三方兜底",
-    ),
-    "marketwatch.com": DomainProfile(
-        domain="marketwatch.com",
-        anti_bot="datadome",
-        strategy_order=["direct", "archive", "google_cache", "jina", "tavily", "search_snippet"],
-        known_failing=["scrapling", "browser"],
-        notes="2026-07-27 实测: direct 401, browser Target crashed, archive 404, google_cache 空页, jina/tavily 第三方兜底",
-    ),
-
-    # ── 无反爬 / 友好域名 ────────────────────────────────────────────
-    "apnews.com": DomainProfile(
-        domain="apnews.com",
-        anti_bot="none",
-        strategy_order=["direct"],
-        notes="AP News 友好直连",
-    ),
-    "newsweek.com": DomainProfile(
-        domain="newsweek.com",
-        anti_bot="none",
-        strategy_order=["direct", "archive", "search_snippet"],
-        notes="Newsweek 无反爬，直连可达。2026-07-01 实测验证: July 4文章 direct✅成功(cost=1)",
-    ),
-    "aljazeera.com": DomainProfile(
-        domain="aljazeera.com",
-        anti_bot="none",
-        strategy_order=["direct"],
-        notes="Al Jazeera 友好直连",
-    ),
-    "theguardian.com": DomainProfile(
-        domain="theguardian.com",
-        anti_bot="none",
-        strategy_order=["direct"],
-        notes="The Guardian 友好直连",
-    ),
-    "bbc.com": DomainProfile(
-        domain="bbc.com",
-        anti_bot="none",
-        is_live_blog_domain=True,
-        strategy_order=["direct"],
-        notes="BBC 友好直连",
-    ),
-    "bbc.co.uk": DomainProfile(
-        domain="bbc.co.uk",
-        anti_bot="none",
-        is_live_blog_domain=True,
-        strategy_order=["direct"],
-        notes="BBC (英国域名)，友好直连",
-    ),
-    "cnn.com": DomainProfile(
-        domain="cnn.com",
-        anti_bot="none",
-        strategy_order=["direct"],
-        notes="CNN 友好直连",
-    ),
-    "arxiv.org": DomainProfile(
-        domain="arxiv.org",
-        anti_bot="none",
-        strategy_order=["direct"],
-        notes="Hermes web_extract 对 arxiv 有原生支持",
-    ),
-
-    # ── 付费墙但轻度反爬 ────────────────────────────────────────────
-    "nytimes.com": DomainProfile(
-        domain="nytimes.com",
-        anti_bot="soft_paywall",
-        paywall=True,
-        strategy_order=["direct", "archive", "search_snippet"],
-        notes="NYT软付费墙，direct偶尔可达",
-    ),
-    "washingtonpost.com": DomainProfile(
-        domain="washingtonpost.com",
-        anti_bot="soft_paywall",
-        paywall=True,
-        strategy_order=["direct", "archive", "search_snippet"],
-        notes="WaPo软付费墙",
-    ),
+# ── 域名元数据 (不含策略链 — 策略在 domain_strategies.json) ──
+KNOWN_PROFILES: dict[str, object] = {
+    "wsj.com": dict(anti_bot="datadome", paywall=True, is_live_blog_domain=True,
+                    notes="DataDome。browser 兜底(2026-07-31 selector修复后实测18.6s可用)；scrapling 必败"),
+    "bloomberg.com": dict(anti_bot="datadome", paywall=True,
+                          notes="2026-07-31 更新：selector 修复后 browser 实测可用，从 failing 移除作兜底"),
+    "reuters.com": dict(anti_bot="datadome", paywall=True,
+                        notes="DataDome。archive/jina/tavily 第三方兜底"),
+    "ft.com": dict(anti_bot="datadome", paywall=True,
+                   notes="FT付费墙。browser 最可靠，archive 次之"),
+    "marketwatch.com": dict(anti_bot="datadome",
+                            notes="DataDome。jina/tavily 第三方兜底"),
+    "cnbc.com": dict(anti_bot="cloudflare",
+                     notes="Cloudflare防护，Scrapling StealthyFetcher一般可绕过"),
+    "investing.com": dict(anti_bot="cloudflare",
+                          notes="Cloudflare强防护。browser 已标 failing，跳过节省 ~60s"),
+    "investors.com": dict(anti_bot="cloudflare",
+                          notes="Cloudflare强防护。browser(可能成功) → jina/tavily 兜底"),
+    "seekingalpha.com": dict(anti_bot="cloudflare",
+                             notes="Cloudflare强防护。browser(可能成功) → jina/tavily 兜底"),
+    "businessinsider.com": dict(anti_bot="cloudflare",
+                                notes="Cloudflare防护"),
+    "bbc.co.uk": dict(anti_bot="cloudflare", is_live_blog_domain=True,
+                      notes="direct 有时超时(SSL)，jina/tavily 兜底"),
+    "dw.com": dict(anti_bot="none",
+                   notes="DW 直连友好，跳过 scrapling/browser 避免挂起"),
+    "apnews.com": dict(anti_bot="none", notes="AP News 友好直连"),
+    "newsweek.com": dict(anti_bot="none", notes="Newsweek 无反爬，直连可达"),
+    "aljazeera.com": dict(anti_bot="none",
+                          notes="Al Jazeera 友好直连。archive/search_snippet 兜底视频页"),
+    "theguardian.com": dict(anti_bot="none", notes="The Guardian 友好直连"),
+    "bbc.com": dict(anti_bot="none", is_live_blog_domain=True, notes="BBC 友好直连"),
+    "cnn.com": dict(anti_bot="none", notes="CNN 友好直连"),
+    "arxiv.org": dict(anti_bot="none", notes="Hermes web_extract 对 arxiv 有原生支持"),
+    "nytimes.com": dict(anti_bot="soft_paywall", paywall=True, notes="NYT软付费墙，direct偶尔可达"),
+    "washingtonpost.com": dict(anti_bot="soft_paywall", paywall=True, notes="WaPo软付费墙"),
 }
 
 DEFAULT_STRATEGY_ORDER = [
@@ -215,11 +75,47 @@ DEFAULT_STRATEGY_ORDER = [
 ]
 
 
+def _load_domain_defaults() -> dict:
+    """读取规范默认表 (loader 已从 domain_strategies.json 加载) + 配置中心覆盖。"""
+    from config.loader import load_config
+    return load_config()
+
+
 def get_profile(url: str) -> DomainProfile:
-    """按 url 字符串匹配域名画像，未命中返回通用默认"""
-    for domain, profile in KNOWN_PROFILES.items():
+    """按 url 匹配域名画像。策略链来源优先级:
+    配置中心 (pipeline-config.json) → loader 默认 (domain_strategies.json) → 通用默认。
+
+    未知域名若在配置中心有 crawl.domain.{d}.strategy 覆盖, 也按其策略走 (支持任意域自定义)。
+    """
+    cfg = _load_domain_defaults()
+    # 按域名长度降序匹配, 避免子串误匹配 (如 bbc.co.uk vs bbc.com)
+    for domain in sorted(KNOWN_PROFILES, key=len, reverse=True):
         if domain in url:
-            return profile
+            meta = KNOWN_PROFILES[domain]
+            strategy = cfg.get(f"crawl.domain.{domain}.strategy")
+            failing = cfg.get(f"crawl.domain.{domain}.failing")
+            return DomainProfile(
+                domain=domain,
+                anti_bot=meta.get("anti_bot", "unknown"),
+                strategy_order=list(strategy) if strategy else list(DEFAULT_STRATEGY_ORDER),
+                paywall=meta.get("paywall", False),
+                is_live_blog_domain=meta.get("is_live_blog_domain", False),
+                notes=meta.get("notes", "") + " | 策略: 配置中心/JSON",
+                known_failing=list(failing) if failing else [],
+            )
+    # 未知域名: 若配置中心有该域名的自定义策略, 按配置走 (旧行为恢复)
+    for key, strategy in cfg.items():
+        if key.startswith("crawl.domain.") and key.endswith(".strategy"):
+            dom = key[len("crawl.domain."):-len(".strategy")]
+            if dom and dom in url:
+                failing = cfg.get(f"crawl.domain.{dom}.failing")
+                return DomainProfile(
+                    domain=dom,
+                    anti_bot="unknown",
+                    strategy_order=list(strategy) if strategy else list(DEFAULT_STRATEGY_ORDER),
+                    notes="未知域名配置中心定义",
+                    known_failing=list(failing) if failing else [],
+                )
     return DomainProfile(
         domain="*",
         anti_bot="unknown",

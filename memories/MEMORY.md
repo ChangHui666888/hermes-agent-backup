@@ -7,3 +7,9 @@ Anthropic provider configured with proxy: Windows system proxy 127.0.0.1:10808 (
 项目模型路由: 开发/分析明确任务优先DeepSeek执行+Anthropic验收; 治理/创造性用Anthropic; 高频确定性用本地gemma或纯脚本不走LLM。Token熔断上限$10/天触顶锁死到次日零点。知识库四分区建在Documents\Obsidian Vault。公众号wx41aa598cc3faa87f是P1发布平台。P3只做模拟盘2%仓位5%止损。
 §
 Wiki pipeline location: C:\Users\ChangHui\wiki with scripts/llm-wiki-pipeline.py connecting to Hermes state.db at C:\Users\ChangHui\AppData\Local\hermes\state.db. SQLite CLI installed via winget at v3.53.3. Pipeline generates two-layer wiki (topics/ + entities/), semantic graph, and git commits.
+§
+Pipeline 架构：非并发（max-workers=1, LIMIT=5, rate-delay=0.3s）。6 步：1)Sync+Score 2)RSS FullText 3)batch.py级联抓取 4)事件聚类 5)云推送事件 6)增量推送文章。CONTENT_PUSH 已改为增量（fetch_at/t0 过滤）。
+§
+Cascade 策略链优先级：direct(1) → archive(1) → google_cache(1) → scrapling(2) → browser(3) → jina(2) → tavily(3) → searxng_alt(2) → search_snippet(1)。cascade_timeout=90s 软截止。已为 bloomberg、reuters、marketwatch、bbc.co.uk 配置域名画像。
+§
+Windows 兼容要点：os.kill(pid,0) 不支持（WinError 87），改用文件 mtime + BATCH_TIMEOUT 做进程锁。httpx 0.28 http2=True 有 SSL 间歇超时，设为 http2=False。SOCKS5 代理稳定，HTTP CONNECT 代理不稳定。Jina/Tavily 需通过 subprocess curl -4 调用绕过 httpx SSL 问题。

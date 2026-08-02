@@ -32,6 +32,7 @@ ENTITY_CANONICAL = {
     "South Korea": "South Korea", "Korea": "South Korea",
     "Germany": "Germany", "France": "France", "Japan": "Japan", "India": "India",
     "Israel": "Israel", "Ukraine": "Ukraine",
+    "Saudi Arabia": "Saudi Arabia", "UAE": "United Arab Emirates",
     "European Union": "European Union", "EU": "European Union",
     "United Nations": "United Nations", "UN": "United Nations",
     "NATO": "NATO",
@@ -47,6 +48,26 @@ ENTITY_CANONICAL = {
     "ECB": "European Central Bank", "BOE": "Bank of England", "BoE": "Bank of England",
     "IMF": "International Monetary Fund", "World Bank": "World Bank",
     "OPEC": "OPEC", "WHO": "World Health Organization", "WTO": "World Trade Organization",
+
+    # ── 人物别名（中英映射，统一为英文规范名） ──
+    "Donald Trump": "Trump", "特朗普": "Trump", "川普": "Trump", "President Trump": "Trump",
+    "Vladimir Putin": "Putin", "普京": "Putin", "President Putin": "Putin",
+    "Elon Musk": "Musk", "马斯克": "Musk",
+    "J.D. Vance": "J.D. Vance", "万斯": "J.D. Vance",
+    "Kevin Warsh": "Kevin Warsh", "凯文·沃什": "Kevin Warsh", "凯文沃什": "Kevin Warsh", "凯文沃舎": "Kevin Warsh", "沃什": "Kevin Warsh", "沃舎": "Kevin Warsh",
+    "Fed Chair": "Federal Reserve", "Powell": "Federal Reserve", "鲍威尔": "Federal Reserve",
+    "Volodymyr Zelensky": "Zelensky", "泽连斯基": "Zelensky", "Zelenskyy": "Zelensky",
+    "Benjamin Netanyahu": "Netanyahu", "内塔尼亚胡": "Netanyahu",
+    "Narendra Modi": "Modi", "莫迪": "Modi",
+    "Jensen Huang": "Jensen Huang", "黄仁勋": "Jensen Huang",
+    "Sam Altman": "Sam Altman", "奥特曼": "Sam Altman",
+    "Tim Cook": "Tim Cook", "库克": "Tim Cook",
+    "Mark Zuckerberg": "Mark Zuckerberg", "扎克伯格": "Mark Zuckerberg",
+    "Jeff Bezos": "Jeff Bezos", "贝索斯": "Jeff Bezos",
+    "Emmanuel Macron": "Macron", "马克龙": "Macron",
+    "Olaf Scholz": "Scholz", "朔尔茨": "Scholz",
+    "Keir Starmer": "Starmer", "斯塔默": "Starmer",
+    "Xi Jinping": "Xi", "习近平": "Xi", "李强": "Li Qiang",
 }
 
 ENTITY_TYPE_WEIGHT = {
@@ -313,10 +334,16 @@ def build_fingerprint(article: dict, global_idf: dict = None, topic_idf_map: dic
 
 def fingerprint_score(fp1: dict, fp2: dict) -> int:
     """
-    V4.3: Location 硬约束 + 按稀有度加权
+    V4.3: Location 硬约束 + 主题硬约束 + 按稀有度加权
+    优化: 主题不同直接拒绝合并（防 Fed+Iran 跨主题错配）
     """
     if fp1.get("country") and fp2.get("country") and fp1["country"] != fp2["country"]:
         return 0
+
+    # 主题硬约束: 主主题必须一致（Finance 不会并入 Military）
+    if fp1.get("primary_topic") and fp2.get("primary_topic"):
+        if fp1["primary_topic"] != fp2["primary_topic"]:
+            return 0
 
     if fp1.get("anchor") and fp2.get("anchor") and fp1["anchor"] == fp2["anchor"]:
         return 100
@@ -364,8 +391,19 @@ def fingerprint_score(fp1: dict, fp2: dict) -> int:
 # Event-Centric Clustering V4.3
 # ═══════════════════════════════════════════════════════════
 
-EVENT_THRESHOLD = 50
-MERGE_THRESHOLD = 75
+# 从配置中心读取阈值（兼容配置中心，缺失回退默认值）
+try:
+    from config.loader import load_config, get_setting as _agg_get
+    _AGG_CFG = load_config()
+except Exception:
+    _AGG_CFG = {}
+
+def _agg_cfg(key, default):
+    return _agg_get(_AGG_CFG, key, default) if _AGG_CFG else default
+
+EVENT_THRESHOLD = _agg_cfg("aggregate.event_threshold", 60)
+MERGE_THRESHOLD = _agg_cfg("aggregate.merge_threshold", 75)
+AGG_WINDOW_HOURS = _agg_cfg("aggregate.window_hours", 24)
 
 
 def _extract_action_detail(text: str, action: str) -> str | None:
@@ -429,6 +467,16 @@ def aggregate_events(articles: list[dict], window_hours: int = 24) -> list[dict]
     # Phase 1: Article → Event
     events = []
     for a, ts, fp in parsed:
+        # 解析实体（统一在循环开头处理）
+        e = a.get("entities", {}) or {}
+        if isinstance(e, str):
+            try: e = json.loads(e)
+            except: e = {}
+        all_ents = set()
+        all_ents.update(_canonicalize(n) for n in e.get("companies", []))
+        all_ents.update(_canonicalize(n) for n in e.get("persons", []))
+        all_ents.update(_canonicalize(n) for n in e.get("countries", []))
+
         best_score, best_event = 0, None
         for ev in events:
             if ev["last_time"] and ts and abs(ts - ev["last_time"]) > timedelta(hours=window_hours):
@@ -443,27 +491,14 @@ def aggregate_events(articles: list[dict], window_hours: int = 24) -> list[dict]
             best_event["last_time"] = max(best_event["last_time"] or ts, ts) if ts else best_event["last_time"]
             if ts and (ts < (best_event.get("start_time") or ts)):
                 best_event["start_time"] = ts
-            e = a.get("entities", {}) or {}
-        if isinstance(e, str):
-            try: e = json.loads(e)
-            except: e = {}
-            best_event["all_entities"].update(_canonicalize(n) for n in e.get("companies", []))
-            best_event["all_entities"].update(_canonicalize(n) for n in e.get("persons", []))
-            best_event["all_entities"].update(_canonicalize(n) for n in e.get("countries", []))
+            # 修复: 无条件更新（原代码误放在 isinstance(e,str) 内）
+            best_event["all_entities"].update(all_ents)
             best_event["max_score"] = max(best_event.get("max_score", 0), a.get("score_total", 0))
             best_event["actions"].add(fp["action"])
             best_event["topics"].add(fp["primary_topic"])
             if len(a.get("title", "")) > len(best_event.get("best_title", "")):
                 best_event["best_title"] = a["title"]
         else:
-            e = a.get("entities", {}) or {}
-        if isinstance(e, str):
-            try: e = json.loads(e)
-            except: e = {}
-            all_ents = set()
-            all_ents.update(_canonicalize(n) for n in e.get("companies", []))
-            all_ents.update(_canonicalize(n) for n in e.get("persons", []))
-            all_ents.update(_canonicalize(n) for n in e.get("countries", []))
             events.append({
                 "fingerprint": fp, "fingerprints": [fp],
                 "article_ids": [a["id"]], "start_time": ts, "last_time": ts,
@@ -573,8 +608,29 @@ def aggregate_events(articles: list[dict], window_hours: int = 24) -> list[dict]
         ts = ev["start_time"] or datetime.utcnow()
         event_id = f"EVT-{ts.strftime('%Y%m%d')}-{idx+1:03d}"
 
-        # ── Fingerprint centroid ──
-        fp_centroid = ev["fingerprint"]
+        # ── Fingerprint centroid (优化: 用簇质心，多数决定而非种子) ──
+        fps = ev.get("fingerprints", [ev["fingerprint"]])
+        def _majority(field):
+            vals = Counter(fp.get(field, "") for fp in fps)
+            if not vals: return ""
+            top_val, top_cnt = vals.most_common(1)[0]
+            # 必须占多数(>50%)，否则回落种子
+            if top_cnt * 2 > len(fps):
+                return top_val
+            return ev["fingerprint"].get(field, "")
+        fp_centroid = {
+            "subject": _majority("subject"),
+            "object": _majority("object"),
+            "action": _majority("action"),
+            "event_type": _majority("event_type"),
+            "primary_topic": _majority("primary_topic"),
+            "secondary_topic": _majority("secondary_topic"),
+            "country": _majority("country"),
+            "participants": ev["fingerprint"].get("participants", frozenset()),
+            "anchor": ev["fingerprint"].get("anchor"),
+            "subject_weight": ev["fingerprint"].get("subject_weight", 0),
+            "object_weight": ev["fingerprint"].get("object_weight", 0),
+        }
 
         # ── Source authority ──
         source_auth_map = _load_source_scores()
@@ -582,16 +638,19 @@ def aggregate_events(articles: list[dict], window_hours: int = 24) -> list[dict]
         source_names = list(set(a.get("source_name", "") for a in members if a.get("source_name")))
         max_auth = max((source_auth_map.get(sn, 5) for sn in source_names), default=5)
 
-        # ── Summary ──
+        # ── Summary (优化: 深度过滤 HTML / Reddit 元数据) ──
         raw_summaries = []
         evidence_quotes = []
         for a in members[:3]:
             s = a.get("summary_cn") or a.get("description", "") or ""
-            if not s.startswith("<table") and not s.startswith("<tr"):
-                if (s.count("<") + s.count(">")) / max(len(s), 1) < 0.3:
-                    raw_summaries.append(s[:100])
+            html_ratio = (s.count("<") + s.count(">")) / max(len(s), 1)
+            if not s.startswith("<table") and not s.startswith("<tr") and html_ratio < 0.3 \
+               and "submitted by" not in s.lower() and not s.startswith("["):
+                raw_summaries.append(s[:100])
             desc = a.get("description", "") or ""
-            if len(desc) > 30 and not desc.startswith("<"):
+            desc_html_ratio = (desc.count("<") + desc.count(">")) / max(len(desc), 1)
+            if len(desc) > 30 and not desc.startswith("<") and desc_html_ratio < 0.2 \
+               and "submitted by" not in desc.lower() and "&amp;" not in desc:
                 evidence_quotes.append({
                     "quote": desc[:150],
                     "source": a.get("source_name", ""),
@@ -608,8 +667,12 @@ def aggregate_events(articles: list[dict], window_hours: int = 24) -> list[dict]
         first_source_id = _source_name_to_id(first_source_name)
 
         source_chain = []
-        for a, t in sorted_by_time[:10]:
+        seen_sources = set()
+        for a, t in sorted_by_time:
             sn = a.get("source_name", "")
+            if sn in seen_sources:
+                continue  # 优化: 同源只保留首次（防重复）
+            seen_sources.add(sn)
             source_chain.append({
                 "source_id": _source_name_to_id(sn),
                 "source_name": sn,
@@ -617,6 +680,8 @@ def aggregate_events(articles: list[dict], window_hours: int = 24) -> list[dict]
                 "role": "break" if sn == first_source_name else "follow",
                 "url": a.get("url", ""),
             })
+            if len(source_chain) >= 10:
+                break
 
         # ── Timeline (new v4.4) ──
         timeline = []

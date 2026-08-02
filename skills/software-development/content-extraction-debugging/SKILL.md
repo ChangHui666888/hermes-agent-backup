@@ -32,11 +32,35 @@ Content extraction pipelines typically use a **cascade (fallback chain)** with c
 ├─ Strategy 3 (cost=2) ─── scrapling/StealthyFetcher → success? → done
 ├─ Strategy 4 (cost=2) ─── Jina Reader API → success? → done
 ├─ Strategy 5 (cost=3) ─── Playwright browser → success? → done
-├─ Strategy 6 (cost=5) ─── computer_use    → success? → done
+├─ Strategy 6 (cost=3) ─── Tavily search API → success? → done
+├─ Strategy 7 (cost=5) ─── computer_use    → success? → done
 └─ Final fallback ───────── search_snippet  → done (low quality)
 ```
 
 Each strategy has a timeout. If it fails (returns None or content < min_content_len), the next strategy runs.
+
+### Architecture Principle: Single URL > Batch > Pipeline
+
+**This is the foundational design principle, not a performance optimization.**
+
+```
+Single URL Engine (extract_single)
+    ↓
+Batch Scheduler (batch_extract)
+    ↓
+Pipeline Orchestrator (auto-pipeline)
+```
+
+Rules:
+1. **Single URL is the only source of truth.** All entry points (RSS, Recovery, API, CLI, batch) call `extract_single()`. Bare HTTP requests outside `extract_single` are forbidden.
+2. **Batch is stateless.** It only schedules URLs and collects results. No retry logic, no strategy decisions, no browser management.
+3. **Pipeline handles orchestration only.** It queries the DB, feeds URLs to Batch, and writes results back. No network calls to external sites — only to your own cloud API.
+4. **One URL cannot block another.** Each URL runs in its own `future.result(timeout=120)`. Cascade timeout (`cascade_timeout=90s`) prevents a single URL from consuming the entire batch budget.
+
+**Violations to watch for:**
+- Batch or Pipeline code making bare HTTP requests (httpx.get/post to external sites)
+- Recovery logic running outside the cascade engine
+- A single URL's cascade consuming more than 90s total
 
 ## Phase 1: Diagnostic Checklist
 
@@ -235,7 +259,59 @@ print("Got", len(text) if text else "None", "chars")
 | ConnectTimeout | Proxy issue or site blocking IP range → test with/without proxy |
 | 404/410 | Page deleted → try archive.org |
 
-### 3.2 fetch_browser (Playwright) — Anti-Bot Bypass
+### 3.2 BrowserPool — Singleton Browser Instance
+
+**Problem:** Each `fetch_browser` call starts `sync_playwright()`, `chromium.launch()`, then `close()`. This adds 3-5s overhead per URL and leaks resources.
+
+**Fix:** Use a process-level singleton `BrowserPool`:
+
+```python
+class BrowserPool:
+    _instance = None
+    @classmethod
+    def get_browser(cls):
+        if cls._instance is None:
+            cls._instance = cls()
+            cls._instance._ensure_browser()
+        else:
+            cls._instance._ensure_browser()  # handles crash recovery
+        return cls._instance._browser
+
+    def _ensure_browser(self):
+        # Check is_connected(), re-launch on crash
+        ...
+```
+
+Key behaviors:
+- Browser launches once, reused for all URLs in the process
+- `_ensure_browser()` checks `is_connected()` before each use — if crashed (e.g. `Target crashed`), re-launches automatically
+- `atexit.register(BrowserPool.close_all)` ensures cleanup on process exit
+- `context.close()` per page (not `browser.close()`) keeps browser alive for next URL
+
+**Placement:** In the fetchers module at module level, just after the `HAS_PLAYWRIGHT` flag. NOT inside `fetch_browser()`.
+
+**Caveat:** On some sites Bloomberg, Reuters) the headless browser still gets detected/killed regardless of pooling — the pool only saves launch overhead, not bypass detection.
+
+### 3.3 Cascade Total Timeout (cascade_timeout)
+
+**Problem:** A single URL can block the entire batch by running all cascade strategies. With 5 strategies at 20-30s each, one URL takes 100-150s. In serial mode, 5 such URLs = 8-12 minutes.
+
+**Fix:** Add a per-cascade soft deadline in `extract_single`:
+
+```python
+deadline = time.monotonic() + cascade_timeout  # default 90s
+for strategy in order:
+    if time.monotonic() >= deadline:
+        cost_trace.append({"ok": False, "error": "cascade_timeout"})
+        break  # return partial content (or failure)
+    result = fn(url)
+```
+
+- **Soft deadline**: doesn't interrupt an in-flight strategy call. Only checked between strategies.
+- **Partial content preservation**: if a strategy already obtained content, that content is returned even though the full cascade timed out.
+- **Per-batch isolation**: combine with `future.result(timeout=120)` in batch.py for full URL-level isolation.
+
+### 3.4 fetch_browser (Playwright) — Anti-Bot Bypass
 
 **Symptom:** `Target crashed` or `Timeout 30000ms exceeded` on otherwise reachable sites.
 
@@ -258,7 +334,58 @@ print("Got", len(text) if text else "None", "chars")
 | MarketWatch | ❌ Target crashed | None (all strategies fail) |
 | WSJ | ❌ Target crashed | archive.org |
 
-### 3.3 BrowserPool Singleton
+### 3.4 Third-Party API Strategies (curl -4 Pattern)
+
+When httpx has SSL/SNI issues with a target API (e.g., Jina Reader `r.jina.ai` resolves to unreachable IPv6), fall back to `subprocess.run(["curl", "-4", ...])`:
+
+```python
+def fetch_jina_reader(url, rate_limiter=None, timeout=10.0):
+    reader_url = f"https://r.jina.ai/{url}"
+    try:
+        import subprocess
+        result = subprocess.run(
+            ["curl", "-4", "-s", "--max-time", str(int(timeout)),
+             reader_url, "-H", "Accept: text/plain"],
+            capture_output=True, text=True, timeout=timeout + 2)
+        if result.returncode != 0:
+            return None
+        text = result.stdout.strip()
+        return text if len(text) >= 100 else None
+    except Exception as e:
+        logger.warning(f"[jina] {type(e).__name__}: {e}")
+        return None
+```
+
+**Why `curl -4` and not just `httpx` with IPv4?** `r.jina.ai` has both AAAA (IPv6) and A (IPv4) records. On networks where IPv6 is unreachable, curl's happy-eyeballs timeout is long. `curl -4` forces IPv4 immediately. httpx lacks a native "prefer IPv4" option — subprocess curl is the cleanest workaround.
+
+**Also works for Tavily:**
+```python
+result = subprocess.run(
+    ["curl", "-4", "-s", "--max-time", str(int(timeout)),
+     "https://api.tavily.com/search",
+     "-H", "Content-Type: application/json",
+     "-d", json_payload],
+    capture_output=True, text=True, timeout=timeout + 2)
+```
+
+### 3.5 Incremental Content Push
+
+**Problem:** Pipeline Step 6 pushes ALL articles with content (`WHERE content_len > 0`) every run. With 780+ articles, this creates 16 chunks and overwhelms the cloud API (502/10054/10061 errors).
+
+**Fix:** Only push articles created/updated since the pipeline started:
+
+```python
+push_cutoff = datetime.fromtimestamp(t0).strftime("%Y-%m-%d %H:%M:%S")
+rows = conn.execute("""
+    SELECT ... FROM news_content nc ...
+    WHERE nc.content_len > 0
+      AND (nc.fetch_at > ? OR nc.created_at > ?)
+""", (push_cutoff, push_cutoff)).fetchall()
+```
+
+`t0` is `time.time()` captured at pipeline start. Each 15-minute cron cycle typically pushes 5-20 articles (1 chunk).
+
+### 3.6 BrowserPool Singleton
 
 **Problem:** Each `fetch_browser()` call does `sync_playwright() → p.chromium.launch() → ... → browser.close()`. This adds 3-5s startup time per URL and leaks resources.
 

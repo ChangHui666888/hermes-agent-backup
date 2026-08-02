@@ -96,6 +96,39 @@ curl -6 -s -o /dev/null -w "%{http_code}" --max-time 5 https://r.jina.ai    # �
 又会产生 SNI 问题（TLS 握手时 SNI 字段为 IP 而非域名，服务器拒绝）。
 `curl -4` 同时解决了 IPv6 和 SNI 两个问题。
 
+## subprocess 调用 `curl`：Python vs PowerShell 的路径差异
+
+### 问题
+在 Python 中 `subprocess.run(["curl", ...])` 和 PowerShell 中直接打 `curl` 的行为不同：
+- **PowerShell**：`curl` 是 `Invoke-WebRequest` 的别名，不是真正的 curl。必须用 `curl.exe`。
+- **Python subprocess**：`subprocess.run(["curl", ...])` 解析 PATH 找到 `C:\Program Files\Git\mingw64\bin\curl.exe`（Git 自带的 curl），是真正的 curl。**不需要加 `.exe`**。
+
+### 验证
+```python
+import subprocess
+r = subprocess.run(["curl", "--version"], capture_output=True, text=True)
+print(r.stdout)  # → curl 8.21.0 (Windows) libcurl/8.21.0 Schannel ...
+```
+
+### 建议
+Python 代码中直接写 `["curl", "-4", ...]` 即可。如果在 PowerShell 中手动测试，用 `curl.exe` 而非 `curl`。
+
+## batch.py 退出码 143 = SIGTERM
+
+### 含义
+```log
+batch.py exited 143
+```
+退出码 143 = 128 + 15 = SIGTERM。表示 `subprocess.run(timeout=...)` 超时后杀死了 batch.py 子进程。
+
+这是正常行为——`BATCH_TIMEOUT` 到期后 subprocess 被强制终止。pipeline 会继续执行 Step 3.5 Recovery（独立 try 块，不受影响）。
+
+### 排查
+如果 `batch.py exited 143` 频繁出现（连续多次都超时），说明：
+1. 当前批次的 URL 太难（含多个反爬站点），单个 cascade 耗时过长
+2. 或者 `BATCH_TIMEOUT` 设得太紧（当前 600s，5 URL 的合理预算 ~500s）
+3. 解决方向：在 `domain_profiles.py` 的 `known_failing` 中移除已确认不可用的策略，缩短单 URL 耗时
+
 ## URL 解析：`\t` 分隔格式
 
 `auto-pipeline.py` Step 3.5 调用 `batch.py --force-strategy` 时，

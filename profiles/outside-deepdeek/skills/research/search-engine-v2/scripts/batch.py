@@ -66,30 +66,33 @@ def extract_url(
     skip_expensive: bool = True,
     force_strategy_order: list[str] | None = None,
     title: str | None = None,
+    video_allow: bool = False,
 ) -> dict:
     """Extract a single URL using the cascade engine.
 
     Delegates to core.fetchers.extract_single() — the single authoritative
     cascade implementation. All per-URL settings (strategy order, failing
-    strategies, min_content_len) are driven by domain_profiles + settings.
+    strategies, min_content_len) are driven by config center + domain_profiles.
 
     force_strategy_order / title exist to support recovery-style callers
     (e.g. auto-pipeline.py's Step 3.5) that want to force a specific
     strategy (searxng_alt, tavily) instead of the domain's default cascade,
     and can supply the article title for a better search query.
+
+    video_allow=True → 视频 URL 走专用链路 (browser+stealth 抓转写)。
+    min_content_len 由 extract_single 从配置中心 crawl.min_content_len 读取。
     """
     from core.fetchers import extract_single as _extract_single
-    profile = get_profile(url)
     return _extract_single(
         url=url,
         rate_limiter=rate_limiter,
         skip_expensive=skip_expensive,
-        min_content_len=settings.min_content_len_for(profile.domain),
         search_func=search_func,
         llm_api_key=llm_api_key,
         llm_prompt=llm_prompt,
         force_strategy_order=force_strategy_order,
         title=title,
+        video_allow=video_allow,
     )
 
 
@@ -103,6 +106,7 @@ def batch_extract(
     verbose: bool = False,
     progress: bool = True,
     force_strategy_order: list[str] | None = None,
+    video_allow: bool = False,
 ) -> dict:
     """Batch extract multiple URLs concurrently. Returns summary stats.
 
@@ -142,6 +146,7 @@ def batch_extract(
                     skip_expensive=True,
                     force_strategy_order=force_strategy_order,
                     title=title,
+                    video_allow=video_allow,
                 ): url
                 for url, title in norm_urls
             }
@@ -149,7 +154,7 @@ def batch_extract(
             for i, future in enumerate(as_completed(future_map), 1):
                 url = future_map[future]
                 try:
-                    result = future.result(timeout=120)
+                    result = future.result(timeout=75)
                 except Exception as e:
                     result = {"ok": False, "url": url, "error": str(e)}
 
@@ -213,7 +218,8 @@ def main():
     parser.add_argument("--llm-extract", action="store_true", help="使用 LLM 做结构化抽取（需 DEEPSEEK_API_KEY）")
     parser.add_argument("--llm-prompt", help="自定义 LLM 抽取 prompt 文件路径")
     parser.add_argument("--force-strategy", help="强制指定级联策略顺序（逗号分隔，如 searxng_alt,tavily），忽略域名 profile 默认顺序；用于恢复抓取场景")
-    parser.add_argument("--max-workers", type=int, default=4, help="并行线程数 (default: 4)")
+    parser.add_argument("--video", action="store_true", help="视频模式: 绕过视频跳过过滤，用视频策略(browser+stealth)抓转写")
+    parser.add_argument("--max-workers", type=int, default=1, help="并行线程数 (default: 1 单线程，调高以多线程加速，建议不超过 8)")
     parser.add_argument("--min-content-len", type=int, default=200, help="最小有效正文长度 (default: 200)")
     parser.add_argument("--rate-delay", type=float, default=1.0, help="同域名请求间隔秒数 (default: 1.0)")
     parser.add_argument("--no-progress", action="store_true", help="不显示进度条（cron 友好）")
@@ -254,6 +260,7 @@ def main():
             args.url, rate_limiter, settings,
             llm_api_key=llm_api_key, llm_prompt=llm_prompt,
             force_strategy_order=force_strategy_order, title=args.title,
+            video_allow=args.video,
         )
         print(json.dumps(result, ensure_ascii=False, indent=2))
         sys.exit(0 if result["ok"] else 1)
@@ -278,6 +285,7 @@ def main():
         verbose=args.verbose,
         progress=not args.no_progress,
         force_strategy_order=force_strategy_order,
+        video_allow=args.video,
     )
 
     # Print summary to stdout (for piping)

@@ -21,10 +21,10 @@ class CascadeSettings:
 
     # ── Global defaults ────────────────────────────────────────────
     min_content_len: int = 200          # Below this → treat as "blocked/empty"
-    direct_timeout: float = 30.0        # HTTP timeout for direct fetches (seconds)
-    archive_timeout: float = 30.0
-    scrapling_timeout: float = 45.0     # TLS fingerprinting takes longer
-    browser_timeout: float = 60.0       # Playwright launch + networkidle
+    direct_timeout: float = 20.0        # HTTP timeout for direct fetches (seconds)
+    archive_timeout: float = 20.0
+    scrapling_timeout: float = 30.0     # TLS fingerprinting takes longer
+    browser_timeout: float = 30.0       # Playwright launch + networkidle
 
     # Rate limiting
     rate_limit_default_delay: float = 1.0   # seconds between requests (same domain)
@@ -36,7 +36,7 @@ class CascadeSettings:
     llm_api_base: str = "https://api.deepseek.com/v1"
 
     # Batch scraping
-    batch_max_workers: int = 4          # ThreadPoolExecutor workers
+    batch_max_workers: int = 1          # ThreadPoolExecutor workers (当前单线程，后续调高)
     batch_retry_attempts: int = 2       # retry failed URLs N times
 
     # ── Per-domain overrides ───────────────────────────────────────

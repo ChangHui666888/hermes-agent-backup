@@ -1,56 +1,62 @@
-# Session 2026-07-28: P0 Implementation + Pipeline Tuning
+# Content Extraction Session 2026-07-28 — P0 Architecture Refactor
 
-## Changes Applied
+## Summary
 
-### P0-1 BrowserPool
-- `core/fetchers.py`: Class `BrowserPool` with singleton + auto-recovery
-- `atexit.register(BrowserPool.close_all)` for cleanup
-- Stats `_launch_count` / `_crash_count` are class-level (not instance)
-- `cls.__new__` avoids `__init__` re-entry
+Three P0 tasks implementing the "Single URL > Batch > Pipeline" architecture principle.
 
-### P0-2 cascade_timeout=90s
-- `extract_single` parameter `cascade_timeout: float = 90.0`
-- Soft deadline: checked between strategy calls, not in-flight
-- Partial content preserved on timeout
-- Log: `[cascade] timeout after 90s, tried 3 strategies, got partial=452c`
+## P0-1: BrowserPool Singleton
 
-### P0-3 Unified Recovery
-- `news_intel/pipeline.py` SearXNG/Tavily → `extract_single(force_strategy_order=...)`
-- Eliminated bare `import httpx` from pipeline.py
-- Same curl -4 fix, SOCKS5 proxy, error handling as auto-pipeline
+**Change:** `core/fetchers.py` — added `BrowserPool` class at module level, modified `fetch_browser` to use `BrowserPool.get_browser()` instead of `sync_playwright()...launch()...close()` per call.
 
-## Windows Process Lock Fix
-- `os.kill(pid, 0)` → `WinError 87` on Windows (unsupported signal 0)
-- Replaced with timestamp-based staleness: `os.path.getmtime(LOCK_FILE)` < `BATCH_TIMEOUT`
+**Impact:**
+- Before: 3-5s browser launch overhead per URL
+- After: browser launched once, context created per-page (costs ~0.1s)
+- Automatic crash recovery: `_ensure_browser()` checks `is_connected()`, re-launches on failure
+- Cleanup: `atexit.register(BrowserPool.close_all)`
 
-## CONTENT_PUSH Incremental
-- Before: `WHERE nc.content_len > 0` (pushed all ~780 articles, 16 chunks)
-- After: `AND (nc.fetch_at > ? OR nc.created_at > ?)` (pushes only new, ~5-20 articles)
+**Code location:** `core/fetchers.py`, after `HAS_PLAYWRIGHT` flag and before `RateLimiter`.
 
-## Step1 timeout
-- `news_intel.pipeline --hours 2` timeout 120→240s (Qwen3 unavailability causes ~121s)
+## P0-2: Cascade Total Timeout (cascade_timeout=90s)
 
-## Batch Parameter Tuning Results
-- 15 URLs serial: ~9min — too slow (2+ hard URLs blocked batch)
-- 10 URLs serial: ~6min — borderline
-- 5 URLs serial: ~90s — safe, keeps BATCH_TIMEOUT=600s unused
-- max-workers=2: didn't help enough (browser strategy still hangs)
-- Browser removed from many domain profiles (known_failing increases
+**Change:** `core/fetchers.py:extract_single` — added `cascade_timeout=90.0` parameter, deadline check at top of strategy loop.
 
-## Domain Profile Updates
-- bloomberg.com: drop browser, jina/tavily fallback
-- bbc.co.uk: new profile, skip scrapling/browser, jina/tavily direct
-- reuters.com: browser→known_failing
-- marketwatch.com: browser→known_failing
+**Behavior:**
+- Soft deadline: checked at strategy boundaries, doesn't interrupt in-flight strategy
+- If content already obtained: returns partial content with `ok: true`
+- If no content: returns `ok: false` with `cascade_timeout` as last cost_trace entry
+- Logs: `[cascade] timeout after 90s on <strategy>, tried 3 strategies, got partial=452c`
 
-## Measured Per-Strategy Timeouts (after tuning)
-- direct: ~5-15s (SSL/handshake)
-- archive: ~5-15s (Wayback Machine response)
-- google_cache: ~5-15s (sometimes returns empty)
-- jina: ~10s (curl -4 subprocess)
-- tavily: ~10s (curl -4 subprocess)
-- scrapling: ~20-60s (StealthyFetcher initialization hangs)
-- browser: ~30s (Playwright launch + page load timeout)
+**Verification:**
+```python
+result = extract_single(url, cascade_timeout=5)  # force timeout after 5s
+assert any("cascade_timeout" in str(t) for t in result["cost_trace"])
+```
 
-## V2 Design Principles Captured
-See SKILL.md §"Core Design Principle: Single URL → Batch → Pipeline" section.
+## P0-3: Unified Recovery via extract_single
+
+**Change:** `news_intel/pipeline.py` — SearXNG + Tavily recovery replaced bare `httpx.get/post` calls with `extract_single(url, force_strategy_order=[...])`.
+
+**Before:** ~50 lines of inline httpx logic with duplicate timeout handling, no SOCKS5, no SSL fixes.
+**After:** ~20 lines calling the same `extract_single` that auto-pipeline.py uses.
+
+**Eliminated from pipeline.py:**
+- `import httpx` (line removed)
+- SRXNG_URL direct calls
+- Tavily direct POST calls
+- Duplicate content extraction (`_extract_main_text`)
+- Separate `TAVILY_KEY` handling
+
+## Testing Results
+
+| Task | Test | Result |
+|------|------|--------|
+| cascade_timeout=5s | Bloomberg URL, 5s hard limit | ✅ triggered, cost_trace shows timeout |
+| cascade_timeout=90s (default) | 5-URL batch | ✅ cascade completes normally |
+| BrowserPool reuse | 2 consecutive calls | ✅ second call ~0.1s (vs 3-5s launch) |
+| pipeline.py httpx removal | grep import | ✅ no httpx import |
+
+## Remaining Observations
+
+1. BrowserPool's `stats` property accesses `BrowserPool().stats` which creates a temporary instance — stats always show 0. Should be a classmethod or class variable.
+2. cascade_timeout is a SOFT deadline — each strategy has its own internal timeout that may push total cascade beyond `cascade_timeout`. On this network, the typical overrun is 5-15s (one strategy's timeout).
+3. pipeline.py SearXNG recovery now uses `cascade_timeout=30` and Tavily uses `cascade_timeout=20` — these are shorter than the default 90s because recovery strategies are cheap and fast-failing.

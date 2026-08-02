@@ -1,0 +1,23 @@
+{
+  "wsj.com": {"strategy": ["archive", "google_cache", "jina", "tavily", "browser", "search_snippet"], "failing": ["scrapling"], "anti_bot": "datadome", "paywall": true, "is_live_blog": true},
+  "bloomberg.com": {"strategy": ["archive", "google_cache", "jina", "tavily", "browser", "search_snippet"], "failing": ["direct", "scrapling"], "anti_bot": "datadome", "paywall": true, "is_live_blog": false},
+  "reuters.com": {"strategy": ["archive", "google_cache", "jina", "tavily", "search_snippet"], "failing": ["scrapling", "browser"], "anti_bot": "datadome", "paywall": true, "is_live_blog": false},
+  "ft.com": {"strategy": ["browser", "archive", "google_cache", "search_snippet"], "failing": ["scrapling"], "anti_bot": "datadome", "paywall": true, "is_live_blog": false},
+  "marketwatch.com": {"strategy": ["direct", "archive", "google_cache", "jina", "tavily", "search_snippet"], "failing": ["scrapling", "browser"], "anti_bot": "datadome", "paywall": false, "is_live_blog": false},
+  "cnbc.com": {"strategy": ["direct", "scrapling", "archive", "search_snippet"], "failing": [], "anti_bot": "cloudflare", "paywall": false, "is_live_blog": false},
+  "investing.com": {"strategy": ["jina", "tavily", "search_snippet"], "failing": ["scrapling", "direct", "google_cache", "archive", "browser"], "anti_bot": "cloudflare", "paywall": false, "is_live_blog": false},
+  "investors.com": {"strategy": ["browser", "jina", "tavily", "search_snippet"], "failing": ["scrapling", "direct", "google_cache", "archive"], "anti_bot": "cloudflare", "paywall": false, "is_live_blog": false},
+  "seekingalpha.com": {"strategy": ["browser", "jina", "tavily", "search_snippet"], "failing": ["scrapling", "direct", "google_cache", "archive"], "anti_bot": "cloudflare", "paywall": false, "is_live_blog": false},
+  "businessinsider.com": {"strategy": ["direct", "scrapling", "archive", "search_snippet"], "failing": [], "anti_bot": "cloudflare", "paywall": false, "is_live_blog": false},
+  "bbc.co.uk": {"strategy": ["direct", "jina", "tavily", "search_snippet"], "failing": ["scrapling", "browser"], "anti_bot": "cloudflare", "paywall": false, "is_live_blog": true},
+  "dw.com": {"strategy": ["direct", "archive", "google_cache", "search_snippet"], "failing": ["scrapling", "browser"], "anti_bot": "none", "paywall": false, "is_live_blog": false},
+  "apnews.com": {"strategy": ["direct"], "failing": [], "anti_bot": "none", "paywall": false, "is_live_blog": false},
+  "newsweek.com": {"strategy": ["direct", "archive", "search_snippet"], "failing": [], "anti_bot": "none", "paywall": false, "is_live_blog": false},
+  "aljazeera.com": {"strategy": ["direct", "archive", "search_snippet"], "failing": [], "anti_bot": "none", "paywall": false, "is_live_blog": false},
+  "theguardian.com": {"strategy": ["direct"], "failing": [], "anti_bot": "none", "paywall": false, "is_live_blog": false},
+  "bbc.com": {"strategy": ["direct"], "failing": [], "anti_bot": "none", "paywall": false, "is_live_blog": true},
+  "cnn.com": {"strategy": ["direct"], "failing": [], "anti_bot": "none", "paywall": false, "is_live_blog": false},
+  "arxiv.org": {"strategy": ["direct"], "failing": [], "anti_bot": "none", "paywall": false, "is_live_blog": false},
+  "nytimes.com": {"strategy": ["direct", "archive", "search_snippet"], "failing": [], "anti_bot": "soft_paywall", "paywall": true, "is_live_blog": false},
+  "washingtonpost.com": {"strategy": ["direct", "archive", "search_snippet"], "failing": [], "anti_bot": "soft_paywall", "paywall": true, "is_live_blog": false}
+}

@@ -1,5 +1,10 @@
 {
   "unlocks": {
+    "autonomous_avalanche": {
+      "evidence": null,
+      "first_tier": "Copper",
+      "unlocked_at": 1785290404
+    },
     "claude_confidant": {
       "evidence": null,
       "first_tier": "Copper",
@@ -15,10 +20,33 @@
       "first_tier": "Copper",
       "unlocked_at": 1782714269
     },
+    "gemini_cartographer": {
+      "evidence": null,
+      "first_tier": "Silver",
+      "unlocked_at": 1785290404
+    },
+    "let_him_cook": {
+      "evidence": {
+        "session_id": "ms37zh1698d6h5",
+        "title": "Hermes\u67b6\u6784\u4e0e\u529f\u80fd\u5206\u6790",
+        "value": 560
+      },
+      "first_tier": "Silver",
+      "unlocked_at": 1785290404
+    },
     "model_sommelier": {
       "evidence": null,
       "first_tier": "Silver",
       "unlocked_at": 1782714269
+    },
+    "one_more_small_change": {
+      "evidence": {
+        "session_id": "ms37zh1698d6h5",
+        "title": "Hermes\u67b6\u6784\u4e0e\u529f\u80fd\u5206\u6790",
+        "value": 219
+      },
+      "first_tier": "Copper",
+      "unlocked_at": 1785290404
     },
     "open_weights_pilgrim": {
       "evidence": null,
@@ -30,15 +58,38 @@
       "first_tier": "Silver",
       "unlocked_at": 1782714269
     },
+    "rebase_acrobat": {
+      "evidence": null,
+      "first_tier": "Copper",
+      "unlocked_at": 1785290404
+    },
     "screenshot_hunter": {
       "evidence": null,
       "first_tier": "Silver",
       "unlocked_at": 1782714269
     },
+    "supposed_to_be_quick": {
+      "evidence": {
+        "session_id": "ms37zh1698d6h5",
+        "title": "Hermes\u67b6\u6784\u4e0e\u529f\u80fd\u5206\u6790",
+        "value": 1300
+      },
+      "first_tier": "Gold",
+      "unlocked_at": 1785290404
+    },
     "test_suite_tamer": {
       "evidence": null,
       "first_tier": "Copper",
       "unlocked_at": 1782714269
+    },
+    "toolchain_maxxer": {
+      "evidence": {
+        "session_id": "mr1x8x5pmxfuzg",
+        "title": "\u5927\u6a21\u578b\u914d\u7f6e\u68c0\u67e5",
+        "value": 18
+      },
+      "first_tier": "Copper",
+      "unlocked_at": 1785290404
     },
     "toolset_cartographer": {
       "evidence": null,

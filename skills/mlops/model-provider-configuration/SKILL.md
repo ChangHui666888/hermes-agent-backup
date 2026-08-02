@@ -121,6 +121,54 @@ hermes_studio_use_provider_add(
 - **Model names differ between direct API and proxy** — A proxy like `0011.ai` may use `claude-sonnet-4-6` while the actual Anthropic API expects a different string. Use the model names advertised by the proxy service.
 - **API key vs AUTH_TOKEN** — Some services (0011.ai) require both `ANTHROPIC_API_KEY` and `ANTHROPIC_AUTH_TOKEN` set to the same value. Hermes only needs the key in the provider config, but CLI tools may need both env vars.
 
+## Hermes Dual-Process Proxy Architecture (Critical)
+
+Hermes has **two independent HTTP client stacks** — they handle proxy env vars differently. This is the most common source of "works in CLI but not Web UI" connectivity issues.
+
+| Process | HTTP Library | Auto-reads `HTTPS_PROXY`? |
+|---------|-------------|---------------------------|
+| **Python CLI** (`hermes` command) | `httpx.Client()` + `openai-python` SDK | ✅ **Yes** — httpx natively reads `HTTP_PROXY`, `HTTPS_PROXY`, `ALL_PROXY` env vars. If the env vars are set in the terminal session, the CLI routes through the proxy. |
+| **Node.js Web UI / Gateway** (`hermes-web-ui`) | `undici.fetch()` / Node.js native `fetch` | ❌ **No** — Node.js's built-in `fetch` and `undici` do NOT automatically check proxy env vars. The gateway makes outbound API calls directly. |
+
+**Consequence**: A user in China who sets `HTTPS_PROXY` in their terminal will find the Python CLI works fine (httpx routes through the proxy), but the Web UI / Studio / MCP tools may fail to reach blocked APIs because the Node.js gateway process ignores those env vars.
+
+**Fix options:**
+1. **Launch Web UI with proxy in the environment**: `HTTPS_PROXY=http://127.0.0.1:10808 hermes web-ui ...` or set it in the process environment before starting the service.
+2. **Use a global HTTP agent** in Node.js: configure `globalDispatcher` for `undici` (requires code change to the Web UI startup).
+3. **Use a third-party proxy/middleman** service that translates the blocked API endpoint to a reachable one (see `references/china-proxy-services.md`).
+
+### Diagnostic Test: Isolate the Layer
+
+When a provider fails, test at two layers to determine where the breakdown is:
+
+```bash
+# Layer 1 — curl (simulates any HTTP client, raw network)
+curl -s --max-time 15 https://api.anthropic.com/v1/messages \
+  --header "x-api-key: YOUR_KEY" --header "anthropic-version: 2023-06-01" \
+  --header "content-type: application/json" \
+  --data '{"model":"claude-sonnet-4-6","max_tokens":10,"messages":[{"role":"user","content":"hi"}]}'
+
+# Layer 2 — Python httpx (simulates Hermes CLI's HTTP path)
+python3 -c "
+import httpx, os
+# Unset proxy to test direct connection
+for k in ['HTTPS_PROXY','HTTP_PROXY','https_proxy','http_proxy']:
+    os.environ.pop(k, None)
+r = httpx.post('https://api.anthropic.com/v1/messages',
+    headers={'x-api-key':'YOUR_KEY','anthropic-version':'2023-06-01','content-type':'application/json'},
+    json={'model':'claude-sonnet-4-6','max_tokens':10,'messages':[{'role':'user','content':'hi'}]},
+    timeout=15)
+print(r.status_code, r.text[:200])
+"
+```
+
+| curl OK | Python httpx OK | Diagnosis |
+|---------|----------------|-----------|
+| ❌ | ❌ | **Network blocking** — ISP/GFW. Add proxy. |
+| ✅ | ❌ | Unlikely (same tcp stack). Check httpx version or proxy collision. |
+| ✅ | ✅ | **Network is fine**. Issue is inside Hermes itself — likely Node.js gateway proxy gap. |
+
 ## Known Proxy/Middleman Services (China)
 
 See `references/china-proxy-services.md` for a curated list of known working proxy endpoints.
+See `references/hermes-proxy-architecture.md` for deep-dive on the CLI vs Gateway proxy behavior.

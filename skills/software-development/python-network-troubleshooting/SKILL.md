@@ -397,6 +397,114 @@ Domestic + international mix?      → Route domestic direct, international via 
 Want dead-feed isolation?          → Add 3-strike quarantine
 ```
 
+## Process Lock for Cron Pipelines (Windows)
+
+When multiple cron instances of the same pipeline can start, a process lock prevents concurrent DB/temp-file corruption.
+
+### Windows Incompatibility: `os.kill(pid, 0)`
+
+On Unix, `os.kill(pid, 0)` checks if a PID is alive without sending a signal. On Windows, it raises `WinError 87` (invalid parameter) even for **alive** processes — making PID-based lock checks unreliable.
+
+### Fix: Timestamp-Based Lock
+
+```python
+LOCK_FILE = os.path.join(SCRIPT_DIR, ".pipeline.lock")
+BATCH_TIMEOUT = 600  # max expected run duration in seconds
+
+def acquire_lock() -> bool:
+    import time
+    try:
+        fd = os.open(LOCK_FILE, os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+        os.write(fd, str(os.getpid()).encode())
+        os.close(fd)
+        return True
+    except FileExistsError:
+        try:
+            mtime = os.path.getmtime(LOCK_FILE)
+            age = time.time() - mtime
+            if age < BATCH_TIMEOUT:
+                print(f"[SKIP] pipeline already running ({age:.0f}s old)")
+                return False
+        except OSError:
+            pass
+        # Stale lock — clean up and retry
+        try:
+            os.remove(LOCK_FILE)
+        except FileNotFoundError:
+            pass
+        return acquire_lock()
+
+def release_lock():
+    try:
+        os.remove(LOCK_FILE)
+    except FileNotFoundError:
+        pass
+
+import atexit
+atexit.register(release_lock)
+```
+
+**Design decisions:**
+- `BATCH_TIMEOUT` as staleness threshold — if the lock file is older than the longest expected run, assume it's stale
+- `atexit.register` ensures cleanup on normal exit; doesn't help on `timeout` kill or process crash, but the timestamp check on next run handles that
+- `os.open` with `O_EXCL` is atomic on both Linux and Windows (unlike `os.path.exists` + `open` race)
+
+## Orchestration vs Fetching Boundary
+
+When a pipeline has multiple fetch strategies, **keep HTTP-calling code in the cascade engine** and **pure orchestration/delegation in the pipeline script:**
+
+| Layer | File | Responsibility | Contains HTTP calls? |
+|-------|------|---------------|---------------------|
+| **Orchestration** | `auto-pipeline.py` | Query DB → write temp file → subprocess(cascade) → parse JSONL → write DB → log | ❌ No (only pushes to own cloud API) |
+| **Entry point** | `batch.py` | CLI arg parsing → ThreadPoolExecutor → collect results → write JSONL | ❌ No (only delegates to cascade) |
+| **Cascade engine** | `core/fetchers.py` | Strategy implementations (direct/archive/browser/jina/tavily/searxng_alt) | ✅ **Only** file that talks to external servers |
+
+**Why this matters:**
+- `auto-pipeline` refactored to remove `_recover_searxng` and `_recover_tavily` functions that used bare `httpx`
+- Recovery now calls `batch.py --force-strategy searxng_alt,tavily` as a subprocess — same path as normal fetch
+- Single point of change for network code (fetchers.py) instead of scattered across files
+- `auto-pipeline` can be tested without network access (just mock the subprocess)
+
+## Systematic Testing Methodology for Cascade Pipelines
+
+See reference file: `references/cascade-testing-methodology.md`
+
+Core principle: **verify boundaries and failure modes, not just happy path.**
+
+| Test Type | What It Validates | Example |
+|-----------|------------------|---------|
+| **Regression** | Existing behavior not broken | 3 easy URLs, default cascade, no force-strategy |
+| **Multi-strategy cascade** | Fallback chain works | `--force-strategy searxng_alt,tavily`, verify second runs when first fails |
+| **Single-strategy** | Strategy name stored correctly | `--force-strategy tavily`, check `strategy_used` in JSONL |
+| **Mixed input format** | Parsing doesn't crash | `url\ttitle` + plain url in same file |
+| **All-fail boundary** | Error fields complete | Non-existent domains, verify `cost_trace` and `error` in output |
+| **Step independence** | One step failure doesn't skip next | Move batch.py, verify Step3 fails but Step3.5 Recovery runs |
+| **Data integrity** | Key fields not null | SQL: `SELECT COUNT(*) FROM content WHERE intel_id IS NULL` = 0 |
+
+## Batch Parameter Tuning
+
+Iterative tuning approach — change one parameter, test 2 rounds, verify, then adjust next:
+
+```text
+Phase 1: max-workers    1 → 2 (concurrency)
+Phase 2: LIMIT           5 → 8 (batch size, only if 5 URLs < 120s)
+Phase 3: rate-delay    0.3 → 0.2 (client speed, only if no 429 errors)
+```
+
+**Exit criteria per phase:**
+- `max-workers=2`: 5 URL batch completes < 180s (with 1-2 hard URLs)
+- `LIMIT=8`: 8 URL batch completes < 300s
+- `rate-delay=0.2`: No HTTP 429 rate-limit errors across 3 runs
+
+**Known values for this environment (2026-07-28):**
+
+| Parameter | Value | Rationale |
+|-----------|-------|-----------|
+| `BATCH_TIMEOUT` | 600s | Accommodates 1-2 hard URLs per 5-URL batch |
+| `--max-workers` | 2 | Easy URLs parallel, not blocked by 1 hard URL |
+| `--rate-delay` | 0.3s | RateLimiter has per-domain lock; different domains don't conflict |
+| `LIMIT` | 5 | 5 URLs × ~30s avg = 150s; 600s timeout gives 4x headroom |
+
 ## Pitfalls
 
 1. **`errors` list vs `feeds_detail`**: In RSS scanners, the `errors` list for the report must be built from the actual per-feed error field, not inferred from status alone. Explicitly include `result.get("error", "")` in detail entries.

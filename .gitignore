@@ -16,6 +16,18 @@ runtime/
 sandboxes/
 state.db*
 
+# Gateway runtime churn (高频变化, 不应进备份提交)
+gateway.lock
+gateway.pid
+gateway_state.json
+processes.json
+*.lock
+*.pid
+.update_check
+models_dev_cache.json
+provider_models_cache.json
+ollama_cloud_models_cache.json
+
 # Node / installs
 node/
 node_modules/
