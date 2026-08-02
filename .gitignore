@@ -53,7 +53,7 @@ bk/
 cron/output/
 cron/.jobs.lock
 cron/.tick.lock
-cron/ticker_*
+**/cron/ticker_*
 
 # Embedded repos
 news-intel-platform/

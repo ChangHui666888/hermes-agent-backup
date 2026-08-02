@@ -52,8 +52,8 @@ MSYS_NO_PATHCONV=1 robocopy "$SOURCE" "$DEST/$BACKUP_NAME" \
     /E /COPY:DAT /DCOPY:DAT /R:3 /W:5 \
     /NFL /NDL /NJH /NJS /NP \
     /XD .git node node_modules cache audio_cache image_cache sessions \
-        sandboxes lsp mcp-installs gateway-service hermes-agent __pycache__ bk 新建文件夹 \
-    /XF *.pyc *.log *.lock *.pid state.db-shm state.db-wal .update_check \
+        sandboxes lsp mcp-installs gateway-service hermes-agent __pycache__ bk 新建文件夹 bin \
+    /XF *.pyc *.log *.lock *.pid *.rar state.db-shm state.db-wal .update_check \
         models_dev_cache.json provider_models_cache.json ollama_cloud_models_cache.json >> "$LOG_FILE" 2>&1
 RC=$?
 if [ "$RC" -ge 8 ]; then
