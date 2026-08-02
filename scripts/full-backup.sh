@@ -1,16 +1,19 @@
 #!/usr/bin/env bash
-# full-backup.sh v3 — 生产版全量备份 (每天18:00, Windows Task Scheduler)
+# full-backup.sh v5 — 生产版全量备份 (每天18:00, Windows Task Scheduler)
 #
-# v3 修复:
-#   1. rsync 在 Git Bash 不存在, 且原命令残留未替换的 "..." 占位符
-#      → 改用 Windows 自带 robocopy (MSYS_NO_PATHCONV=1 避免 /E 被转成 E:/)
-#   2. 源哨兵文件原用 package.json, 但 hermes 根目录没有该文件 → 改用 config.yaml
-#   3. 保留期清理 bname:6:10 起始索引错误(多含一个 "_"), 修正为 :7:10
-#   4. flock 在 Git Bash 不存在 → 用 mkdir 原子锁防并发
-#   5. 去掉 set -e, 每步显式检查并记录错误
+# v3 修复: rsync→robocopy / 哨兵 config.yaml / 保留期索引 / mkdir锁 / 显式错误
+# v4 改进: WAL checkpoint 保证 .db 一致; /XF 通配 *.db-shm/*.db-wal
+# v5 改进:
+#   1. 新增 ~/.hermes 用户目录备份 (rss-archive.db + config-agent 配置等)
+#      → 存到备份目录内 .hermes-home 子目录
+#   2. WAL checkpoint 同时覆盖 ~/.hermes 下的 .db
+#   3. 把一键恢复脚本 restore.bat 常驻备份盘 (F:\hermes-backup\restore.bat)
 set -uo pipefail
 
 SOURCE="C:/Users/ChangHui/AppData/Local/hermes"
+# 注意: 用 $USERPROFILE (Windows 风格 C:\Users\...), 不能用 $HOME (MSYS 风格 /c/Users/...,
+# 会被 robocopy 误解析导致拷贝不完整)
+HOME_DIR="${USERPROFILE}/.hermes"    # C:\Users\ChangHui\.hermes
 DEST="F:/hermes-backup"
 LOG_DIR="$DEST/logs"
 STATE_DIR="$DEST/state"
@@ -32,6 +35,7 @@ die() { log "FATAL: $1"; exit 1; }
 # ── WAL 一致性: robocopy 前把 WAL 检查点合并回主库 ──
 # state.db 为 WAL 模式, 若直接拷主库会缺 WAL 中未检查点的事务。
 # 对备份范围内所有 WAL 模式的 .db 执行 wal_checkpoint(TRUNCATE), 尽量保证拷贝出的 .db 完整。
+# 覆盖: 主目录 SOURCE + 用户目录 HOME_DIR (~/.hermes 的 rss-archive.db)。
 # 系统 python 含 sqlite3 标准库; 备份脚本运行期间 gateway 可能正占用库, 结果为尽力而为(busy>0 属正常)。
 checkpoint_dbs() {
     local PY
@@ -40,9 +44,10 @@ checkpoint_dbs() {
     else
         PY="python"
     fi
-    "$PY" - "$SOURCE" <<'PYEOF'
+    "$PY" - "$SOURCE" "$HOME_DIR" <<'PYEOF'
 import os, sys, sqlite3
 ROOT = sys.argv[1]
+HOME_DIR = sys.argv[2] if len(sys.argv) > 2 else None
 # 与 robocopy /XD 保持一致, 另加 state-snapshots (历史快照不应被改写)
 EXCLUDED = {'.git','node','node_modules','cache','audio_cache','image_cache','sessions',
             'sandboxes','lsp','mcp-installs','gateway-service','hermes-agent','__pycache__',
@@ -53,6 +58,12 @@ for dirpath, dirnames, filenames in os.walk(ROOT):
     for fn in filenames:
         if fn.endswith('.db'):          # -shm/-wal 尾缀不匹配 .db, 天然跳过
             targets.append(os.path.join(dirpath, fn))
+# ~/.hermes 下所有 .db (rss-archive.db 等)
+if HOME_DIR and os.path.isdir(HOME_DIR):
+    for dirpath, dirnames, filenames in os.walk(HOME_DIR):
+        for fn in filenames:
+            if fn.endswith('.db'):
+                targets.append(os.path.join(dirpath, fn))
 for p in sorted(targets):
     rel = os.path.relpath(p, ROOT)
     try:
@@ -102,6 +113,27 @@ if [ "$RC" -ge 8 ]; then
     die "robocopy 失败 (code=$RC)"
 fi
 log "robocopy 完成 (code=$RC)"
+
+# ── ~/.hermes 用户目录备份 (v5) ──
+# 含 rss-archive.db + config-agent 配置, 存到备份目录内 .hermes-home 子目录
+if [ -d "$HOME_DIR" ]; then
+    log "备份 ~/.hermes -> $BACKUP_NAME/.hermes-home ..."
+    MSYS_NO_PATHCONV=1 robocopy "$HOME_DIR" "$DEST/$BACKUP_NAME/.hermes-home" \
+        /E /COPY:DAT /DCOPY:DAT /R:3 /W:5 /NFL /NDL /NJH /NJS /NP >> "$LOG_FILE" 2>&1
+    RC=$?
+    if [ "$RC" -ge 8 ]; then
+        die "~/.hermes robocopy 失败 (code=$RC)"
+    fi
+    log "~/.hermes 备份完成 (code=$RC)"
+else
+    log "~/.hermes 不存在, 跳过"
+fi
+
+# ── 一键恢复脚本常驻备份盘 (v5) ──
+if [ -f "$SOURCE/scripts/restore.bat" ]; then
+    cp -f "$SOURCE/scripts/restore.bat" "$DEST/restore.bat"
+    log "restore.bat 已刷新到 $DEST/restore.bat"
+fi
 
 # ── 完成标记 ──
 echo "$DATE" > "$STATE_DIR/last-success"
