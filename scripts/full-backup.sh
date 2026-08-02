@@ -29,6 +29,44 @@ LOG_FILE="$LOG_DIR/full-backup.log"
 log() { echo "[$(date '+%Y-%m-%d %H:%M:%S')] $1" | tee -a "$LOG_FILE"; }
 die() { log "FATAL: $1"; exit 1; }
 
+# ── WAL 一致性: robocopy 前把 WAL 检查点合并回主库 ──
+# state.db 为 WAL 模式, 若直接拷主库会缺 WAL 中未检查点的事务。
+# 对备份范围内所有 WAL 模式的 .db 执行 wal_checkpoint(TRUNCATE), 尽量保证拷贝出的 .db 完整。
+# 系统 python 含 sqlite3 标准库; 备份脚本运行期间 gateway 可能正占用库, 结果为尽力而为(busy>0 属正常)。
+checkpoint_dbs() {
+    local PY
+    if [ -x "C:/Users/ChangHui/AppData/Local/Programs/Python/Python311/python.exe" ]; then
+        PY="C:/Users/ChangHui/AppData/Local/Programs/Python/Python311/python.exe"
+    else
+        PY="python"
+    fi
+    "$PY" - "$SOURCE" <<'PYEOF'
+import os, sys, sqlite3
+ROOT = sys.argv[1]
+# 与 robocopy /XD 保持一致, 另加 state-snapshots (历史快照不应被改写)
+EXCLUDED = {'.git','node','node_modules','cache','audio_cache','image_cache','sessions',
+            'sandboxes','lsp','mcp-installs','gateway-service','hermes-agent','__pycache__',
+            'bk','新建文件夹','bin','state-snapshots'}
+targets = []
+for dirpath, dirnames, filenames in os.walk(ROOT):
+    dirnames[:] = [d for d in dirnames if d not in EXCLUDED]
+    for fn in filenames:
+        if fn.endswith('.db'):          # -shm/-wal 尾缀不匹配 .db, 天然跳过
+            targets.append(os.path.join(dirpath, fn))
+for p in sorted(targets):
+    rel = os.path.relpath(p, ROOT)
+    try:
+        con = sqlite3.connect(p, timeout=10)
+        mode = con.execute('PRAGMA journal_mode').fetchone()[0]
+        if mode.lower() == 'wal':
+            busy, log, ckpt = con.execute('PRAGMA wal_checkpoint(TRUNCATE)').fetchone()
+            print('  [wal-checkpoint] %s: busy=%d log=%d ckpt=%d' % (rel, busy, log, ckpt))
+        con.close()
+    except Exception as e:
+        print('  [skip] %s: %s' % (rel, e), file=sys.stderr)
+PYEOF
+}
+
 # ── 并发锁 (mkdir 原子性) ──
 if mkdir "$LOCK_FILE" 2>/dev/null; then
     trap 'rmdir "$LOCK_FILE" 2>/dev/null || true' EXIT
@@ -42,6 +80,10 @@ log "=== FULL BACKUP v3 START ==="
 # ── 源完整性检查 (v3: 哨兵改为 config.yaml) ──
 [ -f "$SOURCE/config.yaml" ] || die "源目录哨兵文件缺失, 终止备份"
 
+# ── WAL 检查点 (v4: 保证 .db 备份一致) ──
+log "WAL 检查点合并 (确保 .db 一致)..."
+checkpoint_dbs || die "WAL 检查点执行失败"
+
 # ── robocopy 备份 ──
 # /E 递归含空目录 /COPY:DAT 数据+属性+时间戳 /DCOPY:DAT 目录元数据
 # /XD /XF 按名称匹配排除 (robocopy 支持裸名匹配)
@@ -53,7 +95,7 @@ MSYS_NO_PATHCONV=1 robocopy "$SOURCE" "$DEST/$BACKUP_NAME" \
     /NFL /NDL /NJH /NJS /NP \
     /XD .git node node_modules cache audio_cache image_cache sessions \
         sandboxes lsp mcp-installs gateway-service hermes-agent __pycache__ bk 新建文件夹 bin \
-    /XF *.pyc *.log *.lock *.pid *.rar state.db-shm state.db-wal .update_check \
+    /XF *.pyc *.log *.lock *.pid *.rar *.db-shm *.db-wal .update_check \
         models_dev_cache.json provider_models_cache.json ollama_cloud_models_cache.json >> "$LOG_FILE" 2>&1
 RC=$?
 if [ "$RC" -ge 8 ]; then
