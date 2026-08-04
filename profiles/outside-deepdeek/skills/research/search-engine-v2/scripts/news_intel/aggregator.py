@@ -83,6 +83,15 @@ _known_entity_types = {}
 
 
 def _canonicalize(name: str) -> str:
+    """统一实体规范化 (Phase A): 优先 canonicalizer.resolve_entity (单一来源, entity_weights.json),
+    回退 ENTITY_CANONICAL 兼容旧别名。"""
+    try:
+        from news_intel.canonicalizer import resolve_entity
+        ent = resolve_entity(name)
+        if ent.get("name"):
+            return ent["name"]
+    except Exception:
+        pass
     return ENTITY_CANONICAL.get(name, name)
 
 
@@ -260,17 +269,55 @@ def _entity_weight(name: str, global_idf: dict, topic_idf_map: dict, primary_top
 # ═══════════════════════════════════════════════════════════
 
 def _get_text(a: dict) -> str:
-    desc = a.get("description") or a.get("summary_cn") or a.get("summary") or ""
-    if desc and not desc.startswith("<table") and not desc.startswith("<tr"):
-        if (desc.count("<") + desc.count(">")) / max(len(desc), 1) < 0.3:
-            desc = desc[:500]
-        else:
-            desc = ""
-    return desc + " " + (a.get("title") or "")
+    """统一文本输入 (Phase A 输入一致性): title + description(英文摘要) + content(正文)。
+
+    旧指纹与 Fact 指纹必须消费同一文本, 否则 subject/action 比对失真。
+    - description 优先 (可靠英文 RSS 摘要); summary_cn 在本地库退化(~18字符), 仅兜底
+    - content/content_md = 正文 (深度信号)
+    - 统一 HTML 过滤 + 截断
+    """
+    parts = []
+    for key in ("description", "summary", "summary_cn"):
+        s = (a.get(key) or "").strip()
+        if not s or s.startswith("<table") or s.startswith("<tr"):
+            continue
+        if (s.count("<") + s.count(">")) / max(len(s), 1) < 0.3:
+            parts.append(s[:500])
+    content = (a.get("content") or a.get("content_md") or "").strip()
+    if content and not content.startswith("<table"):
+        if (content.count("<") + content.count(">")) / max(len(content), 1) < 0.3:
+            parts.append(content[:800])
+    parts.append(a.get("title") or "")
+    return " ".join(p for p in parts if p).strip()
+
+
+# GLiNER label → 聚合器 entities dict 分组 (Phase A: 与 Fact 指纹共享 NER 源)
+_GLINER_PERSON = ("person",)
+_GLINER_COMPANY = ("organization", "company",)
+_GLINER_COUNTRY = ("country", "city",)
+
+
+def _gliner_to_entities(ner_list: list) -> dict:
+    """GLiNER 实体列表 → {persons, companies, countries}, 供 build_fingerprint 使用。"""
+    from news_intel.canonicalizer import is_media_source
+    out = {"persons": [], "companies": [], "countries": []}
+    for ent in ner_list or []:
+        label = (ent.get("label") or "").lower()
+        text = (ent.get("text") or "").strip()
+        if not text or is_media_source(text):
+            continue  # 排除新闻来源名 (媒体自我指涉, 非事件主体)
+        if label in _GLINER_PERSON:
+            out["persons"].append(text)
+        elif label in _GLINER_COMPANY:
+            out["companies"].append(text)
+        elif label in _GLINER_COUNTRY:
+            out["countries"].append(text)
+    return out
 
 
 def build_fingerprint(article: dict, global_idf: dict = None, topic_idf_map: dict = None,
-                      hub_entities: set = None) -> dict:
+                      hub_entities: set = None, ner_entities: list = None) -> dict:
+    """legacy 指纹。ner_entities (GLiNER) 提供时优先 → 与 Fact 指纹共享 NER 源 (输入一致性)。"""
     global_idf = global_idf or {}
     topic_idf_map = topic_idf_map or {}
     hub_entities = hub_entities or set()
@@ -282,6 +329,8 @@ def build_fingerprint(article: dict, global_idf: dict = None, topic_idf_map: dic
     if isinstance(entities, str):
         try: entities = json.loads(entities)
         except: entities = {}
+    if ner_entities:
+        entities = _gliner_to_entities(ner_entities)
 
     # P1: Subject — hub entities 降权但不禁用
     candidates = []
@@ -439,9 +488,158 @@ def _parse_date(date_str) -> datetime | None:
     except: return None
 
 
-def aggregate_events(articles: list[dict], window_hours: int = 24) -> list[dict]:
+def _article_ts(a: dict) -> datetime:
+    """文章时间回退链: published_at → fetched_at → 聚合时刻 (naive UTC)。
+
+    防止文章缺日期导致事件 first_seen/last_updated 与 timeline/source_chain 缺失。
+    """
+    return (
+        _parse_date(a.get("published_at"))
+        or _parse_date(a.get("fetched_at"))
+        or datetime.utcnow()
+    )
+
+
+# ── 规则版 llm_analysis (零成本) ─────────────────────────────
+# 事件级 AI 面板基线。DeepSeek 深度分析留待未来对 Top 事件调用。
+_RISK_BY_TYPE = {
+    "Military": "HIGH", "Crisis": "HIGH", "Disaster": "HIGH",
+    "Political": "MEDIUM", "Diplomacy": "MEDIUM", "Economic": "MEDIUM",
+    "Finance": "MEDIUM", "Legal": "MEDIUM", "Technology": "LOW",
+    "Leadership": "MEDIUM",
+}
+_MARKET_BY_TYPE = {
+    "Military": "Energy, shipping and defence-linked assets; safe-haven flows",
+    "Diplomacy": "Cross-border trade and FX sensitivity",
+    "Economic": "Equities, rates and currency markets",
+    "Finance": "Credit spreads, bank and fintech equities",
+    "Legal": "Affected issuers' equities and regulatory news flow",
+    "Technology": "Tech and semiconductor sector sentiment",
+    "Crisis": "Broad risk-off; safe havens",
+}
+
+
+def _rule_llm_analysis(ev: dict, max_score: int) -> dict:
+    """生成事件级 llm_analysis（规则版，零 LLM 成本，保证 AI 面板非空）。"""
+    etype = str(ev.get("event_type") or "").capitalize()
+    stage = ev.get("stage", "developing")
+    confidence = ev.get("confidence", 0.0)
+    risk = _RISK_BY_TYPE.get(etype, "MEDIUM")
+    if max_score >= 85 or stage == "breaking":
+        risk = "HIGH"
+    elif max_score >= 70 and risk == "LOW":
+        risk = "MEDIUM"
+    significance = (
+        "Critical" if max_score >= 85 else
+        "Major" if max_score >= 70 else
+        "Moderate" if max_score >= 60 else "Minor"
+    )
+    market = _MARKET_BY_TYPE.get(etype, "Broader cross-asset sentiment")
+    summary = ev.get("summary") or ev.get("title", "")
+    return {
+        "event_summary": (summary[:500] if summary else ev.get("title", "")),
+        "risk_level": risk,
+        "market_effect": market,
+        "confidence": round(float(confidence), 2),
+        "significance": significance,
+        "forecast": None,
+    }
+
+
+def build_fact_fingerprint(fact: dict) -> dict:
+    """从规范化 fact 构建指纹 (Adapter: 有 fact 用 fact, 无则 legacy build_fingerprint)。
+
+    输入 fact_pipeline 产出的 fact payload:
+      {action_type, action_event_type, location, entities:[{entity_name, role}]}
+    提取 subject/object(按 role=SUBJECT/OBJECT) + action + event_type + country。
+    """
+    ents = fact.get("entities") or []
+    subj = next((e.get("entity_name", "") for e in ents if e.get("role") == "SUBJECT"), "")
+    obj = next((e.get("entity_name", "") for e in ents if e.get("role") == "OBJECT"), "")
+    action = fact.get("action_type") or ""
+    etype = fact.get("action_event_type") or ""
+    country = fact.get("location") or ""
+    return {
+        "subject": subj, "action": action, "object": obj,
+        "event_type": etype, "primary_topic": etype, "secondary_topic": "",
+        "country": country,
+        "participants": frozenset(n for n in (subj, obj) if n),
+        "anchor": subj,
+        "subject_weight": 1.0, "object_weight": 1.0,
+    }
+
+
+def build_fused_fingerprint(article: dict, fact: dict = None, global_idf: dict = None,
+                            topic_idf_map: dict = None, hub_entities: set = None,
+                            ner_entities: list = None) -> dict:
+    """指纹级融合 (Phase A 定案, 方案 A): 每字段取最优源。
+
+    fact 提供落地 subject/object 与规范 action; legacy 兜底 country/topic(12类词表)。
+    原则:
+      - subject/object ← fact (落地优先; 实测基线 subject 空)
+      - action ← fact(非 OTHER) 否则 legacy (修复 fact 快路径 OTHER→过度切分, 主因)
+      - event_type ← fact(action_event_type) 否则 legacy
+      - country ← legacy 优先, fact location 兜底 (恢复国家硬约束)
+      - primary_topic ← legacy 固定 (保持 12 类主题词表, 防主题硬约束失效)
+      - participants ← 并集
+    输入一致性: ner_entities (GLiNER) 传给 legacy 部分 → 与 Fact 同一 NER 源/同一文本。
+    """
+    fp = build_fingerprint(article, global_idf=global_idf, topic_idf_map=topic_idf_map,
+                           hub_entities=hub_entities, ner_entities=ner_entities)
+    if not fact:
+        return fp
+
+    ents = fact.get("entities") or []
+    f_subj = next((e.get("entity_name", "") for e in ents if e.get("role") == "SUBJECT"), "")
+    f_obj = next((e.get("entity_name", "") for e in ents if e.get("role") == "OBJECT"), "")
+    f_action = fact.get("action_type") or ""
+    f_etype = fact.get("action_event_type") or ""
+    f_loc = fact.get("location") or ""
+
+    # subject/object ← fact (落地优先)
+    if f_subj:
+        fp["subject"], fp["subject_weight"] = f_subj, 1.0
+    if f_obj:
+        fp["object"], fp["object_weight"] = f_obj, 1.0
+
+    # action ← fact(非 OTHER) 否则 legacy
+    if f_action and f_action != "OTHER":
+        fp["action"] = f_action
+    if f_etype:
+        fp["event_type"] = f_etype
+
+    # country ← legacy 优先 (恢复硬约束), fact location 兜底
+    if not fp.get("country") and f_loc:
+        fp["country"] = f_loc
+
+    # participants ← 并集
+    f_parts = frozenset(n for n in (f_subj, f_obj) if n)
+    if f_parts:
+        fp["participants"] = (fp.get("participants") or frozenset()) | f_parts
+
+    # anchor 重算 (OTHER 动作不锚定, 与 legacy 语义一致)
+    subj, action, obj, primary = fp["subject"], fp["action"], fp["object"], fp["primary_topic"]
+    fp["anchor"] = f"{subj}|{action}|{obj}|{primary}" if subj and action != "OTHER" else ""
+
+    return fp
+
+
+def aggregate_events(articles: list[dict], window_hours: int = 24, facts_by_article: dict = None,
+                     fp_mode: str = "fused", ner_by_article: dict = None) -> list[dict]:
+    """事件聚合。
+
+    facts_by_article: {article_id: [fact_payload, ...]} — 有 fact 的文章用 fact 参与指纹。
+    ner_by_article: {article_id: [GLiNER 实体, ...]} — 输入一致性: 传给 legacy 指纹,
+      使 legacy 与 Fact 共享同一 NER 源/同一文本 (测试/生产均可注入)。
+    fp_mode:
+      - "fused" (默认/生产): 指纹级融合 — fact 落地 subject/object, legacy 兜底 action/country/topic
+      - "fact": 纯 fact 指纹 (对比测试用)
+      - "legacy": 完全忽略 fact, 旧指纹 (对比测试用)
+    """
     if not articles:
         return []
+    facts_by_article = facts_by_article or {}
+    ner_by_article = ner_by_article or {}
 
     global _known_entity_types
     _known_entity_types = {}
@@ -459,8 +657,19 @@ def aggregate_events(articles: list[dict], window_hours: int = 24) -> list[dict]
     # 按时间升序 + 预计算指纹
     parsed = []
     for a in articles:
-        ts = _parse_date(a.get("published_at"))
-        fp = build_fingerprint(a, global_idf=global_idf, topic_idf_map=topic_idf_map, hub_entities=hub_entities)
+        ts = _article_ts(a)
+        facts = facts_by_article.get(a.get("id"))
+        ner = ner_by_article.get(a.get("id"))
+        if facts and fp_mode != "legacy":
+            if fp_mode == "fact":
+                fp = build_fact_fingerprint(facts[0])  # 纯 fact 指纹 (对比测试)
+            else:  # fused (默认生产)
+                fp = build_fused_fingerprint(a, facts[0], global_idf=global_idf,
+                                             topic_idf_map=topic_idf_map, hub_entities=hub_entities,
+                                             ner_entities=ner)
+        else:
+            fp = build_fingerprint(a, global_idf=global_idf, topic_idf_map=topic_idf_map,
+                                   hub_entities=hub_entities, ner_entities=ner)
         parsed.append((a, ts, fp))
     parsed.sort(key=lambda x: (x[1] is None, x[1] or datetime.min))
 
@@ -638,29 +847,44 @@ def aggregate_events(articles: list[dict], window_hours: int = 24) -> list[dict]
         source_names = list(set(a.get("source_name", "") for a in members if a.get("source_name")))
         max_auth = max((source_auth_map.get(sn, 5) for sn in source_names), default=5)
 
-        # ── Summary (优化: 深度过滤 HTML / Reddit 元数据) ──
+        # ── Summary + Evidence (优化: HTML 过滤 + summary_cn 回退 + URL 去重) ──
         raw_summaries = []
         evidence_quotes = []
-        for a in members[:3]:
+        _ev_urls = set()
+        for a in members[:6]:
             s = a.get("summary_cn") or a.get("description", "") or ""
             html_ratio = (s.count("<") + s.count(">")) / max(len(s), 1)
             if not s.startswith("<table") and not s.startswith("<tr") and html_ratio < 0.3 \
                and "submitted by" not in s.lower() and not s.startswith("["):
                 raw_summaries.append(s[:100])
+            # 证据: description 优先; 空/HTML 时回退 summary_cn
             desc = a.get("description", "") or ""
-            desc_html_ratio = (desc.count("<") + desc.count(">")) / max(len(desc), 1)
-            if len(desc) > 30 and not desc.startswith("<") and desc_html_ratio < 0.2 \
+            desc_html_ratio = (desc.count("<") + desc.count(">")) / max(len(desc), 1) if desc else 1
+            if len(desc) >= 30 and not desc.startswith("<") and desc_html_ratio < 0.2 \
                and "submitted by" not in desc.lower() and "&amp;" not in desc:
-                evidence_quotes.append({
-                    "quote": desc[:150],
-                    "source": a.get("source_name", ""),
-                    "url": a.get("url", ""),
-                })
+                quote = desc[:150]
+            else:
+                s2 = (a.get("summary_cn") or "").strip()
+                s2_html = (s2.count("<") + s2.count(">")) / max(len(s2), 1) if s2 else 1
+                if len(s2) < 20 or s2_html >= 0.2 or "submitted by" in s2.lower():
+                    continue
+                quote = s2[:150]
+            url = a.get("url", "")
+            if url in _ev_urls:
+                continue
+            _ev_urls.add(url)
+            evidence_quotes.append({
+                "quote": quote,
+                "source": a.get("source_name", ""),
+                "url": url,
+            })
+            if len(evidence_quotes) >= 5:
+                break
         summary = " | ".join(s for s in raw_summaries if s)
 
         # ── Source Chain (new v4.4) ──
-        timed_members = [(a, _parse_date(a.get("published_at"))) for a in members]
-        timed_members = [(a, t) for a, t in timed_members if t is not None]
+        # 时间回退链: 无 published_at 的文章也参与排序，避免 source_chain/timeline 为空
+        timed_members = [(a, _article_ts(a)) for a in members]
         sorted_by_time = sorted(timed_members, key=lambda x: x[1])
         first_article = sorted_by_time[0][0] if sorted_by_time else (members[0] if members else None)
         first_source_name = first_article.get("source_name", "") if first_article else ""
@@ -683,18 +907,19 @@ def aggregate_events(articles: list[dict], window_hours: int = 24) -> list[dict]
             if len(source_chain) >= 10:
                 break
 
-        # ── Timeline (new v4.4) ──
+        # ── Timeline (new v4.4): 每篇不同文章一个演化节点 (按 URL 去重) ──
         timeline = []
-        seen_times = set()
-        for a, t in sorted_by_time[:8]:
-            ts_key = t.strftime("%Y-%m-%dT%H:00") if t else None
-            if ts_key and ts_key not in seen_times:
-                seen_times.add(ts_key)
-                timeline.append({
-                    "time": t.isoformat() if t else None,
-                    "update": (a.get("title", "") or "")[:80],
-                    "source": a.get("source_name", ""),
-                })
+        seen_tl_urls = set()
+        for a, t in sorted_by_time[:12]:
+            url = a.get("url", "")
+            if url in seen_tl_urls:
+                continue
+            seen_tl_urls.add(url)
+            timeline.append({
+                "time": t.isoformat() if t else None,
+                "update": (a.get("title", "") or "")[:80],
+                "source": a.get("source_name", ""),
+            })
 
         # ── Entity IDs (new v4.4) ──
         subject_entity_id = _entity_name_to_id(fp_centroid["subject"]) if fp_centroid["subject"] else None
@@ -749,6 +974,9 @@ def aggregate_events(articles: list[dict], window_hours: int = 24) -> list[dict]
             "source_chain": source_chain,
             "timeline": timeline,
         }
+
+        # 规则版 AI 分析 (零成本, 保证 IntelligencePanel 非空)
+        event_obj["llm_analysis"] = _rule_llm_analysis(event_obj, ev["max_score"])
 
         result.append(event_obj)
 

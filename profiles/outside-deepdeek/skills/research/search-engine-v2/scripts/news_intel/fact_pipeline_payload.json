@@ -1,0 +1,1276 @@
+[
+  {
+    "article_id": 11656,
+    "article_url": "https://www.aljazeera.com/news/liveblog/2026/7/29/iran-war-live-us-accuses-irgc-of-surprise-ballistic-missile-attacks?traffic_source=rss",
+    "action_type": "ATTACKS",
+    "action_event_type": "Military",
+    "action_detail": "attack",
+    "event_time": null,
+    "location": "Iraq",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "CTRY_US",
+        "entity_name": "US",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ENT_TEHRAN_ALIGNED_GROUPS",
+        "entity_name": "Tehran-aligned groups",
+        "entity_type": "Other",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 11647,
+    "article_url": "https://www.cnbc.com/2026/07/28/trump-asks-supreme-court-to-toss-83point3m-defamation-award-to-e-jean-carroll.html",
+    "action_type": "SUES",
+    "action_event_type": "Legal",
+    "action_detail": "bid to hear his appeal",
+    "event_time": "recently",
+    "location": "Supreme Court",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "PERS_TRUMP",
+        "entity_name": "Trump",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "PERS_833M_DEFAMATION_AWARD_TO_E_JEAN_CARROLL",
+        "entity_name": "$83.3M defamation award to E. Jean Carroll",
+        "entity_type": "Person",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 11651,
+    "article_url": "https://www.cnbc.com/2026/07/28/russia-sanctions-congress-key-vote-lindsey-graham-ukraine.html",
+    "action_type": "SANCTIONS",
+    "action_event_type": "Economic",
+    "action_detail": "sets up votes to sanction",
+    "event_time": "Wednesday, Jul 29, 2026 Convene at 10:30 a.m.",
+    "location": "Senate Calendar (latest issue)",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "ORG_SENATE",
+        "entity_name": "Senate",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_RUSSIA",
+        "entity_name": "Russia",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 11820,
+    "article_url": "https://www.france24.com/en/middle-east/20260729-live-us-and-saudi-arabia-launch-strikes-on-iraq-target-iran-allies",
+    "action_type": "ATTACKS",
+    "action_event_type": "Military",
+    "action_detail": "",
+    "event_time": null,
+    "location": "",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "PERS_IRAN_BACKED_MILITANTS",
+        "entity_name": "Iran-backed militants",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_US",
+        "entity_name": "US",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 11671,
+    "article_url": "https://www.cnbc.com/2026/07/29/oil-prices-today-brent-wti-iran-us-hormuz.html",
+    "action_type": "SURGES",
+    "action_event_type": "Finance",
+    "action_detail": "resume",
+    "event_time": "after a brief pause",
+    "location": "Middle East",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "CTRY_US",
+        "entity_name": "U.S.",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ENT_STRIKES",
+        "entity_name": "strikes",
+        "entity_type": "Other",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 11707,
+    "article_url": "https://www.ft.com/content/612c3693-6b2e-483d-a0f4-ac649ab7d191?syn-25a6b1a6=1",
+    "action_type": "SANCTIONS",
+    "action_event_type": "Economic",
+    "action_detail": "impose",
+    "event_time": null,
+    "location": "",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "CTRY_US",
+        "entity_name": "US",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_NEW_RUSSIA_SANCTIONS_PACKAGE",
+        "entity_name": "new Russia sanctions package",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 11821,
+    "article_url": "https://www.france24.com/en/sport/20260729-uefa-accuses-fifa-of-selling-football-with-world-cup-investment-plan",
+    "action_type": "ACCUSES",
+    "action_event_type": "Legal",
+    "action_detail": "accuses",
+    "event_time": "currently",
+    "location": "Europe",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "ENT_UEFA",
+        "entity_name": "UEFA",
+        "entity_type": "Other",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_FIFA",
+        "entity_name": "FIFA",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 11832,
+    "article_url": "https://arxiv.org/abs/2607.24896",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "evaluate",
+    "event_time": "2026",
+    "location": "arXiv:2607.24896v1",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "ENT_STATIC_MALWARE_DETECTORS",
+        "entity_name": "Static malware detectors",
+        "entity_type": "Other",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ENT_FEATURE_VECTORS",
+        "entity_name": "feature vectors",
+        "entity_type": "Other",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 11831,
+    "article_url": "https://arxiv.org/abs/2607.25042",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "presented",
+    "event_time": "2026",
+    "location": "arXiv:2607.25042v1",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "ENT_SAFAARI",
+        "entity_name": "SAFAARI",
+        "entity_type": "Other",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ENT_SCHEMA_AWARE_FRAMEWORK",
+        "entity_name": "Schema-Aware Framework",
+        "entity_type": "Other",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 11833,
+    "article_url": "https://arxiv.org/abs/2607.24856",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "disambiguation",
+    "event_time": null,
+    "location": "",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "ENT_DISASTERTD",
+        "entity_name": "DisasterTD",
+        "entity_type": "Other",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ENT_MULTIMODAL_LLMS",
+        "entity_name": "Multimodal LLMs",
+        "entity_type": "Other",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 11835,
+    "article_url": "https://arxiv.org/abs/2607.24785",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "Dual-domain Symmetry-aware Network",
+    "event_time": null,
+    "location": "",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "ENT_DDSNET",
+        "entity_name": "DDSNet",
+        "entity_type": "Other",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ENT_PCSEL_PROPERTY_PREDICTION",
+        "entity_name": "PCSEL Property Prediction",
+        "entity_type": "Other",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 11836,
+    "article_url": "https://arxiv.org/abs/2607.24754",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "provide",
+    "event_time": "Announce Type: cross",
+    "location": "arXiv:2607.24754v1",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "ENT_LARGE_LANGUAGE_MODELS",
+        "entity_name": "Large language models",
+        "entity_type": "Other",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ENT_MENTAL_HEALTH_SUPPORT",
+        "entity_name": "mental health support",
+        "entity_type": "Other",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 11834,
+    "article_url": "https://arxiv.org/abs/2607.24848",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "evaluated",
+    "event_time": "2026",
+    "location": "arXiv:2607.24848v1",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "ENT_PRETRAINED_MOLECULAR_ENCODERS",
+        "entity_name": "Pretrained molecular encoders",
+        "entity_type": "Other",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ENT_DOWNSTREAM_PREDICTION",
+        "entity_name": "downstream prediction",
+        "entity_type": "Other",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 11837,
+    "article_url": "https://arxiv.org/abs/2607.25956",
+    "action_type": "ELECTS",
+    "action_event_type": "Politics",
+    "action_detail": "Formulation Selection",
+    "event_time": null,
+    "location": "arXiv:2607.25956v1",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "CTRY_MULTI_WAREHOUSE_INVENTORY_ALLOCATION",
+        "entity_name": "Multi-Warehouse Inventory Allocation",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ENT_LARGE_LANGUAGE_MODEL",
+        "entity_name": "Large Language Model",
+        "entity_type": "Other",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 11838,
+    "article_url": "https://arxiv.org/abs/2607.25914",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "invoke",
+    "event_time": "new",
+    "location": "arXiv:2607.25914v1",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "ENT_AUTONOMOUS_NETWORK",
+        "entity_name": "Autonomous Network",
+        "entity_type": "Other",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ENT_TOOL",
+        "entity_name": "tool",
+        "entity_type": "Other",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 11839,
+    "article_url": "https://arxiv.org/abs/2607.25904",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "evaluate",
+    "event_time": "new",
+    "location": "arXiv:2607.25904v1",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "ENT_INTERACTIVE_REWARD_AGENT",
+        "entity_name": "Interactive Reward Agent",
+        "entity_type": "Other",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ENT_GUI_TASK",
+        "entity_name": "GUI Task",
+        "entity_type": "Other",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 11840,
+    "article_url": "https://arxiv.org/abs/2607.25659",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "replay",
+    "event_time": "2026",
+    "location": "arXiv:2607.25659v1",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "ENT_RUBRIC",
+        "entity_name": "Rubric",
+        "entity_type": "Other",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ENT_POLICY_OPTIMIZATION",
+        "entity_name": "policy optimization",
+        "entity_type": "Other",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 11842,
+    "article_url": "https://arxiv.org/abs/2607.25485",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "introduce",
+    "event_time": "2607.25485v1",
+    "location": "arXiv",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "ENT_PATIENTAGENTBENCH",
+        "entity_name": "PatientAgentBench",
+        "entity_type": "Other",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ENT_BENCHMARK_FRAMEWORK",
+        "entity_name": "benchmark framework",
+        "entity_type": "Other",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 11841,
+    "article_url": "https://arxiv.org/abs/2607.25620",
+    "action_type": "WARNS",
+    "action_event_type": "Politics",
+    "action_detail": "warn",
+    "event_time": "2026-07",
+    "location": "arXiv:2607.25620v1",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "PERS_QUATTROCIOCCHI",
+        "entity_name": "Quattrociocchi",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "PERS_COLLEAGUES",
+        "entity_name": "colleagues",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ENT_LARGE_LANGUAGE_MODELS",
+        "entity_name": "large language models",
+        "entity_type": "Other",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 11843,
+    "article_url": "https://arxiv.org/abs/2607.25471",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "A Text-Driven",
+    "event_time": "2607.25471v1",
+    "location": "Semantic-Aware Sparse Recommendation",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "ENT_TRWH",
+        "entity_name": "TRWH",
+        "entity_type": "Other",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_RANDOM_WALK_HETEROGENEOUS_GNN",
+        "entity_name": "Random Walk Heterogeneous GNN",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 11845,
+    "article_url": "https://arxiv.org/abs/2607.25425",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "disrupt",
+    "event_time": "2026",
+    "location": "Cybersecurity",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "ENT_LARGE_LANGUAGE_MODELS",
+        "entity_name": "Large Language Models",
+        "entity_type": "Other",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ENT_CAPTURE_THE_FLAG_COMPETITIONS",
+        "entity_name": "Capture the Flag Competitions",
+        "entity_type": "Other",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 11844,
+    "article_url": "https://arxiv.org/abs/2607.25446",
+    "action_type": "ANNOUNCES",
+    "action_event_type": "Politics",
+    "action_detail": "announce",
+    "event_time": null,
+    "location": "new",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "ORG_IMAC",
+        "entity_name": "IMAC",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_ARXIV260725446V1",
+        "entity_name": "arXiv:2607.25446v1",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 11846,
+    "article_url": "https://arxiv.org/abs/2607.25283",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "introduces",
+    "event_time": "2026",
+    "location": "arXiv:2607.25283v1",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "ENT_CONTRACTHIL_HLS",
+        "entity_name": "ContractHIL-HLS",
+        "entity_type": "Other",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ENT_STRUCTURED_CONTRACT",
+        "entity_name": "structured contract",
+        "entity_type": "Other",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 11848,
+    "article_url": "https://arxiv.org/abs/2607.25166",
+    "action_type": "SUES",
+    "action_event_type": "Legal",
+    "action_detail": "be",
+    "event_time": null,
+    "location": "",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "ENT_AI_CHATBOTS",
+        "entity_name": "AI chatbots",
+        "entity_type": "Other",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ENT_SYCOPHANTIC",
+        "entity_name": "sycophantic",
+        "entity_type": "Other",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 11847,
+    "article_url": "https://arxiv.org/abs/2607.25218",
+    "action_type": "MEETS",
+    "action_event_type": "Diplomacy",
+    "action_detail": "negotiation",
+    "event_time": null,
+    "location": "financial industry",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "ENT_DEBT_COLLECTION",
+        "entity_name": "Debt Collection",
+        "entity_type": "Other",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ENT_HUMAN_CENTERED_DIALOGUE_SYSTEMS",
+        "entity_name": "human-centered dialogue systems",
+        "entity_type": "Other",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 11849,
+    "article_url": "https://arxiv.org/abs/2607.25091",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "alignment",
+    "event_time": "2026",
+    "location": "arXiv:2607.25091v1",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "ENT_SMALL_LANGUAGE_MODELS",
+        "entity_name": "Small Language Models",
+        "entity_type": "Other",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ENT_REINFORCEMENT_LEARNING",
+        "entity_name": "reinforcement learning",
+        "entity_type": "Other",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 11851,
+    "article_url": "https://arxiv.org/abs/2607.25045",
+    "action_type": "ELECTS",
+    "action_event_type": "Politics",
+    "action_detail": "Toward",
+    "event_time": "arXiv:2607.25045v1 Announce Type: new",
+    "location": "with Grounded Execution and Selection-Aware Verification",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "ENT_COGEEGAGENT",
+        "entity_name": "CogEEGAgent",
+        "entity_type": "Other",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_AUTONOMOUS_COGNITIVE_EEG_ANALYSIS",
+        "entity_name": "Autonomous Cognitive EEG Analysis",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 11850,
+    "article_url": "https://arxiv.org/abs/2607.25076",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "Lessons from Classical and Cloud OS",
+    "event_time": "2607.25076v1",
+    "location": "Announce Type: new",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "ENT_TOWARDS_AN_AGENT_OPERATING_SYSTEM",
+        "entity_name": "Towards an Agent Operating System",
+        "entity_type": "Other",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_ARXIV260725076V1",
+        "entity_name": "arXiv:2607.25076v1",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 11852,
+    "article_url": "https://arxiv.org/abs/2607.24833",
+    "action_type": "ELECTS",
+    "action_event_type": "Politics",
+    "action_detail": "Online Adaptive Knowledge-Point Selection",
+    "event_time": null,
+    "location": "",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "ENT_ADAKP",
+        "entity_name": "AdaKP",
+        "entity_type": "Other",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ENT_REASONING_ORIENTED_REINFORCEMENT_LEARNING",
+        "entity_name": "Reasoning-Oriented Reinforcement Learning",
+        "entity_type": "Other",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 11854,
+    "article_url": "https://arxiv.org/abs/2607.24763",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "evaluate",
+    "event_time": null,
+    "location": "",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "ENT_MASKED_DIFFUSION_LANGUAGE_MODELS",
+        "entity_name": "Masked Diffusion Language Models",
+        "entity_type": "Other",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "PERS_REMASKING_PROTOCOL",
+        "entity_name": "Remasking Protocol",
+        "entity_type": "Person",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 11853,
+    "article_url": "https://arxiv.org/abs/2607.24771",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "Rollout-Conditioned Online Distillation",
+    "event_time": "Announce Type: new",
+    "location": "arXiv:2607.24771v1",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "ENT_ROCO_ACE",
+        "entity_name": "RoCo-ACE",
+        "entity_type": "Other",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ENT_RETENTION_AWARE_KNOWLEDGE_INJECTION",
+        "entity_name": "Retention-Aware Knowledge Injection",
+        "entity_type": "Other",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 11856,
+    "article_url": "https://arxiv.org/abs/2607.25675",
+    "action_type": "DIES",
+    "action_event_type": "Leadership",
+    "action_detail": "score-decoupled co-evolution",
+    "event_time": "2026",
+    "location": "text space",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "ENT_DECOEVO",
+        "entity_name": "DecoEvo",
+        "entity_type": "Other",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ENT_SOLVER",
+        "entity_name": "solver",
+        "entity_type": "Other",
+        "role": "OBJECT"
+      },
+      {
+        "entity_id": "ENT_RUBRIC_GENERATOR_SKILLS",
+        "entity_name": "rubric-generator skills",
+        "entity_type": "Other",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 11855,
+    "article_url": "https://arxiv.org/abs/2607.24762",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "develops",
+    "event_time": "2026",
+    "location": "arXiv:2607.24762v1",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "ENT_KERNEL_FORGE",
+        "entity_name": "Kernel Forge",
+        "entity_type": "Other",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ENT_AGENT",
+        "entity_name": "agent",
+        "entity_type": "Other",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 11857,
+    "article_url": "https://arxiv.org/abs/2607.24766",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "progressive nucleation and semantic annealing",
+    "event_time": "new",
+    "location": "arXiv:2607.24766v1",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "ENT_CRYSTALIS",
+        "entity_name": "Crystalis",
+        "entity_type": "Other",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ENT_COORDINATED_MULTI_VIEW_VISUALIZATION_GENERATION",
+        "entity_name": "coordinated multi-view visualization generation",
+        "entity_type": "Other",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 11859,
+    "article_url": "https://arxiv.org/abs/2607.25726",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "mediate",
+    "event_time": "unknown",
+    "location": "unknown",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "ENT_RECOMMENDER_SYSTEMS",
+        "entity_name": "Recommender systems",
+        "entity_type": "Other",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ENT_EVERYDAY_CONSUMPTION",
+        "entity_name": "everyday consumption",
+        "entity_type": "Other",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 11858,
+    "article_url": "https://arxiv.org/abs/2607.24807",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "modeling",
+    "event_time": "2607",
+    "location": "arXiv:2607.24807v1",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "ENT_COGNITION",
+        "entity_name": "cognition",
+        "entity_type": "Other",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ENT_PATH_INTEGRAL_MODEL",
+        "entity_name": "path-integral model",
+        "entity_type": "Other",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 11860,
+    "article_url": "https://arxiv.org/abs/2607.25626",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "for",
+    "event_time": null,
+    "location": "Chinese Speech Production and Perception",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "ENT_JOINT_TEXT_AUDIO_ALIGNMENT",
+        "entity_name": "Joint Text-Audio Alignment",
+        "entity_type": "Other",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ENT_EEG_TO_TEXT_DECODING",
+        "entity_name": "EEG-to-Text Decoding",
+        "entity_type": "Other",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 11861,
+    "article_url": "https://arxiv.org/abs/2607.25322",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "enables",
+    "event_time": "Announce Type: new",
+    "location": "arXiv:2607.25322v1",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "ENT_MULTIMODAL_DRUG_DISCOVERY",
+        "entity_name": "Multimodal drug discovery",
+        "entity_type": "Other",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ENT_DRUG_REPRESENTATION_LEARNING",
+        "entity_name": "drug representation learning",
+        "entity_type": "Other",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 11863,
+    "article_url": "https://arxiv.org/abs/2607.25063",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "judge",
+    "event_time": "2026",
+    "location": "arXiv:2607.25063v1",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "PERS_DEVELOPERS",
+        "entity_name": "Developers",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ENT_MODEL_CHECKPOINT",
+        "entity_name": "model checkpoint",
+        "entity_type": "Other",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 11862,
+    "article_url": "https://arxiv.org/abs/2607.25136",
+    "action_type": "ANNOUNCES",
+    "action_event_type": "Politics",
+    "action_detail": "propose",
+    "event_time": "2607.25136v1",
+    "location": "arXiv",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "ENT_DMAPO",
+        "entity_name": "DMAPO",
+        "entity_type": "Other",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ENT_DATA_CENTRIC_MULTI_EVALUATOR_AGREEMENT",
+        "entity_name": "data-centric multi-evaluator agreement",
+        "entity_type": "Other",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 11866,
+    "article_url": "https://arxiv.org/abs/2607.24758",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "recognizing",
+    "event_time": "new",
+    "location": "arXiv:2607.24758v1",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "ENT_LARGE_LANGUAGE_MODELS",
+        "entity_name": "Large language models",
+        "entity_type": "Other",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ENT_EVALUATION_CONTEXTS",
+        "entity_name": "evaluation contexts",
+        "entity_type": "Other",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 11864,
+    "article_url": "https://arxiv.org/abs/2607.24782",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "conditioned",
+    "event_time": "2026",
+    "location": "arXiv:2607.24782v1",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "ENT_LLM",
+        "entity_name": "LLM",
+        "entity_type": "Other",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ENT_HUMAN_IDENTITY",
+        "entity_name": "human identity",
+        "entity_type": "Other",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 11865,
+    "article_url": "https://arxiv.org/abs/2607.24773",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "Cloud Workload Conformal Prediction",
+    "event_time": "2607.24773v1",
+    "location": "Data Center Operations",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "ENT_RIGHT_SIZING_RECOMMENDATIONS",
+        "entity_name": "Right-sizing Recommendations",
+        "entity_type": "Other",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ENT_VIRTUAL_MACHINES",
+        "entity_name": "Virtual Machines",
+        "entity_type": "Other",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 11867,
+    "article_url": "https://arxiv.org/abs/2607.24819",
+    "action_type": "EXPORT_CONTROL",
+    "action_event_type": "Technology",
+    "action_detail": "identify",
+    "event_time": "at each moment in time",
+    "location": "wafer fabrication",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "ENT_SEMICONDUCTOR_WAFER_MANUFACTURING",
+        "entity_name": "semiconductor wafer manufacturing",
+        "entity_type": "Other",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ENT_MOST_SEVERE_BOTTLENECK",
+        "entity_name": "most severe bottleneck",
+        "entity_type": "Other",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 11868,
+    "article_url": "https://arxiv.org/abs/2607.25529",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "importance",
+    "event_time": "new",
+    "location": "arXiv:2607.25529v1",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "ENT_NEURON",
+        "entity_name": "neuron",
+        "entity_type": "Other",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ENT_WEIGHT",
+        "entity_name": "weight",
+        "entity_type": "Other",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 11869,
+    "article_url": "https://arxiv.org/abs/2607.25279",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "tip to undesirable content",
+    "event_time": "2026",
+    "location": "arXiv:2607.25279v1",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "ENT_CHATGPT_LIKE_AIS",
+        "entity_name": "ChatGPT-like AIs",
+        "entity_type": "Other",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ENT_HARMFUL",
+        "entity_name": "harmful",
+        "entity_type": "Other",
+        "role": "OBJECT"
+      },
+      {
+        "entity_id": "ENT_MISLEADING",
+        "entity_name": "misleading",
+        "entity_type": "Other",
+        "role": "OBJECT"
+      },
+      {
+        "entity_id": "ENT_REPETITIVE",
+        "entity_name": "repetitive",
+        "entity_type": "Other",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 11870,
+    "article_url": "https://arxiv.org/abs/2607.24764",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "recommendation",
+    "event_time": null,
+    "location": "E-Commerce",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "ENT_GROCLM",
+        "entity_name": "GrocLM",
+        "entity_type": "Other",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ENT_GROCERY_CATEGORY",
+        "entity_name": "Grocery Category",
+        "entity_type": "Other",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 11936,
+    "article_url": "https://www.ft.com/content/fedcff18-6ccb-4cbe-b4c2-b852d37943ae?syn-25a6b1a6=1",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "poses",
+    "event_time": null,
+    "location": "for the US",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "ENT_CHINAS_COMMERCIAL_SPACE_BOOM",
+        "entity_name": "China's commercial space boom",
+        "entity_type": "Other",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ENT_STRATEGIC_CHALLENGE",
+        "entity_name": "strategic challenge",
+        "entity_type": "Other",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 11951,
+    "article_url": "https://www.ft.com/content/af4fa147-7fdd-42eb-8eb2-3f624a89a4e4?syn-25a6b1a6=1",
+    "action_type": "BANS",
+    "action_event_type": "Legal",
+    "action_detail": "says",
+    "event_time": null,
+    "location": "",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "PERS_MARK_ZUCKERBERG",
+        "entity_name": "Mark Zuckerberg",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_US_SHOULD_NOT_BAN_CHINESE_AI",
+        "entity_name": "US should not ban Chinese AI",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 11962,
+    "article_url": "https://www.ft.com/content/28e9fc2c-cf51-46d6-87ff-efa0e61dcb9b?syn-25a6b1a6=1",
+    "action_type": "WARNS",
+    "action_event_type": "Politics",
+    "action_detail": "warns of ','",
+    "event_time": "earthquake survivors",
+    "location": "Kumamoto prefecture",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "PERS_SANAE_TAKAICHI",
+        "entity_name": "Sanae Takaichi",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ENT_RACE_AGAINST_TIME",
+        "entity_name": "race against time",
+        "entity_type": "Other",
+        "role": "OBJECT"
+      }
+    ]
+  }
+]

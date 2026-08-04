@@ -97,6 +97,31 @@ def step_result(name: str, ok: int, fail: int, detail: str = ""):
     stats["steps"].append({"step": name, "ok": ok, "fail": fail, "detail": detail, "time": datetime.now().isoformat()})
 
 
+def _load_facts_payload() -> dict:
+    """加载 fact_pipeline 子进程产物 → facts_by_article (fused 接线)。
+
+    fact_pipeline.py 每轮把 payload 存到 news_intel/fact_pipeline_payload.json。
+    返回 {article_id: [fact_payload, ...]}。无文件/解析失败 → 空 dict (聚合回退 legacy)。
+    按 article_id 匹配聚合批次, 陈旧 payload 对旧文章自动忽略。
+    """
+    import json as _json
+    path = os.path.join(SCRIPT_DIR, "news_intel", "fact_pipeline_payload.json")
+    if not os.path.exists(path):
+        return {}
+    try:
+        with open(path, encoding="utf-8") as f:
+            payloads = _json.load(f)
+        facts = {}
+        for p in payloads:
+            aid = p.get("article_id")
+            if aid and p.get("action_type"):
+                facts.setdefault(aid, []).append(p)
+        return facts
+    except Exception as e:
+        log(f"  [facts-payload] 解析失败, 回退 legacy: {e}")
+        return {}
+
+
 # ═══════════════════════════════════════════════════════════════
 t0 = time.time()
 log("=" * 60)
@@ -534,8 +559,28 @@ if cfg("crawl.video_enabled", True):
         step_result("VIDEO_FETCH", 0, 1, str(e)[:80])
 
 
-# ── 4. Aggregate ───────────────────────────────────────────
-log("Step 4/6: Aggregate")
+# ── 4. Fact Layer (混合抽取, Schema V1.0) — 先抽 fact, 供 Step 4.5 聚合 fused ──
+# 顺序调整 (2026-08-03): Fact 抽取必须在聚合前, 聚合才能用本批 facts 反哺 fused 指纹。
+log("Step 4/6: Fact Layer (混合抽取器, 多线程)")
+try:
+    import subprocess as _sp
+    _sys_py = r"C:\Users\ChangHui\AppData\Local\Programs\Python\Python311\python.exe"
+    _fact_py = os.path.join(SCRIPT_DIR, "news_intel", "fact_pipeline.py")
+    if not os.path.exists(_sys_py):
+        log("  FACT_45 skipped: system python311 not found (gliner 需它)")
+        step_result("FACT_45", 0, 0, "python311 missing")
+    else:
+        _r = _sp.run([_sys_py, _fact_py, "--limit", "50", "--api", CLOUD_API, "--workers", "3"],
+                     capture_output=True, text=True, timeout=900)
+        _out = _r.stdout.strip()[-400:]
+        log(f"  FACT_45: {_out}")
+        step_result("FACT_45", 1, 0 if _r.returncode == 0 else 1, "fact extraction")
+except Exception as _e:
+    log(f"  FACT_45 FAILED: {_e}")
+    step_result("FACT_45", 0, 1, str(_e)[:80])
+
+# ── 4.5. Aggregate (fused 指纹, facts 反哺) ────────────────
+log("Step 4.5/6: Aggregate (fused)")
 try:
     from news_intel.db import init_db, get_db
     from news_intel.aggregator import aggregate_events
@@ -551,9 +596,10 @@ try:
         WHERE ni.tier IN ('A','B')
         ORDER BY nc.id DESC LIMIT 300
     """).fetchall()
-    events = aggregate_events(rows, window_hours=48)
+    facts_by_article = _load_facts_payload()  # fused 接线: Step 4 facts 反哺聚合
+    events = aggregate_events(rows, window_hours=48, facts_by_article=facts_by_article)
     db.close()
-    step_result("AGGREGATE", len(events), 0, f"{len(rows)} articles")
+    step_result("AGGREGATE", len(events), 0, f"{len(rows)} articles, {len(facts_by_article)} facts")
 except Exception as e:
     log(f"  FAILED: {e}")
     step_result("AGGREGATE", 0, 1, str(e)[:80])

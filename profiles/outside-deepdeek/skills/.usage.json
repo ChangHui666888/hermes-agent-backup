@@ -151,7 +151,7 @@
     "last_viewed_at": "2026-06-28T16:33:38.685919+00:00",
     "patch_count": 8,
     "pinned": false,
-    "state": "active",
+    "state": "stale",
     "use_count": 5,
     "view_count": 5
   },
@@ -619,7 +619,7 @@
     "last_viewed_at": "2026-06-28T18:30:00.604525+00:00",
     "patch_count": 15,
     "pinned": false,
-    "state": "active",
+    "state": "stale",
     "use_count": 12,
     "view_count": 12
   },
@@ -736,7 +736,7 @@
     "last_viewed_at": "2026-06-27T15:43:08.784866+00:00",
     "patch_count": 0,
     "pinned": false,
-    "state": "active",
+    "state": "stale",
     "use_count": 4,
     "view_count": 4
   },

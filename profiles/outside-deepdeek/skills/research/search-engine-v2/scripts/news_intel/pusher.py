@@ -142,7 +142,11 @@ def push_from_registry(stage: str = None, limit: int = 50,
 
 
 def _event_to_push_format(ev: dict) -> dict:
-    """Convert v4.4 Event Object to POST body format."""
+    """Convert v4.4 Event Object to POST body format.
+
+    ⚠️ 发送原始结构 (list/dict)，由后端 internal.py 负责 JSON 编码入库。
+    不能在此 json.dumps —— 否则后端再次 json.dumps 会双重编码 (JSON 字段变成字符串)。
+    """
     return {
         "event_id": ev.get("event_id"),
         "title": ev.get("title", ""),
@@ -152,10 +156,10 @@ def _event_to_push_format(ev: dict) -> dict:
         "confidence": ev.get("confidence", 0.0),
         "coherence": ev.get("coherence", 0.0),
 
-        # SAO
-        "subject": json.dumps(ev.get("subject", {}), ensure_ascii=False),
-        "action": json.dumps(ev.get("action", {}), ensure_ascii=False),
-        "object": json.dumps(ev.get("object", {}), ensure_ascii=False),
+        # SAO (raw dict)
+        "subject": ev.get("subject", {}),
+        "action": ev.get("action", {}),
+        "object": ev.get("object", {}),
 
         # Location
         "location_country": ev.get("location", {}).get("country") if isinstance(ev.get("location"), dict) else None,
@@ -165,25 +169,25 @@ def _event_to_push_format(ev: dict) -> dict:
         "primary_source_id": ev.get("source", {}).get("primary_source_id") if isinstance(ev.get("source"), dict) else None,
         "source_authority": ev.get("source", {}).get("authority") if isinstance(ev.get("source"), dict) else 0,
         "source_count": ev.get("source", {}).get("source_count") if isinstance(ev.get("source"), dict) else 0,
-        "sources": json.dumps(ev.get("source", {}).get("sources", []), ensure_ascii=False) if isinstance(ev.get("source"), dict) else None,
+        "sources": ev.get("source", {}).get("sources", []) if isinstance(ev.get("source"), dict) else [],
 
-        # Articles
+        # Articles (raw list)
         "article_count": ev.get("article_count", 0),
-        "article_ids": json.dumps(ev.get("article_ids", []), ensure_ascii=False),
-        "doc_refs": json.dumps(ev.get("doc_refs", []), ensure_ascii=False),
+        "article_ids": ev.get("article_ids", []),
+        "doc_refs": ev.get("doc_refs", []),
 
-        # Actors & Entities
-        "actors": json.dumps(ev.get("actors", []), ensure_ascii=False),
-        "keywords": json.dumps(ev.get("keywords", []), ensure_ascii=False),
-        "related_entities": json.dumps(ev.get("related_entities", []), ensure_ascii=False),
+        # Actors & Entities (raw list)
+        "actors": ev.get("actors", []),
+        "keywords": ev.get("keywords", []),
+        "related_entities": ev.get("related_entities", []),
 
-        # Evidence & Timeline (new v4.4)
-        "evidence": json.dumps(ev.get("evidence", []), ensure_ascii=False),
-        "source_chain": json.dumps(ev.get("source_chain", []), ensure_ascii=False),
-        "timeline": json.dumps(ev.get("timeline", []), ensure_ascii=False),
+        # Evidence & Timeline (raw list)
+        "evidence": ev.get("evidence", []),
+        "source_chain": ev.get("source_chain", []),
+        "timeline": ev.get("timeline", []),
 
-        # Analysis
-        "llm_analysis": json.dumps(ev.get("llm_analysis", {}), ensure_ascii=False) if ev.get("llm_analysis") else None,
+        # Analysis (raw dict)
+        "llm_analysis": ev.get("llm_analysis"),
 
         # Timing
         "event_time": ev.get("event_time"),
