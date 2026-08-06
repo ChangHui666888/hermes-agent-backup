@@ -83,8 +83,11 @@ _known_entity_types = {}
 
 
 def _canonicalize(name: str) -> str:
-    """统一实体规范化 (Phase A): 优先 canonicalizer.resolve_entity (单一来源, entity_weights.json),
-    回退 ENTITY_CANONICAL 兼容旧别名。"""
+    """统一实体规范化 (Knowledge Base V1 优先, 单一来源)。
+
+    Phase 2: canonicalizer.resolve_entity 走 knowledge_base (中英别名→稳定ID),
+    回退本地 entity_weights。ENTITY_CANONICAL 硬编码已迁入 knowledge_base/entity_alias.yaml。
+    """
     try:
         from news_intel.canonicalizer import resolve_entity
         ent = resolve_entity(name)
@@ -92,7 +95,38 @@ def _canonicalize(name: str) -> str:
             return ent["name"]
     except Exception:
         pass
-    return ENTITY_CANONICAL.get(name, name)
+    return name
+
+
+def _name_in_text(name: str, text: str) -> bool:
+    """实体名是否在文本中 (词边界匹配; CJK 子串)。用于主体显著性: 标题出现的实体优先当 subject。
+
+    v4.4.2 短名(≤3 拉丁字符)大小写敏感 — 防 'Xi'/'US' 命中文内小写子串 (希腊字母 xi / us)。
+    """
+    if not name or not text:
+        return False
+    if any('一' <= ch <= '鿿' for ch in name):
+        return name.lower() in text.lower()
+    pat = rf'\b{re.escape(name)}\b'
+    if len(name) <= 3:
+        return re.search(pat, text) is not None
+    return re.search(pat, text, re.IGNORECASE) is not None
+
+
+def _subject_is_prominent(subj: str, best_title: str, member_titles: list) -> bool:
+    """事件级主体显著性门 (v4.4.2): 主体须出现在事件代表标题 / 或其末词(≥3字符)
+    出现在代表标题 / 或完整主体出现在 ≥2 个成员文章标题, 否则判定主体不显著。
+
+    用途: 防顺带提及的实体顶替主体; 处理 'Donald Trump' 标题只写 'Trump' 的别名差异。
+    """
+    if not subj:
+        return True
+    if _name_in_text(subj, best_title):
+        return True
+    tokens = [t for t in re.split(r"\s+", subj) if len(t) >= 3]
+    if tokens and _name_in_text(tokens[-1], best_title):
+        return True
+    return sum(1 for t in member_titles if _name_in_text(subj, t)) >= 2
 
 
 def _infer_entity_type(name: str, raw_entities: dict) -> str:
@@ -112,27 +146,57 @@ def _infer_entity_type(name: str, raw_entities: dict) -> str:
 # ═══════════════════════════════════════════════════════════
 
 ACTION_MAP = {
-    "SUES":        ("Legal",      [r"\b(sues?|suing|lawsuit|litigation|files?\s+(a\s+)?lawsuit|complaint|indictment|trade\s+secret)\b"]),
-    "ACCUSES":     ("Legal",      [r"\b(alleges?|accuses?|charges?)\b"]),
-    "ATTACKS":     ("Military",   [r"\b(attacks?|strikes?|bomb(?:s|ed|ing)|missile|drone\s+strike|airstrike|assault|offensive)\b"]),
-    "CEASEFIRE":   ("Diplomacy",  [r"\b(ceasefire|truce)\b"]),
-    "PEACE_DEAL":  ("Diplomacy",  [r"\b(peace\s+deal|peace\s+agreement|peace\s+treaty)\b"]),
-    "NEGOTIATES":  ("Diplomacy",  [r"\b(talks?|negotiat(?:es?|ion)|diploma(?:cy|tic))\b"]),
-    "SANCTIONS":   ("Economic",   [r"\b(sanctions?|embargo|blacklist)\b"]),
-    "TARIFFS":     ("Economic",   [r"\b(tariffs?|trade\s+war|import\s+duty)\b"]),
-    "RATE_CUT":    ("Finance",    [r"\b(cuts?\s+(interest\s+)?rates?|lowers?\s+(interest\s+)?rates?|rate\s+cut)\b"]),
-    "RATE_HIKE":   ("Finance",    [r"\b(raises?\s+(interest\s+)?rates?|hikes?\s+(interest\s+)?rates?|rate\s+hike)\b"]),
-    "ANNOUNCES":   ("Politics",   [r"\b(announces?|declares?|reveals?|unveils?|launches?|releases?|presents?)\b"]),
-    "ELECTS":      ("Politics",   [r"\b(elect(?:s|ed|ion)|votes?|voting|ballot|campaign|candidate)\b"]),
-    "DIES":        ("Leadership", [r"\b(dies?|dead|killed?|kills?|killing|deaths?|assassinat(?:ed?|es?|ion)|funerals?|burial|mourns?|mourning)\b"]),
-    "CRASHES":     ("Finance",    [r"\b(crash(?:es|ed)?|plunge(?:s|d)?|plummets?|tumbles?|slides?|sell.?off)\b"]),
-    "SURGES":      ("Finance",    [r"\b(surges?|soars?|jumps?|rall(?:y|ies|ied)|climbs?|rises?|record\s+high)\b"]),
-    "CUTS":        ("Economic",   [r"\b(cuts?|reduces?|slashes?|lowers?|drops?)\b"]),
-    "REPORTS":     ("Finance",    [r"\b(reports?|earnings|revenue|profit|quarterly|fiscal)\b"]),
-    "DEVELOPS":    ("Technology", [r"\b(develops?|builds?|creates?|manufactures?)\b"]),
-    "BANS":        ("Legal",      [r"\b(bans?|prohibits?|outlaws?|restricts?|blocks?)\b"]),
-    "FUNDS":       ("Economic",   [r"\b(funds?|funding|invests?|investment|financ(?:es?|ing)|grant)\b"]),
-    "WARNS":       ("Politics",   [r"\b(warns?|cautions?|alerts?|advises?|threatens?\s+to)\b"]),
+    # Phase 2 (KB V1): 每动作补中文模式, 实现中英统一聚合
+    "SUES":        ("Legal",      [r"\b(sues?|suing|lawsuit|litigation|files?\s+(a\s+)?lawsuit|complaint|trade\s+secret)\b", r"(起诉|诉讼|控告|指控|提起.*诉讼)"]),
+    "ACCUSES":     ("Legal",      [r"\b(alleges?|accuses?|charges?)\b", r"(指控|指责|谴责)"]),
+    "ATTACKS":     ("Military",   [r"\b(attacks?|strikes?|bomb(?:s|ed|ing)|missile|drone\s+strike|airstrike|assault|offensive)\b", r"(攻击|袭击|空袭|轰炸|打击|导弹|无人机.*袭击|军事行动)"]),
+    "CEASEFIRE":   ("Diplomacy",  [r"\b(ceasefire|truce)\b", r"(停火|休战|停战)"]),
+    "PEACE_DEAL":  ("Diplomacy",  [r"\b(peace\s+deal|peace\s+agreement|peace\s+treaty)\b", r"(和平协议|和平条约|和平协定)"]),
+    "NEGOTIATES":  ("Diplomacy",  [r"\b(talks?|negotiat(?:es?|ion)|diploma(?:cy|tic))\b", r"(会谈|谈判|磋商|会晤|对话)"]),
+    "SANCTIONS":   ("Economic",   [r"\b(sanctions?|embargo|blacklist)\b", r"(制裁|禁运|拉黑)"]),
+    "EXPORT_CONTROL": ("Technology", [r"\b(export\s+control|restrict.*export|ban.*(chip|export)|chip\s+restriction|semiconductor)\b", r"(出口管制|限制出口|芯片禁令|半导体.*管制)"]),
+    "TARIFFS":     ("Economic",   [r"\b(tariffs?|trade\s+war|import\s+duty)\b", r"(关税|贸易战|进口关税)"]),
+    "RATE_CUT":    ("Finance",    [r"\b(cuts?\s+(interest\s+)?rates?|lowers?\s+(interest\s+)?rates?|rate\s+cut)\b", r"(降息|下调利率|减息)"]),
+    "RATE_HIKE":   ("Finance",    [r"\b(raises?\s+(interest\s+)?rates?|hikes?\s+(interest\s+)?rates?|rate\s+hike)\b", r"(加息|上调利率)"]),
+    "ANNOUNCES":   ("Politics",   [r"\b(announces?|declares?|reveals?|unveils?|launches?|releases?|presents?)\b", r"(发布|宣布|公布|推出|发表|披露)"]),
+    "ELECTS":      ("Politics",   [r"\b(elect(?:s|ed|ion)|votes?|voting|ballot|campaign|candidate)\b", r"(选举|当选|投票|竞选)"]),
+    "APPOINTS":    ("Politics",   [r"\b(appoints?|names?|nominates?)\b", r"(任命|委任|提名)"]),
+    "MEETS":       ("Diplomacy",  [r"\b(meets?|met\b|summit)\b", r"(会面|见面|会晤)"]),
+    "RESIGNS":     ("Leadership", [r"\b(resigns?|steps?\s+down|quits?|leaves?\s+office)\b", r"(辞职|卸任|离职)"]),
+    "SIGNS":       ("Diplomacy",  [r"\b(signs?|inked)\b", r"(签署|签字)"]),
+    "DIES":        ("Leadership", [r"\b(dies?|dead|killed?|kills?|killing|deaths?|assassinat(?:ed?|es?|ion)|funerals?|burial|mourns?|mourning)\b", r"(去世|死亡|遇难|遇刺|遇害|葬礼|悼念)"]),
+    "CRASHES":     ("Finance",    [r"\b(crash(?:es|ed)?|plunge(?:s|d)?|plummets?|tumbles?|slides?|sell.?off)\b", r"(暴跌|崩盘|大跌|跳水|抛售)"]),
+    "SURGES":      ("Finance",    [r"\b(surges?|soars?|jumps?|rall(?:y|ies|ied)|climbs?|rises?|record\s+high)\b", r"(上涨|飙升|大涨|创新高|反弹)"]),
+    "CUTS":        ("Economic",   [r"\b(cuts?|reduces?|slashes?|lowers?|drops?)\b", r"(削减|下调|降低|减少)"]),
+    "REPORTS":     ("Finance",    [r"\b(reports?|earnings|revenue|profit|quarterly|fiscal)\b", r"(财报|营收|利润|季度|业绩|收入)"]),
+    "DEVELOPS":    ("Technology", [r"\b(develops?|builds?|creates?|manufactures?)\b", r"(研发|开发|研制|推出.*技术)"]),
+    "BANS":        ("Legal",      [r"\b(bans?|prohibits?|outlaws?|restricts?|blocks?)\b", r"(禁止|封禁|禁用|限制)"]),
+    "FUNDS":       ("Economic",   [r"\b(funds?|funding|invests?|investment|financ(?:es?|ing)|grant)\b", r"(投资|注资|融资|拨款|基金)"]),
+    "WARNS":       ("Politics",   [r"\b(warns?|cautions?|alerts?|advises?|threatens?\s+to)\b", r"(警告|警示|提醒|威胁)"]),
+    # G3 扩充 (2026-08-06): 高频动作 (对应 ACTION_CATALOG)
+    "INVADES":     ("Military",   [r"\b(invades?|invaded|invasion)\b", r"(入侵|占领)"]),
+    "SEIZES":      ("Military",   [r"\b(seizes?|seized|seizure|confiscates?)\b", r"(夺取|扣押|没收)"]),
+    "INDICTS":     ("Legal",      [r"\b(indicts?|indictment|indicted)\b", r"(控告|刑事起诉)"]),
+    "ARRESTS":     ("Legal",      [r"\b(arrests?|arrested|detains?|detained)\b", r"(逮捕|拘留|拘捕)"]),
+    "BANKRUPTS":   ("Finance",    [r"\b(bankrupt(?:cy|cies|t)?|insolven(?:t|cy)?)\b", r"(破产|倒闭)"]),
+    "DROPS":       ("Finance",    [r"\b(drops?|dropped|declines?|declined|falls?)\b", r"(下跌|下滑|走低)"]),
+    "IPO":         ("Finance",    [r"\b(ipo|initial public offering|listings?)\b", r"(上市|首次公开募股)"]),
+    "MERGES":      ("Finance",    [r"\b(merges?|merged|merger)\b", r"(合并|并购)"]),
+    "ACQUIRES":    ("Finance",    [r"\b(acquires?|acquired|acquisition|takeover)\b", r"(收购|并购)"]),
+    "LAUNCHES":    ("Technology", [r"\b(launches?|launched|launching)\b", r"(推出|发布|发射)"]),
+    "VISITS":      ("Diplomacy",  [r"\b(visits?|visited|visiting)\b", r"(访问|出访|到访)"]),
+    "ESCALATES":   ("Military",   [r"\b(escalates?|escalation|escalated)\b", r"(升级|加剧)"]),
+    "VETOES":      ("Politics",   [r"\b(veto(?:es|ed)?)\b", r"(否决)"]),
+    "APPROVES":    ("Politics",   [r"\b(approves?|approved|approval)\b", r"(批准|通过)"]),
+    "CONFIRMS":    ("Politics",   [r"\b(confirms?|confirmed|confirmation)\b", r"(确认|证实)"]),
+    "DENIES":      ("Politics",   [r"\b(denies?|denied|denial)\b", r"(否认|辟谣)"]),
+    "FIRES":       ("Leadership", [r"\b(fires?|fired|firing|sacked)\b", r"(解雇|开除|免职)"]),
+    "SUCCEEDS":    ("Leadership", [r"\b(succeeds?\s+.*as|succeeded.*as|take\s+over.*role)\b", r"(接任|继任)"]),
+    "EXPELLS":     ("Diplomacy",  [r"\b(expels?|expelled|expulsion|deports?|deported)\b", r"(驱逐|遣返)"]),
+    "GROWS":       ("Economic",   [r"\b(grows?|grew|growth)\b", r"(增长|扩大)"]),
+    "PROTESTS":    ("Politics",   [r"\b(protests?|protested|protesters?|demonstrations?|demonstrators?)\b", r"(抗议|示威)"]),
+    "HACKS":       ("Cyber",      [r"\b(hacks?|hacked|hacking|breached|breach)\b", r"(黑客|入侵|攻破)"]),
+    "INVESTIGATES":("Legal",      [r"\b(investigates?|investigated|investigation|probe|probes?)\b", r"(调查|侦查)"]),
 }
 
 
@@ -333,12 +397,16 @@ def build_fingerprint(article: dict, global_idf: dict = None, topic_idf_map: dic
         entities = _gliner_to_entities(ner_entities)
 
     # P1: Subject — hub entities 降权但不禁用
+    # v4.4.2 主体显著性: 标题中出现的实体加权提升, 避免顺带提及的实体顶替真正主体
+    title_raw = article.get("title") or ""
     candidates = []
     for name in entities.get("companies", []) + entities.get("persons", []):
         canonical = _canonicalize(name)
         w = _entity_weight(name, global_idf, topic_idf_map, primary)
         if canonical in hub_entities:
             w *= 0.3  # hub实体降权70%，但不排除
+        if _name_in_text(canonical, title_raw):
+            w *= 2.0  # 标题出现 → 主体显著性 ×2
         candidates.append((canonical, w))
     candidates.sort(key=lambda x: x[1], reverse=True)
     if candidates and candidates[0][1] >= MIN_SUBJECT_WEIGHT:
@@ -386,12 +454,15 @@ def fingerprint_score(fp1: dict, fp2: dict) -> int:
     V4.3: Location 硬约束 + 主题硬约束 + 按稀有度加权
     优化: 主题不同直接拒绝合并（防 Fed+Iran 跨主题错配）
     """
+    # Location 硬约束 (KB V1 放宽): 仅当任一方主体为空(国家中心/无主体)时按国家阻断;
+    # 公司/人物主体事件不受报告国差异阻断 (支持中英/跨报告国聚合: NVIDIA-US vs NVIDIA-中国)
     if fp1.get("country") and fp2.get("country") and fp1["country"] != fp2["country"]:
-        return 0
+        if not (fp1.get("subject") and fp2.get("subject")):
+            return 0
 
-    # 主题硬约束: 主主题必须一致（Finance 不会并入 Military）
+    # 主题硬约束: 主主题一致 (Finance 不并入 Military); 同主体事件不受主题分类噪声阻断 (中英聚合)
     if fp1.get("primary_topic") and fp2.get("primary_topic"):
-        if fp1["primary_topic"] != fp2["primary_topic"]:
+        if fp1["primary_topic"] != fp2["primary_topic"] and fp1.get("subject") != fp2.get("subject"):
             return 0
 
     if fp1.get("anchor") and fp2.get("anchor") and fp1["anchor"] == fp2["anchor"]:
@@ -403,9 +474,11 @@ def fingerprint_score(fp1: dict, fp2: dict) -> int:
     if fp1["action"] == fp2["action"] and fp1["action"] != "OTHER":
         score += 25
 
-    # Subject (P2: 加权 10~25)
+    # Subject (KB V1: 完全同主体 → 强匹配 +25, 不受 idf 稀有度惩罚; 否则按稀有度加权 10~25)
     if fp1["subject"] and fp2["subject"]:
-        if fp1["subject"] == fp2["subject"] or fp1["subject"] in fp2["subject"] or fp2["subject"] in fp1["subject"]:
+        if fp1["subject"] == fp2["subject"]:
+            score += 25  # 同一实体 (中英归一后) → 强匹配, 支持跨语言聚合
+        elif fp1["subject"] in fp2["subject"] or fp2["subject"] in fp1["subject"]:
             rarity = min(fp1.get("subject_weight", 0), fp2.get("subject_weight", 0))
             score += 10 + int(15 * min(rarity / 0.4, 1.0))
 
@@ -596,10 +669,11 @@ def build_fused_fingerprint(article: dict, fact: dict = None, global_idf: dict =
     f_etype = fact.get("action_event_type") or ""
     f_loc = fact.get("location") or ""
 
-    # subject/object ← fact (落地优先)
-    if f_subj:
+    # subject/object ← fact (落地优先; v4.4.2 校验实体确实出现在文章文本, 防 GLiNER 噪声实体)
+    article_text = _get_text(article)
+    if f_subj and _name_in_text(f_subj, article_text):
         fp["subject"], fp["subject_weight"] = f_subj, 1.0
-    if f_obj:
+    if f_obj and _name_in_text(f_obj, article_text):
         fp["object"], fp["object_weight"] = f_obj, 1.0
 
     # action ← fact(非 OTHER) 否则 legacy
@@ -840,6 +914,13 @@ def aggregate_events(articles: list[dict], window_hours: int = 24, facts_by_arti
             "subject_weight": ev["fingerprint"].get("subject_weight", 0),
             "object_weight": ev["fingerprint"].get("object_weight", 0),
         }
+
+        # v4.4.2 事件级主体门: 主体不显著则置空 (防顺带提及的实体顶替主体)
+        _subj = fp_centroid["subject"]
+        if _subj and not _subject_is_prominent(
+                _subj, ev["best_title"] or "",
+                [m.get("title") or "" for m in members]):
+            fp_centroid["subject"] = ""
 
         # ── Source authority ──
         source_auth_map = _load_source_scores()

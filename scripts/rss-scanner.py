@@ -23,14 +23,24 @@ from datetime import datetime
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 # =========================
-# 配置
+# 配置（从本地 pipeline-config.json 读取，云端同步）
 # =========================
 
-PROXY = "socks5://127.0.0.1:10808"
-MAX_WORKERS = 14
-TIMEOUT = 10
-HOT_TIMEOUT = 6
-COLD_TIMEOUT = 15
+try:
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    from config.loader import load_config, get_setting
+    _CFG = load_config()
+    def _cfg(key, default): return get_setting(_CFG, key, default) if _CFG else default
+except Exception:
+    _cfg = lambda key, default: default
+
+PROXY = _cfg("rss.proxy", "socks5://127.0.0.1:10808")
+MAX_WORKERS = _cfg("rss.max_workers", 14)
+TIMEOUT = _cfg("rss.timeout", 10)
+HOT_TIMEOUT = _cfg("rss.hot_timeout", 6)
+COLD_TIMEOUT = _cfg("rss.cold_timeout", 15)
+QUARANTINE_FAILURES = _cfg("rss.quarantine_failures", 3)
+QUARANTINE_SECONDS = _cfg("rss.quarantine_seconds", 1800)
 USER_AGENT = "rss-scanner/3.2-final"
 
 STATE_FILE = os.path.expanduser("~/.hermes/rss-scanner-state.json")
@@ -151,13 +161,12 @@ FEEDS = [
     {"name": "Nitter: Treasury", "url": "https://nitter.freedit.eu/USTreasury/rss", "region": "intl", "tier": "cold"},
     {"name": "Nitter: Kevin Warsh", "url": "https://nitter.freedit.eu/KevinWarsh/rss", "region": "intl", "tier": "cold"},
 
-    # ---- 中文央媒 (6, cn=直连) ----
+    # ---- 中文源 (2026-08-06: 清理 404/英文失效源, 加国际中文源; cn=直连, intl=走代理) ----
     {"name": "人民网 时政", "url": "http://www.people.com.cn/rss/politics.xml", "region": "cn", "tier": "warm"},
     {"name": "中国新闻网 时政", "url": "https://www.chinanews.com/rss/politics.xml", "region": "cn", "tier": "warm"},
-    {"name": "中国日报 世界", "url": "http://www.chinadaily.com.cn/rss/world_rss.xml", "region": "cn", "tier": "warm"},
-    {"name": "环球网 军事", "url": "https://www.huanqiu.com/rss/military.xml", "region": "cn", "tier": "cold"},
-    {"name": "新华网 时政", "url": "http://www.xinhuanet.com/rss/politics.xml", "region": "cn", "tier": "warm"},
-    {"name": "央视新闻", "url": "https://news.cctv.com/rss/", "region": "cn", "tier": "warm"},
+    {"name": "BBC中文", "url": "https://feeds.bbci.co.uk/zhongwen/simp/rss.xml", "region": "intl", "tier": "warm"},
+    {"name": "DW中文", "url": "https://rss.dw.com/rdf/rss-chi-all", "region": "intl", "tier": "warm"},
+    {"name": "RFI中文", "url": "https://www.rfi.fr/cn/rss", "region": "intl", "tier": "warm"},
 ]
 
 
@@ -171,7 +180,7 @@ def categorize_feed(name):
     elif any(n in name for n in ["arXiv","OpenAI","Google AI","GitHub"]): return "科研/开源"
     elif any(n in name for n in ["Hacker News","Reddit"]): return "实时信号"
     elif "Nitter:" in name: return "X/Nitter"
-    elif any(n in name for n in ["人民网","中国新闻网","中国日报","环球网","新华网","央视"]): return "中文央媒"
+    elif any(n in name for n in ["人民网","中国新闻网"]): return "中文央媒"
     return "其他"
 
 
@@ -252,7 +261,7 @@ def update_health(state, name, ok):
         m = state[name]
     if ok: m["fail"] = 0
     else: m["fail"] = m.get("fail", 0) + 1
-    if m["fail"] >= 3: m["quarantine_until"] = now_ts() + 1800
+    if m["fail"] >= QUARANTINE_FAILURES: m["quarantine_until"] = now_ts() + QUARANTINE_SECONDS
     return state
 
 
@@ -345,17 +354,33 @@ def write_wiki_daily(articles, scan_date):
 
 
 # =========================
+# =========================
 # 主流程
 # =========================
+
+def _load_feeds():
+    """从配置读取源列表（配置中心可增删改），缺失回退内置 FEEDS。"""
+    try:
+        from config.loader import load_config
+        cfg = load_config()
+        feeds_cfg = cfg.get("rss.feeds")
+        if isinstance(feeds_cfg, list) and feeds_cfg:
+            # 过滤禁用源
+            return [f for f in feeds_cfg if f.get("enabled", True)]
+    except Exception:
+        pass
+    return FEEDS
+
 
 def main():
     start = time.time()
     init_db()
     conn = sqlite3.connect(DB_FILE)
     state = normalize_state(load_state())
+    feeds = _load_feeds()
 
-    active = [f for f in FEEDS if not is_quarantined(state, f["name"])]
-    qcnt = len(FEEDS) - len(active)
+    active = [f for f in feeds if not is_quarantined(state, f["name"])]
+    qcnt = len(feeds) - len(active)
     active.sort(key=lambda f: TIER.get(f.get("tier"), 2))
 
     print(f"[{datetime.now().isoformat()[:19]}] 活跃: {len(active)}  隔离: {qcnt}")
@@ -413,7 +438,7 @@ def main():
     wiki_articles = [{"date":a.get("published",""),"category":a.get("category",""),"source":a.get("feed",""),"title":a.get("title",""),"summary":a.get("summary",""),"link":a.get("link","")} for a in new_articles]
     write_wiki_daily(wiki_articles, datetime.now().isoformat())
 
-    report = {"timestamp": datetime.now().isoformat(), "feeds_total": len(FEEDS), "feeds_active": len(active), "feeds_quarantined": qcnt, "feeds_ok": ok, "feeds_error": err, "articles_total": total_a, "articles_new": new_t, "duration_sec": dur, "new_articles": new_articles[:50], "feeds_detail": feed_stats, "errors": errors[:30]}
+    report = {"timestamp": datetime.now().isoformat(), "feeds_total": len(feeds), "feeds_active": len(active), "feeds_quarantined": qcnt, "feeds_ok": ok, "feeds_error": err, "articles_total": total_a, "articles_new": new_t, "duration_sec": dur, "new_articles": new_articles[:50], "feeds_detail": feed_stats, "errors": errors[:30]}
     with open(REPORT_FILE, "w", encoding="utf-8") as f:
         json.dump(report, f, ensure_ascii=False, indent=2)
 

@@ -107,10 +107,12 @@ def init_db():
             llm_model       TEXT,
             llm_cost        REAL DEFAULT 0.0,
             temporal_check  TEXT,
+            event_id        VARCHAR(30),          -- 文章所属事件号 (增量聚合标记)
             created_at      TEXT DEFAULT (datetime('now','localtime'))
         );
         CREATE INDEX IF NOT EXISTS idx_content_url ON news_content(article_url);
         CREATE INDEX IF NOT EXISTS idx_content_method ON news_content(extraction_method);
+        -- idx_content_event_id 在下方迁移块统一建 (老库需先 ALTER 加列)
     """)
 
     # ---- Layer: Source Registry (new v4.4) ----------------------
@@ -186,6 +188,13 @@ def init_db():
         CREATE INDEX IF NOT EXISTS idx_event_confidence ON event_registry(confidence);
         CREATE INDEX IF NOT EXISTS idx_event_first_seen ON event_registry(first_seen);
     """)
+
+    # ---- 迁移: news_content 增量聚合标记列 (v4.4.1) -------------
+    # 老库补 event_id 列 + 索引; 新库已在上方 CREATE TABLE 中定义列
+    content_cols = [r[1] for r in db.execute("PRAGMA table_info(news_content)").fetchall()]
+    if "event_id" not in content_cols:
+        db.execute("ALTER TABLE news_content ADD COLUMN event_id VARCHAR(30)")
+    db.execute("CREATE INDEX IF NOT EXISTS idx_content_event_id ON news_content(event_id)")
 
     # ---- Sync watermark (新增：修复RSS同步丢数据问题) -------------
     # 记录"上次同步到哪了"，让 sync_recent() 从游标续拉，
@@ -471,6 +480,27 @@ def upsert_event(db: sqlite3.Connection, event: dict) -> bool:
     except Exception as e:
         print(f"[db] upsert_event error: {e}")
         return False
+
+
+def assign_articles_to_event(db: sqlite3.Connection, event_id: str, article_ids: list) -> int:
+    """增量聚合: 把文章标记到所属事件, 下次聚合只处理 event_id 为空的文章。
+
+    article_ids 为 news_content.id (聚合器输入 a["id"] = nc.id)。
+    仅更新尚未标记的文章 (event_id IS NULL 或 ''), 避免覆盖已有归属。
+    """
+    if not event_id or not article_ids:
+        return 0
+    ids = [int(a) for a in article_ids if str(a).isdigit()]
+    if not ids:
+        return 0
+    ph = ",".join("?" * len(ids))
+    cur = db.execute(
+        f"UPDATE news_content SET event_id=? WHERE id IN ({ph}) "
+        f"AND (event_id IS NULL OR event_id = '')",
+        [event_id] + ids,
+    )
+    db.commit()
+    return cur.rowcount
 
 
 def list_events(stage: str = None, event_type: str = None, limit: int = 50,

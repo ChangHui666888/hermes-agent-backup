@@ -21,9 +21,28 @@ v0.2 三增强:
 import json
 import os
 import re
+import sys
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 _WEIGHTS = os.path.join(os.path.dirname(SCRIPT_DIR), "config", "entity_weights.json")
+
+# Knowledge Base V1 (知识库): repo 根 knowledge_base/, 中英别名 → 稳定 Entity ID
+_REPO = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+_KB_LOADER = None
+
+
+def _kb():
+    """懒加载 knowledge_base.loader; 缺失时回退 None (不阻塞现有逻辑)。"""
+    global _KB_LOADER
+    if _KB_LOADER is None:
+        try:
+            if _REPO not in sys.path:
+                sys.path.insert(0, _REPO)
+            from knowledge_base import loader as _kbl
+            _KB_LOADER = _kbl
+        except Exception:
+            _KB_LOADER = False
+    return _KB_LOADER or None
 
 
 # ═══════════════════════════════════════════════════════════
@@ -42,7 +61,7 @@ CANONICAL_ACTIONS = {
     "RATE_CUT":      (90,  "Finance",    [r"cut.*rate", r"lower.*rate", r"rate cut", r"reduce.*rate"]),
     "RATE_HIKE":     (90,  "Finance",    [r"raise.*rate", r"hike.*rate", r"rate hike"]),
     # 法律 (90)
-    "SUES":          (90,  "Legal",      [r"sue", r"lawsuit", r"litigation", r"indict", r"toss.*award", r"court.*case", r"defamation", r"appeal"]),
+    "SUES":          (90,  "Legal",      [r"sue", r"lawsuit", r"litigation", r"toss.*award", r"court.*case", r"defamation", r"appeal"]),
     "ACCUSES":       (90,  "Legal",      [r"accuse", r"allege", r"charge"]),
     "BANS":          (90,  "Legal",      [r"ban", r"prohibit", r"outlaw", r"restrict", r"block"]),
     # 金融市场 (80)
@@ -62,6 +81,30 @@ CANONICAL_ACTIONS = {
     "FUNDS":         (30,  "Economic",   [r"fund", r"invest", r"finance", r"grant"]),
     "DIES":          (30,  "Leadership", [r"die", r"dead", r"kill", r"assassinat", r"funeral", r"mourn"]),
     "CUTS":          (30,  "Economic",   [r"cut", r"reduce", r"slash", r"lower"]),
+    # G3 扩充 (2026-08-06): 高频动作 (对应 ACTION_CATALOG)
+    "INVADES":       (100, "Military",   [r"invade", r"invasion", r"入侵|占领"]),
+    "SEIZES":        (100, "Military",   [r"seize", r"seizure", r"confiscate", r"夺取|扣押|没收"]),
+    "INDICTS":       (90,  "Legal",      [r"indict", r"indictment", r"控告"]),
+    "ARRESTS":       (90,  "Legal",      [r"arrest", r"detain", r"逮捕|拘留"]),
+    "BANKRUPTS":     (90,  "Finance",    [r"bankrupt", r"insolven", r"破产|倒闭"]),
+    "DROPS":         (80,  "Finance",    [r"\bdrop", r"decline", r"下跌|下滑"]),
+    "IPO":           (80,  "Finance",    [r"ipo", r"initial public offering", r"上市|首次公开募股"]),
+    "MERGES":        (80,  "Finance",    [r"merge", r"merger", r"合并|并购"]),
+    "ACQUIRES":      (80,  "Finance",    [r"acquire", r"acquisition", r"takeover", r"收购|并购"]),
+    "LAUNCHES":      (80,  "Technology", [r"launch", r"推出|发布|发射"]),
+    "VISITS":        (70,  "Diplomacy",  [r"visit", r"访问|出访"]),
+    "ESCALATES":     (70,  "Military",   [r"escalat", r"升级|加剧"]),
+    "VETOES":        (50,  "Politics",   [r"veto", r"否决"]),
+    "APPROVES":      (50,  "Politics",   [r"approve", r"approval", r"批准|通过"]),
+    "CONFIRMS":      (50,  "Politics",   [r"confirm", r"确认|证实"]),
+    "DENIES":        (50,  "Politics",   [r"deny", r"denial", r"否认|辟谣"]),
+    "FIRES":         (50,  "Leadership", [r"\bfire", r"sack", r"解雇|开除|免职"]),
+    "SUCCEEDS":      (50,  "Leadership", [r"succeed.*as", r"take over.*role", r"接任|继任"]),
+    "EXPELLS":       (50,  "Diplomacy",  [r"expel", r"deport", r"驱逐|遣返"]),
+    "GROWS":         (30,  "Economic",   [r"\bgrow", r"growth", r"增长|扩大"]),
+    "PROTESTS":      (30,  "Politics",   [r"protest", r"demonstrat", r"抗议|示威"]),
+    "HACKS":         (30,  "Cyber",      [r"hack", r"breach", r"黑客|入侵"]),
+    "INVESTIGATES":  (30,  "Legal",      [r"investigat", r"probe", r"调查|侦查"]),
 }
 
 # 动作 + 客体联合规则: 动作文本命中缺失时, 从客体文本触发
@@ -71,14 +114,36 @@ _OBJECT_JOINT = {
     "EXPORT_CONTROL": [r"export control", r"chip", r"semiconductor", r"advanced ai chip"],
     "ATTACKS":       [r"attack", r"strike", r"militant", r"missile"],
     "BANS":          [r"ban", r"restrict"],
+    # G3 (2026-08-06): 动作弱时客体联合触发利率动作
+    "RATE_CUT":      [r"interest rate", r"基准利率", r"利率"],
+    "RATE_HIKE":     [r"interest rate", r"基准利率", r"利率"],
 }
 
 ROLES = ("SUBJECT", "OBJECT", "TARGET", "VICTIM", "SOURCE", "RESPONDER")
 
 
+# G3 实验发现 (2026-08-06): 中文动作在 canonicalizer 归一失效 — 中文 pattern 补充表
+_CN_ACTION = {
+    "SANCTIONS": [r"制裁", r"禁运"], "TARIFFS": [r"关税", r"贸易战"],
+    "EXPORT_CONTROL": [r"出口管制", r"限制出口", r"芯片禁令"], "RATE_CUT": [r"降息", r"下调利率"],
+    "RATE_HIKE": [r"加息", r"上调利率"], "SUES": [r"起诉", r"诉讼"],
+    "ANNOUNCES": [r"宣布", r"公布", r"发布"], "WARNS": [r"警告", r"警示"],
+    "RESIGNS": [r"辞职", r"卸任"], "APPOINTS": [r"任命", r"提名"],
+    "ATTACKS": [r"袭击", r"攻击", r"空袭", r"轰炸"], "CEASEFIRE": [r"停火", r"休战"],
+    "INVADES": [r"入侵", r"占领"], "ACQUIRES": [r"收购", r"并购"],
+    "MERGES": [r"合并", r"并购"], "IPO": [r"上市", r"首次公开募股"],
+    "ARRESTS": [r"逮捕", r"拘留"], "VISITS": [r"访问", r"出访"],
+    "DENIES": [r"否认"], "APPROVES": [r"批准", r"通过"], "VETOES": [r"否决"],
+    "EXPELS": [r"驱逐", r"遣返"], "DIES": [r"去世", r"死亡", r"遇刺"],
+    "ELECTS": [r"选举", r"当选", r"投票"],
+}
+
+
 def _match(text: str, act: str) -> bool:
     prio, etype, patterns = CANONICAL_ACTIONS[act]
-    return any(re.search(p, text) for p in patterns)
+    if any(re.search(p, text) for p in patterns):
+        return True
+    return any(re.search(p, text) for p in _CN_ACTION.get(act, []))
 
 
 def canonicalize_action(raw_action: str, object_text: str = "", context: str = "") -> dict:
@@ -200,12 +265,28 @@ def _infer_type(name: str) -> str:
 
 
 def resolve_entity(name: str, gliner_type: str = "") -> dict:
-    """别名 → 规范名 + 稳定 id + 类型"""
+    """别名 → 规范名 + 稳定 id + 类型 (Knowledge Base V1 优先, 回退本地本体)"""
     raw = (name or "").strip()
     if not raw:
         return {"name": "", "id": "", "type": ""}
+    # EXCHANGE:TICKER 前缀剥离 (NASDAQ:NVDA → NVDA): 交易所代码不是实体名的一部分
+    lookup = raw
+    if ":" in raw:
+        pre, _, rest = raw.partition(":")
+        if pre and rest and re.fullmatch(r"[A-Za-z]{2,6}", pre):
+            lookup = rest
+    # KB V1: 中英别名 → 稳定 Entity ID (特朗普→PERS_TRUMP, 中国→CTRY_CHINA)
+    kb = _kb()
+    if kb:
+        try:
+            hit = kb.resolve(lookup)
+            if hit:
+                cid, canon, etype = hit
+                return {"name": canon or raw, "id": cid, "type": etype}
+        except Exception:
+            pass
     _load_aliases()
-    canonical, alias_type = _ALIAS_MAP.get(raw.lower(), (raw, ""))
+    canonical, alias_type = _ALIAS_MAP.get(lookup.lower(), (lookup, ""))
     # Location 本体 (Phase A): 城市 → 国家 (Beijing → China/CTRY_CHINA)
     if canonical in CITY_TO_COUNTRY:
         canonical = CITY_TO_COUNTRY[canonical]
@@ -258,6 +339,12 @@ def canonicalize(raw: dict, title: str = "") -> dict:
         e = resolve_entity(nm)
         if e["id"]:
             entities.append({**e, "role": "OBJECT"})
+    # G7: Ontology Validator (三层归一第三层) — 实体 ID 前缀/类型一致性诊断, 不阻断
+    try:
+        from ontology_validator import validate_entities
+        _v_ok, _v_issues, _v_valid = validate_entities(entities)
+    except Exception:
+        _v_ok, _v_issues, _v_valid = True, [], len(entities)
     return {
         "action": act,
         "time": raw.get("time", ""),
@@ -265,6 +352,8 @@ def canonicalize(raw: dict, title: str = "") -> dict:
         "entities": entities,
         "subject_hint": raw_subj[:60],
         "object_hint": raw_obj[:60],
+        "validation": {"ok": _v_ok, "issues": _v_issues,
+                       "valid_entities": _v_valid, "total_entities": len(entities)},
     }
 
 

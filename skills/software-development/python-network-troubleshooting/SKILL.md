@@ -503,7 +503,49 @@ Phase 3: rate-delay    0.3 → 0.2 (client speed, only if no 429 errors)
 | `BATCH_TIMEOUT` | 600s | Accommodates 1-2 hard URLs per 5-URL batch |
 | `--max-workers` | 2 | Easy URLs parallel, not blocked by 1 hard URL |
 | `--rate-delay` | 0.3s | RateLimiter has per-domain lock; different domains don't conflict |
-| `LIMIT` | 5 | 5 URLs × ~30s avg = 150s; 600s timeout gives 4x headroom |
+**Verified stack (2026-08, Windows, CPU):** torch 2.13.0+cpu + transformers 5.13.1 + gliner 0.2.28 + accelerate 1.14.0 (pip via tsinghua mirror). GLiNER small-v1 loads in ~22s, entity extraction correct; REBEL large (1.56 GB) loads ~12s.
+
+Full step-by-step reproduction (mirror URLs, cache layout commands, REBEL triplet parsing): see `references/hf-mirror-download.md`.
+
+## HuggingFace Model Downloads (China / GFW)
+
+When `snapshot_download()` / `from_pretrained()` hangs (`.incomplete` files stay 0 bytes) or `huggingface.co` times out:
+
+**Root cause chain (tested 2026-08):**
+1. `huggingface.co` is blocked by GFW → must use mirror `hf-mirror.com` via `HF_ENDPOINT`
+2. hf-mirror's `/resolve/main/<file>` 302-redirects to AWS CDN (`us.aws.cdn.hf.co`)
+3. huggingface_hub's xet download client reads the **Windows system proxy**, routing the AWS CDN request through the overseas proxy → **663 B/s stall**. With proxy unset, direct = **9.7 MB/s**
+
+**Fix (persist + per-session):**
+```bash
+setx HF_ENDPOINT "https://hf-mirror.com"
+setx NO_PROXY "hf-mirror.com,huggingface.co"
+# per-session:
+export HF_ENDPOINT=https://hf-mirror.com
+export NO_PROXY=hf-mirror.com,huggingface.co
+unset HTTPS_PROXY HTTP_PROXY https_proxy http_proxy
+```
+
+**Big weight files: download with curl, not huggingface_hub** (hub client may still stall even with NO_PROXY):
+```bash
+unset HTTPS_PROXY HTTP_PROXY https_proxy http_proxy
+curl -sSL -o <dest> --connect-timeout 15 --max-time 600 \
+  "https://hf-mirror.com/<org>/<repo>/resolve/main/<file>"
+```
+
+**gliner & similar libs only accept HF cache layout, not local paths** — after curl download, deploy into:
+```
+~/.cache/huggingface/hub/models--<org>--<repo>/snapshots/<revision>/  (all files)
+~/.cache/huggingface/hub/models--<org>--<repo>/refs/main              (file containing <revision>)
+```
+Get the `<revision>` from the repo's tree cache (`~/.cache/huggingface/trees/<hash>.json`) or the `IncompleteSnapshotError` message. Then `from_pretrained('<org>/<repo>')` works offline.
+
+**Model repo filename traps:**
+- `urchade/gliner_small-v1` has **no `config.json`** — only `gliner_config.json` + `pytorch_model.bin` (GLiNER custom format; requesting config.json → 404)
+- `Babelscape/rebel-large` weights = `model.safetensors`
+- List real files: `curl -sSL https://hf-mirror.com/api/models/<repo>` → `siblings[].rfilename`
+
+**Verified stack (2026-08, Windows, CPU):** torch 2.13.0+cpu + transformers 5.13.1 + gliner 0.2.28 + accelerate 1.14.0 (pip via tsinghua mirror). GLiNER small-v1 loads in ~22s, entity extraction correct; REBEL large (1.56 GB) loads ~12s.
 
 ## Pitfalls
 

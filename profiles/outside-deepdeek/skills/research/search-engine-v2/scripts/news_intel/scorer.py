@@ -106,9 +106,25 @@ def score_impact(title: str, description: str = "") -> tuple[int, list[str]]:
 # 3. Entity Importance (0-20)
 # ═══════════════════════════════════════════════════════════════════
 
+def _entity_in_text(name: str, text: str) -> bool:
+    """实体名匹配规则 (v4.4.2 修复子串误标根因)。
+
+    旧逻辑 `name in text` 是子串匹配, 短名会误命中任何含该子串的文本:
+      例: 'Xi'(习近平) 命中每篇 ML 论文摘要里的希腊字母 ξ/xi 及 fixing/proximity 里的 'xi';
+          'US'/'BP'/'UK' 命中任意含 us/bp/uk 的文本。
+    修复: CJK 名无词边界 → 子串匹配; 拉丁名 → 词边界 + 短名(≤3字符)大小写敏感。
+    """
+    if any('一' <= ch <= '鿿' for ch in name):
+        return name in text
+    pat = rf'\b{re.escape(name)}\b'
+    if len(name) <= 3:
+        return re.search(pat, text) is not None
+    return re.search(pat, text, re.IGNORECASE) is not None
+
+
 def score_entities(title: str, description: str = "") -> tuple[int, dict]:
     """
-    实体重要性评分。从标题+摘要中匹配已知重要实体。
+    实体重要性评分。从标题+摘要中匹配已知重要实体 (词边界, 非子串)。
     返回 (分数, {companies: [...], persons: [...], countries: [...]})
     """
     text = f"{title} {description}"
@@ -120,7 +136,7 @@ def score_entities(title: str, description: str = "") -> tuple[int, dict]:
         if etype == "_description":
             continue
         for name, weight in entities.items():
-            if name in text:
+            if _entity_in_text(name, text):
                 found[etype].append(name)
                 if weight > max_score:
                     max_score = weight

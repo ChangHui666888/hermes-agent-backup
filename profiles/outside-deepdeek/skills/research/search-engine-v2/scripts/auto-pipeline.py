@@ -97,6 +97,48 @@ def step_result(name: str, ok: int, fail: int, detail: str = ""):
     stats["steps"].append({"step": name, "ok": ok, "fail": fail, "detail": detail, "time": datetime.now().isoformat()})
 
 
+def _post_with_retry(url: str, payload: list, label: str, retries: int = 2,
+                     connect_s: float = 20, read_s: float = 90) -> tuple:
+    """POST JSON chunk → VPS, 失败重试 (3s/6s 退避)。VPS 按 event_id upsert, 重试幂等安全。
+    超时细分 connect/read, 避免跨太平洋链路整请求一刀切超时。返回 (ok, fail)。"""
+    headers = {'X-Internal-Token': TOKEN}
+    timeout = httpx.Timeout(connect=connect_s, read=read_s, write=connect_s, pool=connect_s)
+    for attempt in range(retries + 1):
+        try:
+            r = httpx.post(url, json=payload, headers=headers, timeout=timeout)
+            if r.status_code >= 400:
+                log(f"  {label} attempt{attempt + 1}: HTTP {r.status_code} {r.text[:80]}")
+            else:
+                res = r.json()
+                return res.get("ok", 0), res.get("fail", 0)
+        except Exception as e:
+            log(f"  {label} attempt{attempt + 1}: {e}")
+        if attempt < retries:
+            time.sleep(3 * (attempt + 1))
+    return 0, len(payload)
+
+
+def _event_row_to_push(ev: dict) -> dict:
+    """event_registry 行 → cloud /internal/events/batch 推送体 (JSON 字段需已 decode)。"""
+    return {
+        'event_id': ev.get('event_id'), 'title': ev.get('title', ''), 'summary': ev.get('summary'),
+        'event_type': ev.get('event_type'), 'stage': ev.get('stage', 'active'),
+        'confidence': ev.get('confidence', 0), 'coherence': ev.get('coherence', 0),
+        'subject': {'name': ev.get('subject_name', ''), 'type': ev.get('subject_type', 'Other')},
+        'action': {'type': ev.get('action_type', 'OTHER'), 'detail': ev.get('action_detail')},
+        'object': {'name': ev.get('object_name', ''), 'type': ev.get('object_type', 'Other')},
+        'location': {'country': ev.get('location_country')},
+        'source': {'primary_source_id': ev.get('primary_source_id'),
+                   'source_count': ev.get('source_count', 0)},
+        'article_count': ev.get('article_count', 0), 'article_ids': ev.get('article_ids', []),
+        'doc_refs': ev.get('doc_refs', []), 'actors': ev.get('actors', []),
+        'keywords': ev.get('keywords', []), 'related_entities': ev.get('related_entities', []),
+        'evidence': ev.get('evidence', []), 'source_chain': ev.get('source_chain', []),
+        'timeline': ev.get('timeline', []), 'llm_analysis': ev.get('llm_analysis'),
+        'first_seen': ev.get('first_seen'), 'last_updated': ev.get('last_updated'),
+    }
+
+
 def _load_facts_payload() -> dict:
     """加载 fact_pipeline 子进程产物 → facts_by_article (fused 接线)。
 
@@ -579,10 +621,12 @@ except Exception as _e:
     log(f"  FACT_45 FAILED: {_e}")
     step_result("FACT_45", 0, 1, str(_e)[:80])
 
-# ── 4.5. Aggregate (fused 指纹, facts 反哺) ────────────────
-log("Step 4.5/6: Aggregate (fused)")
+# ── 4.5. Aggregate (fused 指纹, facts 反哺, 增量: 只聚未标记文章) ──
+# v4.4.1 增量聚合: news_content.event_id 为空才参与聚合; 聚合后把文章标记到所属事件,
+# 避免同一文章每轮反复生成新事件 (重复事件根因之一)。
+log("Step 4.5/6: Aggregate (fused, 增量)")
 try:
-    from news_intel.db import init_db, get_db
+    from news_intel.db import init_db, get_db, assign_articles_to_event
     from news_intel.aggregator import aggregate_events
     init_db()
     db = get_db()
@@ -594,15 +638,61 @@ try:
         JOIN news_intelligence ni ON nc.intel_id = ni.id
         JOIN rss_raw rr ON ni.raw_id = rr.id
         WHERE ni.tier IN ('A','B')
+          AND (nc.event_id IS NULL OR nc.event_id = '')
         ORDER BY nc.id DESC LIMIT 300
     """).fetchall()
     facts_by_article = _load_facts_payload()  # fused 接线: Step 4 facts 反哺聚合
     events = aggregate_events(rows, window_hours=48, facts_by_article=facts_by_article)
+    # 标记文章所属事件 (article_ids 为 news_content.id)
+    marked = 0
+    for ev in events:
+        evid = ev.get("event_id")
+        aids = ev.get("article_ids") or []
+        if evid and aids:
+            marked += assign_articles_to_event(db, evid, aids)
     db.close()
-    step_result("AGGREGATE", len(events), 0, f"{len(rows)} articles, {len(facts_by_article)} facts")
+    step_result("AGGREGATE", len(events), 0,
+                f"{len(rows)} unassigned articles, {len(facts_by_article)} facts, {marked} marked")
 except Exception as e:
     log(f"  FAILED: {e}")
     step_result("AGGREGATE", 0, 1, str(e)[:80])
+
+# ── 4.6. Event Normalize (同标题归并, 保留最早事件号) ─────────
+# v4.4.1: 跨轮/跨批可能同故事分裂成多个事件 (增量聚合只防重聚, 不防分裂)。
+# 这里定期把同标题事件合并到最早事件, 并把被并入事件从云端删除。
+log("Step 4.6/6: Event Normalize (同标题合并, 保留最早)")
+try:
+    from news_intel.db import init_db as _init_norm_db, get_db as _get_norm_db
+    from news_intel.event_normalizer import normalize_duplicate_events
+    _init_norm_db()
+    _dn = _get_norm_db()
+    _dn.row_factory = sqlite3.Row
+    kept_rows, deleted_ids = normalize_duplicate_events(_dn)
+    _dn.close()
+    if TOKEN:
+        np_ok = np_fail = 0
+        for i in range(0, len(kept_rows), cfg("pipeline.cloud_chunk", 50)):
+            chunk = kept_rows[i:i + cfg("pipeline.cloud_chunk", 50)]
+            payload = [_event_row_to_push(dict(r)) for r in chunk]
+            ok, fail = _post_with_retry(f"{CLOUD_API}/internal/events/batch", payload, "NORMALIZE push")
+            np_ok += ok; np_fail += fail
+        if deleted_ids:
+            try:
+                r = httpx.post(f"{CLOUD_API}/internal/events/delete", json=deleted_ids,
+                               headers={'X-Internal-Token': TOKEN}, timeout=60)
+                if r.status_code < 400:
+                    log(f"  NORMALIZE deleted {len(deleted_ids)} cloud duplicate events")
+                else:
+                    log(f"  NORMALIZE delete HTTP {r.status_code}: {r.text[:100]}")
+            except Exception as e:
+                log(f"  NORMALIZE delete: {e}")
+        step_result("NORMALIZE", len(kept_rows), len(deleted_ids),
+                    f"{len(kept_rows)} groups merged, {len(deleted_ids)} deleted, push ok={np_ok}")
+    else:
+        step_result("NORMALIZE", len(kept_rows), len(deleted_ids), "no token, local only")
+except Exception as e:
+    log(f"  NORMALIZE FAILED: {e}")
+    step_result("NORMALIZE", 0, 1, str(e)[:80])
 
 # ── 5+6. Cloud Sync + Content Push (并行) ─────────────────
 log("Step 5+6/6: Cloud Sync + Content Push (并行)")
@@ -623,46 +713,20 @@ def _do_step5():
                 if isinstance(ev.get(f), str):
                     try: ev[f] = json.loads(ev[f])
                     except: pass
-            push_events.append({
-                'event_id': ev.get('event_id'), 'title': ev.get('title',''), 'summary': ev.get('summary'),
-                'event_type': ev.get('event_type'), 'stage': ev.get('stage','active'),
-                'confidence': ev.get('confidence',0), 'coherence': ev.get('coherence',0),
-                'subject': {'name': ev.get('subject_name',''), 'type': ev.get('subject_type','Other')},
-                'action': {'type': ev.get('action_type','OTHER'), 'detail': ev.get('action_detail')},
-                'object': {'name': ev.get('object_name',''), 'type': ev.get('object_type','Other')},
-                'location': {'country': ev.get('location_country')},
-                'source': {'primary_source_id': ev.get('primary_source_id'), 'source_count': ev.get('source_count',0)},
-                'article_count': ev.get('article_count',0), 'article_ids': ev.get('article_ids',[]),
-                'doc_refs': ev.get('doc_refs',[]), 'actors': ev.get('actors',[]),
-                'keywords': ev.get('keywords',[]), 'related_entities': ev.get('related_entities',[]),
-                'evidence': ev.get('evidence',[]), 'source_chain': ev.get('source_chain',[]),
-                'timeline': ev.get('timeline',[]), 'llm_analysis': ev.get('llm_analysis'),
-                'first_seen': ev.get('first_seen'), 'last_updated': ev.get('last_updated'),
-            })
+            push_events.append(_event_row_to_push(ev))
         conn.close()
         if not TOKEN:
             log("  CLOUD_SYNC skipped: NEWS_API_TOKEN not set")
             step_result("CLOUD_SYNC", 0, 0, "no token configured")
             return
-        # 网络延迟 ~5s, 每次POST是主要耗时
-        # 事件单个体积~800B, 50个仅~40KB, 远低于nginx 50MB限制
-        CHUNK = cfg("pipeline.cloud_chunk", 50)
+        # 网络延迟 ~5s, 每次POST是主要耗时; chunk 20 (跨太平洋链路小请求更稳)
+        CHUNK = cfg("pipeline.cloud_chunk", 20)
         push_ok = push_fail = 0
         for i in range(0, len(push_events), CHUNK):
             chunk = push_events[i:i+CHUNK]
-            try:
-                r = httpx.post(f"{CLOUD_API}/internal/events/batch", json=chunk,
-                               headers={'X-Internal-Token': TOKEN}, timeout=60)
-                if r.status_code >= 400:
-                    log(f"  CLOUD_SYNC chunk {i//CHUNK+1}: HTTP {r.status_code}")
-                    push_fail += len(chunk)
-                else:
-                    result = r.json()
-                    push_ok += result.get("ok", 0)
-                    push_fail += result.get("fail", 0)
-            except Exception as e:
-                log(f"  CLOUD_SYNC chunk {i//CHUNK+1}: {e}")
-                push_fail += len(chunk)
+            ok, fail = _post_with_retry(f"{CLOUD_API}/internal/events/batch", chunk,
+                                        f"CLOUD_SYNC chunk {i//CHUNK+1}")
+            push_ok += ok; push_fail += fail
         step_result("CLOUD_SYNC", push_ok, push_fail, f"{len(push_events)} events in {(len(push_events)+CHUNK-1)//CHUNK} chunks")
     except Exception as e:
         log(f"  CLOUD_SYNC FAILED: {e}")
@@ -690,24 +754,14 @@ def _do_step6():
                 return
             body = [{'url':r[0],'title':r[1],'content_md':r[2],'score_total':r[4],'tier':r[5],
                      'source_name':r[6],'source_domain':r[7]} for r in rows]
-            # 网络延迟~5s, 增大chunk减少往返
-            CHUNK = cfg("pipeline.content_chunk", 200)
+            # content 单条可达几十 KB, chunk 100 折衷往返次数与单请求超时概率
+            CHUNK = cfg("pipeline.content_chunk", 100)
             push_ok = push_fail = 0
             for i in range(0, len(body), CHUNK):
                 chunk = body[i:i+CHUNK]
-                try:
-                    r = httpx.post(f"{CLOUD_API}/internal/news/batch", json=chunk,
-                                    headers={'X-Internal-Token': TOKEN}, timeout=60)
-                    if r.status_code >= 400:
-                        log(f"  CONTENT_PUSH chunk {i//CHUNK+1}: HTTP {r.status_code}")
-                        push_fail += len(chunk)
-                    else:
-                        result = r.json()
-                        push_ok += result.get("ok", 0)
-                        push_fail += result.get("fail", 0)
-                except Exception as e:
-                    log(f"  CONTENT_PUSH chunk {i//CHUNK+1}: {e}")
-                    push_fail += len(chunk)
+                ok, fail = _post_with_retry(f"{CLOUD_API}/internal/news/batch", chunk,
+                                            f"CONTENT_PUSH chunk {i//CHUNK+1}")
+                push_ok += ok; push_fail += fail
             step_result("CONTENT_PUSH", push_ok, push_fail, f"{len(rows)} articles in {(len(body)+CHUNK-1)//CHUNK} chunks")
     except Exception as e:
         log(f"  CONTENT_PUSH FAILED: {e}")

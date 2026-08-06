@@ -161,13 +161,12 @@ FEEDS = [
     {"name": "Nitter: Treasury", "url": "https://nitter.freedit.eu/USTreasury/rss", "region": "intl", "tier": "cold"},
     {"name": "Nitter: Kevin Warsh", "url": "https://nitter.freedit.eu/KevinWarsh/rss", "region": "intl", "tier": "cold"},
 
-    # ---- 中文央媒 (6, cn=直连) ----
+    # ---- 中文源 (2026-08-06: 清理 404/英文失效源, 加国际中文源; cn=直连, intl=走代理) ----
     {"name": "人民网 时政", "url": "http://www.people.com.cn/rss/politics.xml", "region": "cn", "tier": "warm"},
     {"name": "中国新闻网 时政", "url": "https://www.chinanews.com/rss/politics.xml", "region": "cn", "tier": "warm"},
-    {"name": "中国日报 世界", "url": "http://www.chinadaily.com.cn/rss/world_rss.xml", "region": "cn", "tier": "warm"},
-    {"name": "环球网 军事", "url": "https://www.huanqiu.com/rss/military.xml", "region": "cn", "tier": "cold"},
-    {"name": "新华网 时政", "url": "http://www.xinhuanet.com/rss/politics.xml", "region": "cn", "tier": "warm"},
-    {"name": "央视新闻", "url": "https://news.cctv.com/rss/", "region": "cn", "tier": "warm"},
+    {"name": "BBC中文", "url": "https://feeds.bbci.co.uk/zhongwen/simp/rss.xml", "region": "intl", "tier": "warm"},
+    {"name": "DW中文", "url": "https://rss.dw.com/rdf/rss-chi-all", "region": "intl", "tier": "warm"},
+    {"name": "RFI中文", "url": "https://www.rfi.fr/cn/rss", "region": "intl", "tier": "warm"},
 ]
 
 
@@ -181,7 +180,7 @@ def categorize_feed(name):
     elif any(n in name for n in ["arXiv","OpenAI","Google AI","GitHub"]): return "科研/开源"
     elif any(n in name for n in ["Hacker News","Reddit"]): return "实时信号"
     elif "Nitter:" in name: return "X/Nitter"
-    elif any(n in name for n in ["人民网","中国新闻网","中国日报","环球网","新华网","央视"]): return "中文央媒"
+    elif any(n in name for n in ["人民网","中国新闻网"]): return "中文央媒"
     return "其他"
 
 

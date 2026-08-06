@@ -13,3 +13,5 @@ Pipeline 架构：非并发（max-workers=1, LIMIT=5, rate-delay=0.3s）。6 步
 Cascade 策略链优先级：direct(1) → archive(1) → google_cache(1) → scrapling(2) → browser(3) → jina(2) → tavily(3) → searxng_alt(2) → search_snippet(1)。cascade_timeout=90s 软截止。已为 bloomberg、reuters、marketwatch、bbc.co.uk 配置域名画像。
 §
 Windows 兼容要点：os.kill(pid,0) 不支持（WinError 87），改用文件 mtime + BATCH_TIMEOUT 做进程锁。httpx 0.28 http2=True 有 SSL 间歇超时，设为 http2=False。SOCKS5 代理稳定，HTTP CONNECT 代理不稳定。Jina/Tavily 需通过 subprocess curl -4 调用绕过 httpx SSL 问题。
+§
+本机 IE 模型环境(2026-08): transformers 5.13.1 + gliner 0.2.28 + torch 2.13 CPU 装在系统 Python311(C:\Users\ChangHui\AppData\Local\Programs\Python\Python311), 不在 hermes venv。HF_ENDPOINT=https://hf-mirror.com 与 NO_PROXY=hf-mirror.com,huggingface.co 已持久化(setx+.env)。GLiNER small-v1 与 REBEL large 已本地化(~/.cache/huggingface/hub + ~/models/)。坑: hf-mirror 走代理卡死(663B/s), 必须 unset 代理直连(9.7MB/s); gliner from_pretrained 只认 HF 缓存结构不认本地路径。
