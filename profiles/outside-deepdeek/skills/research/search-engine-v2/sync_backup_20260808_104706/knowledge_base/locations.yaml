@@ -1,0 +1,364 @@
+# Locations — Knowledge Base V1 (generate_kb.py 生成, 坐标 curated)
+version: '0.1'
+generated: '2026-08-05'
+locations:
+  LOC_AMSTERDAM:
+    name:
+      en: Amsterdam
+      zh: ''
+    aliases: []
+    country: Netherlands
+    province: ''
+    lat: 52.3676
+    lon: 4.9041
+  LOC_ANKARA:
+    name:
+      en: Ankara
+      zh: ''
+    aliases: []
+    country: Turkey
+    province: ''
+    lat: 39.9334
+    lon: 32.8597
+  LOC_BEIJING:
+    name:
+      en: Beijing
+      zh: ''
+    aliases: []
+    country: China
+    province: ''
+    lat: 39.9042
+    lon: 116.4074
+  LOC_BERLIN:
+    name:
+      en: Berlin
+      zh: ''
+    aliases: []
+    country: Germany
+    province: ''
+    lat: 52.52
+    lon: 13.405
+  LOC_BRUSSELS:
+    name:
+      en: Brussels
+      zh: ''
+    aliases: []
+    country: Belgium
+    province: ''
+    lat: 50.8503
+    lon: 4.3517
+  LOC_DUBAI:
+    name:
+      en: Dubai
+      zh: ''
+    aliases: []
+    country: UAE
+    province: ''
+    lat: 25.2048
+    lon: 55.2708
+  LOC_GAZA:
+    name:
+      en: Gaza
+      zh: ''
+    aliases: []
+    country: ''
+    province: ''
+    lat: 31.5017
+    lon: 34.4668
+  LOC_GENEVA:
+    name:
+      en: Geneva
+      zh: ''
+    aliases: []
+    country: Switzerland
+    province: ''
+    lat: 46.2044
+    lon: 6.1432
+  LOC_HONG_KONG:
+    name:
+      en: Hong Kong
+      zh: ''
+    aliases: []
+    country: China
+    province: ''
+    lat: 22.3193
+    lon: 114.1694
+  LOC_HORMUZ_STRAIT:
+    name:
+      en: Hormuz Strait
+      zh: ''
+    aliases: []
+    country: ''
+    province: ''
+    lat: 26.567
+    lon: 56.252
+  LOC_JERUSALEM:
+    name:
+      en: Jerusalem
+      zh: ''
+    aliases: []
+    country: Israel
+    province: ''
+    lat: 31.7683
+    lon: 35.2137
+  LOC_KYIV:
+    name:
+      en: Kyiv
+      zh: ''
+    aliases: []
+    country: Ukraine
+    province: ''
+    lat: 50.4501
+    lon: 30.5234
+  LOC_LONDON:
+    name:
+      en: London
+      zh: ''
+    aliases: []
+    country: United Kingdom
+    province: ''
+    lat: 51.5074
+    lon: -0.1278
+  LOC_LOS_ANGELES:
+    name:
+      en: Los Angeles
+      zh: ''
+    aliases: []
+    country: United States
+    province: ''
+    lat: 34.0522
+    lon: -118.2437
+  LOC_MADRID:
+    name:
+      en: Madrid
+      zh: ''
+    aliases: []
+    country: Spain
+    province: ''
+    lat: 40.4168
+    lon: -3.7038
+  LOC_MOSCOW:
+    name:
+      en: Moscow
+      zh: ''
+    aliases: []
+    country: Russia
+    province: ''
+    lat: 55.7558
+    lon: 37.6173
+  LOC_NEW_DELHI:
+    name:
+      en: New Delhi
+      zh: ''
+    aliases: []
+    country: India
+    province: ''
+    lat: 28.6139
+    lon: 77.209
+  LOC_NEW_YORK:
+    name:
+      en: New York
+      zh: ''
+    aliases: []
+    country: United States
+    province: ''
+    lat: 40.7128
+    lon: -74.006
+  LOC_OSLO:
+    name:
+      en: Oslo
+      zh: ''
+    aliases: []
+    country: Norway
+    province: ''
+    lat: 59.9139
+    lon: 10.7522
+  LOC_PARIS:
+    name:
+      en: Paris
+      zh: ''
+    aliases: []
+    country: France
+    province: ''
+    lat: 48.8566
+    lon: 2.3522
+  LOC_PRAGUE:
+    name:
+      en: Prague
+      zh: ''
+    aliases: []
+    country: Czech Republic
+    province: ''
+    lat: 50.0755
+    lon: 14.4378
+  LOC_RIYADH:
+    name:
+      en: Riyadh
+      zh: ''
+    aliases: []
+    country: Saudi Arabia
+    province: ''
+    lat: 24.7136
+    lon: 46.6753
+  LOC_ROME:
+    name:
+      en: Rome
+      zh: ''
+    aliases: []
+    country: Italy
+    province: ''
+    lat: 41.9028
+    lon: 12.4964
+  LOC_SAN_FRANCISCO:
+    name:
+      en: San Francisco
+      zh: ''
+    aliases: []
+    country: United States
+    province: ''
+    lat: 37.7749
+    lon: -122.4194
+  LOC_SEOUL:
+    name:
+      en: Seoul
+      zh: ''
+    aliases: []
+    country: South Korea
+    province: ''
+    lat: 37.5665
+    lon: 126.978
+  LOC_SHANGHAI:
+    name:
+      en: Shanghai
+      zh: ''
+    aliases: []
+    country: China
+    province: ''
+    lat: 31.2304
+    lon: 121.4737
+  LOC_SHENZHEN:
+    name:
+      en: Shenzhen
+      zh: ''
+    aliases: []
+    country: China
+    province: ''
+    lat: 22.5431
+    lon: 114.0579
+  LOC_SOUTH_CHINA_SEA:
+    name:
+      en: South China Sea
+      zh: ''
+    aliases: []
+    country: ''
+    province: ''
+    lat: 12.0
+    lon: 113.0
+  LOC_STOCKHOLM:
+    name:
+      en: Stockholm
+      zh: ''
+    aliases: []
+    country: Sweden
+    province: ''
+    lat: 59.3293
+    lon: 18.0686
+  LOC_TAIPEI:
+    name:
+      en: Taipei
+      zh: ''
+    aliases: []
+    country: Taiwan
+    province: ''
+    lat: 25.033
+    lon: 121.5654
+  LOC_TAIWAN_STRAIT:
+    name:
+      en: Taiwan Strait
+      zh: ''
+    aliases: []
+    country: ''
+    province: ''
+    lat: 24.5
+    lon: 119.5
+  LOC_TEHRAN:
+    name:
+      en: Tehran
+      zh: ''
+    aliases: []
+    country: Iran
+    province: ''
+    lat: 35.6892
+    lon: 51.389
+  LOC_TEL_AVIV:
+    name:
+      en: Tel Aviv
+      zh: ''
+    aliases: []
+    country: Israel
+    province: ''
+    lat: 32.0853
+    lon: 34.7818
+  LOC_TOKYO:
+    name:
+      en: Tokyo
+      zh: ''
+    aliases: []
+    country: Japan
+    province: ''
+    lat: 35.6762
+    lon: 139.6503
+  LOC_VIENNA:
+    name:
+      en: Vienna
+      zh: ''
+    aliases: []
+    country: Austria
+    province: ''
+    lat: 48.2082
+    lon: 16.3738
+  LOC_WALL_STREET:
+    name:
+      en: Wall Street
+      zh: ''
+    aliases: []
+    country: ''
+    province: ''
+    lat: 40.7061
+    lon: -74.0089
+  LOC_WARSAW:
+    name:
+      en: Warsaw
+      zh: ''
+    aliases: []
+    country: Poland
+    province: ''
+    lat: 52.2297
+    lon: 21.0122
+  LOC_WASHINGTON:
+    name:
+      en: Washington
+      zh: ''
+    aliases: []
+    country: United States
+    province: ''
+    lat: 38.9072
+    lon: -77.0369
+  LOC_WASHINGTON_DC:
+    name:
+      en: Washington DC
+      zh: ''
+    aliases: []
+    country: United States
+    province: ''
+    lat: 38.9072
+    lon: -77.0369
+  LOC_UNKNOWN:
+    name:
+      en: 硅谷
+      zh: ''
+    aliases: []
+    country: ''
+    province: ''
+    lat: 37.3875
+    lon: -122.0575
