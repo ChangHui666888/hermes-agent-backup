@@ -1,83 +1,208 @@
 [
   {
-    "article_id": 17209,
-    "article_url": "https://www.foxnews.com/outkick-sports/president-trump-pumps-protect-college-sports-act-senate-works-pass",
+    "article_id": 17757,
+    "article_url": "https://www.bbc.co.uk/news/articles/c36dxp822k4o?at_medium=RSS&at_campaign=rss",
     "action_type": "OTHER",
     "action_event_type": "General",
-    "action_detail": "urged Congress on Truth Social to pass",
-    "event_time": "as the Senate works to pass it",
-    "location": "Senate",
+    "action_detail": "evacuated",
+    "event_time": "summer of 1999",
+    "location": "Gomel, Belarus",
     "confidence": null,
     "evidence_type": "Told",
     "entities": [
       {
-        "entity_id": "PERS_TRUMP",
-        "entity_name": "Trump",
+        "entity_id": "PERS_ANTON_HONCHANKA",
+        "entity_name": "Anton Honchanka",
         "entity_type": "Person",
         "role": "SUBJECT"
       },
       {
-        "entity_id": "ENT_PROTECT_COLLEGE_SPORTS_ACT",
-        "entity_name": "Protect College Sports Act",
+        "entity_id": "ENT_CONTAMINATED_HOMETOWN",
+        "entity_name": "contaminated hometown",
         "entity_type": "Other",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 17212,
-    "article_url": "https://www.foxnews.com/world/trump-ally-el-tigre-sworn-colombias-new-president-amid-continents-rightward-shift",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "sworn in",
-    "event_time": "Friday",
-    "location": "Colombia",
+    "article_id": 17755,
+    "article_url": "https://www.aa.com.tr/en/americas/pentagon-urges-us-defense-firms-to-accelerate-weapons-production-amid-depleted-stocks-report/4022180",
+    "action_type": "REPORTS",
+    "action_event_type": "Finance",
+    "action_detail": "",
+    "event_time": null,
+    "location": "",
     "confidence": null,
     "evidence_type": "Told",
     "entities": [
       {
-        "entity_id": "PERS_ABELARDO_DE_LA_ESPRIELLA",
-        "entity_name": "Abelardo de la Espriella",
+        "entity_id": "ORG_US_DOD",
+        "entity_name": "United States Department of Defense",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_IRN",
+        "entity_name": "Iran, Islamic Republic of",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 17756,
+    "article_url": "https://tass.com/world/2170563",
+    "action_type": "ATTACKS",
+    "action_event_type": "Military",
+    "action_detail": "depleting",
+    "event_time": "August 8",
+    "location": "Middle East",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "CTRY_UNITED_STATES",
+        "entity_name": "United States",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ENT_PATRIOT_MISSILES",
+        "entity_name": "Patriot missiles",
+        "entity_type": "Other",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 17760,
+    "article_url": "https://www.aljazeera.com/video/newsfeed/2026/8/8/vance-says-us-destroyed-irans-nuclear-programme?traffic_source=rss",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "",
+    "event_time": null,
+    "location": "",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "PERS_JD_VANCE",
+        "entity_name": "JD Vance",
         "entity_type": "Person",
         "role": "SUBJECT"
       },
       {
-        "entity_id": "CTRY_COL",
-        "entity_name": "Colombia",
+        "entity_id": "CTRY_UNITED_STATES",
+        "entity_name": "United States",
         "entity_type": "Country",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 17211,
-    "article_url": "https://www.foxnews.com/world/us-intel-warns-russia-could-launch-limited-attack-nato-ally-effort-fragment-organization-report",
-    "action_type": "ATTACKS",
-    "action_event_type": "Military",
-    "action_detail": "attack",
-    "event_time": "next few years",
-    "location": "Baltics or Poland",
+    "article_id": 17739,
+    "article_url": "https://thehill.com/policy/international/6018834-turkey-says-iran-not-target-of-pact-with-saudi-arabia-pakistan/",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "",
+    "event_time": null,
+    "location": "",
     "confidence": null,
     "evidence_type": "Told",
     "entities": [
       {
-        "entity_id": "CTRY_RUSSIAN_FEDERATION",
-        "entity_name": "Russian Federation",
-        "entity_type": "Country",
+        "entity_id": "PERS_TURKISH_FOREIGN_MINISTER_HAKAN_FIDAN",
+        "entity_name": "Turkish Foreign Minister Hakan Fidan",
+        "entity_type": "Person",
         "role": "SUBJECT"
       },
       {
-        "entity_id": "ORG_NATO_MEMBER",
-        "entity_name": "NATO member",
-        "entity_type": "Organization",
+        "entity_id": "CTRY_TURKEY",
+        "entity_name": "Turkey",
+        "entity_type": "Country",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 17210,
-    "article_url": "https://tass.com/economy/2170345",
-    "action_type": "ANNOUNCES",
+    "article_id": 17744,
+    "article_url": "https://www.zerohedge.com/political/inflection-point-arrives-dsas-unofficial-america-hating-communist-mascot",
+    "action_type": "ATTACKS",
+    "action_event_type": "Military",
+    "action_detail": "declares War On West",
+    "event_time": null,
+    "location": "",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "ORG_DEMOCRATIC_SOCIALIST_OF_AMERICA",
+        "entity_name": "Democratic Socialist Of America",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ENT_WHITE_RACE",
+        "entity_name": "White Race",
+        "entity_type": "Other",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 17741,
+    "article_url": "https://oilprice.com/Energy/Energy-General/Why-Southeast-Asias-Clean-Energy-Surge-Could-Stall-Before-It-Starts.html",
+    "action_type": "ATTACKS",
+    "action_event_type": "Military",
+    "action_detail": "hit",
+    "event_time": "during the War in Iran",
+    "location": "global",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "CTRY_SOUTHEAST_ASIA",
+        "entity_name": "Southeast Asia",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ENT_ENERGY_CRISIS",
+        "entity_name": "energy crisis",
+        "entity_type": "Other",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 17740,
+    "article_url": "https://www.bloomberg.com/news/articles/2026-08-09/china-s-inflation-cools-as-oil-shock-of-iran-war-starts-to-ease",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "eased",
+    "event_time": "since the Iran war broke out in late February",
+    "location": "China",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "CTRY_CHN",
+        "entity_name": "China",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ENT_FACTORY_GATE_INFLATION",
+        "entity_name": "factory-gate inflation",
+        "entity_type": "Other",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 17758,
+    "article_url": "https://www.foxnews.com/politics/graham-replacement-hopefuls-make-final-pitches-before-special-election-iran-war-dsa-flock-cams",
+    "action_type": "ELECTS",
     "action_event_type": "Politics",
     "action_detail": "",
     "event_time": null,
@@ -86,353 +211,78 @@
     "evidence_type": "Told",
     "entities": [
       {
-        "entity_id": "PERS_DEPUTY_INDUSTRY",
-        "entity_name": "Deputy Industry",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "PERS_TRADE_MINISTER",
-        "entity_name": "Trade Minister",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_RUSSIAN_FEDERATION",
-        "entity_name": "Russian Federation",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 17204,
-    "article_url": "https://tass.com/world/2170353",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "said",
-    "event_time": "August 7",
-    "location": "BERLIN",
-    "confidence": null,
-    "evidence_type": "Told",
-    "entities": [
-      {
-        "entity_id": "PERS_FORMER_FINNISH_PRESIDENT",
-        "entity_name": "former Finnish president",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ENT_THAT_DURING_THE_COLD_WAR",
-        "entity_name": "that during the Cold War",
-        "entity_type": "Other",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 17207,
-    "article_url": "https://tass.com/sports/2170343",
-    "action_type": "DENIES",
-    "action_event_type": "Politics",
-    "action_detail": "skip",
-    "event_time": "August 7",
-    "location": "Croatia",
-    "confidence": null,
-    "evidence_type": "Told",
-    "entities": [
-      {
-        "entity_id": "ENT_RUSSIAN_OLYMPIC_GYMNASTICS_CHAMPIONS",
-        "entity_name": "Russian Olympic gymnastics champions",
-        "entity_type": "Other",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ENT_2026_EUROPEAN_CHAMPIONSHIPS",
-        "entity_name": "2026 European Championships",
-        "entity_type": "Other",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 17206,
-    "article_url": "https://tass.com/world/2170327",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "documented",
-    "event_time": "Thursday evening to Friday morning",
-    "location": "Mechernich, North Rhine-Westphalia",
-    "confidence": null,
-    "evidence_type": "Told",
-    "entities": [
-      {
-        "entity_id": "ORG_PRIVATE_SECURITY_FIRM",
-        "entity_name": "private security firm",
+        "entity_id": "ORG_REPUBLICAN",
+        "entity_name": "Republican",
         "entity_type": "Organization",
         "role": "SUBJECT"
       },
       {
-        "entity_id": "ENT_SIX_DRONE_FLIGHTS",
-        "entity_name": "six drone flights",
-        "entity_type": "Other",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 17205,
-    "article_url": "https://tass.com/society/2170363",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "develops",
-    "event_time": "August 7",
-    "location": "Moscow",
-    "confidence": null,
-    "evidence_type": "Told",
-    "entities": [
-      {
-        "entity_id": "CTRY_RUSSIAN_FEDERATION",
-        "entity_name": "Russian Federation",
-        "entity_type": "Country",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ENT_TEST_KIT",
-        "entity_name": "test kit",
-        "entity_type": "Other",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 17201,
-    "article_url": "https://tass.com/world/2170373",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "",
-    "event_time": null,
-    "location": "",
-    "confidence": null,
-    "evidence_type": "Told",
-    "entities": [
-      {
-        "entity_id": "ORG_EMBASSY",
-        "entity_name": "embassy",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_DEU",
-        "entity_name": "Germany",
+        "entity_id": "CTRY_IRN",
+        "entity_name": "Iran, Islamic Republic of",
         "entity_type": "Country",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 17203,
-    "article_url": "https://tass.com/world/2170371",
-    "action_type": "VISITS",
-    "action_event_type": "Diplomacy",
-    "action_detail": "sign",
-    "event_time": "August 7",
-    "location": "Belgrade",
-    "confidence": null,
-    "evidence_type": "Told",
-    "entities": [
-      {
-        "entity_id": "CTRY_SERBIAN_ACTIVISTS",
-        "entity_name": "Serbian activists",
-        "entity_type": "Country",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ENT_LETTER_OF_PROTEST",
-        "entity_name": "letter of protest",
-        "entity_type": "Other",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 17208,
-    "article_url": "https://tass.com/world/2170367",
-    "action_type": "APPOINTS",
-    "action_event_type": "Leadership",
-    "action_detail": "said",
-    "event_time": "July",
-    "location": "August 2008",
-    "confidence": null,
-    "evidence_type": "Told",
-    "entities": [
-      {
-        "entity_id": "PERS_EDUARD_KOKOITY_TSKHINVAL",
-        "entity_name": "Eduard Kokoity TSKHINVAL",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ENT_DATE_OF_THE_WESTS_FIRST_HYBRID_WAR",
-        "entity_name": "date of the West's first hybrid war",
-        "entity_type": "Other",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 17200,
-    "article_url": "https://tass.com/world/2170387",
-    "action_type": "VISITS",
-    "action_event_type": "Diplomacy",
-    "action_detail": "says",
-    "event_time": "August 7",
-    "location": "Belgrade",
-    "confidence": null,
-    "evidence_type": "Told",
-    "entities": [
-      {
-        "entity_id": "PERS_ALEKSANDAR_DURDEV",
-        "entity_name": "Aleksandar Durdev",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ENT_REASON_FOR_THIS_SENTIMENT",
-        "entity_name": "reason for this sentiment",
-        "entity_type": "Other",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 17196,
-    "article_url": "https://tass.com/politics/2170383",
-    "action_type": "ATTACKS",
-    "action_event_type": "Military",
-    "action_detail": "injured",
-    "event_time": "August 7",
-    "location": "MELITOPOL",
-    "confidence": null,
-    "evidence_type": "Told",
-    "entities": [
-      {
-        "entity_id": "ENT_ELEVEN_CIVILIANS",
-        "entity_name": "Eleven civilians",
-        "entity_type": "Other",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ENT_IN_UKRAINES_DRONE_ATTACKS_ON_DPR",
-        "entity_name": "in Ukraine’s drone attacks on DPR",
-        "entity_type": "Other",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 17199,
-    "article_url": "https://www.dw.com/en/mata-hari-celebrated-dancer-turns-wwi-spy/a-78263857?maca=en-rss-en-all-1573-rdf",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "",
-    "event_time": null,
-    "location": "",
-    "confidence": null,
-    "evidence_type": "Told",
-    "entities": [
-      {
-        "entity_id": "PERS_MATA_HARI",
-        "entity_name": "Mata Hari",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_EUROPE",
-        "entity_name": "Europe",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 17202,
-    "article_url": "https://www.dw.com/en/migrant-tunnels-in-lithuania-direct-suspicion-towards-minsk/a-78280640?maca=en-rss-en-all-1573-rdf",
-    "action_type": "FUNDS",
-    "action_event_type": "Economic",
-    "action_detail": "",
-    "event_time": null,
-    "location": "",
-    "confidence": null,
-    "evidence_type": "Told",
-    "entities": [
-      {
-        "entity_id": "ORG_BORDER_GUARDS",
-        "entity_name": "border guards",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_LTU",
-        "entity_name": "Lithuania",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 17195,
-    "article_url": "https://www.dw.com/en/ceuta-spain-sets-up-border-controls-on-travelers-from-italy/a-78282840?maca=en-rss-en-all-1573-rdf",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "",
-    "event_time": null,
-    "location": "",
-    "confidence": null,
-    "evidence_type": "Told",
-    "entities": [
-      {
-        "entity_id": "PERS_VISITORS",
-        "entity_name": "visitors",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_ESP",
-        "entity_name": "Spain",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 17197,
-    "article_url": "https://tass.com/world/2170381",
+    "article_id": 17754,
+    "article_url": "https://www.japantimes.co.jp/news/2026/08/09/japan/tadako-kawazoe-nagasaki-hibakusha/",
     "action_type": "OTHER",
     "action_event_type": "General",
     "action_detail": "said",
-    "event_time": "August 7",
-    "location": "Georgia",
+    "event_time": "Aug. 9, 1945",
+    "location": "Nagasaki",
     "confidence": null,
     "evidence_type": "Told",
     "entities": [
       {
-        "entity_id": "PERS_EDUARD_KOKOITY",
-        "entity_name": "Eduard Kokoity",
+        "entity_id": "PERS_TADAKO_KAWAZOE",
+        "entity_name": "Tadako Kawazoe",
         "entity_type": "Person",
         "role": "SUBJECT"
       },
       {
-        "entity_id": "CTRY_NATO_COUNTRIES_WERE_TURNING_GEORGIA_INTO_THE_MOST_MILITARIZED_STATE_IN_THE_POST_SOVIET_SPACE",
-        "entity_name": "NATO countries were turning Georgia into the most militarized state in the post-Soviet space",
-        "entity_type": "Country",
+        "entity_id": "ENT_WORLD_LEADERS_SHOULD_WORK_TO_AVOID_WARS_INSTEAD_OF_WAR_PREPARATIONS",
+        "entity_name": "world leaders should work to avoid wars instead of war preparations",
+        "entity_type": "Other",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 17189,
-    "article_url": "https://www.aljazeera.com/news/2026/8/7/several-killed-in-attacks-on-ukraine-as-kyiv-hits-russian-e-commerce-giant?traffic_source=rss",
+    "article_id": 17752,
+    "article_url": "https://www.bbc.co.uk/sounds/play/p0p2fwd1?at_medium=RSS&at_campaign=rss",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "targeting",
+    "event_time": "over a year",
+    "location": "Ukraine",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "CTRY_UKR",
+        "entity_name": "Ukraine",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "LOC_FACTORIES",
+        "entity_name": "factories",
+        "entity_type": "Location",
+        "role": "OBJECT"
+      },
+      {
+        "entity_id": "ENT_WAREHOUSES",
+        "entity_name": "warehouses",
+        "entity_type": "Other",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 17745,
+    "article_url": "https://www.france24.com/en/europe/20260808-ukraine-braces-for-winter-power-crisis-after-russian-strikes-zelensky-says",
     "action_type": "ATTACKS",
     "action_event_type": "Military",
     "action_detail": "",
@@ -442,9 +292,9 @@
     "evidence_type": "Told",
     "entities": [
       {
-        "entity_id": "COMP_WILDBERRIES",
-        "entity_name": "Wildberries",
-        "entity_type": "Company",
+        "entity_id": "PERS_ZELENSKY",
+        "entity_name": "Zelensky",
+        "entity_type": "Person",
         "role": "SUBJECT"
       },
       {
@@ -456,10 +306,35 @@
     ]
   },
   {
-    "article_id": 17190,
-    "article_url": "https://www.aljazeera.com/news/2026/8/7/us-appeals-court-upholds-injunction-pausing-trumps-white-house-ballroom?traffic_source=rss",
-    "action_type": "ATTACKS",
-    "action_event_type": "Military",
+    "article_id": 17742,
+    "article_url": "https://oilprice.com/Energy/Energy-General/Airlines-Scramble-for-Jet-Fuel-as-Hormuz-Disruption-Drags-On.html",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "struggle",
+    "event_time": "months-long",
+    "location": "Strait of Hormuz",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "COMP_AIRLINES",
+        "entity_name": "Airlines",
+        "entity_type": "Company",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ENT_JET_FUEL",
+        "entity_name": "jet fuel",
+        "entity_type": "Other",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 17748,
+    "article_url": "https://tass.com/world/2170587",
+    "action_type": "OTHER",
+    "action_event_type": "General",
     "action_detail": "",
     "event_time": null,
     "location": "",
@@ -467,22 +342,153 @@
     "evidence_type": "Told",
     "entities": [
       {
-        "entity_id": "PERS_PRESIDENT",
-        "entity_name": "president",
+        "entity_id": "PERS_VLADIMIR_ZELENSKY",
+        "entity_name": "Vladimir Zelensky",
         "entity_type": "Person",
         "role": "SUBJECT"
       },
       {
-        "entity_id": "CTRY_UNITED_STATES",
-        "entity_name": "United States",
+        "entity_id": "CTRY_UKR",
+        "entity_name": "Ukraine",
         "entity_type": "Country",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 17187,
-    "article_url": "https://www.aljazeera.com/news/2026/8/7/lebanon-points-to-positive-progress-on-borders-prisoners-in-israel-talks?traffic_source=rss",
+    "article_id": 17750,
+    "article_url": "https://tass.com/world/2170545",
+    "action_type": "ANNOUNCES",
+    "action_event_type": "Politics",
+    "action_detail": "",
+    "event_time": null,
+    "location": "",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "PERS_HAKAN_FIDAN",
+        "entity_name": "Hakan Fidan",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_UKR",
+        "entity_name": "Ukraine",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 17749,
+    "article_url": "https://tass.com/world/2170557",
+    "action_type": "MEETS",
+    "action_event_type": "Diplomacy",
+    "action_detail": "emphasized",
+    "event_time": "August 8",
+    "location": "ISTANBUL",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "PERS_TURKISH_FOREIGN_MINISTER_HAKAN_FIDAN",
+        "entity_name": "Turkish Foreign Minister Hakan Fidan",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ENT_THAT_TECHNICALLY",
+        "entity_name": "that 'technically",
+        "entity_type": "Other",
+        "role": "OBJECT"
+      },
+      {
+        "entity_id": "ENT_ITS_THE_SAME_THING",
+        "entity_name": "it's the same thing",
+        "entity_type": "Other",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 17759,
+    "article_url": "https://www.nytimes.com/2026/08/08/world/middleeast/yemen-houthis-regional-stability.html",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "faces",
+    "event_time": "overnight",
+    "location": "Middle East",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "CTRY_YEM",
+        "entity_name": "Yemen",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ENT_ESCALATING_CONFLICT",
+        "entity_name": "escalating conflict",
+        "entity_type": "Other",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 17746,
+    "article_url": "https://www.scmp.com/news/world/europe/article/3363414/ukraine-denies-targeting-bulgaria-drone-explodes-near-pipeline?utm_source=rss_feed",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "",
+    "event_time": null,
+    "location": "",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "ORG_DEFENCE_MINISTRY",
+        "entity_name": "defence ministry",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_UKR",
+        "entity_name": "Ukraine",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 17753,
+    "article_url": "https://www.aa.com.tr/en/middle-east/saudi-arabia-welcomes-un-condemnation-of-houthi-attacks/4022208",
+    "action_type": "ATTACKS",
+    "action_event_type": "Military",
+    "action_detail": "welcomed",
+    "event_time": "09 August 2026",
+    "location": "Riyadh",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "CTRY_SAU",
+        "entity_name": "Saudi Arabia",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_UN_SECURITY_COUNCIL_STATEMENT",
+        "entity_name": "UN Security Council statement",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 17751,
+    "article_url": "https://www.aa.com.tr/en/middle-east/israeli-drone-crashes-in-southern-lebanon-injuring-girl-father-state-media/4022176",
     "action_type": "BANS",
     "action_event_type": "Legal",
     "action_detail": "",
@@ -492,22 +498,178 @@
     "evidence_type": "Told",
     "entities": [
       {
-        "entity_id": "PERS_JOSEPH_AOUN",
-        "entity_name": "Joseph Aoun",
+        "entity_id": "PERS_AHMED_KHALIFA",
+        "entity_name": "Ahmed Khalifa",
         "entity_type": "Person",
         "role": "SUBJECT"
       },
       {
-        "entity_id": "CTRY_LBN",
-        "entity_name": "Lebanon",
+        "entity_id": "CTRY_ISRAELI",
+        "entity_name": "Israeli",
         "entity_type": "Country",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 17193,
-    "article_url": "https://www.aljazeera.com/video/newsfeed/2026/8/7/us-appeals-court-halts-white-house-ballroom-construction?traffic_source=rss",
+    "article_id": 17743,
+    "article_url": "https://oilprice.com/Energy/Energy-General/Berkeley-Labs-New-Fusion-Materials-Breakthrough-Explained.html",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "made a major breakthrough in the design of nuclear fusion reactors",
+    "event_time": "unknown",
+    "location": "unknown",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "ORG_UC_DAVIS",
+        "entity_name": "UC Davis",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_LAWRENCE_BERKELEY_NATIONAL_LABORATORY",
+        "entity_name": "Lawrence Berkeley National Laboratory",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ENT_MATERIALS_DRIVEN_FUSION",
+        "entity_name": "materials-driven fusion",
+        "entity_type": "Other",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 17720,
+    "article_url": "https://tech.slashdot.org/story/26/08/08/0217224/prime-minister-leaves-door-open-for-reviewing-policy-of-no-nuclear-weapons-in-japan?utm_source=rss1.0mainlinkanon&utm_medium=feed",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "",
+    "event_time": null,
+    "location": "",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "PERS_PRIME_MINISTER",
+        "entity_name": "prime minister",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "LOC_HIROSHIMA",
+        "entity_name": "Hiroshima",
+        "entity_type": "Location",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 17747,
+    "article_url": "https://dev.to/carterhughes6853/capacity-planning-a-saas-chatbot-api-across-openai-claude-and-gemini-58ni",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "choose",
+    "event_time": "unknown",
+    "location": "unknown",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "ENT_SAAS_CHATBOT",
+        "entity_name": "SaaS chatbot",
+        "entity_type": "Other",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ENT_CHAT_API",
+        "entity_name": "chat API",
+        "entity_type": "Other",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 17738,
+    "article_url": "https://thehill.com/homenews/administration/6018727-vance-iran-negotiation-progress/",
+    "action_type": "WARNS",
+    "action_event_type": "Politics",
+    "action_detail": "warns",
+    "event_time": "Saturday",
+    "location": "",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "PERS_VANCE",
+        "entity_name": "Vance",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_US_STILL_IN_THE_MIDDLE_OF_THE_GAME_WITH_IRAN_DESPITE_TALKS",
+        "entity_name": "US still 'in the middle of the game' with Iran despite talks",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 17722,
+    "article_url": "https://cointelegraph.com/news/us-bitcoin-etfs-best-weekly-inflows-april-coldcard-hack?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "",
+    "event_time": null,
+    "location": "",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "ENT_BITCO",
+        "entity_name": "Bitco",
+        "entity_type": "Other",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_UNITED_STATES",
+        "entity_name": "United States",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 17725,
+    "article_url": "https://tass.com/defense/2170527",
+    "action_type": "ELECTS",
+    "action_event_type": "Politics",
+    "action_detail": "continues to receive electricity through",
+    "event_time": "August 8",
+    "location": "MELITOPOL",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "ENT_ZAPOROZHYE_NUCLEAR_POWER_PLANT",
+        "entity_name": "Zaporozhye Nuclear Power Plant",
+        "entity_type": "Other",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ENT_FERROSPLAVNAYA_1_POWER_LINE",
+        "entity_name": "Ferrosplavnaya-1 power line",
+        "entity_type": "Other",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 17682,
+    "article_url": "https://www.france24.com/en/russian-strikes-kill-four-as-kyiv-hits-oil-refinery",
     "action_type": "ATTACKS",
     "action_event_type": "Military",
     "action_detail": "",
@@ -517,115 +679,9 @@
     "evidence_type": "Told",
     "entities": [
       {
-        "entity_id": "ORG_FEDERAL_APPEALS_COURT",
-        "entity_name": "federal appeals court",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_UNITED_STATES",
-        "entity_name": "United States",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 17185,
-    "article_url": "https://www.aljazeera.com/news/2026/8/7/icc-body-urges-chad-and-venezuela-to-reverse-course-on-withdrawal?traffic_source=rss",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "urges",
-    "event_time": "unknown",
-    "location": "unknown",
-    "confidence": null,
-    "evidence_type": "Told",
-    "entities": [
-      {
-        "entity_id": "ORG_ICC_BODY",
-        "entity_name": "ICC body",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_TCD",
-        "entity_name": "Chad",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      },
-      {
-        "entity_id": "CTRY_VENEZUELA",
-        "entity_name": "Venezuela",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 17188,
-    "article_url": "https://www.aljazeera.com/news/2026/8/7/donald-trump-renews-effort-to-fire-federal-reserve-governor-lisa-cook?traffic_source=rss",
-    "action_type": "FIRES",
-    "action_event_type": "Leadership",
-    "action_detail": "",
-    "event_time": null,
-    "location": "",
-    "confidence": null,
-    "evidence_type": "Told",
-    "entities": [
-      {
-        "entity_id": "ORG_FEDERAL_RESERVE",
-        "entity_name": "Federal Reserve",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_UNITED_STATES",
-        "entity_name": "United States",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 17198,
-    "article_url": "https://tass.com/economy/2170403",
-    "action_type": "LAUNCHES",
-    "action_event_type": "Technology",
-    "action_detail": "launch",
-    "event_time": "August 8",
-    "location": "Russia",
-    "confidence": null,
-    "evidence_type": "Told",
-    "entities": [
-      {
-        "entity_id": "ORG_RU_GOVERNMENT",
-        "entity_name": "Russian Federation Government",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ENT_FIRST_RAIL_CARGO_ROUTE",
-        "entity_name": "first rail cargo route",
-        "entity_type": "Other",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 17182,
-    "article_url": "https://www.aljazeera.com/economy/2026/8/8/us-senate-passes-sweeping-russian-energy-sanctions-bill-amid-ukraine-war?traffic_source=rss",
-    "action_type": "SANCTIONS",
-    "action_event_type": "Economic",
-    "action_detail": "",
-    "event_time": null,
-    "location": "",
-    "confidence": null,
-    "evidence_type": "Told",
-    "entities": [
-      {
-        "entity_id": "ORG_US_SENATE",
-        "entity_name": "US Senate",
-        "entity_type": "Organization",
+        "entity_id": "PERS_CHILD",
+        "entity_name": "child",
+        "entity_type": "Person",
         "role": "SUBJECT"
       },
       {
@@ -637,213 +693,13 @@
     ]
   },
   {
-    "article_id": 17181,
-    "article_url": "https://www.aljazeera.com/news/2026/8/8/sudans-war-threatens-an-entire-generations-future-un-warns?traffic_source=rss",
-    "action_type": "WARNS",
-    "action_event_type": "Politics",
-    "action_detail": "",
-    "event_time": null,
-    "location": "",
-    "confidence": null,
-    "evidence_type": "Told",
-    "entities": [
-      {
-        "entity_id": "PERS_CHILDREN",
-        "entity_name": "children",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_SDN",
-        "entity_name": "Sudan",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 17194,
-    "article_url": "https://news.un.org/feed/view/en/story/2026/08/1168099",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "welcomed",
-    "event_time": "Friday",
-    "location": "Palace of Nations",
-    "confidence": null,
-    "evidence_type": "Told",
-    "entities": [
-      {
-        "entity_id": "ORG_UN_GENEVA",
-        "entity_name": "UN Geneva",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_FIVE_YOUNG_PEACOCKS",
-        "entity_name": "five young peacocks",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 17192,
-    "article_url": "https://www.engadget.com/2232601/korean-lunar-orbiter-snaps-first-pics-of-the-spacex-falcon-9-crash-site-on-the-moon/",
-    "action_type": "CRASHES",
-    "action_event_type": "Finance",
-    "action_detail": "",
-    "event_time": null,
-    "location": "",
-    "confidence": null,
-    "evidence_type": "Told",
-    "entities": [
-      {
-        "entity_id": "ORG_NASA",
-        "entity_name": "NASA",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_KOREAN",
-        "entity_name": "Korean",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 17166,
-    "article_url": "https://www.theguardian.com/us-news/2026/aug/07/judge-trump-south-sudan-tps",
-    "action_type": "APPROVES",
-    "action_event_type": "Politics",
-    "action_detail": "strip protections",
-    "event_time": null,
-    "location": "United States",
-    "confidence": null,
-    "evidence_type": "Told",
-    "entities": [
-      {
-        "entity_id": "ORG_TRUMP_ADMINISTRATION",
-        "entity_name": "Trump administration",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "PERS_SOUTH_SUDANESE_NATIONALS",
-        "entity_name": "South Sudanese nationals",
-        "entity_type": "Person",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 17184,
-    "article_url": "https://www.aljazeera.com/news/liveblog/2026/8/8/iran-war-live-trilateral-mecca-defence-pact-signed-as-hormuz-deal-looms?traffic_source=rss",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "signs",
-    "event_time": null,
-    "location": "Mecca",
-    "confidence": null,
-    "evidence_type": "Told",
-    "entities": [
-      {
-        "entity_id": "PERS_SAUDI_CROWN_PRINCE",
-        "entity_name": "Saudi crown prince",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "LOC_JOINT_DEFENCE_AGREEMENT",
-        "entity_name": "joint defence agreement",
-        "entity_type": "Location",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 17155,
-    "article_url": "https://www.france24.com/en/americas/20260807-never-speak-about-palantir-leaked-audit-reveals-the-un-s-palantir-problem-united-nations-ai-tech-wfp-iaea-ethics",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "",
-    "event_time": null,
-    "location": "",
-    "confidence": null,
-    "evidence_type": "Told",
-    "entities": [
-      {
-        "entity_id": "ORG_UNS_WORLD_FOOD_PROGRAMME",
-        "entity_name": "UN's World Food Programme",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_UNITED_STATES",
-        "entity_name": "United States",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 17186,
-    "article_url": "https://www.aljazeera.com/news/2026/8/8/de-la-espriella-sworn-in-as-colombia-leader-vows-crackdown-on-armed-groups?traffic_source=rss",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "sworn in as Colombia’s leader",
-    "event_time": "Archived from web.archive.org",
-    "location": "Colombia",
-    "confidence": null,
-    "evidence_type": "Told",
-    "entities": [
-      {
-        "entity_id": "PERS_DE_LA_ESPRIELLA",
-        "entity_name": "De la Espriella",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_COL",
-        "entity_name": "Colombia",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 17191,
-    "article_url": "https://finance.yahoo.com/markets/stocks/articles/microsoft-stocks-thin-earnings-premium-183636004.html",
-    "action_type": "REPORTS",
-    "action_event_type": "Finance",
-    "action_detail": "reporting",
-    "event_time": "2026-08-06",
-    "location": "United States",
-    "confidence": null,
-    "evidence_type": "Told",
-    "entities": [
-      {
-        "entity_id": "COMP_MICROSOFT",
-        "entity_name": "Microsoft",
-        "entity_type": "Company",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ENT_THIN_EARNINGS_PREMIUM",
-        "entity_name": "thin earnings premium",
-        "entity_type": "Other",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 17159,
-    "article_url": "https://www.theverge.com/ai-artificial-intelligence/976948/openai-astra-model-pause-critical-cyber-capabilities",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "pauses",
-    "event_time": "because it doesn't yet meet new security standards the company is putting in place",
-    "location": "around an in-development AI model, Astra",
+    "article_id": 17711,
+    "article_url": "https://dev.to/deanlee/openai-hit-its-own-brakes-now-what-54oi",
+    "action_type": "ATTACKS",
+    "action_event_type": "Military",
+    "action_detail": "paused",
+    "event_time": "Friday evening",
+    "location": "unknown",
     "confidence": null,
     "evidence_type": "Told",
     "entities": [
@@ -854,92 +710,17 @@
         "role": "SUBJECT"
       },
       {
-        "entity_id": "ENT_INTERNAL_ACTIVITIES",
-        "entity_name": "internal activities",
+        "entity_id": "ENT_INTERNAL_DEVELOPMENT_ACTIVITIES",
+        "entity_name": "internal development activities",
         "entity_type": "Other",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 17180,
-    "article_url": "https://www.investors.com/news/technology/datadog-stock-ddog-datadog-earnings-q22026/?src=A00220&yptr=yahoo",
-    "action_type": "CRASHES",
-    "action_event_type": "Finance",
-    "action_detail": "plunges",
-    "event_time": "2026-08-06T18:24:12+00:00",
-    "location": "Investors.com",
-    "confidence": null,
-    "evidence_type": "Told",
-    "entities": [
-      {
-        "entity_id": "COMP_DATADOG",
-        "entity_name": "Datadog",
-        "entity_type": "Company",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ENT_REVENUE_OUTLOOK",
-        "entity_name": "revenue outlook",
-        "entity_type": "Other",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 17178,
-    "article_url": "https://www.cbsnews.com/news/u-s-intelligence-agencies-russia-putin-test-nato/",
-    "action_type": "WARNS",
-    "action_event_type": "Politics",
-    "action_detail": "",
-    "event_time": null,
-    "location": "",
-    "confidence": null,
-    "evidence_type": "Told",
-    "entities": [
-      {
-        "entity_id": "ORG_NATO",
-        "entity_name": "NATO",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_UNITED_STATES",
-        "entity_name": "United States",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 17179,
-    "article_url": "https://www.newsweek.com/student-loan-update-government-watchdog-issues-warning-about-major-changes-12299147",
-    "action_type": "SUES",
-    "action_event_type": "Legal",
-    "action_detail": "issues",
-    "event_time": "Thursday",
-    "location": "Washington D.C.",
-    "confidence": null,
-    "evidence_type": "Told",
-    "entities": [
-      {
-        "entity_id": "ORG_GOVERNMENT_ACCOUNTABILITY_OFFICE",
-        "entity_name": "Government Accountability Office",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ENT_WARNING",
-        "entity_name": "warning",
-        "entity_type": "Other",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 17164,
-    "article_url": "https://www.cbsnews.com/video/houthi-rebels-new-attacks-saudi-backed-troops/",
-    "action_type": "ATTACKS",
+    "article_id": 17683,
+    "article_url": "https://www.zerohedge.com/geopolitical/joint-chiefs-chair-pushing-iran-war-ramp-warning-escalation-will-backfire",
+    "action_type": "ESCALATES",
     "action_event_type": "Military",
     "action_detail": "",
     "event_time": null,
@@ -948,108 +729,8 @@
     "evidence_type": "Told",
     "entities": [
       {
-        "entity_id": "ORG_HOUTHI_REBELS",
-        "entity_name": "Houthi rebels",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_YEM",
-        "entity_name": "Yemen",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 17157,
-    "article_url": "https://www.cbsnews.com/video/cuban-ambassador-un-suffering-collective-punishment-us-blockade/",
-    "action_type": "BANS",
-    "action_event_type": "Legal",
-    "action_detail": "",
-    "event_time": null,
-    "location": "",
-    "confidence": null,
-    "evidence_type": "Told",
-    "entities": [
-      {
-        "entity_id": "PERS_TRUMP",
-        "entity_name": "Trump",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_CUB",
-        "entity_name": "Cuba",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 17177,
-    "article_url": "https://www.newsweek.com/sports/nfl/hall-of-fame-qb-heaps-praise-on-cardinals-rookie-carson-beck-after-debut-12299468",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "received rave reviews after a strong preseason debut against the Carolina Panthers",
-    "event_time": "preseason",
-    "location": "Arizona Cardinals",
-    "confidence": null,
-    "evidence_type": "Told",
-    "entities": [
-      {
-        "entity_id": "ORG_ARIZONA_CARDINALS_ROOKIE_QUARTERBACK_CARSON_BECK",
-        "entity_name": "Arizona Cardinals rookie quarterback Carson Beck",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "PERS_HALL_OF_FAMER_KURT_WARNER",
-        "entity_name": "Hall of Famer Kurt Warner",
-        "entity_type": "Person",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 17162,
-    "article_url": "https://www.cbsnews.com/video/trump-administration-pays-out-100-billion-tariff-refunds-businesses/",
-    "action_type": "TARIFFS",
-    "action_event_type": "Economic",
-    "action_detail": "pays out",
-    "event_time": "this week",
-    "location": "U.S.",
-    "confidence": null,
-    "evidence_type": "Told",
-    "entities": [
-      {
-        "entity_id": "ORG_TRUMP_ADMINISTRATION",
-        "entity_name": "Trump administration",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ENT_100_BILLION",
-        "entity_name": "$100 billion",
-        "entity_type": "Other",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 17174,
-    "article_url": "https://www.cnbc.com/2026/08/07/trump-iran-hormuz-deal-stocks-oil.html",
-    "action_type": "SURGES",
-    "action_event_type": "Finance",
-    "action_detail": "",
-    "event_time": null,
-    "location": "",
-    "confidence": null,
-    "evidence_type": "Told",
-    "entities": [
-      {
-        "entity_id": "PERS_TRUMP",
-        "entity_name": "Trump",
+        "entity_id": "PERS_JOINT_CHIEFS_CHAIR",
+        "entity_name": "Joint Chiefs Chair",
         "entity_type": "Person",
         "role": "SUBJECT"
       },
@@ -1062,64 +743,133 @@
     ]
   },
   {
-    "article_id": 17176,
-    "article_url": "https://www.cbsnews.com/news/memphis-grizzlies-brandon-clarke-cause-of-death-heroin-cocaine/",
-    "action_type": "DIES",
-    "action_event_type": "Leadership",
-    "action_detail": "died",
+    "article_id": 17721,
+    "article_url": "https://thehill.com/homenews/administration/6018604-maher-trump-socialism-comments-intel-stake/",
+    "action_type": "ACCUSES",
+    "action_event_type": "Legal",
+    "action_detail": "accused",
     "event_time": "Friday",
-    "location": "May",
+    "location": "United States",
     "confidence": null,
     "evidence_type": "Told",
     "entities": [
       {
-        "entity_id": "ORG_MEMPHIS_GRIZZLIES_FORWARD_BRANDON_CLARKE",
-        "entity_name": "Memphis Grizzlies forward Brandon Clarke",
+        "entity_id": "PERS_BILL_MAHER",
+        "entity_name": "Bill Maher",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "PERS_TRUMP",
+        "entity_name": "Trump",
+        "entity_type": "Person",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 17684,
+    "article_url": "https://thehill.com/policy/international/6018567-iran-oman-strait-hormuz-deal-close/",
+    "action_type": "CEASEFIRE",
+    "action_event_type": "Diplomacy",
+    "action_detail": "signals",
+    "event_time": "Saturday",
+    "location": "Oman",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "CTRY_IRN",
+        "entity_name": "Iran, Islamic Republic of",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "LOC_STRAIT_OF_HORMUZ_DEAL_CLOSE",
+        "entity_name": "Strait of Hormuz deal close",
+        "entity_type": "Location",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 17636,
+    "article_url": "https://www.cbsnews.com/video/europeans-face-energy-crisis-as-heat-wave-brings-wildfires-and-drought/",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "face",
+    "event_time": "current",
+    "location": "Europe",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "CTRY_EUROPEANS",
+        "entity_name": "Europeans",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ENT_ENERGY_CRISIS",
+        "entity_name": "energy crisis",
+        "entity_type": "Other",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 17574,
+    "article_url": "https://seekingalpha.com/article/4933767-nvidia-not-a-house-of-cards-but-lots-of-duct-tape-in-sight?source=feed_all_articles",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "mark a milestone in building AI infrastructure",
+    "event_time": "Starmind AI1 satellite compute payload",
+    "location": "SpaceX",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "COMP_NVIDIA",
+        "entity_name": "NVIDIA",
+        "entity_type": "Company",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ENT_DELIVERING_INTELLIGENCE_AT_GLOBAL_SCALE",
+        "entity_name": "delivering intelligence at global scale",
+        "entity_type": "Other",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 17345,
+    "article_url": "https://cointelegraph.com/news/us-senate-clarity-act-september-vote-thune-cloture?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+    "action_type": "ELECTS",
+    "action_event_type": "Politics",
+    "action_detail": "vote on advancing",
+    "event_time": "after Thune files cloture",
+    "location": "Sept. 15",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "ORG_US_SENATE",
+        "entity_name": "US Senate",
         "entity_type": "Organization",
         "role": "SUBJECT"
       },
       {
-        "entity_id": "ENT_FROM_EFFECTS_OF_HEROIN",
-        "entity_name": "from effects of heroin",
-        "entity_type": "Other",
-        "role": "OBJECT"
-      },
-      {
-        "entity_id": "ENT_COCAINE",
-        "entity_name": "cocaine",
+        "entity_id": "ENT_CLARITY_ACT",
+        "entity_name": "CLARITY Act",
         "entity_type": "Other",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 17183,
-    "article_url": "https://www.ft.com/content/798623be-8da1-490d-9494-11b3d5f58ac8?syn-25a6b1a6=1",
-    "action_type": "FUNDS",
-    "action_event_type": "Economic",
-    "action_detail": "murder",
-    "event_time": "unknown",
-    "location": "unknown",
-    "confidence": null,
-    "evidence_type": "Told",
-    "entities": [
-      {
-        "entity_id": "ENT_ANN_WIDDECOMBE",
-        "entity_name": "Ann Widdecombe",
-        "entity_type": "Other",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ENT_INVESTIGATION",
-        "entity_name": "investigation",
-        "entity_type": "Other",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 17167,
-    "article_url": "https://blogs.microsoft.com/blog/2026/06/22/powering-the-next-wave-of-ai-expanding-capacity-with-our-new-datacenter-in-pecos/",
+    "article_id": 17414,
+    "article_url": "https://www.aljazeera.com/news/2026/8/8/uae-says-iran-targeted-adnoc-tanker-in-hormuz-no-casualties-2?traffic_source=rss",
     "action_type": "OTHER",
     "action_event_type": "General",
     "action_detail": "",
@@ -1129,160 +879,379 @@
     "evidence_type": "Told",
     "entities": [
       {
-        "entity_id": "COMP_MICROSOFT",
-        "entity_name": "Microsoft",
+        "entity_id": "COMP_ADNOC",
+        "entity_name": "ADNOC",
         "entity_type": "Company",
         "role": "SUBJECT"
       },
       {
-        "entity_id": "LOC_PECOS",
-        "entity_name": "Pecos",
-        "entity_type": "Location",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 17175,
-    "article_url": "https://www.bbc.co.uk/news/articles/c3r073eqvrjo?at_medium=RSS&at_campaign=rss",
-    "action_type": "ATTACKS",
-    "action_event_type": "Military",
-    "action_detail": "warn",
-    "event_time": "Last June",
-    "location": "Ukraine",
-    "confidence": null,
-    "evidence_type": "Told",
-    "entities": [
-      {
-        "entity_id": "CTRY_UKRAINIAN_EMERGENCY_WORKERS",
-        "entity_name": "Ukrainian emergency workers",
-        "entity_type": "Country",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_GROWING_RUSSIAN_ATTACKS_ON_HOSPITALS",
-        "entity_name": "Growing Russian attacks on hospitals",
+        "entity_id": "CTRY_GULF",
+        "entity_name": "Gulf",
         "entity_type": "Country",
         "role": "OBJECT"
-      },
-      {
-        "entity_id": "ENT_AMBULANCES",
-        "entity_name": "ambulances",
-        "entity_type": "Other",
-        "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 17160,
-    "article_url": "https://techcrunch.com/2026/08/07/openai-says-it-slowed-astra-model-development-over-security-concerns/",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "said",
-    "event_time": "sometime",
-    "location": "somewhere",
+    "article_id": 17457,
+    "article_url": "https://www.independent.co.uk/news/world/americas/us-politics/trump-murkowski-todd-blanche-vote-attorney-general-b3029762.html",
+    "action_type": "ELECTS",
+    "action_event_type": "Politics",
+    "action_detail": "condemns",
+    "event_time": "overnight",
+    "location": "Senate",
     "confidence": null,
     "evidence_type": "Told",
     "entities": [
       {
-        "entity_id": "COMP_OPENAI",
-        "entity_name": "OpenAI",
-        "entity_type": "Company",
+        "entity_id": "PERS_TRUMP",
+        "entity_name": "Trump",
+        "entity_type": "Person",
         "role": "SUBJECT"
       },
       {
-        "entity_id": "COMP_GARTNER",
-        "entity_name": "GARTNER",
-        "entity_type": "Company",
+        "entity_id": "ORG_GOP_SENATOR",
+        "entity_name": "GOP senator",
+        "entity_type": "Organization",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 17152,
-    "article_url": "https://blogs.microsoft.com/blog/2026/06/24/inside-microsofts-two-decade-push-to-cut-water-intensity-while-scaling-for-growth/",
-    "action_type": "CUTS",
-    "action_event_type": "Economic",
-    "action_detail": "push",
-    "event_time": "two-decade",
-    "location": "datacenters",
-    "confidence": null,
-    "evidence_type": "Told",
-    "entities": [
-      {
-        "entity_id": "COMP_MICROSOFT",
-        "entity_name": "Microsoft",
-        "entity_type": "Company",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ENT_WATER_INTENSITY",
-        "entity_name": "water intensity",
-        "entity_type": "Other",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 17171,
-    "article_url": "https://blogs.microsoft.com/blog/2026/06/23/rethinking-cloud-operations-with-agentic-observability/",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "become",
-    "event_time": null,
-    "location": "Cloud operations",
-    "confidence": null,
-    "evidence_type": "Told",
-    "entities": [
-      {
-        "entity_id": "ENT_AI_DRIVEN",
-        "entity_name": "AI-driven",
-        "entity_type": "Other",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_AUTONOMOUS_AGENTS",
-        "entity_name": "autonomous agents",
-        "entity_type": "Country",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ENT_PART_OF_MODERN_SOFTWARE_SYSTEMS",
-        "entity_name": "part of modern software systems",
-        "entity_type": "Other",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 17168,
-    "article_url": "https://blogs.microsoft.com/blog/2026/07/02/microsoft-frontier-company-ai-engineering-that-amplifies-and-protects-your-intelligence/",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "AI engineering",
+    "article_id": 17439,
+    "article_url": "https://www.independent.co.uk/news/world/americas/us-politics/trump-election-fraud-claims-michigan-senate-b3029754.html",
+    "action_type": "ELECTS",
+    "action_event_type": "Politics",
+    "action_detail": "",
     "event_time": null,
     "location": "",
     "confidence": null,
     "evidence_type": "Told",
     "entities": [
       {
-        "entity_id": "ENT_MICROSOFT_FRONTIER_COMPANY",
-        "entity_name": "Microsoft Frontier Company",
-        "entity_type": "Other",
+        "entity_id": "PERS_TRUMP",
+        "entity_name": "Trump",
+        "entity_type": "Person",
         "role": "SUBJECT"
       },
       {
-        "entity_id": "ENT_AMPLIFIES",
-        "entity_name": "amplifies",
-        "entity_type": "Other",
+        "entity_id": "LOC_MICHIGAN",
+        "entity_name": "Michigan",
+        "entity_type": "Location",
         "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 17317,
+    "article_url": "https://www.scmp.com/news/world/middle-east/article/3363411/iran-targeted-tanker-says-uae-tehran-says-hormuz-deal-oman-close?utm_source=rss_feed",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "targeted",
+    "event_time": "Saturday",
+    "location": "Strait of Hormuz",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "CTRY_IRN",
+        "entity_name": "Iran, Islamic Republic of",
+        "entity_type": "Country",
+        "role": "SUBJECT"
       },
       {
-        "entity_id": "ENT_PROTECTS_YOUR_INTELLIGENCE",
-        "entity_name": "protects your intelligence",
+        "entity_id": "ENT_TANKER",
+        "entity_name": "tanker",
         "entity_type": "Other",
         "role": "OBJECT"
       }
     ]
+  },
+  {
+    "article_id": 17336,
+    "article_url": "https://www.bloomberg.com/news/videos/2026-08-08/china-s-ai-push-reshapes-its-economic-future-video",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "",
+    "event_time": null,
+    "location": "",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "ORG_NEW_YORKER",
+        "entity_name": "New Yorker",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_CHN",
+        "entity_name": "China",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 17368,
+    "article_url": "https://www.aljazeera.com/news/2026/8/8/iraqs-kurdish-region-wants-to-stay-out-of-regional-conflicts-pm-barzani?traffic_source=rss",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "reaffirm",
+    "event_time": null,
+    "location": "regional conflicts",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "ORG_KURDISTAN_REGION",
+        "entity_name": "Kurdistan Region",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ENT_NEUTRALITY",
+        "entity_name": "neutrality",
+        "entity_type": "Other",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 17369,
+    "article_url": "https://www.aljazeera.com/video/newsfeed/2026/8/8/war-on-iran-phase-ii-day-28?traffic_source=rss",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "signs",
+    "event_time": "Day 28",
+    "location": "Middle East",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "ENT_SAUDI_PAKISTAN_TURKIYE_PACT",
+        "entity_name": "Saudi-Pakistan-Turkiye pact",
+        "entity_type": "Other",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "LOC_HORMUZ_SECURITY_FRAMEWORK",
+        "entity_name": "Hormuz security framework",
+        "entity_type": "Location",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 17385,
+    "article_url": "https://www.newsweek.com/how-weak-jobs-report-could-offer-unexpected-mortgage-boost-for-thousands-12299900",
+    "action_type": "RATE_HIKE",
+    "action_event_type": "Finance",
+    "action_detail": "may not raise interest rates",
+    "event_time": "A weak jobs report",
+    "location": "homebuyers",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "ORG_FEDERAL_RESERVE",
+        "entity_name": "Federal Reserve",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ENT_MORTGAGE_RATES",
+        "entity_name": "mortgage rates",
+        "entity_type": "Other",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 17429,
+    "article_url": "https://www.dw.com/en/us-senate-confirms-trump-loyalist-todd-blanche-as-new-ag/a-78289397?maca=en-rss-en-all-1573-rdf",
+    "action_type": "CONFIRMS",
+    "action_event_type": "Politics",
+    "action_detail": "confirms",
+    "event_time": "2026-08-08",
+    "location": "United States",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "ORG_US_SENATE",
+        "entity_name": "US Senate",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ENT_TODD_BLANCHE",
+        "entity_name": "Todd Blanche",
+        "entity_type": "Other",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 17405,
+    "article_url": "https://www.ft.com/content/9a1ab09b-82d7-43c2-b44a-ebb41d352dab?syn-25a6b1a6=1",
+    "action_type": "LAUNCHES",
+    "action_event_type": "Technology",
+    "action_detail": "launched",
+    "event_time": "recently",
+    "location": "Hormuz",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "CTRY_IRN",
+        "entity_name": "Iran, Islamic Republic of",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ENT_MISSILE",
+        "entity_name": "missile",
+        "entity_type": "Other",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 17331,
+    "article_url": "https://www.scmp.com/news/china/military/article/3363386/how-chinas-hypersonic-carrier-killers-could-distract-us-forces-taiwan-conflict?utm_source=rss_feed",
+    "action_type": "DIES",
+    "action_event_type": "Leadership",
+    "action_detail": "",
+    "event_time": null,
+    "location": "",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "ORG_ALLIED_NAVIES",
+        "entity_name": "allied navies",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_CN_GOVERNMENT",
+        "entity_name": "Chinese Government",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 17370,
+    "article_url": "https://www.dw.com/en/iran-war-irgc-says-hormuz-to-open-if-us-accepts-iran-s-terms/live-78289364?maca=en-rss-en-all-1573-rdf",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "",
+    "event_time": null,
+    "location": "",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "ORG_REVOLUTIONARY_GUARD",
+        "entity_name": "Revolutionary Guard",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_IRN",
+        "entity_name": "Iran, Islamic Republic of",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 17402,
+    "article_url": "https://tass.com/world/2170503",
+    "action_type": "ATTACKS",
+    "action_event_type": "Military",
+    "action_detail": "",
+    "event_time": null,
+    "location": "",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "PERS_ZELENSKY",
+        "entity_name": "Zelensky",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_UKR",
+        "entity_name": "Ukraine",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 17467,
+    "article_url": "https://www.coindesk.com/business/2026/08/08/trillions-in-institutional-money-to-flow-into-bitcoin-says-bitwise-s-matt-hougan",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "predicts",
+    "event_time": null,
+    "location": "",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "ENT_BITWISE",
+        "entity_name": "Bitwise",
+        "entity_type": "Other",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ENT_TRILLIONS_OF_DOLLARS",
+        "entity_name": "trillions of dollars",
+        "entity_type": "Other",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 17459,
+    "article_url": "https://www.cnbc.com/2026/08/08/berkshire-hathaway-earnings-q2-2026.html",
+    "action_type": "REPORTS",
+    "action_event_type": "Finance",
+    "action_detail": "earnings",
+    "event_time": "2026",
+    "location": "United States",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": [
+      {
+        "entity_id": "COMP_BERKSHIRE_HATHAWAY",
+        "entity_name": "BERKSHIRE HATHAWAY",
+        "entity_type": "Company",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ENT_Q2_2026",
+        "entity_name": "Q2 2026",
+        "entity_type": "Other",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 17334,
+    "article_url": "https://dev.to/lu1tr0n/weathernext-deepmind-gana-24-horas-de-anticipacion-en-huracanes-30bp",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "",
+    "event_time": null,
+    "location": "",
+    "confidence": null,
+    "evidence_type": "Told",
+    "entities": []
   }
 ]

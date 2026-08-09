@@ -65,8 +65,8 @@ def _get_asset_graph() -> dict:
 # 1. Source Authority (0-20)
 # ═══════════════════════════════════════════════════════════════════
 
-# V4 Feed Registry importance (S/A/B/C) → 来源分兜底 (2026-08-07, 联动配置中心)
-_IMPORTANCE_SCORE = {"S": 20, "A": 15, "B": 11, "C": 8}
+# V4 Feed Registry importance (S/A/B/C/D) → 来源分兜底 (2026-08-07, 联动配置中心)
+_IMPORTANCE_SCORE = {"S": 20, "A": 15, "B": 11, "C": 8, "D": 5}
 _feed_importance_cache: Optional[dict] = None
 
 
@@ -107,31 +107,79 @@ def score_source(source_name: str) -> int:
 # 2. Event Impact (0-30)
 # ═══════════════════════════════════════════════════════════════════
 
-def score_impact(title: str, description: str = "") -> tuple[int, list[str]]:
+def _match_keyword(text: str, keyword: str, mode: str) -> bool:
+    """关键词匹配 (v2, 2026-08-08): substring | word_boundary。
+    word_boundary 用词边界正则, 防短英文词子串误标:
+      Fed→Federal / UN→function / war→award / 5G→5GHz。
     """
-    事件影响力评分。对 title+description 做关键词匹配。
-    返回 (分数, 命中的分类列表)
+    if not text or not keyword:
+        return False
+    if mode == "word_boundary":
+        return re.search(rf"(?<![A-Za-z0-9]){re.escape(keyword)}(?![A-Za-z0-9])",
+                         text, flags=re.IGNORECASE) is not None
+    return keyword.lower() in text.lower()
+
+
+# 字母数 >3 但仍需词边界的英文词 (子串误标风险高: coup→coupon / NATO→alternator / nuclear→NuclearDiffusion / election→selection)
+_WORD_BOUNDARY_FORCE = {"coup", "NATO", "nuclear", "election"}
+
+
+def _kw_match_mode(keyword: str) -> str:
+    """自动推断关键词匹配模式 (v2, 2026-08-08):
+    - 含中文 → substring (中文无词边界概念)
+    - 多词短语 (含空格) → substring (保证 bank failures 命中 bank failure)
+    - 短英文词/缩写 (字母≤3, 或高风险词) → word_boundary
+      (防子串误标: un→function / fed→federal / war→forward·award / coup→coupon / dow→downtown / 5g→5ghz)
+    - 常规英文词 (字母>3, 如 chip/crash/strike/missile) → substring (保复数/派生召回: chips/crashes/strikes)
     """
-    text = f"{title} {description}".lower()
+    if any('一' <= ch <= '鿿' for ch in keyword):
+        return "substring"
+    if " " in keyword:
+        return "substring"
+    if keyword in _WORD_BOUNDARY_FORCE or len(re.sub(r"[^A-Za-z]", "", keyword)) <= 3:
+        return "word_boundary"
+    return "substring"
+
+
+def score_impact(title: str, description: str = "") -> tuple[int, list[str], list[dict]]:
+    """事件影响力评分 (v2, 500 关键词 2026-08-08)。
+    返回 (分数, 命中的分类列表, hits 详情)。
+    兼容 int 值关键词 (自动推断 match 模式) 与 dict 值 ({score, match, event_type})。
+    每分类取最高、跨分类只取所有分类最高 (不累加, 防标题党刷分)。
+    """
+    text = f"{title or ''} {description or ''}"
     keywords = _get_event_keywords()
     max_score = 0
-    hit_categories = []
+    hit_categories: list[str] = []
+    hits: list[dict] = []
 
     for category, kw_dict in keywords.items():
-        if category == "_description":
+        if category.startswith("_"):
             continue
         cat_best = 0
-        for keyword, score in kw_dict.items():
-            if keyword.lower() in text:
+        cat_hits: list[dict] = []
+        for keyword, meta in kw_dict.items():
+            if isinstance(meta, dict):
+                score = int(meta.get("score", 0))
+                mode = meta.get("match") or _kw_match_mode(keyword)
+                ev_type = meta.get("event_type")
+            else:
+                score = int(meta)
+                mode = _kw_match_mode(keyword)
+                ev_type = None
+            if score <= 0:
+                continue
+            if _match_keyword(text, keyword, mode):
+                cat_hits.append({"keyword": keyword, "score": score, "event_type": ev_type})
                 if score > cat_best:
                     cat_best = score
         if cat_best > 0:
             hit_categories.append(category)
-            # 多类别取最高（不是累加，防止标题党刷分）
             if cat_best > max_score:
                 max_score = cat_best
+            hits.extend(cat_hits)
 
-    return min(max_score, 30), hit_categories
+    return min(max_score, 30), hit_categories, hits
 
 
 # ═══════════════════════════════════════════════════════════════════
@@ -139,16 +187,19 @@ def score_impact(title: str, description: str = "") -> tuple[int, list[str]]:
 # ═══════════════════════════════════════════════════════════════════
 
 def _entity_in_text(name: str, text: str) -> bool:
-    """实体名匹配规则 (v4.4.2 修复子串误标根因)。
+    """实体名匹配规则 (v4.4.2 修复子串误标根因, v2.2 修复 CJK 邻接)。
 
     旧逻辑 `name in text` 是子串匹配, 短名会误命中任何含该子串的文本:
       例: 'Xi'(习近平) 命中每篇 ML 论文摘要里的希腊字母 ξ/xi 及 fixing/proximity 里的 'xi';
           'US'/'BP'/'UK' 命中任意含 us/bp/uk 的文本。
     修复: CJK 名无词边界 → 子串匹配; 拉丁名 → 词边界 + 短名(≤3字符)大小写敏感。
+    v2.2: 用 ASCII 词边界 `(?<![A-Za-z0-9])...(?![A-Za-z0-9])` 替代 `\b` —
+      中文字符在 Python re 中算 \w, 导致 'Coherent推出'/'Lumentum业绩'/'ABB工业' 的
+      拉丁名后跟中文时 \b 边界失败漏检; ASCII 边界把中文当非词字符, 修复该缺口。
     """
     if any('一' <= ch <= '鿿' for ch in name):
         return name in text
-    pat = rf'\b{re.escape(name)}\b'
+    pat = rf"(?<![A-Za-z0-9]){re.escape(name)}(?![A-Za-z0-9])"
     if len(name) <= 3:
         return re.search(pat, text) is not None
     return re.search(pat, text, re.IGNORECASE) is not None
@@ -157,11 +208,12 @@ def _entity_in_text(name: str, text: str) -> bool:
 def score_entities(title: str, description: str = "") -> tuple[int, dict]:
     """
     实体重要性评分。从标题+摘要中匹配已知重要实体 (词边界, 非子串)。
-    返回 (分数, {companies: [...], persons: [...], countries: [...]})
+    返回 (分数, {companies: [...], persons: [...], countries: [...], organizations: [...]})
+    v1.4 (2026-08-08): 新增 organizations 类目 (央行/国际组织/政府机构, 独立于关键词表)。
     """
     text = f"{title} {description}"
     weights = _get_entity_weights()
-    found = {"companies": [], "persons": [], "countries": []}
+    found = {"companies": [], "persons": [], "countries": [], "organizations": []}
     max_score = 0
 
     for etype, entities in weights.items():
@@ -184,6 +236,7 @@ def score_market(title: str, description: str = "", entities: dict = None) -> tu
     """
     市场关联度评分。检查新闻是否涉及可交易资产。
     返回 (分数, 受影响的股票/资产列表)
+    v2 (2026-08-08): 关键词路径复用 _kw_match_mode 词边界匹配, 修复 EV/war/oil 子串误标。
     """
     text = f"{title} {description}".lower()
     graph = _get_asset_graph()
@@ -207,11 +260,11 @@ def score_market(title: str, description: str = "", entities: dict = None) -> tu
                         if s not in affected:
                             affected.append(s)
 
-    # 关键词 → 资产映射
+    # 关键词 → 资产映射 (v2: word_boundary 防 EV→every/war→forward/oil→soil 误标)
     for asset_key, asset_info in graph.items():
         if asset_key == "_description":
             continue
-        if asset_key.lower() in text:
+        if _match_keyword(text, asset_key, _kw_match_mode(asset_key)):
             weight = asset_info.get("weight", 0)
             if weight > max_score:
                 max_score = weight
@@ -274,7 +327,7 @@ def score_article(
     src = score_source(source_name)
 
     # 2. Impact
-    imp, categories = score_impact(title, description)
+    imp, categories, impact_hits = score_impact(title, description)
 
     # 3. Entity
     ent_score, entities = score_entities(title, description)
@@ -285,7 +338,10 @@ def score_article(
     # 5. Velocity
     vel = score_velocity(velocity_count)
 
-    total = src + imp + ent_score + mkt + vel
+    # 6. 价值奖励 (v2.2): 对投资/全球局势/金融市场高价值文章加权
+    reward = _value_reward(src, categories, market_assets, velocity_count, entities, impact_hits)
+
+    total = src + imp + ent_score + mkt + vel + reward
     total = min(total, 100)
 
     # Tier 划分
@@ -303,12 +359,129 @@ def score_article(
         "entity": ent_score,
         "market": mkt,
         "velocity": vel,
+        "reward": reward,
         "tier": tier,
         "categories": categories,
         "entities": entities,
         "market_assets": market_assets,
         "velocity_count": velocity_count,
+        "impact_hits": impact_hits,
     }
+
+
+# 机器人/机械臂关键词 (v2.2): 命中即获机器人主题奖励
+_ROBOT_KEYWORDS = {
+    "机器人", "robotics", "机械臂", "robotic arm", "人形机器人", "humanoid", "humanoid robot",
+    "具身智能", "embodied AI", "工业机器人", "industrial robot", "伺服电机", "谐波减速器",
+    "减速器", "协作机器人", "cobot", "机器人技术", "机器人学",
+}
+
+
+def _value_reward(source_score: int, categories: list, market_assets: list,
+                  velocity_count: int, entities: dict = None, impact_hits: list = None) -> int:
+    """价值奖励分 (0-30, v2.2 2026-08-08)。
+
+    目的: 把对【投资/全球局势/金融市场】有价值的文章升入 B/A 级, 获得 LLM 深度增强,
+    避免高价值文章因五维保守(平均 27.9, B 级仅 4.6%)被淹没在 C 级。
+
+    奖励来源:
+      - 权威源报道 (来源权威 ≥16)      +4  (可信度高 → 更有价值)
+      - 高价值领域关键词命中 (分类)      finance +5 / geopolitics +6 / market +5 / china +3
+        (投资/地缘/市场正是用户筛选目标; ai_tech 不直接奖励, 防学术噪音)
+      - 机器人/机械臂关键词命中        +4  (人形机器人/具身智能/机械臂等)
+      - 市场资产关联 (涉及可交易资产)    +3  (直接投资相关)
+      - 多源并发报道 (velocity_count≥2) +3  (被多源关注 → 事件重要性)
+      - 高价值实体命中 (value_tiers.json) T1一把手+8 / T2二把手+6 / T3政府机构+5 / T4核心机构+4 /
+        T5金融巨头+6 / T6 AI巨头+6 / T7国产替代+7 / T8韬定律+7 / T9机器人+6
+        (命中多级累加, 每级计一次)
+
+    可经配置中心「评分」Tab 覆盖: value.reward_*。
+    """
+    reward = 0
+    if source_score >= 16:
+        reward += _value_reward_cfg("source", 4)
+    for c in categories:
+        if c == "finance":
+            reward += _value_reward_cfg("finance", 5)
+        elif c == "geopolitics":
+            reward += _value_reward_cfg("geopolitics", 6)
+        elif c == "market":
+            reward += _value_reward_cfg("market", 5)
+        elif c == "china":
+            reward += _value_reward_cfg("china", 3)
+    if impact_hits and any(h.get("keyword") in _ROBOT_KEYWORDS for h in impact_hits):
+        reward += _value_reward_cfg("robot", 4)
+    if market_assets:
+        reward += _value_reward_cfg("market_assets", 3)
+    if velocity_count >= 2:
+        reward += _value_reward_cfg("velocity", 3)
+    reward += _entity_value_reward(entities)
+    return min(reward, _value_reward_cfg("cap", 30))
+
+
+def _entity_value_reward(entities: dict = None) -> int:
+    """实体价值奖励 (v2.2): 命中 value_tiers.json 分级实体 → 每级 +奖励分。
+
+    匹配: 文章已识别实体 (score_entities 输出) 与分级表 names 精确匹配。
+    规则: 命中多级累加 (如 Trump[T1] + Fed[T4] = 8+4), 每级计一次, 封顶 20。
+    级别: T1 一把手+8 / T2 二把手+6 / T3 政府机构+5 / T4 央行国际组织+4 /
+          T5 金融巨头+6 / T6 AI科技巨头+6 / T7 国产替代核心公司+7 / T8 韬定律先进封装+7 /
+          T9 机器人核心公司+6 / T10 光通信光芯片核心公司+6。
+    """
+    if not entities:
+        return 0
+    tiers = _get_value_tiers()
+    reward_cfg = tiers.get("_reward", {})
+    all_ents = (entities.get("companies", []) + entities.get("persons", []) +
+                entities.get("countries", []) + entities.get("organizations", []))
+    if not all_ents:
+        return 0
+    ent_set = set(all_ents)
+    reward = 0
+    for tier in ("T1", "T2", "T3", "T4", "T5", "T6", "T7", "T8", "T9", "T10"):
+        names = tiers.get(tier, {}).get("names", [])
+        if names and any(n in ent_set for n in names):
+            reward += int(reward_cfg.get(tier, 0))
+    return min(reward, int(reward_cfg.get("cap", 20)))
+
+
+def _get_value_tiers() -> dict:
+    """读取实体价值分级表 value_tiers.json (懒加载缓存)。"""
+    global _value_tiers_cache
+    if _value_tiers_cache is None:
+        try:
+            _value_tiers_cache = _load_json("value_tiers.json")
+        except Exception:
+            _value_tiers_cache = {}
+    return _value_tiers_cache
+
+
+_value_tiers_cache: Optional[dict] = None
+
+
+def _value_reward_cfg(key: str, default: int) -> int:
+    """价值奖励权重配置 (v2.2): 优先配置中心, 回退默认。"""
+    try:
+        from config.loader import get_setting
+        cfg = get_setting(_get_loader_cfg(), f"value.reward_{key}", default)
+        return int(cfg)
+    except Exception:
+        return default
+
+
+def _get_loader_cfg() -> dict:
+    """读取 pipeline 配置 (懒加载缓存, 供奖励权重覆盖)。"""
+    global _loader_cfg_cache
+    if _loader_cfg_cache is None:
+        try:
+            from config.loader import load_config
+            _loader_cfg_cache = load_config()
+        except Exception:
+            _loader_cfg_cache = {}
+    return _loader_cfg_cache
+
+
+_loader_cfg_cache: Optional[dict] = None
 
 
 # ═══════════════════════════════════════════════════════════════════
@@ -318,9 +491,41 @@ def score_article(
 def _make_fingerprint_set(title: str) -> set:
     """生成标题词集（去停用词、取前8个实词）。"""
     words = re.findall(r"[A-Za-z\u4e00-\u9fff]+", title.lower())
-    stops = {"the", "a", "an", "is", "are", "was", "were", "in", "on", "at",
-             "to", "for", "of", "and", "or", "it", "this", "that", "with", "has",
-             "的", "了", "在", "是", "和", "也", "就", "都", "把", "被", "s", "re", "ve"}
+    # v2.1 (2026-08-08): 补全英文功能词停用表 (as/amid/by/from/介词/连词/代词/助动词)
+    # + 常见新闻框架词 (says/said/new/latest/live/breaking), 提升 Jaccard 判同精度。
+    stops = {
+        # 冠词/限定词
+        "the", "a", "an", "this", "that", "these", "those", "some", "any", "all",
+        "each", "every", "both", "either", "neither", "no", "another", "such",
+        # 介词
+        "in", "on", "at", "to", "for", "of", "with", "by", "from", "as", "over",
+        "under", "above", "below", "between", "among", "through", "during", "after",
+        "before", "into", "within", "without", "against", "about", "across",
+        "along", "around", "behind", "beside", "beyond", "despite", "near", "off",
+        "per", "since", "toward", "towards", "upon", "via", "amid",
+        # 连词
+        "and", "or", "but", "so", "if", "then", "than", "because", "while",
+        "although", "though", "until", "unless", "whether", "nor",
+        # 代词
+        "i", "you", "he", "she", "it", "we", "they", "me", "him", "her", "us",
+        "them", "my", "your", "his", "its", "our", "their", "who", "whom",
+        "whose", "which", "what", "when", "where", "why", "how",
+        # 系动词/助动词
+        "is", "are", "was", "were", "be", "been", "being", "am", "has", "have",
+        "had", "do", "does", "did", "will", "would", "shall", "should", "can",
+        "could", "may", "might", "must", "ought",
+        # 副词
+        "not", "only", "just", "also", "too", "very", "quite", "rather", "still",
+        "even", "again", "ever", "never", "already", "yet", "soon", "here", "there",
+        # 新闻框架词 (低判别力)
+        "says", "said", "say", "new", "latest", "live", "breaking", "update",
+        "updates", "video", "watch", "photos", "photo",
+        # 中文功能词 (单字已被 len>1 过滤; 双字功能词补充)
+        "的", "了", "在", "是", "和", "也", "就", "都", "把", "被",
+        "对于", "由于", "以及", "因为", "所以", "虽然", "但是",
+        # 英文缩写后缀 (he's/we're/I'll...)
+        "s", "re", "ve", "ll", "d", "m",
+    }
     meaningful = [w for w in words if w not in stops and len(w) > 1]
     return set(meaningful[:8])
 

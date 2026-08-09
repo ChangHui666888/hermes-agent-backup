@@ -33,10 +33,11 @@ HOT_TIMEOUT = 6
 COLD_TIMEOUT = 15
 USER_AGENT = "rss-scanner/3.2-final"
 
-STATE_FILE = os.path.expanduser("~/.hermes/rss-scanner-state.json")
-REPORT_FILE = os.path.expanduser("~/.hermes/rss-scanner-report.json")
+# 修复④ (2026-08-08): bk 老版独立 state/report/wiki, 避免与生产版互相覆盖; DB 仍共享 (article_id 指纹去重)
+STATE_FILE = os.path.expanduser("~/.hermes/rss-scanner-bk-state.json")
+REPORT_FILE = os.path.expanduser("~/.hermes/rss-scanner-bk-report.json")
 DB_FILE = os.path.expanduser("~/.hermes/rss-archive.db")
-WIKI_PATH = os.path.expanduser("~/wiki/RSS-Digest")
+WIKI_PATH = os.path.expanduser("~/wiki/RSS-Digest-bk")
 
 # =========================
 # 98 源完整列表 (region: cn=直连, intl=SOCKS5)

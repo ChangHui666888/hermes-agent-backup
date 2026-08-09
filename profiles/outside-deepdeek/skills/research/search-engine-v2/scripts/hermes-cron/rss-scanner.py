@@ -43,7 +43,9 @@ TIMEOUT = _cfg("rss.timeout", 10)
 HOT_TIMEOUT = _cfg("rss.hot_timeout", 6)
 COLD_TIMEOUT = _cfg("rss.cold_timeout", 15)
 QUARANTINE_FAILURES = _cfg("rss.quarantine_failures", 3)
-QUARANTINE_SECONDS = _cfg("rss.quarantine_seconds", 1800)
+QUARANTINE_SECONDS = _cfg("rss.quarantine_seconds", 3600)   # 修复⑤: 隔离 30min→60min
+DEADLINK_FAILURES = _cfg("rss.deadlink_failures", 60)        # 修复⑤: 连续60次失败 → 死链
+DEADLINK_PROBE_INTERVAL = _cfg("rss.deadlink_probe_interval", 7 * 24 * 3600)  # 修复⑤: 死链每周探测
 USER_AGENT = "rss-scanner/3.2-final"
 
 STATE_FILE = os.path.expanduser("~/.hermes/rss-scanner-state.json")
@@ -51,14 +53,23 @@ REPORT_FILE = os.path.expanduser("~/.hermes/rss-scanner-report.json")
 DB_FILE = os.path.expanduser("~/.hermes/rss-archive.db")
 WIKI_PATH = os.path.expanduser("~/wiki/RSS-Digest")
 
+# 健康推送 (2026-08-08): 每轮扫描后把 fail/dead_link/quarantine 同步到云端, 供 /admin/sources 展示
+CLOUD_HEALTH_URL = os.environ.get("CLOUD_HEALTH_URL", "http://100.107.117.23/internal/sources/health")
+CLOUD_TOKEN = os.environ.get("INTERNAL_TOKEN", "v8-pipeline-token-2026-xK9mP2sR7wQ")
+
 # =========================
 # 98 源完整列表 (region: cn=直连, intl=SOCKS5)
 # =========================
 
 TIER = {"hot": 0, "warm": 1, "cold": 2}
 
-# 优化3 (2026-08-08): Tier 分级扫描频率 (秒) — hot 5min / warm 15min / cold 60min
-TIER_INTERVAL = {"hot": 5 * 60, "warm": 15 * 60, "cold": 60 * 60}
+# 优化3 (2026-08-08): Tier 分级扫描频率 (秒) — hot 5min / warm 15min / cold 15min
+# 修复③ (2026-08-08): cold 60min→15min (财经/资讯源最多积压 15min, 恢复时效); 改为 config 可配
+TIER_INTERVAL = {
+    "hot": _cfg("rss.tier_hot_interval", 5 * 60),
+    "warm": _cfg("rss.tier_warm_interval", 15 * 60),
+    "cold": _cfg("rss.tier_cold_interval", 15 * 60),
+}
 
 
 def is_due(state, feed):
@@ -194,16 +205,39 @@ def now_ts():
     return int(time.time())
 
 def is_quarantined(state, name):
-    return state.get(name, {}).get("quarantine_until", 0) > now_ts()
+    """隔离中 (死链源除外 — 死链走每周探测, 不算隔离)。"""
+    m = state.get(name, {})
+    return not m.get("dead_link") and m.get("quarantine_until", 0) > now_ts()
+
+def is_dead(state, name):
+    """死链: 连续 DEADLINK_FAILURES 次失败, 退出常规扫描。"""
+    return bool(state.get(name, {}).get("dead_link", False))
+
+def dead_probe_due(state, name):
+    """死链每周探测是否到期 (next_probe <= now)。"""
+    return state.get(name, {}).get("next_probe", 0) <= now_ts()
 
 def update_health(state, name, ok):
+    """修复⑤ 三级状态机: 正常→隔离(60min)→死链(每周探测)→恢复回归。
+    成功: 清零 fail + 解除隔离/死链; 失败: fail+=1, 达隔离/死链阈值逐级升级。"""
     m = state.setdefault(name, {"history": [], "fail": 0, "quarantine_until": 0, "last_seen": ""})
     if isinstance(m, list):
         state[name] = {"history": m[-500:], "fail": 0, "quarantine_until": 0, "last_seen": ""}
         m = state[name]
-    if ok: m["fail"] = 0
-    else: m["fail"] = m.get("fail", 0) + 1
-    if m["fail"] >= QUARANTINE_FAILURES: m["quarantine_until"] = now_ts() + QUARANTINE_SECONDS
+    if ok:
+        m["fail"] = 0
+        m["quarantine_until"] = 0
+        m.pop("dead_link", None)
+        m.pop("next_probe", None)
+    else:
+        m["fail"] = m.get("fail", 0) + 1
+        if m["fail"] >= DEADLINK_FAILURES:
+            # 连续 60 次失败 → 死链: 退出隔离, 进入每周探测
+            m["dead_link"] = True
+            m["next_probe"] = now_ts() + DEADLINK_PROBE_INTERVAL
+            m["quarantine_until"] = 0
+        elif m["fail"] >= QUARANTINE_FAILURES:
+            m["quarantine_until"] = now_ts() + QUARANTINE_SECONDS
     return state
 
 
@@ -226,7 +260,8 @@ _CLIENT_PROXY = None
 
 
 def _make_client(use_proxy: bool) -> httpx.Client:
-    kwargs = {"timeout": COLD_TIMEOUT, "http2": True, "headers": {"User-Agent": USER_AGENT}}
+    # 修复② (2026-08-08): follow_redirects=True — httpx 0.28 默认不跟重定向, NYT 等 301 源被 0 抓
+    kwargs = {"timeout": COLD_TIMEOUT, "http2": True, "follow_redirects": True, "headers": {"User-Agent": USER_AGENT}}
     try:
         if use_proxy:
             return httpx.Client(proxy=PROXY, **kwargs)
@@ -258,6 +293,33 @@ def close_clients():
     _CLIENT_CN = _CLIENT_PROXY = None
 
 
+def push_health(state):
+    """2026-08-08: 推送每源健康到云端 /internal/sources/health (非致命 — 云端不可达不影响扫描)。
+
+    供 /admin/sources 页面展示 status(alive/failed/dead_link) + 连续失败次数。
+    """
+    try:
+        import httpx
+        health = {}
+        for name, m in state.items():
+            if not isinstance(m, dict):
+                continue
+            health[name] = {
+                "fail": int(m.get("fail", 0) or 0),
+                "dead_link": bool(m.get("dead_link", False)),
+                "quarantine_until": int(m.get("quarantine_until", 0) or 0),
+                "last_scan": int(m.get("last_scan", 0) or 0),
+            }
+        if not health:
+            return
+        r = httpx.post(CLOUD_HEALTH_URL, json=health,
+                       headers={"X-Internal-Token": CLOUD_TOKEN}, timeout=8)
+        if r.status_code == 200:
+            print(f"[health] 已推送 {len(health)} 源健康到云端")
+    except Exception as e:
+        print(f"[warn] 健康推送失败 (不影响扫描): {str(e)[:80]}")
+
+
 # =========================
 # 抓取与解析
 # =========================
@@ -283,6 +345,9 @@ def fetch_feed(feed, state):
         if resp.status_code == 304:
             meta["unchanged"] = True
             return feed, None, None, meta
+        # 修复② (2026-08-08): 非 2xx 计失败 → 累加 fail → 自动隔离, 死链不再被记为 OK
+        if not (200 <= resp.status_code < 300):
+            return feed, None, f"HTTP {resp.status_code} {feed['url']}", meta
         meta["etag"] = resp.headers.get("etag", "") or st.get("etag", "")
         meta["last_modified"] = resp.headers.get("last-modified", "") or st.get("last_modified", "")
         return feed, resp.content, None, meta
@@ -390,12 +455,29 @@ def main():
     state = normalize_state(load_state())
     feeds = _load_feeds()
 
-    # 优化3: 按 tier 过滤到期的源
-    active = [f for f in feeds if not is_quarantined(state, f["name"])]
-    qcnt = len(feeds) - len(active)
-    due = [f for f in active if is_due(state, f)]
+    # --full (2026-08-08): 不限流全量扫描 — 所有活跃源视为到期 (对比老文件抓取量/验证修复用)
+    FULL = "--full" in sys.argv or "--no-limit" in sys.argv
+
+    # 修复⑤ 迁移: 存量 fail >= DEADLINK_FAILURES 的源直接标记死链 (退出常规扫描, 本轮回探测确认)
+    for f in feeds:
+        m = state.get(f["name"])
+        if isinstance(m, dict) and not m.get("dead_link") and m.get("fail", 0) >= DEADLINK_FAILURES:
+            m["dead_link"] = True
+            m["next_probe"] = m.get("next_probe") or now_ts()
+            m["quarantine_until"] = 0
+
+    # 修复⑤: 死链源不占活跃/隔离, 仅按 next_probe 每周探测
+    dead = [f for f in feeds if is_dead(state, f["name"])]
+    active = [f for f in feeds if not is_quarantined(state, f["name"]) and not is_dead(state, f["name"])]
+    qcnt = len(feeds) - len(active) - len(dead)
+    probes = [f for f in dead if dead_probe_due(state, f["name"])]   # 死链每周探测到期
+
+    # 优化3: 按 tier 过滤到期的源 (正常源) + 死链探测
+    due = active if FULL else [f for f in active if is_due(state, f)]
+    due += probes
     due.sort(key=lambda f: TIER.get(f.get("tier"), 2))
-    print(f"[{datetime.now().isoformat()[:19]}] 总{len(feeds)} 活跃{len(active)} 隔离{qcnt} 本次到期{len(due)}")
+    mode = " [--full 不限流全量]" if FULL else ""
+    print(f"[{datetime.now().isoformat()[:19]}] 总{len(feeds)} 活跃{len(active)} 死链{len(dead)} 隔离{qcnt} 本轮{len(due)}{mode}")
 
     # 优化2: 预载 known_ids (内存去重) + 批量缓冲
     known_ids = load_known_ids(conn)
@@ -420,8 +502,9 @@ def main():
                 errors.append({"name": name, "error": err})
                 continue
             update_health(state, name, True)
-            # 304 未变 (优化4)
+            # 304 未变 (优化4) — 修复①: 也更新 last_scan, 否则 304 源恒为"到期"每轮重抓, 限流失效
             if meta.get("unchanged"):
+                state[name]["last_scan"] = now_ts()
                 feed_stats.append({"name": name, "status": "ok", "total": 0, "new": 0, "error": "", "unchanged": True})
                 continue
             if meta.get("etag"): state[name]["etag"] = meta["etag"]
@@ -467,11 +550,13 @@ def main():
     wiki_articles = [{"date":a.get("published",""),"category":a.get("category",""),"source":a.get("feed",""),"title":a.get("title",""),"summary":a.get("summary",""),"link":a.get("link","")} for a in new_articles]
     write_wiki_daily(wiki_articles, datetime.now().isoformat())
 
-    report = {"timestamp": datetime.now().isoformat(), "feeds_total": len(feeds), "feeds_active": len(active), "feeds_quarantined": qcnt, "feeds_due": len(due), "feeds_ok": ok, "feeds_unchanged": unchanged, "feeds_error": err, "articles_total": total_a, "articles_new": new_t, "duration_sec": dur, "new_articles": new_articles[:50], "feeds_detail": feed_stats, "errors": errors[:30]}
+    report = {"timestamp": datetime.now().isoformat(), "feeds_total": len(feeds), "feeds_active": len(active), "feeds_dead": len(dead), "feeds_dead_probed": len(probes), "feeds_quarantined": qcnt, "feeds_due": len(due), "feeds_ok": ok, "feeds_unchanged": unchanged, "feeds_error": err, "articles_total": total_a, "articles_new": new_t, "duration_sec": dur, "new_articles": new_articles[:50], "feeds_detail": feed_stats, "errors": errors[:30]}
     with open(REPORT_FILE, "w", encoding="utf-8") as f:
         json.dump(report, f, ensure_ascii=False, indent=2)
 
-    print(f"[完成] {dur}s  总{len(feeds)} 到期{len(due)} 隔离{qcnt}  OK{ok}  未变{unchanged}  失败{err}  新增{new_t}篇")
+    push_health(state)  # 2026-08-08: 同步每源健康到云端 (非致命)
+
+    print(f"[完成] {dur}s  总{len(feeds)} 活跃{len(active)} 死链{len(dead)} 隔离{qcnt} 本轮{len(due)}  OK{ok}  未变{unchanged}  失败{err}  新增{new_t}篇")
     if new_articles:
         print("  Top:")
         for a in new_articles[:5]:

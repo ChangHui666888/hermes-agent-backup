@@ -135,7 +135,8 @@ def _subject_is_prominent(subj: str, best_title: str, member_titles: list) -> bo
 
 
 def _infer_entity_type(name: str, raw_entities: dict) -> str:
-    for cat, etype in [("countries", "Country"), ("companies", "Company"), ("persons", "Person")]:
+    for cat, etype in [("countries", "Country"), ("companies", "Company"),
+                       ("persons", "Person"), ("organizations", "Organization")]:
         if name in (raw_entities or {}).get(cat, []):
             return etype
     canonical = _canonicalize(name)
@@ -403,9 +404,10 @@ def build_fingerprint(article: dict, global_idf: dict = None, topic_idf_map: dic
 
     # P1: Subject — hub entities 降权但不禁用
     # v4.4.2 主体显著性: 标题中出现的实体加权提升, 避免顺带提及的实体顶替真正主体
+    # v1.4: 加入 organizations (央行/政府/国际组织可作为事件主体)
     title_raw = article.get("title") or ""
     candidates = []
-    for name in entities.get("companies", []) + entities.get("persons", []):
+    for name in entities.get("companies", []) + entities.get("persons", []) + entities.get("organizations", []):
         canonical = _canonicalize(name)
         w = _entity_weight(name, global_idf, topic_idf_map, primary)
         if canonical in hub_entities:
@@ -423,7 +425,7 @@ def build_fingerprint(article: dict, global_idf: dict = None, topic_idf_map: dic
 
     # Object
     obj_candidates = []
-    for name in entities.get("countries", []) + entities.get("companies", []):
+    for name in entities.get("countries", []) + entities.get("companies", []) + entities.get("organizations", []):
         canonical = _canonicalize(name)
         if canonical == subject:
             continue
