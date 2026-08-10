@@ -1,0 +1,412 @@
+{
+ "_description": "资产影响图谱。当新闻命中 asset 时，关联 stocks 自动加分。v1.4 (2026-08-08): 新增先进封装/光芯片/HBM/核能/液冷等供应链领域映射",
+ "GPU": {
+  "stocks": [
+   "NVIDIA",
+   "AMD",
+   "TSMC",
+   "ASML",
+   "Intel",
+   "Broadcom"
+  ],
+  "weight": 20
+ },
+ "AI芯片": {
+  "stocks": [
+   "NVIDIA",
+   "AMD",
+   "TSMC",
+   "Broadcom"
+  ],
+  "weight": 20
+ },
+ "出口管制": {
+  "stocks": [
+   "NVIDIA",
+   "AMD",
+   "TSMC",
+   "ASML",
+   "SMIC"
+  ],
+  "weight": 20
+ },
+ "chip export": {
+  "stocks": [
+   "NVIDIA",
+   "AMD",
+   "TSMC",
+   "ASML"
+  ],
+  "weight": 20
+ },
+ "石油": {
+  "stocks": [
+   "Exxon",
+   "Chevron",
+   "Shell",
+   "BP",
+   "ConocoPhillips"
+  ],
+  "commodities": [
+   "CL1:COM",
+   "BZ1:COM"
+  ],
+  "weight": 18
+ },
+ "oil": {
+  "stocks": [
+   "Exxon",
+   "Chevron",
+   "Shell",
+   "BP"
+  ],
+  "commodities": [
+   "CL1:COM",
+   "BZ1:COM"
+  ],
+  "weight": 18
+ },
+ "降息": {
+  "stocks": [
+   "JPMorgan",
+   "Goldman Sachs",
+   "Bank of America",
+   "Wells Fargo"
+  ],
+  "indices": [
+   "S&P 500",
+   "NASDAQ",
+   "Dow Jones"
+  ],
+  "weight": 20
+ },
+ "rate cut": {
+  "stocks": [
+   "JPMorgan",
+   "Goldman Sachs",
+   "Bank of America"
+  ],
+  "indices": [
+   "S&P 500",
+   "NASDAQ"
+  ],
+  "weight": 20
+ },
+ "加息": {
+  "stocks": [
+   "JPMorgan",
+   "Goldman Sachs",
+   "Bank of America"
+  ],
+  "indices": [
+   "S&P 500",
+   "NASDAQ"
+  ],
+  "weight": 20
+ },
+ "rate hike": {
+  "stocks": [
+   "JPMorgan",
+   "Goldman Sachs",
+   "Bank of America"
+  ],
+  "weight": 20
+ },
+ "电动车": {
+  "stocks": [
+   "Tesla",
+   "比亚迪",
+   "NIO",
+   "XPeng",
+   "Rivian",
+   "Lucid"
+  ],
+  "weight": 15
+ },
+ "EV": {
+  "stocks": [
+   "Tesla",
+   "BYD",
+   "Rivian",
+   "Lucid"
+  ],
+  "weight": 15
+ },
+ "半导体": {
+  "stocks": [
+   "TSMC",
+   "NVIDIA",
+   "AMD",
+   "Intel",
+   "ASML",
+   "Qualcomm",
+   "Samsung"
+  ],
+  "weight": 18
+ },
+ "semiconductor": {
+  "stocks": [
+   "TSMC",
+   "NVIDIA",
+   "AMD",
+   "Intel",
+   "ASML"
+  ],
+  "weight": 18
+ },
+ "加密货币": {
+  "stocks": [
+   "Coinbase",
+   "MicroStrategy",
+   "Marathon Digital"
+  ],
+  "crypto": [
+   "BTC",
+   "ETH"
+  ],
+  "weight": 15
+ },
+ "crypto": {
+  "stocks": [
+   "Coinbase",
+   "MicroStrategy"
+  ],
+  "crypto": [
+   "BTC",
+   "ETH"
+  ],
+  "weight": 15
+ },
+ "Bitcoin": {
+  "stocks": [
+   "Coinbase",
+   "MicroStrategy",
+   "Marathon Digital"
+  ],
+  "crypto": [
+   "BTC"
+  ],
+  "weight": 18
+ },
+ "国防": {
+  "stocks": [
+   "Lockheed Martin",
+   "RTX",
+   "Northrop Grumman",
+   "Boeing"
+  ],
+  "weight": 18
+ },
+ "defense": {
+  "stocks": [
+   "Lockheed Martin",
+   "RTX",
+   "Northrop Grumman"
+  ],
+  "weight": 18
+ },
+ "战争": {
+  "stocks": [
+   "Lockheed Martin",
+   "RTX",
+   "Northrop Grumman",
+   "Exxon",
+   "Chevron"
+  ],
+  "weight": 18
+ },
+ "war": {
+  "stocks": [
+   "Lockheed Martin",
+   "RTX",
+   "Exxon",
+   "Chevron"
+  ],
+  "weight": 18
+ },
+ "云计算": {
+  "stocks": [
+   "Amazon",
+   "Microsoft",
+   "Google",
+   "Oracle"
+  ],
+  "weight": 12
+ },
+ "cloud": {
+  "stocks": [
+   "Amazon",
+   "Microsoft",
+   "Google"
+  ],
+  "weight": 12
+ },
+ "制药": {
+  "stocks": [
+   "Pfizer",
+   "Moderna",
+   "Johnson & Johnson",
+   "Merck",
+   "Eli Lilly"
+  ],
+  "weight": 12
+ },
+ "pharma": {
+  "stocks": [
+   "Pfizer",
+   "Moderna",
+   "Eli Lilly",
+   "Merck"
+  ],
+  "weight": 12
+ },
+ "先进封装": {
+  "stocks": [
+   "ASMPT",
+   "库力索法",
+   "Kulicke & Soffa",
+   "EV Group",
+   "SUSS MicroTec",
+   "AT&S",
+   "Ibiden",
+   "沪电股份",
+   "深南电路"
+  ],
+  "weight": 18
+ },
+ "Chiplet": {
+  "stocks": [
+   "TSMC",
+   "台积电",
+   "ASMPT",
+   "库力索法",
+   "Kulicke & Soffa"
+  ],
+  "weight": 18
+ },
+ "chiplet": {
+  "stocks": [
+   "TSMC",
+   "台积电",
+   "ASMPT",
+   "Kulicke & Soffa"
+  ],
+  "weight": 18
+ },
+ "晶圆键合": {
+  "stocks": [
+   "EV Group",
+   "ASMPT",
+   "SUSS MicroTec",
+   "库力索法"
+  ],
+  "weight": 18
+ },
+ "光芯片": {
+  "stocks": [
+   "Veeco",
+   "AIXTRON",
+   "华工科技",
+   "光库科技",
+   "长光华芯",
+   "源杰科技",
+   "住友电工"
+  ],
+  "weight": 15
+ },
+ "photonic chip": {
+  "stocks": [
+   "Veeco",
+   "AIXTRON",
+   "IQE",
+   "AXT"
+  ],
+  "weight": 15
+ },
+ "激光器芯片": {
+  "stocks": [
+   "华工科技",
+   "光库科技",
+   "长光华芯",
+   "源杰科技"
+  ],
+  "weight": 15
+ },
+ "HBM": {
+  "stocks": [
+   "SK海力士",
+   "SK Hynix",
+   "美光",
+   "Micron Technology",
+   "沪电股份",
+   "深南电路",
+   "Ibiden"
+  ],
+  "weight": 18
+ },
+ "液冷": {
+  "stocks": [
+   "Vertiv",
+   "英维克",
+   "台达电子",
+   "Delta Electronics",
+   "高澜股份"
+  ],
+  "weight": 15
+ },
+ "服务器": {
+  "stocks": [
+   "超微电脑",
+   "Supermicro",
+   "戴尔",
+   "Dell Technologies",
+   "浪潮信息",
+   "中科曙光",
+   "工业富联",
+   "HPE"
+  ],
+  "weight": 12
+ },
+ "核能": {
+  "stocks": [
+   "上海电气",
+   "东方电气",
+   "哈尔滨电气",
+   "Framatome",
+   "BWX Technologies",
+   "Kazatomprom",
+   "Orano",
+   "中核科技"
+  ],
+  "weight": 15
+ },
+ "核电": {
+  "stocks": [
+   "上海电气",
+   "东方电气",
+   "中核科技",
+   "中广核工程",
+   "中核北方"
+  ],
+  "weight": 15
+ },
+ "nuclear": {
+  "stocks": [
+   "Kazatomprom",
+   "Orano",
+   "BWX Technologies",
+   "Framatome",
+   "Centrus Energy"
+  ],
+  "weight": 15
+ },
+ "反应堆": {
+  "stocks": [
+   "上海电气",
+   "东方电气",
+   "Framatome",
+   "BWX Technologies"
+  ],
+  "weight": 15
+ }
+}

@@ -1,0 +1,296 @@
+version: '0.1'
+generated: '2026-08-05'
+organizations:
+  ORG_ASEAN:
+    name:
+      en: ASEAN
+      zh: 东盟
+    aliases: []
+    type: International Org
+    country: Asia
+  ORG_BRICS:
+    name:
+      en: BRICS
+      zh: 金砖国家
+    aliases: []
+    type: International Org
+    country: Global
+  ORG_CN_GOVERNMENT:
+    name:
+      en: Chinese Government
+      zh: ''
+    aliases:
+    - Beijing
+    type: Government
+    country: Global
+  ORG_CSRC:
+    name:
+      en: China Securities Regulatory Commission
+      zh: 中国证监会
+    aliases: []
+    type: Regulator
+    country: China
+  ORG_CUSTOMS:
+    name:
+      en: General Administration of Customs
+      zh: 海关总署
+    aliases: []
+    type: Government
+    country: China
+  ORG_ECB:
+    name:
+      en: European Central Bank
+      zh: ''
+    aliases:
+    - ECB
+    type: Central Bank
+    country: Global
+  ORG_EU:
+    name:
+      en: European Union
+      zh: 欧盟
+    aliases: []
+    type: political_economic
+    country: Global
+  ORG_EUROPEAN_UNION:
+    name:
+      en: European Union
+      zh: ''
+    aliases:
+    - EU
+    type: political_economic
+    country: Global
+  ORG_FEDERAL_RESERVE:
+    name:
+      en: Federal Reserve
+      zh: ''
+    aliases:
+    - Fed Chair
+    - Powell
+    - 鲍威尔
+    type: Central Bank
+    country: Global
+  ORG_FED_RESERVE:
+    name:
+      en: Federal Reserve
+      zh: 美联储
+    aliases: []
+    type: Central Bank
+    country: United States
+  ORG_G20:
+    name:
+      en: G20
+      zh: 二十国集团
+    aliases: []
+    type: International Org
+    country: Global
+  ORG_G7:
+    name:
+      en: G7
+      zh: 七国集团
+    aliases: []
+    type: International Org
+    country: Global
+  ORG_IDF:
+    name:
+      en: Israel Defense Forces
+      zh: ''
+    aliases:
+    - IDF
+    type: Military
+    country: Global
+  ORG_IMF:
+    name:
+      en: IMF
+      zh: ''
+    aliases:
+    - 国际货币基金组织
+    type: finance
+    country: Global
+  ORG_IRGC:
+    name:
+      en: Islamic Revolutionary Guard Corps
+      zh: ''
+    aliases:
+    - IRGC
+    type: Military
+    country: Global
+  ORG_KP_GOVERNMENT:
+    name:
+      en: North Korean Government
+      zh: ''
+    aliases:
+    - Pyongyang
+    type: Government
+    country: Global
+  ORG_KREMLIN:
+    name:
+      en: Kremlin
+      zh: 克里姆林宫
+    aliases: []
+    type: Government
+    country: Russia
+  ORG_MIIT:
+    name:
+      en: Ministry of Industry and Information Technology
+      zh: 工信部
+    aliases: []
+    type: Government
+    country: China
+  ORG_MOF:
+    name:
+      en: Ministry of Finance
+      zh: 财政部
+    aliases: []
+    type: Government
+    country: China
+  ORG_MOFA:
+    name:
+      en: Ministry of Foreign Affairs
+      zh: 外交部
+    aliases: []
+    type: Government
+    country: China
+  ORG_MOFCOM:
+    name:
+      en: Ministry of Commerce
+      zh: 商务部
+    aliases: []
+    type: Government
+    country: China
+  ORG_NATO:
+    name:
+      en: NATO
+      zh: ''
+    aliases:
+    - 北约
+    type: military_alliance
+    country: Global
+  ORG_NDRC:
+    name:
+      en: National Development and Reform Commission
+      zh: 发改委
+    aliases: []
+    type: Government
+    country: China
+  ORG_NFRA:
+    name:
+      en: National Financial Regulatory Administration
+      zh: 国家金融监督管理总局
+    aliases: []
+    type: Regulator
+    country: China
+  ORG_OPEC:
+    name:
+      en: OPEC
+      zh: ''
+    aliases:
+    - 欧佩克
+    type: oil_cartel
+    country: Global
+  ORG_PBOC:
+    name:
+      en: PBOC
+      zh: ''
+    aliases: []
+    type: Central Bank
+    country: Global
+  ORG_PENTAGON:
+    name:
+      en: Pentagon
+      zh: 五角大楼
+    aliases: []
+    type: Government
+    country: United States
+  ORG_PLA:
+    name:
+      en: People's Liberation Army
+      zh: 解放军
+    aliases: []
+    type: Military
+    country: China
+  ORG_RU_GOVERNMENT:
+    name:
+      en: Russian Federation Government
+      zh: ''
+    aliases:
+    - Kremlin
+    - Moscow
+    type: Government
+    country: Global
+  ORG_UN:
+    name:
+      en: United Nations
+      zh: 联合国
+    aliases: []
+    type: International Org
+    country: Global
+  ORG_UNITED_NATIONS:
+    name:
+      en: United Nations
+      zh: ''
+    aliases:
+    - UN
+    type: international
+    country: Global
+  ORG_UNKNOWN:
+    name:
+      en: 财政部
+      zh: ''
+    aliases: []
+    type: Government
+    country: Global
+  ORG_US_CENTCOM:
+    name:
+      en: United States Central Command
+      zh: ''
+    aliases:
+    - Centcom
+    type: Military
+    country: Global
+  ORG_US_DOD:
+    name:
+      en: United States Department of Defense
+      zh: ''
+    aliases:
+    - Pentagon
+    type: Military
+    country: Global
+  ORG_US_GOVERNMENT:
+    name:
+      en: United States Government
+      zh: ''
+    aliases:
+    - White House
+    - Washington
+    type: Government
+    country: Global
+  ORG_WHITE_HOUSE:
+    name:
+      en: White House
+      zh: 白宫
+    aliases: []
+    type: Government
+    country: United States
+  ORG_WHO:
+    name:
+      en: WHO
+      zh: ''
+    aliases: []
+    type: health
+    country: Global
+  ORG_WORLD_BANK:
+    name:
+      en: World Bank
+      zh: ''
+    aliases:
+    - 世界银行
+    type: finance
+    country: Global
+  ORG_WTO:
+    name:
+      en: World Trade Organization
+      zh: 世界贸易组织
+    aliases: []
+    type: International Org
+    country: Global

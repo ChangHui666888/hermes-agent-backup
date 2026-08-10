@@ -1,0 +1,640 @@
+# Relations — Knowledge Base V1 (generate_kb.py RELATIONS_CATALOG, 勿手改头注释)
+version: '0.1'
+generated: '2026-08-06'
+relations:
+  REL_PART_OF:
+    name:
+      en: PART_OF
+      zh: 属于
+    inverse: CONTAINS
+    description: 部分属于整体
+  REL_MEMBER_OF:
+    name:
+      en: MEMBER_OF
+      zh: 成员
+    inverse: HAS_MEMBER
+    description: 组织/团体成员
+  REL_SUBSIDIARY_OF:
+    name:
+      en: SUBSIDIARY_OF
+      zh: 子公司
+    inverse: PARENT_OF
+    description: 母公司-子公司
+  REL_PARENT_OF:
+    name:
+      en: PARENT_OF
+      zh: 母公司
+    inverse: SUBSIDIARY_OF
+    description: 母公司
+  REL_FOUNDER_OF:
+    name:
+      en: FOUNDER_OF
+      zh: 创始人
+    inverse: FOUNDED_BY
+    description: 创始人
+  REL_CEO_OF:
+    name:
+      en: CEO_OF
+      zh: 首席执行官
+    inverse: CEO_REPORTS_TO
+    description: CEO
+  REL_CHAIRMAN_OF:
+    name:
+      en: CHAIRMAN_OF
+      zh: 董事长
+    inverse: ''
+    description: 董事长
+  REL_DIRECTOR_OF:
+    name:
+      en: DIRECTOR_OF
+      zh: 董事
+    inverse: ''
+    description: 董事
+  REL_EMPLOYEE_OF:
+    name:
+      en: EMPLOYEE_OF
+      zh: 雇员
+    inverse: EMPLOYS
+    description: 雇员
+  REL_EMPLOYS:
+    name:
+      en: EMPLOYS
+      zh: 雇佣
+    inverse: EMPLOYEE_OF
+    description: 雇佣
+  REL_INVESTOR_OF:
+    name:
+      en: INVESTOR_OF
+      zh: 投资方
+    inverse: INVESTED_IN
+    description: 投资方
+  REL_SHAREHOLDER_OF:
+    name:
+      en: SHAREHOLDER_OF
+      zh: 股东
+    inverse: ''
+    description: 股东
+  REL_CONTROLS:
+    name:
+      en: CONTROLS
+      zh: 控制
+    inverse: CONTROLLED_BY
+    description: 控制
+  REL_AFFILIATED_WITH:
+    name:
+      en: AFFILIATED_WITH
+      zh: 关联
+    inverse: ''
+    description: 关联
+  REL_OWNS:
+    name:
+      en: OWNS
+      zh: 拥有
+    inverse: OWNED_BY
+    description: 拥有
+  REL_LOCATED_IN:
+    name:
+      en: LOCATED_IN
+      zh: 位于
+    inverse: CONTAINS
+    description: 位置
+  REL_HEADQUARTER_IN:
+    name:
+      en: HEADQUARTER_IN
+      zh: 总部在
+    inverse: ''
+    description: 总部
+  REL_OPERATES_IN:
+    name:
+      en: OPERATES_IN
+      zh: 运营于
+    inverse: ''
+    description: 运营
+  REL_BASED_IN:
+    name:
+      en: BASED_IN
+      zh: 基地在
+    inverse: ''
+    description: 基地
+  REL_ORIGINATED_IN:
+    name:
+      en: ORIGINATED_IN
+      zh: 发源于
+    inverse: ''
+    description: 起源
+  REL_ACTIVE_IN:
+    name:
+      en: ACTIVE_IN
+      zh: 活跃于
+    inverse: ''
+    description: 活跃
+  REL_COMPETITOR:
+    name:
+      en: COMPETITOR
+      zh: 竞争者
+    inverse: COMPETES_WITH
+    description: 竞争
+  REL_SUPPLIER:
+    name:
+      en: SUPPLIER
+      zh: 供应商
+    inverse: SUPPLIES_TO
+    description: 供应商
+  REL_CUSTOMER:
+    name:
+      en: CUSTOMER
+      zh: 客户
+    inverse: BUYS_FROM
+    description: 客户
+  REL_PARTNER:
+    name:
+      en: PARTNER
+      zh: 伙伴
+    inverse: PARTNERS_WITH
+    description: 伙伴
+  REL_DISTRIBUTOR:
+    name:
+      en: DISTRIBUTOR
+      zh: 分销商
+    inverse: ''
+    description: 分销
+  REL_ACQUIRED:
+    name:
+      en: ACQUIRED
+      zh: 被收购
+    inverse: ACQUIRED_BY
+    description: 收购
+  REL_ACQUIRED_BY:
+    name:
+      en: ACQUIRED_BY
+      zh: 收购方
+    inverse: ACQUIRED
+    description: 收购方
+  REL_MERGED_WITH:
+    name:
+      en: MERGED_WITH
+      zh: 合并
+    inverse: ''
+    description: 合并
+  REL_JOINT_VENTURE_WITH:
+    name:
+      en: JOINT_VENTURE_WITH
+      zh: 合资
+    inverse: ''
+    description: 合资
+  REL_TAKEOVER_TARGET:
+    name:
+      en: TAKEOVER_TARGET
+      zh: 接管目标
+    inverse: ''
+    description: 接管
+  REL_LICENSOR:
+    name:
+      en: LICENSOR
+      zh: 许可方
+    inverse: ''
+    description: 许可
+  REL_LICENSEE:
+    name:
+      en: LICENSEE
+      zh: 被许可方
+    inverse: ''
+    description: 被许可
+  REL_DISTRIBUTES:
+    name:
+      en: DISTRIBUTES
+      zh: 分销
+    inverse: ''
+    description: 分销
+  REL_PRODUCES:
+    name:
+      en: PRODUCES
+      zh: 生产
+    inverse: ''
+    description: 生产
+  REL_SELLS_TO:
+    name:
+      en: SELLS_TO
+      zh: 销售给
+    inverse: BUYS_FROM
+    description: 销售
+  REL_BUYS_FROM:
+    name:
+      en: BUYS_FROM
+      zh: 购买自
+    inverse: SELLS_TO
+    description: 购买
+  REL_MANUFACTURER_OF:
+    name:
+      en: MANUFACTURER_OF
+      zh: 制造商
+    inverse: ''
+    description: 制造
+  REL_DEVELOPS:
+    name:
+      en: DEVELOPS
+      zh: 开发
+    inverse: ''
+    description: 开发
+  REL_SUPPLIES:
+    name:
+      en: SUPPLIES
+      zh: 供应
+    inverse: SUPPLIED_BY
+    description: 供应
+  REL_EXPORTS_TO:
+    name:
+      en: EXPORTS_TO
+      zh: 出口
+    inverse: IMPORTS_FROM
+    description: 出口
+  REL_ALLY_OF:
+    name:
+      en: ALLY_OF
+      zh: 盟友
+    inverse: ''
+    description: 盟友
+  REL_RIVAL_OF:
+    name:
+      en: RIVAL_OF
+      zh: 对手
+    inverse: ''
+    description: 对手
+  REL_ENEMY_OF:
+    name:
+      en: ENEMY_OF
+      zh: 敌人
+    inverse: ''
+    description: 敌人
+  REL_SANCTIONED_BY:
+    name:
+      en: SANCTIONED_BY
+      zh: 被制裁
+    inverse: SANCTIONS
+    description: 被制裁
+  REL_SANCTIONS:
+    name:
+      en: SANCTIONS
+      zh: 制裁
+    inverse: SANCTIONED_BY
+    description: 制裁
+  REL_NEGOTIATED_WITH:
+    name:
+      en: NEGOTIATED_WITH
+      zh: 谈判
+    inverse: ''
+    description: 谈判
+  REL_TREATY_WITH:
+    name:
+      en: TREATY_WITH
+      zh: 条约
+    inverse: ''
+    description: 条约
+  REL_DIPLOMATIC_RELATIONS_WITH:
+    name:
+      en: DIPLOMATIC_RELATIONS_WITH
+      zh: 外交关系
+    inverse: ''
+    description: 外交关系
+  REL_TRADE_PARTNER:
+    name:
+      en: TRADE_PARTNER
+      zh: 贸易伙伴
+    inverse: ''
+    description: 贸易伙伴
+  REL_IMPORTS_FROM:
+    name:
+      en: IMPORTS_FROM
+      zh: 进口
+    inverse: EXPORTS_TO
+    description: 进口
+  REL_EMBARGO_AGAINST:
+    name:
+      en: EMBARGO_AGAINST
+      zh: 禁运
+    inverse: ''
+    description: 禁运
+  REL_BOYCOTT_OF:
+    name:
+      en: BOYCOTT_OF
+      zh: 抵制
+    inverse: ''
+    description: 抵制
+  REL_SUPPORTS:
+    name:
+      en: SUPPORTS
+      zh: 支持
+    inverse: ''
+    description: 支持
+  REL_OPPOSES:
+    name:
+      en: OPPOSES
+      zh: 反对
+    inverse: ''
+    description: 反对
+  REL_CONFLICTS_WITH:
+    name:
+      en: CONFLICTS_WITH
+      zh: 冲突
+    inverse: ''
+    description: 冲突
+  REL_ATTACKED:
+    name:
+      en: ATTACKED
+      zh: 被攻击
+    inverse: ATTACKED_BY
+    description: 被攻击
+  REL_DEFENDS:
+    name:
+      en: DEFENDS
+      zh: 防御
+    inverse: ''
+    description: 防御
+  REL_INVADED:
+    name:
+      en: INVADED
+      zh: 被入侵
+    inverse: ''
+    description: 被入侵
+  REL_CEASEFIRE_WITH:
+    name:
+      en: CEASEFIRE_WITH
+      zh: 停火
+    inverse: ''
+    description: 停火
+  REL_PEACE_DEAL_WITH:
+    name:
+      en: PEACE_DEAL_WITH
+      zh: 和平协议
+    inverse: ''
+    description: 和平协议
+  REL_WARNED:
+    name:
+      en: WARNED
+      zh: 被警告
+    inverse: ''
+    description: 被警告
+  REL_THREATENED:
+    name:
+      en: THREATENED
+      zh: 被威胁
+    inverse: ''
+    description: 被威胁
+  REL_WITHDREW_FROM:
+    name:
+      en: WITHDREW_FROM
+      zh: 撤出
+    inverse: ''
+    description: 撤出
+  REL_DEPLOYED_TO:
+    name:
+      en: DEPLOYED_TO
+      zh: 部署于
+    inverse: ''
+    description: 部署
+  REL_SUES:
+    name:
+      en: SUES
+      zh: 起诉
+    inverse: SUED_BY
+    description: 起诉
+  REL_SUED_BY:
+    name:
+      en: SUED_BY
+      zh: 被起诉
+    inverse: SUES
+    description: 被起诉
+  REL_ACCUSED_BY:
+    name:
+      en: ACCUSED_BY
+      zh: 被指控
+    inverse: ''
+    description: 被指控
+  REL_INDICTED_FOR:
+    name:
+      en: INDICTED_FOR
+      zh: 被起诉
+    inverse: ''
+    description: 被起诉
+  REL_CONVICTED_OF:
+    name:
+      en: CONVICTED_OF
+      zh: 定罪
+    inverse: ''
+    description: 定罪
+  REL_SETTLED_WITH:
+    name:
+      en: SETTLED_WITH
+      zh: 和解
+    inverse: ''
+    description: 和解
+  REL_FINE_IMPOSED:
+    name:
+      en: FINE_IMPOSED
+      zh: 被罚款
+    inverse: ''
+    description: 罚款
+  REL_REGULATED_BY:
+    name:
+      en: REGULATED_BY
+      zh: 受监管
+    inverse: REGULATES
+    description: 受监管
+  REL_REGULATES:
+    name:
+      en: REGULATES
+      zh: 监管
+    inverse: REGULATED_BY
+    description: 监管
+  REL_ARRESTS:
+    name:
+      en: ARRESTS
+      zh: 逮捕
+    inverse: ARRESTED
+    description: 逮捕
+  REL_APPEALS:
+    name:
+      en: APPEALS
+      zh: 上诉
+    inverse: ''
+    description: 上诉
+  REL_RULING_AGAINST:
+    name:
+      en: RULING_AGAINST
+      zh: 裁决
+    inverse: ''
+    description: 裁决
+  REL_FUNDED_BY:
+    name:
+      en: FUNDED_BY
+      zh: 受资助
+    inverse: FUNDS
+    description: 受资助
+  REL_FUNDS:
+    name:
+      en: FUNDS
+      zh: 资助
+    inverse: FUNDED_BY
+    description: 资助
+  REL_IPO_LISTED_ON:
+    name:
+      en: IPO_LISTED_ON
+      zh: 上市于
+    inverse: ''
+    description: 上市
+  REL_BONDHOLDER_OF:
+    name:
+      en: BONDHOLDER_OF
+      zh: 债券持有
+    inverse: ''
+    description: 债券
+  REL_CREDITOR_OF:
+    name:
+      en: CREDITOR_OF
+      zh: 债权人
+    inverse: ''
+    description: 债权
+  REL_DEBTOR_OF:
+    name:
+      en: DEBTOR_OF
+      zh: 债务人
+    inverse: ''
+    description: 债务
+  REL_LOANS_TO:
+    name:
+      en: LOANS_TO
+      zh: 贷款给
+    inverse: ''
+    description: 贷款
+  REL_GUARANTOR_OF:
+    name:
+      en: GUARANTOR_OF
+      zh: 担保人
+    inverse: ''
+    description: 担保
+  REL_LICENSES:
+    name:
+      en: LICENSES
+      zh: 许可
+    inverse: ''
+    description: 许可
+  REL_PATENT_HOLDER:
+    name:
+      en: PATENT_HOLDER
+      zh: 专利持有
+    inverse: ''
+    description: 专利
+  REL_TECHNOLOGY_PARTNER:
+    name:
+      en: TECHNOLOGY_PARTNER
+      zh: 技术伙伴
+    inverse: ''
+    description: 技术
+  REL_DEVELOPER_OF:
+    name:
+      en: DEVELOPER_OF
+      zh: 开发者
+    inverse: ''
+    description: 开发
+  REL_USER_OF:
+    name:
+      en: USER_OF
+      zh: 使用者
+    inverse: ''
+    description: 使用
+  REL_RECALLS:
+    name:
+      en: RECALLS
+      zh: 召回
+    inverse: ''
+    description: 召回
+  REL_TREATS:
+    name:
+      en: TREATS
+      zh: 治疗
+    inverse: ''
+    description: 治疗
+  REL_RESEARCH_PARTNER:
+    name:
+      en: RESEARCH_PARTNER
+      zh: 研究伙伴
+    inverse: ''
+    description: 研究
+  REL_APPROVED_DRUG_FOR:
+    name:
+      en: APPROVED_DRUG_FOR
+      zh: 批准用药
+    inverse: ''
+    description: 批准
+  REL_REPORTS_ON:
+    name:
+      en: REPORTS_ON
+      zh: 报道
+    inverse: ''
+    description: 报道
+  REL_PUBLISHES:
+    name:
+      en: PUBLISHES
+      zh: 出版
+    inverse: ''
+    description: 出版
+  REL_AIRES_ON:
+    name:
+      en: AIRES_ON
+      zh: 播出
+    inverse: ''
+    description: 播出
+  REL_COVERS:
+    name:
+      en: COVERS
+      zh: 报道
+    inverse: ''
+    description: 报道
+  REL_LEADS:
+    name:
+      en: LEADS
+      zh: 领导
+    inverse: ''
+    description: 领导
+  REL_APPOINTED_AS:
+    name:
+      en: APPOINTED_AS
+      zh: 任命为
+    inverse: ''
+    description: 任命
+  REL_RESIGNED_FROM:
+    name:
+      en: RESIGNED_FROM
+      zh: 辞职
+    inverse: ''
+    description: 辞职
+  REL_SUCCEEDED_BY:
+    name:
+      en: SUCCEEDED_BY
+      zh: 继任
+    inverse: ''
+    description: 继任
+  REL_REPRESENTS:
+    name:
+      en: REPRESENTS
+      zh: 代表
+    inverse: ''
+    description: 代表
+  REL_ADVISOR_TO:
+    name:
+      en: ADVISOR_TO
+      zh: 顾问
+    inverse: ''
+    description: 顾问
+  REL_SPOKESPERSON_FOR:
+    name:
+      en: SPOKESPERSON_FOR
+      zh: 发言人
+    inverse: ''
+    description: 发言人
+  REL_MARRIED_TO:
+    name:
+      en: MARRIED_TO
+      zh: 配偶
+    inverse: ''
+    description: 配偶
