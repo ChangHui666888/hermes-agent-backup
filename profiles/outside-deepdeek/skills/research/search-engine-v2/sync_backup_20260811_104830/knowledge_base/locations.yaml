@@ -1,0 +1,2234 @@
+# Locations — Knowledge Base V1 (generate_kb.py + add_locations.py, 坐标 curated)
+version: '0.1'
+generated: '2026-08-09'
+locations:
+  LOC_ABU_DHABI:
+    name:
+      en: Abu Dhabi
+      zh: 阿布扎比
+    aliases: []
+    country: UAE
+    province: ''
+    lat: 24.5
+    lon: 54.4
+  LOC_ACCRA:
+    name:
+      en: Accra
+      zh: 阿克拉
+    aliases: []
+    country: Ghana
+    province: ''
+    lat: -0.19
+    lon: 5.6
+  LOC_ADDIS_ABABA:
+    name:
+      en: Addis Ababa
+      zh: 亚的斯亚贝巴
+    aliases: []
+    country: Ethiopia
+    province: ''
+    lat: 9.0
+    lon: 38.7
+  LOC_ADELAIDE:
+    name:
+      en: Adelaide
+      zh: 阿德莱德
+    aliases: []
+    country: Australia
+    province: ''
+    lat: 138.6
+    lon: -34.93
+  LOC_ALEPPO:
+    name:
+      en: Aleppo
+      zh: 阿勒颇
+    aliases: []
+    country: Syria
+    province: ''
+    lat: 37.2
+    lon: 36.2
+  LOC_ALGIERS:
+    name:
+      en: Algiers
+      zh: 阿尔及尔
+    aliases: []
+    country: Algeria
+    province: ''
+    lat: 3.05
+    lon: 36.75
+  LOC_AMMAN:
+    name:
+      en: Amman
+      zh: 安曼
+    aliases: []
+    country: Jordan
+    province: ''
+    lat: 31.95
+    lon: 35.9
+  LOC_AMSTERDAM:
+    name:
+      en: Amsterdam
+      zh: 阿姆斯特丹
+    aliases: []
+    country: Netherlands
+    province: ''
+    lat: 52.3676
+    lon: 4.9041
+  LOC_ANCHORAGE:
+    name:
+      en: Anchorage
+      zh: 安克雷奇
+    aliases: []
+    country: United States
+    province: Alaska
+    lat: -149.9
+    lon: 61.22
+  LOC_ANKARA:
+    name:
+      en: Ankara
+      zh: 安卡拉
+    aliases: []
+    country: Turkey
+    province: ''
+    lat: 39.9334
+    lon: 32.8597
+  LOC_ANTWERP:
+    name:
+      en: Antwerp
+      zh: 安特卫普
+    aliases: []
+    country: Belgium
+    province: ''
+    lat: 4.4
+    lon: 51.22
+  LOC_ATHENS:
+    name:
+      en: Athens
+      zh: 雅典
+    aliases: []
+    country: Greece
+    province: ''
+    lat: 38.0
+    lon: 23.7
+  LOC_ATLANTA:
+    name:
+      en: Atlanta
+      zh: 亚特兰大
+    aliases: []
+    country: United States
+    province: Georgia
+    lat: 33.7
+    lon: -84.4
+  LOC_AUCKLAND:
+    name:
+      en: Auckland
+      zh: 奥克兰
+    aliases: []
+    country: New Zealand
+    province: ''
+    lat: -36.9
+    lon: 174.8
+  LOC_AUSTIN:
+    name:
+      en: Austin
+      zh: 奥斯汀
+    aliases: []
+    country: United States
+    province: Texas
+    lat: -97.74
+    lon: 30.27
+  LOC_BAGHDAD:
+    name:
+      en: Baghdad
+      zh: 巴格达
+    aliases: []
+    country: Iraq
+    province: ''
+    lat: 33.3
+    lon: 44.4
+  LOC_BALTIC_SEA:
+    name:
+      en: Baltic Sea
+      zh: 波罗的海
+    aliases: []
+    country: ''
+    province: ''
+    lat: 58.0
+    lon: 20.0
+  LOC_BAMAKO:
+    name:
+      en: Bamako
+      zh: 巴马科
+    aliases: []
+    country: Mali
+    province: ''
+    lat: -8.0
+    lon: 12.64
+  LOC_BANGKOK:
+    name:
+      en: Bangkok
+      zh: 曼谷
+    aliases: []
+    country: Thailand
+    province: ''
+    lat: 13.8
+    lon: 100.5
+  LOC_BARCELONA:
+    name:
+      en: Barcelona
+      zh: 巴塞罗那
+    aliases: []
+    country: Spain
+    province: ''
+    lat: 41.4
+    lon: 2.2
+  LOC_BEIJING:
+    name:
+      en: Beijing
+      zh: 北京
+    aliases:
+    - Peking
+    country: China
+    province: ''
+    lat: 39.9042
+    lon: 116.4074
+  LOC_BEIRUT:
+    name:
+      en: Beirut
+      zh: 贝鲁特
+    aliases: []
+    country: Lebanon
+    province: ''
+    lat: 33.9
+    lon: 35.5
+  LOC_BELGOROD:
+    name:
+      en: Belgorod
+      zh: 别尔哥罗德
+    aliases: []
+    country: Russia
+    province: ''
+    lat: 36.58
+    lon: 50.6
+  LOC_BELGRADE:
+    name:
+      en: Belgrade
+      zh: 贝尔格莱德
+    aliases: []
+    country: Serbia
+    province: ''
+    lat: 20.46
+    lon: 44.79
+  LOC_BERLIN:
+    name:
+      en: Berlin
+      zh: 柏林
+    aliases: []
+    country: Germany
+    province: ''
+    lat: 52.52
+    lon: 13.405
+  LOC_BERN:
+    name:
+      en: Bern
+      zh: 伯尔尼
+    aliases: []
+    country: Switzerland
+    province: ''
+    lat: 7.45
+    lon: 46.95
+  LOC_BLACK_SEA:
+    name:
+      en: Black Sea
+      zh: 黑海
+    aliases: []
+    country: ''
+    province: ''
+    lat: 43.0
+    lon: 34.0
+  LOC_BOGOTA:
+    name:
+      en: Bogota
+      zh: 波哥大
+    aliases: []
+    country: Colombia
+    province: ''
+    lat: 4.7
+    lon: -74.1
+  LOC_BOSPHORUS:
+    name:
+      en: Bosphorus
+      zh: 博斯普鲁斯海峡
+    aliases: []
+    country: Turkey
+    province: ''
+    lat: 41.1
+    lon: 29.0
+  LOC_BOSTON:
+    name:
+      en: Boston
+      zh: 波士顿
+    aliases: []
+    country: United States
+    province: Massachusetts
+    lat: 42.4
+    lon: -71.1
+  LOC_BRASILIA:
+    name:
+      en: Brasilia
+      zh: 巴西利亚
+    aliases:
+    - Brasília
+    country: Brazil
+    province: ''
+    lat: -47.93
+    lon: -15.79
+  LOC_BRISBANE:
+    name:
+      en: Brisbane
+      zh: 布里斯班
+    aliases: []
+    country: Australia
+    province: ''
+    lat: 153.03
+    lon: -27.47
+  LOC_BRUSSELS:
+    name:
+      en: Brussels
+      zh: 布鲁塞尔
+    aliases: []
+    country: Belgium
+    province: ''
+    lat: 50.8503
+    lon: 4.3517
+  LOC_BUCHAREST:
+    name:
+      en: Bucharest
+      zh: 布加勒斯特
+    aliases: []
+    country: Romania
+    province: ''
+    lat: 26.1
+    lon: 44.43
+  LOC_BUDAPEST:
+    name:
+      en: Budapest
+      zh: 布达佩斯
+    aliases: []
+    country: Hungary
+    province: ''
+    lat: 47.5
+    lon: 19.0
+  LOC_BUENOS_AIRES:
+    name:
+      en: Buenos Aires
+      zh: 布宜诺斯艾利斯
+    aliases: []
+    country: Argentina
+    province: ''
+    lat: -34.6
+    lon: -58.4
+  LOC_BUKAVU:
+    name:
+      en: Bukavu
+      zh: 布卡武
+    aliases: []
+    country: DR Congo
+    province: ''
+    lat: 28.86
+    lon: -2.49
+  LOC_BUSAN:
+    name:
+      en: Busan
+      zh: 釜山
+    aliases: []
+    country: South Korea
+    province: ''
+    lat: 129.08
+    lon: 35.18
+  LOC_CAIRO:
+    name:
+      en: Cairo
+      zh: 开罗
+    aliases: []
+    country: Egypt
+    province: ''
+    lat: 30.0
+    lon: 31.2
+  LOC_CALGARY:
+    name:
+      en: Calgary
+      zh: 卡尔加里
+    aliases: []
+    country: Canada
+    province: Alberta
+    lat: -114.07
+    lon: 51.05
+  LOC_CANBERRA:
+    name:
+      en: Canberra
+      zh: 堪培拉
+    aliases: []
+    country: Australia
+    province: ''
+    lat: -35.3
+    lon: 149.1
+  LOC_CAPE_TOWN:
+    name:
+      en: Cape Town
+      zh: 开普敦
+    aliases: []
+    country: South Africa
+    province: ''
+    lat: -33.9
+    lon: 18.4
+  LOC_CARACAS:
+    name:
+      en: Caracas
+      zh: 加拉加斯
+    aliases: []
+    country: Venezuela
+    province: ''
+    lat: -66.9
+    lon: 10.48
+  LOC_CASABLANCA:
+    name:
+      en: Casablanca
+      zh: 卡萨布兰卡
+    aliases: []
+    country: Morocco
+    province: ''
+    lat: -7.59
+    lon: 33.57
+  LOC_CAUCASUS:
+    name:
+      en: Caucasus
+      zh: 高加索
+    aliases: []
+    country: ''
+    province: ''
+    lat: 42.0
+    lon: 43.0
+  LOC_CHANGSHA:
+    name:
+      en: Changsha
+      zh: 长沙
+    aliases: []
+    country: China
+    province: Hunan
+    lat: 112.94
+    lon: 28.23
+  LOC_CHENGDU:
+    name:
+      en: Chengdu
+      zh: 成都
+    aliases: []
+    country: China
+    province: Sichuan
+    lat: 30.7
+    lon: 104.1
+  LOC_CHICAGO:
+    name:
+      en: Chicago
+      zh: 芝加哥
+    aliases: []
+    country: United States
+    province: Illinois
+    lat: 41.9
+    lon: -87.6
+  LOC_CHONGQING:
+    name:
+      en: Chongqing
+      zh: 重庆
+    aliases: []
+    country: China
+    province: Chongqing
+    lat: 29.6
+    lon: 106.6
+  LOC_COLOMBO:
+    name:
+      en: Colombo
+      zh: 科伦坡
+    aliases: []
+    country: Sri Lanka
+    province: ''
+    lat: 6.9
+    lon: 79.9
+  LOC_COPENHAGEN:
+    name:
+      en: Copenhagen
+      zh: 哥本哈根
+    aliases: []
+    country: Denmark
+    province: ''
+    lat: 55.7
+    lon: 12.6
+  LOC_CRIMEA:
+    name:
+      en: Crimea
+      zh: 克里米亚
+    aliases:
+    - Crimean Peninsula
+    country: Ukraine
+    province: ''
+    lat: 45.3
+    lon: 34.4
+  LOC_DAKAR:
+    name:
+      en: Dakar
+      zh: 达喀尔
+    aliases: []
+    country: Senegal
+    province: ''
+    lat: -17.45
+    lon: 14.7
+  LOC_DALIAN:
+    name:
+      en: Dalian
+      zh: 大连
+    aliases: []
+    country: China
+    province: Liaoning
+    lat: 121.61
+    lon: 38.91
+  LOC_DALLAS:
+    name:
+      en: Dallas
+      zh: 达拉斯
+    aliases: []
+    country: United States
+    province: Texas
+    lat: 32.8
+    lon: -96.8
+  LOC_DAMASCUS:
+    name:
+      en: Damascus
+      zh: 大马士革
+    aliases: []
+    country: Syria
+    province: ''
+    lat: 33.5
+    lon: 36.3
+  LOC_DAR_ES_SALAAM:
+    name:
+      en: Dar es Salaam
+      zh: 达累斯萨拉姆
+    aliases: []
+    country: Tanzania
+    province: ''
+    lat: 39.28
+    lon: -6.79
+  LOC_DENPASAR:
+    name:
+      en: Denpasar
+      zh: 登巴萨
+    aliases: []
+    country: Indonesia
+    province: ''
+    lat: 115.22
+    lon: -8.65
+  LOC_DENVER:
+    name:
+      en: Denver
+      zh: 丹佛
+    aliases: []
+    country: United States
+    province: Colorado
+    lat: -104.99
+    lon: 39.74
+  LOC_DHAKA:
+    name:
+      en: Dhaka
+      zh: 达卡
+    aliases: []
+    country: Bangladesh
+    province: ''
+    lat: 90.41
+    lon: 23.81
+  LOC_DNIPRO:
+    name:
+      en: Dnipro
+      zh: 第聂伯罗
+    aliases: []
+    country: Ukraine
+    province: ''
+    lat: 35.05
+    lon: 48.46
+  LOC_DOHA:
+    name:
+      en: Doha
+      zh: 多哈
+    aliases: []
+    country: Qatar
+    province: ''
+    lat: 25.3
+    lon: 51.5
+  LOC_DONBAS:
+    name:
+      en: Donbas
+      zh: 顿巴斯
+    aliases: []
+    country: Ukraine
+    province: ''
+    lat: 38.0
+    lon: 48.0
+  LOC_DONETSK:
+    name:
+      en: Donetsk
+      zh: 顿涅茨克
+    aliases: []
+    country: Ukraine
+    province: ''
+    lat: 48.0
+    lon: 37.8
+  LOC_DUBAI:
+    name:
+      en: Dubai
+      zh: 迪拜
+    aliases: []
+    country: UAE
+    province: ''
+    lat: 25.2048
+    lon: 55.2708
+  LOC_DUBLIN:
+    name:
+      en: Dublin
+      zh: 都柏林
+    aliases: []
+    country: Ireland
+    province: ''
+    lat: 53.3
+    lon: -6.3
+  LOC_EAST_CHINA_SEA:
+    name:
+      en: East China Sea
+      zh: 东海
+    aliases: []
+    country: China
+    province: ''
+    lat: 124.0
+    lon: 28.0
+  LOC_EDINBURGH:
+    name:
+      en: Edinburgh
+      zh: 爱丁堡
+    aliases: []
+    country: United Kingdom
+    province: ''
+    lat: -3.19
+    lon: 55.95
+  LOC_EL_FASHER:
+    name:
+      en: El Fasher
+      zh: 法希尔
+    aliases: []
+    country: Sudan
+    province: ''
+    lat: 25.35
+    lon: 13.63
+  LOC_ERBIL:
+    name:
+      en: Erbil
+      zh: 埃尔比勒
+    aliases: []
+    country: Iraq
+    province: ''
+    lat: 36.2
+    lon: 44.0
+  LOC_FRANKFURT:
+    name:
+      en: Frankfurt
+      zh: 法兰克福
+    aliases: []
+    country: Germany
+    province: ''
+    lat: 50.1
+    lon: 8.7
+  LOC_FUZHOU:
+    name:
+      en: Fuzhou
+      zh: 福州
+    aliases: []
+    country: China
+    province: Fujian
+    lat: 119.3
+    lon: 26.07
+  LOC_GAZA:
+    name:
+      en: Gaza
+      zh: 加沙
+    aliases:
+    - Gaza Strip
+    - 加沙地带
+    country: ''
+    province: ''
+    lat: 31.5017
+    lon: 34.4668
+  LOC_GENEVA:
+    name:
+      en: Geneva
+      zh: 日内瓦
+    aliases: []
+    country: Switzerland
+    province: ''
+    lat: 46.2044
+    lon: 6.1432
+  LOC_GOLAN_HEIGHTS:
+    name:
+      en: Golan Heights
+      zh: 戈兰高地
+    aliases: []
+    country: Syria
+    province: ''
+    lat: 33.0
+    lon: 35.8
+  LOC_GOMA:
+    name:
+      en: Goma
+      zh: 戈马
+    aliases: []
+    country: DR Congo
+    province: ''
+    lat: 29.22
+    lon: -1.68
+  LOC_GUANGZHOU:
+    name:
+      en: Guangzhou
+      zh: 广州
+    aliases: []
+    country: China
+    province: Guangdong
+    lat: 23.1
+    lon: 113.3
+  LOC_GULF_OF_ADEN:
+    name:
+      en: Gulf of Aden
+      zh: 亚丁湾
+    aliases: []
+    country: ''
+    province: ''
+    lat: 12.0
+    lon: 46.0
+  LOC_GULF_OF_OMAN:
+    name:
+      en: Gulf of Oman
+      zh: 阿曼湾
+    aliases: []
+    country: ''
+    province: ''
+    lat: 24.0
+    lon: 58.5
+  LOC_HAIFA:
+    name:
+      en: Haifa
+      zh: 海法
+    aliases: []
+    country: Israel
+    province: ''
+    lat: 34.99
+    lon: 32.79
+  LOC_HAMBURG:
+    name:
+      en: Hamburg
+      zh: 汉堡
+    aliases: []
+    country: Germany
+    province: ''
+    lat: 53.6
+    lon: 10.0
+  LOC_HANGZHOU:
+    name:
+      en: Hangzhou
+      zh: 杭州
+    aliases: []
+    country: China
+    province: Zhejiang
+    lat: 30.3
+    lon: 120.2
+  LOC_HANOI:
+    name:
+      en: Hanoi
+      zh: 河内
+    aliases: []
+    country: Vietnam
+    province: ''
+    lat: 21.0
+    lon: 105.8
+  LOC_HARARE:
+    name:
+      en: Harare
+      zh: 哈拉雷
+    aliases: []
+    country: Zimbabwe
+    province: ''
+    lat: 31.05
+    lon: -17.83
+  LOC_HARBIN:
+    name:
+      en: Harbin
+      zh: 哈尔滨
+    aliases: []
+    country: China
+    province: Heilongjiang
+    lat: 126.53
+    lon: 45.8
+  LOC_HAVANA:
+    name:
+      en: Havana
+      zh: 哈瓦那
+    aliases: []
+    country: Cuba
+    province: ''
+    lat: -82.35
+    lon: 23.11
+  LOC_HEFEI:
+    name:
+      en: Hefei
+      zh: 合肥
+    aliases: []
+    country: China
+    province: Anhui
+    lat: 117.23
+    lon: 31.82
+  LOC_HELSINKI:
+    name:
+      en: Helsinki
+      zh: 赫尔辛基
+    aliases: []
+    country: Finland
+    province: ''
+    lat: 60.2
+    lon: 24.9
+  LOC_HODEIDAH:
+    name:
+      en: Hodeidah
+      zh: 荷台达
+    aliases: []
+    country: Yemen
+    province: ''
+    lat: 42.95
+    lon: 14.8
+  LOC_HOMS:
+    name:
+      en: Homs
+      zh: 霍姆斯
+    aliases: []
+    country: Syria
+    province: ''
+    lat: 36.71
+    lon: 34.73
+  LOC_HONG_KONG:
+    name:
+      en: Hong Kong
+      zh: 香港
+    aliases:
+    - Hongkong
+    country: China
+    province: ''
+    lat: 22.3193
+    lon: 114.1694
+  LOC_HORMUZ_STRAIT:
+    name:
+      en: Hormuz Strait
+      zh: 霍尔木兹海峡
+    aliases:
+    - Strait of Hormuz
+    country: ''
+    province: ''
+    lat: 26.567
+    lon: 56.252
+  LOC_HOUSTON:
+    name:
+      en: Houston
+      zh: 休斯顿
+    aliases: []
+    country: United States
+    province: Texas
+    lat: 29.8
+    lon: -95.4
+  LOC_HO_CHI_MINH_CITY:
+    name:
+      en: Ho Chi Minh City
+      zh: 胡志明市
+    aliases: []
+    country: Vietnam
+    province: ''
+    lat: 10.8
+    lon: 106.7
+  LOC_HSINCHU:
+    name:
+      en: Hsinchu
+      zh: 新竹
+    aliases: []
+    country: Taiwan
+    province: ''
+    lat: 24.8
+    lon: 121.0
+  LOC_HUALIEN:
+    name:
+      en: Hualien
+      zh: 花莲
+    aliases: []
+    country: Taiwan
+    province: ''
+    lat: 121.6
+    lon: 23.99
+  LOC_ISLAMABAD:
+    name:
+      en: Islamabad
+      zh: 伊斯兰堡
+    aliases: []
+    country: Pakistan
+    province: ''
+    lat: 33.7
+    lon: 73.1
+  LOC_ISTANBUL:
+    name:
+      en: Istanbul
+      zh: 伊斯坦布尔
+    aliases: []
+    country: Turkey
+    province: ''
+    lat: 41.0
+    lon: 29.0
+  LOC_JAKARTA:
+    name:
+      en: Jakarta
+      zh: 雅加达
+    aliases: []
+    country: Indonesia
+    province: ''
+    lat: -6.2
+    lon: 106.8
+  LOC_JEDDAH:
+    name:
+      en: Jeddah
+      zh: 吉达
+    aliases: []
+    country: Saudi Arabia
+    province: ''
+    lat: 39.17
+    lon: 21.49
+  LOC_JERUSALEM:
+    name:
+      en: Jerusalem
+      zh: 耶路撒冷
+    aliases: []
+    country: Israel
+    province: ''
+    lat: 31.7683
+    lon: 35.2137
+  LOC_JOHANNESBURG:
+    name:
+      en: Johannesburg
+      zh: 约翰内斯堡
+    aliases: []
+    country: South Africa
+    province: ''
+    lat: -26.2
+    lon: 28.0
+  LOC_KABUL:
+    name:
+      en: Kabul
+      zh: 喀布尔
+    aliases: []
+    country: Afghanistan
+    province: ''
+    lat: 34.5
+    lon: 69.2
+  LOC_KAMPALA:
+    name:
+      en: Kampala
+      zh: 坎帕拉
+    aliases: []
+    country: Uganda
+    province: ''
+    lat: 32.58
+    lon: 0.35
+  LOC_KAOHSIUNG:
+    name:
+      en: Kaohsiung
+      zh: 高雄
+    aliases: []
+    country: Taiwan
+    province: ''
+    lat: 120.31
+    lon: 22.62
+  LOC_KARACHI:
+    name:
+      en: Karachi
+      zh: 卡拉奇
+    aliases: []
+    country: Pakistan
+    province: ''
+    lat: 24.9
+    lon: 67.0
+  LOC_KASHMIR:
+    name:
+      en: Kashmir
+      zh: 克什米尔
+    aliases: []
+    country: ''
+    province: ''
+    lat: 34.0
+    lon: 75.0
+  LOC_KATHMANDU:
+    name:
+      en: Kathmandu
+      zh: 加德满都
+    aliases: []
+    country: Nepal
+    province: ''
+    lat: 27.7
+    lon: 85.3
+  LOC_KHAN_YOUNIS:
+    name:
+      en: Khan Younis
+      zh: 汗尤尼斯
+    aliases: []
+    country: Palestine
+    province: ''
+    lat: 34.31
+    lon: 31.34
+  LOC_KHARKIV:
+    name:
+      en: Kharkiv
+      zh: 哈尔科夫
+    aliases: []
+    country: Ukraine
+    province: ''
+    lat: 49.9
+    lon: 36.2
+  LOC_KHARTOUM:
+    name:
+      en: Khartoum
+      zh: 喀土穆
+    aliases: []
+    country: Sudan
+    province: ''
+    lat: 32.5
+    lon: 15.5
+  LOC_KHERSON:
+    name:
+      en: Kherson
+      zh: 赫尔松
+    aliases: []
+    country: Ukraine
+    province: ''
+    lat: 46.6
+    lon: 32.6
+  LOC_KINSHASA:
+    name:
+      en: Kinshasa
+      zh: 金沙萨
+    aliases: []
+    country: DR Congo
+    province: ''
+    lat: 15.31
+    lon: -4.44
+  LOC_KOREAN_PENINSULA:
+    name:
+      en: Korean Peninsula
+      zh: 朝鲜半岛
+    aliases: []
+    country: ''
+    province: ''
+    lat: 37.5
+    lon: 127.5
+  LOC_KRAKOW:
+    name:
+      en: Krakow
+      zh: 克拉科夫
+    aliases:
+    - Kraków
+    country: Poland
+    province: ''
+    lat: 19.94
+    lon: 50.06
+  LOC_KUNMING:
+    name:
+      en: Kunming
+      zh: 昆明
+    aliases: []
+    country: China
+    province: Yunnan
+    lat: 102.71
+    lon: 25.04
+  LOC_KURSK:
+    name:
+      en: Kursk
+      zh: 库尔斯克
+    aliases: []
+    country: Russia
+    province: ''
+    lat: 36.19
+    lon: 51.73
+  LOC_KUWAIT_CITY:
+    name:
+      en: Kuwait City
+      zh: 科威特城
+    aliases: []
+    country: Kuwait
+    province: ''
+    lat: 29.4
+    lon: 48.0
+  LOC_KYIV:
+    name:
+      en: Kyiv
+      zh: 基辅
+    aliases:
+    - Kiev
+    - 基辅
+    country: Ukraine
+    province: ''
+    lat: 50.4501
+    lon: 30.5234
+  LOC_LAGOS:
+    name:
+      en: Lagos
+      zh: 拉各斯
+    aliases: []
+    country: Nigeria
+    province: ''
+    lat: 6.5
+    lon: 3.4
+  LOC_LAHORE:
+    name:
+      en: Lahore
+      zh: 拉合尔
+    aliases: []
+    country: Pakistan
+    province: ''
+    lat: 74.34
+    lon: 31.55
+  LOC_LAS_VEGAS:
+    name:
+      en: Las Vegas
+      zh: 拉斯维加斯
+    aliases: []
+    country: United States
+    province: Nevada
+    lat: -115.14
+    lon: 36.17
+  LOC_LHASA:
+    name:
+      en: Lhasa
+      zh: 拉萨
+    aliases: []
+    country: China
+    province: Tibet
+    lat: 91.17
+    lon: 29.65
+  LOC_LIMA:
+    name:
+      en: Lima
+      zh: 利马
+    aliases: []
+    country: Peru
+    province: ''
+    lat: -12.0
+    lon: -77.0
+  LOC_LISBON:
+    name:
+      en: Lisbon
+      zh: 里斯本
+    aliases: []
+    country: Portugal
+    province: ''
+    lat: 38.7
+    lon: -9.1
+  LOC_LONDON:
+    name:
+      en: London
+      zh: 伦敦
+    aliases: []
+    country: United Kingdom
+    province: ''
+    lat: 51.5074
+    lon: -0.1278
+  LOC_LOS_ANGELES:
+    name:
+      en: Los Angeles
+      zh: 洛杉矶
+    aliases:
+    - LA
+    country: United States
+    province: ''
+    lat: 34.0522
+    lon: -118.2437
+  LOC_LUANDA:
+    name:
+      en: Luanda
+      zh: 罗安达
+    aliases: []
+    country: Angola
+    province: ''
+    lat: 13.23
+    lon: -8.84
+  LOC_LUHANSK:
+    name:
+      en: Luhansk
+      zh: 卢甘斯克
+    aliases: []
+    country: Ukraine
+    province: ''
+    lat: 48.6
+    lon: 39.3
+  LOC_LUXEMBOURG:
+    name:
+      en: Luxembourg
+      zh: 卢森堡
+    aliases: []
+    country: Luxembourg
+    province: ''
+    lat: 6.13
+    lon: 49.61
+  LOC_LVIV:
+    name:
+      en: Lviv
+      zh: 利沃夫
+    aliases: []
+    country: Ukraine
+    province: ''
+    lat: 24.03
+    lon: 49.84
+  LOC_MACAU:
+    name:
+      en: Macau
+      zh: 澳门
+    aliases: []
+    country: China
+    province: ''
+    lat: 22.2
+    lon: 113.5
+  LOC_MADRID:
+    name:
+      en: Madrid
+      zh: 马德里
+    aliases: []
+    country: Spain
+    province: ''
+    lat: 40.4168
+    lon: -3.7038
+  LOC_MANCHESTER:
+    name:
+      en: Manchester
+      zh: 曼彻斯特
+    aliases: []
+    country: United Kingdom
+    province: ''
+    lat: -2.24
+    lon: 53.48
+  LOC_MANHATTAN:
+    name:
+      en: Manhattan
+      zh: 曼哈顿
+    aliases: []
+    country: United States
+    province: New York
+    lat: 40.8
+    lon: -74.0
+  LOC_MANILA:
+    name:
+      en: Manila
+      zh: 马尼拉
+    aliases: []
+    country: Philippines
+    province: ''
+    lat: 14.6
+    lon: 121.0
+  LOC_MARIUPOL:
+    name:
+      en: Mariupol
+      zh: 马里乌波尔
+    aliases: []
+    country: Ukraine
+    province: ''
+    lat: 47.1
+    lon: 37.5
+  LOC_MELBOURNE:
+    name:
+      en: Melbourne
+      zh: 墨尔本
+    aliases: []
+    country: Australia
+    province: ''
+    lat: -37.8
+    lon: 145.0
+  LOC_MEXICO_CITY:
+    name:
+      en: Mexico City
+      zh: 墨西哥城
+    aliases: []
+    country: Mexico
+    province: ''
+    lat: 19.4
+    lon: -99.1
+  LOC_MIAMI:
+    name:
+      en: Miami
+      zh: 迈阿密
+    aliases: []
+    country: United States
+    province: Florida
+    lat: 25.8
+    lon: -80.2
+  LOC_MILAN:
+    name:
+      en: Milan
+      zh: 米兰
+    aliases: []
+    country: Italy
+    province: ''
+    lat: 45.5
+    lon: 9.2
+  LOC_MINSK:
+    name:
+      en: Minsk
+      zh: 明斯克
+    aliases: []
+    country: Belarus
+    province: ''
+    lat: 53.9
+    lon: 27.6
+  LOC_MOGADISHU:
+    name:
+      en: Mogadishu
+      zh: 摩加迪沙
+    aliases: []
+    country: Somalia
+    province: ''
+    lat: 45.32
+    lon: 2.05
+  LOC_MONTEVIDEO:
+    name:
+      en: Montevideo
+      zh: 蒙得维的亚
+    aliases: []
+    country: Uruguay
+    province: ''
+    lat: -56.19
+    lon: -34.9
+  LOC_MONTREAL:
+    name:
+      en: Montreal
+      zh: 蒙特利尔
+    aliases: []
+    country: Canada
+    province: Quebec
+    lat: 45.5
+    lon: -73.6
+  LOC_MOSCOW:
+    name:
+      en: Moscow
+      zh: 莫斯科
+    aliases: []
+    country: Russia
+    province: ''
+    lat: 55.7558
+    lon: 37.6173
+  LOC_MUMBAI:
+    name:
+      en: Mumbai
+      zh: 孟买
+    aliases: []
+    country: India
+    province: ''
+    lat: 19.1
+    lon: 72.9
+  LOC_MUNICH:
+    name:
+      en: Munich
+      zh: 慕尼黑
+    aliases: []
+    country: Germany
+    province: ''
+    lat: 48.1
+    lon: 11.6
+  LOC_MUSCAT:
+    name:
+      en: Muscat
+      zh: 马斯喀特
+    aliases: []
+    country: Oman
+    province: ''
+    lat: 58.4
+    lon: 23.59
+  LOC_MYKOLAIV:
+    name:
+      en: Mykolaiv
+      zh: 尼古拉耶夫
+    aliases: []
+    country: Ukraine
+    province: ''
+    lat: 31.99
+    lon: 46.97
+  LOC_NAIROBI:
+    name:
+      en: Nairobi
+      zh: 内罗毕
+    aliases: []
+    country: Kenya
+    province: ''
+    lat: -1.3
+    lon: 36.8
+  LOC_NANJING:
+    name:
+      en: Nanjing
+      zh: 南京
+    aliases: []
+    country: China
+    province: Jiangsu
+    lat: 32.1
+    lon: 118.8
+  LOC_NAPLES:
+    name:
+      en: Naples
+      zh: 那不勒斯
+    aliases: []
+    country: Italy
+    province: ''
+    lat: 14.25
+    lon: 40.85
+  LOC_NEW_DELHI:
+    name:
+      en: New Delhi
+      zh: 新德里
+    aliases: []
+    country: India
+    province: ''
+    lat: 28.6139
+    lon: 77.209
+  LOC_NEW_YORK:
+    name:
+      en: New York
+      zh: 纽约
+    aliases:
+    - NYC
+    - New York City
+    country: United States
+    province: ''
+    lat: 40.7128
+    lon: -74.006
+  LOC_NIAMEY:
+    name:
+      en: Niamey
+      zh: 尼亚美
+    aliases: []
+    country: Niger
+    province: ''
+    lat: 2.11
+    lon: 13.51
+  LOC_NINGBO:
+    name:
+      en: Ningbo
+      zh: 宁波
+    aliases: []
+    country: China
+    province: Zhejiang
+    lat: 121.55
+    lon: 29.87
+  LOC_ODESSA:
+    name:
+      en: Odessa
+      zh: 敖德萨
+    aliases: []
+    country: Ukraine
+    province: ''
+    lat: 46.5
+    lon: 30.7
+  LOC_OMDURMAN:
+    name:
+      en: Omdurman
+      zh: 恩图曼
+    aliases: []
+    country: Sudan
+    province: ''
+    lat: 32.48
+    lon: 15.65
+  LOC_OSAKA:
+    name:
+      en: Osaka
+      zh: 大阪
+    aliases: []
+    country: Japan
+    province: ''
+    lat: 34.7
+    lon: 135.5
+  LOC_OSLO:
+    name:
+      en: Oslo
+      zh: 奥斯陆
+    aliases: []
+    country: Norway
+    province: ''
+    lat: 59.9139
+    lon: 10.7522
+  LOC_OTTAWA:
+    name:
+      en: Ottawa
+      zh: 渥太华
+    aliases: []
+    country: Canada
+    province: ''
+    lat: 45.4
+    lon: -75.7
+  LOC_OUAGADOUGOU:
+    name:
+      en: Ouagadougou
+      zh: 瓦加杜古
+    aliases: []
+    country: Burkina Faso
+    province: ''
+    lat: -1.52
+    lon: 12.37
+  LOC_PANAMA_CITY:
+    name:
+      en: Panama City
+      zh: 巴拿马城
+    aliases: []
+    country: Panama
+    province: ''
+    lat: -79.52
+    lon: 8.98
+  LOC_PARIS:
+    name:
+      en: Paris
+      zh: 巴黎
+    aliases: []
+    country: France
+    province: ''
+    lat: 48.8566
+    lon: 2.3522
+  LOC_PERSIAN_GULF:
+    name:
+      en: Persian Gulf
+      zh: 波斯湾
+    aliases: []
+    country: ''
+    province: ''
+    lat: 26.0
+    lon: 51.0
+  LOC_PERTH:
+    name:
+      en: Perth
+      zh: 珀斯
+    aliases: []
+    country: Australia
+    province: ''
+    lat: 115.86
+    lon: -31.95
+  LOC_PHILADELPHIA:
+    name:
+      en: Philadelphia
+      zh: 费城
+    aliases: []
+    country: United States
+    province: Pennsylvania
+    lat: -75.16
+    lon: 39.95
+  LOC_PHNOM_PENH:
+    name:
+      en: Phnom Penh
+      zh: 金边
+    aliases: []
+    country: Cambodia
+    province: ''
+    lat: 104.92
+    lon: 11.56
+  LOC_PHOENIX:
+    name:
+      en: Phoenix
+      zh: 菲尼克斯
+    aliases: []
+    country: United States
+    province: Arizona
+    lat: -112.07
+    lon: 33.45
+  LOC_PORTLAND:
+    name:
+      en: Portland
+      zh: 波特兰
+    aliases: []
+    country: United States
+    province: Oregon
+    lat: -122.68
+    lon: 45.52
+  LOC_PORTO:
+    name:
+      en: Porto
+      zh: 波尔图
+    aliases: []
+    country: Portugal
+    province: ''
+    lat: -8.61
+    lon: 41.15
+  LOC_PORT_AU_PRINCE:
+    name:
+      en: Port-au-Prince
+      zh: 太子港
+    aliases: []
+    country: Haiti
+    province: ''
+    lat: -72.34
+    lon: 18.54
+  LOC_PRAGUE:
+    name:
+      en: Prague
+      zh: 布拉格
+    aliases: []
+    country: Czech Republic
+    province: ''
+    lat: 50.0755
+    lon: 14.4378
+  LOC_PUDONG:
+    name:
+      en: Pudong
+      zh: 浦东
+    aliases: []
+    country: China
+    province: Shanghai
+    lat: 31.2
+    lon: 121.5
+  LOC_PYONGYANG:
+    name:
+      en: Pyongyang
+      zh: 平壤
+    aliases: []
+    country: North Korea
+    province: ''
+    lat: 39.0
+    lon: 125.7
+  LOC_QINGDAO:
+    name:
+      en: Qingdao
+      zh: 青岛
+    aliases: []
+    country: China
+    province: Shandong
+    lat: 36.1
+    lon: 120.4
+  LOC_QUEBEC_CITY:
+    name:
+      en: Quebec City
+      zh: 魁北克城
+    aliases: []
+    country: Canada
+    province: Quebec
+    lat: -71.21
+    lon: 46.81
+  LOC_QUITO:
+    name:
+      en: Quito
+      zh: 基多
+    aliases: []
+    country: Ecuador
+    province: ''
+    lat: -78.47
+    lon: -0.18
+  LOC_RABAT:
+    name:
+      en: Rabat
+      zh: 拉巴特
+    aliases: []
+    country: Morocco
+    province: ''
+    lat: -6.83
+    lon: 34.02
+  LOC_RAFAH:
+    name:
+      en: Rafah
+      zh: 拉法
+    aliases: []
+    country: Palestine
+    province: ''
+    lat: 34.25
+    lon: 31.3
+  LOC_RAMALLAH:
+    name:
+      en: Ramallah
+      zh: 拉姆安拉
+    aliases: []
+    country: Palestine
+    province: ''
+    lat: 35.2
+    lon: 31.9
+  LOC_RED_SEA:
+    name:
+      en: Red Sea
+      zh: 红海
+    aliases: []
+    country: ''
+    province: ''
+    lat: 20.0
+    lon: 38.0
+  LOC_RIGA:
+    name:
+      en: Riga
+      zh: 里加
+    aliases: []
+    country: Latvia
+    province: ''
+    lat: 24.11
+    lon: 56.95
+  LOC_RIO_DE_JANEIRO:
+    name:
+      en: Rio de Janeiro
+      zh: 里约热内卢
+    aliases: []
+    country: Brazil
+    province: ''
+    lat: -43.17
+    lon: -22.91
+  LOC_RIYADH:
+    name:
+      en: Riyadh
+      zh: 利雅得
+    aliases: []
+    country: Saudi Arabia
+    province: ''
+    lat: 24.7136
+    lon: 46.6753
+  LOC_ROME:
+    name:
+      en: Rome
+      zh: 罗马
+    aliases: []
+    country: Italy
+    province: ''
+    lat: 41.9028
+    lon: 12.4964
+  LOC_ROTTERDAM:
+    name:
+      en: Rotterdam
+      zh: 鹿特丹
+    aliases: []
+    country: Netherlands
+    province: ''
+    lat: 4.48
+    lon: 51.92
+  LOC_SANAA:
+    name:
+      en: Sanaa
+      zh: 萨那
+    aliases:
+    - Sana'a
+    country: Yemen
+    province: ''
+    lat: 44.2
+    lon: 15.35
+  LOC_SANTIAGO:
+    name:
+      en: Santiago
+      zh: 圣地亚哥
+    aliases: []
+    country: Chile
+    province: ''
+    lat: -33.5
+    lon: -70.7
+  LOC_SAN_DIEGO:
+    name:
+      en: San Diego
+      zh: 圣迭戈
+    aliases: []
+    country: United States
+    province: California
+    lat: -117.16
+    lon: 32.72
+  LOC_SAN_FRANCISCO:
+    name:
+      en: San Francisco
+      zh: 旧金山
+    aliases:
+    - 三藩市
+    country: United States
+    province: ''
+    lat: 37.7749
+    lon: -122.4194
+  LOC_SAO_PAULO:
+    name:
+      en: Sao Paulo
+      zh: 圣保罗
+    aliases: []
+    country: Brazil
+    province: ''
+    lat: -23.6
+    lon: -46.6
+  LOC_SEATTLE:
+    name:
+      en: Seattle
+      zh: 西雅图
+    aliases: []
+    country: United States
+    province: Washington
+    lat: 47.6
+    lon: -122.3
+  LOC_SEOUL:
+    name:
+      en: Seoul
+      zh: 首尔
+    aliases:
+    - 汉城
+    country: South Korea
+    province: ''
+    lat: 37.5665
+    lon: 126.978
+  LOC_SHANGHAI:
+    name:
+      en: Shanghai
+      zh: 上海
+    aliases: []
+    country: China
+    province: ''
+    lat: 31.2304
+    lon: 121.4737
+  LOC_SHENYANG:
+    name:
+      en: Shenyang
+      zh: 沈阳
+    aliases: []
+    country: China
+    province: Liaoning
+    lat: 41.8
+    lon: 123.4
+  LOC_SHENZHEN:
+    name:
+      en: Shenzhen
+      zh: 深圳
+    aliases:
+    - 鹏城
+    country: China
+    province: ''
+    lat: 22.5431
+    lon: 114.0579
+  LOC_SILICON_VALLEY:
+    name:
+      en: Silicon Valley
+      zh: 硅谷
+    aliases:
+    - Bay Area
+    country: United States
+    province: California
+    lat: -122.0
+    lon: 37.42
+  LOC_SINGAPORE:
+    name:
+      en: Singapore
+      zh: 新加坡
+    aliases: []
+    country: Singapore
+    province: ''
+    lat: 1.35
+    lon: 103.8
+  LOC_SOFIA:
+    name:
+      en: Sofia
+      zh: 索菲亚
+    aliases: []
+    country: Bulgaria
+    province: ''
+    lat: 23.32
+    lon: 42.7
+  LOC_SOUTH_CHINA_SEA:
+    name:
+      en: South China Sea
+      zh: 南海
+    aliases:
+    - South Sea
+    country: ''
+    province: ''
+    lat: 12.0
+    lon: 113.0
+  LOC_STOCKHOLM:
+    name:
+      en: Stockholm
+      zh: 斯德哥尔摩
+    aliases: []
+    country: Sweden
+    province: ''
+    lat: 59.3293
+    lon: 18.0686
+  LOC_STRAIT_OF_MALACCA:
+    name:
+      en: Strait of Malacca
+      zh: 马六甲海峡
+    aliases: []
+    country: ''
+    province: ''
+    lat: 2.0
+    lon: 100.0
+  LOC_STUTTGART:
+    name:
+      en: Stuttgart
+      zh: 斯图加特
+    aliases: []
+    country: Germany
+    province: ''
+    lat: 9.18
+    lon: 48.78
+  LOC_ST_PETERSBURG:
+    name:
+      en: St Petersburg
+      zh: 圣彼得堡
+    aliases:
+    - Saint Petersburg
+    country: Russia
+    province: ''
+    lat: 30.3
+    lon: 59.93
+  LOC_SUEZ_CANAL:
+    name:
+      en: Suez Canal
+      zh: 苏伊士运河
+    aliases: []
+    country: Egypt
+    province: ''
+    lat: 30.5
+    lon: 32.3
+  LOC_SUZHOU:
+    name:
+      en: Suzhou
+      zh: 苏州
+    aliases: []
+    country: China
+    province: Jiangsu
+    lat: 31.3
+    lon: 120.6
+  LOC_SYDNEY:
+    name:
+      en: Sydney
+      zh: 悉尼
+    aliases: []
+    country: Australia
+    province: ''
+    lat: -33.9
+    lon: 151.2
+  LOC_TAIPEI:
+    name:
+      en: Taipei
+      zh: 台北
+    aliases: []
+    country: Taiwan
+    province: ''
+    lat: 25.033
+    lon: 121.5654
+  LOC_TAIWAN_STRAIT:
+    name:
+      en: Taiwan Strait
+      zh: 台湾海峡
+    aliases: []
+    country: ''
+    province: ''
+    lat: 24.5
+    lon: 119.5
+  LOC_TALLINN:
+    name:
+      en: Tallinn
+      zh: 塔林
+    aliases: []
+    country: Estonia
+    province: ''
+    lat: 24.75
+    lon: 59.44
+  LOC_TEHRAN:
+    name:
+      en: Tehran
+      zh: 德黑兰
+    aliases: []
+    country: Iran
+    province: ''
+    lat: 35.6892
+    lon: 51.389
+  LOC_TEL_AVIV:
+    name:
+      en: Tel Aviv
+      zh: 特拉维夫
+    aliases:
+    - Tel Aviv-Yafo
+    country: Israel
+    province: ''
+    lat: 32.0853
+    lon: 34.7818
+  LOC_TIANJIN:
+    name:
+      en: Tianjin
+      zh: 天津
+    aliases: []
+    country: China
+    province: Tianjin
+    lat: 39.1
+    lon: 117.2
+  LOC_TOKYO:
+    name:
+      en: Tokyo
+      zh: 东京
+    aliases: []
+    country: Japan
+    province: ''
+    lat: 35.6762
+    lon: 139.6503
+  LOC_TORONTO:
+    name:
+      en: Toronto
+      zh: 多伦多
+    aliases: []
+    country: Canada
+    province: Ontario
+    lat: 43.7
+    lon: -79.4
+  LOC_TRIPOLI:
+    name:
+      en: Tripoli
+      zh: 的黎波里
+    aliases: []
+    country: Libya
+    province: ''
+    lat: 13.19
+    lon: 32.89
+  LOC_TUNIS:
+    name:
+      en: Tunis
+      zh: 突尼斯
+    aliases: []
+    country: Tunisia
+    province: ''
+    lat: 10.18
+    lon: 36.8
+  LOC_ULAANBAATAR:
+    name:
+      en: Ulaanbaatar
+      zh: 乌兰巴托
+    aliases: []
+    country: Mongolia
+    province: ''
+    lat: 106.91
+    lon: 47.89
+  LOC_UNKNOWN:
+    name:
+      en: Unknown
+      zh: 未知
+    aliases: []
+    country: ''
+    province: ''
+    lat: 37.3875
+    lon: -122.0575
+  LOC_URUMQI:
+    name:
+      en: Urumqi
+      zh: 乌鲁木齐
+    aliases: []
+    country: China
+    province: Xinjiang
+    lat: 87.62
+    lon: 43.83
+  LOC_VANCOUVER:
+    name:
+      en: Vancouver
+      zh: 温哥华
+    aliases: []
+    country: Canada
+    province: British Columbia
+    lat: 49.3
+    lon: -123.1
+  LOC_VIENNA:
+    name:
+      en: Vienna
+      zh: 维也纳
+    aliases: []
+    country: Austria
+    province: ''
+    lat: 48.2082
+    lon: 16.3738
+  LOC_VIENTIANE:
+    name:
+      en: Vientiane
+      zh: 万象
+    aliases: []
+    country: Laos
+    province: ''
+    lat: 102.63
+    lon: 17.97
+  LOC_VILNIUS:
+    name:
+      en: Vilnius
+      zh: 维尔纽斯
+    aliases: []
+    country: Lithuania
+    province: ''
+    lat: 25.28
+    lon: 54.69
+  LOC_WALL_STREET:
+    name:
+      en: Wall Street
+      zh: 华尔街
+    aliases: []
+    country: ''
+    province: ''
+    lat: 40.7061
+    lon: -74.0089
+  LOC_WARSAW:
+    name:
+      en: Warsaw
+      zh: 华沙
+    aliases: []
+    country: Poland
+    province: ''
+    lat: 52.2297
+    lon: 21.0122
+  LOC_WASHINGTON:
+    name:
+      en: Washington
+      zh: 华盛顿
+    aliases: []
+    country: United States
+    province: ''
+    lat: 38.9072
+    lon: -77.0369
+  LOC_WASHINGTON_DC:
+    name:
+      en: Washington DC
+      zh: 华盛顿特区
+    aliases:
+    - DC
+    - Washington, D.C.
+    country: United States
+    province: ''
+    lat: 38.9072
+    lon: -77.0369
+  LOC_WELLINGTON:
+    name:
+      en: Wellington
+      zh: 惠灵顿
+    aliases: []
+    country: New Zealand
+    province: ''
+    lat: 174.78
+    lon: -41.29
+  LOC_WEST_BANK:
+    name:
+      en: West Bank
+      zh: 西岸
+    aliases: []
+    country: Palestine
+    province: ''
+    lat: 31.9
+    lon: 35.3
+  LOC_WUHAN:
+    name:
+      en: Wuhan
+      zh: 武汉
+    aliases: []
+    country: China
+    province: Hubei
+    lat: 30.6
+    lon: 114.3
+  LOC_WUXI:
+    name:
+      en: Wuxi
+      zh: 无锡
+    aliases: []
+    country: China
+    province: Jiangsu
+    lat: 120.31
+    lon: 31.49
+  LOC_XIAMEN:
+    name:
+      en: Xiamen
+      zh: 厦门
+    aliases: []
+    country: China
+    province: Fujian
+    lat: 118.09
+    lon: 24.48
+  LOC_XIAN:
+    name:
+      en: Xi’an
+      zh: 西安
+    aliases:
+    - Xian
+    country: China
+    province: Shaanxi
+    lat: 34.3
+    lon: 108.9
+  LOC_XIONGAN:
+    name:
+      en: Xiong’an
+      zh: 雄安
+    aliases:
+    - XiongAn
+    country: China
+    province: Hebei
+    lat: 39.1
+    lon: 116.0
+  LOC_YANGON:
+    name:
+      en: Yangon
+      zh: 仰光
+    aliases: []
+    country: Myanmar
+    province: ''
+    lat: 96.2
+    lon: 16.87
+  LOC_YELLOW_SEA:
+    name:
+      en: Yellow Sea
+      zh: 黄海
+    aliases: []
+    country: China
+    province: ''
+    lat: 122.0
+    lon: 36.0
+  LOC_YEMEN:
+    name:
+      en: Yemen
+      zh: 也门
+    aliases: []
+    country: ''
+    province: ''
+    lat: 15.5
+    lon: 48.0
+  LOC_ZAGREB:
+    name:
+      en: Zagreb
+      zh: 萨格勒布
+    aliases: []
+    country: Croatia
+    province: ''
+    lat: 15.98
+    lon: 45.81
+  LOC_ZAPORIZHZHIA:
+    name:
+      en: Zaporizhzhia
+      zh: 扎波罗热
+    aliases: []
+    country: Ukraine
+    province: ''
+    lat: 35.14
+    lon: 47.84
+  LOC_ZHENGZHOU:
+    name:
+      en: Zhengzhou
+      zh: 郑州
+    aliases: []
+    country: China
+    province: Henan
+    lat: 113.62
+    lon: 34.75
+  LOC_ZHONGGUANCUN:
+    name:
+      en: Zhongguancun
+      zh: 中关村
+    aliases: []
+    country: China
+    province: Beijing
+    lat: 39.98
+    lon: 116.3
+  LOC_ZURICH:
+    name:
+      en: Zurich
+      zh: 苏黎世
+    aliases: []
+    country: Switzerland
+    province: ''
+    lat: 47.4
+    lon: 8.5

@@ -1,0 +1,603 @@
+version: '0.1'
+generated: '2026-08-06'
+event_types:
+  EVT_MILITARY:
+    name:
+      en: Military
+      zh: 军事
+    subtypes:
+    - Attack
+    - Air Strike
+    - Drone Attack
+    - Missile Launch
+    - Ceasefire
+    - Invasion
+    - Occupation
+    - Withdrawal
+    - Military Drill
+    - Naval Exercise
+  EVT_DIPLOMACY:
+    name:
+      en: Diplomacy
+      zh: 外交
+    subtypes:
+    - Meeting
+    - Negotiation
+    - Treaty
+    - Sanctions
+    - Visit
+    - Summit
+    - Recognition
+    - Expulsion
+  EVT_POLITICS:
+    name:
+      en: Politics
+      zh: 政治
+    subtypes:
+    - Election
+    - Legislation
+    - Appointment
+    - Resignation
+    - Protest
+    - Veto
+    - Approval
+    - Censure
+    - Coalition
+  EVT_ELECTION:
+    name:
+      en: Election
+      zh: 选举
+    subtypes:
+    - Primary
+    - General Election
+    - Referendum
+    - Vote Count
+  EVT_ECONOMIC:
+    name:
+      en: Economic
+      zh: 经济
+    subtypes:
+    - Trade
+    - Tariff
+    - Export Control
+    - Inflation
+    - GDP
+    - Unemployment
+    - Recession
+    - Stimulus
+    - Trade War
+  EVT_TRADE:
+    name:
+      en: Trade
+      zh: 贸易
+    subtypes:
+    - Tariff
+    - Agreement
+    - Deal
+    - Restriction
+    - Trade War
+  EVT_FINANCE:
+    name:
+      en: Finance
+      zh: 金融
+    subtypes:
+    - IPO
+    - M&A
+    - Earnings
+    - Rate Decision
+    - Market Move
+    - Bankruptcy
+    - Credit
+    - Bond
+  EVT_IPO:
+    name:
+      en: IPO
+      zh: 上市
+    subtypes:
+    - Listing
+    - Valuation
+    - Subscription
+  EVT_M_A:
+    name:
+      en: M&A
+      zh: 并购
+    subtypes:
+    - Merger
+    - Acquisition
+    - Takeover
+    - Divestiture
+  EVT_LAWSUIT:
+    name:
+      en: Lawsuit
+      zh: 诉讼
+    subtypes:
+    - Litigation
+    - Settlement
+    - Verdict
+    - Class Action
+    - Indictment
+  EVT_TECHNOLOGY:
+    name:
+      en: Technology
+      zh: 科技
+    subtypes:
+    - AI
+    - Chip
+    - Launch
+    - Open Source
+    - Patent
+    - Quantum
+    - Software
+  EVT_AI:
+    name:
+      en: AI
+      zh: 人工智能
+    subtypes:
+    - Model Release
+    - AI Regulation
+    - Research
+    - Chip
+  EVT_CHIP:
+    name:
+      en: Chip
+      zh: 芯片
+    subtypes:
+    - Export Control
+    - Production
+    - Shortage
+    - Price
+    - Fabrication
+  EVT_SEMICONDUCTOR:
+    name:
+      en: Semiconductor
+      zh: 半导体
+    subtypes:
+    - Fabrication
+    - Supply Chain
+    - Export Control
+    - Investment
+  EVT_ENERGY:
+    name:
+      en: Energy
+      zh: 能源
+    subtypes:
+    - Oil
+    - Gas
+    - Nuclear
+    - Renewable
+    - Pipeline
+    - Grid
+  EVT_HEALTHCARE:
+    name:
+      en: Healthcare
+      zh: 医疗
+    subtypes:
+    - Pandemic
+    - Drug Approval
+    - Vaccine
+    - FDA
+    - Outbreak
+  EVT_CYBER:
+    name:
+      en: Cyber
+      zh: 网络
+    subtypes:
+    - Hack
+    - Data Breach
+    - Ransomware
+    - Cyberattack
+    - DDoS
+  EVT_SPACE:
+    name:
+      en: Space
+      zh: 太空
+    subtypes:
+    - Launch
+    - Satellite
+    - Landing
+    - Orbit
+    - Space Station
+  EVT_DISASTER:
+    name:
+      en: Disaster
+      zh: 灾害
+    subtypes:
+    - Earthquake
+    - Flood
+    - Wildfire
+    - Storm
+    - Hurricane
+    - Tsunami
+    - Drought
+    - Landslide
+  EVT_ENVIRONMENT:
+    name:
+      en: Environment
+      zh: 环境
+    subtypes:
+    - Climate
+    - Emission
+    - Pollution
+    - Policy
+  EVT_CRYPTO:
+    name:
+      en: Crypto
+      zh: 加密货币
+    subtypes:
+    - Bitcoin
+    - Regulation
+    - Exchange
+    - Hack
+  EVT_LEADERSHIP:
+    name:
+      en: Leadership
+      zh: 领导层
+    subtypes:
+    - Resignation
+    - Appointment
+    - Succession
+    - Funeral
+  EVT_LEGAL:
+    name:
+      en: Legal
+      zh: 法律
+    subtypes:
+    - Lawsuit
+    - Indictment
+    - Conviction
+    - Appeal
+    - Ruling
+    - Regulation
+    - Arrest
+  EVT_SPORTS:
+    name:
+      en: Sports
+      zh: 体育
+    subtypes:
+    - Match
+    - Tournament
+    - Transfer
+    - Doping
+  EVT_MEDIA:
+    name:
+      en: Media
+      zh: 媒体
+    subtypes:
+    - Report
+    - Scandal
+    - Acquisition
+  EVT_TELECOM:
+    name:
+      en: Telecom
+      zh: 电信
+    subtypes:
+    - 5G
+    - Spectrum
+    - Network
+  EVT_RETAIL:
+    name:
+      en: Retail
+      zh: 零售
+    subtypes:
+    - Earnings
+    - Sales
+    - Restructuring
+  EVT_NATURAL_DISASTER:
+    name:
+      en: Natural Disaster
+      zh: 自然灾害
+    subtypes:
+    - Earthquake
+    - Flood
+    - Wildfire
+    - Hurricane
+    - Tsunami
+    - Drought
+  EVT_HEALTH:
+    name:
+      en: Health
+      zh: 健康
+    subtypes:
+    - Pandemic
+    - Epidemic
+    - Drug
+    - Vaccine
+    - FDA
+topic_signals:
+  Legal:
+    en:
+    - lawsuit
+    - sue
+    - court
+    - judge
+    - attorney
+    - trial
+    - ruling
+    - verdict
+    - legal
+    - trade secret
+    - indictment
+    - plead
+    - guilty
+    - prosecutor
+    zh:
+    - 诉讼
+    - 起诉
+    - 法庭
+    - 法官
+    - 裁决
+    - 审判
+    - 指控
+  Military:
+    en:
+    - war
+    - strike
+    - missile
+    - troops
+    - military
+    - attack
+    - drone
+    - combat
+    - aircraft
+    - navy
+    - army
+    - bomb
+    - weapon
+    - invasion
+    - raid
+    - defense
+    zh:
+    - 军事
+    - 战争
+    - 无人机
+    - 导弹
+    - 军队
+    - 袭击
+    - 空袭
+    - 轰炸
+    - 国防
+    - 武器
+    - 入侵
+    - 战斗
+  Diplomacy:
+    en:
+    - ceasefire
+    - negotiation
+    - talks
+    - diplomat
+    - treaty
+    - summit
+    - agreement
+    - peace deal
+    - truce
+    - dialogue
+    - UN
+    - NATO
+    zh:
+    - 外交
+    - 谈判
+    - 协议
+    - 会晤
+    - 峰会
+    - 停火
+    - 条约
+    - 对话
+  Economic:
+    en:
+    - tariff
+    - sanction
+    - trade
+    - economy
+    - import
+    - export
+    - inflation
+    - GDP
+    - recession
+    - commodity
+    - sanction
+    - embargo
+    zh:
+    - 经济
+    - 关税
+    - 制裁
+    - 贸易
+    - 出口
+    - 进口
+    - 出口管制
+    - 通货膨胀
+    - 禁运
+  Finance:
+    en:
+    - stock
+    - earnings
+    - revenue
+    - profit
+    - IPO
+    - merger
+    - acquisition
+    - shares
+    - investor
+    - Wall Street
+    - NASDAQ
+    - S&P
+    - dollar
+    - bond
+    - market
+    - oil price
+    - surge
+    - crash
+    - record high
+    zh:
+    - 股市
+    - 财报
+    - 营收
+    - 利润
+    - 并购
+    - 加息
+    - 降息
+    - 投资者
+    - 上涨
+    - 下跌
+  Politics:
+    en:
+    - election
+    - vote
+    - candidate
+    - president
+    - senate
+    - congress
+    - parliament
+    - bill
+    - legislation
+    - administration
+    - governor
+    - mayor
+    - govern
+    zh:
+    - 选举
+    - 投票
+    - 总统
+    - 议会
+    - 政府
+    - 法案
+    - 议员
+    - 候选
+  Technology:
+    en:
+    - AI
+    - artificial intelligence
+    - OpenAI
+    - GPU
+    - chip
+    - software
+    - startup
+    - tech
+    - algorithm
+    - robot
+    - autonomous
+    - cyber
+    - EV
+    - electric vehicle
+    zh:
+    - 科技
+    - 芯片
+    - 半导体
+    - 光刻机
+    - 人工智能
+    - 软件
+    - 机器人
+    - 电动车
+    - 技术
+  Energy:
+    en:
+    - oil
+    - gas
+    - energy
+    - pipeline
+    - OPEC
+    - refinery
+    - solar
+    - wind
+    - nuclear
+    - fuel
+    - barrel
+    - crude
+    - power
+    - electricity
+    zh:
+    - 石油
+    - 能源
+    - 天然气
+    - 核能
+    - 太阳能
+    - 风能
+    - 管道
+    - 电力
+  Health:
+    en:
+    - covid
+    - vaccine
+    - hospital
+    - disease
+    - outbreak
+    - pandemic
+    - virus
+    - drug
+    - FDA
+    - pharma
+    - patient
+    - clinical
+    - cancer
+    - screening
+    zh:
+    - 疫苗
+    - 病毒
+    - 疫情
+    - 医院
+    - 药品
+    - 癌症
+    - 临床试验
+    - 疾病
+  Sports:
+    en:
+    - World Cup
+    - quarterfinal
+    - semifinal
+    - tournament
+    - match
+    - goal
+    - stadium
+    - player
+    - team
+    - league
+    - championship
+    - fans
+    zh:
+    - 世界杯
+    - 锦标赛
+    - 比赛
+    - 球员
+    - 联赛
+    - 决赛
+    - 体育
+  Leadership:
+    en:
+    - funeral
+    - succession
+    - appointed
+    - resign
+    - chairman
+    - CEO
+    - executive
+    - board
+    - leadership
+    - departure
+    - nominated
+    zh:
+    - 任命
+    - 辞职
+    - 继任
+    - 主席
+    - 高管
+    - 领导层
+  Disaster:
+    en:
+    - earthquake
+    - flood
+    - hurricane
+    - typhoon
+    - tsunami
+    - wildfire
+    - collapse
+    - explosion
+    - accident
+    - blackout
+    zh:
+    - 地震
+    - 洪水
+    - 飓风
+    - 台风
+    - 海啸
+    - 山火
+    - 爆炸
+    - 事故

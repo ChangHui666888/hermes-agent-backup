@@ -1,0 +1,392 @@
+version: '0.1'
+generated: '2026-08-05'
+industries:
+  IND_AI:
+    name:
+      en: AI
+      zh: ''
+    description: ''
+  IND_AUTOMOTIVE:
+    name:
+      en: Automotive
+      zh: ''
+    description: ''
+  IND_CLOUD_COMPUTING:
+    name:
+      en: Cloud Computing
+      zh: ''
+    description: ''
+  IND_COMMUNICATION_SERVICES:
+    name:
+      en: Communication Services
+      zh: ''
+    description: ''
+  IND_CONSUMER_DISCRETIONARY:
+    name:
+      en: Consumer Discretionary
+      zh: ''
+    description: ''
+  IND_CONSUMER_STAPLES:
+    name:
+      en: Consumer Staples
+      zh: ''
+    description: ''
+  IND_CRYPTO:
+    name:
+      en: Crypto
+      zh: ''
+    description: ''
+  IND_DEFENSE:
+    name:
+      en: Defense
+      zh: ''
+    description: ''
+  IND_ENERGY:
+    name:
+      en: Energy
+      zh: ''
+    description: ''
+  IND_FINANCIALS:
+    name:
+      en: Financials
+      zh: ''
+    description: ''
+  IND_HEALTH_CARE:
+    name:
+      en: Health Care
+      zh: ''
+    description: ''
+  IND_INDUSTRIALS:
+    name:
+      en: Industrials
+      zh: ''
+    description: ''
+  IND_INFORMATION_TECHNOLOGY:
+    name:
+      en: Information Technology
+      zh: ''
+    description: ''
+  IND_LOGISTICS:
+    name:
+      en: Logistics
+      zh: ''
+    description: ''
+  IND_MATERIALS:
+    name:
+      en: Materials
+      zh: ''
+    description: ''
+  IND_MINING:
+    name:
+      en: Mining
+      zh: ''
+    description: ''
+  IND_NUCLEAR:
+    name:
+      en: Nuclear
+      zh: ''
+    description: ''
+  IND_PHOTONICS:
+    name:
+      en: Photonics
+      zh: ''
+    description: ''
+  IND_QUANTUM:
+    name:
+      en: Quantum
+      zh: ''
+    description: ''
+  IND_REAL_ESTATE:
+    name:
+      en: Real Estate
+      zh: ''
+    description: ''
+  IND_RETAIL:
+    name:
+      en: Retail
+      zh: ''
+    description: ''
+  IND_ROBOTICS:
+    name:
+      en: Robotics
+      zh: ''
+    description: ''
+  IND_SEMICONDUCTOR:
+    name:
+      en: Semiconductor
+      zh: ''
+    description: ''
+  IND_SPACE:
+    name:
+      en: Space
+      zh: ''
+    description: ''
+  IND_SUB_AI:
+    name:
+      en: AI芯片
+      zh: ''
+    description: 'AI芯片 (细分赛道, 父行业: Semiconductor)'
+    sub_of: IND_SEMICONDUCTOR
+  IND_SUB_AI巨头:
+    name:
+      en: AI巨头
+      zh: AI巨头
+    description: '细分赛道 AI巨头 (父行业: Technology)'
+    sub_of: IND_TECHNOLOGY
+  IND_SUB_AI芯片:
+    name:
+      en: AI芯片
+      zh: AI芯片
+    description: '细分赛道 AI芯片 (父行业: Semiconductor)'
+    sub_of: IND_SEMICONDUCTOR
+  IND_SUB_CHIPLET:
+    name:
+      en: Chiplet
+      zh: ''
+    description: 'Chiplet (细分赛道, 父行业: Semiconductor)'
+    sub_of: IND_SEMICONDUCTOR
+  IND_SUB_Chiplet:
+    name:
+      en: Chiplet
+      zh: Chiplet
+    description: '细分赛道 Chiplet (父行业: Semiconductor)'
+    sub_of: IND_SEMICONDUCTOR
+  IND_SUB_GPU:
+    name:
+      en: GPU
+      zh: ''
+    description: 'GPU (细分赛道, 父行业: Semiconductor)'
+    sub_of: IND_SEMICONDUCTOR
+  IND_SUB_HBM:
+    name:
+      en: HBM
+      zh: ''
+    description: 'HBM (细分赛道, 父行业: Semiconductor)'
+    sub_of: IND_SEMICONDUCTOR
+  IND_SUB_云计算:
+    name:
+      en: 云计算
+      zh: 云计算
+    description: '细分赛道 云计算 (父行业: Software)'
+    sub_of: IND_SOFTWARE
+  IND_SUB_先进封装:
+    name:
+      en: 先进封装
+      zh: 先进封装
+    description: '细分赛道 先进封装 (父行业: Semiconductor)'
+    sub_of: IND_SEMICONDUCTOR
+  IND_SUB_光芯片:
+    name:
+      en: 光芯片
+      zh: 光芯片
+    description: '细分赛道 光芯片 (父行业: Optical Communication)'
+    sub_of: IND_OPTICAL_COMMUNICATION
+  IND_SUB_光通信:
+    name:
+      en: 光通信
+      zh: 光通信
+    description: '细分赛道 光通信 (父行业: Optical Communication)'
+    sub_of: IND_OPTICAL_COMMUNICATION
+  IND_SUB_出口管制:
+    name:
+      en: 出口管制
+      zh: 出口管制
+    description: '细分赛道 出口管制 (父行业: Semiconductor)'
+    sub_of: IND_SEMICONDUCTOR
+  IND_SUB_制药:
+    name:
+      en: 制药
+      zh: 制药
+    description: '细分赛道 制药 (父行业: Health Care)'
+    sub_of: IND_HEALTH_CARE
+  IND_SUB_加密货币:
+    name:
+      en: 加密货币
+      zh: 加密货币
+    description: '细分赛道 加密货币 (父行业: Financials)'
+    sub_of: IND_FINANCIALS
+  IND_SUB_加息:
+    name:
+      en: 加息
+      zh: 加息
+    description: '细分赛道 加息 (父行业: Financials)'
+    sub_of: IND_FINANCIALS
+  IND_SUB_半导体:
+    name:
+      en: 半导体
+      zh: 半导体
+    description: '细分赛道 半导体 (父行业: Semiconductor)'
+    sub_of: IND_SEMICONDUCTOR
+  IND_SUB_反应堆:
+    name:
+      en: 反应堆
+      zh: 反应堆
+    description: '细分赛道 反应堆 (父行业: Energy)'
+    sub_of: IND_ENERGY
+  IND_SUB_国产替代:
+    name:
+      en: 国产替代
+      zh: 国产替代
+    description: '细分赛道 国产替代 (父行业: Semiconductor)'
+    sub_of: IND_SEMICONDUCTOR
+  IND_SUB_国防:
+    name:
+      en: 国防
+      zh: 国防
+    description: '细分赛道 国防 (父行业: Defense)'
+    sub_of: IND_DEFENSE
+  IND_SUB_战争:
+    name:
+      en: 战争
+      zh: 战争
+    description: '细分赛道 战争 (父行业: Defense)'
+    sub_of: IND_DEFENSE
+  IND_SUB_晶圆键合:
+    name:
+      en: 晶圆键合
+      zh: 晶圆键合
+    description: '细分赛道 晶圆键合 (父行业: Semiconductor)'
+    sub_of: IND_SEMICONDUCTOR
+  IND_SUB_服务器:
+    name:
+      en: 服务器
+      zh: 服务器
+    description: '细分赛道 服务器 (父行业: Compute Infrastructure)'
+    sub_of: IND_COMPUTE_INFRASTRUCTURE
+  IND_SUB_机器人:
+    name:
+      en: 机器人
+      zh: 机器人
+    description: '细分赛道 机器人 (父行业: Robotics)'
+    sub_of: IND_ROBOTICS
+  IND_SUB_核电:
+    name:
+      en: 核电
+      zh: 核电
+    description: '细分赛道 核电 (父行业: Energy)'
+    sub_of: IND_ENERGY
+  IND_SUB_核能:
+    name:
+      en: 核能
+      zh: 核能
+    description: '细分赛道 核能 (父行业: Energy)'
+    sub_of: IND_ENERGY
+  IND_SUB_液冷:
+    name:
+      en: 液冷
+      zh: 液冷
+    description: '细分赛道 液冷 (父行业: Compute Infrastructure)'
+    sub_of: IND_COMPUTE_INFRASTRUCTURE
+  IND_SUB_激光器芯片:
+    name:
+      en: 激光器芯片
+      zh: 激光器芯片
+    description: '细分赛道 激光器芯片 (父行业: Optical Communication)'
+    sub_of: IND_OPTICAL_COMMUNICATION
+  IND_SUB_电动车:
+    name:
+      en: 电动车
+      zh: 电动车
+    description: '细分赛道 电动车 (父行业: Automotive)'
+    sub_of: IND_AUTOMOTIVE
+  IND_SUB_石油:
+    name:
+      en: 石油
+      zh: 石油
+    description: '细分赛道 石油 (父行业: Energy)'
+    sub_of: IND_ENERGY
+  IND_SUB_降息:
+    name:
+      en: 降息
+      zh: 降息
+    description: '细分赛道 降息 (父行业: Financials)'
+    sub_of: IND_FINANCIALS
+  IND_UTILITIES:
+    name:
+      en: Utilities
+      zh: ''
+    description: ''
+  IND_SUB_EDA:
+    name:
+      en: EDA
+      zh: EDA
+    description: 细分赛道 EDA
+    sub_of: IND_
+  IND_SUB_磷化铟:
+    name:
+      en: 磷化铟
+      zh: 磷化铟
+    description: 细分赛道 磷化铟
+    sub_of: IND_
+  IND_SUB_砷化镓:
+    name:
+      en: 砷化镓
+      zh: 砷化镓
+    description: 细分赛道 砷化镓
+    sub_of: IND_
+  IND_SUB_MOCVD:
+    name:
+      en: MOCVD
+      zh: MOCVD
+    description: 细分赛道 MOCVD
+    sub_of: IND_
+  IND_SUB_键合机:
+    name:
+      en: 键合机
+      zh: 键合机
+    description: 细分赛道 键合机
+    sub_of: IND_
+  IND_SUB_ABF载板:
+    name:
+      en: ABF载板
+      zh: ABF载板
+    description: 细分赛道 ABF载板
+    sub_of: IND_
+  IND_SUB_光模块:
+    name:
+      en: 光模块
+      zh: 光模块
+    description: 细分赛道 光模块
+    sub_of: IND_
+  IND_SUB_化合物半导体:
+    name:
+      en: 化合物半导体
+      zh: 化合物半导体
+    description: 细分赛道 化合物半导体
+    sub_of: IND_
+  IND_SUB_核燃料:
+    name:
+      en: 核燃料
+      zh: 核燃料
+    description: 细分赛道 核燃料
+    sub_of: IND_
+  IND_SUB_铀矿:
+    name:
+      en: 铀矿
+      zh: 铀矿
+    description: 细分赛道 铀矿
+    sub_of: IND_
+  IND_SUB_PCB基板:
+    name:
+      en: PCB基板
+      zh: PCB基板
+    description: 细分赛道 PCB基板
+    sub_of: IND_
+  IND_SUB_3D NAND:
+    name:
+      en: 3D NAND
+      zh: 3D NAND
+    description: 细分赛道 3D NAND
+    sub_of: IND_
+  IND_SUB_半导体设备:
+    name:
+      en: 半导体设备
+      zh: 半导体设备
+    description: 细分赛道 半导体设备
+    sub_of: IND_
+  IND_SUB_AI算力:
+    name:
+      en: AI算力
+      zh: AI算力
+    description: 细分赛道 AI算力
+    sub_of: IND_

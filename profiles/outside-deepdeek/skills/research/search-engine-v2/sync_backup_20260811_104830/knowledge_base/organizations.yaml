@@ -1,0 +1,454 @@
+version: 0.2
+generated: '2026-08-09'
+organizations:
+  ORG_ASEAN:
+    name:
+      en: ASEAN
+      zh: 东盟
+    aliases: []
+    type: International Org
+    country: Asia
+  ORG_BANK_OF_RUSSIA:
+    name:
+      en: Bank of Russia
+      zh: 俄罗斯央行
+    aliases:
+    - 俄罗斯央行
+    type: Central Bank
+    country: Russia
+  ORG_BRICS:
+    name:
+      en: BRICS
+      zh: 金砖国家
+    aliases: []
+    type: International Org
+    country: Global
+  ORG_CBR:
+    name:
+      en: CBR
+      zh: ''
+    aliases: []
+    type: ''
+    country: ''
+  ORG_CCP_POLITBURO:
+    name:
+      en: Politburo
+      zh: 政治局
+    aliases:
+    - 政治局
+    type: Government
+    country: China
+  ORG_CN_GOVERNMENT:
+    name:
+      en: Chinese Government
+      zh: ''
+    aliases:
+    - Beijing
+    type: Government
+    country: Global
+  ORG_CSRC:
+    name:
+      en: CSRC
+      zh: ''
+    aliases:
+    - 证监会
+    - China Securities Regulatory Commission
+    type: ''
+    country: ''
+  ORG_CUSTOMS:
+    name:
+      en: General Administration of Customs
+      zh: 海关总署
+    aliases: []
+    type: Government
+    country: China
+  ORG_ECB:
+    name:
+      en: European Central Bank
+      zh: ''
+    aliases:
+    - ECB
+    - 欧洲央行
+    type: Central Bank
+    country: Global
+  ORG_EU:
+    name:
+      en: European Union
+      zh: 欧盟
+    aliases: []
+    type: political_economic
+    country: Global
+  ORG_EUROPEAN_UNION:
+    name:
+      en: European Union
+      zh: ''
+    aliases:
+    - EU
+    type: political_economic
+    country: Global
+  ORG_FEDERAL_RESERVE:
+    name:
+      en: Federal Reserve
+      zh: ''
+    aliases:
+    - Fed Chair
+    - Powell
+    - 鲍威尔
+    type: Central Bank
+    country: Global
+  ORG_FEDERATION_COUNCIL:
+    name:
+      en: Federation Council
+      zh: 俄罗斯联邦委员会
+    aliases:
+    - 俄罗斯联邦委员会
+    type: Government
+    country: Russia
+  ORG_FED_RESERVE:
+    name:
+      en: Federal Reserve
+      zh: 美联储
+    aliases: []
+    type: Central Bank
+    country: United States
+  ORG_FOMC:
+    name:
+      en: FOMC
+      zh: 美联储公开市场委员会
+    aliases:
+    - 美联储公开市场委员会
+    type: Central Bank
+    country: United States
+  ORG_G20:
+    name:
+      en: G20
+      zh: 二十国集团
+    aliases: []
+    type: International Org
+    country: Global
+  ORG_G7:
+    name:
+      en: G7
+      zh: 七国集团
+    aliases: []
+    type: International Org
+    country: Global
+  ORG_IDF:
+    name:
+      en: Israel Defense Forces
+      zh: ''
+    aliases:
+    - IDF
+    type: Military
+    country: Global
+  ORG_IMF:
+    name:
+      en: IMF
+      zh: ''
+    aliases:
+    - 国际货币基金组织
+    type: finance
+    country: Global
+  ORG_IRGC:
+    name:
+      en: Islamic Revolutionary Guard Corps
+      zh: ''
+    aliases:
+    - IRGC
+    type: Military
+    country: Global
+  ORG_KP_GOVERNMENT:
+    name:
+      en: North Korean Government
+      zh: ''
+    aliases:
+    - Pyongyang
+    type: Government
+    country: Global
+  ORG_KREMLIN:
+    name:
+      en: Kremlin
+      zh: 克里姆林宫
+    aliases: []
+    type: Government
+    country: Russia
+  ORG_MIIT:
+    name:
+      en: MIIT
+      zh: ''
+    aliases:
+    - Ministry of Industry and Information Technology
+    type: ''
+    country: ''
+  ORG_MOF:
+    name:
+      en: Ministry of Finance
+      zh: 财政部
+    aliases: []
+    type: Government
+    country: China
+  ORG_MOFA:
+    name:
+      en: Ministry of Foreign Affairs
+      zh: 外交部
+    aliases: []
+    type: Government
+    country: China
+  ORG_MOFCOM:
+    name:
+      en: MOFCOM
+      zh: ''
+    aliases:
+    - Ministry of Commerce
+    type: ''
+    country: ''
+  ORG_NATO:
+    name:
+      en: NATO
+      zh: ''
+    aliases:
+    - 北约
+    type: military_alliance
+    country: Global
+  ORG_NDRC:
+    name:
+      en: NDRC
+      zh: ''
+    aliases:
+    - 发改委
+    - National Development and Reform Commission
+    type: ''
+    country: ''
+  ORG_NFRA:
+    name:
+      en: NFRA
+      zh: ''
+    aliases:
+    - 国家金融监督管理总局
+    type: ''
+    country: ''
+  ORG_OPEC:
+    name:
+      en: OPEC+
+      zh: ''
+    aliases:
+    - OPEC
+    type: ''
+    country: ''
+  ORG_PBOC:
+    name:
+      en: PBOC
+      zh: ''
+    aliases: []
+    type: Central Bank
+    country: Global
+  ORG_PENTAGON:
+    name:
+      en: Pentagon
+      zh: 五角大楼
+    aliases: []
+    type: Government
+    country: United States
+  ORG_PEOPLE_S_BANK_OF_CHINA:
+    name:
+      en: People's Bank of China
+      zh: ''
+    aliases: []
+    type: ''
+    country: ''
+  ORG_PLA:
+    name:
+      en: PLA
+      zh: ''
+    aliases:
+    - 中国人民解放军
+    - 解放军
+    - People's Liberation Army
+    type: ''
+    country: ''
+  ORG_POLITBURO:
+    name:
+      en: Politburo
+      zh: 中共中央政治局
+    aliases:
+    - 中共中央政治局
+    type: Government
+    country: China
+  ORG_RU_GOVERNMENT:
+    name:
+      en: Russian Federation Government
+      zh: ''
+    aliases:
+    - Kremlin
+    - Moscow
+    type: Government
+    country: Global
+  ORG_SHANGHAI_COOPERATION_ORGANISATION:
+    name:
+      en: Shanghai Cooperation Organisation
+      zh: 上合组织
+    aliases:
+    - 上合组织
+    type: International Org
+    country: Global
+  ORG_SHANGHAI_COOPERATION_ORGANIZATION:
+    name:
+      en: Shanghai Cooperation Organization
+      zh: ''
+    aliases: []
+    type: ''
+    country: ''
+  ORG_SNB:
+    name:
+      en: SNB
+      zh: ''
+    aliases: []
+    type: ''
+    country: ''
+  ORG_STATE_COUNCIL:
+    name:
+      en: State Council
+      zh: 国务院
+    aliases:
+    - 国务院
+    type: Government
+    country: China
+  ORG_SWISS_NATIONAL_BANK:
+    name:
+      en: Swiss National Bank
+      zh: 瑞士央行
+    aliases:
+    - 瑞士央行
+    type: Central Bank
+    country: Switzerland
+  ORG_UN:
+    name:
+      en: United Nations
+      zh: 联合国
+    aliases: []
+    type: International Org
+    country: Global
+  ORG_UNITED_NATIONS:
+    name:
+      en: United Nations
+      zh: ''
+    aliases:
+    - UN
+    type: international
+    country: Global
+  ORG_UNKNOWN:
+    name:
+      en: 财政部
+      zh: ''
+    aliases: []
+    type: Government
+    country: Global
+  ORG_UN_SECURITY_COUNCIL:
+    name:
+      en: UN Security Council
+      zh: 安理会
+    aliases:
+    - 安理会
+    - 联合国安理会
+    type: International Org
+    country: Global
+  ORG_US_CENTCOM:
+    name:
+      en: United States Central Command
+      zh: ''
+    aliases:
+    - Centcom
+    type: Military
+    country: Global
+  ORG_US_DEPARTMENT_OF_COMMERCE:
+    name:
+      en: US Department of Commerce
+      zh: 美国商务部
+    aliases:
+    - 美国商务部
+    type: Government
+    country: United States
+  ORG_US_DEPARTMENT_OF_STATE:
+    name:
+      en: US Department of State
+      zh: 美国国务院
+    aliases:
+    - 美国国务院
+    type: Government
+    country: United States
+  ORG_US_DEPARTMENT_OF_THE_TREASURY:
+    name:
+      en: US Department of the Treasury
+      zh: 美国财政部
+    aliases:
+    - 美国财政部
+    type: Government
+    country: United States
+  ORG_US_DOD:
+    name:
+      en: United States Department of Defense
+      zh: ''
+    aliases:
+    - Pentagon
+    type: Military
+    country: Global
+  ORG_US_GOVERNMENT:
+    name:
+      en: United States Government
+      zh: ''
+    aliases:
+    - White House
+    - Washington
+    type: Government
+    country: Global
+  ORG_US_SECURITIES_AND_EXCHANGE_COMMISSION:
+    name:
+      en: US Securities and Exchange Commission
+      zh: 美国证券交易委员会
+    aliases:
+    - 美国证券交易委员会
+    type: Regulator
+    country: United States
+  ORG_US_STATE_DEPARTMENT:
+    name:
+      en: US State Department
+      zh: ''
+    aliases: []
+    type: ''
+    country: ''
+  ORG_US_TREASURY:
+    name:
+      en: US Treasury
+      zh: ''
+    aliases: []
+    type: ''
+    country: ''
+  ORG_WHITE_HOUSE:
+    name:
+      en: White House
+      zh: 白宫
+    aliases: []
+    type: Government
+    country: United States
+  ORG_WHO:
+    name:
+      en: WHO
+      zh: ''
+    aliases: []
+    type: health
+    country: Global
+  ORG_WORLD_BANK:
+    name:
+      en: World Bank
+      zh: ''
+    aliases:
+    - 世界银行
+    type: finance
+    country: Global
+  ORG_WTO:
+    name:
+      en: World Trade Organization
+      zh: 世界贸易组织
+    aliases: []
+    type: International Org
+    country: Global

@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>News Intelligence — Detailed Business Flow v4.3</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'JetBrains Mono',monospace;background:#020617;min-height:100vh;padding:1.5rem;color:white}
+.container{max-width:1400px;margin:0 auto}
+.header{margin-bottom:1.5rem}
+.header-row{display:flex;align-items:center;gap:1rem;margin-bottom:.25rem}
+.pulse-dot{width:12px;height:12px;background:#22d3ee;border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+h1{font-size:1.25rem;font-weight:700}
+.subtitle{color:#94a3b8;font-size:.75rem;margin-left:1.75rem}
+.diagram-container{background:rgba(15,23,42,.5);border-radius:1rem;border:1px solid #1e293b;padding:1rem 1.5rem 1.5rem;overflow-x:auto}
+.legend{margin-top:1rem;display:flex;gap:1.5rem;flex-wrap:wrap;color:#94a3b8;font-size:.7rem}
+.legend-item{display:flex;align-items:center;gap:.375rem}
+.legend-dot{width:10px;height:10px;border-radius:3px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:.75rem;margin-top:1.5rem}
+.card{background:rgba(15,23,42,.5);border-radius:.75rem;border:1px solid #1e293b;padding:1rem}
+.card-header{display:flex;align-items:center;gap:.5rem;margin-bottom:.5rem}
+.card-dot{width:8px;height:8px;border-radius:50%}
+.card-dot.green{background:#34d399}.card-dot.cyan{background:#22d3ee}
+.card-dot.violet{background:#a78bfa}.card-dot.amber{background:#fbbf24}
+.card-dot.rose{background:#fb7185}.card-dot.orange{background:#fb923c}
+.card-dot.slate{background:#94a3b8}
+.card h3{font-size:.8rem;font-weight:600}
+.card ul{list-style:none;color:#94a3b8;font-size:.7rem}
+.card li{margin-bottom:.25rem}
+.card .stat{color:#22d3ee;font-weight:600}
+.footer{text-align:center;margin-top:1rem;color:#475569;font-size:.7rem}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+<div class="header-row"><div class="pulse-dot"></div><h1>News Intelligence Platform — 实际业务流程图 v4.3</h1></div>
+<p class="subtitle">按代码真实调用链绘制 · ✅=已启用可运行 · ⚠️=代码存在但需Agent注入 · ❌=规划中</p>
+</div>
+
+<div class="diagram-container">
+
+<svg viewBox="0 0 1400 1080">
+
+<defs>
+<marker id="ma" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0,9 3.5,0 7" fill="#94a3b8"/></marker>
+<marker id="mg" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0,9 3.5,0 7" fill="#34d399"/></marker>
+<marker id="mc" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0,9 3.5,0 7" fill="#22d3ee"/></marker>
+<marker id="mv" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0,9 3.5,0 7" fill="#a78bfa"/></marker>
+<marker id="mo" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0,9 3.5,0 7" fill="#fb923c"/></marker>
+<marker id="mr" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0,9 3.5,0 7" fill="#fb7185"/></marker>
+<pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0L0 0 0 40" fill="none" stroke="#1e293b" stroke-width=".5"/></pattern>
+</defs>
+
+<rect width="100%" height="100%" fill="url(#grid)"/>
+
+<!-- ============================================================ -->
+<!-- PHASE 0: CRON 定时触发 -->
+<!-- ============================================================ -->
+<rect x="10" y="8" width="1380" height="42" rx="8" fill="transparent" stroke="#fbbf24" stroke-width="1" stroke-dasharray="4,2"/>
+<text x="24" y="23" fill="#fbbf24" font-size="9" font-weight="600">Phase 0 — 定时触发器 (Cron / Hermes scheduler)</text>
+<text x="24" y="38" fill="#64748b" font-size="7">依赖: Hermes cron 服务运行中 (hermes gateway install 已配置) | 当前状态: ✅ 已启用</text>
+
+<rect x="40" y="22" width="180" height="18" rx="3" fill="rgba(120,53,15,.3)" stroke="#fbbf24" stroke-width=".8"/>
+<text x="130" y="36" fill="#fbbf24" font-size="8" text-anchor="middle">HERMES_CRON: 每30min 扫描RSS</text>
+
+<rect x="240" y="22" width="180" height="18" rx="3" fill="rgba(120,53,15,.3)" stroke="#fbbf24" stroke-width=".8"/>
+<text x="330" y="36" fill="#fbbf24" font-size="8" text-anchor="middle">HERMES_CRON: wiki-sync 每30min</text>
+
+<rect x="440" y="22" width="200" height="18" rx="3" fill="rgba(120,53,15,.3)" stroke="#fbbf24" stroke-width=".8"/>
+<text x="540" y="36" fill="#fbbf24" font-size="8" text-anchor="middle">可选: pipeline.py --hours 2 --fetch (cron)</text>
+
+<!-- ============================================================ -->
+<!-- PHASE 1: 数据采集管道 L0→L1 -->
+<!-- ============================================================ -->
+<rect x="10" y="58" width="1380" height="200" rx="8" fill="transparent" stroke="#34d399" stroke-width="1.2" stroke-dasharray="6,3"/>
+<text x="24" y="74" fill="#34d399" font-size="10" font-weight="600">Phase 1 — 数据采集管道 (RSS → SQLite → 评分 → 分类)</text>
+
+<!-- RSS Scanner (外部) -->
+<rect x="30" y="86" width="260" height="68" rx="5" fill="rgba(6,78,59,.35)" stroke="#34d399" stroke-width="1.2"/>
+<text x="160" y="102" fill="white" font-size="9" font-weight="600" text-anchor="middle">✅ RSS Scanner (Python 独立进程)</text>
+<text x="160" y="117" fill="#94a3b8" font-size="7" text-anchor="middle">46 RSS + 18 Nitter + 6 中文官媒 = 70 条源</text>
+<text x="160" y="130" fill="#94a3b8" font-size="7" text-anchor="middle">feedparser · SOCKS5代理 · ThreadPoolExecutor</text>
+<text x="160" y="143" fill="#64748b" font-size="7" text-anchor="middle">输出: ~/.hermes/rss-archive.db (rss_articles 表)</text>
+
+<!-- → rss-archive.db -->
+<line x1="290" y1="120" x2="344" y2="120" stroke="#34d399" stroke-width="2" marker-end="url(#mg)"/>
+
+<!-- rss-archive.db -->
+<rect x="346" y="86" width="170" height="68" rx="5" fill="rgba(76,29,149,.35)" stroke="#a78bfa" stroke-width="1.2"/>
+<text x="431" y="102" fill="white" font-size="9" font-weight="600" text-anchor="middle">✅ rss-archive.db</text>
+<text x="431" y="117" fill="#94a3b8" font-size="7" text-anchor="middle">SQLite · rss_articles</text>
+<text x="431" y="130" fill="#94a3b8" font-size="7" text-anchor="middle">source, title, summary, link</text>
+<text x="431" y="143" fill="#64748b" font-size="7" text-anchor="middle">依赖: RSS Scanner 输出</text>
+
+<!-- → sync.py -->
+<line x1="516" y1="120" x2="564" y2="120" stroke="#a78bfa" stroke-width="2" marker-end="url(#mv)"/>
+
+<!-- sync.py + scorer -->
+<rect x="566" y="86" width="260" height="68" rx="5" fill="rgba(8,51,68,.35)" stroke="#22d3ee" stroke-width="1.2"/>
+<text x="696" y="102" fill="white" font-size="9" font-weight="600" text-anchor="middle">✅ sync.py → scorer.py (评分引擎)</text>
+<text x="696" y="117" fill="#94a3b8" font-size="7" text-anchor="middle">五维评分: Source(20) + Impact(30)</text>
+<text x="696" y="130" fill="#94a3b8" font-size="7" text-anchor="middle">+ Entity(20) + Market(20) + Velocity(10)</text>
+<text x="696" y="143" fill="#64748b" font-size="7" text-anchor="middle">配置: source_scores.json · event_keywords.json</text>
+
+<!-- → news_intel.db -->
+<line x1="826" y1="120" x2="874" y2="120" stroke="#22d3ee" stroke-width="2" marker-end="url(#mc)"/>
+
+<!-- news_intel.db (3表) -->
+<rect x="876" y="78" width="280" height="84" rx="5" fill="rgba(76,29,149,.35)" stroke="#a78bfa" stroke-width="1.2"/>
+<text x="1016" y="94" fill="white" font-size="9" font-weight="600" text-anchor="middle">✅ news_intel.db (SQLite 三表)</text>
+<text x="1016" y="109" fill="#94a3b8" font-size="7" text-anchor="middle">rss_raw — 原始文章 (guid PK)</text>
+<text x="1016" y="122" fill="#94a3b8" font-size="7" text-anchor="middle">news_intelligence — 评分+分类+实体</text>
+<text x="1016" y="135" fill="#94a3b8" font-size="7" text-anchor="middle">news_content — 正文+摘要+分析</text>
+<text x="1016" y="148" fill="#64748b" font-size="7" text-anchor="middle">news_intel/db.py init_db()</text>
+
+<!-- Qwen3 Classifier (旁路) -->
+<rect x="876" y="170" width="280" height="32" rx="5" fill="rgba(251,146,60,.25)" stroke="#fb923c" stroke-width="1"/>
+<text x="1016" y="183" fill="#fb923c" font-size="8" font-weight="600" text-anchor="middle">⚠️ Qwen3-235B 分类器 — 可选旁路</text>
+<text x="1016" y="196" fill="#64748b" font-size="7" text-anchor="middle">enhancers.py enhance_qwen() · API: dashscope · 依赖: QWEN_API_KEY</text>
+
+<line x1="696" y1="154" x2="696" y2="218" stroke="#22d3ee" stroke-width="1.5" stroke-dasharray="3,2"/>
+<line x1="696" y1="218" x2="696" y2="276" stroke="#22d3ee" stroke-width="2" marker-end="url(#mc)"/>
+
+<!-- ============================================================ -->
+<!-- PHASE 2: 搜索引擎 v2 — 全文抓取 (双重执行模式) -->
+<!-- ============================================================ -->
+<rect x="10" y="266" width="1380" height="240" rx="8" fill="transparent" stroke="#a78bfa" stroke-width="1.2" stroke-dasharray="6,3"/>
+<text x="24" y="282" fill="#a78bfa" font-size="10" font-weight="600">Phase 2 — 搜索引擎 v2: 全文抓取 (两种执行模式，独立并行)</text>
+
+<!-- ===== 左侧: Standalone Batch 模式 (cron) ===== -->
+<rect x="24" y="294" width="660" height="202" rx="6" fill="transparent" stroke="#34d399" stroke-width=".8" stroke-dasharray="3,2"/>
+<text x="44" y="310" fill="#34d399" font-size="9" font-weight="600">🟢 模式A: Standalone Batch (cron / 无人值守) — 零 Agent 依赖</text>
+
+<!-- pipeline → batch.py -->
+<rect x="44" y="322" width="220" height="36" rx="4" fill="rgba(6,78,59,.25)" stroke="#34d399" stroke-width="1"/>
+<text x="154" y="336" fill="white" font-size="8" font-weight="600" text-anchor="middle">✅ pipeline.py --fetch</text>
+<text x="154" y="352" fill="#64748b" font-size="7" text-anchor="middle">仅处理 Tier A/B 文章</text>
+
+<line x1="264" y1="340" x2="304" y2="340" stroke="#34d399" stroke-width="1.5" marker-end="url(#mg)"/>
+
+<!-- batch.py 核心 -->
+<rect x="310" y="310" width="360" height="70" rx="5" fill="rgba(6,78,59,.35)" stroke="#34d399" stroke-width="1.2"/>
+<text x="490" y="326" fill="white" font-size="9" font-weight="600" text-anchor="middle">✅ batch.py — 独立批量抓取器 (python batch.py)</text>
+<text x="490" y="341" fill="#94a3b8" font-size="7" text-anchor="middle">输入: URL列表(文件/stdin) · 并发: ThreadPoolExecutor(4)</text>
+<text x="490" y="354" fill="#94a3b8" font-size="7" text-anchor="middle">调用: core/fetchers.py (httpx+trafilatura+Playwright)</text>
+<text x="490" y="367" fill="#64748b" font-size="7" text-anchor="middle">✅ 零 Agent · ✅ RateLimiter内置 · ✅ 输出JSONL</text>
+
+<!-- Domain Profiles -->
+<rect x="44" y="374" width="220" height="50" rx="4" fill="rgba(76,29,149,.25)" stroke="#a78bfa" stroke-width="1"/>
+<text x="154" y="390" fill="white" font-size="8" font-weight="600" text-anchor="middle">✅ 域名画像 (16个)</text>
+<text x="154" y="404" fill="#94a3b8" font-size="7" text-anchor="middle">WSJ·Bloomberg·FT·Reuters·AP·CNBC</text>
+<text x="154" y="416" fill="#94a3b8" font-size="7" text-anchor="middle">Newsweek·AJ·Guardian·BBC·CNN·NYT·WaPo</text>
+
+<!-- Fetchers 策略 -->
+<rect x="310" y="390" width="360" height="58" rx="4" fill="rgba(6,78,59,.25)" stroke="#34d399" stroke-width="1"/>
+<text x="490" y="404" fill="#34d399" font-size="8" font-weight="600" text-anchor="middle">✅ core/fetchers.py — 真实网络实现 (563行)</text>
+<text x="490" y="419" fill="#94a3b8" font-size="7" text-anchor="middle">① httpx+trafilatura (cost=1) | ② web.archive.org (cost=1)</text>
+<text x="490" y="432" fill="#94a3b8" font-size="7" text-anchor="middle">③ Scrapling StealthyFetcher (cost=2) | ④ Playwright headless (cost=3)</text>
+<text x="490" y="445" fill="#64748b" font-size="7" text-anchor="middle">依赖: httpx / trafilatura / curl_cffi / patchright+Chromium</text>
+
+<!-- Settings 配置 -->
+<rect x="44" y="440" width="220" height="40" rx="4" fill="rgba(251,146,60,.25)" stroke="#fb923c" stroke-width="1"/>
+<text x="154" y="456" fill="white" font-size="8" font-weight="600" text-anchor="middle">✅ config/settings.py</text>
+<text x="154" y="470" fill="#94a3b8" font-size="7" text-anchor="middle">MIN_CONTENT_LEN · timeout · domain覆盖</text>
+
+<line x1="44" y1="354" x2="304" y2="354" stroke="#64748b" stroke-width=".5" stroke-dasharray="2,2"/>
+<line x1="264" y1="400" x2="304" y2="400" stroke="#a78bfa" stroke-width="1" marker-end="url(#mv)"/>
+
+<!-- Temporal V2 -->
+<rect x="44" y="490" width="220" height="0" rx="0" fill="none" stroke="none"/>
+
+<!-- ===== 右侧: Agent 模式 (human-triggered) ===== -->
+<rect x="700" y="294" width="676" height="202" rx="6" fill="transparent" stroke="#fb7185" stroke-width=".8" stroke-dasharray="3,2"/>
+<text x="720" y="310" fill="#fb7185" font-size="9" font-weight="600">🔴 模式B: Agent 驱动 (人工交互) — 需要 Hermes Agent 会话注入工具</text>
+
+<!-- cascade.py (旧) -->
+<rect x="720" y="322" width="310" height="55" rx="4" fill="rgba(136,19,55,.25)" stroke="#fb7185" stroke-width="1"/>
+<text x="875" y="338" fill="white" font-size="8" font-weight="600" text-anchor="middle">⚠️ core/cascade.py — Agent 编排壳</text>
+<text x="875" y="353" fill="#94a3b8" font-size="7" text-anchor="middle">依赖: HermesToolbox (Callable占位符)</text>
+<text x="875" y="368" fill="#64748b" font-size="7" text-anchor="middle">web_extract·browser_navigate 需Agent注入</text>
+
+<!-- HermesToolbox -->
+<rect x="1050" y="322" width="310" height="55" rx="4" fill="rgba(30,41,59,.5)" stroke="#94a3b8" stroke-width="1"/>
+<text x="1205" y="338" fill="white" font-size="8" font-weight="600" text-anchor="middle">⚠️ HermesToolbox (dataclass)</text>
+<text x="1205" y="353" fill="#94a3b8" font-size="7" text-anchor="middle">Optional[Callable] × 8 个工具字段</text>
+<text x="1205" y="368" fill="#64748b" font-size="7" text-anchor="middle">web_extract·scrapling_fetch·browser_navigate</text>
+
+<!-- demo.py -->
+<rect x="720" y="392" width="310" height="40" rx="4" fill="rgba(136,19,55,.2)" stroke="#fb7185" stroke-width=".8"/>
+<text x="875" y="408" fill="#fb7185" font-size="8" font-weight="600" text-anchor="middle">⚠️ demo.py — 8场景 Mock 演示</text>
+<text x="875" y="422" fill="#64748b" font-size="7" text-anchor="middle">mock_* 函数模拟，非真实网络请求</text>
+
+<!-- skills/s01-s07 -->
+<rect x="1050" y="392" width="310" height="40" rx="4" fill="rgba(30,41,59,.4)" stroke="#94a3b8" stroke-width=".8"/>
+<text x="1205" y="408" fill="#94a3b8" font-size="8" font-weight="600" text-anchor="middle">⚠️ skills/s01-s07 — 纯逻辑模块</text>
+<text x="1205" y="422" fill="#64748b" font-size="7" text-anchor="middle">discover·rank·extract·wsj·parallel·merge</text>
+
+<!-- Temporal V2 (共享) -->
+<rect x="720" y="448" width="310" height="40" rx="4" fill="rgba(6,78,59,.25)" stroke="#34d399" stroke-width="1"/>
+<text x="875" y="464" fill="white" font-size="8" font-weight="600" text-anchor="middle">✅ core/temporal.py — 共享纯算法</text>
+<text x="875" y="478" fill="#94a3b8" font-size="7" text-anchor="middle">5条硬规则 · freshness_mode感知</text>
+
+<line x1="700" y1="370" x2="1050" y2="370" stroke="#fb7185" stroke-width=".8" stroke-dasharray="4,2" marker-end="url(#mr)"/>
+
+<!-- ===== Phase 2 → Phase 3 ===== -->
+<line x1="490" y1="506" x2="490" y2="566" stroke="#34d399" stroke-width="2" marker-end="url(#mg)"/>
+<text x="508" y="540" fill="#94a3b8" font-size="7">正文 Markdown</text>
+<line x1="500" y1="506" x2="500" y2="566" stroke="#fb7185" stroke-width="1" stroke-dasharray="3,3" marker-end="url(#mr)"/>
+<text x="530" y="524" fill="#64748b" font-size="6">Agent模式</text>
+
+<!-- ============================================================ -->
+<!-- PHASE 3: 事件聚合 (零LLM) -->
+<!-- ============================================================ -->
+<rect x="10" y="516" width="1380" height="110" rx="8" fill="transparent" stroke="#22d3ee" stroke-width="1.2" stroke-dasharray="6,3"/>
+<text x="24" y="532" fill="#22d3ee" font-size="10" font-weight="600">Phase 3 — 事件聚合 (Rule-Based · 零 LLM · 完全确定性)</text>
+
+<!-- Aggregator -->
+<rect x="30" y="548" width="310" height="68" rx="5" fill="rgba(8,51,68,.4)" stroke="#22d3ee" stroke-width="1.2"/>
+<text x="185" y="564" fill="white" font-size="9" font-weight="600" text-anchor="middle">✅ aggregator.py v4.3 SAEO (606行)</text>
+<text x="185" y="579" fill="#94a3b8" font-size="7" text-anchor="middle">1. build_fingerprint: SAO + topic + country</text>
+<text x="185" y="592" fill="#94a3b8" font-size="7" text-anchor="middle">2. cluster by fingerprint_score (组合相似度)</text>
+<text x="185" y="605" fill="#94a3b8" font-size="7" text-anchor="middle">3. merge > THRESHOLD=75 → event > 50</text>
+
+<!-- Scorer细节 -->
+<rect x="360" y="548" width="280" height="68" rx="5" fill="rgba(8,51,68,.3)" stroke="#22d3ee" stroke-width="1"/>
+<text x="500" y="564" fill="white" font-size="9" font-weight="600" text-anchor="middle">✅ L1 实体权重 (aggregator内嵌)</text>
+<text x="500" y="579" fill="#94a3b8" font-size="7" text-anchor="middle">Global IDF × Topic IDF × EntityType</text>
+<text x="500" y="592" fill="#94a3b8" font-size="7" text-anchor="middle">Hub dampen: >15%占比 → ×0.3 降权</text>
+<text x="500" y="605" fill="#94a3b8" font-size="7" text-anchor="middle">Location硬约束: 不同country → score=0</text>
+
+<!-- Entity Canonicalizer -->
+<rect x="660" y="548" width="240" height="68" rx="5" fill="rgba(8,51,68,.3)" stroke="#22d3ee" stroke-width="1"/>
+<text x="780" y="564" fill="white" font-size="9" font-weight="600" text-anchor="middle">✅ Entity Canonicalizer</text>
+<text x="780" y="579" fill="#94a3b8" font-size="7" text-anchor="middle">ENTITY_CANONICAL 字典: maps=50+</text>
+<text x="780" y="592" fill="#94a3b8" font-size="7" text-anchor="middle">US→United States, Tehran→Iran</text>
+<text x="780" y="605" fill="#94a3b8" font-size="7" text-anchor="middle">ENTITY_TYPE_WEIGHT 权重表</text>
+
+<!-- DIES/action -->
+<rect x="920" y="548" width="180" height="68" rx="5" fill="rgba(8,51,68,.3)" stroke="#22d3ee" stroke-width="1"/>
+<text x="1010" y="564" fill="white" font-size="9" font-weight="600" text-anchor="middle">✅ Action Detection</text>
+<text x="1010" y="579" fill="#94a3b8" font-size="7" text-anchor="middle">14类动作枚举 (全词形)</text>
+<text x="1010" y="592" fill="#94a3b8" font-size="7" text-anchor="middle">ATTACKS·DIES·SUES·NEGOTIATES</text>
+<text x="1010" y="605" fill="#94a3b8" font-size="7" text-anchor="middle">action_detail 正则提取</text>
+
+<line x1="340" y1="582" x2="358" y2="582" stroke="#22d3ee" stroke-width="1.5" marker-end="url(#mc)"/>
+<line x1="640" y1="582" x2="658" y2="582" stroke="#22d3ee" stroke-width="1.5" marker-end="url(#mc)"/>
+<line x1="900" y1="582" x2="918" y2="582" stroke="#22d3ee" stroke-width="1.5" marker-end="url(#mc)"/>
+
+<!-- → Phase 4 -->
+<line x1="560" y1="626" x2="560" y2="672" stroke="#22d3ee" stroke-width="2" marker-end="url(#mc)"/>
+
+<!-- ============================================================ -->
+<!-- PHASE 4: LLM 增强 -->
+<!-- ============================================================ -->
+<rect x="10" y="662" width="1380" height="70" rx="8" fill="transparent" stroke="#fb923c" stroke-width="1.2" stroke-dasharray="6,3"/>
+<text x="24" y="678" fill="#fb923c" font-size="10" font-weight="600">Phase 4 — LLM 增强 (1次调用/article上限，可缓存)</text>
+
+<!-- Router -->
+<rect x="30" y="690" width="220" height="32" rx="4" fill="rgba(251,146,60,.25)" stroke="#fb923c" stroke-width="1"/>
+<text x="140" y="710" fill="white" font-size="8" font-weight="600" text-anchor="middle">✅ enhancers.py route() 三级路由</text>
+
+<!-- Tier C -->
+<rect x="270" y="690" width="220" height="32" rx="4" fill="rgba(6,78,59,.25)" stroke="#34d399" stroke-width="1"/>
+<text x="380" y="706" fill="white" font-size="8" font-weight="600" text-anchor="middle">✅ Tier C (<60) Python 规则</text>
+<text x="380" y="718" fill="#64748b" font-size="7" text-anchor="middle">零成本 · enhance_python()</text>
+
+<!-- Tier B -->
+<rect x="510" y="690" width="250" height="32" rx="4" fill="rgba(76,29,149,.25)" stroke="#a78bfa" stroke-width="1"/>
+<text x="635" y="706" fill="white" font-size="8" font-weight="600" text-anchor="middle">✅ Tier B (60-90) Qwen3-235B</text>
+<text x="635" y="718" fill="#64748b" font-size="7" text-anchor="middle">⚠️ 需 QWEN_API_KEY · enhance_qwen()</text>
+
+<!-- Tier A -->
+<rect x="780" y="690" width="270" height="32" rx="4" fill="rgba(136,19,55,.25)" stroke="#fb7185" stroke-width="1"/>
+<text x="915" y="706" fill="white" font-size="8" font-weight="600" text-anchor="middle">✅ Tier A (>90) DeepSeek V4 Flash</text>
+<text x="915" y="718" fill="#64748b" font-size="7" text-anchor="middle">⚠️ 需 DEEPSEEK_API_KEY · enhance_deepseek()</text>
+
+<line x1="250" y1="706" x2="268" y2="706" stroke="#fb923c" stroke-width="1" marker-end="url(#mo)"/>
+<line x1="490" y1="706" x2="508" y2="706" stroke="#fb923c" stroke-width="1" marker-end="url(#mo)"/>
+<line x1="760" y1="706" x2="778" y2="706" stroke="#fb923c" stroke-width="1" marker-end="url(#mo)"/>
+
+<!-- ============================================================ -->
+<!-- PHASE 5: 输出 + 推送 -->
+<!-- ============================================================ -->
+<rect x="10" y="742" width="1380" height="130" rx="8" fill="transparent" stroke="#22d3ee" stroke-width="1.2" stroke-dasharray="6,3"/>
+<text x="24" y="758" fill="#22d3ee" font-size="10" font-weight="600">Phase 5 — 输出 &amp; 分发</text>
+
+<!-- 21-field Event Objects -->
+<rect x="30" y="770" width="310" height="50" rx="5" fill="rgba(8,51,68,.4)" stroke="#22d3ee" stroke-width="1.2"/>
+<text x="185" y="786" fill="white" font-size="9" font-weight="600" text-anchor="middle">✅ 21字段 Event Object (JSON)</text>
+<text x="185" y="800" fill="#94a3b8" font-size="7" text-anchor="middle">event_id · SAO · source · actors · confidence</text>
+<text x="185" y="814" fill="#94a3b8" font-size="7" text-anchor="middle">stage · lifecycle · related_entities · doc_refs</text>
+
+<!-- test_aggregator.py -->
+<rect x="360" y="770" width="200" height="50" rx="5" fill="rgba(6,78,59,.3)" stroke="#34d399" stroke-width="1"/>
+<text x="460" y="786" fill="white" font-size="9" font-weight="600" text-anchor="middle">✅ test_aggregator.py</text>
+<text x="460" y="800" fill="#94a3b8" font-size="7" text-anchor="middle">验证: 77篇文章→9事件</text>
+<text x="460" y="814" fill="#94a3b8" font-size="7" text-anchor="middle">--hours --window --single</text>
+
+<!-- generator.py -->
+<rect x="580" y="770" width="200" height="50" rx="5" fill="rgba(251,146,60,.25)" stroke="#fb923c" stroke-width="1"/>
+<text x="680" y="786" fill="white" font-size="9" font-weight="600" text-anchor="middle">⚠️ generator.py</text>
+<text x="680" y="800" fill="#94a3b8" font-size="7" text-anchor="middle">Qwen3 生成洞察摘要</text>
+<text x="680" y="814" fill="#64748b" font-size="7" text-anchor="middle">依赖: --insight 标志</text>
+
+<!-- pusher.py -->
+<rect x="800" y="770" width="200" height="50" rx="5" fill="rgba(6,78,59,.3)" stroke="#34d399" stroke-width="1"/>
+<text x="900" y="786" fill="white" font-size="9" font-weight="600" text-anchor="middle">✅ pusher.py</text>
+<text x="900" y="800" fill="#94a3b8" font-size="7" text-anchor="middle">httpx POST → FastAPI</text>
+<text x="900" y="814" fill="#64748b" font-size="7" text-anchor="middle">依赖: NEWS_API_BASE 环境变量</text>
+
+<!-- Phase 2 placeholder -->
+<rect x="1020" y="770" width="220" height="50" rx="5" fill="rgba(30,41,59,.4)" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4,2"/>
+<text x="1130" y="786" fill="#94a3b8" font-size="9" font-weight="600" text-anchor="middle">❌ Phase 2 情报分析</text>
+<text x="1130" y="800" fill="#64748b" font-size="7" text-anchor="middle">未实现 — 等待事件持久化</text>
+<text x="1130" y="814" fill="#64748b" font-size="7" text-anchor="middle">delta detection radar 延后</text>
+
+<!-- report.json -->
+<rect x="30" y="830" width="310" height="30" rx="4" fill="rgba(30,41,59,.3)" stroke="#475569" stroke-width=".8"/>
+<text x="185" y="850" fill="#94a3b8" font-size="7" text-anchor="middle">✅ ~/.hermes/news-pipeline-report.json (每次运行更新)</text>
+
+<!-- ============================================================ -->
+<!-- DEPENDENCY SUMMARY BOX -->
+<!-- ============================================================ -->
+<rect x="10" y="882" width="1380" height="88" rx="8" fill="transparent" stroke="#475569" stroke-width="1" stroke-dasharray="4,2"/>
+<text x="24" y="898" fill="#475569" font-size="9" font-weight="600">外部依赖矩阵</text>
+
+<rect x="24" y="910" width="210" height="50" rx="4" fill="rgba(15,23,42,.8)" stroke="#475569" stroke-width=".6"/>
+<text x="129" y="924" fill="#34d399" font-size="8" font-weight="600" text-anchor="middle">Python 库</text>
+<text x="129" y="938" fill="#94a3b8" font-size="7" text-anchor="middle">httpx · trafilatura · feedparser</text>
+<text x="129" y="950" fill="#94a3b8" font-size="7" text-anchor="middle">curl_cffi · readability-lxml</text>
+
+<rect x="248" y="910" width="210" height="50" rx="4" fill="rgba(15,23,42,.8)" stroke="#475569" stroke-width=".6"/>
+<text x="353" y="924" fill="#34d399" font-size="8" font-weight="600" text-anchor="middle">外部服务</text>
+<text x="353" y="938" fill="#94a3b8" font-size="7" text-anchor="middle">Hermes cron 服务 · gateway</text>
+<text x="353" y="950" fill="#94a3b8" font-size="7" text-anchor="middle">RSS Scanner (独立进程)</text>
+
+<rect x="472" y="910" width="210" height="50" rx="4" fill="rgba(15,23,42,.8)" stroke="#475569" stroke-width=".6"/>
+<text x="577" y="924" fill="#fb923c" font-size="8" font-weight="600" text-anchor="middle">LLM API Key (可选)</text>
+<text x="577" y="938" fill="#94a3b8" font-size="7" text-anchor="middle">QWEN_API_KEY (Tier B)</text>
+<text x="577" y="950" fill="#94a3b8" font-size="7" text-anchor="middle">DEEPSEEK_API_KEY (Tier A/batch)</text>
+
+<rect x="696" y="910" width="210" height="50" rx="4" fill="rgba(15,23,42,.8)" stroke="#475569" stroke-width=".6"/>
+<text x="801" y="924" fill="#64748b" font-size="8" font-weight="600" text-anchor="middle">浏览器 (batch模式)</text>
+<text x="801" y="938" fill="#94a3b8" font-size="7" text-anchor="middle">Chromium (patchright)</text>
+<text x="801" y="950" fill="#64748b" font-size="7" text-anchor="middle">仅在cost=3降级时启用</text>
+
+<rect x="920" y="910" width="210" height="50" rx="4" fill="rgba(15,23,42,.8)" stroke="#475569" stroke-width=".6"/>
+<text x="1025" y="924" fill="#64748b" font-size="8" font-weight="600" text-anchor="middle">Agent 工具 (模式B)</text>
+<text x="1025" y="938" fill="#94a3b8" font-size="7" text-anchor="middle">web_extract · browser_navigate</text>
+<text x="1025" y="950" fill="#94a3b8" font-size="7" text-anchor="middle">computer_use (仅手动)</text>
+</svg>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- INVENTORY CARDS -->
+<!-- ============================================================ -->
+<div class="cards">
+
+<div class="card">
+<div class="card-header"><div class="card-dot green"></div><h3>✅ 已启用 — 独立运行 (7个模块)</h3></div>
+<ul>
+<li>• <span class="stat">RSS Scanner</span> — 70源, 30min周期, SOCKS5代理</li>
+<li>• <span class="stat">sync.py + scorer.py</span> — rss-archive.db → 五维评分</li>
+<li>• <span class="stat">pipeline.py</span> — 主编排: sync→score→enhance→store</li>
+<li>• <span class="stat">batch.py</span> — 独立批量抓取, ThreadPoolExecutor</li>
+<li>• <span class="stat">core/fetchers.py</span> — httpx+trafilatura+Playwright</li>
+<li>• <span class="stat">aggregator.py</span> — SAEO提取+事件合并(606行)</li>
+<li>• <span class="stat">pusher.py</span> — 批量推送至 FastAPI</li>
+</ul>
+</div>
+
+<div class="card">
+<div class="card-header"><div class="card-dot cyan"></div><h3>✅ 已启用 — 需外部依赖 (3项)</h3></div>
+<ul>
+<li>• <span class="stat">enhancers.py (Tier A)</span> — DeepSeek V4 · 需 DEEPSEEK_API_KEY</li>
+<li>• <span class="stat">enhancers.py (Tier B)</span> — Qwen3-235B · 需 QWEN_API_KEY</li>
+<li>• <span class="stat">generator.py</span> — 事件洞察摘要 · 需 --insight + Qwen3</li>
+</ul>
+</div>
+
+<div class="card">
+<div class="card-header"><div class="card-dot rose"></div><h3>⚠️ 代码存在 — 需Agent注入 (4项)</h3></div>
+<ul>
+<li>• <span class="stat">core/cascade.py</span> — HermesToolbox Callable模式</li>
+<li>• <span class="stat">core/base.py</span> — HermesToolbox dataclass定义</li>
+<li>• <span class="stat">router.py</span> — 主调度(同Agent模式)</li>
+<li>• <span class="stat">skills/s01-s07</span> — discover→rank→extract...</li>
+<li style="color:#64748b">• 不阻塞: batch.py 已独立实现同等功能</li>
+</ul>
+</div>
+
+<div class="card">
+<div class="card-header"><div class="card-dot orange"></div><h3>✅ 配置 &amp; 工具 (5项)</h3></div>
+<ul>
+<li>• <span class="stat">config/settings.py</span> — 阈值·超时·域名覆盖</li>
+<li>• <span class="stat">config/domain_profiles.py</span> — 16个域名画像</li>
+<li>• <span class="stat">core/temporal.py</span> — 5条硬规则·共享算法</li>
+<li>• <span class="stat">RateLimiter</span> — per-domain token bucket</li>
+<li>• <span class="stat">ENTITY_CANONICAL</span> — 50+别名映射</li>
+</ul>
+</div>
+
+<div class="card">
+<div class="card-header"><div class="card-dot slate"></div><h3>❌ 未实现</h3></div>
+<ul>
+<li>• <span class="stat">Phase 2 情报分析</span> — 需事件持久化基础设施</li>
+<li>• <span class="stat">delta detection radar</span> — 实时事件变更监控</li>
+<li>• <span class="stat">PostgreSQL 迁移</span> — 当前仅 SQLite</li>
+</ul>
+</div>
+
+<div class="card">
+<div class="card-header"><div class="card-dot green"></div><h3>执行命令速查</h3></div>
+<ul>
+<li style="color:#34d399">• python -m news_intel.pipeline --hours 2</li>
+<li style="color:#34d399">• python -m news_intel.pipeline --hours 2 --fetch</li>
+<li style="color:#a78bfa">• python batch.py --urls urls.txt --out results.jsonl</li>
+<li style="color:#22d3ee">• python test_aggregator.py --hours 24 --window 6</li>
+<li style="color:#fb923c">• python test_aggregator.py ... --single 1 --insight</li>
+</ul>
+</div>
+
+</div>
+
+<div class="legend">
+<div class="legend-item"><div class="legend-dot" style="background:#34d399"></div> ✅ 独立可运行</div>
+<div class="legend-item"><div class="legend-dot" style="background:#22d3ee"></div> ✅ 聚合/分析 (零LLM)</div>
+<div class="legend-item"><div class="legend-dot" style="background:#a78bfa"></div> ✅ 数据库/持久化</div>
+<div class="legend-item"><div class="legend-dot" style="background:#fb923c"></div> ⚠️ 需LLM API Key</div>
+<div class="legend-item"><div class="legend-dot" style="background:#fb7185"></div> ⚠️ 需Agent注入工具</div>
+<div class="legend-item"><div class="legend-dot" style="background:#94a3b8"></div> ❌ 未实现</div>
+</div>
+
+<p class="footer">News Intelligence Platform v4.3 · 按代码实际调用链绘制 · 已运行模块带 ✅ · Agent依赖模块带 ⚠️</p>
+</div>
+</body>
+</html>

@@ -728,25 +728,54 @@ def _rule_llm_analysis(ev: dict, max_score: int) -> dict:
     }
 
 
-def build_fact_fingerprint(fact: dict) -> dict:
-    """从规范化 fact 构建指纹 (Adapter: 有 fact 用 fact, 无则 legacy build_fingerprint)。
+def _best_valid_fact(facts):
+    """P0 门禁 (ISS-20260810-012): 只放行 PASS/REPAIR 的 fact, 选 best(非 OTHER 动作 + 高 confidence)。
 
-    输入 fact_pipeline 产出的 fact payload:
-      {action_type, action_event_type, location, entities:[{entity_name, role}]}
-    提取 subject/object(按 role=SUBJECT/OBJECT) + action + event_type + country。
+    返回 fact dict (REPAIR 用修复后); 全部 REJECT → None(回退 legacy 指纹)。
     """
-    ents = fact.get("entities") or []
-    subj = next((e.get("entity_name", "") for e in ents if e.get("role") == "SUBJECT"), "")
-    obj = next((e.get("entity_name", "") for e in ents if e.get("role") == "OBJECT"), "")
+    if not facts:
+        return None
+    from news_intel.fact_validator import validate_fact
+    cands = []
+    for f in facts:
+        r = validate_fact(f)
+        if r["verdict"] == "REJECT":
+            continue
+        cands.append(r["repaired"] if r["verdict"] == "REPAIR" else f)
+    if not cands:
+        return None
+
+    def _score(f):
+        act = f.get("action") or {}
+        at = (act.get("type") if isinstance(act, dict) else act) or f.get("action_type") or "OTHER"
+        conf = f.get("confidence") or 0
+        return (0 if at != "OTHER" else 1, float(conf or 0))
+
+    return max(cands, key=_score)
+
+
+def build_fact_fingerprint(fact: dict) -> dict:
+    """从规范化 fact (Schema V2) 构建指纹 (Adapter: 有 fact 用 fact, 无则 legacy build_fingerprint)。
+
+    输入 fact payload: {subject:{name,entity_id,type}, action:{type,...}, object:{...}, action_type,...}
+    """
+    s_obj = fact.get("subject") or {}
+    o_obj = fact.get("object") or {}
+    subj = s_obj.get("name") or ""
+    subj_id = s_obj.get("entity_id") or ""
+    obj = o_obj.get("name") or ""
+    obj_id = o_obj.get("entity_id") or ""
     action = fact.get("action_type") or ""
     etype = fact.get("action_event_type") or ""
-    country = fact.get("location") or ""
+    country = fact.get("location_str") or ""
+    anchor = f"{subj_id or subj}|{action}|{obj_id or obj}|{etype}" if subj and action != "OTHER" else ""
     return {
-        "subject": subj, "action": action, "object": obj,
+        "subject": subj, "subject_id": subj_id, "action": action,
+        "object": obj, "object_id": obj_id,
         "event_type": etype, "primary_topic": etype, "secondary_topic": "",
         "country": country,
         "participants": frozenset(n for n in (subj, obj) if n),
-        "anchor": subj,
+        "anchor": anchor,
         "subject_weight": 1.0, "object_weight": 1.0,
     }
 
@@ -771,20 +800,28 @@ def build_fused_fingerprint(article: dict, fact: dict = None, global_idf: dict =
     if not fact:
         return fp
 
-    ents = fact.get("entities") or []
-    f_subj = next((e.get("entity_name", "") for e in ents if e.get("role") == "SUBJECT"), "")
-    f_obj = next((e.get("entity_name", "") for e in ents if e.get("role") == "OBJECT"), "")
+    # P0 (ISS-20260810-012): 读取 Schema V2 结构化 subject/object(含 entity_id) + action
+    s_obj = fact.get("subject") or {}
+    o_obj = fact.get("object") or {}
+    f_subj = s_obj.get("name") or ""
+    f_subj_id = s_obj.get("entity_id") or ""
+    f_obj = o_obj.get("name") or ""
+    f_obj_id = o_obj.get("entity_id") or ""
     f_action = fact.get("action_type") or ""
     f_etype = fact.get("action_event_type") or ""
-    f_loc = fact.get("location") or ""
+    f_loc = fact.get("location_str") or ""
 
-    # subject/object ← fact (落地优先; v4.4.2 校验实体确实出现在文章文本, 防 GLiNER 噪声实体;
-    # v4.4.3 CJK 信任门: 中文文章的 canonical 名是英文(不出现在中文正文), 含 CJK 直接信任 fact 实体)
+    # subject/object ← fact (落地优先; 实体已有 entity_id(经 validator 门禁) → 信任; 否则仍需标题校验;
+    # v4.4.3 CJK 信任门: 中文 canonical 名不出现在中文正文)
     article_text = _get_text(article)
-    if f_subj and (_name_in_text(f_subj, article_text) or _is_cjk(article_text)):
+    if f_subj and (f_subj_id or _is_cjk(article_text) or _name_in_text(f_subj, article_text)):
         fp["subject"], fp["subject_weight"] = f_subj, 1.0
-    if f_obj and (_name_in_text(f_obj, article_text) or _is_cjk(article_text)):
+        if f_subj_id:
+            fp["subject_id"] = f_subj_id
+    if f_obj and (f_obj_id or _is_cjk(article_text) or _name_in_text(f_obj, article_text)):
         fp["object"], fp["object_weight"] = f_obj, 1.0
+        if f_obj_id:
+            fp["object_id"] = f_obj_id
 
     # action ← fact(非 OTHER) 否则 legacy
     if f_action and f_action != "OTHER":
@@ -796,14 +833,15 @@ def build_fused_fingerprint(article: dict, fact: dict = None, global_idf: dict =
     if not fp.get("country") and f_loc:
         fp["country"] = f_loc
 
-    # participants ← 并集
-    f_parts = frozenset(n for n in (f_subj, f_obj) if n)
+    # participants ← 并集 (用稳定 id 优先)
+    f_parts = frozenset(n for n in (f_subj_id or f_subj, f_obj_id or f_obj) if n)
     if f_parts:
         fp["participants"] = (fp.get("participants") or frozenset()) | f_parts
 
-    # anchor 重算 (OTHER 动作不锚定, 与 legacy 语义一致)
-    subj, action, obj, primary = fp["subject"], fp["action"], fp["object"], fp["primary_topic"]
-    fp["anchor"] = f"{subj}|{action}|{obj}|{primary}" if subj and action != "OTHER" else ""
+    # anchor 重算 (用稳定 id, 面形式无关; OTHER 动作不锚定)
+    subj, action, obj, primary = (fp.get("subject_id") or fp["subject"]), fp["action"], \
+                                 (fp.get("object_id") or fp["object"]), fp["primary_topic"]
+    fp["anchor"] = f"{subj}|{action}|{obj}|{primary}" if (fp.get("subject") or fp.get("subject_id")) and action != "OTHER" else ""
 
     return fp
 
@@ -844,11 +882,13 @@ def aggregate_events(articles: list[dict], window_hours: int = 24, facts_by_arti
         ts = _article_ts(a)
         facts = facts_by_article.get(a.get("id"))
         ner = ner_by_article.get(a.get("id"))
-        if facts and fp_mode != "legacy":
+        # P0 (ISS-20260810-012): 只消费通过 Quality Gate 的 fact (PASS/REPAIR), 全部 REJECT → 回退 legacy
+        best_fact = _best_valid_fact(facts) if facts else None
+        if best_fact and fp_mode != "legacy":
             if fp_mode == "fact":
-                fp = build_fact_fingerprint(facts[0])  # 纯 fact 指纹 (对比测试)
+                fp = build_fact_fingerprint(best_fact)  # 纯 fact 指纹 (对比测试)
             else:  # fused (默认生产)
-                fp = build_fused_fingerprint(a, facts[0], global_idf=global_idf,
+                fp = build_fused_fingerprint(a, best_fact, global_idf=global_idf,
                                              topic_idf_map=topic_idf_map, hub_entities=hub_entities,
                                              ner_entities=ner)
         else:

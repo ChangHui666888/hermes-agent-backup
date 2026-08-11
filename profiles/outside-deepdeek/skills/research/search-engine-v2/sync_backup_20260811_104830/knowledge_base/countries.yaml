@@ -1,0 +1,3106 @@
+# Countries — Knowledge Base V1 (import_seed 扩充, 勿手改头注释)
+version: '0.2'
+generated: '2026-08-06'
+countries:
+  CTRY_AFG:
+    name:
+      en: Afghanistan
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: AF
+      alpha3: AFG
+    capital:
+      zh: 喀布尔
+      en: Kabul
+    continent: Asia
+    currency: AFN
+    government: Islamic emirate (Taliban)
+    relations:
+      ally: []
+      rival: []
+  CTRY_ALA:
+    name:
+      en: Åland Islands
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: AX
+      alpha3: ALA
+    capital: null
+    continent: Europe
+    currency: null
+  CTRY_ALB:
+    name:
+      en: Albania
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: AL
+      alpha3: ALB
+    capital: null
+    continent: Europe
+    currency: null
+  CTRY_DZA:
+    name:
+      en: Algeria
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: DZ
+      alpha3: DZA
+    capital:
+      zh: 阿尔及尔
+      en: Algiers
+    continent: Africa
+    currency: DZD
+  CTRY_ASM:
+    name:
+      en: American Samoa
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: AS
+      alpha3: ASM
+    capital: null
+    continent: Oceania
+    currency: null
+  CTRY_AND:
+    name:
+      en: Andorra
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: AD
+      alpha3: AND
+    capital: null
+    continent: Europe
+    currency: null
+  CTRY_AGO:
+    name:
+      en: Angola
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: AO
+      alpha3: AGO
+    capital: null
+    continent: Africa
+    currency: null
+  CTRY_AIA:
+    name:
+      en: Anguilla
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: AI
+      alpha3: AIA
+    capital: null
+    continent: Americas
+    currency: null
+  CTRY_ATA:
+    name:
+      en: Antarctica
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: AQ
+      alpha3: ATA
+    capital: null
+    continent: null
+    currency: null
+  CTRY_ATG:
+    name:
+      en: Antigua and Barbuda
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: AG
+      alpha3: ATG
+    capital: null
+    continent: Americas
+    currency: null
+  CTRY_ARG:
+    name:
+      en: Argentina
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: AR
+      alpha3: ARG
+    capital:
+      zh: 布宜诺斯艾利斯
+      en: Buenos Aires
+    continent: South America
+    currency: ARS
+    government: Federal presidential republic
+    relations:
+      ally: []
+      rival: []
+  CTRY_ARM:
+    name:
+      en: Armenia
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: AM
+      alpha3: ARM
+    capital: null
+    continent: Asia
+    currency: null
+  CTRY_ABW:
+    name:
+      en: Aruba
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: AW
+      alpha3: ABW
+    capital: null
+    continent: Americas
+    currency: null
+  CTRY_AUS:
+    name:
+      en: Australia
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: AU
+      alpha3: AUS
+    capital:
+      zh: 堪培拉
+      en: Canberra
+    continent: Oceania
+    currency: AUD
+    government: Federal parliamentary constitutional monarchy
+    relations:
+      ally:
+      - United States
+      - United Kingdom
+      rival: []
+  CTRY_AUT:
+    name:
+      en: Austria
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: AT
+      alpha3: AUT
+    capital: null
+    continent: Europe
+    currency: null
+  CTRY_AZE:
+    name:
+      en: Azerbaijan
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: AZ
+      alpha3: AZE
+    capital: null
+    continent: Asia
+    currency: null
+  CTRY_BHS:
+    name:
+      en: Bahamas
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: BS
+      alpha3: BHS
+    capital: null
+    continent: Americas
+    currency: null
+  CTRY_BHR:
+    name:
+      en: Bahrain
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: BH
+      alpha3: BHR
+    capital: null
+    continent: Asia
+    currency: null
+  CTRY_BGD:
+    name:
+      en: Bangladesh
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: BD
+      alpha3: BGD
+    capital: null
+    continent: Asia
+    currency: null
+  CTRY_BRB:
+    name:
+      en: Barbados
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: BB
+      alpha3: BRB
+    capital: null
+    continent: Americas
+    currency: null
+  CTRY_BLR:
+    name:
+      en: Belarus
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: BY
+      alpha3: BLR
+    capital: null
+    continent: Europe
+    currency: null
+    government: Presidential republic
+    relations:
+      ally:
+      - Russia
+      rival: []
+  CTRY_BEL:
+    name:
+      en: Belgium
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: BE
+      alpha3: BEL
+    capital:
+      zh: 布鲁塞尔
+      en: Brussels
+    continent: Europe
+    currency: EUR
+  CTRY_BLZ:
+    name:
+      en: Belize
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: BZ
+      alpha3: BLZ
+    capital: null
+    continent: Americas
+    currency: null
+  CTRY_BEN:
+    name:
+      en: Benin
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: BJ
+      alpha3: BEN
+    capital: null
+    continent: Africa
+    currency: null
+  CTRY_BMU:
+    name:
+      en: Bermuda
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: BM
+      alpha3: BMU
+    capital: null
+    continent: Americas
+    currency: null
+  CTRY_BTN:
+    name:
+      en: Bhutan
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: BT
+      alpha3: BTN
+    capital: null
+    continent: Asia
+    currency: null
+  CTRY_BOL:
+    name:
+      en: Bolivia, Plurinational State of
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: BO
+      alpha3: BOL
+    capital: null
+    continent: Americas
+    currency: null
+  CTRY_BES:
+    name:
+      en: Bonaire, Sint Eustatius and Saba
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: BQ
+      alpha3: BES
+    capital: null
+    continent: Americas
+    currency: null
+  CTRY_BIH:
+    name:
+      en: Bosnia and Herzegovina
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: BA
+      alpha3: BIH
+    capital: null
+    continent: Europe
+    currency: null
+  CTRY_BWA:
+    name:
+      en: Botswana
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: BW
+      alpha3: BWA
+    capital: null
+    continent: Africa
+    currency: null
+  CTRY_BVT:
+    name:
+      en: Bouvet Island
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: BV
+      alpha3: BVT
+    capital: null
+    continent: Americas
+    currency: null
+  CTRY_BRA:
+    name:
+      en: Brazil
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: BR
+      alpha3: BRA
+    capital:
+      zh: 巴西利亚
+      en: Brasília
+    continent: South America
+    currency: BRL
+    government: Federal presidential republic
+    relations:
+      ally:
+      - United States
+      rival: []
+  CTRY_IOT:
+    name:
+      en: British Indian Ocean Territory
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: IO
+      alpha3: IOT
+    capital: null
+    continent: Africa
+    currency: null
+  CTRY_BRN:
+    name:
+      en: Brunei Darussalam
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: BN
+      alpha3: BRN
+    capital: null
+    continent: Asia
+    currency: null
+  CTRY_BGR:
+    name:
+      en: Bulgaria
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: BG
+      alpha3: BGR
+    capital: null
+    continent: Europe
+    currency: null
+  CTRY_BFA:
+    name:
+      en: Burkina Faso
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: BF
+      alpha3: BFA
+    capital: null
+    continent: Africa
+    currency: null
+  CTRY_BDI:
+    name:
+      en: Burundi
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: BI
+      alpha3: BDI
+    capital: null
+    continent: Africa
+    currency: null
+  CTRY_CPV:
+    name:
+      en: Cabo Verde
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: CV
+      alpha3: CPV
+    capital: null
+    continent: Africa
+    currency: null
+  CTRY_KHM:
+    name:
+      en: Cambodia
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: KH
+      alpha3: KHM
+    capital: null
+    continent: Asia
+    currency: null
+  CTRY_CMR:
+    name:
+      en: Cameroon
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: CM
+      alpha3: CMR
+    capital: null
+    continent: Africa
+    currency: null
+  CTRY_CAN:
+    name:
+      en: Canada
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: CA
+      alpha3: CAN
+    capital:
+      zh: 渥太华
+      en: Ottawa
+    continent: North America
+    currency: CAD
+    government: Federal parliamentary constitutional monarchy
+    relations:
+      ally:
+      - United States
+      - United Kingdom
+      rival: []
+  CTRY_CYM:
+    name:
+      en: Cayman Islands
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: KY
+      alpha3: CYM
+    capital: null
+    continent: Americas
+    currency: null
+  CTRY_CAF:
+    name:
+      en: Central African Republic
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: CF
+      alpha3: CAF
+    capital: null
+    continent: Africa
+    currency: null
+  CTRY_TCD:
+    name:
+      en: Chad
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: TD
+      alpha3: TCD
+    capital: null
+    continent: Africa
+    currency: null
+  CTRY_CHL:
+    name:
+      en: Chile
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: CL
+      alpha3: CHL
+    capital:
+      zh: 圣地亚哥
+      en: Santiago
+    continent: South America
+    currency: CLP
+    government: Presidential republic
+    relations:
+      ally: []
+      rival: []
+  CTRY_CHN:
+    name:
+      en: China
+      zh: ''
+    aliases:
+    - PRC
+    - Mainland China
+    iso:
+      alpha2: CN
+      alpha3: CHN
+    capital:
+      zh: 北京
+      en: Beijing
+    continent: Asia
+    currency: CNY
+    government: Communist Party (one-party socialist)
+    relations:
+      ally:
+      - Russia
+      - Pakistan
+      - North Korea
+      rival:
+      - United States
+      - Japan
+  CTRY_CXR:
+    name:
+      en: Christmas Island
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: CX
+      alpha3: CXR
+    capital: null
+    continent: Oceania
+    currency: null
+  CTRY_CCK:
+    name:
+      en: Cocos (Keeling) Islands
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: CC
+      alpha3: CCK
+    capital: null
+    continent: Oceania
+    currency: null
+  CTRY_COL:
+    name:
+      en: Colombia
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: CO
+      alpha3: COL
+    capital:
+      zh: 波哥大
+      en: Bogotá
+    continent: South America
+    currency: COP
+  CTRY_COM:
+    name:
+      en: Comoros
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: KM
+      alpha3: COM
+    capital: null
+    continent: Africa
+    currency: null
+  CTRY_COG:
+    name:
+      en: Congo
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: CG
+      alpha3: COG
+    capital: null
+    continent: Africa
+    currency: null
+  CTRY_COD:
+    name:
+      en: Congo, Democratic Republic of the
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: CD
+      alpha3: COD
+    capital: null
+    continent: Africa
+    currency: null
+  CTRY_COK:
+    name:
+      en: Cook Islands
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: CK
+      alpha3: COK
+    capital: null
+    continent: Oceania
+    currency: null
+  CTRY_CRI:
+    name:
+      en: Costa Rica
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: CR
+      alpha3: CRI
+    capital: null
+    continent: Americas
+    currency: null
+  CTRY_CIV:
+    name:
+      en: Côte d'Ivoire
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: CI
+      alpha3: CIV
+    capital: null
+    continent: Africa
+    currency: null
+  CTRY_HRV:
+    name:
+      en: Croatia
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: HR
+      alpha3: HRV
+    capital: null
+    continent: Europe
+    currency: null
+  CTRY_CUB:
+    name:
+      en: Cuba
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: CU
+      alpha3: CUB
+    capital: null
+    continent: Americas
+    currency: null
+  CTRY_CUW:
+    name:
+      en: Curaçao
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: CW
+      alpha3: CUW
+    capital: null
+    continent: Americas
+    currency: null
+  CTRY_CYP:
+    name:
+      en: Cyprus
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: CY
+      alpha3: CYP
+    capital: null
+    continent: Asia
+    currency: null
+  CTRY_CZE:
+    name:
+      en: Czechia
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: CZ
+      alpha3: CZE
+    capital: null
+    continent: Europe
+    currency: null
+  CTRY_DNK:
+    name:
+      en: Denmark
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: DK
+      alpha3: DNK
+    capital: null
+    continent: Europe
+    currency: null
+  CTRY_DJI:
+    name:
+      en: Djibouti
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: DJ
+      alpha3: DJI
+    capital: null
+    continent: Africa
+    currency: null
+  CTRY_DMA:
+    name:
+      en: Dominica
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: DM
+      alpha3: DMA
+    capital: null
+    continent: Americas
+    currency: null
+  CTRY_DOM:
+    name:
+      en: Dominican Republic
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: DO
+      alpha3: DOM
+    capital: null
+    continent: Americas
+    currency: null
+  CTRY_ECU:
+    name:
+      en: Ecuador
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: EC
+      alpha3: ECU
+    capital: null
+    continent: Americas
+    currency: null
+  CTRY_EGY:
+    name:
+      en: Egypt
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: EG
+      alpha3: EGY
+    capital:
+      zh: 开罗
+      en: Cairo
+    continent: Africa
+    currency: EGP
+    government: Semi-presidential republic
+    relations:
+      ally:
+      - United States
+      - Saudi Arabia
+      rival: []
+  CTRY_SLV:
+    name:
+      en: El Salvador
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: SV
+      alpha3: SLV
+    capital: null
+    continent: Americas
+    currency: null
+  CTRY_GNQ:
+    name:
+      en: Equatorial Guinea
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: GQ
+      alpha3: GNQ
+    capital: null
+    continent: Africa
+    currency: null
+  CTRY_ERI:
+    name:
+      en: Eritrea
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: ER
+      alpha3: ERI
+    capital: null
+    continent: Africa
+    currency: null
+  CTRY_EST:
+    name:
+      en: Estonia
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: EE
+      alpha3: EST
+    capital: null
+    continent: Europe
+    currency: null
+  CTRY_SWZ:
+    name:
+      en: Eswatini
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: SZ
+      alpha3: SWZ
+    capital: null
+    continent: Africa
+    currency: null
+  CTRY_ETH:
+    name:
+      en: Ethiopia
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: ET
+      alpha3: ETH
+    capital: null
+    continent: Africa
+    currency: null
+  CTRY_FLK:
+    name:
+      en: Falkland Islands (Malvinas)
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: FK
+      alpha3: FLK
+    capital: null
+    continent: Americas
+    currency: null
+  CTRY_FRO:
+    name:
+      en: Faroe Islands
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: FO
+      alpha3: FRO
+    capital: null
+    continent: Europe
+    currency: null
+  CTRY_FJI:
+    name:
+      en: Fiji
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: FJ
+      alpha3: FJI
+    capital: null
+    continent: Oceania
+    currency: null
+  CTRY_FIN:
+    name:
+      en: Finland
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: FI
+      alpha3: FIN
+    capital: null
+    continent: Europe
+    currency: null
+    government: Parliamentary republic
+    relations:
+      ally: []
+      rival: []
+  CTRY_FRA:
+    name:
+      en: France
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: FR
+      alpha3: FRA
+    capital:
+      zh: 巴黎
+      en: Paris
+    continent: Europe
+    currency: EUR
+    government: Semi-presidential republic
+    relations:
+      ally:
+      - Germany
+      - United States
+      rival: []
+  CTRY_GUF:
+    name:
+      en: French Guiana
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: GF
+      alpha3: GUF
+    capital: null
+    continent: Americas
+    currency: null
+  CTRY_PYF:
+    name:
+      en: French Polynesia
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: PF
+      alpha3: PYF
+    capital: null
+    continent: Oceania
+    currency: null
+  CTRY_ATF:
+    name:
+      en: French Southern Territories
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: TF
+      alpha3: ATF
+    capital: null
+    continent: Africa
+    currency: null
+  CTRY_GAB:
+    name:
+      en: Gabon
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: GA
+      alpha3: GAB
+    capital: null
+    continent: Africa
+    currency: null
+  CTRY_GMB:
+    name:
+      en: Gambia
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: GM
+      alpha3: GMB
+    capital: null
+    continent: Africa
+    currency: null
+  CTRY_GEO:
+    name:
+      en: Georgia
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: GE
+      alpha3: GEO
+    capital: null
+    continent: Asia
+    currency: null
+  CTRY_DEU:
+    name:
+      en: Germany
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: DE
+      alpha3: DEU
+    capital:
+      zh: 柏林
+      en: Berlin
+    continent: Europe
+    currency: EUR
+    government: Federal parliamentary republic
+    relations:
+      ally:
+      - France
+      - United States
+      rival: []
+  CTRY_GHA:
+    name:
+      en: Ghana
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: GH
+      alpha3: GHA
+    capital: null
+    continent: Africa
+    currency: null
+  CTRY_GIB:
+    name:
+      en: Gibraltar
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: GI
+      alpha3: GIB
+    capital: null
+    continent: Europe
+    currency: null
+  CTRY_GRC:
+    name:
+      en: Greece
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: GR
+      alpha3: GRC
+    capital:
+      zh: 雅典
+      en: Athens
+    continent: Europe
+    currency: EUR
+  CTRY_GRL:
+    name:
+      en: Greenland
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: GL
+      alpha3: GRL
+    capital: null
+    continent: Americas
+    currency: null
+  CTRY_GRD:
+    name:
+      en: Grenada
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: GD
+      alpha3: GRD
+    capital: null
+    continent: Americas
+    currency: null
+  CTRY_GLP:
+    name:
+      en: Guadeloupe
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: GP
+      alpha3: GLP
+    capital: null
+    continent: Americas
+    currency: null
+  CTRY_GUM:
+    name:
+      en: Guam
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: GU
+      alpha3: GUM
+    capital: null
+    continent: Oceania
+    currency: null
+  CTRY_GTM:
+    name:
+      en: Guatemala
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: GT
+      alpha3: GTM
+    capital: null
+    continent: Americas
+    currency: null
+  CTRY_GGY:
+    name:
+      en: Guernsey
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: GG
+      alpha3: GGY
+    capital: null
+    continent: Europe
+    currency: null
+  CTRY_GIN:
+    name:
+      en: Guinea
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: GN
+      alpha3: GIN
+    capital: null
+    continent: Africa
+    currency: null
+  CTRY_GNB:
+    name:
+      en: Guinea-Bissau
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: GW
+      alpha3: GNB
+    capital: null
+    continent: Africa
+    currency: null
+  CTRY_GUY:
+    name:
+      en: Guyana
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: GY
+      alpha3: GUY
+    capital: null
+    continent: Americas
+    currency: null
+  CTRY_HTI:
+    name:
+      en: Haiti
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: HT
+      alpha3: HTI
+    capital: null
+    continent: Americas
+    currency: null
+  CTRY_HMD:
+    name:
+      en: Heard Island and McDonald Islands
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: HM
+      alpha3: HMD
+    capital: null
+    continent: Oceania
+    currency: null
+  CTRY_VAT:
+    name:
+      en: Holy See
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: VA
+      alpha3: VAT
+    capital: null
+    continent: Europe
+    currency: null
+  CTRY_HND:
+    name:
+      en: Honduras
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: HN
+      alpha3: HND
+    capital: null
+    continent: Americas
+    currency: null
+  CTRY_HKG:
+    name:
+      en: Hong Kong
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: HK
+      alpha3: HKG
+    capital: null
+    continent: Asia
+    currency: null
+  CTRY_HUN:
+    name:
+      en: Hungary
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: HU
+      alpha3: HUN
+    capital: null
+    continent: Europe
+    currency: null
+  CTRY_ISL:
+    name:
+      en: Iceland
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: IS
+      alpha3: ISL
+    capital: null
+    continent: Europe
+    currency: null
+  CTRY_IND:
+    name:
+      en: India
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: IN
+      alpha3: IND
+    capital:
+      zh: 新德里
+      en: New Delhi
+    continent: Asia
+    currency: INR
+    government: Federal parliamentary republic
+    relations:
+      ally:
+      - United States
+      - Russia
+      rival:
+      - China
+      - Pakistan
+  CTRY_IDN:
+    name:
+      en: Indonesia
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: ID
+      alpha3: IDN
+    capital:
+      zh: 雅加达
+      en: Jakarta
+    continent: Asia
+    currency: IDR
+    government: Presidential republic
+    relations:
+      ally: []
+      rival: []
+  CTRY_IRN:
+    name:
+      en: Iran, Islamic Republic of
+      zh: ''
+    aliases:
+    - Islamic Republic of Iran
+    - Tehran
+    iso:
+      alpha2: IR
+      alpha3: IRN
+    capital: null
+    continent: Asia
+    currency: null
+    government: Islamic republic
+    relations:
+      ally:
+      - Russia
+      - China
+      rival:
+      - United States
+      - Israel
+      - Saudi Arabia
+  CTRY_IRQ:
+    name:
+      en: Iraq
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: IQ
+      alpha3: IRQ
+    capital:
+      zh: 巴格达
+      en: Baghdad
+    continent: Asia
+    currency: IQD
+  CTRY_IRL:
+    name:
+      en: Ireland
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: IE
+      alpha3: IRL
+    capital:
+      zh: 都柏林
+      en: Dublin
+    continent: Europe
+    currency: EUR
+  CTRY_IMN:
+    name:
+      en: Isle of Man
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: IM
+      alpha3: IMN
+    capital: null
+    continent: Europe
+    currency: null
+  CTRY_ISR:
+    name:
+      en: Israel
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: IL
+      alpha3: ISR
+    capital:
+      zh: 耶路撒冷
+      en: Jerusalem
+    continent: Asia
+    currency: ILS
+    government: Parliamentary democracy
+    relations:
+      ally:
+      - United States
+      rival:
+      - Iran
+  CTRY_ITA:
+    name:
+      en: Italy
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: IT
+      alpha3: ITA
+    capital:
+      zh: 罗马
+      en: Rome
+    continent: Europe
+    currency: EUR
+    government: Parliamentary republic
+    relations:
+      ally:
+      - France
+      - Germany
+      - United States
+      rival: []
+  CTRY_JAM:
+    name:
+      en: Jamaica
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: JM
+      alpha3: JAM
+    capital: null
+    continent: Americas
+    currency: null
+  CTRY_JPN:
+    name:
+      en: Japan
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: JP
+      alpha3: JPN
+    capital:
+      zh: 东京
+      en: Tokyo
+    continent: Asia
+    currency: JPY
+    government: Constitutional monarchy
+    relations:
+      ally:
+      - United States
+      - South Korea
+      rival:
+      - China
+      - North Korea
+  CTRY_JEY:
+    name:
+      en: Jersey
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: JE
+      alpha3: JEY
+    capital: null
+    continent: Europe
+    currency: null
+  CTRY_JOR:
+    name:
+      en: Jordan
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: JO
+      alpha3: JOR
+    capital:
+      zh: 安曼
+      en: Amman
+    continent: Asia
+    currency: JOD
+  CTRY_KAZ:
+    name:
+      en: Kazakhstan
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: KZ
+      alpha3: KAZ
+    capital:
+      zh: 阿斯塔纳
+      en: Astana
+    continent: Asia
+    currency: KZT
+    government: Presidential republic
+    relations:
+      ally:
+      - Russia
+      rival: []
+  CTRY_KEN:
+    name:
+      en: Kenya
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: KE
+      alpha3: KEN
+    capital: null
+    continent: Africa
+    currency: null
+  CTRY_KIR:
+    name:
+      en: Kiribati
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: KI
+      alpha3: KIR
+    capital: null
+    continent: Oceania
+    currency: null
+  CTRY_PRK:
+    name:
+      en: Korea, Democratic People's Republic of
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: KP
+      alpha3: PRK
+    capital: null
+    continent: Asia
+    currency: null
+    government: One-party totalitarian
+    relations:
+      ally:
+      - China
+      - Russia
+      rival:
+      - United States
+      - South Korea
+      - Japan
+  CTRY_KOR:
+    name:
+      en: Korea, Republic of
+      zh: ''
+    aliases:
+    - Korea
+    iso:
+      alpha2: KR
+      alpha3: KOR
+    capital: null
+    continent: Asia
+    currency: null
+    government: Presidential republic
+    relations:
+      ally:
+      - United States
+      - Japan
+      rival:
+      - North Korea
+  CTRY_KWT:
+    name:
+      en: Kuwait
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: KW
+      alpha3: KWT
+    capital:
+      zh: 科威特城
+      en: Kuwait City
+    continent: Asia
+    currency: KWD
+    government: Constitutional monarchy
+    relations:
+      ally:
+      - United States
+      rival: []
+  CTRY_KGZ:
+    name:
+      en: Kyrgyzstan
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: KG
+      alpha3: KGZ
+    capital: null
+    continent: Asia
+    currency: null
+  CTRY_LAO:
+    name:
+      en: Lao People's Democratic Republic
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: LA
+      alpha3: LAO
+    capital: null
+    continent: Asia
+    currency: null
+  CTRY_LVA:
+    name:
+      en: Latvia
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: LV
+      alpha3: LVA
+    capital: null
+    continent: Europe
+    currency: null
+  CTRY_LBN:
+    name:
+      en: Lebanon
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: LB
+      alpha3: LBN
+    capital:
+      zh: 贝鲁特
+      en: Beirut
+    continent: Asia
+    currency: LBP
+  CTRY_LSO:
+    name:
+      en: Lesotho
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: LS
+      alpha3: LSO
+    capital: null
+    continent: Africa
+    currency: null
+  CTRY_LBR:
+    name:
+      en: Liberia
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: LR
+      alpha3: LBR
+    capital: null
+    continent: Africa
+    currency: null
+  CTRY_LBY:
+    name:
+      en: Libya
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: LY
+      alpha3: LBY
+    capital: null
+    continent: Africa
+    currency: null
+  CTRY_LIE:
+    name:
+      en: Liechtenstein
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: LI
+      alpha3: LIE
+    capital: null
+    continent: Europe
+    currency: null
+  CTRY_LTU:
+    name:
+      en: Lithuania
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: LT
+      alpha3: LTU
+    capital: null
+    continent: Europe
+    currency: null
+  CTRY_LUX:
+    name:
+      en: Luxembourg
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: LU
+      alpha3: LUX
+    capital: null
+    continent: Europe
+    currency: null
+  CTRY_MAC:
+    name:
+      en: Macao
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: MO
+      alpha3: MAC
+    capital: null
+    continent: Asia
+    currency: null
+  CTRY_MDG:
+    name:
+      en: Madagascar
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: MG
+      alpha3: MDG
+    capital: null
+    continent: Africa
+    currency: null
+  CTRY_MWI:
+    name:
+      en: Malawi
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: MW
+      alpha3: MWI
+    capital: null
+    continent: Africa
+    currency: null
+  CTRY_MYS:
+    name:
+      en: Malaysia
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: MY
+      alpha3: MYS
+    capital:
+      zh: 吉隆坡
+      en: Kuala Lumpur
+    continent: Asia
+    currency: MYR
+    government: Federal parliamentary constitutional monarchy
+    relations:
+      ally: []
+      rival: []
+  CTRY_MDV:
+    name:
+      en: Maldives
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: MV
+      alpha3: MDV
+    capital: null
+    continent: Asia
+    currency: null
+  CTRY_MLI:
+    name:
+      en: Mali
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: ML
+      alpha3: MLI
+    capital: null
+    continent: Africa
+    currency: null
+  CTRY_MLT:
+    name:
+      en: Malta
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: MT
+      alpha3: MLT
+    capital: null
+    continent: Europe
+    currency: null
+  CTRY_MHL:
+    name:
+      en: Marshall Islands
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: MH
+      alpha3: MHL
+    capital: null
+    continent: Oceania
+    currency: null
+  CTRY_MTQ:
+    name:
+      en: Martinique
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: MQ
+      alpha3: MTQ
+    capital: null
+    continent: Americas
+    currency: null
+  CTRY_MRT:
+    name:
+      en: Mauritania
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: MR
+      alpha3: MRT
+    capital: null
+    continent: Africa
+    currency: null
+  CTRY_MUS:
+    name:
+      en: Mauritius
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: MU
+      alpha3: MUS
+    capital: null
+    continent: Africa
+    currency: null
+  CTRY_MYT:
+    name:
+      en: Mayotte
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: YT
+      alpha3: MYT
+    capital: null
+    continent: Africa
+    currency: null
+  CTRY_MEX:
+    name:
+      en: Mexico
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: MX
+      alpha3: MEX
+    capital:
+      zh: 墨西哥城
+      en: Mexico City
+    continent: North America
+    currency: MXN
+    government: Federal presidential republic
+    relations:
+      ally:
+      - United States
+      rival: []
+  CTRY_FSM:
+    name:
+      en: Micronesia, Federated States of
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: FM
+      alpha3: FSM
+    capital: null
+    continent: Oceania
+    currency: null
+  CTRY_MDA:
+    name:
+      en: Moldova, Republic of
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: MD
+      alpha3: MDA
+    capital: null
+    continent: Europe
+    currency: null
+  CTRY_MCO:
+    name:
+      en: Monaco
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: MC
+      alpha3: MCO
+    capital: null
+    continent: Europe
+    currency: null
+  CTRY_MNG:
+    name:
+      en: Mongolia
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: MN
+      alpha3: MNG
+    capital: null
+    continent: Asia
+    currency: null
+  CTRY_MNE:
+    name:
+      en: Montenegro
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: ME
+      alpha3: MNE
+    capital: null
+    continent: Europe
+    currency: null
+  CTRY_MSR:
+    name:
+      en: Montserrat
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: MS
+      alpha3: MSR
+    capital: null
+    continent: Americas
+    currency: null
+  CTRY_MAR:
+    name:
+      en: Morocco
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: MA
+      alpha3: MAR
+    capital:
+      zh: 拉巴特
+      en: Rabat
+    continent: Africa
+    currency: MAD
+  CTRY_MOZ:
+    name:
+      en: Mozambique
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: MZ
+      alpha3: MOZ
+    capital: null
+    continent: Africa
+    currency: null
+  CTRY_MMR:
+    name:
+      en: Myanmar
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: MM
+      alpha3: MMR
+    capital:
+      zh: 内比都
+      en: Naypyidaw
+    continent: Asia
+    currency: MMK
+  CTRY_NAM:
+    name:
+      en: Namibia
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: NA
+      alpha3: NAM
+    capital: null
+    continent: Africa
+    currency: null
+  CTRY_NRU:
+    name:
+      en: Nauru
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: NR
+      alpha3: NRU
+    capital: null
+    continent: Oceania
+    currency: null
+  CTRY_NPL:
+    name:
+      en: Nepal
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: NP
+      alpha3: NPL
+    capital: null
+    continent: Asia
+    currency: null
+  CTRY_NLD:
+    name:
+      en: Netherlands, Kingdom of the
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: NL
+      alpha3: NLD
+    capital: null
+    continent: Europe
+    currency: null
+    government: Parliamentary constitutional monarchy
+    relations:
+      ally:
+      - Germany
+      - France
+      - United States
+      rival: []
+  CTRY_NCL:
+    name:
+      en: New Caledonia
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: NC
+      alpha3: NCL
+    capital: null
+    continent: Oceania
+    currency: null
+  CTRY_NZL:
+    name:
+      en: New Zealand
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: NZ
+      alpha3: NZL
+    capital:
+      zh: 惠灵顿
+      en: Wellington
+    continent: Oceania
+    currency: NZD
+  CTRY_NIC:
+    name:
+      en: Nicaragua
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: NI
+      alpha3: NIC
+    capital: null
+    continent: Americas
+    currency: null
+  CTRY_NER:
+    name:
+      en: Niger
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: NE
+      alpha3: NER
+    capital: null
+    continent: Africa
+    currency: null
+  CTRY_NGA:
+    name:
+      en: Nigeria
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: NG
+      alpha3: NGA
+    capital:
+      zh: 阿布贾
+      en: Abuja
+    continent: Africa
+    currency: NGN
+    government: Federal presidential republic
+    relations:
+      ally: []
+      rival: []
+  CTRY_NIU:
+    name:
+      en: Niue
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: NU
+      alpha3: NIU
+    capital: null
+    continent: Oceania
+    currency: null
+  CTRY_NFK:
+    name:
+      en: Norfolk Island
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: NF
+      alpha3: NFK
+    capital: null
+    continent: Oceania
+    currency: null
+  CTRY_MKD:
+    name:
+      en: North Macedonia
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: MK
+      alpha3: MKD
+    capital: null
+    continent: Europe
+    currency: null
+  CTRY_MNP:
+    name:
+      en: Northern Mariana Islands
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: MP
+      alpha3: MNP
+    capital: null
+    continent: Oceania
+    currency: null
+  CTRY_NOR:
+    name:
+      en: Norway
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: 'NO'
+      alpha3: NOR
+    capital:
+      zh: 奥斯陆
+      en: Oslo
+    continent: Europe
+    currency: NOK
+    government: Parliamentary constitutional monarchy
+    relations:
+      ally: []
+      rival: []
+  CTRY_OMN:
+    name:
+      en: Oman
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: OM
+      alpha3: OMN
+    capital: null
+    continent: Asia
+    currency: null
+  CTRY_PAK:
+    name:
+      en: Pakistan
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: PK
+      alpha3: PAK
+    capital:
+      zh: 伊斯兰堡
+      en: Islamabad
+    continent: Asia
+    currency: PKR
+    government: Federal Islamic republic
+    relations:
+      ally:
+      - China
+      - Saudi Arabia
+      rival:
+      - India
+  CTRY_PLW:
+    name:
+      en: Palau
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: PW
+      alpha3: PLW
+    capital: null
+    continent: Oceania
+    currency: null
+  CTRY_PSE:
+    name:
+      en: Palestine, State of
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: PS
+      alpha3: PSE
+    capital: null
+    continent: Asia
+    currency: null
+  CTRY_PAN:
+    name:
+      en: Panama
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: PA
+      alpha3: PAN
+    capital: null
+    continent: Americas
+    currency: null
+  CTRY_PNG:
+    name:
+      en: Papua New Guinea
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: PG
+      alpha3: PNG
+    capital: null
+    continent: Oceania
+    currency: null
+  CTRY_PRY:
+    name:
+      en: Paraguay
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: PY
+      alpha3: PRY
+    capital: null
+    continent: Americas
+    currency: null
+  CTRY_PER:
+    name:
+      en: Peru
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: PE
+      alpha3: PER
+    capital: null
+    continent: Americas
+    currency: null
+  CTRY_PHL:
+    name:
+      en: Philippines
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: PH
+      alpha3: PHL
+    capital:
+      zh: 马尼拉
+      en: Manila
+    continent: Asia
+    currency: PHP
+  CTRY_PCN:
+    name:
+      en: Pitcairn
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: PN
+      alpha3: PCN
+    capital: null
+    continent: Oceania
+    currency: null
+  CTRY_POL:
+    name:
+      en: Poland
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: PL
+      alpha3: POL
+    capital:
+      zh: 华沙
+      en: Warsaw
+    continent: Europe
+    currency: PLN
+    government: Parliamentary republic
+    relations:
+      ally:
+      - United States
+      - United Kingdom
+      rival: []
+  CTRY_PRT:
+    name:
+      en: Portugal
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: PT
+      alpha3: PRT
+    capital:
+      zh: 里斯本
+      en: Lisbon
+    continent: Europe
+    currency: EUR
+  CTRY_PRI:
+    name:
+      en: Puerto Rico
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: PR
+      alpha3: PRI
+    capital: null
+    continent: Americas
+    currency: null
+  CTRY_QAT:
+    name:
+      en: Qatar
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: QA
+      alpha3: QAT
+    capital:
+      zh: 多哈
+      en: Doha
+    continent: Asia
+    currency: QAR
+    government: Absolute monarchy
+    relations:
+      ally:
+      - United States
+      rival: []
+  CTRY_REU:
+    name:
+      en: Réunion
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: RE
+      alpha3: REU
+    capital: null
+    continent: Africa
+    currency: null
+  CTRY_ROU:
+    name:
+      en: Romania
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: RO
+      alpha3: ROU
+    capital: null
+    continent: Europe
+    currency: null
+  CTRY_RUS:
+    name:
+      en: Russian Federation
+      zh: ''
+    aliases:
+    - Russia
+    - Russian
+    iso:
+      alpha2: RU
+      alpha3: RUS
+    capital:
+      zh: 莫斯科
+      en: Moscow
+    continent: Europe
+    currency: RUB
+    government: Federal semi-presidential republic
+    relations:
+      ally:
+      - China
+      - Iran
+      - North Korea
+      - Belarus
+      rival:
+      - United States
+      - United Kingdom
+      - Ukraine
+  CTRY_RWA:
+    name:
+      en: Rwanda
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: RW
+      alpha3: RWA
+    capital: null
+    continent: Africa
+    currency: null
+  CTRY_BLM:
+    name:
+      en: Saint Barthélemy
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: BL
+      alpha3: BLM
+    capital: null
+    continent: Americas
+    currency: null
+  CTRY_SHN:
+    name:
+      en: Saint Helena, Ascension and Tristan da Cunha
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: SH
+      alpha3: SHN
+    capital: null
+    continent: Africa
+    currency: null
+  CTRY_KNA:
+    name:
+      en: Saint Kitts and Nevis
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: KN
+      alpha3: KNA
+    capital: null
+    continent: Americas
+    currency: null
+  CTRY_LCA:
+    name:
+      en: Saint Lucia
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: LC
+      alpha3: LCA
+    capital: null
+    continent: Americas
+    currency: null
+  CTRY_MAF:
+    name:
+      en: Saint Martin (French part)
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: MF
+      alpha3: MAF
+    capital: null
+    continent: Americas
+    currency: null
+  CTRY_SPM:
+    name:
+      en: Saint Pierre and Miquelon
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: PM
+      alpha3: SPM
+    capital: null
+    continent: Americas
+    currency: null
+  CTRY_VCT:
+    name:
+      en: Saint Vincent and the Grenadines
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: VC
+      alpha3: VCT
+    capital: null
+    continent: Americas
+    currency: null
+  CTRY_WSM:
+    name:
+      en: Samoa
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: WS
+      alpha3: WSM
+    capital: null
+    continent: Oceania
+    currency: null
+  CTRY_SMR:
+    name:
+      en: San Marino
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: SM
+      alpha3: SMR
+    capital: null
+    continent: Europe
+    currency: null
+  CTRY_STP:
+    name:
+      en: Sao Tome and Principe
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: ST
+      alpha3: STP
+    capital: null
+    continent: Africa
+    currency: null
+  CTRY_SAU:
+    name:
+      en: Saudi Arabia
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: SA
+      alpha3: SAU
+    capital:
+      zh: 利雅得
+      en: Riyadh
+    continent: Asia
+    currency: SAR
+    government: Absolute monarchy
+    relations:
+      ally:
+      - United States
+      rival:
+      - Iran
+  CTRY_SEN:
+    name:
+      en: Senegal
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: SN
+      alpha3: SEN
+    capital: null
+    continent: Africa
+    currency: null
+  CTRY_SRB:
+    name:
+      en: Serbia
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: RS
+      alpha3: SRB
+    capital: null
+    continent: Europe
+    currency: null
+  CTRY_SYC:
+    name:
+      en: Seychelles
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: SC
+      alpha3: SYC
+    capital: null
+    continent: Africa
+    currency: null
+  CTRY_SLE:
+    name:
+      en: Sierra Leone
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: SL
+      alpha3: SLE
+    capital: null
+    continent: Africa
+    currency: null
+  CTRY_SGP:
+    name:
+      en: Singapore
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: SG
+      alpha3: SGP
+    capital:
+      zh: 新加坡
+      en: Singapore
+    continent: Asia
+    currency: SGD
+    government: Parliamentary republic
+    relations:
+      ally:
+      - United States
+      rival: []
+  CTRY_SXM:
+    name:
+      en: Sint Maarten (Dutch part)
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: SX
+      alpha3: SXM
+    capital: null
+    continent: Americas
+    currency: null
+  CTRY_SVK:
+    name:
+      en: Slovakia
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: SK
+      alpha3: SVK
+    capital: null
+    continent: Europe
+    currency: null
+  CTRY_SVN:
+    name:
+      en: Slovenia
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: SI
+      alpha3: SVN
+    capital: null
+    continent: Europe
+    currency: null
+  CTRY_SLB:
+    name:
+      en: Solomon Islands
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: SB
+      alpha3: SLB
+    capital: null
+    continent: Oceania
+    currency: null
+  CTRY_SOM:
+    name:
+      en: Somalia
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: SO
+      alpha3: SOM
+    capital: null
+    continent: Africa
+    currency: null
+  CTRY_ZAF:
+    name:
+      en: South Africa
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: ZA
+      alpha3: ZAF
+    capital:
+      zh: 比勒陀利亚
+      en: Pretoria
+    continent: Africa
+    currency: ZAR
+    government: Parliamentary republic
+    relations:
+      ally: []
+      rival: []
+  CTRY_SGS:
+    name:
+      en: South Georgia and the South Sandwich Islands
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: GS
+      alpha3: SGS
+    capital: null
+    continent: Americas
+    currency: null
+  CTRY_SSD:
+    name:
+      en: South Sudan
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: SS
+      alpha3: SSD
+    capital: null
+    continent: Africa
+    currency: null
+  CTRY_ESP:
+    name:
+      en: Spain
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: ES
+      alpha3: ESP
+    capital:
+      zh: 马德里
+      en: Madrid
+    continent: Europe
+    currency: EUR
+    government: Parliamentary constitutional monarchy
+    relations:
+      ally:
+      - France
+      - United States
+      rival: []
+  CTRY_LKA:
+    name:
+      en: Sri Lanka
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: LK
+      alpha3: LKA
+    capital: null
+    continent: Asia
+    currency: null
+  CTRY_SDN:
+    name:
+      en: Sudan
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: SD
+      alpha3: SDN
+    capital: null
+    continent: Africa
+    currency: null
+  CTRY_SUR:
+    name:
+      en: Suriname
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: SR
+      alpha3: SUR
+    capital: null
+    continent: Americas
+    currency: null
+  CTRY_SJM:
+    name:
+      en: Svalbard and Jan Mayen
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: SJ
+      alpha3: SJM
+    capital: null
+    continent: Europe
+    currency: null
+  CTRY_SWE:
+    name:
+      en: Sweden
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: SE
+      alpha3: SWE
+    capital:
+      zh: 斯德哥尔摩
+      en: Stockholm
+    continent: Europe
+    currency: SEK
+    government: Parliamentary constitutional monarchy
+    relations:
+      ally: []
+      rival: []
+  CTRY_CHE:
+    name:
+      en: Switzerland
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: CH
+      alpha3: CHE
+    capital:
+      zh: 伯尔尼
+      en: Bern
+    continent: Europe
+    currency: CHF
+  CTRY_SYR:
+    name:
+      en: Syrian Arab Republic
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: SY
+      alpha3: SYR
+    capital: null
+    continent: Asia
+    currency: null
+  CTRY_TWN:
+    name:
+      en: Taiwan, Province of China
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: TW
+      alpha3: TWN
+    capital: null
+    continent: null
+    currency: null
+    government: Semi-presidential republic
+    relations:
+      ally:
+      - United States
+      rival:
+      - China
+  CTRY_TJK:
+    name:
+      en: Tajikistan
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: TJ
+      alpha3: TJK
+    capital: null
+    continent: Asia
+    currency: null
+  CTRY_TZA:
+    name:
+      en: Tanzania, United Republic of
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: TZ
+      alpha3: TZA
+    capital: null
+    continent: Africa
+    currency: null
+  CTRY_THA:
+    name:
+      en: Thailand
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: TH
+      alpha3: THA
+    capital:
+      zh: 曼谷
+      en: Bangkok
+    continent: Asia
+    currency: THB
+    government: Parliamentary constitutional monarchy
+    relations:
+      ally: []
+      rival: []
+  CTRY_TLS:
+    name:
+      en: Timor-Leste
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: TL
+      alpha3: TLS
+    capital: null
+    continent: Asia
+    currency: null
+  CTRY_TGO:
+    name:
+      en: Togo
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: TG
+      alpha3: TGO
+    capital: null
+    continent: Africa
+    currency: null
+  CTRY_TKL:
+    name:
+      en: Tokelau
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: TK
+      alpha3: TKL
+    capital: null
+    continent: Oceania
+    currency: null
+  CTRY_TON:
+    name:
+      en: Tonga
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: TO
+      alpha3: TON
+    capital: null
+    continent: Oceania
+    currency: null
+  CTRY_TTO:
+    name:
+      en: Trinidad and Tobago
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: TT
+      alpha3: TTO
+    capital: null
+    continent: Americas
+    currency: null
+  CTRY_TUN:
+    name:
+      en: Tunisia
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: TN
+      alpha3: TUN
+    capital: null
+    continent: Africa
+    currency: null
+  CTRY_TUR:
+    name:
+      en: Türkiye
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: TR
+      alpha3: TUR
+    capital: null
+    continent: Asia
+    currency: null
+    government: Presidential republic
+    relations:
+      ally: []
+      rival: []
+  CTRY_TKM:
+    name:
+      en: Turkmenistan
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: TM
+      alpha3: TKM
+    capital: null
+    continent: Asia
+    currency: null
+  CTRY_TCA:
+    name:
+      en: Turks and Caicos Islands
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: TC
+      alpha3: TCA
+    capital: null
+    continent: Americas
+    currency: null
+  CTRY_TUV:
+    name:
+      en: Tuvalu
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: TV
+      alpha3: TUV
+    capital: null
+    continent: Oceania
+    currency: null
+  CTRY_UGA:
+    name:
+      en: Uganda
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: UG
+      alpha3: UGA
+    capital: null
+    continent: Africa
+    currency: null
+  CTRY_UKR:
+    name:
+      en: Ukraine
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: UA
+      alpha3: UKR
+    capital:
+      zh: 基辅
+      en: Kyiv
+    continent: Europe
+    currency: UAH
+    government: Semi-presidential republic
+    relations:
+      ally:
+      - United States
+      - United Kingdom
+      - Poland
+      rival:
+      - Russia
+  CTRY_ARE:
+    name:
+      en: United Arab Emirates
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: AE
+      alpha3: ARE
+    capital:
+      zh: 阿布扎比
+      en: Abu Dhabi
+    continent: Asia
+    currency: AED
+  CTRY_GBR:
+    name:
+      en: United Kingdom of Great Britain and Northern Ireland
+      zh: ''
+    aliases:
+    - UK
+    - Britain
+    - Great Britain
+    iso:
+      alpha2: GB
+      alpha3: GBR
+    capital: null
+    continent: Europe
+    currency: null
+    government: Constitutional monarchy
+    relations:
+      ally:
+      - United States
+      - France
+      rival: []
+  CTRY_USA:
+    name:
+      en: United States of America
+      zh: ''
+    aliases:
+    - US
+    - USA
+    - U.S.
+    - America
+    iso:
+      alpha2: US
+      alpha3: USA
+    capital: null
+    continent: Americas
+    currency: null
+    government: Federal presidential republic
+    relations:
+      ally:
+      - United Kingdom
+      - Japan
+      - South Korea
+      rival:
+      - China
+      - Russia
+      - Iran
+  CTRY_UMI:
+    name:
+      en: United States Minor Outlying Islands
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: UM
+      alpha3: UMI
+    capital: null
+    continent: Oceania
+    currency: null
+  CTRY_URY:
+    name:
+      en: Uruguay
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: UY
+      alpha3: URY
+    capital: null
+    continent: Americas
+    currency: null
+  CTRY_UZB:
+    name:
+      en: Uzbekistan
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: UZ
+      alpha3: UZB
+    capital: null
+    continent: Asia
+    currency: null
+  CTRY_VUT:
+    name:
+      en: Vanuatu
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: VU
+      alpha3: VUT
+    capital: null
+    continent: Oceania
+    currency: null
+  CTRY_VEN:
+    name:
+      en: Venezuela, Bolivarian Republic of
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: VE
+      alpha3: VEN
+    capital: null
+    continent: Americas
+    currency: null
+  CTRY_VNM:
+    name:
+      en: Viet Nam
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: VN
+      alpha3: VNM
+    capital: null
+    continent: Asia
+    currency: null
+    government: One-party socialist republic
+    relations:
+      ally:
+      - China
+      - Russia
+      rival: []
+  CTRY_VGB:
+    name:
+      en: Virgin Islands (British)
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: VG
+      alpha3: VGB
+    capital: null
+    continent: Americas
+    currency: null
+  CTRY_VIR:
+    name:
+      en: Virgin Islands (U.S.)
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: VI
+      alpha3: VIR
+    capital: null
+    continent: Americas
+    currency: null
+  CTRY_WLF:
+    name:
+      en: Wallis and Futuna
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: WF
+      alpha3: WLF
+    capital: null
+    continent: Oceania
+    currency: null
+  CTRY_ESH:
+    name:
+      en: Western Sahara
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: EH
+      alpha3: ESH
+    capital: null
+    continent: Africa
+    currency: null
+  CTRY_YEM:
+    name:
+      en: Yemen
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: YE
+      alpha3: YEM
+    capital: null
+    continent: Asia
+    currency: null
+  CTRY_ZMB:
+    name:
+      en: Zambia
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: ZM
+      alpha3: ZMB
+    capital: null
+    continent: Africa
+    currency: null
+  CTRY_ZWE:
+    name:
+      en: Zimbabwe
+      zh: ''
+    aliases: []
+    iso:
+      alpha2: ZW
+      alpha3: ZWE
+    capital: null
+    continent: Africa
+    currency: null

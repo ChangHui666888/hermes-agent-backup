@@ -1,0 +1,1736 @@
+version: '0.1'
+generated: '2026-08-06'
+actions:
+  ACT_ACCUSES:
+    action_id: ACCUSES
+    en: accuse
+    zh: 指控
+    past: accused
+    noun: accusation
+    event_type: Legal
+    priority: 90
+    patterns:
+      en:
+      - \b(alleges?|accuses?|charges?)\b
+      zh:
+      - (指控|指责|谴责)
+  ACT_ACQUIRES:
+    action_id: ACQUIRES
+    en: acquire
+    zh: 收购
+    past: acquired
+    noun: acquisition
+    event_type: Finance
+    priority: 80
+    patterns:
+      en:
+      - \b(acquires?|acquired|acquisition|takeover)\b
+      zh:
+      - (收购|并购)
+  ACT_ANNOUNCES:
+    action_id: ANNOUNCES
+    en: announce
+    zh: 宣布
+    past: announced
+    noun: announcement
+    event_type: Politics
+    priority: 50
+    patterns:
+      en:
+      - \b(announces?|declares?|reveals?|unveils?|launches?|releases?|presents?)\b
+      zh:
+      - (发布|宣布|公布|推出|发表|披露)
+  ACT_APPEALS:
+    action_id: APPEALS
+    en: appeal
+    zh: 上诉
+    past: appealed
+    noun: appeal
+    event_type: Legal
+    priority: 60
+    patterns:
+      en:
+      - \b(appeals?|appealed|appeal)\b
+      zh:
+      - (上诉|提出上诉|申诉)
+  ACT_APPOINTS:
+    action_id: APPOINTS
+    en: appoint
+    zh: 任命
+    past: appointed
+    noun: appointment
+    event_type: Politics
+    priority: 50
+    patterns:
+      en:
+      - \b(appoints?|names?|nominates?)\b
+      zh:
+      - (任命|委任|提名)
+  ACT_APPROVES:
+    action_id: APPROVES
+    en: approve
+    zh: 批准
+    past: approved
+    noun: approval
+    event_type: Politics
+    priority: 50
+    patterns:
+      en:
+      - \b(approves?|approved|approval)\b
+      zh:
+      - (批准|通过)
+  ACT_APPROVES_DRUG:
+    action_id: APPROVES_DRUG
+    en: approve drug
+    zh: 批准新药
+    past: approved
+    noun: drug approval
+    event_type: Healthcare
+    priority: 20
+    patterns:
+    - approve.*(drug|vaccine)
+    - 批准.*(药|疫苗)
+  ACT_ARRESTS:
+    action_id: ARRESTS
+    en: arrest
+    zh: 逮捕
+    past: arrested
+    noun: arrest
+    event_type: Legal
+    priority: 90
+    patterns:
+      en:
+      - \b(arrests?|arrested|detains?|detained)\b
+      zh:
+      - (逮捕|拘留|拘捕)
+  ACT_ATTACKS:
+    action_id: ATTACKS
+    en: attack
+    zh: 袭击/攻击
+    past: attacked
+    noun: attack
+    event_type: Military
+    priority: 100
+    patterns:
+      en:
+      - \b(attacks?|strikes?|bomb(?:s|ed|ing)|missile|drone\s+strike|airstrike|assault|offensive)\b
+      zh:
+      - (攻击|袭击|空袭|轰炸|打击|导弹|无人机.*袭击|军事行动)
+  ACT_BANKRUPTS:
+    action_id: BANKRUPTS
+    en: go bankrupt
+    zh: 破产
+    past: bankrupted
+    noun: bankruptcy
+    event_type: Finance
+    priority: 90
+    patterns:
+      en:
+      - \b(bankrupt(?:cy|cies|t)?|insolven(?:t|cy)?)\b
+      zh:
+      - (破产|倒闭)
+  ACT_BANS:
+    action_id: BANS
+    en: ban
+    zh: 禁止
+    past: banned
+    noun: ban
+    event_type: Legal
+    priority: 90
+    patterns:
+      en:
+      - \b(bans?|prohibits?|outlaws?|restricts?|blocks?)\b
+      zh:
+      - (禁止|封禁|禁用|限制)
+  ACT_BEATS_ESTIMATES:
+    action_id: BEATS_ESTIMATES
+    en: beat estimates
+    zh: 超预期
+    past: beat
+    noun: earnings beat
+    event_type: Finance
+    priority: 80
+    patterns:
+      en:
+      - \b(beats?|beat|exceeds?|exceeded)\s+(estimates?|expectations?|forecasts?)\b
+      zh:
+      - (超预期|高于预期|超过预期|业绩超预期)
+  ACT_BOYCOTTS:
+    action_id: BOYCOTTS
+    en: boycott
+    zh: 抵制
+    past: boycotted
+    noun: boycott
+    event_type: Economic
+    priority: 20
+    patterns:
+    - boycott
+    - 抵制
+  ACT_BUILDS_FACTORY:
+    action_id: BUILDS_FACTORY
+    en: build factory
+    zh: 建厂
+    past: built
+    noun: factory construction
+    event_type: Economic
+    priority: 70
+    patterns:
+      en:
+      - \b(builds?|built|constructs?|construction)\s+(a\s+)?(factory|fab|plant|facility)\b
+      zh:
+      - (建厂|建造工厂|建设工厂|建设晶圆厂|新建工厂|扩建工厂)
+  ACT_BUYS_BACK:
+    action_id: BUYS_BACK
+    en: buy back shares
+    zh: 回购股票
+    past: bought back
+    noun: share buyback
+    event_type: Finance
+    priority: 70
+    patterns:
+      en:
+      - \b(buybacks?|buys?\s+back|repurchases?|repurchased)\b
+      zh:
+      - (回购|股票回购|股份回购)
+  ACT_CEASEFIRE:
+    action_id: CEASEFIRE
+    en: ceasefire
+    zh: 停火
+    past: ceasefire
+    noun: ceasefire
+    event_type: Diplomacy
+    priority: 100
+    patterns:
+      en:
+      - \b(ceasefire|truce)\b
+      zh:
+      - (停火|休战|停战)
+  ACT_CLOSES:
+    action_id: CLOSES
+    en: close
+    zh: 关闭
+    past: closed
+    noun: closure
+    event_type: Economic
+    priority: 60
+    patterns:
+      en:
+      - \b(closes?|closed|closure|shuts?|shut\s+down)\b
+      zh:
+      - (关闭|关停|关厂|关闭工厂|停业)
+  ACT_CONFIRMS:
+    action_id: CONFIRMS
+    en: confirm
+    zh: 确认
+    past: confirmed
+    noun: confirmation
+    event_type: Politics
+    priority: 50
+    patterns:
+      en:
+      - \b(confirms?|confirmed|confirmation)\b
+      zh:
+      - (确认|证实)
+  ACT_CONVICTS:
+    action_id: CONVICTS
+    en: convict
+    zh: 定罪
+    past: convicted
+    noun: conviction
+    event_type: Legal
+    priority: 20
+    patterns:
+    - convict
+    - 定罪
+  ACT_CRASHES:
+    action_id: CRASHES
+    en: crash
+    zh: 暴跌/崩盘
+    past: crashed
+    noun: crash
+    event_type: Finance
+    priority: 80
+    patterns:
+      en:
+      - \b(crash(?:es|ed)?|plunge(?:s|d)?|plummets?|tumbles?|slides?|sell.?off)\b
+      zh:
+      - (暴跌|崩盘|大跌|跳水|抛售)
+  ACT_CUTS:
+    action_id: CUTS
+    en: cut
+    zh: 削减
+    past: cut
+    noun: cut
+    event_type: Economic
+    priority: 30
+    patterns:
+      en:
+      - \b(cuts?|reduces?|slashes?|lowers?|drops?)\b
+      zh:
+      - (削减|下调|降低|减少)
+  ACT_CUTS_CAPACITY:
+    action_id: CUTS_CAPACITY
+    en: cut capacity
+    zh: 削减产能
+    past: cut
+    noun: capacity cut
+    event_type: Economic
+    priority: 70
+    patterns:
+      en:
+      - \b(cuts?|reduces?|slashes?)\s+(production\s+)?capacity\b
+      zh:
+      - (削减产能|降低产能|减少产能|产能下调)
+  ACT_CUTS_GUIDANCE:
+    action_id: CUTS_GUIDANCE
+    en: cut guidance
+    zh: 下调指引
+    past: cut
+    noun: guidance cut
+    event_type: Finance
+    priority: 80
+    patterns:
+      en:
+      - \b(cuts?|cut|lowers?|lowered)\s+(guidance|forecast|outlook)\b
+      zh:
+      - (下调|降低).{0,10}(业绩指引|盈利预期|营收预期|预测)
+  ACT_CYBERATTACKS:
+    action_id: CYBERATTACKS
+    en: cyberattack
+    zh: 网络攻击
+    past: hit
+    noun: cyberattack
+    event_type: Cyber
+    priority: 20
+    patterns:
+    - cyberattack
+    - cyber attack
+    - 网络攻击
+  ACT_DATA_BREACH:
+    action_id: DATA_BREACH
+    en: data breach
+    zh: 数据泄露
+    past: leaked
+    noun: data breach
+    event_type: Cyber
+    priority: 20
+    patterns:
+    - data breach
+    - 数据泄露|数据外泄
+  ACT_DEFAULTS:
+    action_id: DEFAULTS
+    en: default
+    zh: 债务违约
+    past: defaulted
+    noun: default
+    event_type: Finance
+    priority: 30
+    patterns:
+    - default.*debt
+    - 债务违约|违约
+  ACT_DELAYS:
+    action_id: DELAYS
+    en: delay
+    zh: 延迟
+    past: delayed
+    noun: delay
+    event_type: Economic
+    priority: 70
+    patterns:
+      en:
+      - \b(delays?|delayed|delay)\b
+      zh:
+      - (延迟|推迟|延期|交付延迟)
+  ACT_DELIVERS:
+    action_id: DELIVERS
+    en: deliver
+    zh: 交付
+    past: delivered
+    noun: delivery
+    event_type: Economic
+    priority: 60
+    patterns:
+      en:
+      - \b(delivers?|delivered|delivery|deliveries)\b
+      zh:
+      - (交付|交货|出货)
+  ACT_DENIES:
+    action_id: DENIES
+    en: deny
+    zh: 否认
+    past: denied
+    noun: denial
+    event_type: Politics
+    priority: 50
+    patterns:
+      en:
+      - \b(denies?|denied|denial)\b
+      zh:
+      - (否认|辟谣)
+  ACT_DEPLOYS:
+    action_id: DEPLOYS
+    en: deploy
+    zh: 部署
+    past: deployed
+    noun: deployment
+    event_type: Military
+    priority: 20
+    patterns:
+    - deploy
+    - 部署
+  ACT_DEPLOYS_TECHNOLOGY:
+    action_id: DEPLOYS_TECHNOLOGY
+    en: deploy technology
+    zh: 部署技术
+    past: deployed
+    noun: technology deployment
+    event_type: Technology
+    priority: 60
+    patterns:
+      en:
+      - \b(deploys?|deployed)\s+(AI|technology|system|model)\b
+      zh:
+      - (部署|落地|应用).{0,10}(AI|人工智能|技术|模型|系统)
+  ACT_DEVALUES:
+    action_id: DEVALUES
+    en: devalue
+    zh: 货币贬值
+    past: devalued
+    noun: devaluation
+    event_type: Economic
+    priority: 30
+    patterns:
+    - devalue
+    - devaluation
+    - 贬值
+  ACT_DEVELOPS:
+    action_id: DEVELOPS
+    en: develop
+    zh: 开发/研发
+    past: developed
+    noun: development
+    event_type: Technology
+    priority: 30
+    patterns:
+      en:
+      - \b(develops?|builds?|creates?|manufactures?)\b
+      zh:
+      - (研发|开发|研制|推出.*技术)
+  ACT_DIES:
+    action_id: DIES
+    en: die
+    zh: 去世
+    past: died
+    noun: death
+    event_type: Leadership
+    priority: 50
+    patterns:
+      en:
+      - \b(dies?|dead|killed?|kills?|killing|deaths?|assassinat(?:ed?|es?|ion)|funerals?|burial|mourns?|mourning)\b
+      zh:
+      - (去世|死亡|遇难|遇刺|遇害|葬礼|悼念)
+  ACT_DISCOVERS:
+    action_id: DISCOVERS
+    en: discover
+    zh: 发现
+    past: discovered
+    noun: discovery
+    event_type: Energy
+    priority: 50
+    patterns:
+      en:
+      - \b(discover(?:s|ed|y))\b
+      zh:
+      - (发现|勘探发现|发现油田|发现气田)
+  ACT_DISRUPTS:
+    action_id: DISRUPTS
+    en: disrupt
+    zh: 中断/扰乱
+    past: disrupted
+    noun: disruption
+    event_type: Economic
+    priority: 80
+    patterns:
+      en:
+      - \b(disrupts?|disrupted|disruption)\b
+      zh:
+      - (中断|中断供应|供应中断|扰乱|供应链中断)
+  ACT_DRILLS:
+    action_id: DRILLS
+    en: drill
+    zh: 钻探
+    past: drilled
+    noun: drilling
+    event_type: Energy
+    priority: 50
+    patterns:
+      en:
+      - \b(drills?|drilled|drilling)\b
+      zh:
+      - (钻探|钻井|开采)
+  ACT_DROPS:
+    action_id: DROPS
+    en: drop
+    zh: 下跌
+    past: dropped
+    noun: drop
+    event_type: Finance
+    priority: 80
+    patterns:
+      en:
+      - \b(drops?|dropped|declines?|declined|falls?)\b
+      zh:
+      - (下跌|下滑|走低)
+  ACT_EARTHQUAKES:
+    action_id: EARTHQUAKES
+    en: earthquake
+    zh: 地震
+    past: shook
+    noun: earthquake
+    event_type: Disaster
+    priority: 20
+    patterns:
+    - earthquake
+    - quake
+    - 地震
+  ACT_ELECTS:
+    action_id: ELECTS
+    en: elect
+    zh: 选举
+    past: elected
+    noun: election
+    event_type: Politics
+    priority: 50
+    patterns:
+      en:
+      - \b(elect(?:s|ed|ion)|votes?|voting|ballot|campaign|candidate)\b
+      zh:
+      - (选举|当选|投票|竞选)
+  ACT_ESCALATES:
+    action_id: ESCALATES
+    en: escalate
+    zh: 升级(冲突)
+    past: escalated
+    noun: escalation
+    event_type: Military
+    priority: 70
+    patterns:
+      en:
+      - \b(escalates?|escalation|escalated)\b
+      zh:
+      - (升级|加剧)
+  ACT_EVACUATES:
+    action_id: EVACUATES
+    en: evacuate
+    zh: 撤离
+    past: evacuated
+    noun: evacuation
+    event_type: Disaster
+    priority: 20
+    patterns:
+    - evacuat
+    - 撤离|疏散
+  ACT_EXPANDS:
+    action_id: EXPANDS
+    en: expand
+    zh: 扩张/扩产
+    past: expanded
+    noun: expansion
+    event_type: Economic
+    priority: 60
+    patterns:
+      en:
+      - \b(expands?|expanded|expansion|scales? up|scale-up)\b
+      zh:
+      - (扩张|扩产|扩大产能|扩大生产|扩建)
+  ACT_EXPANDS_CAPACITY:
+    action_id: EXPANDS_CAPACITY
+    en: expand capacity
+    zh: 扩大产能
+    past: expanded
+    noun: capacity expansion
+    event_type: Economic
+    priority: 70
+    patterns:
+      en:
+      - \b(expands?|expanded|increases?)\s+(production\s+)?capacity\b
+      zh:
+      - (扩大产能|增加产能|提升产能|产能扩张)
+  ACT_EXPECTS:
+    action_id: EXPECTS
+    en: expect
+    zh: 预计
+    past: expected
+    noun: expectation
+    event_type: Economic
+    priority: 50
+    patterns:
+      en:
+      - \b(expects?|expected|expectation)\b
+      zh:
+      - (预计|预期|料将|预计将)
+  ACT_EXPELLS:
+    action_id: EXPELLS
+    en: expel
+    zh: 驱逐
+    past: expelled
+    noun: expulsion
+    event_type: Diplomacy
+    priority: 50
+    patterns:
+      en:
+      - \b(expels?|expelled|expulsion|deports?|deported)\b
+      zh:
+      - (驱逐|遣返)
+  ACT_EXPORT_CONTROL:
+    action_id: EXPORT_CONTROL
+    en: export control
+    zh: 出口管制
+    past: restricted
+    noun: export control
+    event_type: Technology
+    priority: 100
+    patterns:
+      en:
+      - \b(export\s+control|restrict.*export|ban.*(chip|export)|chip\s+restriction|semiconductor)\b
+      zh:
+      - (出口管制|限制出口|芯片禁令|半导体.*管制)
+  ACT_FINES:
+    action_id: FINES
+    en: fine
+    zh: 罚款
+    past: fined
+    noun: fine
+    event_type: Legal
+    priority: 20
+    patterns:
+    - \bfine
+    - penalt
+    - 罚款|处罚
+  ACT_FIRES:
+    action_id: FIRES
+    en: fire
+    zh: 解雇
+    past: fired
+    noun: firing
+    event_type: Leadership
+    priority: 50
+    patterns:
+      en:
+      - \b(fires?|fired|firing|sacked)\b
+      zh:
+      - (解雇|开除|免职)
+  ACT_FIRES_MISSILES:
+    action_id: FIRES_MISSILES
+    en: fire missiles
+    zh: 发射导弹
+    past: fired
+    noun: missile launch
+    event_type: Military
+    priority: 100
+    patterns:
+      en:
+      - \b(fires?|fired|launches?)\s+(missiles?|rockets?)\b
+      zh:
+      - (发射|射出).{0,10}(导弹|火箭弹)
+  ACT_FLOODS:
+    action_id: FLOODS
+    en: flood
+    zh: 洪水
+    past: flooded
+    noun: flood
+    event_type: Disaster
+    priority: 20
+    patterns:
+    - flood
+    - 洪水|洪灾
+  ACT_FORECASTS:
+    action_id: FORECASTS
+    en: forecast
+    zh: 预测
+    past: forecast
+    noun: forecast
+    event_type: Economic
+    priority: 50
+    patterns:
+      en:
+      - \b(forecasts?|forecast|projects?|projected)\b
+      zh:
+      - (预测|预估|预计|展望)
+  ACT_FUNDS:
+    action_id: FUNDS
+    en: fund
+    zh: 投资/融资
+    past: funded
+    noun: funding
+    event_type: Economic
+    priority: 30
+    patterns:
+      en:
+      - \b(funds?|funding|invests?|investment|financ(?:es?|ing)|grant)\b
+      zh:
+      - (投资|注资|融资|拨款|基金)
+  ACT_GROWS:
+    action_id: GROWS
+    en: grow
+    zh: 增长
+    past: grew
+    noun: growth
+    event_type: Economic
+    priority: 30
+    patterns:
+      en:
+      - \b(grows?|grew|growth)\b
+      zh:
+      - (增长|扩大)
+  ACT_HACKS:
+    action_id: HACKS
+    en: hack
+    zh: 黑客攻击
+    past: hacked
+    noun: hack
+    event_type: Cyber
+    priority: 30
+    patterns:
+      en:
+      - \b(hacks?|hacked|hacking|breached|breach)\b
+      zh:
+      - (黑客|入侵|攻破)
+  ACT_HALTS_PRODUCTION:
+    action_id: HALTS_PRODUCTION
+    en: halt production
+    zh: 停产
+    past: halted
+    noun: production halt
+    event_type: Economic
+    priority: 80
+    patterns:
+      en:
+      - \b(halts?|halted|stops?|stopped|suspends?)\s+production\b
+      zh:
+      - (停产|停止生产|暂停生产|生产中断)
+  ACT_HURRICANES:
+    action_id: HURRICANES
+    en: hurricane
+    zh: 飓风
+    past: hit
+    noun: hurricane
+    event_type: Disaster
+    priority: 20
+    patterns:
+    - hurricane
+    - typhoon
+    - 飓风|台风
+  ACT_IMPOSES:
+    action_id: IMPOSES
+    en: impose
+    zh: 实施
+    past: imposed
+    noun: imposition
+    event_type: Politics
+    priority: 70
+    patterns:
+      en:
+      - \b(imposes?|imposed|imposition)\b
+      zh:
+      - (实施|施加|实行|加征)
+  ACT_INCREASES_PRODUCTION:
+    action_id: INCREASES_PRODUCTION
+    en: increase production
+    zh: 增产
+    past: increased
+    noun: production increase
+    event_type: Energy
+    priority: 60
+    patterns:
+      en:
+      - \b(increases?|increased|raises?)\s+(oil|gas|energy|production)\b
+      zh:
+      - (增产|增加产量|提高产量)
+  ACT_INDICTS:
+    action_id: INDICTS
+    en: indict
+    zh: 刑事起诉
+    past: indicted
+    noun: indictment
+    event_type: Legal
+    priority: 90
+    patterns:
+      en:
+      - \b(indicts?|indictment|indicted)\b
+      zh:
+      - (控告|刑事起诉)
+  ACT_INTERCEPTS:
+    action_id: INTERCEPTS
+    en: intercept
+    zh: 拦截
+    past: intercepted
+    noun: interception
+    event_type: Military
+    priority: 80
+    patterns:
+      en:
+      - \b(intercepts?|intercepted|interception)\b
+      zh:
+      - (拦截|截击|拦截导弹|拦截无人机)
+  ACT_INVADES:
+    action_id: INVADES
+    en: invade
+    zh: 入侵
+    past: invaded
+    noun: invasion
+    event_type: Military
+    priority: 100
+    patterns:
+      en:
+      - \b(invades?|invaded|invasion)\b
+      zh:
+      - (入侵|占领)
+  ACT_INVESTIGATES:
+    action_id: INVESTIGATES
+    en: investigate
+    zh: 调查
+    past: investigated
+    noun: investigation
+    event_type: Legal
+    priority: 30
+    patterns:
+      en:
+      - \b(investigates?|investigated|investigation|probe|probes?)\b
+      zh:
+      - (调查|侦查)
+  ACT_IPO:
+    action_id: IPO
+    en: IPO
+    zh: 上市
+    past: IPO'd
+    noun: IPO
+    event_type: Finance
+    priority: 80
+    patterns:
+      en:
+      - \b(ipo|initial public offering|listings?)\b
+      zh:
+      - (上市|首次公开募股)
+  ACT_ISSUES:
+    action_id: ISSUES
+    en: issue
+    zh: 发行
+    past: issued
+    noun: issuance
+    event_type: Finance
+    priority: 30
+    patterns:
+    - \bissue.*(bond|stock|debt)
+    - 发行.*(债券|股票)
+  ACT_ISSUES_DEBT:
+    action_id: ISSUES_DEBT
+    en: issue debt
+    zh: 发债
+    past: issued
+    noun: debt issuance
+    event_type: Finance
+    priority: 60
+    patterns:
+      en:
+      - \b(issues?|issued)\s+(debt|bonds?)\b
+      zh:
+      - (发债|发行债券|发行债务)
+  ACT_LANDS:
+    action_id: LANDS
+    en: land
+    zh: 着陆/登陆
+    past: landed
+    noun: landing
+    event_type: Space
+    priority: 20
+    patterns:
+    - land.*(moon|mars|rover)
+    - landing
+    - 着陆|登陆
+  ACT_LAUNCHES:
+    action_id: LAUNCHES
+    en: launch
+    zh: 推出/发射
+    past: launched
+    noun: launch
+    event_type: Technology
+    priority: 80
+    patterns:
+      en:
+      - \b(launches?|launched|launching)\b
+      zh:
+      - (推出|发布|发射)
+  ACT_LAYS_OFF:
+    action_id: LAYS_OFF
+    en: lay off
+    zh: 裁员
+    past: laid off
+    noun: layoffs
+    event_type: Economic
+    priority: 70
+    patterns:
+      en:
+      - \b(lays?|laid)\s+off\b
+      - \blayoffs?\b
+      - \bjob\s+cuts?\b
+      zh:
+      - (裁员|人员削减|岗位削减|大规模裁员)
+  ACT_LIFTS:
+    action_id: LIFTS
+    en: lift
+    zh: 解除
+    past: lifted
+    noun: lifting
+    event_type: Politics
+    priority: 70
+    patterns:
+      en:
+      - \b(lifts?|lifted)\s+(sanctions?|ban|restrictions?|tariffs?)\b
+      zh:
+      - (解除|取消|撤销).{0,10}(制裁|禁令|限制|关税)
+  ACT_LIQUIDATES:
+    action_id: LIQUIDATES
+    en: liquidate
+    zh: 清算
+    past: liquidated
+    noun: liquidation
+    event_type: Finance
+    priority: 30
+    patterns:
+    - liquidat
+    - 清算
+  ACT_LOSES_CONTRACT:
+    action_id: LOSES_CONTRACT
+    en: lose contract
+    zh: 失去合同
+    past: lost
+    noun: contract loss
+    event_type: Economic
+    priority: 80
+    patterns:
+      en:
+      - \b(loses?|lost|loses out on)\s+(a\s+)?(contract|deal|order)\b
+      zh:
+      - (失去|丢失|丧失|未能获得).{0,20}(合同|订单|大单)
+  ACT_LOSSES:
+    action_id: LOSSES
+    en: loss
+    zh: 亏损
+    past: lost
+    noun: loss
+    event_type: Finance
+    priority: 60
+    patterns:
+      en:
+      - \b(loss|losses?|net\s+loss)\b
+      zh:
+      - (亏损|净亏损|经营亏损)
+  ACT_MEETS:
+    action_id: MEETS
+    en: meet
+    zh: 会面
+    past: met
+    noun: meeting
+    event_type: Diplomacy
+    priority: 70
+    patterns:
+      en:
+      - \b(meets?|met\b|summit)\b
+      zh:
+      - (会面|见面|会晤)
+  ACT_MERGES:
+    action_id: MERGES
+    en: merge
+    zh: 合并
+    past: merged
+    noun: merger
+    event_type: Finance
+    priority: 80
+    patterns:
+      en:
+      - \b(merges?|merged|merger)\b
+      zh:
+      - (合并|并购)
+  ACT_MISSES_ESTIMATES:
+    action_id: MISSES_ESTIMATES
+    en: miss estimates
+    zh: 不及预期
+    past: missed
+    noun: earnings miss
+    event_type: Finance
+    priority: 80
+    patterns:
+      en:
+      - \b(misses?|missed|falls?\s+short\s+of)\s+(estimates?|expectations?)\b
+      zh:
+      - (不及预期|低于预期|业绩不及预期)
+  ACT_MOBILIZES:
+    action_id: MOBILIZES
+    en: mobilize
+    zh: 动员
+    past: mobilized
+    noun: mobilization
+    event_type: Military
+    priority: 80
+    patterns:
+      en:
+      - \b(mobilizes?|mobilized|mobilization)\b
+      zh:
+      - (动员|军事动员|总动员)
+  ACT_NATIONALIZES:
+    action_id: NATIONALIZES
+    en: nationalize
+    zh: 国有化
+    past: nationalized
+    noun: nationalization
+    event_type: Economic
+    priority: 30
+    patterns:
+    - nationaliz
+    - 国有化
+  ACT_NEGOTIATES:
+    action_id: NEGOTIATES
+    en: negotiate
+    zh: 谈判
+    past: negotiated
+    noun: negotiation
+    event_type: Diplomacy
+    priority: 70
+    patterns:
+      en:
+      - \b(talks?|negotiat(?:es?|ion)|diploma(?:cy|tic))\b
+      zh:
+      - (会谈|谈判|磋商|会晤|对话)
+  ACT_OPEN_SOURCES:
+    action_id: OPEN_SOURCES
+    en: open source
+    zh: 开源
+    past: open sourced
+    noun: open source release
+    event_type: Technology
+    priority: 60
+    patterns:
+      en:
+      - \b(open[-\s]?sources?|open[-\s]?sourced)\b
+      zh:
+      - (开源|开放源代码)
+  ACT_ORBITS:
+    action_id: ORBITS
+    en: orbit
+    zh: 入轨
+    past: entered
+    noun: orbit
+    event_type: Space
+    priority: 20
+    patterns:
+    - orbit
+    - 入轨
+  ACT_OUTBREAKS:
+    action_id: OUTBREAKS
+    en: outbreak
+    zh: 疫情爆发
+    past: spread
+    noun: outbreak
+    event_type: Healthcare
+    priority: 20
+    patterns:
+    - outbreak
+    - pandemic
+    - 疫情|爆发|大流行
+  ACT_PARTNERS:
+    action_id: PARTNERS
+    en: partner
+    zh: 合作
+    past: partnered
+    noun: partnership
+    event_type: Economic
+    priority: 60
+    patterns:
+      en:
+      - \b(partners?|partnered|partnership|collaborates?|collaboration)\b
+      zh:
+      - (合作|达成合作|战略合作|建立合作关系)
+  ACT_PATENTS:
+    action_id: PATENTS
+    en: patent
+    zh: 专利
+    past: patented
+    noun: patent
+    event_type: Technology
+    priority: 30
+    patterns:
+    - patent
+    - 专利
+  ACT_PAYS_DIVIDEND:
+    action_id: PAYS_DIVIDEND
+    en: pay dividend
+    zh: 分红
+    past: paid
+    noun: dividend
+    event_type: Finance
+    priority: 60
+    patterns:
+      en:
+      - \b(dividend|dividends?|pays?\s+dividend)\b
+      zh:
+      - (分红|派息|股息)
+  ACT_PEACE_DEAL:
+    action_id: PEACE_DEAL
+    en: peace deal
+    zh: 和平协议
+    past: reached
+    noun: peace deal
+    event_type: Diplomacy
+    priority: 70
+    patterns:
+      en:
+      - \b(peace\s+deal|peace\s+agreement|peace\s+treaty)\b
+      zh:
+      - (和平协议|和平条约|和平协定)
+  ACT_PRODUCTION_CUT:
+    action_id: PRODUCTION_CUT
+    en: production cut
+    zh: 减产
+    past: cut
+    noun: production cut
+    event_type: Energy
+    priority: 20
+    patterns:
+    - cut.*production
+    - production cut
+    - 减产
+  ACT_PROFITS:
+    action_id: PROFITS
+    en: profit
+    zh: 盈利
+    past: profited
+    noun: profit
+    event_type: Finance
+    priority: 50
+    patterns:
+      en:
+      - \b(profit|profits?|profitable|net\s+income)\b
+      zh:
+      - (盈利|净利润|利润|实现盈利)
+  ACT_PROTESTS:
+    action_id: PROTESTS
+    en: protest
+    zh: 抗议
+    past: protested
+    noun: protest
+    event_type: Politics
+    priority: 30
+    patterns:
+      en:
+      - \b(protests?|protested|protesters?|demonstrations?|demonstrators?)\b
+      zh:
+      - (抗议|示威)
+  ACT_PURCHASES:
+    action_id: PURCHASES
+    en: purchase
+    zh: 采购
+    past: purchased
+    noun: purchase
+    event_type: Economic
+    priority: 60
+    patterns:
+      en:
+      - \b(purchases?|purchased|procures?|procurement)\b
+      zh:
+      - (采购|购买|购入|订购)
+  ACT_RAISES_CAPITAL:
+    action_id: RAISES_CAPITAL
+    en: raise capital
+    zh: 融资
+    past: raised
+    noun: capital raise
+    event_type: Finance
+    priority: 60
+    patterns:
+      en:
+      - \b(raises?|raised)\s+(capital|funds?)\b
+      zh:
+      - (融资|募资|筹资|募集资金)
+  ACT_RAISES_GUIDANCE:
+    action_id: RAISES_GUIDANCE
+    en: raise guidance
+    zh: 上调指引
+    past: raised
+    noun: guidance raise
+    event_type: Finance
+    priority: 80
+    patterns:
+      en:
+      - \b(raises?|raised|upgrades?)\s+(guidance|forecast|outlook)\b
+      zh:
+      - (上调|提高).{0,10}(业绩指引|盈利预期|营收预期|预测)
+  ACT_RANSOMWARE:
+    action_id: RANSOMWARE
+    en: ransomware
+    zh: 勒索软件
+    past: targeted
+    noun: ransomware
+    event_type: Cyber
+    priority: 20
+    patterns:
+    - ransomware
+    - 勒索软件
+  ACT_RATE_CUT:
+    action_id: RATE_CUT
+    en: rate cut
+    zh: 降息
+    past: cut
+    noun: rate cut
+    event_type: Finance
+    priority: 90
+    patterns:
+      en:
+      - \b(cuts?\s+(interest\s+)?rates?|lowers?\s+(interest\s+)?rates?|rate\s+cut)\b
+      zh:
+      - (降息|下调利率|减息)
+  ACT_RATE_HIKE:
+    action_id: RATE_HIKE
+    en: rate hike
+    zh: 加息
+    past: hiked
+    noun: rate hike
+    event_type: Finance
+    priority: 90
+    patterns:
+      en:
+      - \b(raises?\s+(interest\s+)?rates?|hikes?\s+(interest\s+)?rates?|rate\s+hike)\b
+      zh:
+      - (加息|上调利率)
+  ACT_RECALLS:
+    action_id: RECALLS
+    en: recall
+    zh: 召回
+    past: recalled
+    noun: recall
+    event_type: Technology
+    priority: 30
+    patterns:
+    - recall
+    - 召回
+  ACT_RECEIVES_ORDERS:
+    action_id: RECEIVES_ORDERS
+    en: receive orders
+    zh: 获得订单
+    past: received
+    noun: order
+    event_type: Economic
+    priority: 80
+    patterns:
+      en:
+      - \b(receives?|received|books?|booked)\s+(orders?|orders? worth)\b
+      zh:
+      - (获得|收到|接获|斩获).{0,20}(订单|订购)
+  ACT_RECOGNIZES:
+    action_id: RECOGNIZES
+    en: recognize
+    zh: 承认
+    past: recognized
+    noun: recognition
+    event_type: Diplomacy
+    priority: 50
+    patterns:
+    - recognize.*as
+    - recognition
+    - 承认.*独立
+  ACT_RECONCILES:
+    action_id: RECONCILES
+    en: reconcile
+    zh: 和解/缓和
+    past: reconciled
+    noun: reconciliation
+    event_type: Diplomacy
+    priority: 60
+    patterns:
+      en:
+      - \b(reconciles?|reconciled|reconciliation)\b
+      zh:
+      - (和解|缓和关系|关系改善)
+  ACT_RECOVERS:
+    action_id: RECOVERS
+    en: recover
+    zh: 反弹/恢复
+    past: recovered
+    noun: recovery
+    event_type: Finance
+    priority: 60
+    patterns:
+      en:
+      - \b(recovers?|recovered|recovery|rebounds?|rebounded)\b
+      zh:
+      - (反弹|回升|恢复|收复)
+  ACT_REJECTS:
+    action_id: REJECTS
+    en: reject
+    zh: 拒绝
+    past: rejected
+    noun: rejection
+    event_type: Diplomacy
+    priority: 60
+    patterns:
+      en:
+      - \b(rejects?|rejected|refuses?|refused)\b
+      zh:
+      - (拒绝|驳回|不接受)
+  ACT_RELAXES:
+    action_id: RELAXES
+    en: relax
+    zh: 放宽
+    past: relaxed
+    noun: relaxation
+    event_type: Economic
+    priority: 60
+    patterns:
+      en:
+      - \b(relaxes?|relaxed|eases?|eased|loosens?|loosened)\b
+      zh:
+      - (放宽|放松|解除限制|放松管制)
+  ACT_RELEASES:
+    action_id: RELEASES
+    en: release
+    zh: 释放
+    past: released
+    noun: release
+    event_type: Politics
+    priority: 20
+    patterns:
+    - release.*(prisoner|hostage)
+    - 释放.*(囚犯|人质)
+  ACT_REPORTS:
+    action_id: REPORTS
+    en: report
+    zh: 财报/业绩
+    past: reported
+    noun: report
+    event_type: Finance
+    priority: 80
+    patterns:
+      en:
+      - \b(reports?|earnings|revenue|profit|quarterly|fiscal)\b
+      zh:
+      - (财报|营收|利润|季度|业绩|收入)
+  ACT_RESCUES:
+    action_id: RESCUES
+    en: rescue
+    zh: 救援
+    past: rescued
+    noun: rescue
+    event_type: Disaster
+    priority: 20
+    patterns:
+    - rescue
+    - 救援|搜救
+  ACT_RESIGNS:
+    action_id: RESIGNS
+    en: resign
+    zh: 辞职
+    past: resigned
+    noun: resignation
+    event_type: Leadership
+    priority: 50
+    patterns:
+      en:
+      - \b(resigns?|steps?\s+down|quits?|leaves?\s+office)\b
+      zh:
+      - (辞职|卸任|离职)
+  ACT_RESTORES_RELATIONS:
+    action_id: RESTORES_RELATIONS
+    en: restore relations
+    zh: 恢复关系
+    past: restored
+    noun: restoration of relations
+    event_type: Diplomacy
+    priority: 70
+    patterns:
+      en:
+      - \b(restores?|restored)\s+(diplomatic\s+)?relations\b
+      zh:
+      - (恢复外交关系|恢复关系|重建关系)
+  ACT_RESTRUCTURES:
+    action_id: RESTRUCTURES
+    en: restructure
+    zh: 重组
+    past: restructured
+    noun: restructuring
+    event_type: Economic
+    priority: 60
+    patterns:
+      en:
+      - \b(restructures?|restructured|restructuring)\b
+      zh:
+      - (重组|业务重组|组织重组|战略重组)
+  ACT_RETALIATES:
+    action_id: RETALIATES
+    en: retaliate
+    zh: 反击
+    past: retaliated
+    noun: retaliation
+    event_type: Military
+    priority: 90
+    patterns:
+      en:
+      - \b(retaliates?|retaliated|retaliation|retaliatory)\b
+      zh:
+      - (反击|报复|反制|还击)
+  ACT_RULES:
+    action_id: RULES
+    en: rule
+    zh: 裁定
+    past: ruled
+    noun: ruling
+    event_type: Legal
+    priority: 70
+    patterns:
+      en:
+      - \b(rules?|ruled|ruling)\b
+      zh:
+      - (裁定|判定|裁决)
+  ACT_SANCTIONS:
+    action_id: SANCTIONS
+    en: sanction
+    zh: 制裁
+    past: sanctioned
+    noun: sanction
+    event_type: Economic
+    priority: 100
+    patterns:
+      en:
+      - \b(sanctions?|embargo|blacklist)\b
+      zh:
+      - (制裁|禁运|拉黑)
+  ACT_SEIZES:
+    action_id: SEIZES
+    en: seize
+    zh: 夺取/扣押
+    past: seized
+    noun: seizure
+    event_type: Military
+    priority: 100
+    patterns:
+      en:
+      - \b(seizes?|seized|seizure|confiscates?)\b
+      zh:
+      - (夺取|扣押|没收)
+  ACT_SELLS_OFF:
+    action_id: SELLS_OFF
+    en: sell off
+    zh: 抛售
+    past: sold off
+    noun: sell-off
+    event_type: Finance
+    priority: 70
+    patterns:
+      en:
+      - \b(sells?\s+off|sold\s+off|sell-off)\b
+      zh:
+      - (抛售|遭抛售|集中抛售)
+  ACT_SENTENCES:
+    action_id: SENTENCES
+    en: sentence
+    zh: 判刑
+    past: sentenced
+    noun: sentence
+    event_type: Legal
+    priority: 70
+    patterns:
+      en:
+      - \b(sentences?|sentenced|sentencing)\b
+      zh:
+      - (判刑|判处|判决)
+  ACT_SETTLES:
+    action_id: SETTLES
+    en: settle
+    zh: 和解
+    past: settled
+    noun: settlement
+    event_type: Legal
+    priority: 20
+    patterns:
+    - settle
+    - settlement
+    - 和解
+  ACT_SHIPS:
+    action_id: SHIPS
+    en: ship
+    zh: 出货
+    past: shipped
+    noun: shipment
+    event_type: Economic
+    priority: 60
+    patterns:
+      en:
+      - \b(ships?|shipped|shipment|shipments)\b
+      zh:
+      - (出货|发货|装运)
+  ACT_SIGNS:
+    action_id: SIGNS
+    en: sign
+    zh: 签署
+    past: signed
+    noun: signing
+    event_type: Diplomacy
+    priority: 70
+    patterns:
+      en:
+      - \b(signs?|inked)\b
+      zh:
+      - (签署|签字)
+  ACT_SIGNS_CONTRACT:
+    action_id: SIGNS_CONTRACT
+    en: sign contract
+    zh: 签订合同
+    past: signed
+    noun: contract signing
+    event_type: Economic
+    priority: 70
+    patterns:
+      en:
+      - \b(signs?|signed|inks?|inked)\s+(a\s+)?(contract|agreement|deal)\b
+      zh:
+      - (签署|签订|达成).{0,20}(合同|协议|订单)
+  ACT_SPINS_OFF:
+    action_id: SPINS_OFF
+    en: spin off
+    zh: 分拆
+    past: spun off
+    noun: spin-off
+    event_type: Finance
+    priority: 60
+    patterns:
+      en:
+      - \b(spins?|spun)\s+off\b
+      - \bspin-off\b
+      zh:
+      - (分拆|拆分|业务分拆|资产剥离)
+  ACT_STARTS_PRODUCTION:
+    action_id: STARTS_PRODUCTION
+    en: start production
+    zh: 开始生产/量产
+    past: started
+    noun: production start
+    event_type: Economic
+    priority: 70
+    patterns:
+      en:
+      - \b(starts?|started|begins?|began)\s+(mass\s+)?production\b
+      zh:
+      - (开始生产|开始量产|正式量产|进入量产|投产)
+  ACT_STRIKES:
+    action_id: STRIKES
+    en: strike
+    zh: 打击/空袭
+    past: struck
+    noun: strike
+    event_type: Military
+    priority: 100
+    patterns:
+    - \bstrike
+    - struck
+    - 空袭|打击
+  ACT_SUBSIDIZES:
+    action_id: SUBSIDIZES
+    en: subsidize
+    zh: 补贴
+    past: subsidized
+    noun: subsidy
+    event_type: Economic
+    priority: 30
+    patterns:
+    - subsidiz
+    - subsidy
+    - 补贴
+  ACT_SUCCEEDS:
+    action_id: SUCCEEDS
+    en: succeed
+    zh: 接任
+    past: succeeded
+    noun: succession
+    event_type: Leadership
+    priority: 50
+    patterns:
+      en:
+      - \b(succeeds?\s+.*as|succeeded.*as|take\s+over.*role)\b
+      zh:
+      - (接任|继任)
+  ACT_SUES:
+    action_id: SUES
+    en: sue
+    zh: 起诉
+    past: sued
+    noun: lawsuit
+    event_type: Legal
+    priority: 90
+    patterns:
+      en:
+      - \b(sues?|suing|lawsuit|litigation|files?\s+(a\s+)?lawsuit|complaint|trade\s+secret)\b
+      zh:
+      - (起诉|诉讼|控告|指控|提起.*诉讼)
+  ACT_SUPPLIES:
+    action_id: SUPPLIES
+    en: supply
+    zh: 供应
+    past: supplied
+    noun: supply
+    event_type: Economic
+    priority: 50
+    patterns:
+      en:
+      - \b(supplies?|supplied|supplier|supplies to)\b
+      zh:
+      - (供应|供货|提供.{0,10}(产品|零部件|芯片|设备))
+  ACT_SURGES:
+    action_id: SURGES
+    en: surge
+    zh: 上涨/飙升
+    past: surged
+    noun: surge
+    event_type: Finance
+    priority: 80
+    patterns:
+      en:
+      - \b(surges?|soars?|jumps?|rall(?:y|ies|ied)|climbs?|rises?|record\s+high)\b
+      zh:
+      - (上涨|飙升|大涨|创新高|反弹)
+  ACT_SUSPENDS:
+    action_id: SUSPENDS
+    en: suspend
+    zh: 暂停/停职
+    past: suspended
+    noun: suspension
+    event_type: Legal
+    priority: 20
+    patterns:
+    - suspend
+    - 暂停|停职
+  ACT_TARIFFS:
+    action_id: TARIFFS
+    en: tariff
+    zh: 关税
+    past: tariffed
+    noun: tariff
+    event_type: Economic
+    priority: 100
+    patterns:
+      en:
+      - \b(tariffs?|trade\s+war|import\s+duty)\b
+      zh:
+      - (关税|贸易战|进口关税)
+  ACT_TRADES:
+    action_id: TRADES
+    en: trade
+    zh: 交易
+    past: traded
+    noun: trading
+    event_type: Finance
+    priority: 30
+    patterns:
+      en:
+      - \b(trades?|traded|trading)\b
+      zh:
+      - (交易|成交)
+  ACT_TRAINS:
+    action_id: TRAINS
+    en: train
+    zh: 训练
+    past: trained
+    noun: training
+    event_type: Technology
+    priority: 50
+    patterns:
+      en:
+      - \b(trains?|trained|training)\s+(AI|model|models?)\b
+      zh:
+      - (训练|预训练|模型训练).{0,10}(AI|模型|大模型)
+  ACT_UNVEILS:
+    action_id: UNVEILS
+    en: unveil
+    zh: 揭晓/发布
+    past: unveiled
+    noun: unveiling
+    event_type: Technology
+    priority: 70
+    patterns:
+      en:
+      - \b(unveils?|unveiled|introduces?|introduced)\b
+      zh:
+      - (揭晓|亮相|发布新品|推出新品)
+  ACT_VETOES:
+    action_id: VETOES
+    en: veto
+    zh: 否决
+    past: vetoed
+    noun: veto
+    event_type: Politics
+    priority: 50
+    patterns:
+      en:
+      - \b(veto(?:es|ed)?)\b
+      zh:
+      - (否决)
+  ACT_VISITS:
+    action_id: VISITS
+    en: visit
+    zh: 访问
+    past: visited
+    noun: visit
+    event_type: Diplomacy
+    priority: 70
+    patterns:
+      en:
+      - \b(visits?|visited|visiting)\b
+      zh:
+      - (访问|出访|到访)
+  ACT_WARNS:
+    action_id: WARNS
+    en: warn
+    zh: 警告
+    past: warned
+    noun: warning
+    event_type: Politics
+    priority: 50
+    patterns:
+      en:
+      - \b(warns?|cautions?|alerts?|advises?|threatens?\s+to)\b
+      zh:
+      - (警告|警示|提醒|威胁)
+  ACT_WILDFIRES:
+    action_id: WILDFIRES
+    en: wildfire
+    zh: 野火
+    past: burned
+    noun: wildfire
+    event_type: Disaster
+    priority: 20
+    patterns:
+    - wildfire
+    - forest fire
+    - 野火|山火
+  ACT_WINS_CONTRACT:
+    action_id: WINS_CONTRACT
+    en: win contract
+    zh: 获得合同/赢得订单
+    past: won
+    noun: contract win
+    event_type: Economic
+    priority: 80
+    patterns:
+      en:
+      - \b(wins?|won|secures?|secured|lands?)\s+(a\s+)?(major\s+)?(contract|deal|order)\b
+      zh:
+      - (获得|赢得|拿下|斩获).{0,20}(合同|订单|大单)
+  ACT_WITHDRAWS:
+    action_id: WITHDRAWS
+    en: withdraw
+    zh: 撤军
+    past: withdrew
+    noun: withdrawal
+    event_type: Military
+    priority: 20
+    patterns:
+    - withdraw.*(troop|force)
+    - 撤军|撤出

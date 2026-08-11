@@ -1,0 +1,455 @@
+# Entity Alias — Knowledge Base V1 (curated, 中英别名→Entity ID)
+version: '0.1'
+generated: '2026-08-05'
+aliases:
+  ORG_BANK_OF_ENGLAND:
+    canonical: Bank of England
+    aliases:
+    - BOE
+    - BoE
+  CTRY_CHINA:
+    canonical: China
+    aliases:
+    - PRC
+    - Mainland China
+  ORG_EUROPEAN_UNION:
+    canonical: European Union
+    aliases:
+    - EU
+  PERS_MACRON:
+    canonical: Macron
+    aliases:
+    - Emmanuel Macron
+    - 马克龙
+  PERS_MODI:
+    canonical: Modi
+    aliases:
+    - Narendra Modi
+    - 莫迪
+  PERS_MUSK:
+    canonical: Musk
+    aliases:
+    - Elon Musk
+    - 马斯克
+    - 马斯克
+  PERS_NETANYAHU:
+    canonical: Netanyahu
+    aliases:
+    - Benjamin Netanyahu
+    - 内塔尼亚胡
+  PERS_PUTIN:
+    canonical: Putin
+    aliases:
+    - Vladimir Putin
+    - 普京
+    - President Putin
+    - 普金
+    - 普京
+  CTRY_RUSSIAN_FEDERATION:
+    canonical: Russian Federation
+    aliases:
+    - Russia
+    - Russian
+  CTRY_SAM_ALTMAN:
+    canonical: Sam Altman
+    aliases:
+    - 奥特曼
+  PERS_SCHOLZ:
+    canonical: Scholz
+    aliases:
+    - Olaf Scholz
+    - 朔尔茨
+  PERS_STARMER:
+    canonical: Starmer
+    aliases:
+    - Keir Starmer
+    - 斯塔默
+  CTRY_TAKAICHI_SANAE:
+    canonical: Takaichi Sanae
+    aliases:
+    - 高市早苗
+  CTRY_TIM_COOK:
+    canonical: Tim Cook
+    aliases:
+    - 库克
+  PERS_TRUMP:
+    canonical: Trump
+    aliases:
+    - Donald Trump
+    - 特朗普
+    - 川普
+    - President Trump
+    - 川普
+    - 川建国
+  ORG_UNITED_NATIONS:
+    canonical: United Nations
+    aliases:
+    - UN
+    - 联合国
+  CTRY_UNITED_STATES:
+    canonical: United States
+    aliases:
+    - US
+    - USA
+    - U.S.
+    - America
+  ORG_WORLD_TRADE_ORGANIZATION:
+    canonical: World Trade Organization
+    aliases:
+    - WTO
+  PERS_XI:
+    canonical: Xi
+    aliases:
+    - Xi Jinping
+    - 习近平
+    - 习主席
+    - 习近平
+  PERS_ZELENSKY:
+    canonical: Zelensky
+    aliases:
+    - Volodymyr Zelensky
+    - 泽连斯基
+    - Zelenskyy
+  CTRY_USA:
+    canonical: United States
+    aliases:
+    - 美国
+    - 美利坚
+    - 美利坚合众国
+    - United States
+    - United States of America
+  CTRY_CHN:
+    canonical: ''
+    aliases:
+    - 中国
+    - 中华人民共和国
+  CTRY_RUS:
+    canonical: ''
+    aliases:
+    - 俄罗斯
+    - 俄国
+  CTRY_IRN:
+    canonical: ''
+    aliases:
+    - 伊朗
+    - Iran
+    - Islamic Republic of Iran
+    - Tehran
+  CTRY_ISR:
+    canonical: ''
+    aliases:
+    - 以色列
+  CTRY_UKR:
+    canonical: ''
+    aliases:
+    - 乌克兰
+  CTRY_GBR:
+    canonical: ''
+    aliases:
+    - 英国
+    - 大不列颠
+    - 联合王国
+    - United Kingdom
+  CTRY_FRA:
+    canonical: ''
+    aliases:
+    - 法国
+  CTRY_DEU:
+    canonical: ''
+    aliases:
+    - 德国
+  CTRY_JPN:
+    canonical: ''
+    aliases:
+    - 日本
+  CTRY_IND:
+    canonical: ''
+    aliases:
+    - 印度
+  CTRY_KOR:
+    canonical: ''
+    aliases:
+    - 韩国
+    - 南韩
+    - South Korea
+    - 大韩民国
+  CTRY_TWN:
+    canonical: ''
+    aliases:
+    - 台湾
+    - Taiwan
+  CTRY_SAU:
+    canonical: ''
+    aliases:
+    - 沙特
+    - 沙特阿拉伯
+  CTRY_NLD:
+    canonical: ''
+    aliases:
+    - 荷兰
+  PERS_HUANG:
+    canonical: ''
+    aliases:
+    - 老黄
+    - 黄仁勋
+  PERS_ALTMAN:
+    canonical: ''
+    aliases:
+    - 奥特曼
+    - 奥尔特曼
+  COMP_NVIDIA:
+    canonical: ''
+    aliases:
+    - 英伟达
+  COMP_APPLE:
+    canonical: ''
+    aliases:
+    - 苹果
+    - 苹果公司
+  COMP_MICROSOFT:
+    canonical: ''
+    aliases:
+    - 微软
+  COMP_GOOGLE:
+    canonical: ''
+    aliases:
+    - 谷歌
+    - 谷歌公司
+  COMP_AMAZON:
+    canonical: ''
+    aliases:
+    - 亚马逊
+  COMP_META:
+    canonical: ''
+    aliases:
+    - 脸书
+    - 元宇宙平台公司
+  COMP_TSMC:
+    canonical: ''
+    aliases:
+    - 台积电
+  COMP_ASML:
+    canonical: ''
+    aliases:
+    - 阿斯麦
+  COMP_AMD:
+    canonical: ''
+    aliases:
+    - 超威
+    - 超威半导体
+  COMP_AMEC:
+    canonical: ''
+    aliases:
+    - 中微
+    - 中微公司
+    - 中微半导体设备
+  COMP_INTEL:
+    canonical: ''
+    aliases:
+    - 英特尔
+  COMP_MICRON:
+    canonical: ''
+    aliases:
+    - 美光
+  COMP_SAMSUNG:
+    canonical: ''
+    aliases:
+    - 三星
+    - 三星电子
+  COMP_HUAWEI:
+    canonical: ''
+    aliases:
+    - 华为
+  COMP_SMIC:
+    canonical: ''
+    aliases:
+    - 中芯国际
+    - 中芯
+  COMP_SK_HYNIX:
+    canonical: ''
+    aliases:
+    - SK海力士
+    - 海力士
+  COMP_TENCENT:
+    canonical: ''
+    aliases:
+    - 腾讯
+  COMP_ALIBABA:
+    canonical: ''
+    aliases:
+    - 阿里巴巴
+    - 阿里
+  COMP_CATL:
+    canonical: ''
+    aliases:
+    - 宁德时代
+  COMP_BYD:
+    canonical: ''
+    aliases:
+    - 比亚迪
+  COMP_BMW:
+    canonical: ''
+    aliases:
+    - 宝马
+    - 宝马集团
+  ORG_FEDERAL_RESERVE:
+    canonical: Federal Reserve
+    aliases:
+    - Fed Chair
+    - Powell
+    - 鲍威尔
+    - Fed
+    - 美联储
+    - FOMC
+  ORG_EU:
+    canonical: European Union
+    aliases:
+    - 欧盟
+  ORG_UN:
+    canonical: ''
+    aliases:
+    - 联合国
+  ORG_NATO:
+    canonical: ''
+    aliases:
+    - 北约
+  ORG_OPEC:
+    canonical: ''
+    aliases:
+    - 欧佩克
+    - 石油输出国组织
+  ORG_IMF:
+    canonical: International Monetary Fund
+    aliases:
+    - 国际货币基金组织
+    - 基金组织
+    - IMF
+  ORG_WORLD_BANK:
+    canonical: ''
+    aliases:
+    - 世界银行
+  ORG_WHO:
+    canonical: World Health Organization
+    aliases:
+    - 世界卫生组织
+    - 世卫组织
+    - 世卫
+    - WHO
+  ORG_US_GOVERNMENT:
+    canonical: United States Government
+    aliases:
+    - Washington
+    - White House
+    - 美国政府
+    - 华盛顿
+    - 白宫
+  ORG_RU_GOVERNMENT:
+    canonical: Russian Federation Government
+    aliases:
+    - Kremlin
+    - Moscow
+    - Russian Government
+  ORG_CN_GOVERNMENT:
+    canonical: Chinese Government
+    aliases:
+    - Beijing
+    - 中国政府
+    - 商务部
+    - 中国商务部
+    - 工信部
+    - 国防部
+  ORG_KP_GOVERNMENT:
+    canonical: North Korean Government
+    aliases:
+    - Pyongyang
+  ORG_US_DOD:
+    canonical: United States Department of Defense
+    aliases:
+    - Pentagon
+    - 五角大楼
+    - 美国国防部
+    - 美国五角大楼
+  ORG_US_CENTCOM:
+    canonical: United States Central Command
+    aliases:
+    - Centcom
+  ORG_IRGC:
+    canonical: Islamic Revolutionary Guard Corps
+    aliases:
+    - IRGC
+  ORG_IDF:
+    canonical: Israel Defense Forces
+    aliases:
+    - IDF
+  ORG_ECB:
+    canonical: European Central Bank
+    aliases:
+    - ECB
+  ORG_PBOC:
+    canonical: People's Bank of China
+    aliases:
+    - PBOC
+    - 中国人民银行
+  PERS_JEFF_BEZOS:
+    canonical: Jeff Bezos
+    aliases:
+    - 贝索斯
+  PERS_JENSEN_HUANG:
+    canonical: Jensen Huang
+    aliases:
+    - 黄仁勋
+  PERS_J_D_VANCE:
+    canonical: J.D. Vance
+    aliases:
+    - 万斯
+  PERS_KEVIN_WARSH:
+    canonical: Kevin Warsh
+    aliases:
+    - 凯文·沃什
+    - 凯文沃什
+    - 凯文沃舎
+    - 沃什
+    - 沃舎
+  PERS_LI_QIANG:
+    canonical: Li Qiang
+    aliases:
+    - 李强
+  PERS_MARK_ZUCKERBERG:
+    canonical: Mark Zuckerberg
+    aliases:
+    - 扎克伯格
+  CTRY_ARE:
+    canonical: ''
+    aliases:
+    - UAE
+    - 阿联酋
+  CTRY_PRK:
+    canonical: ''
+    aliases:
+    - North Korea
+    - 朝鲜
+  CTRY_PHL:
+    canonical: ''
+    aliases:
+    - 菲律宾
+  COMP_TESLA:
+    canonical: ''
+    aliases:
+    - 特斯拉
+  COMP_TOYOTA:
+    canonical: ''
+    aliases:
+    - 丰田
+  COMP_BANK_OF_JAPAN:
+    canonical: ''
+    aliases:
+    - 日本央行
+    - BOJ
+    - 日银
+  LOC_KYIV:
+    canonical: Kyiv
+    aliases:
+    - 基辅
+    - Kiev
+    - Kyiv
+    - kyiv

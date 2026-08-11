@@ -78,7 +78,8 @@ def init_db():
             importance      TEXT,
             velocity_count  INTEGER DEFAULT 0,
             velocity_window INTEGER DEFAULT 0,
-            scored_at       TEXT DEFAULT (datetime('now','localtime'))
+            scored_at       TEXT DEFAULT (datetime('now','localtime')),
+            facts_json      TEXT        -- P0 Schema V2 (ISS-20260810-012): 该文章 facts[] JSON
         );
         CREATE INDEX IF NOT EXISTS idx_intel_score ON news_intelligence(score_total);
         CREATE INDEX IF NOT EXISTS idx_intel_tier ON news_intelligence(tier);
@@ -195,6 +196,33 @@ def init_db():
     if "event_id" not in content_cols:
         db.execute("ALTER TABLE news_content ADD COLUMN event_id VARCHAR(30)")
     db.execute("CREATE INDEX IF NOT EXISTS idx_content_event_id ON news_content(event_id)")
+
+    # ---- 迁移: news_intelligence.facts_json (P0, ISS-20260810-012) -------------
+    intel_cols = [r[1] for r in db.execute("PRAGMA table_info(news_intelligence)").fetchall()]
+    if "facts_json" not in intel_cols:
+        db.execute("ALTER TABLE news_intelligence ADD COLUMN facts_json TEXT")
+
+    # ---- A/B 事件 (2026-08-10, ISS-20260810-012) -------------
+    db.executescript("""
+        CREATE TABLE IF NOT EXISTS ab_event (
+            a_event_id      TEXT PRIMARY KEY,
+            b_event_id      TEXT,
+            subject_id      TEXT,
+            subject_name    TEXT,
+            action_type     TEXT,
+            object_id       TEXT,
+            object_name     TEXT,
+            n_facts         INTEGER DEFAULT 1,
+            created_at      TEXT DEFAULT (datetime('now','localtime'))
+        );
+        CREATE TABLE IF NOT EXISTS ab_bundle (
+            b_event_id      TEXT PRIMARY KEY,
+            subject_id      TEXT,
+            subject_name    TEXT,
+            a_event_ids     TEXT,
+            created_at      TEXT DEFAULT (datetime('now','localtime'))
+        );
+    """)
 
     # ---- Sync watermark (新增：修复RSS同步丢数据问题) -------------
     # 记录"上次同步到哪了"，让 sync_recent() 从游标续拉，
@@ -501,6 +529,34 @@ def assign_articles_to_event(db: sqlite3.Connection, event_id: str, article_ids:
     )
     db.commit()
     return cur.rowcount
+
+
+def update_article_facts(db: sqlite3.Connection, article_id: int, facts_json: str) -> int:
+    """P0 (ISS-20260810-012): 写 news_intelligence.facts_json (该文章 Schema V2 facts[] JSON)。"""
+    if not article_id:
+        return 0
+    cur = db.execute("UPDATE news_intelligence SET facts_json=? WHERE id=?", (facts_json, article_id))
+    db.commit()
+    return cur.rowcount
+
+
+def save_ab_events(db: sqlite3.Connection, a_events: list, b_events: list) -> int:
+    """A/B 事件落库 (2026-08-10, ISS-20260810-012): 先清后写。返回写入 A 事件数。"""
+    db.execute("DELETE FROM ab_event")
+    db.execute("DELETE FROM ab_bundle")
+    for a in a_events:
+        db.execute(
+            "INSERT OR REPLACE INTO ab_event (a_event_id, b_event_id, subject_id, subject_name, action_type,"
+            " object_id, object_name, n_facts) VALUES (?,?,?,?,?,?,?,?)",
+            (a.get("id"), a.get("b_event_id", ""), a.get("subject_id", ""), a.get("subject_name", ""),
+             a.get("action_type", ""), a.get("object_id", ""), a.get("object_name", ""), a.get("n_facts", 1)))
+    for b in b_events:
+        db.execute(
+            "INSERT OR REPLACE INTO ab_bundle (b_event_id, subject_id, subject_name, a_event_ids) VALUES (?,?,?,?)",
+            (b.get("id"), b.get("subject_id", ""), b.get("subject_name", ""),
+             json.dumps(b.get("a_event_ids", []), ensure_ascii=False)))
+    db.commit()
+    return len(a_events)
 
 
 def list_events(stage: str = None, event_type: str = None, limit: int = 50,

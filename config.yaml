@@ -1,6 +1,6 @@
 model:
-  default: deepseek-v4-pro
-  provider: deepseek
+  default: gemma-4-e2b-it
+  provider: lmstudio
 providers: {}
 fallback_providers: []
 toolsets:

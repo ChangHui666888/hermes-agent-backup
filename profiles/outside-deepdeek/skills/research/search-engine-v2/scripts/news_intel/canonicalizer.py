@@ -97,7 +97,7 @@ CANONICAL_ACTIONS = {
     "VETOES":        (50,  "Politics",   [r"veto", r"否决"]),
     "APPROVES":      (50,  "Politics",   [r"approve", r"approval", r"批准|通过"]),
     "CONFIRMS":      (50,  "Politics",   [r"confirm", r"确认|证实"]),
-    "DENIES":        (50,  "Politics",   [r"deny", r"denial", r"否认|辟谣"]),
+    "DENIES":        (50,  "Politics",   [r"deny", r"denies", r"denied", r"denial", r"否认|辟谣"]),
     "FIRES":         (50,  "Leadership", [r"\bfire", r"sack", r"解雇|开除|免职"]),
     "SUCCEEDS":      (50,  "Leadership", [r"succeed.*as", r"take over.*role", r"接任|继任"]),
     "EXPELLS":       (50,  "Diplomacy",  [r"expel", r"deport", r"驱逐|遣返"]),
@@ -105,6 +105,20 @@ CANONICAL_ACTIONS = {
     "PROTESTS":      (30,  "Politics",   [r"protest", r"demonstrat", r"抗议|示威"]),
     "HACKS":         (30,  "Cyber",      [r"hack", r"breach", r"黑客|入侵"]),
     "INVESTIGATES":  (30,  "Legal",      [r"investigat", r"probe", r"调查|侦查"]),
+    # P0 Fact Schema V2 (2026-08-10, ISS-20260810-012): 常见动词不再落 OTHER
+    "REJECTS":       (60,  "Diplomacy",  [r"reject", r"refus", r"rules? out", r"turns? down"]),
+    "TESTS":         (60,  "Technology", [r"\btest", r"\btesting", r"trials?"]),
+    "AFFIRMS":       (60,  "Diplomacy",  [r"affirm", r"reaffirm", r"assert"]),
+    "AGREES":        (60,  "Diplomacy",  [r"\bagree", r"reach(?:ed)? (?:an )?agreement", r"reach(?:ed)? a deal"]),
+    "WITHDRAWS":     (70,  "Military",   [r"withdraw", r"pull (?:out|back)", r"end military use", r"end .*military", r"end use of"]),
+    "PAUSES":        (60,  "Technology", [r"pause", r"pausing", r"halt", r"suspend"]),
+    "TRANSFERS":     (60,  "Diplomacy",  [r"transfer", r"hand over"]),
+    "INTEGRATES":    (60,  "Technology", [r"integrat"]),
+    "BEATS":         (80,  "Finance",    [r"tops?", r"beats?", r"surpass", r"beat.*estimates", r"beat.*earnings", r"tops? estimates"]),
+    "DEPLOYS":       (60,  "Military",   [r"deploy", r"deployment", r"mobiliz"]),
+    "CLAIMS":        (40,  "Politics",   [r"claim", r"claims?"]),
+    "STATES":        (30,  "Politics",   [r"\bsays?\b", r"\bsaid\b", r"stated", r"\btold\b", r"\bcalls?\b", r"called",
+                                         r"vows?", r"insists?", r"urges?", r"describes?", r"argues?", r"seeks?", r"seeking"]),
 }
 
 # 动作 + 客体联合规则: 动作文本命中缺失时, 从客体文本触发
@@ -145,6 +159,10 @@ _CN_ACTION = {
     "REPORTS": [r"财报", r"营收", r"利润", r"业绩"],
     "ACCUSES": [r"指控", r"指责", r"谴责"],
     "PEACE_DEAL": [r"和平协议", r"和平条约", r"和平协定"],
+    "REJECTS": [r"拒绝"], "TESTS": [r"测试"], "AFFIRMS": [r"重申", r"确认"],
+    "AGREES": [r"同意", r"达成"], "WITHDRAWS": [r"撤出", r"撤离", r"移交", r"终止.*军事"],
+    "PAUSES": [r"暂停", r"中止"], "TRANSFERS": [r"移交", r"转移"], "INTEGRATES": [r"整合", r"集成"],
+    "BEATS": [r"超预期", r"超出预期"], "CLAIMS": [r"声称", r"宣称"], "STATES": [r"表示", r"称", r"说"],
 }
 
 
@@ -155,7 +173,93 @@ def _match(text: str, act: str) -> bool:
     return any(re.search(p, text) for p in _CN_ACTION.get(act, []))
 
 
-def canonicalize_action(raw_action: str, object_text: str = "", context: str = "") -> dict:
+def _is_value_phrase(name: str) -> bool:
+    """值/数字/日期/短语/子句判定 — 非实体, 不应实体化 ($0.22 / 81st anniversary / AI chip fears ease)。"""
+    if not name or not name.strip():
+        return True
+    n = name.strip()
+    if re.fullmatch(r"[$£€¥]?\s*[\d,\.]+%?", n):
+        return True
+    if re.match(r"^[\d$£€¥]", n):
+        return True
+    if re.search(r"\d+(st|nd|rd|th)\s+(anniversary|century|year|decade|day)", n, re.I):
+        return True
+    if len(n.split()) > 4:
+        return True
+    if re.match(r"^(to|for|in|on|at|of|with|by|from|targeting|using|against|into|after|before|amid|as|that|the|has|have|had|being|is|are|was|were|could|would|should|may|might|will|be|becoming)\b", n, re.I):
+        return True
+    return False
+
+
+_STATUS_ENUM = {"COMPLETED", "ONGOING", "PLANNED", "EXPECTED", "CONSIDERED", "DELAYED",
+                "CANCELLED", "DENIED", "ATTEMPTED", "ANNOUNCED", "UNKNOWN"}
+_POLARITY_ENUM = {"POSITIVE", "NEGATIVE", "NEUTRAL", "UNKNOWN"}
+
+
+def _action_meta(raw_action: str, status_hint: str = "", polarity_hint: str = "") -> tuple:
+    """推断 action.status / action.polarity (契约 §3.2/3.3, 含 UNKNOWN; Qwen hint 优先, 否则规则推导)。"""
+    t = (raw_action or "").lower()
+    if (status_hint or "").strip():
+        status = status_hint.strip().upper()
+        if status not in _STATUS_ENUM:
+            status = "UNKNOWN"
+    else:
+        # 结果/否定态优先 (scrapped plans = CANCELLED, 先于 PLANNED; delayed 先于 COMPLETED)
+        if re.search(r"\b(cancel|canceled|cancelled|scrap|scrapped|abandon|abandoned)\b", t):
+            status = "CANCELLED"
+        elif re.search(r"\b(deny|denies|denied|refus|refuses?|refused|reject|rejected|rejects)\b", t):
+            status = "DENIED"
+        elif re.search(r"\b(delay|delayed|delays|postpon|postpone|postponed|slipped?)\b", t):
+            status = "DELAYED"
+        elif re.search(r"\b(may|might|plans? to|proposed?|poised|intends? to|will|to be)\b", t):
+            status = "PLANNED"
+        elif re.search(r"\b(expected to|could|would|forecast|projected)\b", t):
+            status = "EXPECTED"
+        elif re.search(r"\b(consider|considering|mulling|weighing)\b", t):
+            status = "CONSIDERED"
+        elif re.search(r"\b(attempt|attempted|try(?:ing)? to|seek(?:s|ing)? to)\b", t):
+            status = "ATTEMPTED"
+        elif re.search(r"\b(announce|announced|unveil|unveiled|declare|declared)\b", t):
+            status = "ANNOUNCED"
+        elif re.search(r"\b(acquired|bought|sold|reported|voted|signed|launched|approved|said|took|made|rejected)\b", t) \
+                or re.search(r"\b\w+ed\b", t):
+            status = "COMPLETED"
+        else:
+            status = "UNKNOWN" if not t else "ONGOING"
+    if (polarity_hint or "").strip():
+        polarity = polarity_hint.strip().upper()
+        if polarity not in _POLARITY_ENUM:
+            polarity = "UNKNOWN"
+    else:
+        if re.search(r"\b(deny|denies|denied|refus|reject|rejected|rejects|fail(?:ed)? to|won'?t|not|cannot|can'?t|no longer|oppos|cancel|scrap|delay)\b", t):
+            polarity = "NEGATIVE"
+        elif re.search(r"\b(approve|agrees?|agreed|confirm|support|accept|okay|endorse)\b", t):
+            polarity = "POSITIVE"
+        else:
+            polarity = "UNKNOWN" if not t else "NEUTRAL"
+    return status, polarity
+
+
+def infer_object_type(name: str, entity: dict = None) -> str:
+    """object_type 推断 (契约 §3.4)。真实实体→ENTITY; 金额→AMOUNT; 日期纪念→EVENT; 长句→STATEMENT; 短语→CONCEPT。"""
+    n = (name or "").strip()
+    if not n:
+        return "UNKNOWN"
+    if entity and entity.get("entity_id"):
+        return "ENTITY"
+    if re.search(r"\d+(st|nd|rd|th)\s+(anniversary|century|decade|year|day)", n, re.I):
+        return "EVENT"
+    if re.fullmatch(r"[$£€¥]?\s*[\d,\.]+%?", n) or re.match(r"^[\d$£€¥]", n):
+        return "AMOUNT"
+    if len(n.split()) > 4:
+        return "STATEMENT"
+    if _is_value_phrase(n):
+        return "CONCEPT"
+    return "UNKNOWN"
+
+
+def canonicalize_action(raw_action: str, object_text: str = "", context: str = "",
+                        status_hint: str = "", polarity_hint: str = "") -> dict:
     """自由动作文本 → 规范 action_type (语义优先级 + 客体联合 + 标题上下文)
 
     v0.4 调优: 标题上下文只在"动作文本弱(优先级<70)"时覆盖。
@@ -184,16 +288,19 @@ def canonicalize_action(raw_action: str, object_text: str = "", context: str = "
     else:
         b_title = best_in(ctx)
         best = b_title if (b_title and (b_text is None or b_title[0] > b_text[0])) else b_text
-    # 3. 客体联合 (仅当动作仍无强信号)
-    if not best or best[0] < TITLE_OVERRIDE:
+    # 3. 客体联合 (P0: 仅当无具体动词命中 — 信任 TESTS/REJECTS 等具体动词, 不被客体联合覆盖成 EXPORT_CONTROL)
+    if best is None or best[0] < 30:
         for act, patterns in _OBJECT_JOINT.items():
             if any(re.search(p, obj) for p in patterns):
                 prio, etype, _ = CANONICAL_ACTIONS[act]
                 if best is None or prio > best[0]:
                     best = (prio, act, etype)
+    status, polarity = _action_meta(raw_action, status_hint, polarity_hint)
     if not best:
-        return {"type": "OTHER", "event_type": "General", "detail": (raw_action or "")[:60]}
-    return {"type": best[1], "event_type": best[2], "detail": (raw_action or "")[:60]}
+        return {"type": "OTHER", "event_type": "General", "detail": (raw_action or "")[:60],
+                "status": status, "polarity": polarity, "verb": (raw_action or "")[:60]}
+    return {"type": best[1], "event_type": best[2], "detail": (raw_action or "")[:60],
+            "status": status, "polarity": polarity, "verb": (raw_action or "")[:60]}
 
 
 # ═══════════════════════════════════════════════════════════
@@ -353,10 +460,29 @@ def resolve_entity(name: str, gliner_type: str = "") -> dict:
     elif etype.lower() in ("organization", "government", "military"): etype = "Organization"
     elif etype.lower() in ("city", "location"): etype = "Location"
     else: etype = "Other"
+    if len(canonical.split()) > 3 or _is_value_phrase(canonical):
+        # P0/P1 (ISS-20260810-012): 值/数字/日期/短语/多词句/动词短语(has Trump cornered) → 不实体化。
+        # 原始 name 由 fact.subject/object.name 保留, 聚合走 raw name; entity_id 空 = 非实体。
+        return {"name": canonical, "id": "", "type": "Other"}
+    if etype == "Other":
+        # Entity Grounding 最小版 (2026-08-10): 未知专有名词 → Candidate id (类型猜测), 使跨事实可匹配。
+        etype = _guess_candidate_type(canonical)
     prefix = _ID_PREFIX.get(etype, "ENT")
     clean = canonical.upper().replace(" ", "_").replace("-", "_").replace("'", "")
     clean = "".join(c for c in clean if c.isalnum() or c == "_")
     return {"name": canonical, "id": f"{prefix}_{clean}" if clean else "", "type": etype}
+
+
+def _guess_candidate_type(name: str) -> str:
+    """未知专有名词 → 候选类型 (公司后缀/组织词/人名)。最小可用, 不做复杂KG。"""
+    low = name.lower()
+    if re.search(r"(公司|集团|株式会社)($|股份有限公司)", name) or re.search(r"(inc|corp|ltd|llc|gmbh)\.?$", low):
+        return "Company"
+    if re.search(r"(部|政府|委员会|央行|银行|国防|军队|大学|研究院|协会|组织|中心|局|司令部|司令)", low):
+        return "Organization"
+    if any('一' <= c <= '鿿' for c in name):  # CJK
+        return "Person" if len(name) <= 6 else "Organization"
+    return "Organization"
 
 
 def split_entities(text: str) -> list[str]:
