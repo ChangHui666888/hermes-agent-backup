@@ -1,5 +1,1642 @@
 [
   {
+    "article_id": 20238,
+    "article_url": "https://techcrunch.com/2026/08/13/anthropic-set-ai-agents-loose-on-the-same-task-they-started-a-turf-war/",
+    "subject": {
+      "name": "Anthropic researchers",
+      "entity_id": "ORG_ANTHROPIC_RESEARCHERS",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "COMPLETED",
+      "polarity": "NEUTRAL",
+      "verb": "found"
+    },
+    "object": {
+      "name": "AI agents",
+      "entity_id": "ORG_AI_AGENTS",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "Thursday",
+      "value": null
+    },
+    "location": {
+      "name": "unknown",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Anthropic’s Frontier Red Team published new research examining how groups of AI agents behave when they encounter each other in the wild.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "found",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "Thursday",
+    "location_str": "unknown",
+    "entities": [
+      {
+        "entity_id": "ORG_ANTHROPIC_RESEARCHERS",
+        "entity_name": "Anthropic researchers",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_AI_AGENTS",
+        "entity_name": "AI agents",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 20238,
+    "article_url": "https://techcrunch.com/2026/08/13/anthropic-set-ai-agents-loose-on-the-same-task-they-started-a-turf-war/",
+    "subject": {
+      "name": "AI agents",
+      "entity_id": "ORG_AI_AGENTS",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "COMPLETED",
+      "polarity": "NEGATIVE",
+      "verb": "clash, collude, and coordinate"
+    },
+    "object": {
+      "name": "in unexpected ways",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "CONCEPT"
+    },
+    "time": {
+      "raw": "unknown",
+      "value": null
+    },
+    "location": {
+      "name": "unknown",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Anthropic researchers found AI agents can clash, collude, and coordinate in unexpected ways, raising new questions about whether today’s safety tests capture the risks of multi-agent systems.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "clash, collude, and coordinate",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEGATIVE",
+    "event_time": "unknown",
+    "location_str": "unknown",
+    "entities": [
+      {
+        "entity_id": "ORG_AI_AGENTS",
+        "entity_name": "AI agents",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 20240,
+    "article_url": "https://techcrunch.com/2026/08/13/openai-hires-new-cro-as-executive-shake-up-continues/",
+    "subject": {
+      "name": "OpenAI",
+      "entity_id": "COMP_OPENAI",
+      "type": "Company",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "CUTS",
+      "status": "COMPLETED",
+      "polarity": "NEUTRAL",
+      "verb": "replaced"
+    },
+    "object": {
+      "name": "Denise Dresser",
+      "entity_id": "PERS_DENISE_DRESSER",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "just nine months",
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "OpenAI has replaced chief revenue officer Denise Dresser after just nine months on the job",
+    "evidence_type": "UNKNOWN",
+    "action_type": "CUTS",
+    "action_event_type": "Economic",
+    "action_detail": "replaced",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "just nine months",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "COMP_OPENAI",
+        "entity_name": "OpenAI",
+        "entity_type": "Company",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "PERS_DENISE_DRESSER",
+        "entity_name": "Denise Dresser",
+        "entity_type": "Person",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 20240,
+    "article_url": "https://techcrunch.com/2026/08/13/openai-hires-new-cro-as-executive-shake-up-continues/",
+    "subject": {
+      "name": "Dali Rajic",
+      "entity_id": "PERS_DALI_RAJIC",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "CUTS",
+      "status": "ANNOUNCED",
+      "polarity": "POSITIVE",
+      "verb": "take on"
+    },
+    "object": {
+      "name": "top sales job",
+      "entity_id": "ORG_TOP_SALES_JOB",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "today",
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "tapping Wiz president and chief operating officer Dali Rajic to take on frontier lab’s top sales job",
+    "evidence_type": "UNKNOWN",
+    "action_type": "CUTS",
+    "action_event_type": "Economic",
+    "action_detail": "take on",
+    "action_status": "ANNOUNCED",
+    "action_polarity": "POSITIVE",
+    "event_time": "today",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "PERS_DALI_RAJIC",
+        "entity_name": "Dali Rajic",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_TOP_SALES_JOB",
+        "entity_name": "top sales job",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 20240,
+    "article_url": "https://techcrunch.com/2026/08/13/openai-hires-new-cro-as-executive-shake-up-continues/",
+    "subject": {
+      "name": "Wiz",
+      "entity_id": "ORG_WIZ",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "ACQUIRES",
+      "status": "COMPLETED",
+      "polarity": "POSITIVE",
+      "verb": "acquired"
+    },
+    "object": {
+      "name": "Google",
+      "entity_id": "COMP_GOOGLE",
+      "type": "Company",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "this year",
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Wiz, Rajic’s previous employer, was acquired by Google for $32 billion this year in the tech giant’s largest-ever acquisition.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "ACQUIRES",
+    "action_event_type": "Finance",
+    "action_detail": "acquired",
+    "action_status": "COMPLETED",
+    "action_polarity": "POSITIVE",
+    "event_time": "this year",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "ORG_WIZ",
+        "entity_name": "Wiz",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "COMP_GOOGLE",
+        "entity_name": "Google",
+        "entity_type": "Company",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 20243,
+    "article_url": "https://techcrunch.com/2026/08/13/openai-introduces-ultrafast-a-new-mode-that-makes-gpt-5-6-sol-work-at-14x-the-speed/",
+    "subject": {
+      "name": "OpenAI",
+      "entity_id": "COMP_OPENAI",
+      "type": "Company",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "LAUNCHES",
+      "status": "ANNOUNCED",
+      "polarity": "POSITIVE",
+      "verb": "launching"
+    },
+    "object": {
+      "name": "Ultrafast",
+      "entity_id": "ORG_ULTRAFAST",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "Thursday",
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "OpenAI is launching a preview of a sped up version of its latest, most powerful model, in an effort to court enterprise users.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "LAUNCHES",
+    "action_event_type": "Technology",
+    "action_detail": "launching",
+    "action_status": "ANNOUNCED",
+    "action_polarity": "POSITIVE",
+    "event_time": "Thursday",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "COMP_OPENAI",
+        "entity_name": "OpenAI",
+        "entity_type": "Company",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_ULTRAFAST",
+        "entity_name": "Ultrafast",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 20243,
+    "article_url": "https://techcrunch.com/2026/08/13/openai-introduces-ultrafast-a-new-mode-that-makes-gpt-5-6-sol-work-at-14x-the-speed/",
+    "subject": {
+      "name": "GPT-5.6 Sol",
+      "entity_id": "ORG_GPT_56_SOL",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "EXPECTED",
+      "polarity": "POSITIVE",
+      "verb": "work"
+    },
+    "object": {
+      "name": "14x the speed",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "AMOUNT"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Ultrafast can work at 14x the speed of standard processing, delivering up to 750 output tokens — such tokens represent the distinct pieces of text generated by an LLM when it interacts with a human — per second.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "work",
+    "action_status": "EXPECTED",
+    "action_polarity": "POSITIVE",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "ORG_GPT_56_SOL",
+        "entity_name": "GPT-5.6 Sol",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 20243,
+    "article_url": "https://techcrunch.com/2026/08/13/openai-introduces-ultrafast-a-new-mode-that-makes-gpt-5-6-sol-work-at-14x-the-speed/",
+    "subject": {
+      "name": "Ultrafast",
+      "entity_id": "ORG_ULTRAFAST",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "ONGOING",
+      "polarity": "POSITIVE",
+      "verb": "accelerate"
+    },
+    "object": {
+      "name": "pace",
+      "entity_id": "ORG_PACE",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Ultrafast, which it says is designed to seriously accelerate the pace at which its latest and most powerful model, GPT-5.6 Sol, accomplishes its work.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "accelerate",
+    "action_status": "ONGOING",
+    "action_polarity": "POSITIVE",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "ORG_ULTRAFAST",
+        "entity_name": "Ultrafast",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_PACE",
+        "entity_name": "pace",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 20229,
+    "article_url": "https://www.cnbc.com/2026/08/14/us-iran-war-trump-hormuz-carrier-abraham-lincoln-george-washington.html",
+    "subject": {
+      "name": "Bessent",
+      "entity_id": "PERS_BESSENT",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
+    },
+    "object": {
+      "name": "United States",
+      "entity_id": "CTRY_UNITED_STATES",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": null,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "",
+    "action_status": "UNKNOWN",
+    "action_polarity": "UNKNOWN",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "PERS_BESSENT",
+        "entity_name": "Bessent",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_UNITED_STATES",
+        "entity_name": "United States",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 20228,
+    "article_url": "https://www.cnbc.com/2026/08/13/big-short-investor-steve-eisman-sees-an-achilles-heel-in-the-ai-boom.html",
+    "subject": {
+      "name": "Steve Eisman",
+      "entity_id": "PERS_STEVE_EISMAN",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "WARNS",
+      "status": "COMPLETED",
+      "polarity": "NEGATIVE",
+      "verb": "warned"
+    },
+    "object": {
+      "name": "the artificial intelligence boom",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "CONCEPT"
+    },
+    "time": {
+      "raw": "late Tuesday",
+      "value": null
+    },
+    "location": {
+      "name": "unknown",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Steve Eisman is warning that the artificial intelligence boom has become increasingly dependent on the fortunes of just two companies: OpenAI and Anthropic.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "WARNS",
+    "action_event_type": "Politics",
+    "action_detail": "warned",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEGATIVE",
+    "event_time": "late Tuesday",
+    "location_str": "unknown",
+    "entities": [
+      {
+        "entity_id": "PERS_STEVE_EISMAN",
+        "entity_name": "Steve Eisman",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 20228,
+    "article_url": "https://www.cnbc.com/2026/08/13/big-short-investor-steve-eisman-sees-an-achilles-heel-in-the-ai-boom.html",
+    "subject": {
+      "name": "OpenAI",
+      "entity_id": "COMP_OPENAI",
+      "type": "Company",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "FUNDS",
+      "status": "ONGOING",
+      "polarity": "NEUTRAL",
+      "verb": "account"
+    },
+    "object": {
+      "name": "70% of AI-related revenue at Microsoft, Amazon, Alphabet's Google and Oracle; 25% to 35% of their cloud revenue",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "AMOUNT"
+    },
+    "time": {
+      "raw": "unknown",
+      "value": null
+    },
+    "location": {
+      "name": "unknown",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "the two AI startups account for roughly 70% of AI-related revenue at Microsoft, Amazon, Alphabet's Google and Oracle — and as much as 25% to 35% of their cloud revenue.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "FUNDS",
+    "action_event_type": "Economic",
+    "action_detail": "account",
+    "action_status": "ONGOING",
+    "action_polarity": "NEUTRAL",
+    "event_time": "unknown",
+    "location_str": "unknown",
+    "entities": [
+      {
+        "entity_id": "COMP_OPENAI",
+        "entity_name": "OpenAI",
+        "entity_type": "Company",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "COMP_ANTHROPIC",
+        "entity_name": "Anthropic",
+        "entity_type": "Company",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "COMP_AMAZON",
+        "entity_name": "Amazon",
+        "entity_type": "Company",
+        "role": "OBJECT"
+      },
+      {
+        "entity_id": "ORG_ALPHABETS_GOOGLE",
+        "entity_name": "Alphabet's Google",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      },
+      {
+        "entity_id": "COMP_ORACLE",
+        "entity_name": "ORACLE",
+        "entity_type": "Company",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 20216,
+    "article_url": "https://www.ft.com/content/a468c20b-cf1d-4a36-87b8-4eb15666e6c4?syn-25a6b1a6=1",
+    "subject": {
+      "name": "Trump",
+      "entity_id": "PERS_TRUMP",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "ONGOING",
+      "polarity": "NEUTRAL",
+      "verb": "enlists"
+    },
+    "object": {
+      "name": "corporate America",
+      "entity_id": "ORG_CORPORATE_AMERICA",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Donald Trump enlists corporate America in fight against cyber crime",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "enlists",
+    "action_status": "ONGOING",
+    "action_polarity": "NEUTRAL",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "PERS_TRUMP",
+        "entity_name": "Trump",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_CORPORATE_AMERICA",
+        "entity_name": "corporate America",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 20216,
+    "article_url": "https://www.ft.com/content/a468c20b-cf1d-4a36-87b8-4eb15666e6c4?syn-25a6b1a6=1",
+    "subject": {
+      "name": "Privateering push",
+      "entity_id": "CTRY_PRIVATEERING_PUSH",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "ONGOING",
+      "polarity": "NEUTRAL",
+      "verb": "echoes"
+    },
+    "object": {
+      "name": "US revolutionary war-era strategy of employing civilians to battle adversaries",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Privateering push echoes US revolutionary war-era strategy of employing civilians to battle adversar",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "echoes",
+    "action_status": "ONGOING",
+    "action_polarity": "NEUTRAL",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "CTRY_PRIVATEERING_PUSH",
+        "entity_name": "Privateering push",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 20219,
+    "article_url": "https://www.neowin.net/news/samsung-is-using-claude-to-verify-chip-designs-and-its-not-going-smoothly/",
+    "subject": {
+      "name": "Samsung",
+      "entity_id": "COMP_SAMSUNG",
+      "type": "Company",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "ONGOING",
+      "polarity": "NEUTRAL",
+      "verb": "using"
+    },
+    "object": {
+      "name": "Claude",
+      "entity_id": "COMP_CLAUDE",
+      "type": "Company",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "2026-08-13T16:02:01+00:00",
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1.0,
+    "evidence": "Samsung is using Claude to verify chip designs",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "using",
+    "action_status": "ONGOING",
+    "action_polarity": "NEUTRAL",
+    "event_time": "2026-08-13T16:02:01+00:00",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "COMP_SAMSUNG",
+        "entity_name": "Samsung",
+        "entity_type": "Company",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "COMP_CLAUDE",
+        "entity_name": "Claude",
+        "entity_type": "Company",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 20219,
+    "article_url": "https://www.neowin.net/news/samsung-is-using-claude-to-verify-chip-designs-and-its-not-going-smoothly/",
+    "subject": {
+      "name": "Chip designs verification",
+      "entity_id": "ORG_CHIP_DESIGNS_VERIFICATION",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "ONGOING",
+      "polarity": "NEGATIVE",
+      "verb": "not going smoothly"
+    },
+    "object": {
+      "name": "",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.9,
+    "evidence": "and it's not going smoothly",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "not going smoothly",
+    "action_status": "ONGOING",
+    "action_polarity": "NEGATIVE",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "ORG_CHIP_DESIGNS_VERIFICATION",
+        "entity_name": "Chip designs verification",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 20177,
+    "article_url": "https://www.ft.com/content/6bc10fb1-7b09-4580-82b4-5a723768e4d7",
+    "subject": {
+      "name": "Japan",
+      "entity_id": "CTRY_JPN",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "DROPS",
+      "status": "PLANNED",
+      "polarity": "NEUTRAL",
+      "verb": "rethink"
+    },
+    "object": {
+      "name": "role in the world",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "time": {
+      "raw": "more than eight decades after the end of the second world war",
+      "value": null
+    },
+    "location": {
+      "name": "unknown",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "More than eight decades after the end of the second world war, the country must rethink its role in 。",
+    "evidence_type": "UNKNOWN",
+    "action_type": "DROPS",
+    "action_event_type": "Finance",
+    "action_detail": "rethink",
+    "action_status": "PLANNED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "more than eight decades after the end of the second world war",
+    "location_str": "unknown",
+    "entities": [
+      {
+        "entity_id": "CTRY_JPN",
+        "entity_name": "Japan",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 20177,
+    "article_url": "https://www.ft.com/content/6bc10fb1-7b09-4580-82b4-5a723768e4d7",
+    "subject": {
+      "name": "Japan",
+      "entity_id": "CTRY_JPN",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "DROPS",
+      "status": "PLANNED",
+      "polarity": "NEUTRAL",
+      "verb": "must rethink"
+    },
+    "object": {
+      "name": "its role",
+      "entity_id": "ORG_ITS_ROLE",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "more than eight decades after the end of the second world war",
+      "value": null
+    },
+    "location": {
+      "name": "unknown",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "More than eight decades after the end of the second world war, the country must rethink its role in 。",
+    "evidence_type": "UNKNOWN",
+    "action_type": "DROPS",
+    "action_event_type": "Finance",
+    "action_detail": "must rethink",
+    "action_status": "PLANNED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "more than eight decades after the end of the second world war",
+    "location_str": "unknown",
+    "entities": [
+      {
+        "entity_id": "CTRY_JPN",
+        "entity_name": "Japan",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_ITS_ROLE",
+        "entity_name": "its role",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 20170,
+    "article_url": "https://www.cnbc.com/2026/08/13/iran-war-brics-bank.html",
+    "subject": {
+      "name": "central bank chief",
+      "entity_id": "PERS_CENTRAL_BANK_CHIEF",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
+    },
+    "object": {
+      "name": "Iran, Islamic Republic of",
+      "entity_id": "CTRY_IRN",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": null,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "",
+    "action_status": "UNKNOWN",
+    "action_polarity": "UNKNOWN",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "PERS_CENTRAL_BANK_CHIEF",
+        "entity_name": "central bank chief",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_IRN",
+        "entity_name": "Iran, Islamic Republic of",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 20206,
+    "article_url": "https://techcrunch.com/2026/08/13/microsoft-kills-off-unsuccessful-ai-features-while-merging-its-separate-copilot-apps/",
+    "subject": {
+      "name": "Microsoft",
+      "entity_id": "COMP_MICROSOFT",
+      "type": "Company",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "DIES",
+      "status": "COMPLETED",
+      "polarity": "NEUTRAL",
+      "verb": "merging"
+    },
+    "object": {
+      "name": "Copilot-branded consumer and business apps",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
+    },
+    "time": {
+      "raw": "Two years ago",
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Today, the company is merging its Copilot-branded consumer and business apps, and ditching a number of unsuccessful AI features.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "DIES",
+    "action_event_type": "Leadership",
+    "action_detail": "merging",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "Two years ago",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "COMP_MICROSOFT",
+        "entity_name": "Microsoft",
+        "entity_type": "Company",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_COPILOT_BRANDED_CONSUMER",
+        "entity_name": "Copilot-branded consumer",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      },
+      {
+        "entity_id": "ORG_BUSINESS_APPS",
+        "entity_name": "business apps",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 20206,
+    "article_url": "https://techcrunch.com/2026/08/13/microsoft-kills-off-unsuccessful-ai-features-while-merging-its-separate-copilot-apps/",
+    "subject": {
+      "name": "Microsoft",
+      "entity_id": "COMP_MICROSOFT",
+      "type": "Company",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "DIES",
+      "status": "COMPLETED",
+      "polarity": "NEUTRAL",
+      "verb": "ditching"
+    },
+    "object": {
+      "name": "unsuccessful AI features",
+      "entity_id": "ORG_UNSUCCESSFUL_AI_FEATURES",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.9,
+    "evidence": "Today, the company is merging its Copilot-branded consumer and business apps, and ditching a number of unsuccessful AI features.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "DIES",
+    "action_event_type": "Leadership",
+    "action_detail": "ditching",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "COMP_MICROSOFT",
+        "entity_name": "Microsoft",
+        "entity_type": "Company",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_UNSUCCESSFUL_AI_FEATURES",
+        "entity_name": "unsuccessful AI features",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 20206,
+    "article_url": "https://techcrunch.com/2026/08/13/microsoft-kills-off-unsuccessful-ai-features-while-merging-its-separate-copilot-apps/",
+    "subject": {
+      "name": "Microsoft",
+      "entity_id": "COMP_MICROSOFT",
+      "type": "Company",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "STATES",
+      "status": "COMPLETED",
+      "polarity": "NEUTRAL",
+      "verb": "described"
+    },
+    "object": {
+      "name": "AI as a “generational shift” in technology that it wanted to lead",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
+    },
+    "time": {
+      "raw": "Two years ago",
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Two years ago, Microsoft described AI as a “generational shift” in technology that it wanted to lead.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "STATES",
+    "action_event_type": "Politics",
+    "action_detail": "described",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "Two years ago",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "COMP_MICROSOFT",
+        "entity_name": "Microsoft",
+        "entity_type": "Company",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 20194,
+    "article_url": "https://techcrunch.com/2026/08/13/nvidias-new-500b-plan-is-risky-but-brilliant-especially-for-aging-gpus/",
+    "subject": {
+      "name": "NVIDIA",
+      "entity_id": "COMP_NVIDIA",
+      "type": "Company",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "ANNOUNCES",
+      "status": "COMPLETED",
+      "polarity": "NEUTRAL",
+      "verb": "announced"
+    },
+    "object": {
+      "name": "$500 billion",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "AMOUNT"
+    },
+    "time": {
+      "raw": "this week",
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Nvidia announced this week that Apollo, BlackRock, Blackstone, Brookfield, Goldman Sachs, and KKR were willing to commit up to $500 billion to build AI data centers.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "ANNOUNCES",
+    "action_event_type": "Politics",
+    "action_detail": "announced",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "this week",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "COMP_NVIDIA",
+        "entity_name": "NVIDIA",
+        "entity_type": "Company",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 20194,
+    "article_url": "https://techcrunch.com/2026/08/13/nvidias-new-500b-plan-is-risky-but-brilliant-especially-for-aging-gpus/",
+    "subject": {
+      "name": "NVIDIA",
+      "entity_id": "COMP_NVIDIA",
+      "type": "Company",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "AGREES",
+      "status": "COMPLETED",
+      "polarity": "NEUTRAL",
+      "verb": "agreed"
+    },
+    "object": {
+      "name": "guarantee",
+      "entity_id": "ORG_GUARANTEE",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "To convince those big-name financial companies, Nvidia has agreed to guarantee, with its own money, that its chips used as collateral in these deals will retain their value.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "AGREES",
+    "action_event_type": "Diplomacy",
+    "action_detail": "agreed",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "COMP_NVIDIA",
+        "entity_name": "NVIDIA",
+        "entity_type": "Company",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_GUARANTEE",
+        "entity_name": "guarantee",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 20194,
+    "article_url": "https://techcrunch.com/2026/08/13/nvidias-new-500b-plan-is-risky-but-brilliant-especially-for-aging-gpus/",
+    "subject": {
+      "name": "Apollo, BlackRock, Blackstone, Brookfield, Goldman Sachs, and KKR",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "EXPECTED",
+      "polarity": "NEUTRAL",
+      "verb": "commit"
+    },
+    "object": {
+      "name": "$500 billion",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "AMOUNT"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Nvidia announced this week that Apollo, BlackRock, Blackstone, Brookfield, Goldman Sachs, and KKR were willing to commit up to $500 billion to build AI data centers.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "commit",
+    "action_status": "EXPECTED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "COMP_APOLLO",
+        "entity_name": "Apollo",
+        "entity_type": "Company",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "COMP_BLACKROCK",
+        "entity_name": "BlackRock",
+        "entity_type": "Company",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "COMP_BLACKSTONE",
+        "entity_name": "Blackstone",
+        "entity_type": "Company",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "COMP_BROOKFIELD",
+        "entity_name": "Brookfield",
+        "entity_type": "Company",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "COMP_GOLDMAN_SACHS",
+        "entity_name": "Goldman Sachs",
+        "entity_type": "Company",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "COMP_KKR",
+        "entity_name": "KKR &",
+        "entity_type": "Company",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 20083,
+    "article_url": "https://www.bbc.co.uk/news/articles/c74grmy2v7ko?at_medium=RSS&at_campaign=rss",
+    "subject": {
+      "name": "Steve Rosenberg",
+      "entity_id": "PERS_STEVE_ROSENBERG",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "CLAIMS",
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
+    },
+    "object": {
+      "name": "Ukraine",
+      "entity_id": "CTRY_UKR",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": null,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "CLAIMS",
+    "action_event_type": "Politics",
+    "action_detail": "",
+    "action_status": "UNKNOWN",
+    "action_polarity": "UNKNOWN",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "PERS_STEVE_ROSENBERG",
+        "entity_name": "Steve Rosenberg",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_UKR",
+        "entity_name": "Ukraine",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 20159,
+    "article_url": "https://www.ft.com/content/395650e6-7963-428b-9d86-b39c36453f5d?syn-25a6b1a6=1",
+    "subject": {
+      "name": "Price of niche rare earth",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "action": {
+      "type": "SURGES",
+      "status": "ONGOING",
+      "polarity": "NEGATIVE",
+      "verb": "jumps"
+    },
+    "object": {
+      "name": "",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Price of niche rare earth jumps on fears of renewed Chinese export controls",
+    "evidence_type": "UNKNOWN",
+    "action_type": "SURGES",
+    "action_event_type": "Finance",
+    "action_detail": "jumps",
+    "action_status": "ONGOING",
+    "action_polarity": "NEGATIVE",
+    "event_time": "",
+    "location_str": "",
+    "entities": []
+  },
+  {
+    "article_id": 20159,
+    "article_url": "https://www.ft.com/content/395650e6-7963-428b-9d86-b39c36453f5d?syn-25a6b1a6=1",
+    "subject": {
+      "name": "Erbium",
+      "entity_id": "ORG_ERBIUM",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "EXPORT_CONTROL",
+      "status": "UNKNOWN",
+      "polarity": "NEUTRAL",
+      "verb": "is"
+    },
+    "object": {
+      "name": "Erbium",
+      "entity_id": "ORG_ERBIUM",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Erbium, used widely in infrastructure, is among the broad range of metals that China dominates production of Erbium, used widely in infrastructure, is among the broad range of metals that China dominates produ",
+    "evidence_type": "UNKNOWN",
+    "action_type": "EXPORT_CONTROL",
+    "action_event_type": "Technology",
+    "action_detail": "is",
+    "action_status": "UNKNOWN",
+    "action_polarity": "NEUTRAL",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "ORG_ERBIUM",
+        "entity_name": "Erbium",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_ERBIUM",
+        "entity_name": "Erbium",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 20063,
+    "article_url": "https://www.ft.com/content/977e89df-edab-499c-8218-6277065f2fdf?syn-25a6b1a6=1",
+    "subject": {
+      "name": "Anthropic",
+      "entity_id": "COMP_ANTHROPIC",
+      "type": "Company",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "IPO",
+      "status": "ONGOING",
+      "polarity": "POSITIVE",
+      "verb": "fuel"
+    },
+    "object": {
+      "name": "HOPE BANCORP",
+      "entity_id": "COMP_HOPE_BANCORP",
+      "type": "Company",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Rapid revenue growth fuels hope the Claude-maker can overcome challenges",
+    "evidence_type": "UNKNOWN",
+    "action_type": "IPO",
+    "action_event_type": "Finance",
+    "action_detail": "fuel",
+    "action_status": "ONGOING",
+    "action_polarity": "POSITIVE",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "COMP_ANTHROPIC",
+        "entity_name": "Anthropic",
+        "entity_type": "Company",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "COMP_HOPE_BANCORP",
+        "entity_name": "HOPE BANCORP",
+        "entity_type": "Company",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 20128,
+    "article_url": "https://www.ft.com/content/e90128dc-9a22-4fd1-933c-e344f38255a8",
+    "subject": {
+      "name": "Real GDP",
+      "entity_id": "ORG_REAL_GDP",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "GROWS",
+      "status": "COMPLETED",
+      "polarity": "POSITIVE",
+      "verb": "held up"
+    },
+    "object": {
+      "name": "better than expected",
+      "entity_id": "ORG_BETTER_THAN_EXPECTED",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "second quarter",
+      "value": null
+    },
+    "location": {
+      "name": "second quarter",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Real GDP held up better than expected during the worst months of the energy price shock",
+    "evidence_type": "UNKNOWN",
+    "action_type": "GROWS",
+    "action_event_type": "Economic",
+    "action_detail": "held up",
+    "action_status": "COMPLETED",
+    "action_polarity": "POSITIVE",
+    "event_time": "second quarter",
+    "location_str": "second quarter",
+    "entities": [
+      {
+        "entity_id": "ORG_REAL_GDP",
+        "entity_name": "Real GDP",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_BETTER_THAN_EXPECTED",
+        "entity_name": "better than expected",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 20128,
+    "article_url": "https://www.ft.com/content/e90128dc-9a22-4fd1-933c-e344f38255a8",
+    "subject": {
+      "name": "Real GDP",
+      "entity_id": "ORG_REAL_GDP",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "GROWS",
+      "status": "COMPLETED",
+      "polarity": "POSITIVE",
+      "verb": "held"
+    },
+    "object": {
+      "name": "better than expected",
+      "entity_id": "ORG_BETTER_THAN_EXPECTED",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "during the worst months of the energy price shock",
+      "value": null
+    },
+    "location": {
+      "name": "worst months of the energy price shock",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Real GDP held up better than expected during the worst months of the energy price shock",
+    "evidence_type": "UNKNOWN",
+    "action_type": "GROWS",
+    "action_event_type": "Economic",
+    "action_detail": "held",
+    "action_status": "COMPLETED",
+    "action_polarity": "POSITIVE",
+    "event_time": "during the worst months of the energy price shock",
+    "location_str": "worst months of the energy price shock",
+    "entities": [
+      {
+        "entity_id": "ORG_REAL_GDP",
+        "entity_name": "Real GDP",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_BETTER_THAN_EXPECTED",
+        "entity_name": "better than expected",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
     "article_id": 20028,
     "article_url": "https://www.cnbc.com/2026/08/13/us-japan-dollar-yen-intervention-goldman.html",
     "subject": {
@@ -65,64 +1702,9 @@
     },
     "action": {
       "type": "RATE_HIKE",
-      "status": "ONGOING",
-      "polarity": "NEUTRAL",
-      "verb": "shows"
-    },
-    "object": {
-      "name": "renewed investor interest",
-      "entity_id": "ORG_RENEWED_INVESTOR_INTEREST",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "recent",
-      "value": null
-    },
-    "location": {
-      "name": "N/A",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 0.95,
-    "evidence": "a recent rally shows renewed investor interest amid tamer inflation data and changing Fed rate expectations",
-    "evidence_type": "UNKNOWN",
-    "action_type": "RATE_HIKE",
-    "action_event_type": "Finance",
-    "action_detail": "shows",
-    "action_status": "ONGOING",
-    "action_polarity": "NEUTRAL",
-    "event_time": "recent",
-    "location_str": "N/A",
-    "entities": [
-      {
-        "entity_id": "ORG_GOLD_PRICES",
-        "entity_name": "Gold prices",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_RENEWED_INVESTOR_INTEREST",
-        "entity_name": "renewed investor interest",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 19999,
-    "article_url": "https://www.cnbc.com/2026/08/12/gold-prices-metals-fed-rate-hike-inflation.html",
-    "subject": {
-      "name": "Gold",
-      "entity_id": "COMP_GOLD",
-      "type": "Company",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "RATE_HIKE",
       "status": "COMPLETED",
       "polarity": "NEGATIVE",
-      "verb": "fall"
+      "verb": "falling"
     },
     "object": {
       "name": "$5,300 an ounce",
@@ -131,79 +1713,464 @@
       "object_type": "AMOUNT"
     },
     "time": {
-      "raw": "2026",
+      "raw": "early in the year",
       "value": null
     },
     "location": {
-      "name": "2026 early in the year",
+      "name": "2026",
       "entity_id": null,
       "type": null
     },
-    "confidence": 0.9,
-    "evidence": "falling from a 10-year high over $5,300 an ounce that it reached early in the year by as much as 18%, according to Goldprice.org",
+    "confidence": 1,
+    "evidence": "falling from a 10-year high over $5,300 an ounce that it reached early in the year by as much as 18%, according to Goldprice.org.",
     "evidence_type": "UNKNOWN",
     "action_type": "RATE_HIKE",
     "action_event_type": "Finance",
-    "action_detail": "fall",
+    "action_detail": "falling",
     "action_status": "COMPLETED",
     "action_polarity": "NEGATIVE",
-    "event_time": "2026",
-    "location_str": "2026 early in the year",
+    "event_time": "early in the year",
+    "location_str": "2026",
     "entities": [
       {
-        "entity_id": "COMP_GOLD",
-        "entity_name": "Gold",
-        "entity_type": "Company",
+        "entity_id": "ORG_GOLD_PRICES",
+        "entity_name": "Gold prices",
+        "entity_type": "Organization",
         "role": "SUBJECT"
       }
     ]
   },
   {
-    "article_id": 19999,
-    "article_url": "https://www.cnbc.com/2026/08/12/gold-prices-metals-fed-rate-hike-inflation.html",
+    "article_id": 20051,
+    "article_url": "https://www.nytimes.com/2026/08/13/world/europe/russia-ukraine-ports-odesa-cargo-ship-attacks.html",
     "subject": {
-      "name": "Gold price",
-      "entity_id": "ORG_GOLD_PRICE",
+      "name": "Russian Blockade",
+      "entity_id": "CTRY_RUSSIAN_BLOCKADE",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "BANS",
+      "status": "ONGOING",
+      "polarity": "NEGATIVE",
+      "verb": "threatens"
+    },
+    "object": {
+      "name": "Global Grain Supplies",
+      "entity_id": "ORG_GLOBAL_GRAIN_SUPPLIES",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "unknown",
+      "value": null
+    },
+    "location": {
+      "name": "Major Ukrainian Ports",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Russian Blockade of Major Ukrainian Ports Threatens Global Grain Supplies",
+    "evidence_type": "UNKNOWN",
+    "action_type": "BANS",
+    "action_event_type": "Legal",
+    "action_detail": "threatens",
+    "action_status": "ONGOING",
+    "action_polarity": "NEGATIVE",
+    "event_time": "unknown",
+    "location_str": "Major Ukrainian Ports",
+    "entities": [
+      {
+        "entity_id": "CTRY_RUSSIAN_BLOCKADE",
+        "entity_name": "Russian Blockade",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_GLOBAL_GRAIN_SUPPLIES",
+        "entity_name": "Global Grain Supplies",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 20051,
+    "article_url": "https://www.nytimes.com/2026/08/13/world/europe/russia-ukraine-ports-odesa-cargo-ship-attacks.html",
+    "subject": {
+      "name": "deadly strikes",
+      "entity_id": "ORG_DEADLY_STRIKES",
       "type": "Organization",
       "object_type": "ENTITY"
     },
     "action": {
-      "type": "RATE_HIKE",
-      "status": "CONSIDERED",
-      "polarity": "NEUTRAL",
-      "verb": "is"
+      "type": "BANS",
+      "status": "ONGOING",
+      "polarity": "NEGATIVE",
+      "verb": "are part"
     },
     "object": {
-      "name": "higher by over $1",
+      "name": "maritime battle with Ukraine and echo battles over other key shipping routes around the world",
       "entity_id": null,
       "type": "Other",
-      "object_type": "UNKNOWN"
+      "object_type": "STATEMENT"
     },
     "time": {
-      "raw": "one-year period",
+      "raw": "unknown",
       "value": null
     },
     "location": {
-      "name": "past one-year period",
+      "name": "around the world",
       "entity_id": null,
       "type": null
     },
     "confidence": 0.9,
-    "evidence": "the price of gold is still higher by over $1,000 in the past one-year period",
+    "evidence": "The deadly strikes are part of a long-running maritime battle with Ukraine and echo battles over other key shipping routes around the world",
     "evidence_type": "UNKNOWN",
-    "action_type": "RATE_HIKE",
-    "action_event_type": "Finance",
-    "action_detail": "is",
-    "action_status": "CONSIDERED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "one-year period",
-    "location_str": "past one-year period",
+    "action_type": "BANS",
+    "action_event_type": "Legal",
+    "action_detail": "are part",
+    "action_status": "ONGOING",
+    "action_polarity": "NEGATIVE",
+    "event_time": "unknown",
+    "location_str": "around the world",
     "entities": [
       {
-        "entity_id": "ORG_GOLD_PRICE",
-        "entity_name": "Gold price",
+        "entity_id": "ORG_DEADLY_STRIKES",
+        "entity_name": "deadly strikes",
         "entity_type": "Organization",
         "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 20058,
+    "article_url": "https://www.ft.com/content/f2f6766a-c249-4557-866e-d9bb23429047",
+    "subject": {
+      "name": "Businesses",
+      "entity_id": "ORG_BUSINESSES",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "COMPLETED",
+      "polarity": "NEUTRAL",
+      "verb": "introduce"
+    },
+    "object": {
+      "name": "instalment plans and food delivery services",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
+    },
+    "time": {
+      "raw": "N/A",
+      "value": null
+    },
+    "location": {
+      "name": "N/A",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Businesses introduce instalment plans and food delivery services cut portion sizes as US-Israeli war worsens economic crisis",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "introduce",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "N/A",
+    "location_str": "N/A",
+    "entities": [
+      {
+        "entity_id": "ORG_BUSINESSES",
+        "entity_name": "Businesses",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_INSTALMENT_PLANS",
+        "entity_name": "instalment plans",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      },
+      {
+        "entity_id": "ORG_FOOD_DELIVERY_SERVICES",
+        "entity_name": "food delivery services",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 20058,
+    "article_url": "https://www.ft.com/content/f2f6766a-c249-4557-866e-d9bb23429047",
+    "subject": {
+      "name": "portion sizes",
+      "entity_id": "ORG_PORTION_SIZES",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "CUTS",
+      "status": "COMPLETED",
+      "polarity": "NEGATIVE",
+      "verb": "cut"
+    },
+    "object": {
+      "name": "portion sizes",
+      "entity_id": "ORG_PORTION_SIZES",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "N/A",
+      "value": null
+    },
+    "location": {
+      "name": "N/A",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Businesses introduce instalment plans and food delivery services cut portion sizes as US-Israeli war worsens economic crisis",
+    "evidence_type": "UNKNOWN",
+    "action_type": "CUTS",
+    "action_event_type": "Economic",
+    "action_detail": "cut",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEGATIVE",
+    "event_time": "N/A",
+    "location_str": "N/A",
+    "entities": [
+      {
+        "entity_id": "ORG_PORTION_SIZES",
+        "entity_name": "portion sizes",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_PORTION_SIZES",
+        "entity_name": "portion sizes",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 20058,
+    "article_url": "https://www.ft.com/content/f2f6766a-c249-4557-866e-d9bb23429047",
+    "subject": {
+      "name": "economic crisis",
+      "entity_id": "ORG_ECONOMIC_CRISIS",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "ONGOING",
+      "polarity": "NEGATIVE",
+      "verb": "worsens"
+    },
+    "object": {
+      "name": "economic crisis",
+      "entity_id": "ORG_ECONOMIC_CRISIS",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "N/A",
+      "value": null
+    },
+    "location": {
+      "name": "N/A",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Businesses introduce instalment plans and food delivery services cut portion sizes as US-Israeli war worsens economic crisis",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "worsens",
+    "action_status": "ONGOING",
+    "action_polarity": "NEGATIVE",
+    "event_time": "N/A",
+    "location_str": "N/A",
+    "entities": [
+      {
+        "entity_id": "ORG_ECONOMIC_CRISIS",
+        "entity_name": "economic crisis",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_ECONOMIC_CRISIS",
+        "entity_name": "economic crisis",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 20011,
+    "article_url": "https://techcrunch.com/2026/08/12/some-claude-users-are-mad-that-anthropics-new-watermarks-will-catch-them-cheating-at-their-jobs-classes/",
+    "subject": {
+      "name": "Anthropic",
+      "entity_id": "COMP_ANTHROPIC",
+      "type": "Company",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "COMPLETED",
+      "polarity": "NEUTRAL",
+      "verb": "rolled out"
+    },
+    "object": {
+      "name": "new policy",
+      "entity_id": "ORG_NEW_POLICY",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "recently",
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Anthropic recently made the decision to watermark Claude’s outputs — inserting invisible code into the chatbot’s editorial text that marks it as AI-generated.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "rolled out",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "recently",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "COMP_ANTHROPIC",
+        "entity_name": "Anthropic",
+        "entity_type": "Company",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_NEW_POLICY",
+        "entity_name": "new policy",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 20011,
+    "article_url": "https://techcrunch.com/2026/08/12/some-claude-users-are-mad-that-anthropics-new-watermarks-will-catch-them-cheating-at-their-jobs-classes/",
+    "subject": {
+      "name": "watermarking system",
+      "entity_id": "ORG_WATERMARKING_SYSTEM",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "COMPLETED",
+      "polarity": "NEGATIVE",
+      "verb": "inserting"
+    },
+    "object": {
+      "name": "invisible code into the chatbot’s editorial text",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "inserting invisible code into the chatbot’s editorial text that marks it as AI-generated.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "inserting",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEGATIVE",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "ORG_WATERMARKING_SYSTEM",
+        "entity_name": "watermarking system",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 20011,
+    "article_url": "https://techcrunch.com/2026/08/12/some-claude-users-are-mad-that-anthropics-new-watermarks-will-catch-them-cheating-at-their-jobs-classes/",
+    "subject": {
+      "name": "some AI users",
+      "entity_id": "CTRY_SOME_AI_USERS",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "ONGOING",
+      "polarity": "NEGATIVE",
+      "verb": "complain"
+    },
+    "object": {
+      "name": "watermarking system",
+      "entity_id": "ORG_WATERMARKING_SYSTEM",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": "social media (Reddit)",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.9,
+    "evidence": "Some have taken to social media to complain that Anthropic recently made the decision to watermark Claude’s outputs...",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "complain",
+    "action_status": "ONGOING",
+    "action_polarity": "NEGATIVE",
+    "event_time": "",
+    "location_str": "social media (Reddit)",
+    "entities": [
+      {
+        "entity_id": "CTRY_SOME_AI_USERS",
+        "entity_name": "some AI users",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_WATERMARKING_SYSTEM",
+        "entity_name": "watermarking system",
+        "entity_type": "Organization",
+        "role": "OBJECT"
       }
     ]
   },
@@ -237,7 +2204,7 @@
       "entity_id": null,
       "type": null
     },
-    "confidence": 1.0,
+    "confidence": 1,
     "evidence": "The town making missiles for Trump",
     "evidence_type": "UNKNOWN",
     "action_type": "ATTACKS",
@@ -292,7 +2259,7 @@
       "entity_id": null,
       "type": null
     },
-    "confidence": 0.9,
+    "confidence": 1,
     "evidence": "Christianity reigns supreme in this working-class area.",
     "evidence_type": "UNKNOWN",
     "action_type": "ATTACKS",
@@ -312,6 +2279,61 @@
       {
         "entity_id": "ORG_CHRISTIANITY",
         "entity_name": "Christianity",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 20015,
+    "article_url": "https://www.bbc.co.uk/news/articles/cn0n8nd6645o?at_medium=RSS&at_campaign=rss",
+    "subject": {
+      "name": "town",
+      "entity_id": "LOC_TOWN",
+      "type": "Location",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "ATTACKS",
+      "status": "ONGOING",
+      "polarity": "NEUTRAL",
+      "verb": "supplies"
+    },
+    "object": {
+      "name": "economic nourishment",
+      "entity_id": "ORG_ECONOMIC_NOURISHMENT",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "unknown",
+      "value": null
+    },
+    "location": {
+      "name": "Kingsport, Tennessee",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.8,
+    "evidence": "there's another institution that supplies it with economic nourishment.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "ATTACKS",
+    "action_event_type": "Military",
+    "action_detail": "supplies",
+    "action_status": "ONGOING",
+    "action_polarity": "NEUTRAL",
+    "event_time": "unknown",
+    "location_str": "Kingsport, Tennessee",
+    "entities": [
+      {
+        "entity_id": "LOC_TOWN",
+        "entity_name": "town",
+        "entity_type": "Location",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_ECONOMIC_NOURISHMENT",
+        "entity_name": "economic nourishment",
         "entity_type": "Organization",
         "role": "OBJECT"
       }
@@ -339,24 +2361,24 @@
       "object_type": "STATEMENT"
     },
     "time": {
-      "raw": "N/A",
+      "raw": null,
       "value": null
     },
     "location": {
-      "name": "N/A",
+      "name": null,
       "entity_id": null,
       "type": null
     },
     "confidence": 1,
-    "evidence": "CoreWeave counters a key bear case on the AI trade.",
+    "evidence": "CoreWeave counters a key bear case on the AI trade. What it means for our data center stocks",
     "evidence_type": "UNKNOWN",
     "action_type": "OTHER",
     "action_event_type": "General",
     "action_detail": "counters",
     "action_status": "COMPLETED",
     "action_polarity": "POSITIVE",
-    "event_time": "N/A",
-    "location_str": "N/A",
+    "event_time": "",
+    "location_str": "",
     "entities": [
       {
         "entity_id": "COMP_COREWEAVE",
@@ -367,77 +2389,22 @@
     ]
   },
   {
-    "article_id": 20011,
-    "article_url": "https://techcrunch.com/2026/08/12/some-claude-users-are-mad-that-anthropics-new-watermarks-will-catch-them-cheating-at-their-jobs-classes/",
+    "article_id": 19998,
+    "article_url": "https://www.cnbc.com/2026/08/12/coreweave-counters-a-key-bear-case-on-the-ai-trade-what-it-means-for-our-data-center-stocks.html",
     "subject": {
-      "name": "Anthropic",
-      "entity_id": "COMP_ANTHROPIC",
+      "name": "CoreWeave",
+      "entity_id": "COMP_COREWEAVE",
       "type": "Company",
       "object_type": "ENTITY"
     },
     "action": {
       "type": "OTHER",
       "status": "COMPLETED",
-      "polarity": "NEUTRAL",
-      "verb": "rolled out"
+      "polarity": "POSITIVE",
+      "verb": "delivered"
     },
     "object": {
-      "name": "new watermarking system",
-      "entity_id": "ORG_NEW_WATERMARKING_SYSTEM",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "recently",
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Anthropic recently made the decision to watermark Claude’s outputs — inserting invisible code into the chatbot’s editorial text that marks it as AI-generated.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "rolled out",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "recently",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "COMP_ANTHROPIC",
-        "entity_name": "Anthropic",
-        "entity_type": "Company",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_NEW_WATERMARKING_SYSTEM",
-        "entity_name": "new watermarking system",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 20011,
-    "article_url": "https://techcrunch.com/2026/08/12/some-claude-users-are-mad-that-anthropics-new-watermarks-will-catch-them-cheating-at-their-jobs-classes/",
-    "subject": {
-      "name": "Anthropic's new watermarking system",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "COMPLETED",
-      "polarity": "NEUTRAL",
-      "verb": "inserting"
-    },
-    "object": {
-      "name": "invisible code into the chatbot’s editorial text",
+      "name": "a shot in the arm for Nvidia and other data center stocks",
       "entity_id": null,
       "type": "Other",
       "object_type": "STATEMENT"
@@ -451,72 +2418,66 @@
       "entity_id": null,
       "type": null
     },
-    "confidence": 1,
-    "evidence": "Anthropic recently made the decision to watermark Claude’s outputs — inserting invisible code into the chatbot’s editorial text that marks it as AI-generated.",
+    "confidence": 0.9,
+    "evidence": "CoreWeave has delivered a shot in the arm for Club name Nvidia and other data center stocks, offering evidence that AI chips may be an even better investment than previously thought.",
     "evidence_type": "UNKNOWN",
     "action_type": "OTHER",
     "action_event_type": "General",
-    "action_detail": "inserting",
+    "action_detail": "delivered",
     "action_status": "COMPLETED",
-    "action_polarity": "NEUTRAL",
+    "action_polarity": "POSITIVE",
     "event_time": "",
     "location_str": "",
-    "entities": []
+    "entities": [
+      {
+        "entity_id": "COMP_COREWEAVE",
+        "entity_name": "CoreWeave",
+        "entity_type": "Company",
+        "role": "SUBJECT"
+      }
+    ]
   },
   {
-    "article_id": 20011,
-    "article_url": "https://techcrunch.com/2026/08/12/some-claude-users-are-mad-that-anthropics-new-watermarks-will-catch-them-cheating-at-their-jobs-classes/",
+    "article_id": 19998,
+    "article_url": "https://www.cnbc.com/2026/08/12/coreweave-counters-a-key-bear-case-on-the-ai-trade-what-it-means-for-our-data-center-stocks.html",
     "subject": {
-      "name": "Some AI users",
-      "entity_id": "CTRY_SOME_AI_USERS",
-      "type": "Country",
-      "object_type": "ENTITY"
+      "name": "AI compute provider's commentary",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
     },
     "action": {
       "type": "OTHER",
       "status": "ONGOING",
-      "polarity": "NEGATIVE",
-      "verb": "complain"
+      "polarity": "POSITIVE",
+      "verb": "lends support"
     },
     "object": {
-      "name": "watermarking system",
-      "entity_id": "ORG_WATERMARKING_SYSTEM",
-      "type": "Organization",
-      "object_type": "ENTITY"
+      "name": "the artificial intelligence infrastructure trade",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
     },
     "time": {
-      "raw": null,
+      "raw": "Tuesday night's earnings call and Wednesday morning on CNBC",
       "value": null
     },
     "location": {
-      "name": "social media",
+      "name": null,
       "entity_id": null,
       "type": null
     },
-    "confidence": 0.9,
-    "evidence": "Some have taken to social media to complain that it is.",
+    "confidence": 0.8,
+    "evidence": "The AI compute provider's commentary on the longevity of Nvidia's chips — first on Tuesday night's earnings call and again Wednesday morning on CNBC — lends support to the artificial intelligence infrastructure trade in a couple of ways.",
     "evidence_type": "UNKNOWN",
     "action_type": "OTHER",
     "action_event_type": "General",
-    "action_detail": "complain",
+    "action_detail": "lends support",
     "action_status": "ONGOING",
-    "action_polarity": "NEGATIVE",
-    "event_time": "",
-    "location_str": "social media",
-    "entities": [
-      {
-        "entity_id": "CTRY_SOME_AI_USERS",
-        "entity_name": "Some AI users",
-        "entity_type": "Country",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_WATERMARKING_SYSTEM",
-        "entity_name": "watermarking system",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
+    "action_polarity": "POSITIVE",
+    "event_time": "Tuesday night's earnings call and Wednesday morning on CNBC",
+    "location_str": "",
+    "entities": []
   },
   {
     "article_id": 20000,
@@ -540,11 +2501,11 @@
       "object_type": "ENTITY"
     },
     "time": {
-      "raw": "now",
+      "raw": "N/A",
       "value": null
     },
     "location": {
-      "name": "streamings platform",
+      "name": "N/A",
       "entity_id": null,
       "type": null
     },
@@ -556,8 +2517,8 @@
     "action_detail": "will use",
     "action_status": "ONGOING",
     "action_polarity": "NEUTRAL",
-    "event_time": "now",
-    "location_str": "streamings platform",
+    "event_time": "N/A",
+    "location_str": "N/A",
     "entities": [
       {
         "entity_id": "COMP_TWITCH",
@@ -595,15 +2556,15 @@
       "object_type": "ENTITY"
     },
     "time": {
-      "raw": null,
+      "raw": "N/A",
       "value": null
     },
     "location": {
-      "name": null,
+      "name": "N/A",
       "entity_id": null,
       "type": null
     },
-    "confidence": 0.9,
+    "confidence": 1,
     "evidence": "This move has inspired swift and concentrated backlash from the Twitch community, especially because creators are opted in to having their content used for this AI training by default.",
     "evidence_type": "UNKNOWN",
     "action_type": "OTHER",
@@ -611,8 +2572,8 @@
     "action_detail": "inspired",
     "action_status": "COMPLETED",
     "action_polarity": "NEGATIVE",
-    "event_time": "",
-    "location_str": "",
+    "event_time": "N/A",
+    "location_str": "N/A",
     "entities": [
       {
         "entity_id": "COMP_TWITCH_COMMUNITY",
@@ -641,20 +2602,20 @@
       "type": "OTHER",
       "status": "ONGOING",
       "polarity": "NEGATIVE",
-      "verb": "are"
+      "verb": "are opted in"
     },
     "object": {
-      "name": "opted in to having their content used for this AI training by default",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
+      "name": "content",
+      "entity_id": "ORG_CONTENT",
+      "type": "Organization",
+      "object_type": "ENTITY"
     },
     "time": {
-      "raw": null,
+      "raw": "N/A",
       "value": null
     },
     "location": {
-      "name": null,
+      "name": "N/A",
       "entity_id": null,
       "type": null
     },
@@ -663,17 +2624,23 @@
     "evidence_type": "UNKNOWN",
     "action_type": "OTHER",
     "action_event_type": "General",
-    "action_detail": "are",
+    "action_detail": "are opted in",
     "action_status": "ONGOING",
     "action_polarity": "NEGATIVE",
-    "event_time": "",
-    "location_str": "",
+    "event_time": "N/A",
+    "location_str": "N/A",
     "entities": [
       {
         "entity_id": "PERS_CREATORS",
         "entity_name": "creators",
         "entity_type": "Person",
         "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_CONTENT",
+        "entity_name": "content",
+        "entity_type": "Organization",
+        "role": "OBJECT"
       }
     ]
   },
@@ -688,7 +2655,7 @@
     },
     "action": {
       "type": "APPOINTS",
-      "status": "COMPLETED",
+      "status": "ANNOUNCED",
       "polarity": "NEUTRAL",
       "verb": "named"
     },
@@ -708,12 +2675,12 @@
       "type": null
     },
     "confidence": 1,
-    "evidence": "Fermi said Wednesday it has hired Lee McIntire, an independent member of the company’s board who has held chief executive positions at CH2M Hill and TerraPower, the nuclear power startup founded by Bill Gates.",
+    "evidence": "Fermi said Wednesday it has hired Lee McIntire",
     "evidence_type": "UNKNOWN",
     "action_type": "APPOINTS",
     "action_event_type": "Leadership",
     "action_detail": "named",
-    "action_status": "COMPLETED",
+    "action_status": "ANNOUNCED",
     "action_polarity": "NEUTRAL",
     "event_time": "Wednesday",
     "location_str": "",
@@ -763,7 +2730,7 @@
       "type": null
     },
     "confidence": 1,
-    "evidence": "Fermi, the AI nuclear power firm, has named a new CEO more than three months after firing co-founder Toby Neugebauer from the top executive post.",
+    "evidence": "more than three months after firing co-founder Toby Neugebauer from the top",
     "evidence_type": "UNKNOWN",
     "action_type": "FIRES",
     "action_event_type": "Leadership",
@@ -791,47 +2758,102 @@
     "article_id": 20005,
     "article_url": "https://techcrunch.com/2026/08/12/ai-nuclear-power-firm-fermi-finally-has-a-new-ceo/",
     "subject": {
-      "name": "Fermi America",
-      "entity_id": "COMP_FERMI_AMERICA",
+      "name": "Fermi",
+      "entity_id": "COMP_FERMI",
       "type": "Company",
       "object_type": "ENTITY"
     },
     "action": {
       "type": "OTHER",
-      "status": "ONGOING",
-      "polarity": "NEUTRAL",
-      "verb": "developing"
+      "status": "ANNOUNCED",
+      "polarity": "POSITIVE",
+      "verb": "hired"
     },
     "object": {
-      "name": "AI campus in Amarillo, Texas called Project Matador",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
+      "name": "Lee McIntire",
+      "entity_id": "PERS_LEE_MCINTIRE",
+      "type": "Person",
+      "object_type": "ENTITY"
     },
     "time": {
-      "raw": null,
+      "raw": "Wednesday",
       "value": null
     },
     "location": {
-      "name": "Amarillo, Texas",
+      "name": null,
       "entity_id": null,
       "type": null
     },
     "confidence": 1,
-    "evidence": "Fermi America, which was co-founded by former U.S. Energy Secretary Rick Perry, is developing an AI campus in Amarillo, Texas, called Project Matador that will eventually use nuclear reactors to power data centers.",
+    "evidence": "Fermi said Wednesday it has hired Lee McIntire",
     "evidence_type": "UNKNOWN",
     "action_type": "OTHER",
     "action_event_type": "General",
-    "action_detail": "developing",
-    "action_status": "ONGOING",
-    "action_polarity": "NEUTRAL",
-    "event_time": "",
-    "location_str": "Amarillo, Texas",
+    "action_detail": "hired",
+    "action_status": "ANNOUNCED",
+    "action_polarity": "POSITIVE",
+    "event_time": "Wednesday",
+    "location_str": "",
     "entities": [
       {
-        "entity_id": "COMP_FERMI_AMERICA",
-        "entity_name": "Fermi America",
+        "entity_id": "COMP_FERMI",
+        "entity_name": "Fermi",
         "entity_type": "Company",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "PERS_LEE_MCINTIRE",
+        "entity_name": "Lee McIntire",
+        "entity_type": "Person",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 20008,
+    "article_url": "https://www.nytimes.com/2026/08/12/us/hegseth-trump-anti-cartel-coalition.html",
+    "subject": {
+      "name": "Pete Hegseth",
+      "entity_id": "ORG_PETE_HEGSETH",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "STATES",
+      "status": "ANNOUNCED",
+      "polarity": "POSITIVE",
+      "verb": "urged"
+    },
+    "object": {
+      "name": "Latin American military leaders",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "time": {
+      "raw": "unknown",
+      "value": null
+    },
+    "location": {
+      "name": "Panama",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Defense Secretary Pete Hegseth urged Latin American military leaders gathered in Panama to ramp up their efforts alongside U.S. forces",
+    "evidence_type": "UNKNOWN",
+    "action_type": "STATES",
+    "action_event_type": "Politics",
+    "action_detail": "urged",
+    "action_status": "ANNOUNCED",
+    "action_polarity": "POSITIVE",
+    "event_time": "unknown",
+    "location_str": "Panama",
+    "entities": [
+      {
+        "entity_id": "ORG_PETE_HEGSETH",
+        "entity_name": "Pete Hegseth",
+        "entity_type": "Organization",
         "role": "SUBJECT"
       }
     ]
@@ -898,16 +2920,16 @@
       "type": "SURGES",
       "status": "ONGOING",
       "polarity": "NEUTRAL",
-      "verb": "focused"
+      "verb": "is akin to"
     },
     "object": {
-      "name": "accounting",
-      "entity_id": "ORG_ACCOUNTING",
-      "type": "Organization",
-      "object_type": "ENTITY"
+      "name": "a private equity firm for AI",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
     },
     "time": {
-      "raw": "Wednesday",
+      "raw": null,
       "value": null
     },
     "location": {
@@ -915,15 +2937,15 @@
       "entity_id": null,
       "type": null
     },
-    "confidence": 1,
-    "evidence": "So far, Thrive has focused on accounting and information technology, but part of Wednesday’s raise will go toward expanding a new vertical in physical assets.",
+    "confidence": 0.9,
+    "evidence": "Thrive Holdings is akin to a private equity firm for AI, buying traditional businesses like accounting firms and implementing AI into their workflows.",
     "evidence_type": "UNKNOWN",
     "action_type": "SURGES",
     "action_event_type": "Finance",
-    "action_detail": "focused",
+    "action_detail": "is akin to",
     "action_status": "ONGOING",
     "action_polarity": "NEUTRAL",
-    "event_time": "Wednesday",
+    "event_time": "",
     "location_str": "",
     "entities": [
       {
@@ -931,18 +2953,6 @@
         "entity_name": "Thrive Holdings",
         "entity_type": "Company",
         "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_ACCOUNTING",
-        "entity_name": "accounting",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      },
-      {
-        "entity_id": "IND_INFORMATION_TECHNOLOGY",
-        "entity_name": "Information Technology",
-        "entity_type": "Industry",
-        "role": "OBJECT"
       }
     ]
   },
@@ -962,7 +2972,7 @@
       "verb": "took"
     },
     "object": {
-      "name": "ownership stake in Thrive Holdings",
+      "name": "an ownership stake in Thrive Holdings",
       "entity_id": null,
       "type": "Other",
       "object_type": "STATEMENT"
@@ -996,110 +3006,6 @@
     ]
   },
   {
-    "article_id": 20008,
-    "article_url": "https://www.nytimes.com/2026/08/12/us/hegseth-trump-anti-cartel-coalition.html",
-    "subject": {
-      "name": "Pete Hegseth",
-      "entity_id": "PERS_PETE_HEGSETH",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "STATES",
-      "status": "EXPECTED",
-      "polarity": "NEUTRAL",
-      "verb": "urged"
-    },
-    "object": {
-      "name": "Latin American military leaders",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "time": {
-      "raw": "unknown",
-      "value": null
-    },
-    "location": {
-      "name": "Panama",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1.0,
-    "evidence": "Defense Secretary Pete Hegseth urged Latin American military leaders gathered in Panama to ramp up their efforts alongside U.S. forces",
-    "evidence_type": "UNKNOWN",
-    "action_type": "STATES",
-    "action_event_type": "Politics",
-    "action_detail": "urged",
-    "action_status": "EXPECTED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "unknown",
-    "location_str": "Panama",
-    "entities": [
-      {
-        "entity_id": "PERS_PETE_HEGSETH",
-        "entity_name": "Pete Hegseth",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 20008,
-    "article_url": "https://www.nytimes.com/2026/08/12/us/hegseth-trump-anti-cartel-coalition.html",
-    "subject": {
-      "name": "Anti-Cartel Coalition",
-      "entity_id": "ORG_ANTI_CARTEL_COALITION",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "STATES",
-      "status": "EXPECTED",
-      "polarity": "NEGATIVE",
-      "verb": "do"
-    },
-    "object": {
-      "name": "Bad People",
-      "entity_id": "ORG_BAD_PEOPLE",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "unknown",
-      "value": null
-    },
-    "location": {
-      "name": "unknown",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 0.9,
-    "evidence": "Hegseth Says Anti-Cartel Coalition Will Do ‘Bad Things to Bad People’",
-    "evidence_type": "UNKNOWN",
-    "action_type": "STATES",
-    "action_event_type": "Politics",
-    "action_detail": "do",
-    "action_status": "EXPECTED",
-    "action_polarity": "NEGATIVE",
-    "event_time": "unknown",
-    "location_str": "unknown",
-    "entities": [
-      {
-        "entity_id": "ORG_ANTI_CARTEL_COALITION",
-        "entity_name": "Anti-Cartel Coalition",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_BAD_PEOPLE",
-        "entity_name": "Bad People",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
     "article_id": 20014,
     "article_url": "https://www.bbc.co.uk/news/articles/cdx7pv300vwo?at_medium=RSS&at_campaign=rss",
     "subject": {
@@ -1121,11 +3027,11 @@
       "object_type": "ENTITY"
     },
     "time": {
-      "raw": "unknown",
+      "raw": "N/A",
       "value": null
     },
     "location": {
-      "name": null,
+      "name": "N/A",
       "entity_id": null,
       "type": null
     },
@@ -1137,8 +3043,8 @@
     "action_detail": "updated",
     "action_status": "COMPLETED",
     "action_polarity": "NEUTRAL",
-    "event_time": "unknown",
-    "location_str": "",
+    "event_time": "N/A",
+    "location_str": "N/A",
     "entities": [
       {
         "entity_id": "ORG_RULES",
@@ -1159,9 +3065,9 @@
     },
     "action": {
       "type": "OTHER",
-      "status": "PLANNED",
+      "status": "EXPECTED",
       "polarity": "NEGATIVE",
-      "verb": "will be automatically disqualified"
+      "verb": "disqualified"
     },
     "object": {
       "name": "hosting",
@@ -1174,7 +3080,7 @@
       "value": null
     },
     "location": {
-      "name": null,
+      "name": "N/A",
       "entity_id": null,
       "type": null
     },
@@ -1183,11 +3089,11 @@
     "evidence_type": "UNKNOWN",
     "action_type": "OTHER",
     "action_event_type": "General",
-    "action_detail": "will be automatically disqualified",
-    "action_status": "PLANNED",
+    "action_detail": "disqualified",
+    "action_status": "EXPECTED",
     "action_polarity": "NEGATIVE",
     "event_time": "following year",
-    "location_str": "",
+    "location_str": "N/A",
     "entities": [
       {
         "entity_id": "ORG_HOSTING",
@@ -1208,9 +3114,9 @@
     },
     "action": {
       "type": "OTHER",
-      "status": "PLANNED",
+      "status": "EXPECTED",
       "polarity": "NEGATIVE",
-      "verb": "will also be disqualified"
+      "verb": "disqualified"
     },
     "object": {
       "name": "hosting",
@@ -1219,11 +3125,11 @@
       "object_type": "ENTITY"
     },
     "time": {
-      "raw": "following year",
+      "raw": "N/A",
       "value": null
     },
     "location": {
-      "name": null,
+      "name": "N/A",
       "entity_id": null,
       "type": null
     },
@@ -1232,11 +3138,11 @@
     "evidence_type": "UNKNOWN",
     "action_type": "OTHER",
     "action_event_type": "General",
-    "action_detail": "will also be disqualified",
-    "action_status": "PLANNED",
+    "action_detail": "disqualified",
+    "action_status": "EXPECTED",
     "action_polarity": "NEGATIVE",
-    "event_time": "following year",
-    "location_str": "",
+    "event_time": "N/A",
+    "location_str": "N/A",
     "entities": [
       {
         "entity_id": "CTRY_WINNING_COUNTRIES",
@@ -1319,7 +3225,7 @@
     "action": {
       "type": "MERGES",
       "status": "COMPLETED",
-      "polarity": "POSITIVE",
+      "polarity": "NEUTRAL",
       "verb": "emerged"
     },
     "object": {
@@ -1337,27 +3243,27 @@
       "entity_id": null,
       "type": null
     },
-    "confidence": 1,
+    "confidence": 1.0,
     "evidence": "Darline Graham and Ralph Norman emerged from a special election sprint on Tuesday to succeed Lindsey Graham.",
     "evidence_type": "UNKNOWN",
     "action_type": "MERGES",
     "action_event_type": "Finance",
     "action_detail": "emerged",
     "action_status": "COMPLETED",
-    "action_polarity": "POSITIVE",
+    "action_polarity": "NEUTRAL",
     "event_time": "Tuesday",
     "location_str": "South Carolina",
     "entities": [
       {
-        "entity_id": "PERS_DARLINE_GRAHAM",
+        "entity_id": "ORG_DARLINE_GRAHAM",
         "entity_name": "Darline Graham",
-        "entity_type": "Person",
+        "entity_type": "Organization",
         "role": "SUBJECT"
       },
       {
-        "entity_id": "PERS_RALPH_NORMAN",
+        "entity_id": "ORG_RALPH_NORMAN",
         "entity_name": "Ralph Norman",
-        "entity_type": "Person",
+        "entity_type": "Organization",
         "role": "SUBJECT"
       },
       {
@@ -1372,54 +3278,48 @@
     "article_id": 20003,
     "article_url": "https://www.nytimes.com/2026/08/12/us/politics/south-carolina-republican-senate-primary-runoff.html",
     "subject": {
-      "name": "Lindsey Graham",
-      "entity_id": "PERS_LINDSEY_GRAHAM",
-      "type": "Person",
+      "name": "Darline Graham",
+      "entity_id": "ORG_DARLINE_GRAHAM",
+      "type": "Organization",
       "object_type": "ENTITY"
     },
     "action": {
       "type": "STATES",
-      "status": "COMPLETED",
+      "status": "PLANNED",
       "polarity": "NEUTRAL",
-      "verb": "succeed"
+      "verb": "will sell"
     },
     "object": {
-      "name": "Lindsey Graham",
-      "entity_id": "PERS_LINDSEY_GRAHAM",
-      "type": "Person",
-      "object_type": "ENTITY"
+      "name": "closeness to President Trump",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
     },
     "time": {
-      "raw": "Tuesday",
+      "raw": null,
       "value": null
     },
     "location": {
-      "name": "South Carolina",
+      "name": null,
       "entity_id": null,
       "type": null
     },
     "confidence": 0.9,
-    "evidence": "Darline Graham and Ralph Norman emerged from a special election sprint on Tuesday to succeed Lindsey Graham.",
+    "evidence": "She will sell her closeness to President Trump.",
     "evidence_type": "UNKNOWN",
     "action_type": "STATES",
     "action_event_type": "Politics",
-    "action_detail": "succeed",
-    "action_status": "COMPLETED",
+    "action_detail": "will sell",
+    "action_status": "PLANNED",
     "action_polarity": "NEUTRAL",
-    "event_time": "Tuesday",
-    "location_str": "South Carolina",
+    "event_time": "",
+    "location_str": "",
     "entities": [
       {
-        "entity_id": "PERS_LINDSEY_GRAHAM",
-        "entity_name": "Lindsey Graham",
-        "entity_type": "Person",
+        "entity_id": "ORG_DARLINE_GRAHAM",
+        "entity_name": "Darline Graham",
+        "entity_type": "Organization",
         "role": "SUBJECT"
-      },
-      {
-        "entity_id": "PERS_LINDSEY_GRAHAM",
-        "entity_name": "Lindsey Graham",
-        "entity_type": "Person",
-        "role": "OBJECT"
       }
     ]
   },
@@ -1434,35 +3334,35 @@
     },
     "action": {
       "type": "STATES",
-      "status": "ONGOING",
-      "polarity": "POSITIVE",
+      "status": "PLANNED",
+      "polarity": "NEUTRAL",
       "verb": "tout"
     },
     "object": {
-      "name": "conservatism",
-      "entity_id": "ORG_CONSERVATISM",
+      "name": "his conservatism",
+      "entity_id": "ORG_HIS_CONSERVATISM",
       "type": "Organization",
       "object_type": "ENTITY"
     },
     "time": {
-      "raw": "Unknown",
+      "raw": null,
       "value": null
     },
     "location": {
-      "name": "Unknown",
+      "name": null,
       "entity_id": null,
       "type": null
     },
-    "confidence": 0.8,
+    "confidence": 0.9,
     "evidence": "He will tout his conservatism.",
     "evidence_type": "UNKNOWN",
     "action_type": "STATES",
     "action_event_type": "Politics",
     "action_detail": "tout",
-    "action_status": "ONGOING",
-    "action_polarity": "POSITIVE",
-    "event_time": "Unknown",
-    "location_str": "Unknown",
+    "action_status": "PLANNED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "",
+    "location_str": "",
     "entities": [
       {
         "entity_id": "PERS_TRUMP",
@@ -1471,107 +3371,58 @@
         "role": "SUBJECT"
       },
       {
-        "entity_id": "ORG_CONSERVATISM",
-        "entity_name": "conservatism",
+        "entity_id": "ORG_HIS_CONSERVATISM",
+        "entity_name": "his conservatism",
         "entity_type": "Organization",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 20013,
-    "article_url": "https://www.ft.com/content/3da49f90-75a1-4a01-bc6e-0716d57c1ddc?syn-25a6b1a6=1",
+    "article_id": 19997,
+    "article_url": "https://www.ft.com/content/3b522281-0119-47c9-a95a-f2c8d04e6212?syn-25a6b1a6=1",
     "subject": {
-      "name": "Karoline Leavitt",
-      "entity_id": "ORG_KAROLINE_LEAVITT",
+      "name": "Private capital firms",
+      "entity_id": "ORG_PRIVATE_CAPITAL_FIRMS",
       "type": "Organization",
       "object_type": "ENTITY"
     },
     "action": {
-      "type": "ATTACKS",
-      "status": "ANNOUNCED",
+      "type": "FUNDS",
+      "status": "EXPECTED",
       "polarity": "NEUTRAL",
-      "verb": "step down"
+      "verb": "wagering"
     },
     "object": {
-      "name": "White House press secretary",
+      "name": "the crucial hardware",
       "entity_id": null,
       "type": "Other",
-      "object_type": "UNKNOWN"
+      "object_type": "CONCEPT"
     },
     "time": {
-      "raw": "end of the month",
+      "raw": "for years to come",
       "value": null
     },
     "location": {
-      "name": "White House",
+      "name": null,
       "entity_id": null,
       "type": null
     },
-    "confidence": 1,
-    "evidence": "Karoline Leavitt to step down as White House press secretary",
+    "confidence": 1.0,
+    "evidence": "Private capital firms are wagering that the crucial hardware will hold its value for years to come",
     "evidence_type": "UNKNOWN",
-    "action_type": "ATTACKS",
-    "action_event_type": "Military",
-    "action_detail": "step down",
-    "action_status": "ANNOUNCED",
+    "action_type": "FUNDS",
+    "action_event_type": "Economic",
+    "action_detail": "wagering",
+    "action_status": "EXPECTED",
     "action_polarity": "NEUTRAL",
-    "event_time": "end of the month",
-    "location_str": "White House",
+    "event_time": "for years to come",
+    "location_str": "",
     "entities": [
       {
-        "entity_id": "ORG_KAROLINE_LEAVITT",
-        "entity_name": "Karoline Leavitt",
+        "entity_id": "ORG_PRIVATE_CAPITAL_FIRMS",
+        "entity_name": "Private capital firms",
         "entity_type": "Organization",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 20013,
-    "article_url": "https://www.ft.com/content/3da49f90-75a1-4a01-bc6e-0716d57c1ddc?syn-25a6b1a6=1",
-    "subject": {
-      "name": "Trump",
-      "entity_id": "PERS_TRUMP",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "ATTACKS",
-      "status": "ANNOUNCED",
-      "polarity": "NEUTRAL",
-      "verb": "says"
-    },
-    "object": {
-      "name": "chief spokesperson will leave job at the end of the month",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": "end of the month",
-      "value": null
-    },
-    "location": {
-      "name": "N/A",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Donald Trump says chief spokesperson will leave job at the end of the month",
-    "evidence_type": "UNKNOWN",
-    "action_type": "ATTACKS",
-    "action_event_type": "Military",
-    "action_detail": "says",
-    "action_status": "ANNOUNCED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "end of the month",
-    "location_str": "N/A",
-    "entities": [
-      {
-        "entity_id": "PERS_TRUMP",
-        "entity_name": "Trump",
-        "entity_type": "Person",
         "role": "SUBJECT"
       }
     ]
@@ -1687,83 +3538,77 @@
     ]
   },
   {
-    "article_id": 19997,
-    "article_url": "https://www.ft.com/content/3b522281-0119-47c9-a95a-f2c8d04e6212?syn-25a6b1a6=1",
+    "article_id": 20013,
+    "article_url": "https://www.ft.com/content/3da49f90-75a1-4a01-bc6e-0716d57c1ddc?syn-25a6b1a6=1",
     "subject": {
-      "name": "Private capital firms",
-      "entity_id": "ORG_PRIVATE_CAPITAL_FIRMS",
+      "name": "Karoline Leavitt",
+      "entity_id": "ORG_KAROLINE_LEAVITT",
       "type": "Organization",
       "object_type": "ENTITY"
     },
     "action": {
-      "type": "FUNDS",
-      "status": "PLANNED",
+      "type": "ATTACKS",
+      "status": "ANNOUNCED",
       "polarity": "NEUTRAL",
-      "verb": "wagering"
+      "verb": "step down"
     },
     "object": {
-      "name": "value",
-      "entity_id": "ORG_VALUE",
-      "type": "Organization",
-      "object_type": "ENTITY"
+      "name": "White House press secretary",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
     },
     "time": {
-      "raw": "for years to come",
+      "raw": "end of the month",
       "value": null
     },
     "location": {
-      "name": "N/A",
+      "name": "White House",
       "entity_id": null,
       "type": null
     },
-    "confidence": 1.0,
-    "evidence": "Private capital firms are wagering that the crucial hardware will hold its value for years to come",
+    "confidence": 1,
+    "evidence": "Karoline Leavitt to step down as White House press secretary",
     "evidence_type": "UNKNOWN",
-    "action_type": "FUNDS",
-    "action_event_type": "Economic",
-    "action_detail": "wagering",
-    "action_status": "PLANNED",
+    "action_type": "ATTACKS",
+    "action_event_type": "Military",
+    "action_detail": "step down",
+    "action_status": "ANNOUNCED",
     "action_polarity": "NEUTRAL",
-    "event_time": "for years to come",
-    "location_str": "N/A",
+    "event_time": "end of the month",
+    "location_str": "White House",
     "entities": [
       {
-        "entity_id": "ORG_PRIVATE_CAPITAL_FIRMS",
-        "entity_name": "Private capital firms",
+        "entity_id": "ORG_KAROLINE_LEAVITT",
+        "entity_name": "Karoline Leavitt",
         "entity_type": "Organization",
         "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_VALUE",
-        "entity_name": "value",
-        "entity_type": "Organization",
-        "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 19997,
-    "article_url": "https://www.ft.com/content/3b522281-0119-47c9-a95a-f2c8d04e6212?syn-25a6b1a6=1",
+    "article_id": 20013,
+    "article_url": "https://www.ft.com/content/3da49f90-75a1-4a01-bc6e-0716d57c1ddc?syn-25a6b1a6=1",
     "subject": {
-      "name": "crucial hardware",
-      "entity_id": "ORG_CRUCIAL_HARDWARE",
-      "type": "Organization",
+      "name": "Trump",
+      "entity_id": "PERS_TRUMP",
+      "type": "Person",
       "object_type": "ENTITY"
     },
     "action": {
-      "type": "FUNDS",
-      "status": "EXPECTED",
+      "type": "ATTACKS",
+      "status": "ANNOUNCED",
       "polarity": "NEUTRAL",
-      "verb": "hold"
+      "verb": "says"
     },
     "object": {
-      "name": "its value",
-      "entity_id": "ORG_ITS_VALUE",
-      "type": "Organization",
-      "object_type": "ENTITY"
+      "name": "chief spokesperson will leave job at the end of the month",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
     },
     "time": {
-      "raw": "for years to come",
+      "raw": "end of the month",
       "value": null
     },
     "location": {
@@ -1771,28 +3616,22 @@
       "entity_id": null,
       "type": null
     },
-    "confidence": 0.9,
-    "evidence": "Private capital firms are wagering that the crucial hardware will hold its value for years to come",
+    "confidence": 1,
+    "evidence": "Donald Trump says chief spokesperson will leave job at the end of the month",
     "evidence_type": "UNKNOWN",
-    "action_type": "FUNDS",
-    "action_event_type": "Economic",
-    "action_detail": "hold",
-    "action_status": "EXPECTED",
+    "action_type": "ATTACKS",
+    "action_event_type": "Military",
+    "action_detail": "says",
+    "action_status": "ANNOUNCED",
     "action_polarity": "NEUTRAL",
-    "event_time": "for years to come",
+    "event_time": "end of the month",
     "location_str": "N/A",
     "entities": [
       {
-        "entity_id": "ORG_CRUCIAL_HARDWARE",
-        "entity_name": "crucial hardware",
-        "entity_type": "Organization",
+        "entity_id": "PERS_TRUMP",
+        "entity_name": "Trump",
+        "entity_type": "Person",
         "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_ITS_VALUE",
-        "entity_name": "its value",
-        "entity_type": "Organization",
-        "role": "OBJECT"
       }
     ]
   },
@@ -1818,7 +3657,7 @@
       "object_type": "ENTITY"
     },
     "time": {
-      "raw": "Recent years",
+      "raw": "unknown",
       "value": null
     },
     "location": {
@@ -1834,7 +3673,7 @@
     "action_detail": "accused",
     "action_status": "COMPLETED",
     "action_polarity": "NEGATIVE",
-    "event_time": "Recent years",
+    "event_time": "unknown",
     "location_str": "Brazil",
     "entities": [
       {
@@ -1867,11 +3706,11 @@
       "object_type": "ENTITY"
     },
     "time": {
-      "raw": "N/A",
+      "raw": "unknown",
       "value": null
     },
     "location": {
-      "name": "N/A",
+      "name": "unknown",
       "entity_id": null,
       "type": null
     },
@@ -1883,8 +3722,8 @@
     "action_detail": "called",
     "action_status": "COMPLETED",
     "action_polarity": "NEGATIVE",
-    "event_time": "N/A",
-    "location_str": "N/A",
+    "event_time": "unknown",
+    "location_str": "unknown",
     "entities": [
       {
         "entity_id": "CTRY_UNITED_STATES",
@@ -1916,17 +3755,17 @@
       "verb": "pursued"
     },
     "object": {
-      "name": "more overt strategy",
-      "entity_id": "ORG_MORE_OVERT_STRATEGY",
-      "type": "Organization",
+      "name": "Strategy",
+      "entity_id": "COMP_STRATEGY",
+      "type": "Company",
       "object_type": "ENTITY"
     },
     "time": {
-      "raw": "Recent years",
+      "raw": "recent years",
       "value": null
     },
     "location": {
-      "name": "N/A",
+      "name": "unknown",
       "entity_id": null,
       "type": null
     },
@@ -1938,8 +3777,8 @@
     "action_detail": "pursued",
     "action_status": "ONGOING",
     "action_polarity": "UNKNOWN",
-    "event_time": "Recent years",
-    "location_str": "N/A",
+    "event_time": "recent years",
+    "location_str": "unknown",
     "entities": [
       {
         "entity_id": "PERS_TRUMP",
@@ -1948,9 +3787,9 @@
         "role": "SUBJECT"
       },
       {
-        "entity_id": "ORG_MORE_OVERT_STRATEGY",
-        "entity_name": "more overt strategy",
-        "entity_type": "Organization",
+        "entity_id": "COMP_STRATEGY",
+        "entity_name": "Strategy",
+        "entity_type": "Company",
         "role": "OBJECT"
       }
     ]
@@ -1971,21 +3810,21 @@
       "verb": "published"
     },
     "object": {
-      "name": "new Windows zero-day bug",
+      "name": "new Windows zero-day bug (ShieldBreak)",
       "entity_id": null,
       "type": "Other",
-      "object_type": "UNKNOWN"
+      "object_type": "STATEMENT"
     },
     "time": {
-      "raw": "N/A",
+      "raw": "recent months",
       "value": null
     },
     "location": {
-      "name": "N/A",
+      "name": "Windows",
       "entity_id": null,
       "type": null
     },
-    "confidence": 1.0,
+    "confidence": 1,
     "evidence": "This is the latest zero-day released by security researcher Nightmare Eclipse, despite Microsoft publicly threatening to take legal action against them.",
     "evidence_type": "UNKNOWN",
     "action_type": "WARNS",
@@ -1993,8 +3832,8 @@
     "action_detail": "published",
     "action_status": "COMPLETED",
     "action_polarity": "NEUTRAL",
-    "event_time": "N/A",
-    "location_str": "N/A",
+    "event_time": "recent months",
+    "location_str": "Windows",
     "entities": []
   },
   {
@@ -2019,15 +3858,15 @@
       "object_type": "UNKNOWN"
     },
     "time": {
-      "raw": "N/A",
+      "raw": null,
       "value": null
     },
     "location": {
-      "name": "Windows",
+      "name": null,
       "entity_id": null,
       "type": null
     },
-    "confidence": 1.0,
+    "confidence": 1,
     "evidence": "ShieldBreak takes advantage of a flaw in Windows Defender, the anti-malware and security engine built into Windows.",
     "evidence_type": "UNKNOWN",
     "action_type": "WARNS",
@@ -2035,8 +3874,8 @@
     "action_detail": "takes advantage of",
     "action_status": "ONGOING",
     "action_polarity": "NEGATIVE",
-    "event_time": "N/A",
-    "location_str": "Windows",
+    "event_time": "",
+    "location_str": "",
     "entities": [
       {
         "entity_id": "ORG_SHIELDBREAK",
@@ -2057,7 +3896,7 @@
     },
     "action": {
       "type": "WARNS",
-      "status": "ONGOING",
+      "status": "EXPECTED",
       "polarity": "NEGATIVE",
       "verb": "gain"
     },
@@ -2068,24 +3907,24 @@
       "object_type": "STATEMENT"
     },
     "time": {
-      "raw": "N/A",
+      "raw": null,
       "value": null
     },
     "location": {
-      "name": "device and data",
+      "name": null,
       "entity_id": null,
       "type": null
     },
-    "confidence": 1.0,
+    "confidence": 1,
     "evidence": "A successful attack allows the hacker to escalate their permissions from a low-level user to full access to the device and its data.",
     "evidence_type": "UNKNOWN",
     "action_type": "WARNS",
     "action_event_type": "Politics",
     "action_detail": "gain",
-    "action_status": "ONGOING",
+    "action_status": "EXPECTED",
     "action_polarity": "NEGATIVE",
-    "event_time": "N/A",
-    "location_str": "device and data",
+    "event_time": "",
+    "location_str": "",
     "entities": [
       {
         "entity_id": "PERS_HACKERS",
@@ -2222,15 +4061,15 @@
     },
     "action": {
       "type": "OTHER",
-      "status": "EXPECTED",
+      "status": "ONGOING",
       "polarity": "POSITIVE",
-      "verb": "connect"
+      "verb": "leans"
     },
     "object": {
-      "name": "information from messages, calendars, maps and other Google services",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
+      "name": "Gemini Intelligence",
+      "entity_id": "ORG_GEMINI_INTELLIGENCE",
+      "type": "Organization",
+      "object_type": "ENTITY"
     },
     "time": {
       "raw": null,
@@ -2242,12 +4081,12 @@
       "type": null
     },
     "confidence": null,
-    "evidence": "For example, Gemini Intelligence can connect information from messages, calendars, maps and other Google services, then suggest or carry out next steps, such as checking availability, comparing travel options, or beginning a restaurant reservation.",
+    "evidence": "But Google's hardware pitch leans just as heavily on Gemini Intelligence — a suite of artificial intelligence features designed to understand what a user is doing on the phone and take action across different apps.",
     "evidence_type": "UNKNOWN",
     "action_type": "OTHER",
     "action_event_type": "General",
-    "action_detail": "connect",
-    "action_status": "EXPECTED",
+    "action_detail": "leans",
+    "action_status": "ONGOING",
     "action_polarity": "POSITIVE",
     "event_time": "",
     "location_str": "",
@@ -2259,27 +4098,9 @@
         "role": "SUBJECT"
       },
       {
-        "entity_id": "ORG_INFORMATION_FROM_MESSAGES",
-        "entity_name": "information from messages",
+        "entity_id": "ORG_GEMINI_INTELLIGENCE",
+        "entity_name": "Gemini Intelligence",
         "entity_type": "Organization",
-        "role": "OBJECT"
-      },
-      {
-        "entity_id": "ORG_CALENDARS",
-        "entity_name": "calendars",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      },
-      {
-        "entity_id": "COMP_WM_TECHNOLOGY",
-        "entity_name": "WM TECHNOLOGY",
-        "entity_type": "Company",
-        "role": "OBJECT"
-      },
-      {
-        "entity_id": "COMP_OTHER_GOOGLE_SERVICES",
-        "entity_name": "other Google services",
-        "entity_type": "Company",
         "role": "OBJECT"
       }
     ]
@@ -2345,7 +4166,7 @@
     "action": {
       "type": "BEATS",
       "status": "COMPLETED",
-      "polarity": "POSITIVE",
+      "polarity": "NEGATIVE",
       "verb": "was up"
     },
     "object": {
@@ -2355,7 +4176,7 @@
       "object_type": "AMOUNT"
     },
     "time": {
-      "raw": "July",
+      "raw": null,
       "value": null
     },
     "location": {
@@ -2370,8 +4191,8 @@
     "action_event_type": "Finance",
     "action_detail": "was up",
     "action_status": "COMPLETED",
-    "action_polarity": "POSITIVE",
-    "event_time": "July",
+    "action_polarity": "NEGATIVE",
+    "event_time": "",
     "location_str": "",
     "entities": [
       {
@@ -2514,11 +4335,11 @@
       "object_type": "ENTITY"
     },
     "time": {
-      "raw": "Made by Google 2026",
+      "raw": "Made by Google 2026 event",
       "value": null
     },
     "location": {
-      "name": "event",
+      "name": "devices",
       "entity_id": null,
       "type": null
     },
@@ -2530,8 +4351,8 @@
     "action_detail": "show off",
     "action_status": "COMPLETED",
     "action_polarity": "POSITIVE",
-    "event_time": "Made by Google 2026",
-    "location_str": "event",
+    "event_time": "Made by Google 2026 event",
+    "location_str": "devices",
     "entities": [
       {
         "entity_id": "COMP_GOOGLE",
@@ -2573,7 +4394,7 @@
       "value": null
     },
     "location": {
-      "name": "Pixel devices",
+      "name": "Pixel",
       "entity_id": null,
       "type": null
     },
@@ -2586,7 +4407,7 @@
     "action_status": "ONGOING",
     "action_polarity": "POSITIVE",
     "event_time": "event",
-    "location_str": "Pixel devices",
+    "location_str": "Pixel",
     "entities": [
       {
         "entity_id": "ORG_GEMINI",
@@ -2612,10 +4433,10 @@
       "verb": "unveiled"
     },
     "object": {
-      "name": "Pixel Watch 5",
-      "entity_id": "ORG_PIXEL_WATCH_5",
-      "type": "Organization",
-      "object_type": "ENTITY"
+      "name": "Pixel Watch 5 with a smarter Gemini experience, as well as advanced fitness and health monitoring",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
     },
     "time": {
       "raw": "Wednesday",
@@ -2627,7 +4448,7 @@
       "type": null
     },
     "confidence": 1,
-    "evidence": "At its Made by Google event on Wednesday, Google unveiled the Pixel Watch 5 with a smarter Gemini experience, as well as advanced fitness and health monitoring.",
+    "evidence": "At its Made by Google event on Wednesday, Google unveiled the Pixel Watch 5 with a smarter Gemini experience, as well as advanced fitness and health monitoring",
     "evidence_type": "UNKNOWN",
     "action_type": "ANNOUNCES",
     "action_event_type": "Politics",
@@ -2644,8 +4465,14 @@
         "role": "SUBJECT"
       },
       {
-        "entity_id": "ORG_PIXEL_WATCH_5",
-        "entity_name": "Pixel Watch 5",
+        "entity_id": "ORG_ADVANCED_FITNESS",
+        "entity_name": "advanced fitness",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      },
+      {
+        "entity_id": "ORG_HEALTH_MONITORING",
+        "entity_name": "health monitoring",
         "entity_type": "Organization",
         "role": "OBJECT"
       }
@@ -2664,7 +4491,7 @@
       "type": "ANNOUNCES",
       "status": "ONGOING",
       "polarity": "POSITIVE",
-      "verb": "track"
+      "verb": "can track"
     },
     "object": {
       "name": "blood pressure patterns and insulin resistance, personalized help and better sleep tracking",
@@ -2673,11 +4500,11 @@
       "object_type": "STATEMENT"
     },
     "time": {
-      "raw": "N/A",
+      "raw": null,
       "value": null
     },
     "location": {
-      "name": "N/A",
+      "name": null,
       "entity_id": null,
       "type": null
     },
@@ -2686,11 +4513,11 @@
     "evidence_type": "UNKNOWN",
     "action_type": "ANNOUNCES",
     "action_event_type": "Politics",
-    "action_detail": "track",
+    "action_detail": "can track",
     "action_status": "ONGOING",
     "action_polarity": "POSITIVE",
-    "event_time": "N/A",
-    "location_str": "N/A",
+    "event_time": "",
+    "location_str": "",
     "entities": [
       {
         "entity_id": "ORG_PIXEL_WATCH_5",
@@ -2735,9 +4562,9 @@
     },
     "action": {
       "type": "ANNOUNCES",
-      "status": "UNKNOWN",
+      "status": "EXPECTED",
       "polarity": "NEUTRAL",
-      "verb": "start"
+      "verb": "starts at"
     },
     "object": {
       "name": "$399",
@@ -2746,11 +4573,11 @@
       "object_type": "AMOUNT"
     },
     "time": {
-      "raw": "N/A",
+      "raw": null,
       "value": null
     },
     "location": {
-      "name": "N/A",
+      "name": null,
       "entity_id": null,
       "type": null
     },
@@ -2759,11 +4586,11 @@
     "evidence_type": "UNKNOWN",
     "action_type": "ANNOUNCES",
     "action_event_type": "Politics",
-    "action_detail": "start",
-    "action_status": "UNKNOWN",
+    "action_detail": "starts at",
+    "action_status": "EXPECTED",
     "action_polarity": "NEUTRAL",
-    "event_time": "N/A",
-    "location_str": "N/A",
+    "event_time": "",
+    "location_str": "",
     "entities": [
       {
         "entity_id": "ORG_PIXEL_WATCH_5",
@@ -2823,116 +4650,6 @@
     ]
   },
   {
-    "article_id": 19935,
-    "article_url": "https://www.cnbc.com/2026/08/12/meta-nvidia-open-weight-ai-race-china.html",
-    "subject": {
-      "name": "Meta",
-      "entity_id": "COMP_META",
-      "type": "Company",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "UNKNOWN",
-      "polarity": "UNKNOWN",
-      "verb": ""
-    },
-    "object": {
-      "name": "China",
-      "entity_id": "CTRY_CHN",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": null,
-    "evidence": "",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "",
-    "action_status": "UNKNOWN",
-    "action_polarity": "UNKNOWN",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "COMP_META",
-        "entity_name": "Meta",
-        "entity_type": "Company",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_CHN",
-        "entity_name": "China",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 19936,
-    "article_url": "https://www.cnbc.com/2026/08/12/europe-heat-drought-nuclear-power.html",
-    "subject": {
-      "name": "governments",
-      "entity_id": "ORG_GOVERNMENTS",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "UNKNOWN",
-      "polarity": "UNKNOWN",
-      "verb": ""
-    },
-    "object": {
-      "name": "Europe",
-      "entity_id": "CTRY_EUROPE",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": null,
-    "evidence": "",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "",
-    "action_status": "UNKNOWN",
-    "action_polarity": "UNKNOWN",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "ORG_GOVERNMENTS",
-        "entity_name": "governments",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_EUROPE",
-        "entity_name": "Europe",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
     "article_id": 19951,
     "article_url": "https://techcrunch.com/2026/08/12/pixel-11-has-few-hardware-changes-and-more-gemini/",
     "subject": {
@@ -2978,77 +4695,16 @@
     "article_id": 19951,
     "article_url": "https://techcrunch.com/2026/08/12/pixel-11-has-few-hardware-changes-and-more-gemini/",
     "subject": {
-      "name": "Pixel 11 series",
-      "entity_id": "ORG_PIXEL_11_SERIES",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "ONGOING",
-      "polarity": "NEUTRAL",
-      "verb": "isn’t too different"
-    },
-    "object": {
-      "name": "design",
-      "entity_id": "ORG_DESIGN",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
+      "name": "Google Pixel 11 series",
       "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Similarly, the Pixel 11 series isn’t too different in design and internals from its predecessor.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "isn’t too different",
-    "action_status": "ONGOING",
-    "action_polarity": "NEUTRAL",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "ORG_PIXEL_11_SERIES",
-        "entity_name": "Pixel 11 series",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_DESIGN",
-        "entity_name": "design",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      },
-      {
-        "entity_id": "ORG_INTERNALS",
-        "entity_name": "internals",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 19951,
-    "article_url": "https://techcrunch.com/2026/08/12/pixel-11-has-few-hardware-changes-and-more-gemini/",
-    "subject": {
-      "name": "Pixel 11 series",
-      "entity_id": "ORG_PIXEL_11_SERIES",
-      "type": "Organization",
-      "object_type": "ENTITY"
+      "type": "Other",
+      "object_type": "UNKNOWN"
     },
     "action": {
       "type": "OTHER",
-      "status": "PLANNED",
+      "status": "EXPECTED",
       "polarity": "POSITIVE",
-      "verb": "has"
+      "verb": "offers"
     },
     "object": {
       "name": "Gemini features (Wispr Flow-like transcription, live translation, new camera feature)",
@@ -3070,18 +4726,12 @@
     "evidence_type": "UNKNOWN",
     "action_type": "OTHER",
     "action_event_type": "General",
-    "action_detail": "has",
-    "action_status": "PLANNED",
+    "action_detail": "offers",
+    "action_status": "EXPECTED",
     "action_polarity": "POSITIVE",
     "event_time": "",
     "location_str": "",
     "entities": [
-      {
-        "entity_id": "ORG_PIXEL_11_SERIES",
-        "entity_name": "Pixel 11 series",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
       {
         "entity_id": "ORG_LIVE_TRANSLATION",
         "entity_name": "live translation",
@@ -3097,612 +4747,25 @@
     ]
   },
   {
-    "article_id": 19925,
-    "article_url": "https://www.cnbc.com/2026/08/12/china-comac-boeing-airbus.html",
+    "article_id": 19951,
+    "article_url": "https://techcrunch.com/2026/08/12/pixel-11-has-few-hardware-changes-and-more-gemini/",
     "subject": {
-      "name": "COMAC",
-      "entity_id": "ORG_COMAC",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "UNKNOWN",
-      "polarity": "UNKNOWN",
-      "verb": ""
-    },
-    "object": {
-      "name": "China",
-      "entity_id": "CTRY_CHN",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": null,
-    "evidence": "",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "",
-    "action_status": "UNKNOWN",
-    "action_polarity": "UNKNOWN",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "ORG_COMAC",
-        "entity_name": "COMAC",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_CHN",
-        "entity_name": "China",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 19878,
-    "article_url": "https://www.cnbc.com/2026/08/11/riot-platforms-signs-anthropic-deal-as-miners-shift-to-ai-infrastructure-.html",
-    "subject": {
-      "name": "Riot Platform",
-      "entity_id": "COMP_RIOT_PLATFORM",
-      "type": "Company",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "ATTACKS",
-      "status": "UNKNOWN",
-      "polarity": "UNKNOWN",
-      "verb": ""
-    },
-    "object": {
-      "name": "Rockdale",
-      "entity_id": "LOC_ROCKDALE",
-      "type": "Location",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": null,
-    "evidence": "",
-    "evidence_type": "UNKNOWN",
-    "action_type": "ATTACKS",
-    "action_event_type": "Military",
-    "action_detail": "",
-    "action_status": "UNKNOWN",
-    "action_polarity": "UNKNOWN",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "COMP_RIOT_PLATFORM",
-        "entity_name": "Riot Platform",
-        "entity_type": "Company",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "LOC_ROCKDALE",
-        "entity_name": "Rockdale",
-        "entity_type": "Location",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 19869,
-    "article_url": "https://www.cnbc.com/2026/08/12/us-iran-war-trump-hormuz-houthi-attack-blockade-.html",
-    "subject": {
-      "name": "Houthi rebels",
-      "entity_id": "ORG_HOUTHI_REBELS",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "ATTACKS",
-      "status": "COMPLETED",
-      "polarity": "NEGATIVE",
-      "verb": "killed"
-    },
-    "object": {
-      "name": "six people",
-      "entity_id": "PERS_SIX_PEOPLE",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "Tuesday",
-      "value": null
-    },
-    "location": {
-      "name": "Bab el-Mandeb Strait",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Iran-backed Houthi rebels killed six people aboard a cargo ship in the Bab el-Mandeb Strait on Tuesday, the first reported fatalities from attacks targeting Red Sea shipping in more than a year.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "ATTACKS",
-    "action_event_type": "Military",
-    "action_detail": "killed",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEGATIVE",
-    "event_time": "Tuesday",
-    "location_str": "Bab el-Mandeb Strait",
-    "entities": [
-      {
-        "entity_id": "ORG_HOUTHI_REBELS",
-        "entity_name": "Houthi rebels",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "PERS_SIX_PEOPLE",
-        "entity_name": "six people",
-        "entity_type": "Person",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 19864,
-    "article_url": "https://www.cnbc.com/2026/08/12/google-deepmind-koray-kavukcuoglu.html",
-    "subject": {
-      "name": "Koray Kavukcuoglu",
-      "entity_id": "PERS_KORAY_KAVUKCUOGLU",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "ONGOING",
-      "polarity": "NEUTRAL",
-      "verb": "inheriting"
-    },
-    "object": {
-      "name": "race to catch up to OpenAI and Anthropic",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Koray Kavukcuoglu, who was previously the AI unit's CTO and parent company Google's chief AI architect, is inheriting a race to catch up to OpenAI and Anthropic at the frontier — building the industry's most advanced models.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "inheriting",
-    "action_status": "ONGOING",
-    "action_polarity": "NEUTRAL",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "PERS_KORAY_KAVUKCUOGLU",
-        "entity_name": "Koray Kavukcuoglu",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "COMP_ANTHROPIC",
-        "entity_name": "Anthropic",
-        "entity_type": "Company",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 19864,
-    "article_url": "https://www.cnbc.com/2026/08/12/google-deepmind-koray-kavukcuoglu.html",
-    "subject": {
-      "name": "Google DeepMind",
-      "entity_id": "COMP_GOOGLE_DEEPMIND",
-      "type": "Company",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "ONGOING",
-      "polarity": "NEUTRAL",
-      "verb": "tries"
-    },
-    "object": {
-      "name": "keep Gemini competitive with OpenAI and Anthropic",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Koray Kavukcuoglu is taking charge of Google DeepMind as it tries to keep Gemini competitive with OpenAI and Anthropic.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "tries",
-    "action_status": "ONGOING",
-    "action_polarity": "NEUTRAL",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "COMP_GOOGLE_DEEPMIND",
-        "entity_name": "Google DeepMind",
-        "entity_type": "Company",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "COMP_ANTHROPIC",
-        "entity_name": "Anthropic",
-        "entity_type": "Company",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 19864,
-    "article_url": "https://www.cnbc.com/2026/08/12/google-deepmind-koray-kavukcuoglu.html",
-    "subject": {
-      "name": "DeepMind's new boss",
-      "entity_id": "ORG_DEEPMINDS_NEW_BOSS",
+      "name": "Gemini",
+      "entity_id": "ORG_GEMINI",
       "type": "Organization",
       "object_type": "ENTITY"
     },
     "action": {
       "type": "OTHER",
       "status": "EXPECTED",
-      "polarity": "NEGATIVE",
-      "verb": "face"
-    },
-    "object": {
-      "name": "intense pressure to close the AI performance gap with OpenAI and Anthropic",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "DeepMind's new boss is set to face intense pressure to close the AI performance gap with OpenAI and Anthropic.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "face",
-    "action_status": "EXPECTED",
-    "action_polarity": "NEGATIVE",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "ORG_DEEPMINDS_NEW_BOSS",
-        "entity_name": "DeepMind's new boss",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "COMP_ANTHROPIC",
-        "entity_name": "Anthropic",
-        "entity_type": "Company",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 19894,
-    "article_url": "https://www.nytimes.com/2026/08/11/us/politics/trump-iran-threat-air-force-one.html",
-    "subject": {
-      "name": "President Donald Trump",
-      "entity_id": "PERS_PRESIDENT_DONALD_TRUMP",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "MEETS",
-      "status": "COMPLETED",
-      "polarity": "NEUTRAL",
-      "verb": "flew out"
-    },
-    "object": {
-      "name": "alternate military aircraft",
-      "entity_id": "ORG_ALTERNATE_MILITARY_AIRCRAFT",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "last month's NATO summit",
-      "value": null
-    },
-    "location": {
-      "name": "Ankara, Turkey",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "President Donald Trump secretly flew out of last month's NATO summit in Ankara, Turkey, on an alternate military aircraft while the White House made it appear that the Republican president was flying on Air Force One, according to a report published by The Washington Post.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "MEETS",
-    "action_event_type": "Diplomacy",
-    "action_detail": "flew out",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "last month's NATO summit",
-    "location_str": "Ankara, Turkey",
-    "entities": [
-      {
-        "entity_id": "PERS_PRESIDENT_DONALD_TRUMP",
-        "entity_name": "President Donald Trump",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_ALTERNATE_MILITARY_AIRCRAFT",
-        "entity_name": "alternate military aircraft",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 19894,
-    "article_url": "https://www.nytimes.com/2026/08/11/us/politics/trump-iran-threat-air-force-one.html",
-    "subject": {
-      "name": "operation",
-      "entity_id": "ORG_OPERATION",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "MEETS",
-      "status": "COMPLETED",
-      "polarity": "NEGATIVE",
-      "verb": "prompted"
-    },
-    "object": {
-      "name": "assassination threat",
-      "entity_id": "ORG_ASSASSINATION_THREAT",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "following NATO summit",
-      "value": null
-    },
-    "location": {
-      "name": "Turkey (contextual)",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 0.9,
-    "evidence": "The Post said Monday the operation was prompted by an Iranian assassination threat against Trump.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "MEETS",
-    "action_event_type": "Diplomacy",
-    "action_detail": "prompted",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEGATIVE",
-    "event_time": "following NATO summit",
-    "location_str": "Turkey (contextual)",
-    "entities": [
-      {
-        "entity_id": "ORG_OPERATION",
-        "entity_name": "operation",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_ASSASSINATION_THREAT",
-        "entity_name": "assassination threat",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 19894,
-    "article_url": "https://www.nytimes.com/2026/08/11/us/politics/trump-iran-threat-air-force-one.html",
-    "subject": {
-      "name": "information",
-      "entity_id": "ORG_INFORMATION",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "MEETS",
-      "status": "COMPLETED",
-      "polarity": "NEUTRAL",
-      "verb": "picked up"
-    },
-    "object": {
-      "name": "multiple streams of information, including one potential threat that involved a shoulder-fired missile",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": "Unknown",
-      "value": null
-    },
-    "location": {
-      "name": "Unknown",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 0.8,
-    "evidence": "The United States picked up multiple streams of information, including one potential threat that involved a shoulder-fired missile.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "MEETS",
-    "action_event_type": "Diplomacy",
-    "action_detail": "picked up",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "Unknown",
-    "location_str": "Unknown",
-    "entities": [
-      {
-        "entity_id": "ORG_INFORMATION",
-        "entity_name": "information",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 19867,
-    "article_url": "https://www.cnbc.com/2026/08/12/japan-yen-us-dollar-intervention-.html",
-    "subject": {
-      "name": "Japanese yen",
-      "entity_id": "CTRY_JAPANESE_YEN",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "CRASHES",
-      "status": "COMPLETED",
-      "polarity": "NEGATIVE",
-      "verb": "erased"
-    },
-    "object": {
-      "name": "half of the gains from an unprecedented U.S.-Japan intervention",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": "less than two weeks ago",
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "The Japanese yen has erased about half the gains from a historic U.S.-Japan intervention less than two weeks ago",
-    "evidence_type": "UNKNOWN",
-    "action_type": "CRASHES",
-    "action_event_type": "Finance",
-    "action_detail": "erased",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEGATIVE",
-    "event_time": "less than two weeks ago",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "CTRY_JAPANESE_YEN",
-        "entity_name": "Japanese yen",
-        "entity_type": "Country",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 19867,
-    "article_url": "https://www.cnbc.com/2026/08/12/japan-yen-us-dollar-intervention-.html",
-    "subject": {
-      "name": "Japanese yen",
-      "entity_id": "CTRY_JAPANESE_YEN",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "CRASHES",
-      "status": "COMPLETED",
       "polarity": "POSITIVE",
-      "verb": "strengthened"
+      "verb": "will be able to"
     },
     "object": {
-      "name": "155",
+      "name": "order groceries, book rides, or get coffee; call businesses for table reservations or appointments",
       "entity_id": null,
       "type": "Other",
-      "object_type": "AMOUNT"
-    },
-    "time": {
-      "raw": "in the days following the intervention",
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Japan's currency is currently trading at over 159 per dollar, after having strengthened to 155 in the days following the intervention after it crossed 163.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "CRASHES",
-    "action_event_type": "Finance",
-    "action_detail": "strengthened",
-    "action_status": "COMPLETED",
-    "action_polarity": "POSITIVE",
-    "event_time": "in the days following the intervention",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "CTRY_JAPANESE_YEN",
-        "entity_name": "Japanese yen",
-        "entity_type": "Country",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 19867,
-    "article_url": "https://www.cnbc.com/2026/08/12/japan-yen-us-dollar-intervention-.html",
-    "subject": {
-      "name": "fundamental forces",
-      "entity_id": "ORG_FUNDAMENTAL_FORCES",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "CRASHES",
-      "status": "ONGOING",
-      "polarity": "NEGATIVE",
-      "verb": "prove"
-    },
-    "object": {
-      "name": "resilient against short-term measures",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
+      "object_type": "STATEMENT"
     },
     "time": {
       "raw": null,
@@ -3714,852 +4777,39 @@
       "type": null
     },
     "confidence": 0.9,
-    "evidence": "as the fundamental forces that have pressured the currency to multi-decade lows prove increasingly resilient against short-term measures.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "CRASHES",
-    "action_event_type": "Finance",
-    "action_detail": "prove",
-    "action_status": "ONGOING",
-    "action_polarity": "NEGATIVE",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "ORG_FUNDAMENTAL_FORCES",
-        "entity_name": "fundamental forces",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 19845,
-    "article_url": "https://www.ft.com/content/725b4d15-bd8d-4083-a04e-db016338af2e?syn-25a6b1a6=1",
-    "subject": {
-      "name": "JD Vance",
-      "entity_id": "ORG_JD_VANCE",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "ATTACKS",
-      "status": "COMPLETED",
-      "polarity": "NEUTRAL",
-      "verb": "asked"
-    },
-    "object": {
-      "name": "Ukraine",
-      "entity_id": "CTRY_UKR",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "unknown",
-      "value": null
-    },
-    "location": {
-      "name": "Washington",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "JD Vance asked Ukraine to halt strikes on tankers using Russian port",
-    "evidence_type": "UNKNOWN",
-    "action_type": "ATTACKS",
-    "action_event_type": "Military",
-    "action_detail": "asked",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "unknown",
-    "location_str": "Washington",
-    "entities": [
-      {
-        "entity_id": "ORG_JD_VANCE",
-        "entity_name": "JD Vance",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_UKR",
-        "entity_name": "Ukraine",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 19845,
-    "article_url": "https://www.ft.com/content/725b4d15-bd8d-4083-a04e-db016338af2e?syn-25a6b1a6=1",
-    "subject": {
-      "name": "vessels",
-      "entity_id": "ORG_VESSELS",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "ATTACKS",
-      "status": "ONGOING",
-      "polarity": "NEUTRAL",
-      "verb": "collecting"
-    },
-    "object": {
-      "name": "Kazakh oil",
-      "entity_id": "ORG_KAZAKH_OIL",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "unknown",
-      "value": null
-    },
-    "location": {
-      "name": "Novorossiysk",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "campaign on vessels collecting Kazakh oil from Novorossiysk",
-    "evidence_type": "UNKNOWN",
-    "action_type": "ATTACKS",
-    "action_event_type": "Military",
-    "action_detail": "collecting",
-    "action_status": "ONGOING",
-    "action_polarity": "NEUTRAL",
-    "event_time": "unknown",
-    "location_str": "Novorossiysk",
-    "entities": [
-      {
-        "entity_id": "ORG_VESSELS",
-        "entity_name": "vessels",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_KAZAKH_OIL",
-        "entity_name": "Kazakh oil",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 19848,
-    "article_url": "https://www.ft.com/content/a541a8dc-89df-464a-9b9f-fbffcfe7cca1?syn-25a6b1a6=1",
-    "subject": {
-      "name": "George Jones",
-      "entity_id": "ORG_GEORGE_JONES",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "COMPLETED",
-      "polarity": "NEUTRAL",
-      "verb": "appeared"
-    },
-    "object": {
-      "name": "video footage from far-right party’s 2010 general and local election campaign in east London",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": "2010",
-      "value": null
-    },
-    "location": {
-      "name": "east London",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 0.9,
-    "evidence": "George Jones appeared in video footage from far-right party’s 2010 general and local election campaign in east London",
+    "evidence": "With Gemini, U.S.-based users will be able to order groceries, book rides, or get coffee, for instance. Plus, Gemini can call businesses on users’ behalf for table reservations or appointments.",
     "evidence_type": "UNKNOWN",
     "action_type": "OTHER",
     "action_event_type": "General",
-    "action_detail": "appeared",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "2010",
-    "location_str": "east London",
-    "entities": [
-      {
-        "entity_id": "ORG_GEORGE_JONES",
-        "entity_name": "George Jones",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 19790,
-    "article_url": "https://www.ft.com/content/42194267-cda2-4dcc-9487-02c5f239e034?syn-25a6b1a6=1",
-    "subject": {
-      "name": "Tavily",
-      "entity_id": "PERS_TAVILY",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "UNKNOWN",
-      "polarity": "UNKNOWN",
-      "verb": ""
-    },
-    "object": {
-      "name": "European",
-      "entity_id": "CTRY_EUROPEAN",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": null,
-    "evidence": "",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "",
-    "action_status": "UNKNOWN",
-    "action_polarity": "UNKNOWN",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "PERS_TAVILY",
-        "entity_name": "Tavily",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_EUROPEAN",
-        "entity_name": "European",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 19798,
-    "article_url": "https://techcrunch.com/2026/08/11/openai-launches-chatgpt-desktop-app-for-linux/",
-    "subject": {
-      "name": "OpenAI",
-      "entity_id": "COMP_OPENAI",
-      "type": "Company",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "LAUNCHES",
-      "status": "COMPLETED",
-      "polarity": "POSITIVE",
-      "verb": "launching"
-    },
-    "object": {
-      "name": "ChatGPT desktop app for Linux",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": "this week",
-      "value": null
-    },
-    "location": {
-      "name": "Linux operating systems",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "As of this week, OpenAI has rectified this oversight, launching a dedicated ChatGPT app for Linux.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "LAUNCHES",
-    "action_event_type": "Technology",
-    "action_detail": "launching",
-    "action_status": "COMPLETED",
-    "action_polarity": "POSITIVE",
-    "event_time": "this week",
-    "location_str": "Linux operating systems",
-    "entities": [
-      {
-        "entity_id": "COMP_OPENAI",
-        "entity_name": "OpenAI",
-        "entity_type": "Company",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 19798,
-    "article_url": "https://techcrunch.com/2026/08/11/openai-launches-chatgpt-desktop-app-for-linux/",
-    "subject": {
-      "name": "ChatGPT app",
-      "entity_id": "ORG_CHATGPT_APP",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "LAUNCHES",
-      "status": "ONGOING",
-      "polarity": "POSITIVE",
-      "verb": "provide access to"
-    },
-    "object": {
-      "name": "ChatGPT, ChatGPT Work, and Codex",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": "as of Tuesday",
-      "value": null
-    },
-    "location": {
-      "name": "Linux distributions",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "The new app, which is being released in preview, will give Linux users the ability to use ChatGPT, ChatGPT Work, and Codex on a number of different distributions.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "LAUNCHES",
-    "action_event_type": "Technology",
-    "action_detail": "provide access to",
-    "action_status": "ONGOING",
-    "action_polarity": "POSITIVE",
-    "event_time": "as of Tuesday",
-    "location_str": "Linux distributions",
-    "entities": [
-      {
-        "entity_id": "ORG_CHATGPT_APP",
-        "entity_name": "ChatGPT app",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_CHATGPT",
-        "entity_name": "ChatGPT",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      },
-      {
-        "entity_id": "ORG_CHATGPT_WORK",
-        "entity_name": "ChatGPT Work",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      },
-      {
-        "entity_id": "ORG_CODEX",
-        "entity_name": "Codex",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 19798,
-    "article_url": "https://techcrunch.com/2026/08/11/openai-launches-chatgpt-desktop-app-for-linux/",
-    "subject": {
-      "name": "release",
-      "entity_id": "ORG_RELEASE",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "LAUNCHES",
-      "status": "COMPLETED",
-      "polarity": "NEUTRAL",
-      "verb": "released"
-    },
-    "object": {
-      "name": "dedicated ChatGPT app for Linux",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": "Tuesday",
-      "value": null
-    },
-    "location": {
-      "name": "worldwide",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "The release is worldwide, as of Tuesday.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "LAUNCHES",
-    "action_event_type": "Technology",
-    "action_detail": "released",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "Tuesday",
-    "location_str": "worldwide",
-    "entities": [
-      {
-        "entity_id": "ORG_RELEASE",
-        "entity_name": "release",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 19788,
-    "article_url": "https://www.bbc.co.uk/news/articles/cly8jexn1z9o?at_medium=RSS&at_campaign=rss",
-    "subject": {
-      "name": "Anthony Zurcher",
-      "entity_id": "PERS_ANTHONY_ZURCHER",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "UNKNOWN",
-      "polarity": "UNKNOWN",
-      "verb": ""
-    },
-    "object": {
-      "name": "Iran, Islamic Republic of",
-      "entity_id": "CTRY_IRN",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": null,
-    "evidence": "",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "",
-    "action_status": "UNKNOWN",
-    "action_polarity": "UNKNOWN",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "PERS_ANTHONY_ZURCHER",
-        "entity_name": "Anthony Zurcher",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_IRN",
-        "entity_name": "Iran, Islamic Republic of",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 19789,
-    "article_url": "https://www.cnbc.com/2026/08/11/cramer-questions-figure-out-market.html",
-    "subject": {
-      "name": "Jim Cramer",
-      "entity_id": "PERS_JIM_CRAMER",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "STATES",
-      "status": "ANNOUNCED",
-      "polarity": "NEUTRAL",
-      "verb": "said"
-    },
-    "object": {
-      "name": "three things",
-      "entity_id": "ORG_THREE_THINGS",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "Tuesday",
-      "value": null
-    },
-    "location": {
-      "name": "Wall Street",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "CNBC’s Jim Cramer said Tuesday investors don't need to track every market move to understand what's driving stocks. Instead, he said three simple questions can provide a quick read on Wall Street.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "STATES",
-    "action_event_type": "Politics",
-    "action_detail": "said",
-    "action_status": "ANNOUNCED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "Tuesday",
-    "location_str": "Wall Street",
-    "entities": [
-      {
-        "entity_id": "PERS_JIM_CRAMER",
-        "entity_name": "Jim Cramer",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_THREE_THINGS",
-        "entity_name": "three things",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 19789,
-    "article_url": "https://www.cnbc.com/2026/08/11/cramer-questions-figure-out-market.html",
-    "subject": {
-      "name": "market",
-      "entity_id": "ORG_MARKET",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "STATES",
-      "status": "ONGOING",
-      "polarity": "NEUTRAL",
-      "verb": "influenced by"
-    },
-    "object": {
-      "name": "factors",
-      "entity_id": "ORG_FACTORS",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "any given day",
-      "value": null
-    },
-    "location": {
-      "name": "any given day",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "The market is influenced by countless factors on any given day...",
-    "evidence_type": "UNKNOWN",
-    "action_type": "STATES",
-    "action_event_type": "Politics",
-    "action_detail": "influenced by",
-    "action_status": "ONGOING",
-    "action_polarity": "NEUTRAL",
-    "event_time": "any given day",
-    "location_str": "any given day",
-    "entities": [
-      {
-        "entity_id": "ORG_MARKET",
-        "entity_name": "market",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_FACTORS",
-        "entity_name": "factors",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 19789,
-    "article_url": "https://www.cnbc.com/2026/08/11/cramer-questions-figure-out-market.html",
-    "subject": {
-      "name": "investors",
-      "entity_id": "PERS_INVESTORS",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "STATES",
-      "status": "PLANNED",
-      "polarity": "NEUTRAL",
-      "verb": "focus"
-    },
-    "object": {
-      "name": "bonds",
-      "entity_id": "ORG_BONDS",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "he said investors looking to quickly take its temperature should focus on three: bonds, oil and Nvidia.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "STATES",
-    "action_event_type": "Politics",
-    "action_detail": "focus",
-    "action_status": "PLANNED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "PERS_INVESTORS",
-        "entity_name": "investors",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_BONDS",
-        "entity_name": "bonds",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      },
-      {
-        "entity_id": "ORG_OIL",
-        "entity_name": "oil",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      },
-      {
-        "entity_id": "COMP_NVIDIA",
-        "entity_name": "NVIDIA",
-        "entity_type": "Company",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 19802,
-    "article_url": "https://www.cnbc.com/2026/08/11/trump-medicaid-chip-funding-gender-affirming-care-children.html",
-    "subject": {
-      "name": "Trump administration",
-      "entity_id": "ORG_TRUMP_ADMINISTRATION",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "AFFIRMS",
-      "status": "ANNOUNCED",
-      "polarity": "NEUTRAL",
-      "verb": "implementing"
-    },
-    "object": {
-      "name": "rule",
-      "entity_id": "ORG_RULE",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "Tuesday",
-      "value": null
-    },
-    "location": {
-      "name": "N/A",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "The Trump administration on Tuesday said it is implementing a rule that ends the use of federal Medicaid and CHIP funding for gender-affirming care for children and youth.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "AFFIRMS",
-    "action_event_type": "Diplomacy",
-    "action_detail": "implementing",
-    "action_status": "ANNOUNCED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "Tuesday",
-    "location_str": "N/A",
-    "entities": [
-      {
-        "entity_id": "ORG_TRUMP_ADMINISTRATION",
-        "entity_name": "Trump administration",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_RULE",
-        "entity_name": "rule",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 19802,
-    "article_url": "https://www.cnbc.com/2026/08/11/trump-medicaid-chip-funding-gender-affirming-care-children.html",
-    "subject": {
-      "name": "federal Medicaid and CHIP funding",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "action": {
-      "type": "AFFIRMS",
-      "status": "PLANNED",
-      "polarity": "NEGATIVE",
-      "verb": "end"
-    },
-    "object": {
-      "name": "gender-affirming care for children and youth",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": "Oct. 13",
-      "value": null
-    },
-    "location": {
-      "name": "U.S.",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "The Trump administration rule, set to take effect on Oct. 13, would bar U.S. funding in the two federal-state healthcare programs from going toward gender-affirming care for youth.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "AFFIRMS",
-    "action_event_type": "Diplomacy",
-    "action_detail": "end",
-    "action_status": "PLANNED",
-    "action_polarity": "NEGATIVE",
-    "event_time": "Oct. 13",
-    "location_str": "U.S.",
-    "entities": [
-      {
-        "entity_id": "ORG_FEDERAL_MEDICAID",
-        "entity_name": "federal Medicaid",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_CHIP_FUNDING",
-        "entity_name": "CHIP funding",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "PERS_YOUTH",
-        "entity_name": "youth",
-        "entity_type": "Person",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 19802,
-    "article_url": "https://www.cnbc.com/2026/08/11/trump-medicaid-chip-funding-gender-affirming-care-children.html",
-    "subject": {
-      "name": "State dollars",
-      "entity_id": "ORG_STATE_DOLLARS",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "AFFIRMS",
-      "status": "EXPECTED",
-      "polarity": "POSITIVE",
-      "verb": "could cover"
-    },
-    "object": {
-      "name": "treatments",
-      "entity_id": "ORG_TREATMENTS",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "N/A",
-      "value": null
-    },
-    "location": {
-      "name": "states",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "State dollars could still help cover the treatments",
-    "evidence_type": "UNKNOWN",
-    "action_type": "AFFIRMS",
-    "action_event_type": "Diplomacy",
-    "action_detail": "could cover",
+    "action_detail": "will be able to",
     "action_status": "EXPECTED",
     "action_polarity": "POSITIVE",
-    "event_time": "N/A",
-    "location_str": "states",
+    "event_time": "",
+    "location_str": "",
     "entities": [
       {
-        "entity_id": "ORG_STATE_DOLLARS",
-        "entity_name": "State dollars",
+        "entity_id": "ORG_GEMINI",
+        "entity_name": "Gemini",
         "entity_type": "Organization",
         "role": "SUBJECT"
       },
       {
-        "entity_id": "ORG_TREATMENTS",
-        "entity_name": "treatments",
+        "entity_id": "ORG_ORDER_GROCERIES",
+        "entity_name": "order groceries",
         "entity_type": "Organization",
         "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 19795,
-    "article_url": "https://www.ft.com/content/ac651a05-9285-4020-85e2-47fcd8936320?syn-25a6b1a6=1",
-    "subject": {
-      "name": "Panama-flagged vessel",
-      "entity_id": "CTRY_PANAMA_FLAGGED_VESSEL",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "BANS",
-      "status": "COMPLETED",
-      "polarity": "NEGATIVE",
-      "verb": "ignored"
-    },
-    "object": {
-      "name": "repeated warnings from American forces",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": "unknown",
-      "value": null
-    },
-    "location": {
-      "name": "unknown",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Central Command says Panama-flagged vessel ‘ignored repeated warnings’ from American forces",
-    "evidence_type": "UNKNOWN",
-    "action_type": "BANS",
-    "action_event_type": "Legal",
-    "action_detail": "ignored",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEGATIVE",
-    "event_time": "unknown",
-    "location_str": "unknown",
-    "entities": [
+      },
       {
-        "entity_id": "CTRY_PANAMA_FLAGGED_VESSEL",
-        "entity_name": "Panama-flagged vessel",
-        "entity_type": "Country",
-        "role": "SUBJECT"
+        "entity_id": "ORG_BOOK_RIDES",
+        "entity_name": "book rides",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      },
+      {
+        "entity_id": "ORG_OR_GET_COFFEE",
+        "entity_name": "or get coffee",
+        "entity_type": "Organization",
+        "role": "OBJECT"
       }
     ]
   }
