@@ -14,10 +14,6 @@ import re, json, logging, math, os
 from datetime import datetime, timedelta
 from collections import defaultdict, Counter
 from itertools import combinations
-try:
-    from news_intel.timeutil import beijing_now, to_beijing_naive
-except ImportError:  # 裸模块导入(如 test_aggregator)时回退同目录
-    from timeutil import beijing_now, to_beijing_naive
 
 logger = logging.getLogger(__name__)
 
@@ -666,27 +662,23 @@ def _infer_actor_roles(entity_refs: list, action: str, obj: str) -> list:
 
 
 def _parse_date(date_str) -> datetime | None:
-    """解析日期 → naive 北京时间 (aware 统一剥 tzinfo, 防混算 TypeError)。"""
     from email.utils import parsedate_to_datetime
     if not date_str: return None
-    dt = None
-    try: dt = datetime.fromisoformat(date_str.replace("Z", "+00:00"))
+    try: return datetime.fromisoformat(date_str.replace("Z", "+00:00"))
     except: pass
-    if dt is None:
-        try: dt = parsedate_to_datetime(date_str.strip())
-        except: return None
-    return to_beijing_naive(dt)
+    try: return parsedate_to_datetime(date_str.strip())
+    except: return None
 
 
 def _article_ts(a: dict) -> datetime:
-    """文章时间回退链: published_at → fetched_at → 聚合时刻 (naive 北京时间)。
+    """文章时间回退链: published_at → fetched_at → 聚合时刻 (naive UTC)。
 
     防止文章缺日期导致事件 first_seen/last_updated 与 timeline/source_chain 缺失。
     """
     return (
         _parse_date(a.get("published_at"))
         or _parse_date(a.get("fetched_at"))
-        or beijing_now()
+        or datetime.utcnow()
     )
 
 
@@ -1037,7 +1029,7 @@ def aggregate_events(articles: list[dict], window_hours: int = 24, facts_by_arti
         confidence = round(0.4 * src_auth_norm + 0.3 * coh_norm + 0.2 * diversity + 0.1 * count_factor, 2)
 
         # ── Stage ──
-        now = beijing_now()
+        now = datetime.utcnow()
         if ev["start_time"]:
             age_hours = (now - ev["start_time"]).total_seconds() / 3600
             if age_hours <= 2: stage = "breaking"
@@ -1049,7 +1041,7 @@ def aggregate_events(articles: list[dict], window_hours: int = 24, facts_by_arti
             stage = "developing"
 
         # ── Event ID ──
-        ts = ev["start_time"] or beijing_now()
+        ts = ev["start_time"] or datetime.utcnow()
         event_id = f"EVT-{ts.strftime('%Y%m%d')}-{idx+1:03d}"
 
         # ── Fingerprint centroid (优化: 用簇质心，多数决定而非种子) ──

@@ -16,10 +16,6 @@ import os
 import re
 from datetime import datetime
 from typing import Optional
-try:
-    from news_intel.timeutil import beijing_now, to_beijing_naive
-except ImportError:  # 裸模块导入(如 test)时回退同目录
-    from timeutil import beijing_now, to_beijing_naive
 
 CONFIG_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "config")
 
@@ -538,15 +534,15 @@ def _parse_rss_date(date_str: str) -> datetime:
     """兼容多种 RSS 日期格式。"""
     from email.utils import parsedate_to_datetime
     if not date_str:
-        return beijing_now()
+        return datetime.utcnow()
     try:
-        return to_beijing_naive(parsedate_to_datetime(date_str.strip()))
+        return parsedate_to_datetime(date_str.strip())
     except (ValueError, TypeError):
         pass
     try:
-        return to_beijing_naive(datetime.fromisoformat(date_str.strip().replace("Z", "+00:00")))
+        return datetime.fromisoformat(date_str.strip().replace("Z", "+00:00"))
     except (ValueError, TypeError):
-        return beijing_now()
+        return datetime.utcnow()
 
 
 def compute_velocity(articles: list[dict], window_minutes: int = 30) -> list[dict]:

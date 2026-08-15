@@ -130,7 +130,6 @@ def _sanitize_feeds(value) -> list:
             "type": str(s.get("type", "rss"))[:20],
             "importance": str(s.get("importance", "C"))[:1],
             "enabled": bool(s.get("enabled", True)),
-            "timezone": str(s.get("timezone", ""))[:50],   # IANA 时区 (2026-08-14): 空=自动推断(feed_timezones.py)
         })
     return sanitized
 

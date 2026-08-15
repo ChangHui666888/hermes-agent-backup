@@ -16,10 +16,7 @@
   - deleted_event_ids → POST /internal/events/delete (删除云端重复)
 """
 import json
-try:
-    from news_intel.timeutil import beijing_now_iso
-except ImportError:  # 裸模块导入时回退同目录
-    from timeutil import beijing_now_iso
+from datetime import datetime
 
 _JSON_FIELDS = ["article_ids", "doc_refs", "actors", "keywords",
                 "related_entities", "evidence", "source_chain",
@@ -134,7 +131,7 @@ def _merge_events(evs: list) -> tuple:
     kept["keywords"] = _dump_json(all_keywords)
     kept["source_count"] = source_count
     kept["confidence"] = max_confidence
-    kept["last_updated"] = beijing_now_iso()
+    kept["last_updated"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     return kept, merged_away
 
 

@@ -30,25 +30,19 @@ except Exception:
     if os.path.dirname(_SCRIPT_DIR) not in sys.path:
         sys.path.insert(0, os.path.dirname(_SCRIPT_DIR))
     from news_intel.feed_timezones import get_feed_tz
-try:
-    from news_intel.timeutil import to_beijing_naive
-except Exception:
-    _SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-    if os.path.dirname(_SCRIPT_DIR) not in sys.path:
-        sys.path.insert(0, os.path.dirname(_SCRIPT_DIR))
-    from news_intel.timeutil import to_beijing_naive
 
 
 def _parse_date(entry, tz_name: str | None = None) -> str:
-    """RSS 日期 → 标准 ISO 时间 (北京时间 naive, 2026-08-15 起全链路统一 UTC+8)。
+    """RSS 日期 → 标准 ISO 时间 (根治 2026-08-14: 原 [:10] 截断成 'Mon, 10 Au')。
 
     优先 feedparser 已解析的 published_parsed/updated_parsed (struct_time);
     兜底 email.utils.parsedate_to_datetime (RFC 822); 再兜底 date_published/ISO。
-    tz_name: 源 IANA 时区 (feed_timezones.py), 用于**无时区标识的 naive 日期**推断本地时区→转北京时间;
-             已带时区(aware)的日期直接用其偏移转北京时间。
-    返回 'YYYY-MM-DDTHH:MM:SS' (naive 北京时间) 或空串。
+    tz_name: 源 IANA 时区 (feed_timezones.py), 用于**无时区标识的 naive 日期**推断本地时区→转 UTC;
+             已带时区(aware)的日期直接用其偏移转 UTC。
+    返回 'YYYY-MM-DDTHH:MM:SS' (UTC) 或空串。
     """
     import email.utils
+    from datetime import timezone as _tz
 
     def _tzinfo():
         """按源时区构造 ZoneInfo; 失败(无 tzdata)回落 None。"""
@@ -61,13 +55,13 @@ def _parse_date(entry, tz_name: str | None = None) -> str:
             return None
 
     def _fmt(dt):
-        """aware → 转 naive 北京时间; naive + tz_name → 附着源时区再转 naive 北京时间; 否则保持 naive。"""
+        """aware → 统一转 UTC; naive + tz_name → 附着源时区再转 UTC (2026-08-14 时区推断); 否则保持 naive。"""
         if dt.tzinfo is not None:
-            dt = to_beijing_naive(dt)
+            dt = dt.astimezone(_tz.utc)
         else:
             tz = _tzinfo()
             if tz is not None:
-                dt = to_beijing_naive(dt.replace(tzinfo=tz))
+                dt = dt.replace(tzinfo=tz).astimezone(_tz.utc)
         return dt.strftime("%Y-%m-%dT%H:%M:%S")
 
     # 1. feedparser 已解析 (struct_time 无时区) — 若有源时区则附着推断

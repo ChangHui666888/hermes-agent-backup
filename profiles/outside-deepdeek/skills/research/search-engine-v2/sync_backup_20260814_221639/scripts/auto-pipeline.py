@@ -733,8 +733,8 @@ def _do_step5():
         conn.row_factory = sqlite3.Row
         rows = conn.execute("""
             SELECT * FROM event_registry
-            WHERE julianday(last_updated) > julianday('now', '-48 hours', 'localtime')
-               OR julianday(first_seen)   > julianday('now', '-48 hours', 'localtime')
+            WHERE last_updated > datetime('now', '-48 hours', 'localtime')
+               OR first_seen > datetime('now', '-48 hours', 'localtime')
         """).fetchall()
         push_events = []
         for r in rows:
@@ -769,8 +769,7 @@ def _do_step6():
         show_start = datetime.fromtimestamp(t0).strftime("%Y-%m-%d %H:%M:%S")
         rows = conn.execute("""
             SELECT rr.article_url, rr.title, nc.content_md, nc.content_len,
-                   ni.score_total, ni.tier, rr.source_name, rr.source_domain,
-                   rr.published_at
+                   ni.score_total, ni.tier, rr.source_name, rr.source_domain
             FROM news_content nc
             JOIN news_intelligence ni ON nc.intel_id = ni.id
             JOIN rss_raw rr ON ni.raw_id = rr.id
@@ -784,7 +783,7 @@ def _do_step6():
                 step_result("CONTENT_PUSH", 0, 0, "no token configured")
                 return
             body = [{'url':r[0],'title':r[1],'content_md':r[2],'score_total':r[4],'tier':r[5],
-                     'source_name':r[6],'source_domain':r[7],'published_at':r[8]} for r in rows]
+                     'source_name':r[6],'source_domain':r[7]} for r in rows]
             # content 单条可达几十 KB, chunk 100 折衷往返次数与单请求超时概率
             CHUNK = cfg("pipeline.content_chunk", 100)
             push_ok = push_fail = 0

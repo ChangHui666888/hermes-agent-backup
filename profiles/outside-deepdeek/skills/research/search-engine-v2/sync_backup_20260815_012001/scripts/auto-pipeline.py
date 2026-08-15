@@ -733,8 +733,8 @@ def _do_step5():
         conn.row_factory = sqlite3.Row
         rows = conn.execute("""
             SELECT * FROM event_registry
-            WHERE julianday(last_updated) > julianday('now', '-48 hours', 'localtime')
-               OR julianday(first_seen)   > julianday('now', '-48 hours', 'localtime')
+            WHERE last_updated > datetime('now', '-48 hours', 'localtime')
+               OR first_seen > datetime('now', '-48 hours', 'localtime')
         """).fetchall()
         push_events = []
         for r in rows:

@@ -22,120 +22,6 @@ import time
 from datetime import datetime
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-# 源时区映射 (naive 日期推断; 2026-08-14)
-try:
-    from news_intel.feed_timezones import get_feed_tz
-except Exception:
-    _SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-    if os.path.dirname(_SCRIPT_DIR) not in sys.path:
-        sys.path.insert(0, os.path.dirname(_SCRIPT_DIR))
-    from news_intel.feed_timezones import get_feed_tz
-try:
-    from news_intel.timeutil import to_beijing_naive
-except Exception:
-    _SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-    if os.path.dirname(_SCRIPT_DIR) not in sys.path:
-        sys.path.insert(0, os.path.dirname(_SCRIPT_DIR))
-    from news_intel.timeutil import to_beijing_naive
-
-
-def _parse_date(entry, tz_name: str | None = None) -> str:
-    """RSS 日期 → 标准 ISO 时间 (北京时间 naive, 2026-08-15 起全链路统一 UTC+8)。
-
-    优先 feedparser 已解析的 published_parsed/updated_parsed (struct_time);
-    兜底 email.utils.parsedate_to_datetime (RFC 822); 再兜底 date_published/ISO。
-    tz_name: 源 IANA 时区 (feed_timezones.py), 用于**无时区标识的 naive 日期**推断本地时区→转北京时间;
-             已带时区(aware)的日期直接用其偏移转北京时间。
-    返回 'YYYY-MM-DDTHH:MM:SS' (naive 北京时间) 或空串。
-    """
-    import email.utils
-
-    def _tzinfo():
-        """按源时区构造 ZoneInfo; 失败(无 tzdata)回落 None。"""
-        if not tz_name:
-            return None
-        try:
-            from zoneinfo import ZoneInfo
-            return ZoneInfo(tz_name)
-        except Exception:
-            return None
-
-    def _fmt(dt):
-        """aware → 转 naive 北京时间; naive + tz_name → 附着源时区再转 naive 北京时间; 否则保持 naive。"""
-        if dt.tzinfo is not None:
-            dt = to_beijing_naive(dt)
-        else:
-            tz = _tzinfo()
-            if tz is not None:
-                dt = to_beijing_naive(dt.replace(tzinfo=tz))
-        return dt.strftime("%Y-%m-%dT%H:%M:%S")
-
-    # 1. feedparser 已解析 (struct_time 无时区) — 若有源时区则附着推断
-    for key in ("published_parsed", "updated_parsed", "created_parsed"):
-        st = entry.get(key)
-        if st:
-            try:
-                return _fmt(datetime(*st[:6]))
-            except Exception:
-                pass
-    # 2. 字符串 → RFC 822 / 常见格式
-    raw = (entry.get("published", "") or entry.get("updated", "")
-           or entry.get("date_published", "") or entry.get("date_modified", "") or "")
-    if raw:
-        try:
-            dt = email.utils.parsedate_to_datetime(raw)
-            if dt:
-                return _fmt(dt)
-        except Exception:
-            pass
-        # 3. ISO 前缀 (含 date_published 的 datetime)
-        try:
-            dt = datetime.fromisoformat(raw.replace("Z", "+00:00"))
-            return _fmt(dt)
-        except Exception:
-            pass
-        # 4. 常见兜底格式 (RFC822日期部分 / 英文长月 / 美式 / 欧式 / Unix 时间戳)
-        import re as _re
-        try:
-            # RFC822 日期部分 (无时间, 如 'Wed, 10 Aug 2026')
-            dt = datetime.strptime(raw.strip(), "%a, %d %b %Y")
-            return dt.strftime("%Y-%m-%dT%H:%M:%S")
-        except Exception:
-            pass
-        try:
-            # 英文长月/缩写 + 日 + 年: '14 August 2026' / '14 Aug 2026'
-            m = _re.match(r"^(\d{1,2})\s+([A-Za-z]+)\s+(\d{4})", raw)
-            if m:
-                for fmt in ("%b %d %Y", "%B %d %Y"):
-                    try:
-                        dt = datetime.strptime(f"{m.group(2)} {m.group(1)} {m.group(3)}", fmt)
-                        return dt.strftime("%Y-%m-%dT%H:%M:%S")
-                    except Exception:
-                        continue
-        except Exception:
-            pass
-        try:
-            # 斜杠日期 M/D/Y 或 D/M/Y: 段>12 者视为日, 另一为月
-            m = _re.match(r"^(\d{1,2})/(\d{1,2})/(\d{4})", raw)
-            if m:
-                a, b, y = int(m.group(1)), int(m.group(2)), int(m.group(3))
-                if a > 12 and b <= 12:      # D/M/Y
-                    mo, d = b, a
-                elif b > 12 and a <= 12:    # M/D/Y
-                    mo, d = a, b
-                else:                       # 歧义 → 默认 M/D/Y
-                    mo, d = a, b
-                return datetime(y, mo, d).strftime("%Y-%m-%dT%H:%M:%S")
-        except Exception:
-            pass
-        try:
-            if raw.isdigit() and len(raw) >= 9:  # Unix 时间戳
-                dt = datetime.fromtimestamp(int(raw))
-                return dt.strftime("%Y-%m-%dT%H:%M:%S")
-        except Exception:
-            pass
-    return ""
-
 # =========================
 # 配置（从本地 pipeline-config.json 读取，云端同步）
 # =========================
@@ -468,7 +354,7 @@ def fetch_feed(feed, state):
     except Exception as e:
         return feed, None, str(e)[:120], meta
 
-def _parse_json_feed(content: str, last_seen: str = "", tz_name: str | None = None) -> list:
+def _parse_json_feed(content: str, last_seen: str = "") -> list:
     """JSON Feed (https://jsonfeed.org) 解析器 (type=jsonfeed, 2026-08-08)。"""
     import json as _json
     try:
@@ -485,23 +371,16 @@ def _parse_json_feed(content: str, last_seen: str = "", tz_name: str | None = No
         items.append({
             "title": e.get("title", ""),
             "link": url,
-            "published": _parse_date(e, tz_name),
+            "published": (e.get("date_published", "") or e.get("date_modified", ""))[:25],
             "summary": (e.get("content_text", "") or e.get("summary", "") or "")[:300],
         })
     return items
 
 
-def parse_feed(feed, content, state):
-    """按 type 分派解析 (2026-08-08): rss/atom/nitter → feedparser; jsonfeed → JSON Feed。
-
-    feed: 源配置 dict (含 name/type/timezone...)。时区: 配置中心源列表的 timezone 优先,
-          空则自动推断 (feed_timezones.py, 2026-08-14)。
-    """
-    feed_name = feed["name"]
-    feed_type = feed.get("type", "rss")
-    tz_name = feed.get("timezone") or get_feed_tz(feed_name)  # 配置优先, 空→自动推断
+def parse_feed(feed_name, content, state, feed_type="rss"):
+    """按 type 分派解析 (2026-08-08): rss/atom/nitter → feedparser; jsonfeed → JSON Feed。"""
     if feed_type == "jsonfeed":
-        return _parse_json_feed(content, state.get(feed_name, {}).get("last_seen"), tz_name)
+        return _parse_json_feed(content, state.get(feed_name, {}).get("last_seen"))
     d = feedparser.parse(content)
     last_seen = state.get(feed_name, {}).get("last_seen")
     items = []
@@ -511,7 +390,8 @@ def parse_feed(feed, content, state):
             url = e.links[0].get("href", "") if hasattr(e, "links") and e.links else ""
         if last_seen and url == last_seen:
             break
-        pub = _parse_date(e, tz_name)
+        pub = e.get("published", "") or e.get("updated", "") or ""
+        if len(pub) > 25: pub = pub[:25]
         summary = (e.get("summary", "") or e.get("description", "") or "")[:300]
         items.append({"title": e.get("title",""), "link": url, "published": pub, "summary": summary})
     return items
@@ -630,7 +510,7 @@ def main():
             if meta.get("etag"): state[name]["etag"] = meta["etag"]
             if meta.get("last_modified"): state[name]["last_modified"] = meta["last_modified"]
 
-            items = parse_feed(feed, content, state)
+            items = parse_feed(name, content, state, feed.get("type", "rss"))
             if items:
                 state[name]["last_seen"] = items[0]["link"]
             # V4: 源自带 category (16类) 优先; categorize_feed 仅兜底
@@ -641,7 +521,7 @@ def main():
                 aid = article_id(name, item["link"], item["title"])
                 if aid in known_ids: continue  # 内存去重, 免逐条 SELECT
                 known_ids.add(aid)
-                insert_buffer.append((aid, item["published"], cat, name, item["title"], item["summary"], item["link"]))
+                insert_buffer.append((aid, item["published"][:10], cat, name, item["title"], item["summary"], item["link"]))
                 ph = state[name].setdefault("history", [])
                 ph.append(aid)
                 if len(ph) > 500: state[name]["history"] = ph[-500:]
