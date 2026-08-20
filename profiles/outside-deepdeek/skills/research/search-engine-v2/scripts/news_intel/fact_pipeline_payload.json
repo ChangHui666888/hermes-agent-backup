@@ -1,5 +1,115 @@
 [
   {
+    "article_id": 22823,
+    "article_url": "https://www.cnbc.com/2026/08/19/us-iran-war-trump-hormuz.html",
+    "subject": {
+      "name": "United Arab Emirates",
+      "entity_id": "CTRY_ARE",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "ATTACKS",
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
+    },
+    "object": {
+      "name": "United States Government",
+      "entity_id": "ORG_US_GOVERNMENT",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": null,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "ATTACKS",
+    "action_event_type": "Military",
+    "action_detail": "",
+    "action_status": "UNKNOWN",
+    "action_polarity": "UNKNOWN",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "CTRY_ARE",
+        "entity_name": "United Arab Emirates",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_US_GOVERNMENT",
+        "entity_name": "United States Government",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 22815,
+    "article_url": "https://www.bbc.co.uk/news/articles/cnvn0j31qj8o?at_medium=RSS&at_campaign=rss",
+    "subject": {
+      "name": "Trump",
+      "entity_id": "PERS_TRUMP",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
+    },
+    "object": {
+      "name": "Korea, Republic of",
+      "entity_id": "CTRY_KOR",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": null,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "",
+    "action_status": "UNKNOWN",
+    "action_polarity": "UNKNOWN",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "PERS_TRUMP",
+        "entity_name": "Trump",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_KOR",
+        "entity_name": "Korea, Republic of",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
     "article_id": 22758,
     "article_url": "https://www.cnbc.com/2026/08/19/china-backflipping-robot-maker-unitree-jumps-shanghai-ipo.html",
     "subject": {
@@ -223,21 +333,21 @@
     "article_id": 22766,
     "article_url": "https://www.ft.com/content/b2d9e5a2-22ce-4267-98b0-62ab78906509?syn-25a6b1a6=1",
     "subject": {
-      "name": "Surge in diesel prices deals",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
+      "name": "diesel prices",
+      "entity_id": "ORG_DIESEL_PRICES",
+      "type": "Organization",
+      "object_type": "ENTITY"
     },
     "action": {
       "type": "SURGES",
       "status": "COMPLETED",
       "polarity": "NEGATIVE",
-      "verb": "deals"
+      "verb": "surge"
     },
     "object": {
-      "name": "industrial America",
-      "entity_id": "CTRY_INDUSTRIAL_AMERICA",
-      "type": "Country",
+      "name": "prices",
+      "entity_id": "ORG_PRICES",
+      "type": "Organization",
       "object_type": "ENTITY"
     },
     "time": {
@@ -254,162 +364,174 @@
     "evidence_type": "UNKNOWN",
     "action_type": "SURGES",
     "action_event_type": "Finance",
-    "action_detail": "deals",
+    "action_detail": "surge",
     "action_status": "COMPLETED",
     "action_polarity": "NEGATIVE",
     "event_time": "today",
     "location_str": "America",
     "entities": [
       {
-        "entity_id": "CTRY_INDUSTRIAL_AMERICA",
-        "entity_name": "industrial America",
-        "entity_type": "Country",
+        "entity_id": "ORG_DIESEL_PRICES",
+        "entity_name": "diesel prices",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_PRICES",
+        "entity_name": "prices",
+        "entity_type": "Organization",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 22755,
-    "article_url": "https://techcrunch.com/2026/08/18/openai-institutes-new-safeguards-after-hugging-face-breach/",
+    "article_id": 22793,
+    "article_url": "https://www.ft.com/content/17625ee5-4bcc-4ef4-aec8-6e4b513e223a?syn-25a6b1a6=1",
     "subject": {
-      "name": "OpenAI",
-      "entity_id": "COMP_OPENAI",
-      "type": "Company",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "ANNOUNCES",
-      "status": "COMPLETED",
-      "polarity": "NEUTRAL",
-      "verb": "announced"
-    },
-    "object": {
-      "name": "new batch of security policies",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": "Tuesday",
-      "value": null
-    },
-    "location": {
-      "name": "unknown",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "On Tuesday, OpenAI announced a new batch of security policies focused on containing security incidents while models are being tested.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "ANNOUNCES",
-    "action_event_type": "Politics",
-    "action_detail": "announced",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "Tuesday",
-    "location_str": "unknown",
-    "entities": [
-      {
-        "entity_id": "COMP_OPENAI",
-        "entity_name": "OpenAI",
-        "entity_type": "Company",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 22755,
-    "article_url": "https://techcrunch.com/2026/08/18/openai-institutes-new-safeguards-after-hugging-face-breach/",
-    "subject": {
-      "name": "new safeguards",
-      "entity_id": "ORG_NEW_SAFEGUARDS",
+      "name": "Kazakh tenge",
+      "entity_id": "ORG_KAZAKH_TENGE",
       "type": "Organization",
       "object_type": "ENTITY"
     },
     "action": {
-      "type": "HACKS",
-      "status": "COMPLETED",
-      "polarity": "NEUTRAL",
-      "verb": "include"
+      "type": "SURGES",
+      "status": "ONGOING",
+      "polarity": "POSITIVE",
+      "verb": "soars"
     },
     "object": {
-      "name": "more detailed monitoring of models during the development process, as well as greater emphasis on alignment and security during the post-training process",
+      "name": "",
       "entity_id": null,
       "type": "Other",
-      "object_type": "STATEMENT"
+      "object_type": "UNKNOWN"
     },
     "time": {
-      "raw": "unknown",
+      "raw": null,
       "value": null
     },
     "location": {
-      "name": "unknown",
+      "name": null,
       "entity_id": null,
       "type": null
     },
-    "confidence": 1,
-    "evidence": "The new safeguards include more detailed monitoring of models during the development process, as well as greater emphasis on alignment and security during the post-training process.",
+    "confidence": 1.0,
+    "evidence": "Kazakh tenge soars as foreigners pile into government debt",
     "evidence_type": "UNKNOWN",
-    "action_type": "HACKS",
-    "action_event_type": "Cyber",
-    "action_detail": "include",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "unknown",
-    "location_str": "unknown",
+    "action_type": "SURGES",
+    "action_event_type": "Finance",
+    "action_detail": "soars",
+    "action_status": "ONGOING",
+    "action_polarity": "POSITIVE",
+    "event_time": "",
+    "location_str": "",
     "entities": [
       {
-        "entity_id": "ORG_NEW_SAFEGUARDS",
-        "entity_name": "new safeguards",
+        "entity_id": "ORG_KAZAKH_TENGE",
+        "entity_name": "Kazakh tenge",
         "entity_type": "Organization",
         "role": "SUBJECT"
       }
     ]
   },
   {
-    "article_id": 22755,
-    "article_url": "https://techcrunch.com/2026/08/18/openai-institutes-new-safeguards-after-hugging-face-breach/",
+    "article_id": 22793,
+    "article_url": "https://www.ft.com/content/17625ee5-4bcc-4ef4-aec8-6e4b513e223a?syn-25a6b1a6=1",
     "subject": {
-      "name": "measures",
-      "entity_id": "ORG_MEASURES",
+      "name": "investors",
+      "entity_id": "PERS_INVESTORS",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "SURGES",
+      "status": "ONGOING",
+      "polarity": "NEUTRAL",
+      "verb": "draw"
+    },
+    "object": {
+      "name": "High interest rates",
+      "entity_id": "ORG_HIGH_INTEREST_RATES",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1.0,
+    "evidence": "High interest rates draw investors despite Ukrainian drone attacks that disrupted oil exports from Russian terminal",
+    "evidence_type": "UNKNOWN",
+    "action_type": "SURGES",
+    "action_event_type": "Finance",
+    "action_detail": "draw",
+    "action_status": "ONGOING",
+    "action_polarity": "NEUTRAL",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "PERS_INVESTORS",
+        "entity_name": "investors",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_HIGH_INTEREST_RATES",
+        "entity_name": "High interest rates",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 22793,
+    "article_url": "https://www.ft.com/content/17625ee5-4bcc-4ef4-aec8-6e4b513e223a?syn-25a6b1a6=1",
+    "subject": {
+      "name": "oil exports",
+      "entity_id": "ORG_OIL_EXPORTS",
       "type": "Organization",
       "object_type": "ENTITY"
     },
     "action": {
-      "type": "HACKS",
-      "status": "ONGOING",
-      "polarity": "NEUTRAL",
-      "verb": "are"
+      "type": "SURGES",
+      "status": "COMPLETED",
+      "polarity": "NEGATIVE",
+      "verb": "disrupted"
     },
     "object": {
-      "name": "focused on containing security incidents while models are being tested",
+      "name": "oil exports from Russian terminal",
       "entity_id": null,
       "type": "Other",
       "object_type": "STATEMENT"
     },
     "time": {
-      "raw": "unknown",
+      "raw": null,
       "value": null
     },
     "location": {
-      "name": "unknown",
+      "name": "Russian terminal",
       "entity_id": null,
       "type": null
     },
-    "confidence": 1,
-    "evidence": "OpenAI announced a new batch of security policies focused on containing security incidents while models are being tested.",
+    "confidence": 0.9,
+    "evidence": "Ukrainian drone attacks that disrupted oil exports from Russian terminal",
     "evidence_type": "UNKNOWN",
-    "action_type": "HACKS",
-    "action_event_type": "Cyber",
-    "action_detail": "are",
-    "action_status": "ONGOING",
-    "action_polarity": "NEUTRAL",
-    "event_time": "unknown",
-    "location_str": "unknown",
+    "action_type": "SURGES",
+    "action_event_type": "Finance",
+    "action_detail": "disrupted",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEGATIVE",
+    "event_time": "",
+    "location_str": "Russian terminal",
     "entities": [
       {
-        "entity_id": "ORG_MEASURES",
-        "entity_name": "measures",
+        "entity_id": "ORG_OIL_EXPORTS",
+        "entity_name": "oil exports",
         "entity_type": "Organization",
         "role": "SUBJECT"
       }
@@ -427,8 +549,8 @@
     "action": {
       "type": "STATES",
       "status": "EXPECTED",
-      "polarity": "NEUTRAL",
-      "verb": "looks"
+      "polarity": "POSITIVE",
+      "verb": "looks to be"
     },
     "object": {
       "name": "the best place to hedge impact from severe El Niño shocks to global food supply chains",
@@ -450,9 +572,9 @@
     "evidence_type": "UNKNOWN",
     "action_type": "STATES",
     "action_event_type": "Politics",
-    "action_detail": "looks",
+    "action_detail": "looks to be",
     "action_status": "EXPECTED",
-    "action_polarity": "NEUTRAL",
+    "action_polarity": "POSITIVE",
     "event_time": "unknown",
     "location_str": "global food supply chains",
     "entities": [
@@ -477,7 +599,7 @@
       "type": "STATES",
       "status": "COMPLETED",
       "polarity": "NEGATIVE",
-      "verb": "has been associated"
+      "verb": "has been associated with"
     },
     "object": {
       "name": "widespread crop losses across key exporting regions",
@@ -486,7 +608,7 @@
       "object_type": "STATEMENT"
     },
     "time": {
-      "raw": "unknown",
+      "raw": "historical",
       "value": null
     },
     "location": {
@@ -494,15 +616,15 @@
       "entity_id": null,
       "type": null
     },
-    "confidence": 1,
-    "evidence": "Historically, El Niño has been associated with widespread crop losses across key exporting regions, and current risks are amplified by elevated fertilizer prices and lingering supply-chain disruptions, BofA strategist Oliver Levingston said.",
+    "confidence": 0.9,
+    "evidence": "Historically, El Niño has been associated with widespread crop losses across key exporting regions, and current risks are amplified by elevated fertilizer prices and lingering supply-chain disruptions,",
     "evidence_type": "UNKNOWN",
     "action_type": "STATES",
     "action_event_type": "Politics",
-    "action_detail": "has been associated",
+    "action_detail": "has been associated with",
     "action_status": "COMPLETED",
     "action_polarity": "NEGATIVE",
-    "event_time": "unknown",
+    "event_time": "historical",
     "location_str": "key exporting regions",
     "entities": [
       {
@@ -517,43 +639,50 @@
     "article_id": 22762,
     "article_url": "https://www.cnbc.com/2026/08/19/el-nino-food-supply-chain-hedge-bofa.html",
     "subject": {
-      "name": "New Zealand's outsized dependence on agricultural exports",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
+      "name": "New Zealand's dependence",
+      "entity_id": "CTRY_NEW_ZEALANDS_DEPENDENCE",
+      "type": "Country",
+      "object_type": "ENTITY"
     },
     "action": {
       "type": "STATES",
       "status": "EXPECTED",
-      "polarity": "NEGATIVE",
+      "polarity": "POSITIVE",
       "verb": "would mean"
     },
     "object": {
-      "name": "a sustained trouble for the global food supply",
+      "name": "a sustained trouble for the global food supply \"is likely to be a positive terms-of-trade shock\"",
       "entity_id": null,
       "type": "Other",
       "object_type": "STATEMENT"
     },
     "time": {
-      "raw": "unknown",
+      "raw": "future",
       "value": null
     },
     "location": {
-      "name": "global food supply chain",
+      "name": "global food supply",
       "entity_id": null,
       "type": null
     },
-    "confidence": 0.9,
-    "evidence": "While a major El Niño weather event posed growing risks to the global food supply chains and shortages in fertilizer inputs have been disrupted by the developments in the Strait of Hormuz, New Zealand's outsized dependence on agricultural exports would mean that a sustained trouble for the global food supply \"is likely to be a positive terms-of-trade shock,\" the bank noted.",
+    "confidence": 0.95,
+    "evidence": "New Zealand's outsized dependence on agricultural exports would mean that a sustained trouble for the global food supply \"is likely to be a positive terms-of-trade shock,\" the bank noted.",
     "evidence_type": "UNKNOWN",
     "action_type": "STATES",
     "action_event_type": "Politics",
     "action_detail": "would mean",
     "action_status": "EXPECTED",
-    "action_polarity": "NEGATIVE",
-    "event_time": "unknown",
-    "location_str": "global food supply chain",
-    "entities": []
+    "action_polarity": "POSITIVE",
+    "event_time": "future",
+    "location_str": "global food supply",
+    "entities": [
+      {
+        "entity_id": "CTRY_NEW_ZEALANDS_DEPENDENCE",
+        "entity_name": "New Zealand's dependence",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      }
+    ]
   },
   {
     "article_id": 22764,
@@ -734,7 +863,7 @@
       "value": null
     },
     "location": {
-      "name": "unknown",
+      "name": "regional",
       "entity_id": null,
       "type": null
     },
@@ -747,7 +876,7 @@
     "action_status": "COMPLETED",
     "action_polarity": "NEGATIVE",
     "event_time": "unknown",
-    "location_str": "unknown",
+    "location_str": "regional",
     "entities": []
   },
   {
@@ -861,6 +990,55 @@
     ]
   },
   {
+    "article_id": 22763,
+    "article_url": "https://www.bbc.co.uk/news/articles/cdew8n9erlwo?at_medium=RSS&at_campaign=rss",
+    "subject": {
+      "name": "elections",
+      "entity_id": "ORG_ELECTIONS",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "PAUSES",
+      "status": "ONGOING",
+      "polarity": "NEGATIVE",
+      "verb": "suspended"
+    },
+    "object": {
+      "name": "",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "time": {
+      "raw": "since February 2022",
+      "value": null
+    },
+    "location": {
+      "name": "Ukraine",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Since Russia's invasion Ukraine has been under martial law, which means elections are suspended.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "PAUSES",
+    "action_event_type": "Technology",
+    "action_detail": "suspended",
+    "action_status": "ONGOING",
+    "action_polarity": "NEGATIVE",
+    "event_time": "since February 2022",
+    "location_str": "Ukraine",
+    "entities": [
+      {
+        "entity_id": "ORG_ELECTIONS",
+        "entity_name": "elections",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
     "article_id": 22756,
     "article_url": "https://www.bbc.co.uk/sounds/play/p0p4z12v?at_medium=RSS&at_campaign=rss",
     "subject": {
@@ -937,15 +1115,15 @@
       "object_type": "ENTITY"
     },
     "time": {
-      "raw": "Tuesday",
+      "raw": null,
       "value": null
     },
     "location": {
-      "name": "unknown",
+      "name": "Tuesday",
       "entity_id": null,
       "type": null
     },
-    "confidence": 1,
+    "confidence": null,
     "evidence": "OpenAI on Tuesday announced ChatGPT for Teens, a dedicated chatbot experience for users under 18 that the company said is designed to include \"stronger built-in safety protections.\"",
     "evidence_type": "UNKNOWN",
     "action_type": "ANNOUNCES",
@@ -953,8 +1131,8 @@
     "action_detail": "announced",
     "action_status": "ANNOUNCED",
     "action_polarity": "NEUTRAL",
-    "event_time": "Tuesday",
-    "location_str": "unknown",
+    "event_time": "",
+    "location_str": "Tuesday",
     "entities": [
       {
         "entity_id": "COMP_OPENAI",
@@ -992,15 +1170,15 @@
       "object_type": "STATEMENT"
     },
     "time": {
-      "raw": "unknown",
+      "raw": null,
       "value": null
     },
     "location": {
-      "name": "unknown",
+      "name": null,
       "entity_id": null,
       "type": null
     },
-    "confidence": 1,
+    "confidence": null,
     "evidence": "ChatGPT for Teens includes a number of educational features and applies age-appropriate safeguards, OpenAI said.",
     "evidence_type": "UNKNOWN",
     "action_type": "OTHER",
@@ -1008,8 +1186,8 @@
     "action_detail": "includes",
     "action_status": "ONGOING",
     "action_polarity": "POSITIVE",
-    "event_time": "unknown",
-    "location_str": "unknown",
+    "event_time": "",
+    "location_str": "",
     "entities": [
       {
         "entity_id": "ORG_CHATGPT_FOR_TEENS",
@@ -1053,15 +1231,15 @@
       "object_type": "STATEMENT"
     },
     "time": {
-      "raw": "last year",
+      "raw": null,
       "value": null
     },
     "location": {
-      "name": "unknown",
+      "name": null,
       "entity_id": null,
       "type": null
     },
-    "confidence": 1,
+    "confidence": null,
     "evidence": "ChatGPT for Teens builds on several features that OpenAI has launched over the last year, including Study Mode, which aims to help students work through problems step-by-step, as well as age prediction and a number of parental controls.",
     "evidence_type": "UNKNOWN",
     "action_type": "OTHER",
@@ -1069,8 +1247,8 @@
     "action_detail": "builds on",
     "action_status": "ONGOING",
     "action_polarity": "POSITIVE",
-    "event_time": "last year",
-    "location_str": "unknown",
+    "event_time": "",
+    "location_str": "",
     "entities": [
       {
         "entity_id": "ORG_CHATGPT_FOR_TEENS",
@@ -1093,61 +1271,6 @@
       {
         "entity_id": "ORG_PARENTAL_CONTROLS",
         "entity_name": "parental controls",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 22750,
-    "article_url": "https://www.nytimes.com/2026/08/18/world/middleeast/israeli-strike-gaza-cafe-peace-plan.html",
-    "subject": {
-      "name": "Israeli military",
-      "entity_id": "ORG_ISRAELI_MILITARY",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "ATTACKS",
-      "status": "COMPLETED",
-      "polarity": "NEUTRAL",
-      "verb": "targeted"
-    },
-    "object": {
-      "name": "Hamas commanders",
-      "entity_id": "ORG_HAMAS_COMMANDERS",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "a day after President Trump’s envoy, Jared Kushner, visited Israel to advance a stalled plan for demilitarizing and rebuilding Gaza",
-      "value": null
-    },
-    "location": {
-      "name": "Gaza",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 0.9,
-    "evidence": "the Israeli military said it targeted Hamas commanders",
-    "evidence_type": "UNKNOWN",
-    "action_type": "ATTACKS",
-    "action_event_type": "Military",
-    "action_detail": "targeted",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "a day after President Trump’s envoy, Jared Kushner, visited Israel to advance a stalled plan for demilitarizing and rebuilding Gaza",
-    "location_str": "Gaza",
-    "entities": [
-      {
-        "entity_id": "ORG_ISRAELI_MILITARY",
-        "entity_name": "Israeli military",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_HAMAS_COMMANDERS",
-        "entity_name": "Hamas commanders",
         "entity_type": "Organization",
         "role": "OBJECT"
       }
@@ -1288,7 +1411,7 @@
       "type": null
     },
     "confidence": 1,
-    "evidence": "Following last week's pact with Wall Street firms to pursue $500 billion worth of financing for Nvidia's graphics processing units, Nvidia said Monday...",
+    "evidence": "Following last week's pact with Wall Street firms to pursue $500 billion worth of financing for Nvidia's graphics processing units, Nvidia said Monday that it's providing up to $105 billion for a giant OpenAI data center in Ohio, offering a backstop of sorts should the ChatGPT creator see its fortunes turn.",
     "evidence_type": "UNKNOWN",
     "action_type": "SUES",
     "action_event_type": "Legal",
@@ -1303,6 +1426,116 @@
         "entity_name": "NVIDIA",
         "entity_type": "Company",
         "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 22750,
+    "article_url": "https://www.nytimes.com/2026/08/18/world/middleeast/israeli-strike-gaza-cafe-peace-plan.html",
+    "subject": {
+      "name": "Israeli military",
+      "entity_id": "ORG_ISRAELI_MILITARY",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "ATTACKS",
+      "status": "COMPLETED",
+      "polarity": "NEUTRAL",
+      "verb": "targeted"
+    },
+    "object": {
+      "name": "Hamas commanders",
+      "entity_id": "ORG_HAMAS_COMMANDERS",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "A day after Jared Kushner visited Israel",
+      "value": null
+    },
+    "location": {
+      "name": "Gaza",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "the Israeli military said it targeted Hamas commanders",
+    "evidence_type": "UNKNOWN",
+    "action_type": "ATTACKS",
+    "action_event_type": "Military",
+    "action_detail": "targeted",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "A day after Jared Kushner visited Israel",
+    "location_str": "Gaza",
+    "entities": [
+      {
+        "entity_id": "ORG_ISRAELI_MILITARY",
+        "entity_name": "Israeli military",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_HAMAS_COMMANDERS",
+        "entity_name": "Hamas commanders",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 22750,
+    "article_url": "https://www.nytimes.com/2026/08/18/world/middleeast/israeli-strike-gaza-cafe-peace-plan.html",
+    "subject": {
+      "name": "Jared Kushner",
+      "entity_id": "CTRY_JARED_KUSHNER",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "VISITS",
+      "status": "COMPLETED",
+      "polarity": "NEUTRAL",
+      "verb": "visited"
+    },
+    "object": {
+      "name": "Israel",
+      "entity_id": "CTRY_ISR",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "A day after President Trump’s envoy visited",
+      "value": null
+    },
+    "location": {
+      "name": "Israel",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "President Trump’s envoy, Jared Kushner, visited Israel to advance a stalled plan for demilitarizing and rebuilding Gaza",
+    "evidence_type": "UNKNOWN",
+    "action_type": "VISITS",
+    "action_event_type": "Diplomacy",
+    "action_detail": "visited",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "A day after President Trump’s envoy visited",
+    "location_str": "Israel",
+    "entities": [
+      {
+        "entity_id": "CTRY_JARED_KUSHNER",
+        "entity_name": "Jared Kushner",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_ISR",
+        "entity_name": "Israel",
+        "entity_type": "Country",
+        "role": "OBJECT"
       }
     ]
   },
@@ -1420,10 +1653,10 @@
       "object_type": "ENTITY"
     },
     "action": {
-      "type": "ACCUSES",
+      "type": "ATTACKS",
       "status": "COMPLETED",
       "polarity": "NEGATIVE",
-      "verb": "accused"
+      "verb": "accusing"
     },
     "object": {
       "name": "Damascus",
@@ -1440,12 +1673,12 @@
       "entity_id": null,
       "type": null
     },
-    "confidence": 0.9,
+    "confidence": 1,
     "evidence": "Israel, while not commenting on the strikes directly, said Syria \"was on the verge of breaching\" the security status quo, accusing Damascus of allowing Turkish troops to deploy to the airbase.",
     "evidence_type": "UNKNOWN",
-    "action_type": "ACCUSES",
-    "action_event_type": "Legal",
-    "action_detail": "accused",
+    "action_type": "ATTACKS",
+    "action_event_type": "Military",
+    "action_detail": "accusing",
     "action_status": "COMPLETED",
     "action_polarity": "NEGATIVE",
     "event_time": "",
@@ -1461,6 +1694,244 @@
         "entity_id": "LOC_DAMASCUS",
         "entity_name": "Damascus",
         "entity_type": "Location",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 22727,
+    "article_url": "https://techcrunch.com/2026/08/18/openai-launches-a-safer-chatgpt-for-teens-years-after-teens-started-using-it/",
+    "subject": {
+      "name": "OpenAI",
+      "entity_id": "COMP_OPENAI",
+      "type": "Company",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "LAUNCHES",
+      "status": "COMPLETED",
+      "polarity": "POSITIVE",
+      "verb": "announced"
+    },
+    "object": {
+      "name": "ChatGPT for Teens",
+      "entity_id": "ORG_CHATGPT_FOR_TEENS",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "Monday",
+      "value": null
+    },
+    "location": {
+      "name": "Monday",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "OpenAI on Monday announced the launch of ChatGPT for Teens.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "LAUNCHES",
+    "action_event_type": "Technology",
+    "action_detail": "announced",
+    "action_status": "COMPLETED",
+    "action_polarity": "POSITIVE",
+    "event_time": "Monday",
+    "location_str": "Monday",
+    "entities": [
+      {
+        "entity_id": "COMP_OPENAI",
+        "entity_name": "OpenAI",
+        "entity_type": "Company",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_CHATGPT_FOR_TEENS",
+        "entity_name": "ChatGPT for Teens",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 22727,
+    "article_url": "https://techcrunch.com/2026/08/18/openai-launches-a-safer-chatgpt-for-teens-years-after-teens-started-using-it/",
+    "subject": {
+      "name": "ChatGPT for Teens",
+      "entity_id": "ORG_CHATGPT_FOR_TEENS",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "LAUNCHES",
+      "status": "COMPLETED",
+      "polarity": "POSITIVE",
+      "verb": "adds"
+    },
+    "object": {
+      "name": "safety measures, parental controls, and learning tools",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "ChatGPT for Teens adds age-appropriate safety measures, parental controls, and learning tools design",
+    "evidence_type": "UNKNOWN",
+    "action_type": "LAUNCHES",
+    "action_event_type": "Technology",
+    "action_detail": "adds",
+    "action_status": "COMPLETED",
+    "action_polarity": "POSITIVE",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "ORG_CHATGPT_FOR_TEENS",
+        "entity_name": "ChatGPT for Teens",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_SAFETY_MEASURES",
+        "entity_name": "safety measures",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      },
+      {
+        "entity_id": "ORG_PARENTAL_CONTROLS",
+        "entity_name": "parental controls",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      },
+      {
+        "entity_id": "ORG_LEARNING_TOOLS",
+        "entity_name": "learning tools",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 22727,
+    "article_url": "https://techcrunch.com/2026/08/18/openai-launches-a-safer-chatgpt-for-teens-years-after-teens-started-using-it/",
+    "subject": {
+      "name": "Study Mode feature",
+      "entity_id": "ORG_STUDY_MODE_FEATURE",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "LAUNCHES",
+      "status": "COMPLETED",
+      "polarity": "POSITIVE",
+      "verb": "introduces"
+    },
+    "object": {
+      "name": "guiding questions and step-by-step support",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "the Study Mode option will give teens guiding questions and step-by-step support to help them understand the material.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "LAUNCHES",
+    "action_event_type": "Technology",
+    "action_detail": "introduces",
+    "action_status": "COMPLETED",
+    "action_polarity": "POSITIVE",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "ORG_STUDY_MODE_FEATURE",
+        "entity_name": "Study Mode feature",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_GUIDING_QUESTIONS",
+        "entity_name": "guiding questions",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      },
+      {
+        "entity_id": "ORG_STEP_BY_STEP_SUPPORT",
+        "entity_name": "step-by-step support",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 22688,
+    "article_url": "https://techcrunch.com/2026/08/18/einride-strikes-deal-to-add-500-tesla-semis-to-its-fleet/",
+    "subject": {
+      "name": "Einride",
+      "entity_id": "COMP_EINRIDE",
+      "type": "Company",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "ATTACKS",
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
+    },
+    "object": {
+      "name": "Swedish",
+      "entity_id": "CTRY_SWEDISH",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": null,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "ATTACKS",
+    "action_event_type": "Military",
+    "action_detail": "",
+    "action_status": "UNKNOWN",
+    "action_polarity": "UNKNOWN",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "COMP_EINRIDE",
+        "entity_name": "Einride",
+        "entity_type": "Company",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_SWEDISH",
+        "entity_name": "Swedish",
+        "entity_type": "Country",
         "role": "OBJECT"
       }
     ]
@@ -1572,159 +2043,6 @@
         "entity_name": "party leader",
         "entity_type": "Person",
         "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 22688,
-    "article_url": "https://techcrunch.com/2026/08/18/einride-strikes-deal-to-add-500-tesla-semis-to-its-fleet/",
-    "subject": {
-      "name": "Einride",
-      "entity_id": "COMP_EINRIDE",
-      "type": "Company",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "ATTACKS",
-      "status": "UNKNOWN",
-      "polarity": "UNKNOWN",
-      "verb": ""
-    },
-    "object": {
-      "name": "Swedish",
-      "entity_id": "CTRY_SWEDISH",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": null,
-    "evidence": "",
-    "evidence_type": "UNKNOWN",
-    "action_type": "ATTACKS",
-    "action_event_type": "Military",
-    "action_detail": "",
-    "action_status": "UNKNOWN",
-    "action_polarity": "UNKNOWN",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "COMP_EINRIDE",
-        "entity_name": "Einride",
-        "entity_type": "Company",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_SWEDISH",
-        "entity_name": "Swedish",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 22706,
-    "article_url": "https://www.ft.com/content/9eccad94-56f5-4adf-aa61-c39e2e542226?syn-25a6b1a6=1",
-    "subject": {
-      "name": "OpenAI",
-      "entity_id": "COMP_OPENAI",
-      "type": "Company",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "ANNOUNCED",
-      "polarity": "NEUTRAL",
-      "verb": "limits"
-    },
-    "object": {
-      "name": "teens to dedicated version of ChatGPT",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "OpenAI limits teens to dedicated version of ChatGPT promising more safeguards",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "limits",
-    "action_status": "ANNOUNCED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "COMP_OPENAI",
-        "entity_name": "OpenAI",
-        "entity_type": "Company",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 22706,
-    "article_url": "https://www.ft.com/content/9eccad94-56f5-4adf-aa61-c39e2e542226?syn-25a6b1a6=1",
-    "subject": {
-      "name": "OpenAI",
-      "entity_id": "COMP_OPENAI",
-      "type": "Company",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "COMPLETED",
-      "polarity": "POSITIVE",
-      "verb": "overhauls"
-    },
-    "object": {
-      "name": "chatbot for young people",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "AI start-up overhauls its chatbot for young people after high-profile lawsuits",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "overhauls",
-    "action_status": "COMPLETED",
-    "action_polarity": "POSITIVE",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "COMP_OPENAI",
-        "entity_name": "OpenAI",
-        "entity_type": "Company",
-        "role": "SUBJECT"
       }
     ]
   },
@@ -1894,8 +2212,8 @@
     ]
   },
   {
-    "article_id": 22727,
-    "article_url": "https://techcrunch.com/2026/08/18/openai-launches-a-safer-chatgpt-for-teens-years-after-teens-started-using-it/",
+    "article_id": 22706,
+    "article_url": "https://www.ft.com/content/9eccad94-56f5-4adf-aa61-c39e2e542226?syn-25a6b1a6=1",
     "subject": {
       "name": "OpenAI",
       "entity_id": "COMP_OPENAI",
@@ -1903,176 +2221,91 @@
       "object_type": "ENTITY"
     },
     "action": {
-      "type": "LAUNCHES",
-      "status": "COMPLETED",
-      "polarity": "POSITIVE",
-      "verb": "announced"
+      "type": "OTHER",
+      "status": "ANNOUNCED",
+      "polarity": "NEUTRAL",
+      "verb": "limits"
     },
     "object": {
-      "name": "ChatGPT for Teens",
-      "entity_id": "ORG_CHATGPT_FOR_TEENS",
-      "type": "Organization",
-      "object_type": "ENTITY"
+      "name": "teens to dedicated version of ChatGPT",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
     },
     "time": {
-      "raw": "Monday",
+      "raw": null,
       "value": null
     },
     "location": {
-      "name": "Monday",
+      "name": null,
       "entity_id": null,
       "type": null
     },
     "confidence": 1,
-    "evidence": "OpenAI on Monday announced the launch of ChatGPT for Teens.",
+    "evidence": "OpenAI limits teens to dedicated version of ChatGPT promising more safeguards",
     "evidence_type": "UNKNOWN",
-    "action_type": "LAUNCHES",
-    "action_event_type": "Technology",
-    "action_detail": "announced",
-    "action_status": "COMPLETED",
-    "action_polarity": "POSITIVE",
-    "event_time": "Monday",
-    "location_str": "Monday",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "limits",
+    "action_status": "ANNOUNCED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "",
+    "location_str": "",
     "entities": [
       {
         "entity_id": "COMP_OPENAI",
         "entity_name": "OpenAI",
         "entity_type": "Company",
         "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_CHATGPT_FOR_TEENS",
-        "entity_name": "ChatGPT for Teens",
-        "entity_type": "Organization",
-        "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 22727,
-    "article_url": "https://techcrunch.com/2026/08/18/openai-launches-a-safer-chatgpt-for-teens-years-after-teens-started-using-it/",
+    "article_id": 22706,
+    "article_url": "https://www.ft.com/content/9eccad94-56f5-4adf-aa61-c39e2e542226?syn-25a6b1a6=1",
     "subject": {
-      "name": "ChatGPT for Teens",
-      "entity_id": "ORG_CHATGPT_FOR_TEENS",
-      "type": "Organization",
+      "name": "OpenAI",
+      "entity_id": "COMP_OPENAI",
+      "type": "Company",
       "object_type": "ENTITY"
     },
     "action": {
-      "type": "LAUNCHES",
-      "status": "ANNOUNCED",
+      "type": "OTHER",
+      "status": "COMPLETED",
       "polarity": "POSITIVE",
-      "verb": "adds"
+      "verb": "overhauls"
     },
     "object": {
-      "name": "safety measures, parental controls, and learning tools",
+      "name": "chatbot for young people",
       "entity_id": null,
       "type": "Other",
-      "object_type": "STATEMENT"
+      "object_type": "UNKNOWN"
     },
     "time": {
-      "raw": "N/A",
+      "raw": null,
       "value": null
     },
     "location": {
-      "name": "N/A",
+      "name": null,
       "entity_id": null,
       "type": null
     },
     "confidence": 1,
-    "evidence": "ChatGPT for Teens adds age-appropriate safety measures, parental controls, and learning tools design",
+    "evidence": "AI start-up overhauls its chatbot for young people after high-profile lawsuits",
     "evidence_type": "UNKNOWN",
-    "action_type": "LAUNCHES",
-    "action_event_type": "Technology",
-    "action_detail": "adds",
-    "action_status": "ANNOUNCED",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "overhauls",
+    "action_status": "COMPLETED",
     "action_polarity": "POSITIVE",
-    "event_time": "N/A",
-    "location_str": "N/A",
+    "event_time": "",
+    "location_str": "",
     "entities": [
       {
-        "entity_id": "ORG_CHATGPT_FOR_TEENS",
-        "entity_name": "ChatGPT for Teens",
-        "entity_type": "Organization",
+        "entity_id": "COMP_OPENAI",
+        "entity_name": "OpenAI",
+        "entity_type": "Company",
         "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_SAFETY_MEASURES",
-        "entity_name": "safety measures",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      },
-      {
-        "entity_id": "ORG_PARENTAL_CONTROLS",
-        "entity_name": "parental controls",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      },
-      {
-        "entity_id": "ORG_LEARNING_TOOLS",
-        "entity_name": "learning tools",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 22727,
-    "article_url": "https://techcrunch.com/2026/08/18/openai-launches-a-safer-chatgpt-for-teens-years-after-teens-started-using-it/",
-    "subject": {
-      "name": "Study Mode feature",
-      "entity_id": "ORG_STUDY_MODE_FEATURE",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "LAUNCHES",
-      "status": "ANNOUNCED",
-      "polarity": "POSITIVE",
-      "verb": "introduces"
-    },
-    "object": {
-      "name": "guiding questions and step-by-step support",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": "N/A",
-      "value": null
-    },
-    "location": {
-      "name": "N/A",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "the Study Mode option will give teens guiding questions and step-by-step support to help them understand the material.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "LAUNCHES",
-    "action_event_type": "Technology",
-    "action_detail": "introduces",
-    "action_status": "ANNOUNCED",
-    "action_polarity": "POSITIVE",
-    "event_time": "N/A",
-    "location_str": "N/A",
-    "entities": [
-      {
-        "entity_id": "ORG_STUDY_MODE_FEATURE",
-        "entity_name": "Study Mode feature",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_GUIDING_QUESTIONS",
-        "entity_name": "guiding questions",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      },
-      {
-        "entity_id": "ORG_STEP_BY_STEP_SUPPORT",
-        "entity_name": "step-by-step support",
-        "entity_type": "Organization",
-        "role": "OBJECT"
       }
     ]
   },
@@ -2208,7 +2441,7 @@
       "object_type": "STATEMENT"
     },
     "time": {
-      "raw": "overnight",
+      "raw": "overnight Monday",
       "value": null
     },
     "location": {
@@ -2224,7 +2457,7 @@
     "action_detail": "launched",
     "action_status": "COMPLETED",
     "action_polarity": "NEGATIVE",
-    "event_time": "overnight",
+    "event_time": "overnight Monday",
     "location_str": "Odesa region",
     "entities": [
       {
@@ -2294,8 +2527,8 @@
     "article_id": 22676,
     "article_url": "https://www.cnbc.com/2026/08/17/ukraine-war-russia-putin-moscow.html",
     "subject": {
-      "name": "Russian Federation",
-      "entity_id": "CTRY_RUSSIAN_FEDERATION",
+      "name": "Russia's Defense Ministry",
+      "entity_id": "CTRY_RUSSIAS_DEFENSE_MINISTRY",
       "type": "Country",
       "object_type": "ENTITY"
     },
@@ -2332,8 +2565,8 @@
     "location_str": "port",
     "entities": [
       {
-        "entity_id": "CTRY_RUSSIAN_FEDERATION",
-        "entity_name": "Russian Federation",
+        "entity_id": "CTRY_RUSSIAS_DEFENSE_MINISTRY",
+        "entity_name": "Russia's Defense Ministry",
         "entity_type": "Country",
         "role": "SUBJECT"
       }
@@ -2450,171 +2683,6 @@
     ]
   },
   {
-    "article_id": 22639,
-    "article_url": "https://www.japantimes.co.jp/news/2026/08/18/world/politics/trump-oman-iran-deal/",
-    "subject": {
-      "name": "U.S. President Donald Trump",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "action": {
-      "type": "ATTACKS",
-      "status": "ATTEMPTED",
-      "polarity": "NEGATIVE",
-      "verb": "threatened"
-    },
-    "object": {
-      "name": "Oman",
-      "entity_id": "CTRY_OMN",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "Monday",
-      "value": null
-    },
-    "location": {
-      "name": "Strait of Hormuz",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "U.S. President Donald Trump threatened Monday to bomb Oman if it “gets in the way” of a U.S. deal with Iran on the Strait of Hormuz",
-    "evidence_type": "UNKNOWN",
-    "action_type": "ATTACKS",
-    "action_event_type": "Military",
-    "action_detail": "threatened",
-    "action_status": "ATTEMPTED",
-    "action_polarity": "NEGATIVE",
-    "event_time": "Monday",
-    "location_str": "Strait of Hormuz",
-    "entities": [
-      {
-        "entity_id": "CTRY_OMN",
-        "entity_name": "Oman",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 22639,
-    "article_url": "https://www.japantimes.co.jp/news/2026/08/18/world/politics/trump-oman-iran-deal/",
-    "subject": {
-      "name": "Iran, Islamic Republic of",
-      "entity_id": "CTRY_IRN",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "ATTACKS",
-      "status": "PLANNED",
-      "polarity": "UNKNOWN",
-      "verb": "surrender"
-    },
-    "object": {
-      "name": "war",
-      "entity_id": "ORG_WAR",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 0.9,
-    "evidence": "called for Tehran to surrender in a war that has become a growing political burden",
-    "evidence_type": "UNKNOWN",
-    "action_type": "ATTACKS",
-    "action_event_type": "Military",
-    "action_detail": "surrender",
-    "action_status": "PLANNED",
-    "action_polarity": "UNKNOWN",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "CTRY_IRN",
-        "entity_name": "Iran, Islamic Republic of",
-        "entity_type": "Country",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_WAR",
-        "entity_name": "war",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 22639,
-    "article_url": "https://www.japantimes.co.jp/news/2026/08/18/world/politics/trump-oman-iran-deal/",
-    "subject": {
-      "name": "conflict between Tehran and Washington",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "action": {
-      "type": "ATTACKS",
-      "status": "ONGOING",
-      "polarity": "NEGATIVE",
-      "verb": "dragged on"
-    },
-    "object": {
-      "name": "six months",
-      "entity_id": "ORG_SIX_MONTHS",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "stalemate that has dragged on for nearly six months",
-    "evidence_type": "UNKNOWN",
-    "action_type": "ATTACKS",
-    "action_event_type": "Military",
-    "action_detail": "dragged on",
-    "action_status": "ONGOING",
-    "action_polarity": "NEGATIVE",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "LOC_CONFLICT_BETWEEN_TEHRAN",
-        "entity_name": "conflict between Tehran",
-        "entity_type": "Location",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_US_GOVERNMENT",
-        "entity_name": "United States Government",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_SIX_MONTHS",
-        "entity_name": "six months",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
     "article_id": 22678,
     "article_url": "https://www.cnbc.com/2026/08/17/synchrony-openai.html",
     "subject": {
@@ -2680,7 +2748,7 @@
     },
     "action": {
       "type": "SUES",
-      "status": "PLANNED",
+      "status": "ONGOING",
       "polarity": "NEUTRAL",
       "verb": "power"
     },
@@ -2691,24 +2759,24 @@
       "object_type": "ENTITY"
     },
     "time": {
-      "raw": "N/A",
+      "raw": "Unknown",
       "value": null
     },
     "location": {
-      "name": "N/A",
+      "name": "consumer portals",
       "entity_id": null,
       "type": null
     },
-    "confidence": 1,
+    "confidence": 0.9,
     "evidence": "Synchrony Financial, the credit card issuer for brands including Amazon, Walmart and Lowe's, on Monday announced a collaboration with OpenAI allowing the artificial intelligence company's models to power the card company's consumer portals.",
     "evidence_type": "UNKNOWN",
     "action_type": "SUES",
     "action_event_type": "Legal",
     "action_detail": "power",
-    "action_status": "PLANNED",
+    "action_status": "ONGOING",
     "action_polarity": "NEUTRAL",
-    "event_time": "N/A",
-    "location_str": "N/A",
+    "event_time": "Unknown",
+    "location_str": "consumer portals",
     "entities": [
       {
         "entity_id": "ORG_OPENAIS_MODELS",
@@ -2728,16 +2796,16 @@
     "article_id": 22678,
     "article_url": "https://www.cnbc.com/2026/08/17/synchrony-openai.html",
     "subject": {
-      "name": "collaboration",
+      "name": "Collaboration",
       "entity_id": "ORG_COLLABORATION",
       "type": "Organization",
       "object_type": "ENTITY"
     },
     "action": {
       "type": "SUES",
-      "status": "ONGOING",
+      "status": "PLANNED",
       "polarity": "POSITIVE",
-      "verb": "enabling"
+      "verb": "enable"
     },
     "object": {
       "name": "smoother online shopping experiences",
@@ -2746,28 +2814,187 @@
       "object_type": "UNKNOWN"
     },
     "time": {
-      "raw": "N/A",
+      "raw": "Unknown",
       "value": null
     },
     "location": {
-      "name": "N/A",
+      "name": "online shopping",
       "entity_id": null,
       "type": null
     },
-    "confidence": 0.9,
+    "confidence": 0.8,
     "evidence": "The collaboration, which is in its early stages, is a step toward enabling Synchrony customers to have smoother online shopping experiences.",
     "evidence_type": "UNKNOWN",
     "action_type": "SUES",
     "action_event_type": "Legal",
-    "action_detail": "enabling",
-    "action_status": "ONGOING",
+    "action_detail": "enable",
+    "action_status": "PLANNED",
     "action_polarity": "POSITIVE",
-    "event_time": "N/A",
-    "location_str": "N/A",
+    "event_time": "Unknown",
+    "location_str": "online shopping",
     "entities": [
       {
         "entity_id": "ORG_COLLABORATION",
-        "entity_name": "collaboration",
+        "entity_name": "Collaboration",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 22639,
+    "article_url": "https://www.japantimes.co.jp/news/2026/08/18/world/politics/trump-oman-iran-deal/",
+    "subject": {
+      "name": "U.S. President Donald Trump",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "action": {
+      "type": "ATTACKS",
+      "status": "ANNOUNCED",
+      "polarity": "NEGATIVE",
+      "verb": "threatened"
+    },
+    "object": {
+      "name": "Oman",
+      "entity_id": "CTRY_OMN",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "Monday",
+      "value": null
+    },
+    "location": {
+      "name": "Strait of Hormuz",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "U.S. President Donald Trump threatened Monday to bomb Oman if it “gets in the way” of a U.S. deal with Iran on the Strait of Hormuz",
+    "evidence_type": "UNKNOWN",
+    "action_type": "ATTACKS",
+    "action_event_type": "Military",
+    "action_detail": "threatened",
+    "action_status": "ANNOUNCED",
+    "action_polarity": "NEGATIVE",
+    "event_time": "Monday",
+    "location_str": "Strait of Hormuz",
+    "entities": [
+      {
+        "entity_id": "CTRY_OMN",
+        "entity_name": "Oman",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 22639,
+    "article_url": "https://www.japantimes.co.jp/news/2026/08/18/world/politics/trump-oman-iran-deal/",
+    "subject": {
+      "name": "Iran, Islamic Republic of",
+      "entity_id": "CTRY_IRN",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "ATTACKS",
+      "status": "PLANNED",
+      "polarity": "UNKNOWN",
+      "verb": "surrender"
+    },
+    "object": {
+      "name": "war",
+      "entity_id": "ORG_WAR",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "Unknown",
+      "value": null
+    },
+    "location": {
+      "name": "Strait of Hormuz",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.9,
+    "evidence": "called for Tehran to surrender in a war that has become a growing political burden",
+    "evidence_type": "UNKNOWN",
+    "action_type": "ATTACKS",
+    "action_event_type": "Military",
+    "action_detail": "surrender",
+    "action_status": "PLANNED",
+    "action_polarity": "UNKNOWN",
+    "event_time": "Unknown",
+    "location_str": "Strait of Hormuz",
+    "entities": [
+      {
+        "entity_id": "CTRY_IRN",
+        "entity_name": "Iran, Islamic Republic of",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_WAR",
+        "entity_name": "war",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 22639,
+    "article_url": "https://www.japantimes.co.jp/news/2026/08/18/world/politics/trump-oman-iran-deal/",
+    "subject": {
+      "name": "Conflict between Tehran and Washington",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "action": {
+      "type": "ATTACKS",
+      "status": "ONGOING",
+      "polarity": "NEGATIVE",
+      "verb": "deadlock"
+    },
+    "object": {
+      "name": "control of the waterway",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "time": {
+      "raw": "Nearly six months",
+      "value": null
+    },
+    "location": {
+      "name": "Strait of Hormuz",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.8,
+    "evidence": "Control of the waterway, which Iran has effectively closed since the conflict began on February 28, remains at the heart of the deadlock between Tehran and Washington.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "ATTACKS",
+    "action_event_type": "Military",
+    "action_detail": "deadlock",
+    "action_status": "ONGOING",
+    "action_polarity": "NEGATIVE",
+    "event_time": "Nearly six months",
+    "location_str": "Strait of Hormuz",
+    "entities": [
+      {
+        "entity_id": "LOC_CONFLICT_BETWEEN_TEHRAN",
+        "entity_name": "Conflict between Tehran",
+        "entity_type": "Location",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_US_GOVERNMENT",
+        "entity_name": "United States Government",
         "entity_type": "Organization",
         "role": "SUBJECT"
       }
@@ -2784,7 +3011,7 @@
     },
     "action": {
       "type": "OTHER",
-      "status": "UNKNOWN",
+      "status": "EXPECTED",
       "polarity": "NEGATIVE",
       "verb": "causes"
     },
@@ -2795,24 +3022,24 @@
       "object_type": "STATEMENT"
     },
     "time": {
-      "raw": "unknown",
+      "raw": "N/A",
       "value": null
     },
     "location": {
-      "name": "Go",
+      "name": "N/A",
       "entity_id": null,
       "type": null
     },
-    "confidence": 1.0,
-    "evidence": "This error is a classic side effect of the default Pion WebRTC setup in Go.",
+    "confidence": 1,
+    "evidence": "This error is a classic side effect of the default Pion WebRTC setup in Go. It is easy to reproduce: you read the usual Pion usage FATAL: crypto/rand: blocked on getrandom() syscall, or 100% CPU at the 25th Client.",
     "evidence_type": "UNKNOWN",
     "action_type": "OTHER",
     "action_event_type": "General",
     "action_detail": "causes",
-    "action_status": "UNKNOWN",
+    "action_status": "EXPECTED",
     "action_polarity": "NEGATIVE",
-    "event_time": "unknown",
-    "location_str": "Go",
+    "event_time": "N/A",
+    "location_str": "N/A",
     "entities": []
   },
   {
@@ -2867,97 +3094,6 @@
         "entity_name": "Shanghai",
         "entity_type": "Location",
         "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 22613,
-    "article_url": "https://www.coindesk.com/markets/2026/08/18/the-bitcoin-price-level-where-leveraged-bulls-could-get-whacked",
-    "subject": {
-      "name": "$57,000",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "action": {
-      "type": "HACKS",
-      "status": "EXPECTED",
-      "polarity": "NEUTRAL",
-      "verb": "is"
-    },
-    "object": {
-      "name": "",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "$57,000 is the key liquidation level for bitcoin’s leveraged longs.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "HACKS",
-    "action_event_type": "Cyber",
-    "action_detail": "is",
-    "action_status": "EXPECTED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "",
-    "location_str": "",
-    "entities": []
-  },
-  {
-    "article_id": 22613,
-    "article_url": "https://www.coindesk.com/markets/2026/08/18/the-bitcoin-price-level-where-leveraged-bulls-could-get-whacked",
-    "subject": {
-      "name": "liquidity",
-      "entity_id": "ORG_LIQUIDITY",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "HACKS",
-      "status": "ONGOING",
-      "polarity": "NEGATIVE",
-      "verb": "is thinning"
-    },
-    "object": {
-      "name": "",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "liquidity is thinning could amplify any liquidation-driven sell-off.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "HACKS",
-    "action_event_type": "Cyber",
-    "action_detail": "is thinning",
-    "action_status": "ONGOING",
-    "action_polarity": "NEGATIVE",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "ORG_LIQUIDITY",
-        "entity_name": "liquidity",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
       }
     ]
   },
@@ -3051,9 +3187,9 @@
     },
     "action": {
       "type": "OTHER",
-      "status": "COMPLETED",
-      "polarity": "POSITIVE",
-      "verb": "produced"
+      "status": "ONGOING",
+      "polarity": "NEUTRAL",
+      "verb": "are produced"
     },
     "object": {
       "name": "statistics",
@@ -3062,11 +3198,11 @@
       "object_type": "ENTITY"
     },
     "time": {
-      "raw": "August 2026",
+      "raw": "N/A",
       "value": null
     },
     "location": {
-      "name": "UK",
+      "name": "N/A",
       "entity_id": null,
       "type": null
     },
@@ -3075,11 +3211,11 @@
     "evidence_type": "UNKNOWN",
     "action_type": "OTHER",
     "action_event_type": "General",
-    "action_detail": "produced",
-    "action_status": "COMPLETED",
-    "action_polarity": "POSITIVE",
-    "event_time": "August 2026",
-    "location_str": "UK",
+    "action_detail": "are produced",
+    "action_status": "ONGOING",
+    "action_polarity": "NEUTRAL",
+    "event_time": "N/A",
+    "location_str": "N/A",
     "entities": [
       {
         "entity_id": "ORG_OFFICIAL_STATISTICS",
@@ -3090,6 +3226,165 @@
       {
         "entity_id": "ORG_STATISTICS",
         "entity_name": "statistics",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 22613,
+    "article_url": "https://www.coindesk.com/markets/2026/08/18/the-bitcoin-price-level-where-leveraged-bulls-could-get-whacked",
+    "subject": {
+      "name": "bitcoin price level",
+      "entity_id": "ORG_BITCOIN_PRICE_LEVEL",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "HACKS",
+      "status": "UNKNOWN",
+      "polarity": "NEUTRAL",
+      "verb": "is"
+    },
+    "object": {
+      "name": "$57,000",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "AMOUNT"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1.0,
+    "evidence": "$57,000 is the key liquidation level for bitcoin’s leveraged longs.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "HACKS",
+    "action_event_type": "Cyber",
+    "action_detail": "is",
+    "action_status": "UNKNOWN",
+    "action_polarity": "NEUTRAL",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "ORG_BITCOIN_PRICE_LEVEL",
+        "entity_name": "bitcoin price level",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 22613,
+    "article_url": "https://www.coindesk.com/markets/2026/08/18/the-bitcoin-price-level-where-leveraged-bulls-could-get-whacked",
+    "subject": {
+      "name": "liquidity",
+      "entity_id": "ORG_LIQUIDITY",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "HACKS",
+      "status": "EXPECTED",
+      "polarity": "NEGATIVE",
+      "verb": "could amplify"
+    },
+    "object": {
+      "name": "sell-off",
+      "entity_id": "ORG_SELL_OFF",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.9,
+    "evidence": "Thin liquidity could amplify any liquidation-driven sell-off.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "HACKS",
+    "action_event_type": "Cyber",
+    "action_detail": "could amplify",
+    "action_status": "EXPECTED",
+    "action_polarity": "NEGATIVE",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "ORG_LIQUIDITY",
+        "entity_name": "liquidity",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_SELL_OFF",
+        "entity_name": "sell-off",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 22613,
+    "article_url": "https://www.coindesk.com/markets/2026/08/18/the-bitcoin-price-level-where-leveraged-bulls-could-get-whacked",
+    "subject": {
+      "name": "BTC’s resilience",
+      "entity_id": "ORG_BTCS_RESILIENCE",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "HACKS",
+      "status": "ONGOING",
+      "polarity": "POSITIVE",
+      "verb": "keep"
+    },
+    "object": {
+      "name": "bullish case",
+      "entity_id": "ORG_BULLISH_CASE",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.8,
+    "evidence": "Despite the downside risks, BTC’s resilience and a potential inverse head-and-shoulders pattern keep the bullish case alive.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "HACKS",
+    "action_event_type": "Cyber",
+    "action_detail": "keep",
+    "action_status": "ONGOING",
+    "action_polarity": "POSITIVE",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "ORG_BTCS_RESILIENCE",
+        "entity_name": "BTC’s resilience",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_BULLISH_CASE",
+        "entity_name": "bullish case",
         "entity_type": "Organization",
         "role": "OBJECT"
       }
@@ -3242,142 +3537,57 @@
     ]
   },
   {
-    "article_id": 22601,
-    "article_url": "https://www.aljazeera.com/news/2026/8/18/trump-says-n-koreas-kim-has-responded-to-his-request-for-a-conversation?traffic_source=rss",
+    "article_id": 22593,
+    "article_url": "https://www.scmp.com/news/china/science/article/3364364/chinese-navys-combat-software-guru-zhao-xiaozhe-disappears-academy-website?utm_source=rss_feed",
     "subject": {
-      "name": "US president Donald Trump",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "action": {
-      "type": "STATES",
-      "status": "ANNOUNCED",
-      "polarity": "POSITIVE",
-      "verb": "says"
-    },
-    "object": {
-      "name": "North Korean leader Kim Jong Un's response",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Trump says talking to North Korea’s Kim makes the south safer",
-    "evidence_type": "UNKNOWN",
-    "action_type": "STATES",
-    "action_event_type": "Politics",
-    "action_detail": "says",
-    "action_status": "ANNOUNCED",
-    "action_polarity": "POSITIVE",
-    "event_time": "",
-    "location_str": "",
-    "entities": []
-  },
-  {
-    "article_id": 22601,
-    "article_url": "https://www.aljazeera.com/news/2026/8/18/trump-says-n-koreas-kim-has-responded-to-his-request-for-a-conversation?traffic_source=rss",
-    "subject": {
-      "name": "US president Donald Trump",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "action": {
-      "type": "STATES",
-      "status": "ANNOUNCED",
-      "polarity": "NEGATIVE",
-      "verb": "slams"
-    },
-    "object": {
-      "name": "Seoul",
-      "entity_id": "LOC_SEOUL",
-      "type": "Location",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "US president says conversations with Kim Jong Un at a ‘positive’ stage and slams S Korea for refusing to join war on Iran.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "STATES",
-    "action_event_type": "Politics",
-    "action_detail": "slams",
-    "action_status": "ANNOUNCED",
-    "action_polarity": "NEGATIVE",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "LOC_SEOUL",
-        "entity_name": "Seoul",
-        "entity_type": "Location",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 22601,
-    "article_url": "https://www.aljazeera.com/news/2026/8/18/trump-says-n-koreas-kim-has-responded-to-his-request-for-a-conversation?traffic_source=rss",
-    "subject": {
-      "name": "Kim Jong Un",
-      "entity_id": "PERS_KIM_JONG_UN",
+      "name": "Zhao Xiaozhe",
+      "entity_id": "PERS_ZHAO_XIAOZHE",
       "type": "Person",
       "object_type": "ENTITY"
     },
     "action": {
-      "type": "STATES",
-      "status": "COMPLETED",
-      "polarity": "POSITIVE",
-      "verb": "responded"
+      "type": "OTHER",
+      "status": "UNKNOWN",
+      "polarity": "NEUTRAL",
+      "verb": "disappears"
     },
     "object": {
-      "name": "request for a conversation",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
+      "name": "combat software guru",
+      "entity_id": "ORG_COMBAT_SOFTWARE_GURU",
+      "type": "Organization",
+      "object_type": "ENTITY"
     },
     "time": {
-      "raw": null,
+      "raw": "unknown",
       "value": null
     },
     "location": {
-      "name": null,
+      "name": "Chinese Academy of Engineering’s online membership list",
       "entity_id": null,
       "type": null
     },
-    "confidence": 1,
-    "evidence": "Trump says N Korea’s Kim has responded to his request for a conversation",
+    "confidence": 0.9,
+    "evidence": "Chinese navy’s combat software guru Zhao Xiaozhe disappears from academy website",
     "evidence_type": "UNKNOWN",
-    "action_type": "STATES",
-    "action_event_type": "Politics",
-    "action_detail": "responded",
-    "action_status": "COMPLETED",
-    "action_polarity": "POSITIVE",
-    "event_time": "",
-    "location_str": "",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "disappears",
+    "action_status": "UNKNOWN",
+    "action_polarity": "NEUTRAL",
+    "event_time": "unknown",
+    "location_str": "Chinese Academy of Engineering’s online membership list",
     "entities": [
       {
-        "entity_id": "PERS_KIM_JONG_UN",
-        "entity_name": "Kim Jong Un",
+        "entity_id": "PERS_ZHAO_XIAOZHE",
+        "entity_name": "Zhao Xiaozhe",
         "entity_type": "Person",
         "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_COMBAT_SOFTWARE_GURU",
+        "entity_name": "combat software guru",
+        "entity_type": "Organization",
+        "role": "OBJECT"
       }
     ]
   },
@@ -3393,13 +3603,13 @@
     "action": {
       "type": "OTHER",
       "status": "UNKNOWN",
-      "polarity": "UNKNOWN",
-      "verb": "disappear"
+      "polarity": "NEUTRAL",
+      "verb": "vanished"
     },
     "object": {
-      "name": "Zhao Xiaozhe",
-      "entity_id": "PERS_ZHAO_XIAOZHE",
-      "type": "Person",
+      "name": "membership list",
+      "entity_id": "ORG_MEMBERSHIP_LIST",
+      "type": "Organization",
       "object_type": "ENTITY"
     },
     "time": {
@@ -3411,14 +3621,14 @@
       "entity_id": null,
       "type": null
     },
-    "confidence": 1.0,
-    "evidence": "A top naval software expert, whose work helped warships to process battlefield information and support combat decisions, has vanished from the Chinese Academy of Engineering’s online membership list.",
+    "confidence": 0.95,
+    "evidence": "Zhao Xiaozhe, 63, a vice-admiral in the PLA Navy, once headed the Central Military Commission’s top naval software expert, whose work helped warships to process battlefield information and support combat decisions, has vanished from the Chinese Academy of Engineering’s online membership list.",
     "evidence_type": "UNKNOWN",
     "action_type": "OTHER",
     "action_event_type": "General",
-    "action_detail": "disappear",
+    "action_detail": "vanished",
     "action_status": "UNKNOWN",
-    "action_polarity": "UNKNOWN",
+    "action_polarity": "NEUTRAL",
     "event_time": "unknown",
     "location_str": "Chinese Academy of Engineering’s online membership list",
     "entities": [
@@ -3429,9 +3639,9 @@
         "role": "SUBJECT"
       },
       {
-        "entity_id": "PERS_ZHAO_XIAOZHE",
-        "entity_name": "Zhao Xiaozhe",
-        "entity_type": "Person",
+        "entity_id": "ORG_MEMBERSHIP_LIST",
+        "entity_name": "membership list",
+        "entity_type": "Organization",
         "role": "OBJECT"
       }
     ]
@@ -3447,35 +3657,35 @@
     },
     "action": {
       "type": "OTHER",
-      "status": "COMPLETED",
+      "status": "UNKNOWN",
       "polarity": "POSITIVE",
-      "verb": "head"
+      "verb": "headed"
     },
     "object": {
-      "name": "Central Military Commission’s top naval software expert",
+      "name": "top naval software expert",
       "entity_id": null,
       "type": "Other",
-      "object_type": "STATEMENT"
+      "object_type": "UNKNOWN"
     },
     "time": {
       "raw": "unknown",
       "value": null
     },
     "location": {
-      "name": "unknown",
+      "name": "Central Military Commission",
       "entity_id": null,
       "type": null
     },
     "confidence": 0.9,
-    "evidence": "Zhao Xiaozhe, 63, a vice-admiral in the PLA Navy, once headed the Central Military Commission’s top",
+    "evidence": "Zhao Xiaozhe, 63, a vice-admiral in the PLA Navy, once headed the Central Military Commission’s top naval software expert, whose work helped warships to process battlefield information and support combat decisions...",
     "evidence_type": "UNKNOWN",
     "action_type": "OTHER",
     "action_event_type": "General",
-    "action_detail": "head",
-    "action_status": "COMPLETED",
+    "action_detail": "headed",
+    "action_status": "UNKNOWN",
     "action_polarity": "POSITIVE",
     "event_time": "unknown",
-    "location_str": "unknown",
+    "location_str": "Central Military Commission",
     "entities": [
       {
         "entity_id": "PERS_ZHAO_XIAOZHE",
@@ -3486,28 +3696,28 @@
     ]
   },
   {
-    "article_id": 22593,
-    "article_url": "https://www.scmp.com/news/china/science/article/3364364/chinese-navys-combat-software-guru-zhao-xiaozhe-disappears-academy-website?utm_source=rss_feed",
+    "article_id": 22601,
+    "article_url": "https://www.aljazeera.com/news/2026/8/18/trump-says-n-koreas-kim-has-responded-to-his-request-for-a-conversation?traffic_source=rss",
     "subject": {
-      "name": "Zhao Xiaozhe",
-      "entity_id": "PERS_ZHAO_XIAOZHE",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "ONGOING",
-      "polarity": "NEUTRAL",
-      "verb": "be"
-    },
-    "object": {
-      "name": "63",
+      "name": "US president Donald Trump",
       "entity_id": null,
       "type": "Other",
-      "object_type": "AMOUNT"
+      "object_type": "UNKNOWN"
+    },
+    "action": {
+      "type": "STATES",
+      "status": "COMPLETED",
+      "polarity": "POSITIVE",
+      "verb": "says"
+    },
+    "object": {
+      "name": "North Korean leader Kim Jong Un's response",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
     },
     "time": {
-      "raw": "unknown",
+      "raw": "recent",
       "value": null
     },
     "location": {
@@ -3515,22 +3725,106 @@
       "entity_id": null,
       "type": null
     },
-    "confidence": 1.0,
-    "evidence": "Zhao Xiaozhe, 63, a vice-admiral in the PLA Navy, once headed the Central Military Commission’s top",
+    "confidence": 1,
+    "evidence": "US president says North Korean leader Kim Jong Un has responded to his recent outreach, a day after ordering the Pentagon to scale back drills with longstanding ally South Korea.",
     "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "be",
-    "action_status": "ONGOING",
-    "action_polarity": "NEUTRAL",
-    "event_time": "unknown",
+    "action_type": "STATES",
+    "action_event_type": "Politics",
+    "action_detail": "says",
+    "action_status": "COMPLETED",
+    "action_polarity": "POSITIVE",
+    "event_time": "recent",
     "location_str": "unknown",
+    "entities": []
+  },
+  {
+    "article_id": 22601,
+    "article_url": "https://www.aljazeera.com/news/2026/8/18/trump-says-n-koreas-kim-has-responded-to-his-request-for-a-conversation?traffic_source=rss",
+    "subject": {
+      "name": "North Korean leader Kim Jong Un",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "action": {
+      "type": "STATES",
+      "status": "COMPLETED",
+      "polarity": "POSITIVE",
+      "verb": "responded"
+    },
+    "object": {
+      "name": "request for a conversation",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "time": {
+      "raw": "recent",
+      "value": null
+    },
+    "location": {
+      "name": "unknown",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.9,
+    "evidence": "Trump says N Korea’s Kim has responded to his request for a conversation",
+    "evidence_type": "UNKNOWN",
+    "action_type": "STATES",
+    "action_event_type": "Politics",
+    "action_detail": "responded",
+    "action_status": "COMPLETED",
+    "action_polarity": "POSITIVE",
+    "event_time": "recent",
+    "location_str": "unknown",
+    "entities": []
+  },
+  {
+    "article_id": 22601,
+    "article_url": "https://www.aljazeera.com/news/2026/8/18/trump-says-n-koreas-kim-has-responded-to-his-request-for-a-conversation?traffic_source=rss",
+    "subject": {
+      "name": "US president Donald Trump",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "action": {
+      "type": "STATES",
+      "status": "COMPLETED",
+      "polarity": "NEGATIVE",
+      "verb": "slams"
+    },
+    "object": {
+      "name": "Seoul",
+      "entity_id": "LOC_SEOUL",
+      "type": "Location",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "unknown",
+      "value": null
+    },
+    "location": {
+      "name": "South Korea",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.95,
+    "evidence": "US president says conversations with Kim Jong Un at a ‘positive’ stage and slams S Korea for refusing to join war on Iran.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "STATES",
+    "action_event_type": "Politics",
+    "action_detail": "slams",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEGATIVE",
+    "event_time": "unknown",
+    "location_str": "South Korea",
     "entities": [
       {
-        "entity_id": "PERS_ZHAO_XIAOZHE",
-        "entity_name": "Zhao Xiaozhe",
-        "entity_type": "Person",
-        "role": "SUBJECT"
+        "entity_id": "LOC_SEOUL",
+        "entity_name": "Seoul",
+        "entity_type": "Location",
+        "role": "OBJECT"
       }
     ]
   },
@@ -3550,13 +3844,55 @@
       "verb": "seeking"
     },
     "object": {
-      "name": "5.26 trillion rupees ($55 billion)",
+      "name": "$55 billion",
       "entity_id": null,
       "type": "Other",
       "object_type": "AMOUNT"
     },
     "time": {
-      "raw": "N/A",
+      "raw": "unknown",
+      "value": null
+    },
+    "location": {
+      "name": "India",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "National Stock Exchange of India Ltd., the operator of the world’s largest derivatives exchange by trading volume, is seeking a valuation of as much as 5.26 trillion rupees ($55 billion) in its planned initial public offering, according to people familiar with the matter.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "IPO",
+    "action_event_type": "Finance",
+    "action_detail": "seeking",
+    "action_status": "PLANNED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "unknown",
+    "location_str": "India",
+    "entities": []
+  },
+  {
+    "article_id": 22594,
+    "article_url": "https://www.bloomberg.com/news/articles/2026-08-18/nse-said-to-seek-up-to-55-billion-valuation-in-record-india-ipo",
+    "subject": {
+      "name": "National Stock Exchange of India Ltd.",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "action": {
+      "type": "IPO",
+      "status": "ONGOING",
+      "polarity": "NEUTRAL",
+      "verb": "operator"
+    },
+    "object": {
+      "name": "world’s largest derivatives exchange by trading volume",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
+    },
+    "time": {
+      "raw": "unknown",
       "value": null
     },
     "location": {
@@ -3569,10 +3905,10 @@
     "evidence_type": "UNKNOWN",
     "action_type": "IPO",
     "action_event_type": "Finance",
-    "action_detail": "seeking",
-    "action_status": "PLANNED",
+    "action_detail": "operator",
+    "action_status": "ONGOING",
     "action_polarity": "NEUTRAL",
-    "event_time": "N/A",
+    "event_time": "unknown",
     "location_str": "N/A",
     "entities": []
   },
@@ -3580,16 +3916,16 @@
     "article_id": 22599,
     "article_url": "https://dev.to/elvrythn486209/why-i-chose-text-classification-tagging-apis-openai-claude-gemini-json-accuracy-37ed",
     "subject": {
-      "name": "Agent",
-      "entity_id": "ORG_AGENT",
+      "name": "API choice",
+      "entity_id": "ORG_API_CHOICE",
       "type": "Organization",
       "object_type": "ENTITY"
     },
     "action": {
       "type": "OTHER",
-      "status": "COMPLETED",
+      "status": "PLANNED",
       "polarity": "NEUTRAL",
-      "verb": "chose"
+      "verb": "choose"
     },
     "object": {
       "name": "simplest API that can hold a JSON contract, expose cost per tenant, and let the team change models without rewriting the worker",
@@ -3598,28 +3934,28 @@
       "object_type": "STATEMENT"
     },
     "time": {
-      "raw": null,
+      "raw": "unknown",
       "value": null
     },
     "location": {
-      "name": null,
+      "name": "e-commerce backend scoring job candidates against a rubric",
       "entity_id": null,
       "type": null
     },
-    "confidence": 1.0,
+    "confidence": 1,
     "evidence": "for an e-commerce backend that scores job candidates against a rubric, I would choose the simplest API that can hold a JSON contract, expose cost per tenant, and let the team change models without rewriting the worker",
     "evidence_type": "UNKNOWN",
     "action_type": "OTHER",
     "action_event_type": "General",
-    "action_detail": "chose",
-    "action_status": "COMPLETED",
+    "action_detail": "choose",
+    "action_status": "PLANNED",
     "action_polarity": "NEUTRAL",
-    "event_time": "",
-    "location_str": "",
+    "event_time": "unknown",
+    "location_str": "e-commerce backend scoring job candidates against a rubric",
     "entities": [
       {
-        "entity_id": "ORG_AGENT",
-        "entity_name": "Agent",
+        "entity_id": "ORG_API_CHOICE",
+        "entity_name": "API choice",
         "entity_type": "Organization",
         "role": "SUBJECT"
       }
@@ -3629,66 +3965,115 @@
     "article_id": 22599,
     "article_url": "https://dev.to/elvrythn486209/why-i-chose-text-classification-tagging-apis-openai-claude-gemini-json-accuracy-37ed",
     "subject": {
-      "name": "OpenAI",
-      "entity_id": "COMP_OPENAI",
-      "type": "Company",
+      "name": "Models",
+      "entity_id": "ORG_MODELS",
+      "type": "Organization",
       "object_type": "ENTITY"
     },
     "action": {
       "type": "OTHER",
       "status": "PLANNED",
       "polarity": "POSITIVE",
-      "verb": "should earn"
+      "verb": "earn"
     },
     "object": {
-      "name": "production slot",
-      "entity_id": "ORG_PRODUCTION_SLOT",
-      "type": "Organization",
+      "name": "OpenAI",
+      "entity_id": "COMP_OPENAI",
+      "type": "Company",
       "object_type": "ENTITY"
     },
     "time": {
-      "raw": null,
+      "raw": "unknown",
       "value": null
     },
     "location": {
-      "name": null,
+      "name": "production slot",
       "entity_id": null,
       "type": null
     },
-    "confidence": 1.0,
+    "confidence": 1,
     "evidence": "OpenAI, Claude, and Gemini should earn the production slot on th",
     "evidence_type": "UNKNOWN",
     "action_type": "OTHER",
     "action_event_type": "General",
-    "action_detail": "should earn",
+    "action_detail": "earn",
     "action_status": "PLANNED",
     "action_polarity": "POSITIVE",
-    "event_time": "",
-    "location_str": "",
+    "event_time": "unknown",
+    "location_str": "production slot",
     "entities": [
+      {
+        "entity_id": "ORG_MODELS",
+        "entity_name": "Models",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
       {
         "entity_id": "COMP_OPENAI",
         "entity_name": "OpenAI",
         "entity_type": "Company",
-        "role": "SUBJECT"
+        "role": "OBJECT"
       },
       {
         "entity_id": "PERS_CLAUDE",
         "entity_name": "Claude",
         "entity_type": "Person",
-        "role": "SUBJECT"
+        "role": "OBJECT"
       },
       {
         "entity_id": "COMP_GEMINI",
         "entity_name": "Gemini",
         "entity_type": "Company",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_PRODUCTION_SLOT",
-        "entity_name": "production slot",
-        "entity_type": "Organization",
         "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 22603,
+    "article_url": "https://www.independent.co.uk/news/world/europe/ukraine-russia-war-live-putin-uk-threat-zelensky-drones-b3034637.html",
+    "subject": {
+      "name": "Russian Federation",
+      "entity_id": "CTRY_RUSSIAN_FEDERATION",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "ATTACKS",
+      "status": "ONGOING",
+      "polarity": "NEGATIVE",
+      "verb": "come under"
+    },
+    "object": {
+      "name": "major aerial attack from Ukraine",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
+    },
+    "time": {
+      "raw": "second night in a row",
+      "value": null
+    },
+    "location": {
+      "name": "Moscow region",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Russia has come under a major aerial attack from Ukraine for the second night in a row as a swarm of at least 620 drones targeted the Moscow region, according to mayor Sergei Sobyanin.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "ATTACKS",
+    "action_event_type": "Military",
+    "action_detail": "come under",
+    "action_status": "ONGOING",
+    "action_polarity": "NEGATIVE",
+    "event_time": "second night in a row",
+    "location_str": "Moscow region",
+    "entities": [
+      {
+        "entity_id": "CTRY_RUSSIAN_FEDERATION",
+        "entity_name": "Russian Federation",
+        "entity_type": "Country",
+        "role": "SUBJECT"
       }
     ]
   },
@@ -3708,17 +4093,17 @@
       "verb": "launches"
     },
     "object": {
-      "name": "620 drones",
+      "name": "one of biggest attacks yet on Moscow with 620 drones",
       "entity_id": null,
       "type": "Other",
-      "object_type": "AMOUNT"
+      "object_type": "STATEMENT"
     },
     "time": {
-      "raw": "overnight",
+      "raw": "unknown",
       "value": null
     },
     "location": {
-      "name": "Moscow region",
+      "name": "Moscow",
       "entity_id": null,
       "type": null
     },
@@ -3730,8 +4115,8 @@
     "action_detail": "launches",
     "action_status": "COMPLETED",
     "action_polarity": "POSITIVE",
-    "event_time": "overnight",
-    "location_str": "Moscow region",
+    "event_time": "unknown",
+    "location_str": "Moscow",
     "entities": [
       {
         "entity_id": "CTRY_UKR",
@@ -3772,7 +4157,7 @@
       "type": null
     },
     "confidence": 1,
-    "evidence": "Russian forces downed at least 180 drones in the region overnight",
+    "evidence": "Russian forces downed at least 180 drones in the region overnight.",
     "evidence_type": "UNKNOWN",
     "action_type": "ATTACKS",
     "action_event_type": "Military",
@@ -3787,207 +4172,6 @@
         "entity_name": "Russian forces",
         "entity_type": "Country",
         "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 22603,
-    "article_url": "https://www.independent.co.uk/news/world/europe/ukraine-russia-war-live-putin-uk-threat-zelensky-drones-b3034637.html",
-    "subject": {
-      "name": "United Kingdom of Great Britain and Northern Ireland",
-      "entity_id": "CTRY_GBR",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "ATTACKS",
-      "status": "ONGOING",
-      "polarity": "POSITIVE",
-      "verb": "stands"
-    },
-    "object": {
-      "name": "shoulder to shoulder with Ukraine against Russian aggression",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": "N/A",
-      "value": null
-    },
-    "location": {
-      "name": "N/A",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "MoD responds by saying Britain stands 'shoulder to shoulder' with Ukraine against Russian aggression",
-    "evidence_type": "UNKNOWN",
-    "action_type": "ATTACKS",
-    "action_event_type": "Military",
-    "action_detail": "stands",
-    "action_status": "ONGOING",
-    "action_polarity": "POSITIVE",
-    "event_time": "N/A",
-    "location_str": "N/A",
-    "entities": [
-      {
-        "entity_id": "CTRY_GBR",
-        "entity_name": "United Kingdom of Great Britain and Northern Ireland",
-        "entity_type": "Country",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 22596,
-    "article_url": "https://www.bloomberg.com/news/videos/2026-08-18/bond-vigilantes-are-back-what-s-driving-selloff-video",
-    "subject": {
-      "name": "yield on 30-year US Treasuries",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "action": {
-      "type": "ATTACKS",
-      "status": "COMPLETED",
-      "polarity": "NEGATIVE",
-      "verb": "hit"
-    },
-    "object": {
-      "name": "highest in almost two decades",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": "almost two decades",
-      "value": null
-    },
-    "location": {
-      "name": "US Treasuries",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "The yield on 30-year US Treasuries hit the highest in almost two decades, reflecting investor angst.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "ATTACKS",
-    "action_event_type": "Military",
-    "action_detail": "hit",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEGATIVE",
-    "event_time": "almost two decades",
-    "location_str": "US Treasuries",
-    "entities": []
-  },
-  {
-    "article_id": 22596,
-    "article_url": "https://www.bloomberg.com/news/videos/2026-08-18/bond-vigilantes-are-back-what-s-driving-selloff-video",
-    "subject": {
-      "name": "investor angst",
-      "entity_id": "PERS_INVESTOR_ANGST",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "CRASHES",
-      "status": "ONGOING",
-      "polarity": "NEGATIVE",
-      "verb": "reflecting"
-    },
-    "object": {
-      "name": "selloff",
-      "entity_id": "ORG_SELLOFF",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "N/A",
-      "value": null
-    },
-    "location": {
-      "name": "N/A",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 0.9,
-    "evidence": "The yield on 30-year US Treasuries hit the highest in almost two decades, reflecting investor angst.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "CRASHES",
-    "action_event_type": "Finance",
-    "action_detail": "reflecting",
-    "action_status": "ONGOING",
-    "action_polarity": "NEGATIVE",
-    "event_time": "N/A",
-    "location_str": "N/A",
-    "entities": [
-      {
-        "entity_id": "PERS_INVESTOR_ANGST",
-        "entity_name": "investor angst",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_SELLOFF",
-        "entity_name": "selloff",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 22596,
-    "article_url": "https://www.bloomberg.com/news/videos/2026-08-18/bond-vigilantes-are-back-what-s-driving-selloff-video",
-    "subject": {
-      "name": "selloff drivers",
-      "entity_id": "ORG_SELLOFF_DRIVERS",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "CRASHES",
-      "status": "EXPECTED",
-      "polarity": "UNKNOWN",
-      "verb": "unpack"
-    },
-    "object": {
-      "name": "government debt and Big Tech’s AI spending binge",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": "N/A",
-      "value": null
-    },
-    "location": {
-      "name": "N/A",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 0.8,
-    "evidence": "Bloomberg News reporters and experts unpack what’s driving the selloff — from government debt to Big Tech’s AI spending binge — and whether it will derail global stock markets.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "CRASHES",
-    "action_event_type": "Finance",
-    "action_detail": "unpack",
-    "action_status": "EXPECTED",
-    "action_polarity": "UNKNOWN",
-    "event_time": "N/A",
-    "location_str": "N/A",
-    "entities": [
-      {
-        "entity_id": "ORG_SELLOFF_DRIVERS",
-        "entity_name": "selloff drivers",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_GOVERNMENT_DEBT",
-        "entity_name": "government debt",
-        "entity_type": "Organization",
-        "role": "OBJECT"
       }
     ]
   },
@@ -4105,8 +4289,8 @@
     },
     "action": {
       "type": "OTHER",
-      "status": "COMPLETED",
-      "polarity": "POSITIVE",
+      "status": "ONGOING",
+      "polarity": "NEUTRAL",
       "verb": "fixing"
     },
     "object": {
@@ -4125,13 +4309,13 @@
       "type": null
     },
     "confidence": 1,
-    "evidence": "ArbNet Bug Smash: Fixing Cloud Expiration & Database Connection Failures with Sentry & Google AI",
+    "evidence": "Fixing Cloud Expiration & Database Connection Failures with Sentry & Google AI",
     "evidence_type": "UNKNOWN",
     "action_type": "OTHER",
     "action_event_type": "General",
     "action_detail": "fixing",
-    "action_status": "COMPLETED",
-    "action_polarity": "POSITIVE",
+    "action_status": "ONGOING",
+    "action_polarity": "NEUTRAL",
     "event_time": "",
     "location_str": "",
     "entities": [
@@ -4260,480 +4444,65 @@
     ]
   },
   {
-    "article_id": 22585,
-    "article_url": "https://arxiv.org/abs/2608.14673",
+    "article_id": 22596,
+    "article_url": "https://www.bloomberg.com/news/videos/2026-08-18/bond-vigilantes-are-back-what-s-driving-selloff-video",
     "subject": {
-      "name": "OpenAI's *Ten Advances in Mathematics and Theoretical Computer Science*",
+      "name": "yield on 30-year US Treasuries",
       "entity_id": null,
       "type": "Other",
       "object_type": "UNKNOWN"
     },
     "action": {
-      "type": "CLAIMS",
-      "status": "ANNOUNCED",
-      "polarity": "NEUTRAL",
-      "verb": "claims"
+      "type": "ATTACKS",
+      "status": "COMPLETED",
+      "polarity": "NEGATIVE",
+      "verb": "hit"
     },
     "object": {
-      "name": "an exponential parallel-repetition theorem for all finite two-player, one-round entangled games",
+      "name": "highest in almost two decades",
       "entity_id": null,
       "type": "Other",
       "object_type": "STATEMENT"
     },
     "time": {
-      "raw": null,
+      "raw": "almost two decades",
       "value": null
     },
     "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1.0,
-    "evidence": "Chapter 6 of OpenAI's *Ten Advances in Mathematics and Theoretical Computer Science* claims an exponential parallel-repetition theorem for all finite two-player, one-round entangled games.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "CLAIMS",
-    "action_event_type": "Politics",
-    "action_detail": "claims",
-    "action_status": "ANNOUNCED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "ORG_THEORETICAL_COMPUTER_SCIENCE",
-        "entity_name": "Theoretical Computer Science*",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_ONE_ROUND_ENTANGLED_GAMES",
-        "entity_name": "one-round entangled games",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 22585,
-    "article_url": "https://arxiv.org/abs/2608.14673",
-    "subject": {
-      "name": "the proof",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "COMPLETED",
-      "polarity": "NEUTRAL",
-      "verb": "uses"
-    },
-    "object": {
-      "name": "a quantitative greedy condition",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1.0,
-    "evidence": "Early in the proof, the chapter uses a quantitative greedy con",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "uses",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "",
-    "location_str": "",
-    "entities": []
-  },
-  {
-    "article_id": 22615,
-    "article_url": "https://www.coindesk.com/markets/2026/08/18/bitcoin-climbs-above-usd64-000-while-most-majors-slip",
-    "subject": {
-      "name": "Bitcoin",
-      "entity_id": "ORG_BITCOIN",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "SURGES",
-      "status": "COMPLETED",
-      "polarity": "POSITIVE",
-      "verb": "climbed"
-    },
-    "object": {
-      "name": "$64,000",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "AMOUNT"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
+      "name": "US Treasuries",
       "entity_id": null,
       "type": null
     },
     "confidence": 1,
-    "evidence": "Bitcoin climbed above $64,000 and was the only major cryptocurrency with a notable daily gain",
+    "evidence": "The yield on 30-year US Treasuries hit the highest in almost two decades, reflecting investor angst.",
     "evidence_type": "UNKNOWN",
-    "action_type": "SURGES",
-    "action_event_type": "Finance",
-    "action_detail": "climbed",
-    "action_status": "COMPLETED",
-    "action_polarity": "POSITIVE",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "ORG_BITCOIN",
-        "entity_name": "Bitcoin",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 22615,
-    "article_url": "https://www.coindesk.com/markets/2026/08/18/bitcoin-climbs-above-usd64-000-while-most-majors-slip",
-    "subject": {
-      "name": "most majors",
-      "entity_id": "ORG_MOST_MAJORS",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "SURGES",
-      "status": "COMPLETED",
-      "polarity": "NEGATIVE",
-      "verb": "slipped"
-    },
-    "object": {
-      "name": "",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "while most other large tokens slipped or were flat",
-    "evidence_type": "UNKNOWN",
-    "action_type": "SURGES",
-    "action_event_type": "Finance",
-    "action_detail": "slipped",
+    "action_type": "ATTACKS",
+    "action_event_type": "Military",
+    "action_detail": "hit",
     "action_status": "COMPLETED",
     "action_polarity": "NEGATIVE",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "ORG_MOST_MAJORS",
-        "entity_name": "most majors",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 22615,
-    "article_url": "https://www.coindesk.com/markets/2026/08/18/bitcoin-climbs-above-usd64-000-while-most-majors-slip",
-    "subject": {
-      "name": "publicly listed bitcoin miners",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "action": {
-      "type": "SURGES",
-      "status": "COMPLETED",
-      "polarity": "NEUTRAL",
-      "verb": "cut"
-    },
-    "object": {
-      "name": "21 percent",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "AMOUNT"
-    },
-    "time": {
-      "raw": "over three quarters",
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Publicly listed bitcoin miners have cut computing power by 21 percent over three quarters as they shift capacity to AI",
-    "evidence_type": "UNKNOWN",
-    "action_type": "SURGES",
-    "action_event_type": "Finance",
-    "action_detail": "cut",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "over three quarters",
-    "location_str": "",
+    "event_time": "almost two decades",
+    "location_str": "US Treasuries",
     "entities": []
   },
   {
-    "article_id": 22570,
-    "article_url": "https://dev.to/dreadedkane/the-death-of-virtuosity-how-consoles-killed-uber-micro-and-why-the-pc-resurgence-could-bring-it-4n1e",
+    "article_id": 22596,
+    "article_url": "https://www.bloomberg.com/news/videos/2026-08-18/bond-vigilantes-are-back-what-s-driving-selloff-video",
     "subject": {
-      "name": "competitive gaming",
-      "entity_id": "ORG_COMPETITIVE_GAMING",
+      "name": "selloff",
+      "entity_id": "ORG_SELLOFF",
       "type": "Organization",
       "object_type": "ENTITY"
     },
     "action": {
-      "type": "SURGES",
+      "type": "CRASHES",
       "status": "ONGOING",
-      "polarity": "POSITIVE",
-      "verb": "felt"
-    },
-    "object": {
-      "name": "watching a master pianist at work",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": "early 2000s",
-      "value": null
-    },
-    "location": {
-      "name": "early 2000s",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "For a brief, glorious window in the early 2000s, competitive gaming felt like watching a master pianist at work.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "SURGES",
-    "action_event_type": "Finance",
-    "action_detail": "felt",
-    "action_status": "ONGOING",
-    "action_polarity": "POSITIVE",
-    "event_time": "early 2000s",
-    "location_str": "early 2000s",
-    "entities": [
-      {
-        "entity_id": "ORG_COMPETITIVE_GAMING",
-        "entity_name": "competitive gaming",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 22570,
-    "article_url": "https://dev.to/dreadedkane/the-death-of-virtuosity-how-consoles-killed-uber-micro-and-why-the-pc-resurgence-could-bring-it-4n1e",
-    "subject": {
-      "name": "Uber-Micro",
-      "entity_id": "COMP_UBER_MICRO",
-      "type": "Company",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "SURGES",
-      "status": "COMPLETED",
-      "polarity": "POSITIVE",
-      "verb": "was"
-    },
-    "object": {
-      "name": "art of hyper-precise",
-      "entity_id": "ORG_ART_OF_HYPER_PRECISE",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "early 2000s",
-      "value": null
-    },
-    "location": {
-      "name": "early 2000s",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "It was the art of hyper-precise, split-second",
-    "evidence_type": "UNKNOWN",
-    "action_type": "SURGES",
-    "action_event_type": "Finance",
-    "action_detail": "was",
-    "action_status": "COMPLETED",
-    "action_polarity": "POSITIVE",
-    "event_time": "early 2000s",
-    "location_str": "early 2000s",
-    "entities": [
-      {
-        "entity_id": "COMP_UBER_MICRO",
-        "entity_name": "Uber-Micro",
-        "entity_type": "Company",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_ART_OF_HYPER_PRECISE",
-        "entity_name": "art of hyper-precise",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      },
-      {
-        "entity_id": "ORG_SPLIT_SECOND",
-        "entity_name": "split-second",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 22570,
-    "article_url": "https://dev.to/dreadedkane/the-death-of-virtuosity-how-consoles-killed-uber-micro-and-why-the-pc-resurgence-could-bring-it-4n1e",
-    "subject": {
-      "name": "consoles",
-      "entity_id": "ORG_CONSOLES",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "SURGES",
-      "status": "COMPLETED",
       "polarity": "NEGATIVE",
-      "verb": "killed"
+      "verb": "driving"
     },
     "object": {
-      "name": "Uber-Micro",
-      "entity_id": "COMP_UBER_MICRO",
-      "type": "Company",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "unknown",
-      "value": null
-    },
-    "location": {
-      "name": "unknown",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 0.8,
-    "evidence": "The Death of Virtuosity: How Consoles Killed “Uber-Micro” and Why the PC Resurgence Could Bring It Back",
-    "evidence_type": "UNKNOWN",
-    "action_type": "SURGES",
-    "action_event_type": "Finance",
-    "action_detail": "killed",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEGATIVE",
-    "event_time": "unknown",
-    "location_str": "unknown",
-    "entities": [
-      {
-        "entity_id": "ORG_CONSOLES",
-        "entity_name": "consoles",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "COMP_UBER_MICRO",
-        "entity_name": "Uber-Micro",
-        "entity_type": "Company",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 22568,
-    "article_url": "https://arxiv.org/abs/2605.27599",
-    "subject": {
-      "name": "NVIDIA",
-      "entity_id": "COMP_NVIDIA",
-      "type": "Company",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "ANNOUNCED",
-      "polarity": "NEUTRAL",
-      "verb": "shipping"
-    },
-    "object": {
-      "name": "GB10-bas",
-      "entity_id": "ORG_GB10_BAS",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "N/A",
-      "value": null
-    },
-    "location": {
-      "name": "N/A",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1.0,
-    "evidence": "with NVIDIA, Dell, HP, ASUS, MSI, Acer, and Gigabyte all shipping GB10-bas",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "shipping",
-    "action_status": "ANNOUNCED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "N/A",
-    "location_str": "N/A",
-    "entities": [
-      {
-        "entity_id": "COMP_NVIDIA",
-        "entity_name": "NVIDIA",
-        "entity_type": "Company",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_GB10_BAS",
-        "entity_name": "GB10-bas",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 22568,
-    "article_url": "https://arxiv.org/abs/2605.27599",
-    "subject": {
-      "name": "Agentic AI workloads",
-      "entity_id": "ORG_AGENTIC_AI_WORKLOADS",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "PLANNED",
-      "polarity": "NEUTRAL",
-      "verb": "targeted"
-    },
-    "object": {
-      "name": "edge deployment",
-      "entity_id": "ORG_EDGE_DEPLOYMENT",
+      "name": "selloff",
+      "entity_id": "ORG_SELLOFF",
       "type": "Organization",
       "object_type": "ENTITY"
     },
@@ -4747,48 +4516,48 @@
       "type": null
     },
     "confidence": 0.9,
-    "evidence": "Agentic AI workloads - where a single user goal triggers multi-step orchestration, tool calls, retries, and failure recovery - are being targeted for edge deployment",
+    "evidence": "Bloomberg News reporters and experts unpack what’s driving the selloff — from government debt to Big Tech’s AI spending binge — and whether it will derail global stock markets.",
     "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "targeted",
-    "action_status": "PLANNED",
-    "action_polarity": "NEUTRAL",
+    "action_type": "CRASHES",
+    "action_event_type": "Finance",
+    "action_detail": "driving",
+    "action_status": "ONGOING",
+    "action_polarity": "NEGATIVE",
     "event_time": "N/A",
     "location_str": "N/A",
     "entities": [
       {
-        "entity_id": "ORG_AGENTIC_AI_WORKLOADS",
-        "entity_name": "Agentic AI workloads",
+        "entity_id": "ORG_SELLOFF",
+        "entity_name": "selloff",
         "entity_type": "Organization",
         "role": "SUBJECT"
       },
       {
-        "entity_id": "ORG_EDGE_DEPLOYMENT",
-        "entity_name": "edge deployment",
+        "entity_id": "ORG_SELLOFF",
+        "entity_name": "selloff",
         "entity_type": "Organization",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 22568,
-    "article_url": "https://arxiv.org/abs/2605.27599",
+    "article_id": 22596,
+    "article_url": "https://www.bloomberg.com/news/videos/2026-08-18/bond-vigilantes-are-back-what-s-driving-selloff-video",
     "subject": {
-      "name": "NVIDIA's Flagship Edge AI Hardware",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
+      "name": "Big Tech",
+      "entity_id": "ORG_BIG_TECH",
+      "type": "Organization",
+      "object_type": "ENTITY"
     },
     "action": {
-      "type": "OTHER",
-      "status": "UNKNOWN",
-      "polarity": "NEGATIVE",
-      "verb": "cannot support"
+      "type": "CRASHES",
+      "status": "ONGOING",
+      "polarity": "NEUTRAL",
+      "verb": "spending"
     },
     "object": {
-      "name": "Process-Level Energy Attribution",
-      "entity_id": "ORG_PROCESS_LEVEL_ENERGY_ATTRIBUTION",
+      "name": "AI spending binge",
+      "entity_id": "ORG_AI_SPENDING_BINGE",
       "type": "Organization",
       "object_type": "ENTITY"
     },
@@ -4801,314 +4570,26 @@
       "entity_id": null,
       "type": null
     },
-    "confidence": 1.0,
-    "evidence": "NVIDIA's Flagship Edge AI Hardware Cannot Support Process-Level Energy Attribution",
+    "confidence": 0.85,
+    "evidence": "Bloomberg News reporters and experts unpack what’s driving the selloff — from government debt to Big Tech’s AI spending binge — and whether it will derail global stock markets.",
     "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "cannot support",
-    "action_status": "UNKNOWN",
-    "action_polarity": "NEGATIVE",
+    "action_type": "CRASHES",
+    "action_event_type": "Finance",
+    "action_detail": "spending",
+    "action_status": "ONGOING",
+    "action_polarity": "NEUTRAL",
     "event_time": "N/A",
     "location_str": "N/A",
     "entities": [
       {
-        "entity_id": "ORG_PROCESS_LEVEL_ENERGY_ATTRIBUTION",
-        "entity_name": "Process-Level Energy Attribution",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 22569,
-    "article_url": "https://arxiv.org/abs/2412.09557",
-    "subject": {
-      "name": "Quantum kernel learning (QKL",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "EXPECTED",
-      "polarity": "POSITIVE",
-      "verb": "promises"
-    },
-    "object": {
-      "name": "efficient machine learning",
-      "entity_id": "ORG_EFFICIENT_MACHINE_LEARNING",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1.0,
-    "evidence": "Quantum kernel learning (QKL) promises efficient machine learning by encoding feature maps onto exponentially large Hilbert spaces inherent in quantum systems.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "promises",
-    "action_status": "EXPECTED",
-    "action_polarity": "POSITIVE",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "ORG_EFFICIENT_MACHINE_LEARNING",
-        "entity_name": "efficient machine learning",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 22569,
-    "article_url": "https://arxiv.org/abs/2412.09557",
-    "subject": {
-      "name": "experiment",
-      "entity_id": "ORG_EXPERIMENT",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "COMPLETED",
-      "polarity": "NEUTRAL",
-      "verb": "implement"
-    },
-    "object": {
-      "name": "Quantum kernel learning (QKL",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": "NMR platform",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1.0,
-    "evidence": "Using the liquid-state nuclear magnetic resonance (NMR) platform, we implement",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "implement",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "",
-    "location_str": "NMR platform",
-    "entities": [
-      {
-        "entity_id": "ORG_EXPERIMENT",
-        "entity_name": "experiment",
+        "entity_id": "ORG_BIG_TECH",
+        "entity_name": "Big Tech",
         "entity_type": "Organization",
         "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 22569,
-    "article_url": "https://arxiv.org/abs/2412.09557",
-    "subject": {
-      "name": "2412.09557v3",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "action": {
-      "type": "ANNOUNCES",
-      "status": "ANNOUNCED",
-      "polarity": "NEUTRAL",
-      "verb": "Announce Type"
-    },
-    "object": {
-      "name": "replace-cross",
-      "entity_id": "ORG_REPLACE_CROSS",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1.0,
-    "evidence": "arXiv:2412.09557v3 Announce Type: replace-cross",
-    "evidence_type": "UNKNOWN",
-    "action_type": "ANNOUNCES",
-    "action_event_type": "Politics",
-    "action_detail": "Announce Type",
-    "action_status": "ANNOUNCED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
+      },
       {
-        "entity_id": "ORG_REPLACE_CROSS",
-        "entity_name": "replace-cross",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 22558,
-    "article_url": "https://www.investing.com/news/stock-market-news/microsoft-salesforce-eye-darwinbox-buyout-ahead-of-planned-ipo-mint-93CH-4864245",
-    "subject": {
-      "name": "Microsoft",
-      "entity_id": "COMP_MICROSOFT",
-      "type": "Company",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "IPO",
-      "status": "ONGOING",
-      "polarity": "NEUTRAL",
-      "verb": "offering"
-    },
-    "object": {
-      "name": "7%",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "AMOUNT"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Microsoft is reportedly offering buyouts to 7% of its workforce",
-    "evidence_type": "UNKNOWN",
-    "action_type": "IPO",
-    "action_event_type": "Finance",
-    "action_detail": "offering",
-    "action_status": "ONGOING",
-    "action_polarity": "NEUTRAL",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "COMP_MICROSOFT",
-        "entity_name": "Microsoft",
-        "entity_type": "Company",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 22558,
-    "article_url": "https://www.investing.com/news/stock-market-news/microsoft-salesforce-eye-darwinbox-buyout-ahead-of-planned-ipo-mint-93CH-4864245",
-    "subject": {
-      "name": "Microsoft's market value",
-      "entity_id": "COMP_MICROSOFTS_MARKET_VALUE",
-      "type": "Company",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "SURGES",
-      "status": "COMPLETED",
-      "polarity": "POSITIVE",
-      "verb": "surged"
-    },
-    "object": {
-      "name": "$490 billion",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "AMOUNT"
-    },
-    "time": {
-      "raw": "a single day",
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "its market value surged by $490 billion in a single day",
-    "evidence_type": "UNKNOWN",
-    "action_type": "SURGES",
-    "action_event_type": "Finance",
-    "action_detail": "surged",
-    "action_status": "COMPLETED",
-    "action_polarity": "POSITIVE",
-    "event_time": "a single day",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "COMP_MICROSOFTS_MARKET_VALUE",
-        "entity_name": "Microsoft's market value",
-        "entity_type": "Company",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 22558,
-    "article_url": "https://www.investing.com/news/stock-market-news/microsoft-salesforce-eye-darwinbox-buyout-ahead-of-planned-ipo-mint-93CH-4864245",
-    "subject": {
-      "name": "Microsoft's Azure cloud unit",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "action": {
-      "type": "IPO",
-      "status": "ONGOING",
-      "polarity": "NEUTRAL",
-      "verb": "performance"
-    },
-    "object": {
-      "name": "Azure cloud unit",
-      "entity_id": "ORG_AZURE_CLOUD_UNIT",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "This follows strong performance in its Azure cloud unit",
-    "evidence_type": "UNKNOWN",
-    "action_type": "IPO",
-    "action_event_type": "Finance",
-    "action_detail": "performance",
-    "action_status": "ONGOING",
-    "action_polarity": "NEUTRAL",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "ORG_AZURE_CLOUD_UNIT",
-        "entity_name": "Azure cloud unit",
+        "entity_id": "ORG_AI_SPENDING_BINGE",
+        "entity_name": "AI spending binge",
         "entity_type": "Organization",
         "role": "OBJECT"
       }
