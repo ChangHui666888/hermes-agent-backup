@@ -1,22 +1,22 @@
 [
   {
-    "article_id": 23245,
-    "article_url": "https://www.cnbc.com/2026/08/24/us-iran-war-trump-hormuz-bessent-economic-sanctions-.html",
+    "article_id": 23708,
+    "article_url": "https://www.scmp.com/business/china-evs/article/3365096/ev-maker-xpeng-set-challenge-tesla-embodied-ai-after-robotics-unit-raises-us900m?utm_source=rss_feed",
     "subject": {
-      "name": "Scott Bessent",
-      "entity_id": "PERS_SCOTT_BESSENT",
-      "type": "Person",
+      "name": "XPENG",
+      "entity_id": "COMP_XPENG",
+      "type": "Company",
       "object_type": "ENTITY"
     },
     "action": {
-      "type": "ATTACKS",
+      "type": "DIES",
       "status": "UNKNOWN",
       "polarity": "UNKNOWN",
       "verb": ""
     },
     "object": {
-      "name": "U.S",
-      "entity_id": "CTRY_US",
+      "name": "Chinese",
+      "entity_id": "CTRY_CHINESE",
       "type": "Country",
       "object_type": "ENTITY"
     },
@@ -32,8 +32,8 @@
     "confidence": null,
     "evidence": "",
     "evidence_type": "UNKNOWN",
-    "action_type": "ATTACKS",
-    "action_event_type": "Military",
+    "action_type": "DIES",
+    "action_event_type": "Leadership",
     "action_detail": "",
     "action_status": "UNKNOWN",
     "action_polarity": "UNKNOWN",
@@ -41,622 +41,30 @@
     "location_str": "",
     "entities": [
       {
-        "entity_id": "PERS_SCOTT_BESSENT",
-        "entity_name": "Scott Bessent",
-        "entity_type": "Person",
+        "entity_id": "COMP_XPENG",
+        "entity_name": "XPENG",
+        "entity_type": "Company",
         "role": "SUBJECT"
       },
       {
-        "entity_id": "CTRY_US",
-        "entity_name": "U.S",
+        "entity_id": "CTRY_CHINESE",
+        "entity_name": "Chinese",
         "entity_type": "Country",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 23247,
-    "article_url": "https://seekingalpha.com/article/4939470-market-volatility-risk-nvidia-earnings-and-jackson-hole-next-week?source=feed_all_articles",
+    "article_id": 23751,
+    "article_url": "https://www.bloomberg.com/news/articles/2026-08-24/uk-power-equipment-rental-firm-aggreko-files-for-new-york-ipo",
     "subject": {
-      "name": "Nvidia Earnings",
-      "entity_id": "COMP_NVIDIA_EARNINGS",
+      "name": "Aggreko Plc",
+      "entity_id": "COMP_AGGREKO_PLC",
       "type": "Company",
       "object_type": "ENTITY"
     },
     "action": {
-      "type": "REPORTS",
-      "status": "EXPECTED",
-      "polarity": "UNKNOWN",
-      "verb": "occur"
-    },
-    "object": {
-      "name": "Nvidia Earnings",
-      "entity_id": "COMP_NVIDIA_EARNINGS",
-      "type": "Company",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "Next Week",
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1.0,
-    "evidence": "Market Volatility Risk: Nvidia Earnings And Jackson Hole Next Week",
-    "evidence_type": "UNKNOWN",
-    "action_type": "REPORTS",
-    "action_event_type": "Finance",
-    "action_detail": "occur",
-    "action_status": "EXPECTED",
-    "action_polarity": "UNKNOWN",
-    "event_time": "Next Week",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "COMP_NVIDIA_EARNINGS",
-        "entity_name": "Nvidia Earnings",
-        "entity_type": "Company",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "COMP_NVIDIA_EARNINGS",
-        "entity_name": "Nvidia Earnings",
-        "entity_type": "Company",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 23247,
-    "article_url": "https://seekingalpha.com/article/4939470-market-volatility-risk-nvidia-earnings-and-jackson-hole-next-week?source=feed_all_articles",
-    "subject": {
-      "name": "Jackson Hole",
-      "entity_id": "ORG_JACKSON_HOLE",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "REPORTS",
-      "status": "EXPECTED",
-      "polarity": "UNKNOWN",
-      "verb": "occur"
-    },
-    "object": {
-      "name": "Jackson Hole",
-      "entity_id": "ORG_JACKSON_HOLE",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "Next Week",
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1.0,
-    "evidence": "Market Volatility Risk: Nvidia Earnings And Jackson Hole Next Week",
-    "evidence_type": "UNKNOWN",
-    "action_type": "REPORTS",
-    "action_event_type": "Finance",
-    "action_detail": "occur",
-    "action_status": "EXPECTED",
-    "action_polarity": "UNKNOWN",
-    "event_time": "Next Week",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "ORG_JACKSON_HOLE",
-        "entity_name": "Jackson Hole",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_JACKSON_HOLE",
-        "entity_name": "Jackson Hole",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 23246,
-    "article_url": "https://www.cnbc.com/2026/08/24/oil-price-today-wti-brent-us-sanctions-iran.html",
-    "subject": {
-      "name": "investors",
-      "entity_id": "PERS_INVESTORS",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "SANCTIONS",
-      "status": "UNKNOWN",
-      "polarity": "UNKNOWN",
-      "verb": ""
-    },
-    "object": {
-      "name": "United States Government",
-      "entity_id": "ORG_US_GOVERNMENT",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": null,
-    "evidence": "",
-    "evidence_type": "UNKNOWN",
-    "action_type": "SANCTIONS",
-    "action_event_type": "Economic",
-    "action_detail": "",
-    "action_status": "UNKNOWN",
-    "action_polarity": "UNKNOWN",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "PERS_INVESTORS",
-        "entity_name": "investors",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_US_GOVERNMENT",
-        "entity_name": "United States Government",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 23236,
-    "article_url": "https://thehill.com/homenews/administration/6046254-uss-sailor-father-ice-detained/",
-    "subject": {
-      "name": "sailor",
-      "entity_id": "ORG_SAILOR",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "STATES",
-      "status": "COMPLETED",
-      "polarity": "NEUTRAL",
-      "verb": "said"
-    },
-    "object": {
-      "name": "father was detained by Immigration and Customs Enforcement (ICE)",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": "Saturday",
-      "value": null
-    },
-    "location": {
-      "name": "USS Abraham Lincoln",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "A sailor onboard the USS Abraham Lincoln on Saturday said his father was detained by Immigration and Customs Enforcement (ICE).",
-    "evidence_type": "UNKNOWN",
-    "action_type": "STATES",
-    "action_event_type": "Politics",
-    "action_detail": "said",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "Saturday",
-    "location_str": "USS Abraham Lincoln",
-    "entities": [
-      {
-        "entity_id": "ORG_SAILOR",
-        "entity_name": "sailor",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_CUSTOMS_ENFORCEMENT_ICE",
-        "entity_name": "Customs Enforcement (ICE",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 23236,
-    "article_url": "https://thehill.com/homenews/administration/6046254-uss-sailor-father-ice-detained/",
-    "subject": {
-      "name": "Joshua Aviles",
-      "entity_id": "PERS_JOSHUA_AVILES",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "COMPLETED",
-      "polarity": "NEUTRAL",
-      "verb": "spent"
-    },
-    "object": {
-      "name": "roughly nine months deployed at sea",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": "nine months",
-      "value": null
-    },
-    "location": {
-      "name": "at sea",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Joshua Aviles has spent roughly nine months deployed at sea due to the Iran war amid reported shortages of clean water, food and supplies.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "spent",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "nine months",
-    "location_str": "at sea",
-    "entities": [
-      {
-        "entity_id": "PERS_JOSHUA_AVILES",
-        "entity_name": "Joshua Aviles",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 23236,
-    "article_url": "https://thehill.com/homenews/administration/6046254-uss-sailor-father-ice-detained/",
-    "subject": {
-      "name": "deployment",
-      "entity_id": "ORG_DEPLOYMENT",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "ONGOING",
-      "polarity": "NEUTRAL",
-      "verb": "due"
-    },
-    "object": {
-      "name": "Iran war",
-      "entity_id": "CTRY_IRAN_WAR",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "nine months",
-      "value": null
-    },
-    "location": {
-      "name": "at sea",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 0.9,
-    "evidence": "Joshua Aviles has spent roughly nine months deployed at sea due to the Iran war amid reported shortages of clean water, food and supplies.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "due",
-    "action_status": "ONGOING",
-    "action_polarity": "NEUTRAL",
-    "event_time": "nine months",
-    "location_str": "at sea",
-    "entities": [
-      {
-        "entity_id": "ORG_DEPLOYMENT",
-        "entity_name": "deployment",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_IRAN_WAR",
-        "entity_name": "Iran war",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 23198,
-    "article_url": "https://www.ft.com/content/4e3c99fe-1a8d-4fb2-b99a-da1c1da4db8e?syn-25a6b1a6=1",
-    "subject": {
-      "name": "web.archive.org",
-      "entity_id": "ORG_WEBARCHIVEORG",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "ATTACKS",
-      "status": "UNKNOWN",
-      "polarity": "UNKNOWN",
-      "verb": ""
-    },
-    "object": {
-      "name": "United Kingdom of Great Britain and Northern Ireland",
-      "entity_id": "CTRY_GBR",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": null,
-    "evidence": "",
-    "evidence_type": "UNKNOWN",
-    "action_type": "ATTACKS",
-    "action_event_type": "Military",
-    "action_detail": "",
-    "action_status": "UNKNOWN",
-    "action_polarity": "UNKNOWN",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "ORG_WEBARCHIVEORG",
-        "entity_name": "web.archive.org",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_GBR",
-        "entity_name": "United Kingdom of Great Britain and Northern Ireland",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 23182,
-    "article_url": "https://www.ft.com/content/39baf33e-3238-4923-9fe9-f1db48bb54e4?syn-25a6b1a6=1",
-    "subject": {
-      "name": "Trump",
-      "entity_id": "PERS_TRUMP",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "TARIFFS",
-      "status": "UNKNOWN",
-      "polarity": "UNKNOWN",
-      "verb": ""
-    },
-    "object": {
-      "name": "Canada",
-      "entity_id": "CTRY_CAN",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": null,
-    "evidence": "",
-    "evidence_type": "UNKNOWN",
-    "action_type": "TARIFFS",
-    "action_event_type": "Economic",
-    "action_detail": "",
-    "action_status": "UNKNOWN",
-    "action_polarity": "UNKNOWN",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "PERS_TRUMP",
-        "entity_name": "Trump",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_CAN",
-        "entity_name": "Canada",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 23187,
-    "article_url": "https://www.cnbc.com/2026/08/23/here-are-the-2-big-things-were-watching-in-the-stock-market-this-week.html",
-    "subject": {
-      "name": "NVIDIA",
-      "entity_id": "COMP_NVIDIA",
-      "type": "Company",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "REPORTS",
-      "status": "EXPECTED",
-      "polarity": "UNKNOWN",
-      "verb": "reports"
-    },
-    "object": {
-      "name": "earnings",
-      "entity_id": "ORG_EARNINGS",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "this week",
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Nvidia reports earnings",
-    "evidence_type": "UNKNOWN",
-    "action_type": "REPORTS",
-    "action_event_type": "Finance",
-    "action_detail": "reports",
-    "action_status": "EXPECTED",
-    "action_polarity": "UNKNOWN",
-    "event_time": "this week",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "COMP_NVIDIA",
-        "entity_name": "NVIDIA",
-        "entity_type": "Company",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_EARNINGS",
-        "entity_name": "earnings",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 23187,
-    "article_url": "https://www.cnbc.com/2026/08/23/here-are-the-2-big-things-were-watching-in-the-stock-market-this-week.html",
-    "subject": {
-      "name": "Fed Chairman Kevin Warsh",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "PLANNED",
-      "polarity": "UNKNOWN",
-      "verb": "deliver"
-    },
-    "object": {
-      "name": "first Jackson Hole speech",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": "Jackson Hole",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Fed Chairman Kevin Warsh is set to deliver his first Jackson Hole speech",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "deliver",
-    "action_status": "PLANNED",
-    "action_polarity": "UNKNOWN",
-    "event_time": "",
-    "location_str": "Jackson Hole",
-    "entities": []
-  },
-  {
-    "article_id": 23187,
-    "article_url": "https://www.cnbc.com/2026/08/23/here-are-the-2-big-things-were-watching-in-the-stock-market-this-week.html",
-    "subject": {
-      "name": "HOME DEPOT",
-      "entity_id": "COMP_HOME_DEPOT",
-      "type": "Company",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "ONGOING",
-      "polarity": "NEUTRAL",
-      "verb": "focus on"
-    },
-    "object": {
-      "name": "housing market updates",
-      "entity_id": "CTRY_HOUSING_MARKET_UPDATES",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "this week",
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "This week, focus on housing market updates from Home Depot and Lowe's earnings",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "focus on",
-    "action_status": "ONGOING",
-    "action_polarity": "NEUTRAL",
-    "event_time": "this week",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "COMP_HOME_DEPOT",
-        "entity_name": "HOME DEPOT",
-        "entity_type": "Company",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "COMP_LOWES",
-        "entity_name": "Lowe's",
-        "entity_type": "Company",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_HOUSING_MARKET_UPDATES",
-        "entity_name": "housing market updates",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 23206,
-    "article_url": "https://www.cnbc.com/2026/08/22/iran-criticizes-us-sanctions-extraterritorial-sovereignty.html",
-    "subject": {
-      "name": "Scott Bessent",
-      "entity_id": "PERS_SCOTT_BESSENT",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "SANCTIONS",
+      "type": "IPO",
       "status": "UNKNOWN",
       "polarity": "UNKNOWN",
       "verb": ""
@@ -679,8 +87,8 @@
     "confidence": null,
     "evidence": "",
     "evidence_type": "UNKNOWN",
-    "action_type": "SANCTIONS",
-    "action_event_type": "Economic",
+    "action_type": "IPO",
+    "action_event_type": "Finance",
     "action_detail": "",
     "action_status": "UNKNOWN",
     "action_polarity": "UNKNOWN",
@@ -688,9 +96,9 @@
     "location_str": "",
     "entities": [
       {
-        "entity_id": "PERS_SCOTT_BESSENT",
-        "entity_name": "Scott Bessent",
-        "entity_type": "Person",
+        "entity_id": "COMP_AGGREKO_PLC",
+        "entity_name": "Aggreko Plc",
+        "entity_type": "Company",
         "role": "SUBJECT"
       },
       {
@@ -702,181 +110,28 @@
     ]
   },
   {
-    "article_id": 23189,
-    "article_url": "https://www.nytimes.com/2026/08/23/business/powerus-counter-drone-iran-war.html",
+    "article_id": 23753,
+    "article_url": "https://www.ft.com/content/c36d4e57-1ea2-47a5-8f6d-f390369aedc4?syn-25a6b1a6=1",
     "subject": {
-      "name": "Powerus",
-      "entity_id": "COMP_POWERUS",
+      "name": "SEC",
+      "entity_id": "COMP_SEC",
       "type": "Company",
       "object_type": "ENTITY"
     },
     "action": {
-      "type": "OTHER",
+      "type": "BANS",
       "status": "ONGOING",
       "polarity": "NEUTRAL",
-      "verb": "developing"
+      "verb": "subpooses"
     },
     "object": {
-      "name": "low-cost drone interceptors called \"Guardians\"",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": "unknown",
-      "value": null
-    },
-    "location": {
-      "name": "Florida",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "A Florida startup, Powerus, is developing low-cost drone interceptors called \"Guardians\" to counter Iranian drones",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "developing",
-    "action_status": "ONGOING",
-    "action_polarity": "NEUTRAL",
-    "event_time": "unknown",
-    "location_str": "Florida",
-    "entities": [
-      {
-        "entity_id": "COMP_POWERUS",
-        "entity_name": "Powerus",
-        "entity_type": "Company",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 23189,
-    "article_url": "https://www.nytimes.com/2026/08/23/business/powerus-counter-drone-iran-war.html",
-    "subject": {
-      "name": "Guardians",
-      "entity_id": "ORG_GUARDIANS",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "ONGOING",
-      "polarity": "NEUTRAL",
-      "verb": "priced"
-    },
-    "object": {
-      "name": "$5,000",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "AMOUNT"
-    },
-    "time": {
-      "raw": "unknown",
-      "value": null
-    },
-    "location": {
-      "name": "UAE",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "these interceptors are produced in the UAE and cannot counter larger threats like ballistic missiles.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "priced",
-    "action_status": "ONGOING",
-    "action_polarity": "NEUTRAL",
-    "event_time": "unknown",
-    "location_str": "UAE",
-    "entities": [
-      {
-        "entity_id": "ORG_GUARDIANS",
-        "entity_name": "Guardians",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 23189,
-    "article_url": "https://www.nytimes.com/2026/08/23/business/powerus-counter-drone-iran-war.html",
-    "subject": {
-      "name": "U.S. military",
-      "entity_id": "ORG_US_MILITARY",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "ATTACKS",
-      "status": "ONGOING",
-      "polarity": "NEUTRAL",
-      "verb": "use"
-    },
-    "object": {
-      "name": "expensive missiles",
-      "entity_id": "ORG_EXPENSIVE_MISSILES",
+      "name": "Wall Street banks",
+      "entity_id": "ORG_WALL_STREET_BANKS",
       "type": "Organization",
       "object_type": "ENTITY"
     },
     "time": {
-      "raw": "unknown",
-      "value": null
-    },
-    "location": {
-      "name": "unknown",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "The U.S. military continues to use expensive missiles to shoot down these cheaper drones.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "ATTACKS",
-    "action_event_type": "Military",
-    "action_detail": "use",
-    "action_status": "ONGOING",
-    "action_polarity": "NEUTRAL",
-    "event_time": "unknown",
-    "location_str": "unknown",
-    "entities": [
-      {
-        "entity_id": "ORG_US_MILITARY",
-        "entity_name": "U.S. military",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_EXPENSIVE_MISSILES",
-        "entity_name": "expensive missiles",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 23201,
-    "article_url": "https://techcrunch.com/2026/08/22/inherent-founded-by-deepmind-alumni-says-its-ai-teammate-just-outperformed-anthropic-and-openai-at-replicating-research/",
-    "subject": {
-      "name": "DeepMind",
-      "entity_id": "COMP_DEEPMIND",
-      "type": "Company",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "STATES",
-      "status": "UNKNOWN",
-      "polarity": "UNKNOWN",
-      "verb": ""
-    },
-    "object": {
-      "name": "British",
-      "entity_id": "CTRY_BRITISH",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
+      "raw": "July",
       "value": null
     },
     "location": {
@@ -884,268 +139,103 @@
       "entity_id": null,
       "type": null
     },
-    "confidence": null,
-    "evidence": "",
+    "confidence": 0.9,
+    "evidence": "SEC subpoenas Wall Street banks over Situational Awareness",
     "evidence_type": "UNKNOWN",
-    "action_type": "STATES",
-    "action_event_type": "Politics",
-    "action_detail": "",
-    "action_status": "UNKNOWN",
-    "action_polarity": "UNKNOWN",
-    "event_time": "",
+    "action_type": "BANS",
+    "action_event_type": "Legal",
+    "action_detail": "subpooses",
+    "action_status": "ONGOING",
+    "action_polarity": "NEUTRAL",
+    "event_time": "July",
     "location_str": "",
     "entities": [
       {
-        "entity_id": "COMP_DEEPMIND",
-        "entity_name": "DeepMind",
+        "entity_id": "COMP_SEC",
+        "entity_name": "SEC",
         "entity_type": "Company",
         "role": "SUBJECT"
       },
       {
-        "entity_id": "CTRY_BRITISH",
-        "entity_name": "British",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 23215,
-    "article_url": "https://www.ft.com/content/252df40a-48c0-47b8-850d-698a3d7a6dfd",
-    "subject": {
-      "name": "de Gaulle",
-      "entity_id": "PERS_DE_GAULLE",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "UNKNOWN",
-      "polarity": "UNKNOWN",
-      "verb": ""
-    },
-    "object": {
-      "name": "French",
-      "entity_id": "CTRY_FRENCH",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": null,
-    "evidence": "",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "",
-    "action_status": "UNKNOWN",
-    "action_polarity": "UNKNOWN",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "PERS_DE_GAULLE",
-        "entity_name": "de Gaulle",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_FRENCH",
-        "entity_name": "French",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 23210,
-    "article_url": "https://techcrunch.com/2026/08/21/anthropics-opus-4-6-is-a-smut-machine/",
-    "subject": {
-      "name": "Anthropic’s Claude models",
-      "entity_id": "ORG_ANTHROPICS_CLAUDE_MODELS",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "ONGOING",
-      "polarity": "NEGATIVE",
-      "verb": "forbid"
-    },
-    "object": {
-      "name": "sexually explicit content",
-      "entity_id": "ORG_SEXUALLY_EXPLICIT_CONTENT",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "N/A",
-      "value": null
-    },
-    "location": {
-      "name": "Anthropic's universal usage standards for Claude",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Anthropic’s universal usage standards for Claude forbid the model from generating sexually explicit content, including depicting or requesting sexual intercourse or sex acts, generating content related to sexual fetishes or fantasies, or engaging in erotic chats.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "forbid",
-    "action_status": "ONGOING",
-    "action_polarity": "NEGATIVE",
-    "event_time": "N/A",
-    "location_str": "Anthropic's universal usage standards for Claude",
-    "entities": [
-      {
-        "entity_id": "ORG_ANTHROPICS_CLAUDE_MODELS",
-        "entity_name": "Anthropic’s Claude models",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_SEXUALLY_EXPLICIT_CONTENT",
-        "entity_name": "sexually explicit content",
+        "entity_id": "ORG_WALL_STREET_BANKS",
+        "entity_name": "Wall Street banks",
         "entity_type": "Organization",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 23210,
-    "article_url": "https://techcrunch.com/2026/08/21/anthropics-opus-4-6-is-a-smut-machine/",
+    "article_id": 23705,
+    "article_url": "https://www.reddit.com/r/technology/comments/1vx2nme/iran_war_supercharged_ev_sales_everywhere_except/",
     "subject": {
-      "name": "Claude Opus 4.6",
-      "entity_id": "PERS_CLAUDE_OPUS_46",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "ONGOING",
-      "polarity": "NEGATIVE",
-      "verb": "engage in"
-    },
-    "object": {
-      "name": "erotic role-play scenarios",
-      "entity_id": "ORG_EROTIC_ROLE_PLAY_SCENARIOS",
+      "name": "EV sales",
+      "entity_id": "ORG_EV_SALES",
       "type": "Organization",
       "object_type": "ENTITY"
     },
-    "time": {
-      "raw": "released earlier this year",
-      "value": null
-    },
-    "location": {
-      "name": "N/A",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "But that hasn’t stopped Claude Opus 4.6, an Anthropic model released earlier this year, from readily engaging in erotic role-play scenarios that its safeguards are designed to prevent.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "engage in",
-    "action_status": "ONGOING",
-    "action_polarity": "NEGATIVE",
-    "event_time": "released earlier this year",
-    "location_str": "N/A",
-    "entities": [
-      {
-        "entity_id": "PERS_CLAUDE_OPUS_46",
-        "entity_name": "Claude Opus 4.6",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_EROTIC_ROLE_PLAY_SCENARIOS",
-        "entity_name": "erotic role-play scenarios",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 23210,
-    "article_url": "https://techcrunch.com/2026/08/21/anthropics-opus-4-6-is-a-smut-machine/",
-    "subject": {
-      "name": "Opus 4.6",
-      "entity_id": "CTRY_OPUS_46",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
     "action": {
-      "type": "OTHER",
+      "type": "ACCUSES",
       "status": "COMPLETED",
-      "polarity": "NEGATIVE",
-      "verb": "comply"
+      "polarity": "POSITIVE",
+      "verb": "supercharged"
     },
     "object": {
-      "name": "explicit sexual content",
-      "entity_id": "ORG_EXPLICIT_SEXUAL_CONTENT",
+      "name": "sales",
+      "entity_id": "ORG_SALES",
       "type": "Organization",
       "object_type": "ENTITY"
     },
     "time": {
-      "raw": "N/A",
+      "raw": "unknown",
       "value": null
     },
     "location": {
-      "name": "TechCrunch testing",
+      "name": "everywhere except the U.S.",
       "entity_id": null,
       "type": null
     },
     "confidence": 1,
-    "evidence": "In 10 out of 10 direct requests to produce explicit sexual content, the model complied immediately.",
+    "evidence": "Iran war supercharged EV sales everywhere except the U.S.",
     "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "comply",
+    "action_type": "ACCUSES",
+    "action_event_type": "Legal",
+    "action_detail": "supercharged",
     "action_status": "COMPLETED",
-    "action_polarity": "NEGATIVE",
-    "event_time": "N/A",
-    "location_str": "TechCrunch testing",
+    "action_polarity": "POSITIVE",
+    "event_time": "unknown",
+    "location_str": "everywhere except the U.S.",
     "entities": [
       {
-        "entity_id": "CTRY_OPUS_46",
-        "entity_name": "Opus 4.6",
-        "entity_type": "Country",
+        "entity_id": "ORG_EV_SALES",
+        "entity_name": "EV sales",
+        "entity_type": "Organization",
         "role": "SUBJECT"
       },
       {
-        "entity_id": "ORG_EXPLICIT_SEXUAL_CONTENT",
-        "entity_name": "explicit sexual content",
+        "entity_id": "ORG_SALES",
+        "entity_name": "sales",
         "entity_type": "Organization",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 23185,
-    "article_url": "https://www.ft.com/content/6aa04f24-c216-467e-834a-7b4af3ef660e?syn-25a6b1a6=1",
+    "article_id": 23705,
+    "article_url": "https://www.reddit.com/r/technology/comments/1vx2nme/iran_war_supercharged_ev_sales_everywhere_except/",
     "subject": {
-      "name": "Volodymyr Zelenskyy",
-      "entity_id": "PERS_VOLODYMYR_ZELENSKYY",
-      "type": "Person",
+      "name": "EV sales",
+      "entity_id": "ORG_EV_SALES",
+      "type": "Organization",
       "object_type": "ENTITY"
     },
     "action": {
-      "type": "OTHER",
+      "type": "ACCUSES",
       "status": "COMPLETED",
       "polarity": "NEUTRAL",
-      "verb": "addresses"
+      "verb": "except"
     },
     "object": {
-      "name": "the Ukrainian nation",
+      "name": "the U.S.",
       "entity_id": null,
       "type": "Other",
       "object_type": "CONCEPT"
@@ -1160,1038 +250,146 @@
       "type": null
     },
     "confidence": 1,
-    "evidence": "Volodymyr Zelenskyy addresses the Ukrainian nation",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "addresses",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "unknown",
-    "location_str": "unknown",
-    "entities": [
-      {
-        "entity_id": "PERS_VOLODYMYR_ZELENSKYY",
-        "entity_name": "Volodymyr Zelenskyy",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 23185,
-    "article_url": "https://www.ft.com/content/6aa04f24-c216-467e-834a-7b4af3ef660e?syn-25a6b1a6=1",
-    "subject": {
-      "name": "Kevin Warsh",
-      "entity_id": "PERS_KEVIN_WARSH",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "ONGOING",
-      "polarity": "NEUTRAL",
-      "verb": "talks"
-    },
-    "object": {
-      "name": "monetary policy",
-      "entity_id": "ORG_MONETARY_POLICY",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "unknown",
-      "value": null
-    },
-    "location": {
-      "name": "Jackson Hole",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 0.9,
-    "evidence": "the Fed’s Kevin Warsh talks monetary policy at Jackson Hole",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "talks",
-    "action_status": "ONGOING",
-    "action_polarity": "NEUTRAL",
-    "event_time": "unknown",
-    "location_str": "Jackson Hole",
-    "entities": [
-      {
-        "entity_id": "PERS_KEVIN_WARSH",
-        "entity_name": "Kevin Warsh",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_MONETARY_POLICY",
-        "entity_name": "monetary policy",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 23207,
-    "article_url": "https://www.ft.com/content/14eeeead-647f-486a-a8dc-7ca2610f3d35",
-    "subject": {
-      "name": "Zelensky",
-      "entity_id": "PERS_ZELENSKY",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "REJECTS",
-      "status": "COMPLETED",
-      "polarity": "NEGATIVE",
-      "verb": "rejects"
-    },
-    "object": {
-      "name": "election call from fired defence minister",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "President says wartime vote would ‘split Ukraine apart’ as he seeks to reassert authority",
-    "evidence_type": "UNKNOWN",
-    "action_type": "REJECTS",
-    "action_event_type": "Diplomacy",
-    "action_detail": "rejects",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEGATIVE",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "PERS_ZELENSKY",
-        "entity_name": "Zelensky",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 23204,
-    "article_url": "https://www.ft.com/content/63e11e59-1f21-488a-b89b-de4abbdd7396?syn-25a6b1a6=1",
-    "subject": {
-      "name": "Kevin Warsh",
-      "entity_id": "PERS_KEVIN_WARSH",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "STATES",
-      "status": "ONGOING",
-      "polarity": "NEUTRAL",
-      "verb": "seeks"
-    },
-    "object": {
-      "name": "investors’ nerves",
-      "entity_id": "ORG_INVESTORS_NERVES",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1.0,
-    "evidence": "Kevin Warsh seeks to calm investors’ nerves as signs of economic strain grow",
-    "evidence_type": "UNKNOWN",
-    "action_type": "STATES",
-    "action_event_type": "Politics",
-    "action_detail": "seeks",
-    "action_status": "ONGOING",
-    "action_polarity": "NEUTRAL",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "PERS_KEVIN_WARSH",
-        "entity_name": "Kevin Warsh",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_INVESTORS_NERVES",
-        "entity_name": "investors’ nerves",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 23204,
-    "article_url": "https://www.ft.com/content/63e11e59-1f21-488a-b89b-de4abbdd7396?syn-25a6b1a6=1",
-    "subject": {
-      "name": "signs of economic strain",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "action": {
-      "type": "GROWS",
-      "status": "ONGOING",
-      "polarity": "NEGATIVE",
-      "verb": "grow"
-    },
-    "object": {
-      "name": "",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1.0,
-    "evidence": "as signs of economic strain grow",
-    "evidence_type": "UNKNOWN",
-    "action_type": "GROWS",
-    "action_event_type": "Economic",
-    "action_detail": "grow",
-    "action_status": "ONGOING",
-    "action_polarity": "NEGATIVE",
-    "event_time": "",
-    "location_str": "",
-    "entities": []
-  },
-  {
-    "article_id": 23209,
-    "article_url": "https://www.cnbc.com/2026/08/23/wells-fargo-citigroup-deals-regional-banks.html",
-    "subject": {
-      "name": "CITIGROUP",
-      "entity_id": "COMP_CITIGROUP",
-      "type": "Company",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "BANS",
-      "status": "CONSIDERED",
-      "polarity": "NEUTRAL",
-      "verb": "buy"
-    },
-    "object": {
-      "name": "a big regional bank",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "time": {
-      "raw": "unknown",
-      "value": null
-    },
-    "location": {
-      "name": "nation",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Citigroup and Wells Fargo have room to buy a big regional bank as regulators have opened the door to megadeals.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "BANS",
-    "action_event_type": "Legal",
-    "action_detail": "buy",
-    "action_status": "CONSIDERED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "unknown",
-    "location_str": "nation",
-    "entities": [
-      {
-        "entity_id": "COMP_CITIGROUP",
-        "entity_name": "CITIGROUP",
-        "entity_type": "Company",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "COMP_WELLS_FARGO",
-        "entity_name": "Wells Fargo",
-        "entity_type": "Company",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 23209,
-    "article_url": "https://www.cnbc.com/2026/08/23/wells-fargo-citigroup-deals-regional-banks.html",
-    "subject": {
-      "name": "Five regional banks",
-      "entity_id": "ORG_FIVE_REGIONAL_BANKS",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "BANS",
-      "status": "PLANNED",
-      "polarity": "NEUTRAL",
-      "verb": "fit"
-    },
-    "object": {
-      "name": "targets",
-      "entity_id": "ORG_TARGETS",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "unknown",
-      "value": null
-    },
-    "location": {
-      "name": "unknown",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 0.9,
-    "evidence": "Five regional banks make sense as targets.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "BANS",
-    "action_event_type": "Legal",
-    "action_detail": "fit",
-    "action_status": "PLANNED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "unknown",
-    "location_str": "unknown",
-    "entities": [
-      {
-        "entity_id": "ORG_FIVE_REGIONAL_BANKS",
-        "entity_name": "Five regional banks",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_TARGETS",
-        "entity_name": "targets",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 23209,
-    "article_url": "https://www.cnbc.com/2026/08/23/wells-fargo-citigroup-deals-regional-banks.html",
-    "subject": {
-      "name": "Large banks",
-      "entity_id": "ORG_LARGE_BANKS",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "BANS",
-      "status": "CONSIDERED",
-      "polarity": "NEUTRAL",
-      "verb": "contemplate buying"
-    },
-    "object": {
-      "name": "other lenders, even a $100 billion-plus-asset regional bank",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": "unknown",
-      "value": null
-    },
-    "location": {
-      "name": "unknown",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 0.9,
-    "evidence": "After years on the sidelines because of regulatory restrictions, large banks can once again contemplate buying other lenders, even a $100 billion-plus-asset regional bank.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "BANS",
-    "action_event_type": "Legal",
-    "action_detail": "contemplate buying",
-    "action_status": "CONSIDERED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "unknown",
-    "location_str": "unknown",
-    "entities": [
-      {
-        "entity_id": "ORG_LARGE_BANKS",
-        "entity_name": "Large banks",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_OTHER_LENDERS",
-        "entity_name": "other lenders",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 23205,
-    "article_url": "https://www.ft.com/content/6f664a31-ca24-4a16-a6e9-5978fdf2512c?syn-25a6b1a6=1",
-    "subject": {
-      "name": "Iran's attacks",
-      "entity_id": "CTRY_IRANS_ATTACKS",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "COMPLETED",
-      "polarity": "NEGATIVE",
-      "verb": "exposed"
-    },
-    "object": {
-      "name": "vulnerability of US military footprint spanning the region since the 1990s",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": "since the 1990s",
-      "value": null
-    },
-    "location": {
-      "name": "region",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Iran’s attacks exposed vulnerability of US military footprint spanning the region since the 1990s",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "exposed",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEGATIVE",
-    "event_time": "since the 1990s",
-    "location_str": "region",
-    "entities": [
-      {
-        "entity_id": "CTRY_IRANS_ATTACKS",
-        "entity_name": "Iran's attacks",
-        "entity_type": "Country",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 23205,
-    "article_url": "https://www.ft.com/content/6f664a31-ca24-4a16-a6e9-5978fdf2512c?syn-25a6b1a6=1",
-    "subject": {
-      "name": "US military footprint",
-      "entity_id": "CTRY_US_MILITARY_FOOTPRINT",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "ONGOING",
-      "polarity": "NEUTRAL",
-      "verb": "spaning"
-    },
-    "object": {
-      "name": "region",
-      "entity_id": "ORG_REGION",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "since the 1990s",
-      "value": null
-    },
-    "location": {
-      "name": "Gulf bases",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 0.8,
-    "evidence": "Iran’s attacks exposed vulnerability of US military footprint spanning the region since the 1990s",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "spaning",
-    "action_status": "ONGOING",
-    "action_polarity": "NEUTRAL",
-    "event_time": "since the 1990s",
-    "location_str": "Gulf bases",
-    "entities": [
-      {
-        "entity_id": "CTRY_US_MILITARY_FOOTPRINT",
-        "entity_name": "US military footprint",
-        "entity_type": "Country",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_REGION",
-        "entity_name": "region",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 23205,
-    "article_url": "https://www.ft.com/content/6f664a31-ca24-4a16-a6e9-5978fdf2512c?syn-25a6b1a6=1",
-    "subject": {
-      "name": "Gulf bases",
-      "entity_id": "ORG_GULF_BASES",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "CONSIDERED",
-      "polarity": "NEUTRAL",
-      "verb": "rebuilding"
-    },
-    "object": {
-      "name": "bases",
-      "entity_id": "ORG_BASES",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "unknown",
-      "value": null
-    },
-    "location": {
-      "name": "Gulf",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 0.7,
-    "evidence": "Are America’s vast Gulf bases worth rebuilding?",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "rebuilding",
-    "action_status": "CONSIDERED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "unknown",
-    "location_str": "Gulf",
-    "entities": [
-      {
-        "entity_id": "ORG_GULF_BASES",
-        "entity_name": "Gulf bases",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_BASES",
-        "entity_name": "bases",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 23202,
-    "article_url": "https://techcrunch.com/2026/08/22/openai-says-california-should-strengthen-its-ai-safety-bill/",
-    "subject": {
-      "name": "OpenAI",
-      "entity_id": "COMP_OPENAI",
-      "type": "Company",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "STATES",
-      "status": "PLANNED",
-      "polarity": "POSITIVE",
-      "verb": "calling for"
-    },
-    "object": {
-      "name": "California to add more safeguards to a landmark AI safety bill",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": "last year",
-      "value": null
-    },
-    "location": {
-      "name": "California",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "OpenAI is calling for California to add more safeguards to a landmark AI safety bill that was passed last year.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "STATES",
-    "action_event_type": "Politics",
-    "action_detail": "calling for",
-    "action_status": "PLANNED",
-    "action_polarity": "POSITIVE",
-    "event_time": "last year",
-    "location_str": "California",
-    "entities": [
-      {
-        "entity_id": "COMP_OPENAI",
-        "entity_name": "OpenAI",
-        "entity_type": "Company",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 23202,
-    "article_url": "https://techcrunch.com/2026/08/22/openai-says-california-should-strengthen-its-ai-safety-bill/",
-    "subject": {
-      "name": "California's SB 53",
-      "entity_id": "ORG_CALIFORNIAS_SB_53",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "STATES",
-      "status": "PLANNED",
-      "polarity": "POSITIVE",
-      "verb": "amended"
-    },
-    "object": {
-      "name": "expand safeguards",
-      "entity_id": "ORG_EXPAND_SAFEGUARDS",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "N/A",
-      "value": null
-    },
-    "location": {
-      "name": "California",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "OpenAI said California’s SB 53 “should be amended to expand safeguards,” for example by “requiring monitoring of frontier models under training or evaluation for potential serious incidents,” and by “strengthening cybersecurity protections throughout the model-development lifecycle.”",
-    "evidence_type": "UNKNOWN",
-    "action_type": "STATES",
-    "action_event_type": "Politics",
-    "action_detail": "amended",
-    "action_status": "PLANNED",
-    "action_polarity": "POSITIVE",
-    "event_time": "N/A",
-    "location_str": "California",
-    "entities": [
-      {
-        "entity_id": "ORG_CALIFORNIAS_SB_53",
-        "entity_name": "California's SB 53",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_EXPAND_SAFEGUARDS",
-        "entity_name": "expand safeguards",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 23202,
-    "article_url": "https://techcrunch.com/2026/08/22/openai-says-california-should-strengthen-its-ai-safety-bill/",
-    "subject": {
-      "name": "OpenAI",
-      "entity_id": "COMP_OPENAI",
-      "type": "Company",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "STATES",
-      "status": "PLANNED",
-      "polarity": "POSITIVE",
-      "verb": "committed to working with"
-    },
-    "object": {
-      "name": "California legislature and the Governor",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": "N/A",
-      "value": null
-    },
-    "location": {
-      "name": "California",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "“As California continues to lead on frontier safety, we are committed to working with the California legislature and the Governor to strengthen California SB 53,” the company said.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "STATES",
-    "action_event_type": "Politics",
-    "action_detail": "committed to working with",
-    "action_status": "PLANNED",
-    "action_polarity": "POSITIVE",
-    "event_time": "N/A",
-    "location_str": "California",
-    "entities": [
-      {
-        "entity_id": "COMP_OPENAI",
-        "entity_name": "OpenAI",
-        "entity_type": "Company",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_CALIFORNIA_LEGISLATURE",
-        "entity_name": "California legislature",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 23183,
-    "article_url": "https://www.nytimes.com/2026/08/23/world/europe/iran-economy-war-united-states.html",
-    "subject": {
-      "name": "Mohsen Rezaei",
-      "entity_id": "PERS_MOHSEN_REZAEI",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "WARNS",
-      "status": "UNKNOWN",
-      "polarity": "UNKNOWN",
-      "verb": ""
-    },
-    "object": {
-      "name": "Iran, Islamic Republic of",
-      "entity_id": "CTRY_IRN",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": null,
-    "evidence": "",
-    "evidence_type": "UNKNOWN",
-    "action_type": "WARNS",
-    "action_event_type": "Politics",
-    "action_detail": "",
-    "action_status": "UNKNOWN",
-    "action_polarity": "UNKNOWN",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "PERS_MOHSEN_REZAEI",
-        "entity_name": "Mohsen Rezaei",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_IRN",
-        "entity_name": "Iran, Islamic Republic of",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 23184,
-    "article_url": "https://www.ft.com/content/e3b5c236-bd5f-45c2-8ddf-5279a7375d3f?syn-25a6b1a6=1",
-    "subject": {
-      "name": "Prime Minister",
-      "entity_id": "PERS_PRIME_MINISTER",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "STATES",
-      "status": "UNKNOWN",
-      "polarity": "UNKNOWN",
-      "verb": ""
-    },
-    "object": {
-      "name": "Canada",
-      "entity_id": "CTRY_CAN",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": null,
-    "evidence": "",
-    "evidence_type": "UNKNOWN",
-    "action_type": "STATES",
-    "action_event_type": "Politics",
-    "action_detail": "",
-    "action_status": "UNKNOWN",
-    "action_polarity": "UNKNOWN",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "PERS_PRIME_MINISTER",
-        "entity_name": "Prime Minister",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_CAN",
-        "entity_name": "Canada",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 23208,
-    "article_url": "https://www.cnbc.com/2026/08/20/us-japan-yen-intervention-bank-of-japan-carry-trade.html",
-    "subject": {
-      "name": "investors",
-      "entity_id": "PERS_INVESTORS",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "ACCUSES",
-      "status": "UNKNOWN",
-      "polarity": "UNKNOWN",
-      "verb": ""
-    },
-    "object": {
-      "name": "Japan",
-      "entity_id": "CTRY_JPN",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": null,
-    "evidence": "",
+    "evidence": "Iran war supercharged EV sales everywhere except the U.S.",
     "evidence_type": "UNKNOWN",
     "action_type": "ACCUSES",
     "action_event_type": "Legal",
-    "action_detail": "",
-    "action_status": "UNKNOWN",
-    "action_polarity": "UNKNOWN",
-    "event_time": "",
-    "location_str": "",
+    "action_detail": "except",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "unknown",
+    "location_str": "unknown",
     "entities": [
       {
-        "entity_id": "PERS_INVESTORS",
-        "entity_name": "investors",
+        "entity_id": "ORG_EV_SALES",
+        "entity_name": "EV sales",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 23709,
+    "article_url": "https://thehill.com/homenews/campaign/6048221-el-sayed-watters-fox-news-clash/",
+    "subject": {
+      "name": "Abdul El-Sayed",
+      "entity_id": "PERS_ABDUL_EL_SAYED",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "COMPLETED",
+      "polarity": "UNKNOWN",
+      "verb": "clashed"
+    },
+    "object": {
+      "name": "Jesse Watters",
+      "entity_id": "PERS_JESSE_WATTERS",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "Monday",
+      "value": null
+    },
+    "location": {
+      "name": "Fox News interview",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1.0,
+    "evidence": "Michigan Senate candidate Abdul El-Sayed (D) on Monday clashed with Fox News host Jesse Watters in a wide-ranging interview",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "clashed",
+    "action_status": "COMPLETED",
+    "action_polarity": "UNKNOWN",
+    "event_time": "Monday",
+    "location_str": "Fox News interview",
+    "entities": [
+      {
+        "entity_id": "PERS_ABDUL_EL_SAYED",
+        "entity_name": "Abdul El-Sayed",
         "entity_type": "Person",
         "role": "SUBJECT"
       },
       {
-        "entity_id": "CTRY_JPN",
-        "entity_name": "Japan",
-        "entity_type": "Country",
+        "entity_id": "PERS_JESSE_WATTERS",
+        "entity_name": "Jesse Watters",
+        "entity_type": "Person",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 23193,
-    "article_url": "https://www.cnbc.com/2026/08/22/nvidia-customers-reportedly-warned-about-ai-related-price-hikes-.html",
+    "article_id": 23709,
+    "article_url": "https://thehill.com/homenews/campaign/6048221-el-sayed-watters-fox-news-clash/",
     "subject": {
-      "name": "NVIDIA",
-      "entity_id": "COMP_NVIDIA",
-      "type": "Company",
+      "name": "interview",
+      "entity_id": "ORG_INTERVIEW",
+      "type": "Organization",
       "object_type": "ENTITY"
     },
     "action": {
-      "type": "REPORTS",
-      "status": "PLANNED",
-      "polarity": "NEUTRAL",
-      "verb": "plan"
+      "type": "OTHER",
+      "status": "COMPLETED",
+      "polarity": "UNKNOWN",
+      "verb": "covered"
     },
     "object": {
-      "name": "prices for some of its largest customers",
+      "name": "culture war topics to the candidate's faith to gas prices",
       "entity_id": null,
       "type": "Other",
       "object_type": "STATEMENT"
     },
     "time": {
-      "raw": "Saturday",
+      "raw": null,
       "value": null
     },
     "location": {
-      "name": "N/A",
+      "name": null,
       "entity_id": null,
       "type": null
     },
-    "confidence": 1,
-    "evidence": "Nvidia plans to hike prices for some of its largest customers, Bloomberg News reported Saturday.",
+    "confidence": 0.9,
+    "evidence": "that covered culture war topics to the candidate's faith to gas prices",
     "evidence_type": "UNKNOWN",
-    "action_type": "REPORTS",
-    "action_event_type": "Finance",
-    "action_detail": "plan",
-    "action_status": "PLANNED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "Saturday",
-    "location_str": "N/A",
-    "entities": [
-      {
-        "entity_id": "COMP_NVIDIA",
-        "entity_name": "NVIDIA",
-        "entity_type": "Company",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 23193,
-    "article_url": "https://www.cnbc.com/2026/08/22/nvidia-customers-reportedly-warned-about-ai-related-price-hikes-.html",
-    "subject": {
-      "name": "cost of servers containing its artificial intelligence chips",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "action": {
-      "type": "REPORTS",
-      "status": "PLANNED",
-      "polarity": "NEGATIVE",
-      "verb": "increase"
-    },
-    "object": {
-      "name": "more than 15%",
-      "entity_id": "ORG_MORE_THAN_15",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "N/A",
-      "value": null
-    },
-    "location": {
-      "name": "N/A",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "The chipmaker is set to increase the cost of servers containing its artificial intelligence chips, including Vera Rubin and Grace Blackwell, by more than 15% in many cases, according to the outlet.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "REPORTS",
-    "action_event_type": "Finance",
-    "action_detail": "increase",
-    "action_status": "PLANNED",
-    "action_polarity": "NEGATIVE",
-    "event_time": "N/A",
-    "location_str": "N/A",
-    "entities": [
-      {
-        "entity_id": "ORG_MORE_THAN_15",
-        "entity_name": "more than 15%",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 23193,
-    "article_url": "https://www.cnbc.com/2026/08/22/nvidia-customers-reportedly-warned-about-ai-related-price-hikes-.html",
-    "subject": {
-      "name": "Jensen Huang",
-      "entity_id": "PERS_JENSEN_HUANG",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "REPORTS",
-      "status": "COMPLETED",
-      "polarity": "NEUTRAL",
-      "verb": "speaks"
-    },
-    "object": {
-      "name": "members of the media",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "time": {
-      "raw": "Thursday, July 16, 2026",
-      "value": null
-    },
-    "location": {
-      "name": "Tokyo, Japan",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Jensen Huang, chief executive officer of Nvidia Corp., speaks to members of the media following the company's \"Japan AI Ecosystem\" reception in Tokyo, Japan, on Thursday, July 16, 2026.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "REPORTS",
-    "action_event_type": "Finance",
-    "action_detail": "speaks",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "covered",
     "action_status": "COMPLETED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "Thursday, July 16, 2026",
-    "location_str": "Tokyo, Japan",
+    "action_polarity": "UNKNOWN",
+    "event_time": "",
+    "location_str": "",
     "entities": [
       {
-        "entity_id": "PERS_JENSEN_HUANG",
-        "entity_name": "Jensen Huang",
-        "entity_type": "Person",
+        "entity_id": "ORG_INTERVIEW",
+        "entity_name": "interview",
+        "entity_type": "Organization",
         "role": "SUBJECT"
       }
     ]
   },
   {
-    "article_id": 23188,
-    "article_url": "https://www.newsweek.com/mike-pence-finish-job-iran-trump-more-action-inevitable-12357694",
+    "article_id": 23713,
+    "article_url": "https://www.france24.com/en/video/20260824-uk-france-re-announce-anti-missile-technology-for-ukraine-none-will-be-online-for-years",
     "subject": {
-      "name": "Mike Pence",
-      "entity_id": "PERS_MIKE_PENCE",
+      "name": "Annette Young",
+      "entity_id": "PERS_ANNETTE_YOUNG",
       "type": "Person",
       "object_type": "ENTITY"
     },
     "action": {
-      "type": "ESCALATES",
+      "type": "ATTACKS",
       "status": "UNKNOWN",
       "polarity": "UNKNOWN",
       "verb": ""
     },
     "object": {
-      "name": "Iran, Islamic Republic of",
-      "entity_id": "CTRY_IRN",
+      "name": "Ukraine",
+      "entity_id": "CTRY_UKR",
       "type": "Country",
       "object_type": "ENTITY"
     },
@@ -2207,7 +405,7 @@
     "confidence": null,
     "evidence": "",
     "evidence_type": "UNKNOWN",
-    "action_type": "ESCALATES",
+    "action_type": "ATTACKS",
     "action_event_type": "Military",
     "action_detail": "",
     "action_status": "UNKNOWN",
@@ -2216,42 +414,42 @@
     "location_str": "",
     "entities": [
       {
-        "entity_id": "PERS_MIKE_PENCE",
-        "entity_name": "Mike Pence",
+        "entity_id": "PERS_ANNETTE_YOUNG",
+        "entity_name": "Annette Young",
         "entity_type": "Person",
         "role": "SUBJECT"
       },
       {
-        "entity_id": "CTRY_IRN",
-        "entity_name": "Iran, Islamic Republic of",
+        "entity_id": "CTRY_UKR",
+        "entity_name": "Ukraine",
         "entity_type": "Country",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 23194,
-    "article_url": "https://techcrunch.com/2026/08/21/nvidia-partners-with-data-center-developer-cloverleaf/",
+    "article_id": 23754,
+    "article_url": "https://www.marketwatch.com/story/bitcoin-has-beaten-stocks-and-gold-over-six-months-now-its-closing-in-on-80-000-b8aa48f9?mod=mw_rss_topstories",
     "subject": {
-      "name": "NVIDIA",
-      "entity_id": "COMP_NVIDIA",
-      "type": "Company",
+      "name": "Bitcoin",
+      "entity_id": "ORG_BITCOIN",
+      "type": "Organization",
       "object_type": "ENTITY"
     },
     "action": {
-      "type": "ANNOUNCES",
+      "type": "BEATS",
       "status": "COMPLETED",
-      "polarity": "NEUTRAL",
-      "verb": "announced"
+      "polarity": "POSITIVE",
+      "verb": "beaten"
     },
     "object": {
-      "name": "partnership with Cloverleaf Infrastructure",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
+      "name": "stocks",
+      "entity_id": "ORG_STOCKS",
+      "type": "Organization",
+      "object_type": "ENTITY"
     },
     "time": {
-      "raw": "Friday",
+      "raw": "over six months",
       "value": null
     },
     "location": {
@@ -2260,99 +458,111 @@
       "type": null
     },
     "confidence": 1,
-    "evidence": "On Friday, it announced a partnership with Cloverleaf Infrastructure,",
+    "evidence": "Bitcoin has beaten stocks and gold over six months.",
     "evidence_type": "UNKNOWN",
-    "action_type": "ANNOUNCES",
-    "action_event_type": "Politics",
-    "action_detail": "announced",
+    "action_type": "BEATS",
+    "action_event_type": "Finance",
+    "action_detail": "beaten",
     "action_status": "COMPLETED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "Friday",
+    "action_polarity": "POSITIVE",
+    "event_time": "over six months",
     "location_str": "",
     "entities": [
       {
-        "entity_id": "COMP_NVIDIA",
-        "entity_name": "NVIDIA",
-        "entity_type": "Company",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 23194,
-    "article_url": "https://techcrunch.com/2026/08/21/nvidia-partners-with-data-center-developer-cloverleaf/",
-    "subject": {
-      "name": "Cloverleaf Infrastructure",
-      "entity_id": "COMP_CLOVERLEAF_INFRASTRUCTURE",
-      "type": "Company",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "COMPLETED",
-      "polarity": "NEUTRAL",
-      "verb": "founded"
-    },
-    "object": {
-      "name": "Cloverleaf Infrastructure",
-      "entity_id": "COMP_CLOVERLEAF_INFRASTRUCTURE",
-      "type": "Company",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "2024",
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Cloverleaf was founded in 2024 and raised $300 million that year.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "founded",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "2024",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "COMP_CLOVERLEAF_INFRASTRUCTURE",
-        "entity_name": "Cloverleaf Infrastructure",
-        "entity_type": "Company",
+        "entity_id": "ORG_BITCOIN",
+        "entity_name": "Bitcoin",
+        "entity_type": "Organization",
         "role": "SUBJECT"
       },
       {
-        "entity_id": "COMP_CLOVERLEAF_INFRASTRUCTURE",
-        "entity_name": "Cloverleaf Infrastructure",
+        "entity_id": "ORG_STOCKS",
+        "entity_name": "stocks",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      },
+      {
+        "entity_id": "COMP_GOLD",
+        "entity_name": "Gold",
         "entity_type": "Company",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 23194,
-    "article_url": "https://techcrunch.com/2026/08/21/nvidia-partners-with-data-center-developer-cloverleaf/",
+    "article_id": 23754,
+    "article_url": "https://www.marketwatch.com/story/bitcoin-has-beaten-stocks-and-gold-over-six-months-now-its-closing-in-on-80-000-b8aa48f9?mod=mw_rss_topstories",
     "subject": {
-      "name": "Nvidia's investment in Cloverleaf",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
+      "name": "Bitcoin",
+      "entity_id": "ORG_BITCOIN",
+      "type": "Organization",
+      "object_type": "ENTITY"
     },
     "action": {
-      "type": "OTHER",
-      "status": "EXPECTED",
+      "type": "BEATS",
+      "status": "ONGOING",
       "polarity": "POSITIVE",
-      "verb": "will likely add up to"
+      "verb": "rising"
     },
     "object": {
-      "name": "several hundred million dollars",
+      "name": "near the $80",
+      "entity_id": "ORG_NEAR_THE_80",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "Monday",
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Bitcoin was rising Monday near the $80,000 level that it last touched in May",
+    "evidence_type": "UNKNOWN",
+    "action_type": "BEATS",
+    "action_event_type": "Finance",
+    "action_detail": "rising",
+    "action_status": "ONGOING",
+    "action_polarity": "POSITIVE",
+    "event_time": "Monday",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "ORG_BITCOIN",
+        "entity_name": "Bitcoin",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_NEAR_THE_80",
+        "entity_name": "near the $80",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 23754,
+    "article_url": "https://www.marketwatch.com/story/bitcoin-has-beaten-stocks-and-gold-over-six-months-now-its-closing-in-on-80-000-b8aa48f9?mod=mw_rss_topstories",
+    "subject": {
+      "name": "Bitcoin",
+      "entity_id": "ORG_BITCOIN",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "BEATS",
+      "status": "ONGOING",
+      "polarity": "UNKNOWN",
+      "verb": "closing"
+    },
+    "object": {
+      "name": "on $80,000",
       "entity_id": null,
       "type": "Other",
-      "object_type": "UNKNOWN"
+      "object_type": "CONCEPT"
     },
     "time": {
       "raw": null,
@@ -2363,26 +573,131 @@
       "entity_id": null,
       "type": null
     },
-    "confidence": 0.8,
-    "evidence": "the Wall Street Journal reports that Nvidia’s investment in Cloverleaf will likely add up to several hundred million dollars.",
+    "confidence": 1,
+    "evidence": "Now it’s closing in on $80,000.",
     "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "will likely add up to",
-    "action_status": "EXPECTED",
-    "action_polarity": "POSITIVE",
+    "action_type": "BEATS",
+    "action_event_type": "Finance",
+    "action_detail": "closing",
+    "action_status": "ONGOING",
+    "action_polarity": "UNKNOWN",
     "event_time": "",
     "location_str": "",
-    "entities": []
+    "entities": [
+      {
+        "entity_id": "ORG_BITCOIN",
+        "entity_name": "Bitcoin",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      }
+    ]
   },
   {
-    "article_id": 23191,
-    "article_url": "https://www.cbsnews.com/live-updates/iran-war-trump-economic-crackdown/",
+    "article_id": 23710,
+    "article_url": "https://thehill.com/homenews/campaign/6048002-maga-inc-spending-darline-graham-south-carolina/",
     "subject": {
-      "name": "supreme national security council",
+      "name": "MAGA Inc.",
+      "entity_id": "ORG_MAGA_INC",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "DROPS",
+      "status": "COMPLETED",
+      "polarity": "NEUTRAL",
+      "verb": "spent"
+    },
+    "object": {
+      "name": "$827,000",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "AMOUNT"
+    },
+    "time": {
+      "raw": "Tuesday",
+      "value": null
+    },
+    "location": {
+      "name": "South Carolina",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "President Trump’s super PAC MAGA Inc. spent more than $827,000 to support Sen. Darline Graham (R-S.C.) ahead of the state’s Republican Senate primary runoff on Tuesday",
+    "evidence_type": "UNKNOWN",
+    "action_type": "DROPS",
+    "action_event_type": "Finance",
+    "action_detail": "spent",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "Tuesday",
+    "location_str": "South Carolina",
+    "entities": [
+      {
+        "entity_id": "ORG_MAGA_INC",
+        "entity_name": "MAGA Inc.",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 23710,
+    "article_url": "https://thehill.com/homenews/campaign/6048002-maga-inc-spending-darline-graham-south-carolina/",
+    "subject": {
+      "name": "MAGA Inc.",
+      "entity_id": "ORG_MAGA_INC",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "DROPS",
+      "status": "COMPLETED",
+      "polarity": "NEUTRAL",
+      "verb": "support"
+    },
+    "object": {
+      "name": "Sen. Darline Graham (R-S.C.",
       "entity_id": null,
       "type": "Other",
       "object_type": "UNKNOWN"
+    },
+    "time": {
+      "raw": "Tuesday",
+      "value": null
+    },
+    "location": {
+      "name": "South Carolina",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "President Trump’s super PAC MAGA Inc. spent more than $827,000 to support Sen. Darline Graham (R-S.C.) ahead of the state’s Republican Senate primary runoff on Tuesday",
+    "evidence_type": "UNKNOWN",
+    "action_type": "DROPS",
+    "action_event_type": "Finance",
+    "action_detail": "support",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "Tuesday",
+    "location_str": "South Carolina",
+    "entities": [
+      {
+        "entity_id": "ORG_MAGA_INC",
+        "entity_name": "MAGA Inc.",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 23758,
+    "article_url": "https://www.bbc.co.uk/news/articles/c33knmyl0y5o?at_medium=RSS&at_campaign=rss",
+    "subject": {
+      "name": "Trump administration",
+      "entity_id": "ORG_TRUMP_ADMINISTRATION",
+      "type": "Organization",
+      "object_type": "ENTITY"
     },
     "action": {
       "type": "OTHER",
@@ -2391,8 +706,8 @@
       "verb": ""
     },
     "object": {
-      "name": "Iran, Islamic Republic of",
-      "entity_id": "CTRY_IRN",
+      "name": "Syria",
+      "entity_id": "CTRY_SYRIA",
       "type": "Country",
       "object_type": "ENTITY"
     },
@@ -2417,19 +732,544 @@
     "location_str": "",
     "entities": [
       {
-        "entity_id": "CTRY_IRN",
-        "entity_name": "Iran, Islamic Republic of",
+        "entity_id": "ORG_TRUMP_ADMINISTRATION",
+        "entity_name": "Trump administration",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_SYRIA",
+        "entity_name": "Syria",
         "entity_type": "Country",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 23181,
-    "article_url": "https://www.france24.com/en/asia-pacific/20260823-humanoid-robots-break-records-at-competition-in-beijing",
+    "article_id": 23712,
+    "article_url": "https://www.scmp.com/news/china/diplomacy/article/3365115/us-targets-chinas-telecoms-grip-venezuela-new-sanctions-carve-out?utm_source=rss_feed",
     "subject": {
-      "name": "Usain Bolt",
-      "entity_id": "PERS_USAIN_BOLT",
+      "name": "United States",
+      "entity_id": "CTRY_USA",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "SANCTIONS",
+      "status": "ONGOING",
+      "polarity": "NEUTRAL",
+      "verb": "opening"
+    },
+    "object": {
+      "name": "Venezuela’s telecommunications sector",
+      "entity_id": "CTRY_VENEZUELAS_TELECOMMUNICATIONS_SECTOR",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "unknown",
+      "value": null
+    },
+    "location": {
+      "name": "Venezuela",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "The United States is opening Venezuela’s telecommunications sector to new investment and technology",
+    "evidence_type": "UNKNOWN",
+    "action_type": "SANCTIONS",
+    "action_event_type": "Economic",
+    "action_detail": "opening",
+    "action_status": "ONGOING",
+    "action_polarity": "NEUTRAL",
+    "event_time": "unknown",
+    "location_str": "Venezuela",
+    "entities": [
+      {
+        "entity_id": "CTRY_USA",
+        "entity_name": "United States",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_VENEZUELAS_TELECOMMUNICATIONS_SECTOR",
+        "entity_name": "Venezuela’s telecommunications sector",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 23712,
+    "article_url": "https://www.scmp.com/news/china/diplomacy/article/3365115/us-targets-chinas-telecoms-grip-venezuela-new-sanctions-carve-out?utm_source=rss_feed",
+    "subject": {
+      "name": "United States",
+      "entity_id": "CTRY_USA",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "SANCTIONS",
+      "status": "ONGOING",
+      "polarity": "NEUTRAL",
+      "verb": "excluding"
+    },
+    "object": {
+      "name": "Chinese companies",
+      "entity_id": "ORG_CHINESE_COMPANIES",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "unknown",
+      "value": null
+    },
+    "location": {
+      "name": "Venezuela's telecommunications sector",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "while explicitly excluding Chinese companies",
+    "evidence_type": "UNKNOWN",
+    "action_type": "SANCTIONS",
+    "action_event_type": "Economic",
+    "action_detail": "excluding",
+    "action_status": "ONGOING",
+    "action_polarity": "NEUTRAL",
+    "event_time": "unknown",
+    "location_str": "Venezuela's telecommunications sector",
+    "entities": [
+      {
+        "entity_id": "CTRY_USA",
+        "entity_name": "United States",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_CHINESE_COMPANIES",
+        "entity_name": "Chinese companies",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 23712,
+    "article_url": "https://www.scmp.com/news/china/diplomacy/article/3365115/us-targets-chinas-telecoms-grip-venezuela-new-sanctions-carve-out?utm_source=rss_feed",
+    "subject": {
+      "name": "market",
+      "entity_id": "ORG_MARKET",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "SANCTIONS",
+      "status": "PLANNED",
+      "polarity": "NEUTRAL",
+      "verb": "reshape"
+    },
+    "object": {
+      "name": "market",
+      "entity_id": "ORG_MARKET",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "unknown",
+      "value": null
+    },
+    "location": {
+      "name": "Venezuela's telecommunications sector",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.9,
+    "evidence": "a move that could reshape a market where Huawei and ZTE have become deeply embedded and give Western suppliers an opening as the country expands its 5G ne",
+    "evidence_type": "UNKNOWN",
+    "action_type": "SANCTIONS",
+    "action_event_type": "Economic",
+    "action_detail": "reshape",
+    "action_status": "PLANNED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "unknown",
+    "location_str": "Venezuela's telecommunications sector",
+    "entities": [
+      {
+        "entity_id": "ORG_MARKET",
+        "entity_name": "market",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_MARKET",
+        "entity_name": "market",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 23742,
+    "article_url": "https://techcrunch.com/2026/08/24/alabama-launches-investigation-into-openais-hack-of-hugging-face/",
+    "subject": {
+      "name": "OpenAI",
+      "entity_id": "COMP_OPENAI",
+      "type": "Company",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "LAUNCHES",
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
+    },
+    "object": {
+      "name": "Alabama",
+      "entity_id": "PERS_ALABAMA",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": null,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "LAUNCHES",
+    "action_event_type": "Technology",
+    "action_detail": "",
+    "action_status": "UNKNOWN",
+    "action_polarity": "UNKNOWN",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "COMP_OPENAI",
+        "entity_name": "OpenAI",
+        "entity_type": "Company",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "PERS_ALABAMA",
+        "entity_name": "Alabama",
+        "entity_type": "Person",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 23750,
+    "article_url": "https://www.bloomberg.com/news/articles/2026-08-24/strategy-sets-up-new-reserve-that-can-be-used-to-buy-bitcoin",
+    "subject": {
+      "name": "Michael Saylor’s Strategy Inc.",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "ONGOING",
+      "polarity": "NEUTRAL",
+      "verb": "adding"
+    },
+    "object": {
+      "name": "new pool of cash",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "time": {
+      "raw": "unknown",
+      "value": null
+    },
+    "location": {
+      "name": "balance-sheet toolkit",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Michael Saylor’s Strategy Inc. is adding a new pool of cash to its balance-sheet toolkit",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "adding",
+    "action_status": "ONGOING",
+    "action_polarity": "NEUTRAL",
+    "event_time": "unknown",
+    "location_str": "balance-sheet toolkit",
+    "entities": []
+  },
+  {
+    "article_id": 23750,
+    "article_url": "https://www.bloomberg.com/news/articles/2026-08-24/strategy-sets-up-new-reserve-that-can-be-used-to-buy-bitcoin",
+    "subject": {
+      "name": "Strategy Sets Up Reserve That Can Be Used to Buy Bitcoin",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "COMPLETED",
+      "polarity": "NEUTRAL",
+      "verb": "Sets Up"
+    },
+    "object": {
+      "name": "Reserve",
+      "entity_id": "ORG_RESERVE",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "unknown",
+      "value": null
+    },
+    "location": {
+      "name": "unknown",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Strategy Sets Up Reserve That Can Be Used to Buy Bitcoin",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "Sets Up",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "unknown",
+    "location_str": "unknown",
+    "entities": [
+      {
+        "entity_id": "ORG_RESERVE",
+        "entity_name": "Reserve",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 23716,
+    "article_url": "https://electrek.co/2026/08/24/tesla-chip-engineer-shishuang-sun-densityai/",
+    "subject": {
+      "name": "Tesla",
+      "entity_id": "COMP_TESLA",
+      "type": "Company",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "BEATS",
+      "status": "COMPLETED",
+      "polarity": "NEGATIVE",
+      "verb": "lost"
+    },
+    "object": {
+      "name": "senior chip engineer",
+      "entity_id": "ORG_SENIOR_CHIP_ENGINEER",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Tesla has lost another senior chip engineer to DensityAI, the AI hardware startup built out of its own former Dojo",
+    "evidence_type": "UNKNOWN",
+    "action_type": "BEATS",
+    "action_event_type": "Finance",
+    "action_detail": "lost",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEGATIVE",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "COMP_TESLA",
+        "entity_name": "Tesla",
+        "entity_type": "Company",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_SENIOR_CHIP_ENGINEER",
+        "entity_name": "senior chip engineer",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 23716,
+    "article_url": "https://electrek.co/2026/08/24/tesla-chip-engineer-shishuang-sun-densityai/",
+    "subject": {
+      "name": "DensityAI",
+      "entity_id": "COMP_DENSITYAI",
+      "type": "Company",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "BEATS",
+      "status": "COMPLETED",
+      "polarity": "POSITIVE",
+      "verb": "hired"
+    },
+    "object": {
+      "name": "senior chip engineer",
+      "entity_id": "ORG_SENIOR_CHIP_ENGINEER",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Tesla has lost another senior chip engineer to DensityAI, the AI hardware startup built out of its own former Dojo",
+    "evidence_type": "UNKNOWN",
+    "action_type": "BEATS",
+    "action_event_type": "Finance",
+    "action_detail": "hired",
+    "action_status": "COMPLETED",
+    "action_polarity": "POSITIVE",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "COMP_DENSITYAI",
+        "entity_name": "DensityAI",
+        "entity_type": "Company",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_SENIOR_CHIP_ENGINEER",
+        "entity_name": "senior chip engineer",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 23704,
+    "article_url": "https://www.scmp.com/news/asia/east-asia/article/3365087/south-korea-says-us-cut-joint-marine-drill-over-iran-war-constraints?utm_source=rss_feed",
+    "subject": {
+      "name": "United States",
+      "entity_id": "CTRY_USA",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "CUTS",
+      "status": "COMPLETED",
+      "polarity": "NEUTRAL",
+      "verb": "cancelled"
+    },
+    "object": {
+      "name": "large joint amphibious landing exercise",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
+    },
+    "time": {
+      "raw": "next month",
+      "value": null
+    },
+    "location": {
+      "name": "N/A",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "South Korea said on Monday that the United States had cancelled a large joint amphibious landing exercise scheduled for next month due to constraints on force availability caused by the war with Iran.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "CUTS",
+    "action_event_type": "Economic",
+    "action_detail": "cancelled",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "next month",
+    "location_str": "N/A",
+    "entities": [
+      {
+        "entity_id": "CTRY_USA",
+        "entity_name": "United States",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 23704,
+    "article_url": "https://www.scmp.com/news/asia/east-asia/article/3365087/south-korea-says-us-cut-joint-marine-drill-over-iran-war-constraints?utm_source=rss_feed",
+    "subject": {
+      "name": "Ssangyong drills",
+      "entity_id": "ORG_SSANGYONG_DRILLS",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "CUTS",
+      "status": "ONGOING",
+      "polarity": "NEUTRAL",
+      "verb": "involve"
+    },
+    "object": {
+      "name": "marine forces from South Korea and the US",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
+    },
+    "time": {
+      "raw": "biennial",
+      "value": null
+    },
+    "location": {
+      "name": "N/A",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "The biennial Ssangyong drills involve marine forces from South Korea and the US and are designed to",
+    "evidence_type": "UNKNOWN",
+    "action_type": "CUTS",
+    "action_event_type": "Economic",
+    "action_detail": "involve",
+    "action_status": "ONGOING",
+    "action_polarity": "NEUTRAL",
+    "event_time": "biennial",
+    "location_str": "N/A",
+    "entities": [
+      {
+        "entity_id": "ORG_SSANGYONG_DRILLS",
+        "entity_name": "Ssangyong drills",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 23707,
+    "article_url": "https://www.scmp.com/news/asia/east-asia/article/3365127/south-korea-pledges-help-trump-revive-talks-north-koreas-kim?utm_source=rss_feed",
+    "subject": {
+      "name": "Trump",
+      "entity_id": "PERS_TRUMP",
       "type": "Person",
       "object_type": "ENTITY"
     },
@@ -2440,9 +1280,9 @@
       "verb": ""
     },
     "object": {
-      "name": "Chinese Government",
-      "entity_id": "ORG_CN_GOVERNMENT",
-      "type": "Organization",
+      "name": "Korea, Republic of",
+      "entity_id": "CTRY_KOR",
+      "type": "Country",
       "object_type": "ENTITY"
     },
     "time": {
@@ -2466,137 +1306,39 @@
     "location_str": "",
     "entities": [
       {
-        "entity_id": "PERS_USAIN_BOLT",
-        "entity_name": "Usain Bolt",
+        "entity_id": "PERS_TRUMP",
+        "entity_name": "Trump",
         "entity_type": "Person",
         "role": "SUBJECT"
       },
       {
-        "entity_id": "ORG_CN_GOVERNMENT",
-        "entity_name": "Chinese Government",
-        "entity_type": "Organization",
+        "entity_id": "CTRY_KOR",
+        "entity_name": "Korea, Republic of",
+        "entity_type": "Country",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 23178,
-    "article_url": "https://www.bloomberg.com/news/articles/2026-08-23/stock-market-today-dow-s-p-live-updates",
+    "article_id": 23745,
+    "article_url": "https://techcrunch.com/2026/08/24/brake-problems-in-gm-evs-draw-greater-federal-scrutiny/",
     "subject": {
-      "name": "Asian stocks",
-      "entity_id": "ORG_ASIAN_STOCKS",
-      "type": "Organization",
-      "object_type": "ENTITY"
+      "name": "Brake problems in GM EVs",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
     },
     "action": {
-      "type": "DROPS",
-      "status": "COMPLETED",
+      "type": "OTHER",
+      "status": "ONGOING",
       "polarity": "NEGATIVE",
-      "verb": "edged lower"
+      "verb": "draw"
     },
     "object": {
-      "name": "",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "time": {
-      "raw": "during a week",
-      "value": null
-    },
-    "location": {
-      "name": "Asia",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Asian stocks edged lower, with the artificial intelligence trade in focus during a week set to be shaped by earnings from chip bellwether Nvidia Corp. and the Federal Reserve’s annual gathering.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "DROPS",
-    "action_event_type": "Finance",
-    "action_detail": "edged lower",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEGATIVE",
-    "event_time": "during a week",
-    "location_str": "Asia",
-    "entities": [
-      {
-        "entity_id": "ORG_ASIAN_STOCKS",
-        "entity_name": "Asian stocks",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 23178,
-    "article_url": "https://www.bloomberg.com/news/articles/2026-08-23/stock-market-today-dow-s-p-live-updates",
-    "subject": {
-      "name": "artificial intelligence trade",
-      "entity_id": "ORG_ARTIFICIAL_INTELLIGENCE_TRADE",
+      "name": "greater federal scrutiny",
+      "entity_id": "ORG_GREATER_FEDERAL_SCRUTINY",
       "type": "Organization",
       "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "DROPS",
-      "status": "EXPECTED",
-      "polarity": "NEUTRAL",
-      "verb": "in focus"
-    },
-    "object": {
-      "name": "",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "time": {
-      "raw": "during a week",
-      "value": null
-    },
-    "location": {
-      "name": "week",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 0.9,
-    "evidence": "artificial intelligence trade in focus during a week set to be shaped by earnings from chip bellwether Nvidia Corp. and the Federal Reserve’s annual gathering.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "DROPS",
-    "action_event_type": "Finance",
-    "action_detail": "in focus",
-    "action_status": "EXPECTED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "during a week",
-    "location_str": "week",
-    "entities": [
-      {
-        "entity_id": "ORG_ARTIFICIAL_INTELLIGENCE_TRADE",
-        "entity_name": "artificial intelligence trade",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 23178,
-    "article_url": "https://www.bloomberg.com/news/articles/2026-08-23/stock-market-today-dow-s-p-live-updates",
-    "subject": {
-      "name": "Oil",
-      "entity_id": "ORG_OIL",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "DROPS",
-      "status": "COMPLETED",
-      "polarity": "NEGATIVE",
-      "verb": "fell"
-    },
-    "object": {
-      "name": "",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
     },
     "time": {
       "raw": null,
@@ -2608,31 +1350,275 @@
       "type": null
     },
     "confidence": 1,
-    "evidence": "Oil fell.",
+    "evidence": "Brake problems in GM EVs draw greater federal scrutiny",
     "evidence_type": "UNKNOWN",
-    "action_type": "DROPS",
-    "action_event_type": "Finance",
-    "action_detail": "fell",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "draw",
+    "action_status": "ONGOING",
+    "action_polarity": "NEGATIVE",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "ORG_GREATER_FEDERAL_SCRUTINY",
+        "entity_name": "greater federal scrutiny",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 23745,
+    "article_url": "https://techcrunch.com/2026/08/24/brake-problems-in-gm-evs-draw-greater-federal-scrutiny/",
+    "subject": {
+      "name": "driver of a 2024 Blazer EV",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "action": {
+      "type": "STATES",
+      "status": "COMPLETED",
+      "polarity": "NEUTRAL",
+      "verb": "said"
+    },
+    "object": {
+      "name": "deliberately steer the vehicle into a concrete curb",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "the driver of a 2024 Blazer EV said they had to \"deliberately steer the vehicle into a concrete curb\" to slow it down and avoid a \"catastrophic intersection collision.\"",
+    "evidence_type": "UNKNOWN",
+    "action_type": "STATES",
+    "action_event_type": "Politics",
+    "action_detail": "said",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "",
+    "location_str": "",
+    "entities": []
+  },
+  {
+    "article_id": 23745,
+    "article_url": "https://techcrunch.com/2026/08/24/brake-problems-in-gm-evs-draw-greater-federal-scrutiny/",
+    "subject": {
+      "name": "2024 Blazer EV",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "COMPLETED",
+      "polarity": "NEGATIVE",
+      "verb": "involved in"
+    },
+    "object": {
+      "name": "one crash",
+      "entity_id": "ORG_ONE_CRASH",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "In one crash, the driver of a 2024 Blazer EV said they had to \"deliberately steer the vehicle into a concrete curb\" to slow it down and avoid a \"catastrophic intersection collision.\"",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "involved in",
     "action_status": "COMPLETED",
     "action_polarity": "NEGATIVE",
     "event_time": "",
     "location_str": "",
     "entities": [
       {
-        "entity_id": "ORG_OIL",
-        "entity_name": "Oil",
+        "entity_id": "ORG_ONE_CRASH",
+        "entity_name": "one crash",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 23717,
+    "article_url": "https://www.cnbc.com/2026/08/24/trump-canada-auto-tariffs-trade-war.html",
+    "subject": {
+      "name": "President Donald Trump",
+      "entity_id": "PERS_PRESIDENT_DONALD_TRUMP",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "TARIFFS",
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
+    },
+    "object": {
+      "name": "United States",
+      "entity_id": "CTRY_UNITED_STATES",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": null,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "TARIFFS",
+    "action_event_type": "Economic",
+    "action_detail": "",
+    "action_status": "UNKNOWN",
+    "action_polarity": "UNKNOWN",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "PERS_PRESIDENT_DONALD_TRUMP",
+        "entity_name": "President Donald Trump",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_UNITED_STATES",
+        "entity_name": "United States",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 23714,
+    "article_url": "https://www.france24.com/en/what-could-new-us-sanctions-on-iran-entail",
+    "subject": {
+      "name": "United States",
+      "entity_id": "CTRY_UNITED_STATES",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "SANCTIONS",
+      "status": "ONGOING",
+      "polarity": "NEUTRAL",
+      "verb": "prepare"
+    },
+    "object": {
+      "name": "new sanctions on Iran",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "time": {
+      "raw": "N/A",
+      "value": null
+    },
+    "location": {
+      "name": "N/A",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1.0,
+    "evidence": "The US says it is preparing to announce new sanctions on Iran.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "SANCTIONS",
+    "action_event_type": "Economic",
+    "action_detail": "prepare",
+    "action_status": "ONGOING",
+    "action_polarity": "NEUTRAL",
+    "event_time": "N/A",
+    "location_str": "N/A",
+    "entities": [
+      {
+        "entity_id": "CTRY_UNITED_STATES",
+        "entity_name": "United States",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 23714,
+    "article_url": "https://www.france24.com/en/what-could-new-us-sanctions-on-iran-entail",
+    "subject": {
+      "name": "renewed economic pressure",
+      "entity_id": "ORG_RENEWED_ECONOMIC_PRESSURE",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "SANCTIONS",
+      "status": "EXPECTED",
+      "polarity": "NEGATIVE",
+      "verb": "add"
+    },
+    "object": {
+      "name": "further pressure on the country's economy",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
+    },
+    "time": {
+      "raw": "N/A",
+      "value": null
+    },
+    "location": {
+      "name": "Iran",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.9,
+    "evidence": "it's expected to add further pressure on the country's economy that's already been battered from previous sanctions and a US naval blockade.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "SANCTIONS",
+    "action_event_type": "Economic",
+    "action_detail": "add",
+    "action_status": "EXPECTED",
+    "action_polarity": "NEGATIVE",
+    "event_time": "N/A",
+    "location_str": "Iran",
+    "entities": [
+      {
+        "entity_id": "ORG_RENEWED_ECONOMIC_PRESSURE",
+        "entity_name": "renewed economic pressure",
         "entity_type": "Organization",
         "role": "SUBJECT"
       }
     ]
   },
   {
-    "article_id": 23132,
-    "article_url": "https://www.aljazeera.com/video/the-bottom-line/2026/8/23/trump-has-run-out-of-options-in-iran-war-stephen-walt?traffic_source=rss",
+    "article_id": 23721,
+    "article_url": "https://finance.yahoo.com/technology/ai/articles/nvidia-cloverleaf-partnering-advance-data-152523132.html",
     "subject": {
-      "name": "Stephen Walt",
-      "entity_id": "PERS_STEPHEN_WALT",
-      "type": "Person",
+      "name": "NVIDIA",
+      "entity_id": "COMP_NVIDIA",
+      "type": "Company",
       "object_type": "ENTITY"
     },
     "action": {
@@ -2668,9 +1654,9 @@
     "location_str": "",
     "entities": [
       {
-        "entity_id": "PERS_STEPHEN_WALT",
-        "entity_name": "Stephen Walt",
-        "entity_type": "Person",
+        "entity_id": "COMP_NVIDIA",
+        "entity_name": "NVIDIA",
+        "entity_type": "Company",
         "role": "SUBJECT"
       },
       {
@@ -2682,231 +1668,23 @@
     ]
   },
   {
-    "article_id": 23155,
-    "article_url": "https://www.cbsnews.com/video/escalating-trade-war-canada-ruptures-once-close-alliance/",
+    "article_id": 23755,
+    "article_url": "https://finance.yahoo.com/personal-finance/investing/review/gemini-crypto-review-130000290.html",
     "subject": {
-      "name": "Jarred Hill",
-      "entity_id": "PERS_JARRED_HILL",
-      "type": "Person",
+      "name": "Gemini",
+      "entity_id": "COMP_GEMINI",
+      "type": "Company",
       "object_type": "ENTITY"
     },
     "action": {
-      "type": "TARIFFS",
+      "type": "BANS",
       "status": "UNKNOWN",
       "polarity": "UNKNOWN",
       "verb": ""
     },
     "object": {
-      "name": "Canada",
-      "entity_id": "CTRY_CAN",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": null,
-    "evidence": "",
-    "evidence_type": "UNKNOWN",
-    "action_type": "TARIFFS",
-    "action_event_type": "Economic",
-    "action_detail": "",
-    "action_status": "UNKNOWN",
-    "action_polarity": "UNKNOWN",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "PERS_JARRED_HILL",
-        "entity_name": "Jarred Hill",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_CAN",
-        "entity_name": "Canada",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 23179,
-    "article_url": "https://www.france24.com/en/middle-east/20260823-iran-discovers-major-new-gas-reserves-amid-war-hit-energy-sector",
-    "subject": {
-      "name": "Iran, Islamic Republic of",
-      "entity_id": "CTRY_IRN",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "ATTACKS",
-      "status": "COMPLETED",
-      "polarity": "POSITIVE",
-      "verb": "discovered"
-    },
-    "object": {
-      "name": "200 billion cubic metres of natural gas",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "AMOUNT"
-    },
-    "time": {
-      "raw": "Sunday",
-      "value": null
-    },
-    "location": {
-      "name": "southern Fars province",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Iran on Sunday said it had discovered more than 200 billion cubic metres of natural gas in the southern Fars province",
-    "evidence_type": "UNKNOWN",
-    "action_type": "ATTACKS",
-    "action_event_type": "Military",
-    "action_detail": "discovered",
-    "action_status": "COMPLETED",
-    "action_polarity": "POSITIVE",
-    "event_time": "Sunday",
-    "location_str": "southern Fars province",
-    "entities": [
-      {
-        "entity_id": "CTRY_IRN",
-        "entity_name": "Iran, Islamic Republic of",
-        "entity_type": "Country",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 23179,
-    "article_url": "https://www.france24.com/en/middle-east/20260823-iran-discovers-major-new-gas-reserves-amid-war-hit-energy-sector",
-    "subject": {
-      "name": "natural gas reserves",
-      "entity_id": "ORG_NATURAL_GAS_RESERVES",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "ATTACKS",
-      "status": "EXPECTED",
-      "polarity": "POSITIVE",
-      "verb": "potentially recoverable"
-    },
-    "object": {
-      "name": "160 billion cubic metres",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "AMOUNT"
-    },
-    "time": {
-      "raw": "Sunday",
-      "value": null
-    },
-    "location": {
-      "name": "southern Fars province",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "with more than 160 billion cubic metres potentially recoverable",
-    "evidence_type": "UNKNOWN",
-    "action_type": "ATTACKS",
-    "action_event_type": "Military",
-    "action_detail": "potentially recoverable",
-    "action_status": "EXPECTED",
-    "action_polarity": "POSITIVE",
-    "event_time": "Sunday",
-    "location_str": "southern Fars province",
-    "entities": [
-      {
-        "entity_id": "ORG_NATURAL_GAS_RESERVES",
-        "entity_name": "natural gas reserves",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 23179,
-    "article_url": "https://www.france24.com/en/middle-east/20260823-iran-discovers-major-new-gas-reserves-amid-war-hit-energy-sector",
-    "subject": {
-      "name": "energy sector",
-      "entity_id": "ORG_ENERGY_SECTOR",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "ATTACKS",
-      "status": "ONGOING",
-      "polarity": "NEGATIVE",
-      "verb": "faces disruption"
-    },
-    "object": {
-      "name": "disruption",
-      "entity_id": "ORG_DISRUPTION",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "after months",
-      "value": null
-    },
-    "location": {
-      "name": "Iran",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 0.9,
-    "evidence": "The find comes as the country’s energy sector faces disruption after months of US-Israeli strikes on gas facilities",
-    "evidence_type": "UNKNOWN",
-    "action_type": "ATTACKS",
-    "action_event_type": "Military",
-    "action_detail": "faces disruption",
-    "action_status": "ONGOING",
-    "action_polarity": "NEGATIVE",
-    "event_time": "after months",
-    "location_str": "Iran",
-    "entities": [
-      {
-        "entity_id": "ORG_ENERGY_SECTOR",
-        "entity_name": "energy sector",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_DISRUPTION",
-        "entity_name": "disruption",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 23125,
-    "article_url": "https://www.scmp.com/news/world/europe/article/3364998/uk-pm-andy-burnham-visit-kyiv-monday-ukraine-marks-independence-anniversary?utm_source=rss_feed",
-    "subject": {
-      "name": "Andy Burnham",
-      "entity_id": "PERS_ANDY_BURNHAM",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "VISITS",
-      "status": "UNKNOWN",
-      "polarity": "UNKNOWN",
-      "verb": ""
-    },
-    "object": {
-      "name": "Kyiv",
-      "entity_id": "LOC_KYIV",
+      "name": "New York",
+      "entity_id": "LOC_NEW_YORK",
       "type": "Location",
       "object_type": "ENTITY"
     },
@@ -2922,8 +1700,112 @@
     "confidence": null,
     "evidence": "",
     "evidence_type": "UNKNOWN",
-    "action_type": "VISITS",
-    "action_event_type": "Diplomacy",
+    "action_type": "BANS",
+    "action_event_type": "Legal",
+    "action_detail": "",
+    "action_status": "UNKNOWN",
+    "action_polarity": "UNKNOWN",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "COMP_GEMINI",
+        "entity_name": "Gemini",
+        "entity_type": "Company",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "LOC_NEW_YORK",
+        "entity_name": "New York",
+        "entity_type": "Location",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 23757,
+    "article_url": "https://seekingalpha.com/article/4939773-marvell-google-strengthens-the-ai-thesis-but-q2-must-justify-the-premium?source=feed_all_articles",
+    "subject": {
+      "name": "Marvell",
+      "entity_id": "COMP_MARVELL",
+      "type": "Company",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "ONGOING",
+      "polarity": "POSITIVE",
+      "verb": "Strengthens"
+    },
+    "object": {
+      "name": "The AI Thesis",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "CONCEPT"
+    },
+    "time": {
+      "raw": "Q2",
+      "value": null
+    },
+    "location": {
+      "name": "N/A",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Google Strengthens The AI Thesis, But Q2 Must Justify The Premium",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "Strengthens",
+    "action_status": "ONGOING",
+    "action_polarity": "POSITIVE",
+    "event_time": "Q2",
+    "location_str": "N/A",
+    "entities": [
+      {
+        "entity_id": "COMP_MARVELL",
+        "entity_name": "Marvell",
+        "entity_type": "Company",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 23736,
+    "article_url": "https://www.bbc.co.uk/sounds/play/p0p62njt?at_medium=RSS&at_campaign=rss",
+    "subject": {
+      "name": "Andy Burnham",
+      "entity_id": "PERS_ANDY_BURNHAM",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "ATTACKS",
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
+    },
+    "object": {
+      "name": "Ukraine",
+      "entity_id": "CTRY_UKR",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": null,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "ATTACKS",
+    "action_event_type": "Military",
     "action_detail": "",
     "action_status": "UNKNOWN",
     "action_polarity": "UNKNOWN",
@@ -2937,30 +1819,30 @@
         "role": "SUBJECT"
       },
       {
-        "entity_id": "LOC_KYIV",
-        "entity_name": "Kyiv",
-        "entity_type": "Location",
+        "entity_id": "CTRY_UKR",
+        "entity_name": "Ukraine",
+        "entity_type": "Country",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 23180,
-    "article_url": "https://www.dw.com/en/ukraine-russia-trade-strikes-wildberries-site-hit-again/a-78408178?maca=en-rss-en-all-1573-rdf",
+    "article_id": 23718,
+    "article_url": "https://www.ft.com/content/5162b0a3-e7b1-460d-95a0-9a8e27eddb5a?syn-25a6b1a6=1",
     "subject": {
-      "name": "Ukraine",
-      "entity_id": "CTRY_UKR",
-      "type": "Country",
+      "name": "Shein",
+      "entity_id": "COMP_SHEIN",
+      "type": "Company",
       "object_type": "ENTITY"
     },
     "action": {
-      "type": "REPORTS",
-      "status": "COMPLETED",
-      "polarity": "NEGATIVE",
-      "verb": "reported"
+      "type": "IPO",
+      "status": "PLANNED",
+      "polarity": "NEUTRAL",
+      "verb": "aims"
     },
     "object": {
-      "name": "10 dead",
+      "name": "$27 billion valuation",
       "entity_id": null,
       "type": "Other",
       "object_type": "AMOUNT"
@@ -2970,98 +1852,98 @@
       "value": null
     },
     "location": {
-      "name": "northeastern Kharkiv oblast near the border",
+      "name": "Hong Kong",
       "entity_id": null,
       "type": null
     },
     "confidence": 1,
-    "evidence": "Ukriane reported 10 dead in a missile strike in the northeastern Kharkiv oblast near the border",
+    "evidence": "Shein aims for a $27 billion valuation in its Hong Kong IPO.",
     "evidence_type": "UNKNOWN",
-    "action_type": "REPORTS",
+    "action_type": "IPO",
     "action_event_type": "Finance",
-    "action_detail": "reported",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEGATIVE",
+    "action_detail": "aims",
+    "action_status": "PLANNED",
+    "action_polarity": "NEUTRAL",
     "event_time": "unknown",
-    "location_str": "northeastern Kharkiv oblast near the border",
+    "location_str": "Hong Kong",
     "entities": [
       {
-        "entity_id": "CTRY_UKR",
-        "entity_name": "Ukraine",
-        "entity_type": "Country",
+        "entity_id": "COMP_SHEIN",
+        "entity_name": "Shein",
+        "entity_type": "Company",
         "role": "SUBJECT"
       }
     ]
   },
   {
-    "article_id": 23180,
-    "article_url": "https://www.dw.com/en/ukraine-russia-trade-strikes-wildberries-site-hit-again/a-78408178?maca=en-rss-en-all-1573-rdf",
+    "article_id": 23718,
+    "article_url": "https://www.ft.com/content/5162b0a3-e7b1-460d-95a0-9a8e27eddb5a?syn-25a6b1a6=1",
     "subject": {
-      "name": "Russian Federation",
-      "entity_id": "CTRY_RUSSIAN_FEDERATION",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "REPORTS",
-      "status": "COMPLETED",
-      "polarity": "NEGATIVE",
-      "verb": "reported"
-    },
-    "object": {
-      "name": "more than 600 drones",
+      "name": "The company's market value",
       "entity_id": null,
       "type": "Other",
       "object_type": "UNKNOWN"
+    },
+    "action": {
+      "type": "IPO",
+      "status": "COMPLETED",
+      "polarity": "NEGATIVE",
+      "verb": "decreased"
+    },
+    "object": {
+      "name": "market value",
+      "entity_id": "ORG_MARKET_VALUE",
+      "type": "Organization",
+      "object_type": "ENTITY"
     },
     "time": {
       "raw": "unknown",
       "value": null
     },
     "location": {
-      "name": "Moscow area",
+      "name": "New York and London",
       "entity_id": null,
       "type": null
     },
-    "confidence": 1,
-    "evidence": "Russia, meanwhile, reported more than 600 drones approaching the Moscow area",
+    "confidence": 0.9,
+    "evidence": "The company's market value has significantly decreased after failed attempts to list in New York and London.",
     "evidence_type": "UNKNOWN",
-    "action_type": "REPORTS",
+    "action_type": "IPO",
     "action_event_type": "Finance",
-    "action_detail": "reported",
+    "action_detail": "decreased",
     "action_status": "COMPLETED",
     "action_polarity": "NEGATIVE",
     "event_time": "unknown",
-    "location_str": "Moscow area",
+    "location_str": "New York and London",
     "entities": [
       {
-        "entity_id": "CTRY_RUSSIAN_FEDERATION",
-        "entity_name": "Russian Federation",
-        "entity_type": "Country",
-        "role": "SUBJECT"
+        "entity_id": "ORG_MARKET_VALUE",
+        "entity_name": "market value",
+        "entity_type": "Organization",
+        "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 23180,
-    "article_url": "https://www.dw.com/en/ukraine-russia-trade-strikes-wildberries-site-hit-again/a-78408178?maca=en-rss-en-all-1573-rdf",
+    "article_id": 23718,
+    "article_url": "https://www.ft.com/content/5162b0a3-e7b1-460d-95a0-9a8e27eddb5a?syn-25a6b1a6=1",
     "subject": {
-      "name": "Russian Federation",
-      "entity_id": "CTRY_RUSSIAN_FEDERATION",
-      "type": "Country",
+      "name": "This move",
+      "entity_id": "ORG_THIS_MOVE",
+      "type": "Organization",
       "object_type": "ENTITY"
     },
     "action": {
-      "type": "ATTACKS",
-      "status": "COMPLETED",
-      "polarity": "NEGATIVE",
-      "verb": "warned"
+      "type": "IPO",
+      "status": "PLANNED",
+      "polarity": "NEUTRAL",
+      "verb": "seeks"
     },
     "object": {
-      "name": "United Kingdom of Great Britain and Northern Ireland",
-      "entity_id": "CTRY_GBR",
-      "type": "Country",
-      "object_type": "ENTITY"
+      "name": "reassure stakeholders about leadership changes",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
     },
     "time": {
       "raw": "unknown",
@@ -3072,37 +1954,86 @@
       "entity_id": null,
       "type": null
     },
-    "confidence": 1,
-    "evidence": "Russia, meanwhile, reported more than 600 drones approaching the Moscow area and warned the UK on suppyling drones to Kyiv",
+    "confidence": 0.8,
+    "evidence": "This move seeks to reassure stakeholders about leadership changes.",
     "evidence_type": "UNKNOWN",
-    "action_type": "ATTACKS",
-    "action_event_type": "Military",
-    "action_detail": "warned",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEGATIVE",
+    "action_type": "IPO",
+    "action_event_type": "Finance",
+    "action_detail": "seeks",
+    "action_status": "PLANNED",
+    "action_polarity": "NEUTRAL",
     "event_time": "unknown",
     "location_str": "unknown",
     "entities": [
       {
-        "entity_id": "CTRY_RUSSIAN_FEDERATION",
-        "entity_name": "Russian Federation",
-        "entity_type": "Country",
+        "entity_id": "ORG_THIS_MOVE",
+        "entity_name": "This move",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 23723,
+    "article_url": "https://www.marketwatch.com/story/spacex-plans-to-put-nvidia-powered-ai-satellites-in-orbit-next-year-ab57083c?mod=mw_rss_topstories",
+    "subject": {
+      "name": "SpaceX",
+      "entity_id": "COMP_SPACEX",
+      "type": "Company",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "LAUNCHES",
+      "status": "PLANNED",
+      "polarity": "NEUTRAL",
+      "verb": "plans to launch"
+    },
+    "object": {
+      "name": "Nvidia-powered AI satellites",
+      "entity_id": "ORG_NVIDIA_POWERED_AI_SATELLITES",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "next year",
+      "value": null
+    },
+    "location": {
+      "name": "orbit",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "SpaceX plans to put Nvidia-powered AI satellites in orbit next year",
+    "evidence_type": "UNKNOWN",
+    "action_type": "LAUNCHES",
+    "action_event_type": "Technology",
+    "action_detail": "plans to launch",
+    "action_status": "PLANNED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "next year",
+    "location_str": "orbit",
+    "entities": [
+      {
+        "entity_id": "COMP_SPACEX",
+        "entity_name": "SpaceX",
+        "entity_type": "Company",
         "role": "SUBJECT"
       },
       {
-        "entity_id": "CTRY_GBR",
-        "entity_name": "United Kingdom of Great Britain and Northern Ireland",
-        "entity_type": "Country",
+        "entity_id": "ORG_NVIDIA_POWERED_AI_SATELLITES",
+        "entity_name": "Nvidia-powered AI satellites",
+        "entity_type": "Organization",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 23145,
-    "article_url": "https://www.bbc.co.uk/news/articles/c2dkdegr2xeo?at_medium=RSS&at_campaign=rss",
+    "article_id": 23746,
+    "article_url": "https://www.aljazeera.com/video/newsfeed/2026/8/24/displaced-palestinians-in-gaza-face-intensifying-israeli-strikes?traffic_source=rss",
     "subject": {
-      "name": "officials",
-      "entity_id": "PERS_OFFICIALS",
+      "name": "Palestinians",
+      "entity_id": "PERS_PALESTINIANS",
       "type": "Person",
       "object_type": "ENTITY"
     },
@@ -3139,8 +2070,8 @@
     "location_str": "",
     "entities": [
       {
-        "entity_id": "PERS_OFFICIALS",
-        "entity_name": "officials",
+        "entity_id": "PERS_PALESTINIANS",
+        "entity_name": "Palestinians",
         "entity_type": "Person",
         "role": "SUBJECT"
       },
@@ -3153,170 +2084,24 @@
     ]
   },
   {
-    "article_id": 23128,
-    "article_url": "https://www.dw.com/en/kazakhstan-parliamentary-vote-cements-president-s-power/a-78474598?maca=en-rss-en-all-1573-rdf",
+    "article_id": 23711,
+    "article_url": "https://www.france24.com/en/middle-east/20260824-israel-netanyahu-says-iran-tried-kill-son",
     "subject": {
-      "name": "Candidates from seven state-approved parties",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "action": {
-      "type": "ELECTS",
-      "status": "COMPLETED",
-      "polarity": "NEUTRAL",
-      "verb": "took part in"
-    },
-    "object": {
-      "name": "the election",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "CONCEPT"
-    },
-    "time": {
-      "raw": "unknown",
-      "value": null
-    },
-    "location": {
-      "name": "Kazakhstan",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Candidates from seven state-approved parties took part in the election",
-    "evidence_type": "UNKNOWN",
-    "action_type": "ELECTS",
-    "action_event_type": "Politics",
-    "action_detail": "took part in",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "unknown",
-    "location_str": "Kazakhstan",
-    "entities": []
-  },
-  {
-    "article_id": 23128,
-    "article_url": "https://www.dw.com/en/kazakhstan-parliamentary-vote-cements-president-s-power/a-78474598?maca=en-rss-en-all-1573-rdf",
-    "subject": {
-      "name": "opposition parties",
-      "entity_id": "ORG_OPPOSITION_PARTIES",
-      "type": "Organization",
+      "name": "Netanyahu",
+      "entity_id": "PERS_NETANYAHU",
+      "type": "Person",
       "object_type": "ENTITY"
     },
     "action": {
-      "type": "BANS",
-      "status": "COMPLETED",
-      "polarity": "NEGATIVE",
-      "verb": "were banned"
+      "type": "DIES",
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
     },
     "object": {
-      "name": "opposition parties",
-      "entity_id": "ORG_OPPOSITION_PARTIES",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "unknown",
-      "value": null
-    },
-    "location": {
-      "name": "Kazakhstan",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "while opposition parties were banned",
-    "evidence_type": "UNKNOWN",
-    "action_type": "BANS",
-    "action_event_type": "Legal",
-    "action_detail": "were banned",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEGATIVE",
-    "event_time": "unknown",
-    "location_str": "Kazakhstan",
-    "entities": [
-      {
-        "entity_id": "ORG_OPPOSITION_PARTIES",
-        "entity_name": "opposition parties",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_OPPOSITION_PARTIES",
-        "entity_name": "opposition parties",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 23128,
-    "article_url": "https://www.dw.com/en/kazakhstan-parliamentary-vote-cements-president-s-power/a-78474598?maca=en-rss-en-all-1573-rdf",
-    "subject": {
-      "name": "Kazakhstan",
-      "entity_id": "CTRY_KAZ",
+      "name": "Iran, Islamic Republic of",
+      "entity_id": "CTRY_IRN",
       "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "ELECTS",
-      "status": "ONGOING",
-      "polarity": "NEUTRAL",
-      "verb": "maintains"
-    },
-    "object": {
-      "name": "a delicate balance between Russia and the West",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": "unknown",
-      "value": null
-    },
-    "location": {
-      "name": "Central Asia's largest nation",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Kazakhstan maintains a delicate balance between Russia and the West",
-    "evidence_type": "UNKNOWN",
-    "action_type": "ELECTS",
-    "action_event_type": "Politics",
-    "action_detail": "maintains",
-    "action_status": "ONGOING",
-    "action_polarity": "NEUTRAL",
-    "event_time": "unknown",
-    "location_str": "Central Asia's largest nation",
-    "entities": [
-      {
-        "entity_id": "CTRY_KAZ",
-        "entity_name": "Kazakhstan",
-        "entity_type": "Country",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 23137,
-    "article_url": "https://www.marketwatch.com/story/stock-futures-slip-as-u-s-and-canada-appear-headed-for-trade-war-a9814b24?mod=mw_rss_topstories",
-    "subject": {
-      "name": "U.S. stock-index futures",
-      "entity_id": "ORG_US_STOCK_INDEX_FUTURES",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "TARIFFS",
-      "status": "COMPLETED",
-      "polarity": "NEUTRAL",
-      "verb": "were"
-    },
-    "object": {
-      "name": "little changed",
-      "entity_id": "ORG_LITTLE_CHANGED",
-      "type": "Organization",
       "object_type": "ENTITY"
     },
     "time": {
@@ -3324,107 +2109,113 @@
       "value": null
     },
     "location": {
-      "name": "Sunday",
+      "name": null,
       "entity_id": null,
       "type": null
     },
     "confidence": null,
-    "evidence": "U.S. stock-index futures were little changed on Sunday, as it appeared the U.S. was on the verge of an all-out trade war with Canada, one of its biggest trading partners.",
+    "evidence": "",
     "evidence_type": "UNKNOWN",
-    "action_type": "TARIFFS",
-    "action_event_type": "Economic",
-    "action_detail": "were",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEUTRAL",
+    "action_type": "DIES",
+    "action_event_type": "Leadership",
+    "action_detail": "",
+    "action_status": "UNKNOWN",
+    "action_polarity": "UNKNOWN",
     "event_time": "",
-    "location_str": "Sunday",
+    "location_str": "",
     "entities": [
       {
-        "entity_id": "ORG_US_STOCK_INDEX_FUTURES",
-        "entity_name": "U.S. stock-index futures",
-        "entity_type": "Organization",
+        "entity_id": "PERS_NETANYAHU",
+        "entity_name": "Netanyahu",
+        "entity_type": "Person",
         "role": "SUBJECT"
       },
       {
-        "entity_id": "ORG_LITTLE_CHANGED",
-        "entity_name": "little changed",
-        "entity_type": "Organization",
+        "entity_id": "CTRY_IRN",
+        "entity_name": "Iran, Islamic Republic of",
+        "entity_type": "Country",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 23137,
-    "article_url": "https://www.marketwatch.com/story/stock-futures-slip-as-u-s-and-canada-appear-headed-for-trade-war-a9814b24?mod=mw_rss_topstories",
+    "article_id": 23730,
+    "article_url": "https://www.aljazeera.com/news/2026/8/24/ambush-in-south-sudan-kills-peacekeeping-troops?traffic_source=rss",
     "subject": {
-      "name": "United States",
-      "entity_id": "CTRY_UNITED_STATES",
-      "type": "Country",
+      "name": "Armed men",
+      "entity_id": "PERS_ARMED_MEN",
+      "type": "Person",
       "object_type": "ENTITY"
     },
     "action": {
-      "type": "TARIFFS",
-      "status": "EXPECTED",
-      "polarity": "NEGATIVE",
-      "verb": "was"
+      "type": "DIES",
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
     },
     "object": {
-      "name": "on the verge of an all-out trade war with Canada",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
+      "name": "South Sudan",
+      "entity_id": "CTRY_SSD",
+      "type": "Country",
+      "object_type": "ENTITY"
     },
     "time": {
       "raw": null,
       "value": null
     },
     "location": {
-      "name": "Canada",
+      "name": null,
       "entity_id": null,
       "type": null
     },
     "confidence": null,
-    "evidence": "as it appeared the U.S. was on the verge of an all-out trade war with Canada, one of its biggest trading partners.",
+    "evidence": "",
     "evidence_type": "UNKNOWN",
-    "action_type": "TARIFFS",
-    "action_event_type": "Economic",
-    "action_detail": "was",
-    "action_status": "EXPECTED",
-    "action_polarity": "NEGATIVE",
+    "action_type": "DIES",
+    "action_event_type": "Leadership",
+    "action_detail": "",
+    "action_status": "UNKNOWN",
+    "action_polarity": "UNKNOWN",
     "event_time": "",
-    "location_str": "Canada",
+    "location_str": "",
     "entities": [
       {
-        "entity_id": "CTRY_UNITED_STATES",
-        "entity_name": "United States",
-        "entity_type": "Country",
+        "entity_id": "PERS_ARMED_MEN",
+        "entity_name": "Armed men",
+        "entity_type": "Person",
         "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_SSD",
+        "entity_name": "South Sudan",
+        "entity_type": "Country",
+        "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 23122,
-    "article_url": "https://thehill.com/policy/international/6045895-carney-denounces-us-tariffs/",
+    "article_id": 23747,
+    "article_url": "https://finance.yahoo.com/markets/crypto/articles/donald-trump-sold-microstrategy-bought-160252807.html",
     "subject": {
-      "name": "United States",
-      "entity_id": "CTRY_USA",
-      "type": "Country",
+      "name": "President Donald Trump",
+      "entity_id": "PERS_PRESIDENT_DONALD_TRUMP",
+      "type": "Person",
       "object_type": "ENTITY"
     },
     "action": {
-      "type": "ATTACKS",
+      "type": "OTHER",
       "status": "COMPLETED",
-      "polarity": "NEGATIVE",
-      "verb": "proposed"
+      "polarity": "NEUTRAL",
+      "verb": "Sold and Bought"
     },
     "object": {
-      "name": "new terms",
-      "entity_id": "ORG_NEW_TERMS",
-      "type": "Organization",
-      "object_type": "ENTITY"
+      "name": "MicroStrategy and Two Other Crypto Stocks",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
     },
     "time": {
-      "raw": "recent days",
+      "raw": "June",
       "value": null
     },
     "location": {
@@ -3433,432 +2224,53 @@
       "type": null
     },
     "confidence": 1,
-    "evidence": "In recent days, the United States proposed new terms that were uneconomic, unfair, and undermined the net benefits for Canada",
+    "evidence": "Donald Trump Sold MicroStrategy and Bought Two Other Crypto Stocks",
     "evidence_type": "UNKNOWN",
-    "action_type": "ATTACKS",
-    "action_event_type": "Military",
-    "action_detail": "proposed",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "Sold and Bought",
     "action_status": "COMPLETED",
-    "action_polarity": "NEGATIVE",
-    "event_time": "recent days",
+    "action_polarity": "NEUTRAL",
+    "event_time": "June",
     "location_str": "",
     "entities": [
       {
-        "entity_id": "CTRY_USA",
-        "entity_name": "United States",
-        "entity_type": "Country",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_NEW_TERMS",
-        "entity_name": "new terms",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 23122,
-    "article_url": "https://thehill.com/policy/international/6045895-carney-denounces-us-tariffs/",
-    "subject": {
-      "name": "United States",
-      "entity_id": "CTRY_USA",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "ATTACKS",
-      "status": "COMPLETED",
-      "polarity": "NEGATIVE",
-      "verb": "attacked"
-    },
-    "object": {
-      "name": "Ottawa",
-      "entity_id": "LOC_OTTAWA",
-      "type": "Location",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "Sunday",
-      "value": null
-    },
-    "location": {
-      "name": "Canada",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Canadian Prime Minister Mark Carney on Sunday said the U.S. attacked Ottawa with tariffs, escalating a trade war",
-    "evidence_type": "UNKNOWN",
-    "action_type": "ATTACKS",
-    "action_event_type": "Military",
-    "action_detail": "attacked",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEGATIVE",
-    "event_time": "Sunday",
-    "location_str": "Canada",
-    "entities": [
-      {
-        "entity_id": "CTRY_USA",
-        "entity_name": "United States",
-        "entity_type": "Country",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "LOC_OTTAWA",
-        "entity_name": "Ottawa",
-        "entity_type": "Location",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 23122,
-    "article_url": "https://thehill.com/policy/international/6045895-carney-denounces-us-tariffs/",
-    "subject": {
-      "name": "trade war",
-      "entity_id": "ORG_TRADE_WAR",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "ESCALATES",
-      "status": "ONGOING",
-      "polarity": "NEGATIVE",
-      "verb": "escalating"
-    },
-    "object": {
-      "name": "trade war",
-      "entity_id": "ORG_TRADE_WAR",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "N/A",
-      "value": null
-    },
-    "location": {
-      "name": "border",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 0.9,
-    "evidence": "escalating a trade war that will impact residents on both sides of the border",
-    "evidence_type": "UNKNOWN",
-    "action_type": "ESCALATES",
-    "action_event_type": "Military",
-    "action_detail": "escalating",
-    "action_status": "ONGOING",
-    "action_polarity": "NEGATIVE",
-    "event_time": "N/A",
-    "location_str": "border",
-    "entities": [
-      {
-        "entity_id": "ORG_TRADE_WAR",
-        "entity_name": "trade war",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_TRADE_WAR",
-        "entity_name": "trade war",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 23127,
-    "article_url": "https://www.scmp.com/news/world/middle-east/article/3364997/syria-holds-talks-israel-addressing-de-escalation-and-israel-turkey-tensions?utm_source=rss_feed",
-    "subject": {
-      "name": "Syria",
-      "entity_id": "CTRY_SYRIA",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "ESCALATES",
-      "status": "COMPLETED",
-      "polarity": "NEUTRAL",
-      "verb": "held"
-    },
-    "object": {
-      "name": "talks with Israel",
-      "entity_id": "CTRY_TALKS_WITH_ISRAEL",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "Sunday",
-      "value": null
-    },
-    "location": {
-      "name": "Jordan",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Syria said it held talks with Israel in Jordan on Sunday on de-escalation after recent Israeli strikes, and on keeping the country out of tensions between Israel and Turkey, an ally of Damascus.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "ESCALATES",
-    "action_event_type": "Military",
-    "action_detail": "held",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "Sunday",
-    "location_str": "Jordan",
-    "entities": [
-      {
-        "entity_id": "CTRY_SYRIA",
-        "entity_name": "Syria",
-        "entity_type": "Country",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_TALKS_WITH_ISRAEL",
-        "entity_name": "talks with Israel",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 23127,
-    "article_url": "https://www.scmp.com/news/world/middle-east/article/3364997/syria-holds-talks-israel-addressing-de-escalation-and-israel-turkey-tensions?utm_source=rss_feed",
-    "subject": {
-      "name": "negotiations",
-      "entity_id": "ORG_NEGOTIATIONS",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "ESCALATES",
-      "status": "COMPLETED",
-      "polarity": "NEUTRAL",
-      "verb": "came"
-    },
-    "object": {
-      "name": "high-level negotiations",
-      "entity_id": "ORG_HIGH_LEVEL_NEGOTIATIONS",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "January",
-      "value": null
-    },
-    "location": {
-      "name": "Jordan",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "The high-level negotiations came after the sides in January agreed to establish an intelligence-sharing m",
-    "evidence_type": "UNKNOWN",
-    "action_type": "ESCALATES",
-    "action_event_type": "Military",
-    "action_detail": "came",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "January",
-    "location_str": "Jordan",
-    "entities": [
-      {
-        "entity_id": "ORG_NEGOTIATIONS",
-        "entity_name": "negotiations",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_HIGH_LEVEL_NEGOTIATIONS",
-        "entity_name": "high-level negotiations",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 23129,
-    "article_url": "https://www.scmp.com/news/world/russia-central-asia/article/3364991/zelensky-details-rift-ukraines-dismissed-defence-minister-fedorov?utm_source=rss_feed",
-    "subject": {
-      "name": "Zelensky",
-      "entity_id": "PERS_ZELENSKY",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "STATES",
-      "status": "COMPLETED",
-      "polarity": "NEUTRAL",
-      "verb": "said"
-    },
-    "object": {
-      "name": "actions taken by dismissed Defence Minister Mykhailo Fedorov, including his involvement in mass protests and calls for an election, were misguided",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": "unknown",
-      "value": null
-    },
-    "location": {
-      "name": "unknown",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1.0,
-    "evidence": "Ukrainian President Volodymyr Zelensky said he believes actions taken by dismissed Defence Minister Mykhailo Fedorov, including his involvement in mass protests and calls for an election, were misguided, as he publicly detailed their dispute for the first time.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "STATES",
-    "action_event_type": "Politics",
-    "action_detail": "said",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "unknown",
-    "location_str": "unknown",
-    "entities": [
-      {
-        "entity_id": "PERS_ZELENSKY",
-        "entity_name": "Zelensky",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 23129,
-    "article_url": "https://www.scmp.com/news/world/russia-central-asia/article/3364991/zelensky-details-rift-ukraines-dismissed-defence-minister-fedorov?utm_source=rss_feed",
-    "subject": {
-      "name": "Mykhailo Fedorov",
-      "entity_id": "PERS_MYKHAILO_FEDOROV",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "COMPLETED",
-      "polarity": "NEUTRAL",
-      "verb": "involved"
-    },
-    "object": {
-      "name": "mass protests and calls for an election",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": "unknown",
-      "value": null
-    },
-    "location": {
-      "name": "unknown",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 0.9,
-    "evidence": "Zelensky said he believes actions taken by dismissed Defence Minister Mykhailo Fedorov, including his involvement in mass protests and calls for an election, were misguided, as he publicly detailed their dispute for the first time.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "involved",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "unknown",
-    "location_str": "unknown",
-    "entities": [
-      {
-        "entity_id": "PERS_MYKHAILO_FEDOROV",
-        "entity_name": "Mykhailo Fedorov",
+        "entity_id": "PERS_PRESIDENT_DONALD_TRUMP",
+        "entity_name": "President Donald Trump",
         "entity_type": "Person",
         "role": "SUBJECT"
       },
       {
-        "entity_id": "ORG_MASS_PROTESTS",
-        "entity_name": "mass protests",
-        "entity_type": "Organization",
+        "entity_id": "COMP_MICROSTRATEGY",
+        "entity_name": "MicroStrategy",
+        "entity_type": "Company",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 23129,
-    "article_url": "https://www.scmp.com/news/world/russia-central-asia/article/3364991/zelensky-details-rift-ukraines-dismissed-defence-minister-fedorov?utm_source=rss_feed",
+    "article_id": 23747,
+    "article_url": "https://finance.yahoo.com/markets/crypto/articles/donald-trump-sold-microstrategy-bought-160252807.html",
     "subject": {
-      "name": "Zelensky",
-      "entity_id": "PERS_ZELENSKY",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "COMPLETED",
-      "polarity": "NEUTRAL",
-      "verb": "alluded"
-    },
-    "object": {
-      "name": "problematic dispute",
-      "entity_id": "ORG_PROBLEMATIC_DISPUTE",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "unknown",
-      "value": null
-    },
-    "location": {
-      "name": "unknown",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 0.9,
-    "evidence": "Zelensky also alluded to problematic d",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "alluded",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "unknown",
-    "location_str": "unknown",
-    "entities": [
-      {
-        "entity_id": "PERS_ZELENSKY",
-        "entity_name": "Zelensky",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_PROBLEMATIC_DISPUTE",
-        "entity_name": "problematic dispute",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 23126,
-    "article_url": "https://www.reddit.com/r/technology/comments/1vwm6ig/twitch_and_amazon_hit_with_lawsuit_for_training/",
-    "subject": {
-      "name": "Twitch",
-      "entity_id": "COMP_TWITCH",
+      "name": "Crypto Companies",
+      "entity_id": "COMP_CRYPTO_COMPANIES",
       "type": "Company",
       "object_type": "ENTITY"
     },
     "action": {
-      "type": "ATTACKS",
-      "status": "ATTEMPTED",
-      "polarity": "NEGATIVE",
-      "verb": "hit"
+      "type": "OTHER",
+      "status": "COMPLETED",
+      "polarity": "NEUTRAL",
+      "verb": "Involved"
     },
     "object": {
-      "name": "lawsuit",
-      "entity_id": "ORG_LAWSUIT",
-      "type": "Organization",
-      "object_type": "ENTITY"
+      "name": "7 crypto companies",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "AMOUNT"
     },
     "time": {
-      "raw": null,
+      "raw": "June",
       "value": null
     },
     "location": {
@@ -3867,43 +2279,86 @@
       "type": null
     },
     "confidence": 1,
-    "evidence": "Twitch and Amazon hit with lawsuit for training AI with streamers' content",
+    "evidence": "Only 7 involved crypto companies, and most of those were sales, according to a financial disclosure published Saturday.",
     "evidence_type": "UNKNOWN",
-    "action_type": "ATTACKS",
-    "action_event_type": "Military",
-    "action_detail": "hit",
-    "action_status": "ATTEMPTED",
-    "action_polarity": "NEGATIVE",
-    "event_time": "",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "Involved",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "June",
     "location_str": "",
     "entities": [
       {
-        "entity_id": "COMP_TWITCH",
-        "entity_name": "Twitch",
+        "entity_id": "COMP_CRYPTO_COMPANIES",
+        "entity_name": "Crypto Companies",
+        "entity_type": "Company",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 23747,
+    "article_url": "https://finance.yahoo.com/markets/crypto/articles/donald-trump-sold-microstrategy-bought-160252807.html",
+    "subject": {
+      "name": "Coinbase Global",
+      "entity_id": "COMP_COINBASE_GLOBAL",
+      "type": "Company",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "ONGOING",
+      "polarity": "NEUTRAL",
+      "verb": "Appears"
+    },
+    "object": {
+      "name": "Coinbase Global",
+      "entity_id": "COMP_COINBASE_GLOBAL",
+      "type": "Company",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "June 12, 18, and 23 (sales); June 24 (purchase)",
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Three sales were dated June 12, 18, and 23, totaling $116,003 to $315,000. A single purchase followed on June 24 in the $50,001-$100,000 band.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "Appears",
+    "action_status": "ONGOING",
+    "action_polarity": "NEUTRAL",
+    "event_time": "June 12, 18, and 23 (sales); June 24 (purchase)",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "COMP_COINBASE_GLOBAL",
+        "entity_name": "Coinbase Global",
         "entity_type": "Company",
         "role": "SUBJECT"
       },
       {
-        "entity_id": "COMP_AMAZON",
-        "entity_name": "Amazon",
+        "entity_id": "COMP_COINBASE_GLOBAL",
+        "entity_name": "Coinbase Global",
         "entity_type": "Company",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_LAWSUIT",
-        "entity_name": "lawsuit",
-        "entity_type": "Organization",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 23143,
-    "article_url": "https://news.un.org/feed/view/en/story/2026/08/1168163",
+    "article_id": 23715,
+    "article_url": "https://www.france24.com/en/europe/20260824-what-renewed-black-sea-blockade-means-ukraine-farmers",
     "subject": {
-      "name": "United Nations",
-      "entity_id": "ORG_UNITED_NATIONS",
-      "type": "Organization",
+      "name": "farmers",
+      "entity_id": "PERS_FARMERS",
+      "type": "Person",
       "object_type": "ENTITY"
     },
     "action": {
@@ -3913,8 +2368,8 @@
       "verb": ""
     },
     "object": {
-      "name": "Lebanon",
-      "entity_id": "CTRY_LBN",
+      "name": "Ukraine",
+      "entity_id": "CTRY_UKR",
       "type": "Country",
       "object_type": "ENTITY"
     },
@@ -3939,143 +2394,253 @@
     "location_str": "",
     "entities": [
       {
-        "entity_id": "ORG_UNITED_NATIONS",
-        "entity_name": "United Nations",
-        "entity_type": "Organization",
+        "entity_id": "PERS_FARMERS",
+        "entity_name": "farmers",
+        "entity_type": "Person",
         "role": "SUBJECT"
       },
       {
-        "entity_id": "CTRY_LBN",
-        "entity_name": "Lebanon",
+        "entity_id": "CTRY_UKR",
+        "entity_name": "Ukraine",
         "entity_type": "Country",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 23149,
-    "article_url": "https://www.engadget.com/2242200/openai-calls-for-california-to-strengthen-ai-safety-laws/",
+    "article_id": 23706,
+    "article_url": "https://www.reddit.com/r/technology/comments/1vx1fj4/a_drone_killed_three_ukrainians_it_was_guided/",
     "subject": {
-      "name": "OpenAI",
-      "entity_id": "COMP_OPENAI",
-      "type": "Company",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "STATES",
-      "status": "ANNOUNCED",
-      "polarity": "NEUTRAL",
-      "verb": "called for"
-    },
-    "object": {
-      "name": "California",
-      "entity_id": "ORG_CALIFORNIA",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "2026-08-22T19:27:04+00:00",
-      "value": null
-    },
-    "location": {
-      "name": "California",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1.0,
-    "evidence": "The AI leader said that the state’s SB 53 framework should “be amended to expand safeguards.”",
-    "evidence_type": "UNKNOWN",
-    "action_type": "STATES",
-    "action_event_type": "Politics",
-    "action_detail": "called for",
-    "action_status": "ANNOUNCED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "2026-08-22T19:27:04+00:00",
-    "location_str": "California",
-    "entities": [
-      {
-        "entity_id": "COMP_OPENAI",
-        "entity_name": "OpenAI",
-        "entity_type": "Company",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_CALIFORNIA",
-        "entity_name": "California",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 23149,
-    "article_url": "https://www.engadget.com/2242200/openai-calls-for-california-to-strengthen-ai-safety-laws/",
-    "subject": {
-      "name": "state's SB 53 framework",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "action": {
-      "type": "STATES",
-      "status": "PLANNED",
-      "polarity": "NEUTRAL",
-      "verb": "amended"
-    },
-    "object": {
-      "name": "safeguards",
-      "entity_id": "ORG_SAFEGUARDS",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "2026-08-22T19:27:04+00:00",
-      "value": null
-    },
-    "location": {
-      "name": "California",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1.0,
-    "evidence": "The AI leader said that the state’s SB 53 framework should “be amended to expand safeguards.”",
-    "evidence_type": "UNKNOWN",
-    "action_type": "STATES",
-    "action_event_type": "Politics",
-    "action_detail": "amended",
-    "action_status": "PLANNED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "2026-08-22T19:27:04+00:00",
-    "location_str": "California",
-    "entities": [
-      {
-        "entity_id": "ORG_SAFEGUARDS",
-        "entity_name": "safeguards",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 23144,
-    "article_url": "https://www.ft.com/content/12f457bc-8cb0-45bd-bf7f-83abf2d9c7d8?syn-25a6b1a6=1",
-    "subject": {
-      "name": "Jason Satsky",
-      "entity_id": "PERS_JASON_SATSKY",
+      "name": "A.I.",
+      "entity_id": "PERS_AI",
       "type": "Person",
       "object_type": "ENTITY"
     },
     "action": {
-      "type": "ACCUSES",
-      "status": "COMPLETED",
-      "polarity": "NEGATIVE",
-      "verb": "helped"
+      "type": "ATTACKS",
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
     },
     "object": {
-      "name": "$18.5mn",
+      "name": "Russian Federation",
+      "entity_id": "CTRY_RUSSIAN_FEDERATION",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": null,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "ATTACKS",
+    "action_event_type": "Military",
+    "action_detail": "",
+    "action_status": "UNKNOWN",
+    "action_polarity": "UNKNOWN",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "PERS_AI",
+        "entity_name": "A.I.",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_RUSSIAN_FEDERATION",
+        "entity_name": "Russian Federation",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 23634,
+    "article_url": "https://news.un.org/feed/view/en/story/2026/08/1168188",
+    "subject": {
+      "name": "United Nations",
+      "entity_id": "ORG_UNITED_NATIONS",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "ESCALATES",
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
+    },
+    "object": {
+      "name": "Sudan",
+      "entity_id": "CTRY_SDN",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": null,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "ESCALATES",
+    "action_event_type": "Military",
+    "action_detail": "",
+    "action_status": "UNKNOWN",
+    "action_polarity": "UNKNOWN",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "ORG_UNITED_NATIONS",
+        "entity_name": "United Nations",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_SDN",
+        "entity_name": "Sudan",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 23635,
+    "article_url": "https://www.scmp.com/news/world/middle-east/article/3365128/netanyahu-says-iran-tried-kill-one-his-sons?utm_source=rss_feed",
+    "subject": {
+      "name": "Netanyahu",
+      "entity_id": "PERS_NETANYAHU",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "DIES",
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
+    },
+    "object": {
+      "name": "Iran, Islamic Republic of",
+      "entity_id": "CTRY_IRN",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": null,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "DIES",
+    "action_event_type": "Leadership",
+    "action_detail": "",
+    "action_status": "UNKNOWN",
+    "action_polarity": "UNKNOWN",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "PERS_NETANYAHU",
+        "entity_name": "Netanyahu",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_IRN",
+        "entity_name": "Iran, Islamic Republic of",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 23744,
+    "article_url": "https://www.bloomberg.com/news/articles/2026-08-24/gold-holds-near-three-month-high-as-traders-weigh-treasury-moves",
+    "subject": {
+      "name": "Gold",
+      "entity_id": "COMP_GOLD",
+      "type": "Company",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "SURGES",
+      "status": "COMPLETED",
+      "polarity": "POSITIVE",
+      "verb": "climbed"
+    },
+    "object": {
+      "name": "highest in more than three months",
       "entity_id": null,
       "type": "Other",
-      "object_type": "AMOUNT"
+      "object_type": "STATEMENT"
+    },
+    "time": {
+      "raw": "more than three months",
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Gold climbed to the highest in more than three months",
+    "evidence_type": "UNKNOWN",
+    "action_type": "SURGES",
+    "action_event_type": "Finance",
+    "action_detail": "climbed",
+    "action_status": "COMPLETED",
+    "action_polarity": "POSITIVE",
+    "event_time": "more than three months",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "COMP_GOLD",
+        "entity_name": "Gold",
+        "entity_type": "Company",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 23744,
+    "article_url": "https://www.bloomberg.com/news/articles/2026-08-24/gold-holds-near-three-month-high-as-traders-weigh-treasury-moves",
+    "subject": {
+      "name": "Gold",
+      "entity_id": "COMP_GOLD",
+      "type": "Company",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "SURGES",
+      "status": "ONGOING",
+      "polarity": "NEUTRAL",
+      "verb": "holds"
+    },
+    "object": {
+      "name": "three-month high",
+      "entity_id": "ORG_THREE_MONTH_HIGH",
+      "type": "Organization",
+      "object_type": "ENTITY"
     },
     "time": {
       "raw": null,
@@ -4087,41 +2652,1026 @@
       "type": null
     },
     "confidence": 1,
-    "evidence": "Regulator says Jason Satsky helped a friend make $18.5mn in illegal profits tied to planned takeover",
+    "evidence": "Gold Holds Near Three-Month High as Traders Weigh Treasury Moves",
     "evidence_type": "UNKNOWN",
-    "action_type": "ACCUSES",
-    "action_event_type": "Legal",
-    "action_detail": "helped",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEGATIVE",
+    "action_type": "SURGES",
+    "action_event_type": "Finance",
+    "action_detail": "holds",
+    "action_status": "ONGOING",
+    "action_polarity": "NEUTRAL",
     "event_time": "",
     "location_str": "",
     "entities": [
       {
-        "entity_id": "PERS_JASON_SATSKY",
-        "entity_name": "Jason Satsky",
+        "entity_id": "COMP_GOLD",
+        "entity_name": "Gold",
+        "entity_type": "Company",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_THREE_MONTH_HIGH",
+        "entity_name": "three-month high",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 23630,
+    "article_url": "https://news.un.org/feed/view/en/story/2026/08/1168191",
+    "subject": {
+      "name": "civilians",
+      "entity_id": "PERS_CIVILIANS",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "GROWS",
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
+    },
+    "object": {
+      "name": "Russia-Ukraine",
+      "entity_id": "ORG_RUSSIA_UKRAINE",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": null,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "GROWS",
+    "action_event_type": "Economic",
+    "action_detail": "",
+    "action_status": "UNKNOWN",
+    "action_polarity": "UNKNOWN",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "PERS_CIVILIANS",
+        "entity_name": "civilians",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_RUSSIA_UKRAINE",
+        "entity_name": "Russia-Ukraine",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 23737,
+    "article_url": "https://techcrunch.com/2026/08/24/trump-bought-spacex-shares-two-weeks-after-blockbuster-ipo/",
+    "subject": {
+      "name": "President Donald Trump",
+      "entity_id": "PERS_PRESIDENT_DONALD_TRUMP",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "BANS",
+      "status": "COMPLETED",
+      "polarity": "NEUTRAL",
+      "verb": "bought"
+    },
+    "object": {
+      "name": "$50,000 worth of SpaceX shares",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "AMOUNT"
+    },
+    "time": {
+      "raw": "June 23",
+      "value": null
+    },
+    "location": {
+      "name": "N/A",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "President Donald Trump bought as much as $50,000 worth of SpaceX shares on June 23, according to a financial disclosure first reported by Reuters, two weeks after the record-setting IPO of Elon Musk’s company.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "BANS",
+    "action_event_type": "Legal",
+    "action_detail": "bought",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "June 23",
+    "location_str": "N/A",
+    "entities": [
+      {
+        "entity_id": "PERS_PRESIDENT_DONALD_TRUMP",
+        "entity_name": "President Donald Trump",
         "entity_type": "Person",
         "role": "SUBJECT"
       }
     ]
   },
   {
-    "article_id": 23144,
-    "article_url": "https://www.ft.com/content/12f457bc-8cb0-45bd-bf7f-83abf2d9c7d8?syn-25a6b1a6=1",
+    "article_id": 23737,
+    "article_url": "https://techcrunch.com/2026/08/24/trump-bought-spacex-shares-two-weeks-after-blockbuster-ipo/",
     "subject": {
-      "name": "illegal profits",
-      "entity_id": "ORG_ILLEGAL_PROFITS",
+      "name": "SpaceX shares",
+      "entity_id": "COMP_SPACEX_SHARES",
+      "type": "Company",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "BANS",
+      "status": "COMPLETED",
+      "polarity": "NEUTRAL",
+      "verb": "finished trading"
+    },
+    "object": {
+      "name": "$135",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "AMOUNT"
+    },
+    "time": {
+      "raw": "Monday",
+      "value": null
+    },
+    "location": {
+      "name": "N/A",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "SpaceX finished trading on Monday back at its IPO price of $135.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "BANS",
+    "action_event_type": "Legal",
+    "action_detail": "finished trading",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "Monday",
+    "location_str": "N/A",
+    "entities": [
+      {
+        "entity_id": "COMP_SPACEX_SHARES",
+        "entity_name": "SpaceX shares",
+        "entity_type": "Company",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 23737,
+    "article_url": "https://techcrunch.com/2026/08/24/trump-bought-spacex-shares-two-weeks-after-blockbuster-ipo/",
+    "subject": {
+      "name": "SpaceX shares",
+      "entity_id": "COMP_SPACEX_SHARES",
+      "type": "Company",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "BANS",
+      "status": "ONGOING",
+      "polarity": "NEUTRAL",
+      "verb": "trading"
+    },
+    "object": {
+      "name": "mid-$150 range",
+      "entity_id": "ORG_MID_150_RANGE",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "June 23",
+      "value": null
+    },
+    "location": {
+      "name": "N/A",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "SpaceX shares were trading in the mid-$150 range on June 23.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "BANS",
+    "action_event_type": "Legal",
+    "action_detail": "trading",
+    "action_status": "ONGOING",
+    "action_polarity": "NEUTRAL",
+    "event_time": "June 23",
+    "location_str": "N/A",
+    "entities": [
+      {
+        "entity_id": "COMP_SPACEX_SHARES",
+        "entity_name": "SpaceX shares",
+        "entity_type": "Company",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_MID_150_RANGE",
+        "entity_name": "mid-$150 range",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 23675,
+    "article_url": "https://finance.yahoo.com/personal-finance/investing/article/bitcoin-and-ethereum-prices-today-monday-august-24-2026-prices-rising-as-investors-look-for-more-fed-clues-this-week-130538704.html",
+    "subject": {
+      "name": "Bitcoin",
+      "entity_id": "ORG_BITCOIN",
       "type": "Organization",
       "object_type": "ENTITY"
     },
     "action": {
-      "type": "ACCUSES",
-      "status": "COMPLETED",
-      "polarity": "NEGATIVE",
-      "verb": "make"
+      "type": "FUNDS",
+      "status": "ONGOING",
+      "polarity": "POSITIVE",
+      "verb": "rising"
     },
     "object": {
-      "name": "$18.5mn",
+      "name": "",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "time": {
+      "raw": "Monday, August 24, 2026",
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1.0,
+    "evidence": "Bitcoin and ethereum prices today, Monday, August 24, 2026: Prices rising, as investors look for more Fed clues this week",
+    "evidence_type": "UNKNOWN",
+    "action_type": "FUNDS",
+    "action_event_type": "Economic",
+    "action_detail": "rising",
+    "action_status": "ONGOING",
+    "action_polarity": "POSITIVE",
+    "event_time": "Monday, August 24, 2026",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "ORG_BITCOIN",
+        "entity_name": "Bitcoin",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_ETHEREUM_PRICES",
+        "entity_name": "ethereum prices",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 23675,
+    "article_url": "https://finance.yahoo.com/personal-finance/investing/article/bitcoin-and-ethereum-prices-today-monday-august-24-2026-prices-rising-as-investors-look-for-more-fed-clues-this-week-130538704.html",
+    "subject": {
+      "name": "Bitcoin",
+      "entity_id": "ORG_BITCOIN",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "FUNDS",
+      "status": "COMPLETED",
+      "polarity": "NEUTRAL",
+      "verb": "created"
+    },
+    "object": {
+      "name": "",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "time": {
+      "raw": "January 2009",
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1.0,
+    "evidence": "Bitcoin was launched soon after, in January 2009.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "FUNDS",
+    "action_event_type": "Economic",
+    "action_detail": "created",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "January 2009",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "ORG_BITCOIN",
+        "entity_name": "Bitcoin",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 23675,
+    "article_url": "https://finance.yahoo.com/personal-finance/investing/article/bitcoin-and-ethereum-prices-today-monday-august-24-2026-prices-rising-as-investors-look-for-more-fed-clues-this-week-130538704.html",
+    "subject": {
+      "name": "Bitcoin",
+      "entity_id": "ORG_BITCOIN",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "STATES",
+      "status": "COMPLETED",
+      "polarity": "NEUTRAL",
+      "verb": "described"
+    },
+    "object": {
+      "name": "2008 whitepaper",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "AMOUNT"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1.0,
+    "evidence": "Bitcoin is a decentralized cryptocurrency originally described in a 2008 whitepaper by a person, or group of people, using the alias Satoshi Nakamoto.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "STATES",
+    "action_event_type": "Politics",
+    "action_detail": "described",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "ORG_BITCOIN",
+        "entity_name": "Bitcoin",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 23637,
+    "article_url": "https://www.nytimes.com/2026/08/24/world/middleeast/iran-sanctions-economy-us-trump.html",
+    "subject": {
+      "name": "Iran, Islamic Republic of",
+      "entity_id": "CTRY_IRN",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "SANCTIONS",
+      "status": "COMPLETED",
+      "polarity": "NEUTRAL",
+      "verb": "vowed"
+    },
+    "object": {
+      "name": "not a single drop of oil",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
+    },
+    "time": {
+      "raw": "unknown",
+      "value": null
+    },
+    "location": {
+      "name": "gulf",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "One Iranian official vowed that “not a single drop of oil” would leave the gulf",
+    "evidence_type": "UNKNOWN",
+    "action_type": "SANCTIONS",
+    "action_event_type": "Economic",
+    "action_detail": "vowed",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "unknown",
+    "location_str": "gulf",
+    "entities": [
+      {
+        "entity_id": "CTRY_IRN",
+        "entity_name": "Iran, Islamic Republic of",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 23637,
+    "article_url": "https://www.nytimes.com/2026/08/24/world/middleeast/iran-sanctions-economy-us-trump.html",
+    "subject": {
+      "name": "Iran, Islamic Republic of",
+      "entity_id": "CTRY_IRN",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "SANCTIONS",
+      "status": "ANNOUNCED",
+      "polarity": "NEUTRAL",
+      "verb": "pledges"
+    },
+    "object": {
+      "name": "defy Trump’s economic sanctions",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "time": {
+      "raw": "unknown",
+      "value": null
+    },
+    "location": {
+      "name": "unknown",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.9,
+    "evidence": "Iran Pledges to Defy Trump’s Economic Sanctions",
+    "evidence_type": "UNKNOWN",
+    "action_type": "SANCTIONS",
+    "action_event_type": "Economic",
+    "action_detail": "pledges",
+    "action_status": "ANNOUNCED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "unknown",
+    "location_str": "unknown",
+    "entities": [
+      {
+        "entity_id": "CTRY_IRN",
+        "entity_name": "Iran, Islamic Republic of",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 23645,
+    "article_url": "https://www.bloomberg.com/news/articles/2026-08-24/canadian-stocks-whipsaw-after-us-trade-talks-break-down",
+    "subject": {
+      "name": "precious metals miners",
+      "entity_id": "COMP_PRECIOUS_METALS_MINERS",
+      "type": "Company",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "SURGES",
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
+    },
+    "object": {
+      "name": "Canadian",
+      "entity_id": "CTRY_CANADIAN",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": null,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "SURGES",
+    "action_event_type": "Finance",
+    "action_detail": "",
+    "action_status": "UNKNOWN",
+    "action_polarity": "UNKNOWN",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "COMP_PRECIOUS_METALS_MINERS",
+        "entity_name": "precious metals miners",
+        "entity_type": "Company",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_CANADIAN",
+        "entity_name": "Canadian",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 23653,
+    "article_url": "https://www.aljazeera.com/news/liveblog/2026/8/25/iran-war-live-drat?traffic_source=rss",
+    "subject": {
+      "name": "Scott Bessent",
+      "entity_id": "PERS_SCOTT_BESSENT",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "SANCTIONS",
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
+    },
+    "object": {
+      "name": "United States",
+      "entity_id": "CTRY_UNITED_STATES",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": null,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "SANCTIONS",
+    "action_event_type": "Economic",
+    "action_detail": "",
+    "action_status": "UNKNOWN",
+    "action_polarity": "UNKNOWN",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "PERS_SCOTT_BESSENT",
+        "entity_name": "Scott Bessent",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_UNITED_STATES",
+        "entity_name": "United States",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 23668,
+    "article_url": "https://www.ft.com/content/8a6b85f1-2df8-40b1-bc2e-8faecb8a8214?syn-25a6b1a6=1",
+    "subject": {
+      "name": "Big Indian corporations",
+      "entity_id": "CTRY_BIG_INDIAN_CORPORATIONS",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "ONGOING",
+      "polarity": "NEUTRAL",
+      "verb": "want"
+    },
+    "object": {
+      "name": "piece of the booming gold-backed loan business",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Big Indian corporations want a piece of the booming gold-backed loan business",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "want",
+    "action_status": "ONGOING",
+    "action_polarity": "NEUTRAL",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "CTRY_BIG_INDIAN_CORPORATIONS",
+        "entity_name": "Big Indian corporations",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 23639,
+    "article_url": "https://www.scmp.com/news/world/europe/article/3365104/uk-police-arrest-12-after-deadly-wrong-way-crash-killed-7?utm_source=rss_feed",
+    "subject": {
+      "name": "British police",
+      "entity_id": "ORG_BRITISH_POLICE",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "ARRESTS",
+      "status": "COMPLETED",
+      "polarity": "NEUTRAL",
+      "verb": "arrested"
+    },
+    "object": {
+      "name": "12 people",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "AMOUNT"
+    },
+    "time": {
+      "raw": "Saturday",
+      "value": null
+    },
+    "location": {
+      "name": "major road",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "British police have arrested 12 people after a car pursued by police crashed while driving the wrong way on a major road, killing five youths and two officers.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "ARRESTS",
+    "action_event_type": "Legal",
+    "action_detail": "arrested",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "Saturday",
+    "location_str": "major road",
+    "entities": [
+      {
+        "entity_id": "ORG_BRITISH_POLICE",
+        "entity_name": "British police",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 23639,
+    "article_url": "https://www.scmp.com/news/world/europe/article/3365104/uk-police-arrest-12-after-deadly-wrong-way-crash-killed-7?utm_source=rss_feed",
+    "subject": {
+      "name": "AVIS BUDGET",
+      "entity_id": "COMP_AVIS_BUDGET",
+      "type": "Company",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "CRASHES",
+      "status": "COMPLETED",
+      "polarity": "NEGATIVE",
+      "verb": "crashed"
+    },
+    "object": {
+      "name": "AVIS BUDGET",
+      "entity_id": "COMP_AVIS_BUDGET",
+      "type": "Company",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "Saturday",
+      "value": null
+    },
+    "location": {
+      "name": "major road",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "a car pursued by police crashed while driving the wrong way on a major road",
+    "evidence_type": "UNKNOWN",
+    "action_type": "CRASHES",
+    "action_event_type": "Finance",
+    "action_detail": "crashed",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEGATIVE",
+    "event_time": "Saturday",
+    "location_str": "major road",
+    "entities": [
+      {
+        "entity_id": "COMP_AVIS_BUDGET",
+        "entity_name": "AVIS BUDGET",
+        "entity_type": "Company",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "COMP_AVIS_BUDGET",
+        "entity_name": "AVIS BUDGET",
+        "entity_type": "Company",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 23639,
+    "article_url": "https://www.scmp.com/news/world/europe/article/3365104/uk-police-arrest-12-after-deadly-wrong-way-crash-killed-7?utm_source=rss_feed",
+    "subject": {
+      "name": "crash",
+      "entity_id": "ORG_CRASH",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "ARRESTS",
+      "status": "COMPLETED",
+      "polarity": "NEGATIVE",
+      "verb": "killed"
+    },
+    "object": {
+      "name": "5 youths and 2 officers",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "AMOUNT"
+    },
+    "time": {
+      "raw": "Saturday",
+      "value": null
+    },
+    "location": {
+      "name": "major road",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "killing five youths and two officers.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "ARRESTS",
+    "action_event_type": "Legal",
+    "action_detail": "killed",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEGATIVE",
+    "event_time": "Saturday",
+    "location_str": "major road",
+    "entities": [
+      {
+        "entity_id": "ORG_CRASH",
+        "entity_name": "crash",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 23662,
+    "article_url": "https://news.un.org/feed/view/en/story/2026/08/1168190",
+    "subject": {
+      "name": "Global food supply",
+      "entity_id": "ORG_GLOBAL_FOOD_SUPPLY",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "COMPLETED",
+      "polarity": "NEGATIVE",
+      "verb": "has become"
+    },
+    "object": {
+      "name": "collateral damage' in conflicts",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Global food supply has become ‘collateral damage’ in conflicts: Secretary-General",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "has become",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEGATIVE",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "ORG_GLOBAL_FOOD_SUPPLY",
+        "entity_name": "Global food supply",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 23662,
+    "article_url": "https://news.un.org/feed/view/en/story/2026/08/1168190",
+    "subject": {
+      "name": "Disruption of maritime traffic",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "ONGOING",
+      "polarity": "NEGATIVE",
+      "verb": "worsened"
+    },
+    "object": {
+      "name": "hunger crises",
+      "entity_id": "ORG_HUNGER_CRISES",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "Monday",
+      "value": null
+    },
+    "location": {
+      "name": "Strait of Hormuz, Black Sea and Bab al-Mandab Strait",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "The disruption of maritime traffic in the Strait of Hormuz, Black Sea and Bab al-Mandab Strait has worsened hunger crises and must immediately end, UN Secretary-General António Guterres said.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "worsened",
+    "action_status": "ONGOING",
+    "action_polarity": "NEGATIVE",
+    "event_time": "Monday",
+    "location_str": "Strait of Hormuz, Black Sea and Bab al-Mandab Strait",
+    "entities": [
+      {
+        "entity_id": "ORG_HUNGER_CRISES",
+        "entity_name": "hunger crises",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 23662,
+    "article_url": "https://news.un.org/feed/view/en/story/2026/08/1168190",
+    "subject": {
+      "name": "Maritime chokepoints",
+      "entity_id": "ORG_MARITIME_CHOKEPOINTS",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "EXPECTED",
+      "polarity": "NEGATIVE",
+      "verb": "must never become instruments of coercion"
+    },
+    "object": {
+      "name": "maritime chokepoints",
+      "entity_id": "ORG_MARITIME_CHOKEPOINTS",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "The Secretary-General stressed that “maritime chokepoints must never become instruments of coercion” and that the delivery of food, energy and essential goods must never be impeded.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "must never become instruments of coercion",
+    "action_status": "EXPECTED",
+    "action_polarity": "NEGATIVE",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "ORG_MARITIME_CHOKEPOINTS",
+        "entity_name": "Maritime chokepoints",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_MARITIME_CHOKEPOINTS",
+        "entity_name": "maritime chokepoints",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 23651,
+    "article_url": "https://finance.yahoo.com/markets/stocks/articles/ahead-nvidia-earnings-heres-barchart-190002391.html",
+    "subject": {
+      "name": "Nvidia (NVDA) stock",
+      "entity_id": "COMP_NVIDIA_NVDA_STOCK",
+      "type": "Company",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "REPORTS",
+      "status": "ONGOING",
+      "polarity": "NEGATIVE",
+      "verb": "inching lower"
+    },
+    "object": {
+      "name": "Nvidia (NVDA) stock",
+      "entity_id": "COMP_NVIDIA_NVDA_STOCK",
+      "type": "Company",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "after the market closes on Aug. 26",
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Nvidia (NVDA) stock is inching lower ahead of the artificial intelligence (AI) chip leader's fiscal Q2 earnings, scheduled to be released after the market closes on Aug. 26.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "REPORTS",
+    "action_event_type": "Finance",
+    "action_detail": "inching lower",
+    "action_status": "ONGOING",
+    "action_polarity": "NEGATIVE",
+    "event_time": "after the market closes on Aug. 26",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "COMP_NVIDIA_NVDA_STOCK",
+        "entity_name": "Nvidia (NVDA) stock",
+        "entity_type": "Company",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "COMP_NVIDIA_NVDA_STOCK",
+        "entity_name": "Nvidia (NVDA) stock",
+        "entity_type": "Company",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 23651,
+    "article_url": "https://finance.yahoo.com/markets/stocks/articles/ahead-nvidia-earnings-heres-barchart-190002391.html",
+    "subject": {
+      "name": "Consensus for Nvidia",
+      "entity_id": "COMP_CONSENSUS_FOR_NVIDIA",
+      "type": "Company",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "REPORTS",
+      "status": "EXPECTED",
+      "polarity": "POSITIVE",
+      "verb": "record"
+    },
+    "object": {
+      "name": "$2.01 in earnings per share (EPS)",
       "entity_id": null,
       "type": "Other",
       "object_type": "AMOUNT"
@@ -4136,21 +3686,76 @@
       "type": null
     },
     "confidence": 1,
-    "evidence": "Regulator says Jason Satsky helped a friend make $18.5mn in illegal profits tied to planned takeover",
+    "evidence": "Consensus is for the semiconductor behemoth to record $2.01 in earnings per share (EPS) — more than double the figure it posted for the same quarter last year.",
     "evidence_type": "UNKNOWN",
-    "action_type": "ACCUSES",
-    "action_event_type": "Legal",
-    "action_detail": "make",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEGATIVE",
+    "action_type": "REPORTS",
+    "action_event_type": "Finance",
+    "action_detail": "record",
+    "action_status": "EXPECTED",
+    "action_polarity": "POSITIVE",
     "event_time": "",
     "location_str": "",
     "entities": [
       {
-        "entity_id": "ORG_ILLEGAL_PROFITS",
-        "entity_name": "illegal profits",
-        "entity_type": "Organization",
+        "entity_id": "COMP_CONSENSUS_FOR_NVIDIA",
+        "entity_name": "Consensus for Nvidia",
+        "entity_type": "Company",
         "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 23651,
+    "article_url": "https://finance.yahoo.com/markets/stocks/articles/ahead-nvidia-earnings-heres-barchart-190002391.html",
+    "subject": {
+      "name": "Nvidia shares",
+      "entity_id": "COMP_NVIDIA_SHARES",
+      "type": "Company",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "REPORTS",
+      "status": "ONGOING",
+      "polarity": "POSITIVE",
+      "verb": "remain up"
+    },
+    "object": {
+      "name": "nearly 15%",
+      "entity_id": "ORG_NEARLY_15",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "vs the start of this year",
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Despite a recent pullback, Nvidia shares remain up nearly 15% versus the start of this year.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "REPORTS",
+    "action_event_type": "Finance",
+    "action_detail": "remain up",
+    "action_status": "ONGOING",
+    "action_polarity": "POSITIVE",
+    "event_time": "vs the start of this year",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "COMP_NVIDIA_SHARES",
+        "entity_name": "Nvidia shares",
+        "entity_type": "Company",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_NEARLY_15",
+        "entity_name": "nearly 15%",
+        "entity_type": "Organization",
+        "role": "OBJECT"
       }
     ]
   }
