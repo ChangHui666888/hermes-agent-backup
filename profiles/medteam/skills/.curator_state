@@ -1,9 +1,9 @@
 {
-  "last_report_path": "C:\\Users\\ChangHui\\AppData\\Local\\hermes\\profiles\\medteam\\logs\\curator\\20260818-060815",
-  "last_run_at": "2026-08-18T06:08:15.015559+00:00",
-  "last_run_duration_seconds": 0.516568,
+  "last_report_path": "C:\\Users\\ChangHui\\AppData\\Local\\hermes\\profiles\\medteam\\logs\\curator\\20260825-073635",
+  "last_run_at": "2026-08-25T07:36:35.287900+00:00",
+  "last_run_duration_seconds": 0.556062,
   "last_run_summary": "auto: no changes; llm: skipped (consolidation off)",
   "last_run_summary_shown_at": null,
   "paused": false,
-  "run_count": 8
+  "run_count": 9
 }
