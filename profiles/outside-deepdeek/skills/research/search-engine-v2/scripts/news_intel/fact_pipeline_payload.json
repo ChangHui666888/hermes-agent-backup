@@ -1,895 +1,15 @@
 [
   {
-    "article_id": 25596,
-    "article_url": "https://www.marketwatch.com/story/judge-says-trump-administrations-blacklist-of-anthropic-was-illegal-5d3411e7?mod=mw_rss_topstories",
+    "article_id": 26789,
+    "article_url": "https://www.cnbc.com/2026/08/31/oil-prices-hormuz-iran-larak-island-centcom.html",
     "subject": {
-      "name": "Trump administration",
-      "entity_id": "ORG_TRUMP_ADMINISTRATION",
+      "name": "U.S. forces",
+      "entity_id": "ORG_US_FORCES",
       "type": "Organization",
       "object_type": "ENTITY"
     },
     "action": {
-      "type": "SANCTIONS",
-      "status": "COMPLETED",
-      "polarity": "NEGATIVE",
-      "verb": "violated"
-    },
-    "object": {
-      "name": "Anthropic's blacklist",
-      "entity_id": "COMP_ANTHROPICS_BLACKLIST",
-      "type": "Company",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "earlier this year",
-      "value": null
-    },
-    "location": {
-      "name": "N/A",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "The Trump administration violated Anthropic’s First Amendment rights when it blacklisted the AI company earlier this year.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "SANCTIONS",
-    "action_event_type": "Economic",
-    "action_detail": "violated",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEGATIVE",
-    "event_time": "earlier this year",
-    "location_str": "N/A",
-    "entities": [
-      {
-        "entity_id": "ORG_TRUMP_ADMINISTRATION",
-        "entity_name": "Trump administration",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "COMP_ANTHROPICS_BLACKLIST",
-        "entity_name": "Anthropic's blacklist",
-        "entity_type": "Company",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 25596,
-    "article_url": "https://www.marketwatch.com/story/judge-says-trump-administrations-blacklist-of-anthropic-was-illegal-5d3411e7?mod=mw_rss_topstories",
-    "subject": {
-      "name": "blacklist of Anthropic",
-      "entity_id": "COMP_BLACKLIST_OF_ANTHROPIC",
-      "type": "Company",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "SANCTIONS",
-      "status": "COMPLETED",
-      "polarity": "NEGATIVE",
-      "verb": "was"
-    },
-    "object": {
-      "name": "blacklisting",
-      "entity_id": "ORG_BLACKLISTING",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "late Thursday",
-      "value": null
-    },
-    "location": {
-      "name": "N/A",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "a federal judge ruled late Thursday.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "SANCTIONS",
-    "action_event_type": "Economic",
-    "action_detail": "was",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEGATIVE",
-    "event_time": "late Thursday",
-    "location_str": "N/A",
-    "entities": [
-      {
-        "entity_id": "COMP_BLACKLIST_OF_ANTHROPIC",
-        "entity_name": "blacklist of Anthropic",
-        "entity_type": "Company",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_BLACKLISTING",
-        "entity_name": "blacklisting",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 25588,
-    "article_url": "https://thehill.com/policy/technology/6056436-judge-rules-pentagon-anthropic-blacklist-illegal/",
-    "subject": {
-      "name": "United States Department of Defense",
-      "entity_id": "ORG_US_DOD",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "UNKNOWN",
-      "polarity": "UNKNOWN",
-      "verb": ""
-    },
-    "object": {
-      "name": "California",
-      "entity_id": "LOC_CALIFORNIA",
-      "type": "Location",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": null,
-    "evidence": "",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "",
-    "action_status": "UNKNOWN",
-    "action_polarity": "UNKNOWN",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "ORG_US_DOD",
-        "entity_name": "United States Department of Defense",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "LOC_CALIFORNIA",
-        "entity_name": "California",
-        "entity_type": "Location",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 25591,
-    "article_url": "https://www.scmp.com/plus/news/china/diplomacy/article/3365518/iran-expert-chinas-balancing-act-amid-conflict-us-and-israel?utm_source=rss_feed",
-    "subject": {
-      "name": "Trita Parsi",
-      "entity_id": "PERS_TRITA_PARSI",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "ONGOING",
-      "polarity": "NEUTRAL",
-      "verb": "is"
-    },
-    "object": {
-      "name": "co-founder and executive vice-president of the Quincy Institute",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": "unknown",
-      "value": null
-    },
-    "location": {
-      "name": "Washington",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1.0,
-    "evidence": "Trita Parsi is co-founder and executive vice-president of the Quincy Institute, a Washington-based think tank.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "is",
-    "action_status": "ONGOING",
-    "action_polarity": "NEUTRAL",
-    "event_time": "unknown",
-    "location_str": "Washington",
-    "entities": [
-      {
-        "entity_id": "PERS_TRITA_PARSI",
-        "entity_name": "Trita Parsi",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_CO_FOUNDER",
-        "entity_name": "co-founder",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 25591,
-    "article_url": "https://www.scmp.com/plus/news/china/diplomacy/article/3365518/iran-expert-chinas-balancing-act-amid-conflict-us-and-israel?utm_source=rss_feed",
-    "subject": {
-      "name": "Trita Parsi",
-      "entity_id": "PERS_TRITA_PARSI",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "ONGOING",
-      "polarity": "NEUTRAL",
-      "verb": "is an expert"
-    },
-    "object": {
-      "name": "US-Iranian relations, Iranian foreign policy and the geopolitics of the Middle East",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": "unknown",
-      "value": null
-    },
-    "location": {
-      "name": "Middle East",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1.0,
-    "evidence": "He is an expert on US-Iranian relations, Iranian foreign policy and the geopolitics of the Middle East.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "is an expert",
-    "action_status": "ONGOING",
-    "action_polarity": "NEUTRAL",
-    "event_time": "unknown",
-    "location_str": "Middle East",
-    "entities": [
-      {
-        "entity_id": "PERS_TRITA_PARSI",
-        "entity_name": "Trita Parsi",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_US_IRANIAN_RELATIONS",
-        "entity_name": "US-Iranian relations",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      },
-      {
-        "entity_id": "CTRY_IRANIAN_FOREIGN_POLICY",
-        "entity_name": "Iranian foreign policy",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 25591,
-    "article_url": "https://www.scmp.com/plus/news/china/diplomacy/article/3365518/iran-expert-chinas-balancing-act-amid-conflict-us-and-israel?utm_source=rss_feed",
-    "subject": {
-      "name": "Trita Parsi",
-      "entity_id": "PERS_TRITA_PARSI",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "COMPLETED",
-      "polarity": "NEUTRAL",
-      "verb": "has written"
-    },
-    "object": {
-      "name": "four books on US foreign policy in the Middle East",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": "unknown",
-      "value": null
-    },
-    "location": {
-      "name": "unknown",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1.0,
-    "evidence": "He has written four books on US foreign policy in the Middle East, with a particular",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "has written",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "unknown",
-    "location_str": "unknown",
-    "entities": [
-      {
-        "entity_id": "PERS_TRITA_PARSI",
-        "entity_name": "Trita Parsi",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 25601,
-    "article_url": "https://www.newsweek.com/judge-places-temporary-restraining-order-on-trumps-mail-in-ballot-limits-12378199",
-    "subject": {
-      "name": "U.S. District Judge Indira Talwani",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "action": {
-      "type": "SUES",
-      "status": "COMPLETED",
-      "polarity": "NEUTRAL",
-      "verb": "issued"
-    },
-    "object": {
-      "name": "14-day temporary restraining order",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "AMOUNT"
-    },
-    "time": {
-      "raw": "Thursday",
-      "value": null
-    },
-    "location": {
-      "name": "N/A",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "U.S. District Judge Indira Talwani, a nominee of former President Barack Obama, on Thursday issued a 14-day temporary restraining order preventing the U.S. Postal Service from enforcing portions of its newly issued rule.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "SUES",
-    "action_event_type": "Legal",
-    "action_detail": "issued",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "Thursday",
-    "location_str": "N/A",
-    "entities": []
-  },
-  {
-    "article_id": 25601,
-    "article_url": "https://www.newsweek.com/judge-places-temporary-restraining-order-on-trumps-mail-in-ballot-limits-12378199",
-    "subject": {
-      "name": "Federal judge",
-      "entity_id": "PERS_FEDERAL_JUDGE",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "BANS",
-      "status": "COMPLETED",
-      "polarity": "NEGATIVE",
-      "verb": "blocked"
-    },
-    "object": {
-      "name": "key portions of the Trump administration’s new rules governing mail-in ballots",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": "N/A",
-      "value": null
-    },
-    "location": {
-      "name": "N/A",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "A federal judge has temporarily blocked key portions of the Trump administration’s new rules governing mail-in ballots, placing another hurdle in the administration’s effort to implement President Donald Trump’s executive order targeting mail-in voting ahead of the 2026 midterm elections.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "BANS",
-    "action_event_type": "Legal",
-    "action_detail": "blocked",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEGATIVE",
-    "event_time": "N/A",
-    "location_str": "N/A",
-    "entities": [
-      {
-        "entity_id": "PERS_FEDERAL_JUDGE",
-        "entity_name": "Federal judge",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 25601,
-    "article_url": "https://www.newsweek.com/judge-places-temporary-restraining-order-on-trumps-mail-in-ballot-limits-12378199",
-    "subject": {
-      "name": "Trump administration",
-      "entity_id": "ORG_TRUMP_ADMINISTRATION",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "ELECTS",
-      "status": "PLANNED",
-      "polarity": "NEUTRAL",
-      "verb": "implement"
-    },
-    "object": {
-      "name": "executive order targeting mail-in voting",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": "ahead of the 2026 midterm elections",
-      "value": null
-    },
-    "location": {
-      "name": "N/A",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "placing another hurdle in the administration’s effort to implement President Donald Trump’s executive order targeting mail-in voting ahead of the 2026 midterm elections.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "ELECTS",
-    "action_event_type": "Politics",
-    "action_detail": "implement",
-    "action_status": "PLANNED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "ahead of the 2026 midterm elections",
-    "location_str": "N/A",
-    "entities": [
-      {
-        "entity_id": "ORG_TRUMP_ADMINISTRATION",
-        "entity_name": "Trump administration",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 25592,
-    "article_url": "https://www.reddit.com/r/technology/comments/1w0elei/judge_blocks_pentagon_blacklist_of_anthropic_as/",
-    "subject": {
-      "name": "Judge",
-      "entity_id": "PERS_JUDGE",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "BANS",
-      "status": "COMPLETED",
-      "polarity": "NEUTRAL",
-      "verb": "blocks"
-    },
-    "object": {
-      "name": "Pentagon blacklist of Anthropic as supply chain risk",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Judge blocks Pentagon blacklist of Anthropic as supply chain risk",
-    "evidence_type": "UNKNOWN",
-    "action_type": "BANS",
-    "action_event_type": "Legal",
-    "action_detail": "blocks",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "PERS_JUDGE",
-        "entity_name": "Judge",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 25593,
-    "article_url": "https://www.reddit.com/r/technology/comments/1w03k1i/ai_industry_says_trump_plans_to_tax_chips_in_the/",
-    "subject": {
-      "name": "AI industry",
-      "entity_id": "ORG_AI_INDUSTRY",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "STATES",
-      "status": "ANNOUNCED",
-      "polarity": "NEGATIVE",
-      "verb": "says"
-    },
-    "object": {
-      "name": "Trump plans to tax chips in the “single dumbest way imaginable”",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "AI industry says Trump plans to tax chips in the “single dumbest way imaginable”",
-    "evidence_type": "UNKNOWN",
-    "action_type": "STATES",
-    "action_event_type": "Politics",
-    "action_detail": "says",
-    "action_status": "ANNOUNCED",
-    "action_polarity": "NEGATIVE",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "ORG_AI_INDUSTRY",
-        "entity_name": "AI industry",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 25590,
-    "article_url": "https://www.theverge.com/ai-artificial-intelligence/985947/anthropic-supply-chain-risk-lawsuit-judge-ruling",
-    "subject": {
-      "name": "Pentagon's blacklisting of Anthropic",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "action": {
-      "type": "SANCTIONS",
-      "status": "COMPLETED",
-      "polarity": "POSITIVE",
-      "verb": "ruled"
-    },
-    "object": {
-      "name": "blacklisting of Anthropic",
-      "entity_id": "ORG_BLACKLISTING_OF_ANTHROPIC",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "Thursday",
-      "value": null
-    },
-    "location": {
-      "name": "California district court",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "On Thursday, a judge ruled that the Pentagon's blacklisting of Anthropic earlier this year was unconstitutional, delivering the AI lab a win in a monthslong rollercoaster of a battle with the Trump administration.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "SANCTIONS",
-    "action_event_type": "Economic",
-    "action_detail": "ruled",
-    "action_status": "COMPLETED",
-    "action_polarity": "POSITIVE",
-    "event_time": "Thursday",
-    "location_str": "California district court",
-    "entities": [
-      {
-        "entity_id": "ORG_BLACKLISTING_OF_ANTHROPIC",
-        "entity_name": "blacklisting of Anthropic",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 25590,
-    "article_url": "https://www.theverge.com/ai-artificial-intelligence/985947/anthropic-supply-chain-risk-lawsuit-judge-ruling",
-    "subject": {
-      "name": "Lawsuit",
-      "entity_id": "ORG_LAWSUIT",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "SANCTIONS",
-      "status": "COMPLETED",
-      "polarity": "UNKNOWN",
-      "verb": "filed"
-    },
-    "object": {
-      "name": "lawsuit",
-      "entity_id": "ORG_LAWSUIT",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "March",
-      "value": null
-    },
-    "location": {
-      "name": "California district court",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "The lawsuit, filed in March in a California district court, accused the Trump administ",
-    "evidence_type": "UNKNOWN",
-    "action_type": "SANCTIONS",
-    "action_event_type": "Economic",
-    "action_detail": "filed",
-    "action_status": "COMPLETED",
-    "action_polarity": "UNKNOWN",
-    "event_time": "March",
-    "location_str": "California district court",
-    "entities": [
-      {
-        "entity_id": "ORG_LAWSUIT",
-        "entity_name": "Lawsuit",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_LAWSUIT",
-        "entity_name": "lawsuit",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 25543,
-    "article_url": "https://www.scmp.com/news/asia/east-asia/article/3365517/japan-double-security-aid-12-indo-pacific-nations?utm_source=rss_feed",
-    "subject": {
-      "name": "armed forces",
-      "entity_id": "ORG_ARMED_FORCES",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "UNKNOWN",
-      "polarity": "UNKNOWN",
-      "verb": ""
-    },
-    "object": {
-      "name": "Japan",
-      "entity_id": "CTRY_JPN",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": null,
-    "evidence": "",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "",
-    "action_status": "UNKNOWN",
-    "action_polarity": "UNKNOWN",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "ORG_ARMED_FORCES",
-        "entity_name": "armed forces",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_JPN",
-        "entity_name": "Japan",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 25589,
-    "article_url": "https://www.reddit.com/r/technology/comments/1vzhm1p/nvidia_agrees_to_buy_open_source_model_repository/",
-    "subject": {
-      "name": "NVIDIA",
-      "entity_id": "COMP_NVIDIA",
-      "type": "Company",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "AGREES",
-      "status": "COMPLETED",
-      "polarity": "NEUTRAL",
-      "verb": "agrees to buy"
-    },
-    "object": {
-      "name": "Hugging Face",
-      "entity_id": "ORG_HUGGING_FACE",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "N/A",
-      "value": null
-    },
-    "location": {
-      "name": "N/A",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Nvidia Agrees to Buy Open Source Model Repository Hugging Face For $12.9 Billion",
-    "evidence_type": "UNKNOWN",
-    "action_type": "AGREES",
-    "action_event_type": "Diplomacy",
-    "action_detail": "agrees to buy",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "N/A",
-    "location_str": "N/A",
-    "entities": [
-      {
-        "entity_id": "COMP_NVIDIA",
-        "entity_name": "NVIDIA",
-        "entity_type": "Company",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_HUGGING_FACE",
-        "entity_name": "Hugging Face",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 25589,
-    "article_url": "https://www.reddit.com/r/technology/comments/1vzhm1p/nvidia_agrees_to_buy_open_source_model_repository/",
-    "subject": {
-      "name": "NVIDIA",
-      "entity_id": "COMP_NVIDIA",
-      "type": "Company",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "AGREES",
-      "status": "COMPLETED",
-      "polarity": "NEUTRAL",
-      "verb": "buy"
-    },
-    "object": {
-      "name": "Open Source Model Repository",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "time": {
-      "raw": "N/A",
-      "value": null
-    },
-    "location": {
-      "name": "Hugging Face",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Nvidia Agrees to Buy Open Source Model Repository Hugging Face For $12.9 Billion",
-    "evidence_type": "UNKNOWN",
-    "action_type": "AGREES",
-    "action_event_type": "Diplomacy",
-    "action_detail": "buy",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "N/A",
-    "location_str": "Hugging Face",
-    "entities": [
-      {
-        "entity_id": "COMP_NVIDIA",
-        "entity_name": "NVIDIA",
-        "entity_type": "Company",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 25589,
-    "article_url": "https://www.reddit.com/r/technology/comments/1vzhm1p/nvidia_agrees_to_buy_open_source_model_repository/",
-    "subject": {
-      "name": "Transaction",
-      "entity_id": "ORG_TRANSACTION",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "AGREES",
-      "status": "COMPLETED",
-      "polarity": "NEUTRAL",
-      "verb": "agrees"
-    },
-    "object": {
-      "name": "$12.9 Billion",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "AMOUNT"
-    },
-    "time": {
-      "raw": "N/A",
-      "value": null
-    },
-    "location": {
-      "name": "N/A",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Nvidia Agrees to Buy Open Source Model Repository Hugging Face For $12.9 Billion",
-    "evidence_type": "UNKNOWN",
-    "action_type": "AGREES",
-    "action_event_type": "Diplomacy",
-    "action_detail": "agrees",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "N/A",
-    "location_str": "N/A",
-    "entities": [
-      {
-        "entity_id": "ORG_TRANSACTION",
-        "entity_name": "Transaction",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 25554,
-    "article_url": "https://www.aljazeera.com/news/2026/8/28/federal-us-judge-faces-complaint-over-staunch-pro-israel-advocacy?traffic_source=rss",
-    "subject": {
-      "name": "lawyer",
-      "entity_id": "PERS_LAWYER",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
+      "type": "ATTACKS",
       "status": "UNKNOWN",
       "polarity": "UNKNOWN",
       "verb": ""
@@ -912,8 +32,8 @@
     "confidence": null,
     "evidence": "",
     "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
+    "action_type": "ATTACKS",
+    "action_event_type": "Military",
     "action_detail": "",
     "action_status": "UNKNOWN",
     "action_polarity": "UNKNOWN",
@@ -921,9 +41,9 @@
     "location_str": "",
     "entities": [
       {
-        "entity_id": "PERS_LAWYER",
-        "entity_name": "lawyer",
-        "entity_type": "Person",
+        "entity_id": "ORG_US_FORCES",
+        "entity_name": "U.S. forces",
+        "entity_type": "Organization",
         "role": "SUBJECT"
       },
       {
@@ -935,171 +55,25 @@
     ]
   },
   {
-    "article_id": 25559,
-    "article_url": "https://www.marketwatch.com/story/marvell-is-boosting-its-forecasts-but-thats-not-enough-to-lift-its-stock-c769556a?mod=mw_rss_topstories",
+    "article_id": 26774,
+    "article_url": "https://www.investing.com/news/stock-market-news/sk-hynix-weighs-intel-for-hbm4e-base-dies-herald-economy-reports-4882114",
     "subject": {
-      "name": "Marvell",
-      "entity_id": "COMP_MARVELL",
+      "name": "SK Hynix",
+      "entity_id": "COMP_SK_HYNIX",
       "type": "Company",
       "object_type": "ENTITY"
     },
     "action": {
-      "type": "CRASHES",
-      "status": "ANNOUNCED",
-      "polarity": "POSITIVE",
-      "verb": "boosts"
-    },
-    "object": {
-      "name": "forecasts",
-      "entity_id": "ORG_FORECASTS",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "2026-08-27T21:05:00.000Z",
-      "value": null
-    },
-    "location": {
-      "name": "unknown",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Marvell boosts its forecasts, but the stock slides as Wall Street wonders if there’s more to the story",
-    "evidence_type": "UNKNOWN",
-    "action_type": "CRASHES",
-    "action_event_type": "Finance",
-    "action_detail": "boosts",
-    "action_status": "ANNOUNCED",
-    "action_polarity": "POSITIVE",
-    "event_time": "2026-08-27T21:05:00.000Z",
-    "location_str": "unknown",
-    "entities": [
-      {
-        "entity_id": "COMP_MARVELL",
-        "entity_name": "Marvell",
-        "entity_type": "Company",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_FORECASTS",
-        "entity_name": "forecasts",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 25559,
-    "article_url": "https://www.marketwatch.com/story/marvell-is-boosting-its-forecasts-but-thats-not-enough-to-lift-its-stock-c769556a?mod=mw_rss_topstories",
-    "subject": {
-      "name": "the stock",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "action": {
-      "type": "CRASHES",
+      "type": "REPORTS",
       "status": "ONGOING",
-      "polarity": "NEGATIVE",
-      "verb": "slides"
+      "polarity": "NEUTRAL",
+      "verb": "considering"
     },
     "object": {
-      "name": "stock",
-      "entity_id": "ORG_STOCK",
-      "type": "Organization",
+      "name": "TSMC's 3nm technology",
+      "entity_id": "COMP_TSMCS_3NM_TECHNOLOGY",
+      "type": "Company",
       "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "unknown",
-      "value": null
-    },
-    "location": {
-      "name": "Wall Street",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 0.9,
-    "evidence": "but the stock slides as Wall Street wonders if there’s more to the story",
-    "evidence_type": "UNKNOWN",
-    "action_type": "CRASHES",
-    "action_event_type": "Finance",
-    "action_detail": "slides",
-    "action_status": "ONGOING",
-    "action_polarity": "NEGATIVE",
-    "event_time": "unknown",
-    "location_str": "Wall Street",
-    "entities": [
-      {
-        "entity_id": "ORG_STOCK",
-        "entity_name": "stock",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 25548,
-    "article_url": "https://www.aljazeera.com/news/2026/8/28/fired-stars-and-stripes-journalists-sue-trump-administration-for-censorship?traffic_source=rss",
-    "subject": {
-      "name": "Staff at the military newspaper",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "action": {
-      "type": "SUES",
-      "status": "COMPLETED",
-      "polarity": "NEGATIVE",
-      "verb": "filed"
-    },
-    "object": {
-      "name": "lawsuit against the United States Department of Defense",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": "Thursday",
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Three staff members from the Stars and Stripes military newspaper have filed a lawsuit against the United States Department of Defense, alleging that their recent firing was part of an effort to erode the paper’s independence.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "SUES",
-    "action_event_type": "Legal",
-    "action_detail": "filed",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEGATIVE",
-    "event_time": "Thursday",
-    "location_str": "",
-    "entities": []
-  },
-  {
-    "article_id": 25548,
-    "article_url": "https://www.aljazeera.com/news/2026/8/28/fired-stars-and-stripes-journalists-sue-trump-administration-for-censorship?traffic_source=rss",
-    "subject": {
-      "name": "US government",
-      "entity_id": "ORG_US_GOVERNMENT",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "SUES",
-      "status": "ATTEMPTED",
-      "polarity": "NEGATIVE",
-      "verb": "sought to violate"
-    },
-    "object": {
-      "name": "First Amendment rights to free speech",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
     },
     "time": {
       "raw": null,
@@ -1111,47 +85,53 @@
       "type": null
     },
     "confidence": 1,
-    "evidence": "Staff at the military newspaper allege that the US government seeks to violate their First Amendment rights to free speech.",
+    "evidence": "SK hynix is considering TSMC's 3nm technology for its HBM4E logic dies to gain a performance edge.",
     "evidence_type": "UNKNOWN",
-    "action_type": "SUES",
-    "action_event_type": "Legal",
-    "action_detail": "sought to violate",
-    "action_status": "ATTEMPTED",
-    "action_polarity": "NEGATIVE",
+    "action_type": "REPORTS",
+    "action_event_type": "Finance",
+    "action_detail": "considering",
+    "action_status": "ONGOING",
+    "action_polarity": "NEUTRAL",
     "event_time": "",
     "location_str": "",
     "entities": [
       {
-        "entity_id": "ORG_US_GOVERNMENT",
-        "entity_name": "US government",
-        "entity_type": "Organization",
+        "entity_id": "COMP_SK_HYNIX",
+        "entity_name": "SK Hynix",
+        "entity_type": "Company",
         "role": "SUBJECT"
+      },
+      {
+        "entity_id": "COMP_TSMCS_3NM_TECHNOLOGY",
+        "entity_name": "TSMC's 3nm technology",
+        "entity_type": "Company",
+        "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 25548,
-    "article_url": "https://www.aljazeera.com/news/2026/8/28/fired-stars-and-stripes-journalists-sue-trump-administration-for-censorship?traffic_source=rss",
+    "article_id": 26774,
+    "article_url": "https://www.investing.com/news/stock-market-news/sk-hynix-weighs-intel-for-hbm4e-base-dies-herald-economy-reports-4882114",
     "subject": {
-      "name": "Journalists",
-      "entity_id": "ORG_JOURNALISTS",
-      "type": "Organization",
+      "name": "SK Hynix",
+      "entity_id": "COMP_SK_HYNIX",
+      "type": "Company",
       "object_type": "ENTITY"
     },
     "action": {
-      "type": "SUES",
-      "status": "COMPLETED",
-      "polarity": "NEGATIVE",
-      "verb": "argued"
+      "type": "REPORTS",
+      "status": "ONGOING",
+      "polarity": "POSITIVE",
+      "verb": "leads"
     },
     "object": {
-      "name": "First Amendment rights to free speech had been infringed",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
+      "name": "HBM market",
+      "entity_id": "ORG_HBM_MARKET",
+      "type": "Organization",
+      "object_type": "ENTITY"
     },
     "time": {
-      "raw": "Thursday",
+      "raw": null,
       "value": null
     },
     "location": {
@@ -1160,234 +140,192 @@
       "type": null
     },
     "confidence": 1,
-    "evidence": "In Thursday’s court filings, the newspaper’s publisher Max Lederer, editor-in-chief Erik Slavin and Middle East reporter Lara Korte argued that their First Amendment rights to free speech had been infringed.",
+    "evidence": "SK hynix leads the HBM market with a significant revenue share.",
     "evidence_type": "UNKNOWN",
-    "action_type": "SUES",
-    "action_event_type": "Legal",
-    "action_detail": "argued",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEGATIVE",
-    "event_time": "Thursday",
+    "action_type": "REPORTS",
+    "action_event_type": "Finance",
+    "action_detail": "leads",
+    "action_status": "ONGOING",
+    "action_polarity": "POSITIVE",
+    "event_time": "",
     "location_str": "",
     "entities": [
       {
-        "entity_id": "ORG_JOURNALISTS",
-        "entity_name": "Journalists",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 25567,
-    "article_url": "https://www.wired.com/story/a-judge-has-blocked-the-pentagons-attempt-to-blacklist-anthropic/",
-    "subject": {
-      "name": "federal judge",
-      "entity_id": "PERS_FEDERAL_JUDGE",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "SANCTIONS",
-      "status": "COMPLETED",
-      "polarity": "NEGATIVE",
-      "verb": "barred"
-    },
-    "object": {
-      "name": "Trump administration",
-      "entity_id": "ORG_TRUMP_ADMINISTRATION",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "Thursday",
-      "value": null
-    },
-    "location": {
-      "name": "California",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "A federal judge on Thursday barred the Trump administration from designating Anthropic a national security risk over a dispute about the use of its AI models",
-    "evidence_type": "UNKNOWN",
-    "action_type": "SANCTIONS",
-    "action_event_type": "Economic",
-    "action_detail": "barred",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEGATIVE",
-    "event_time": "Thursday",
-    "location_str": "California",
-    "entities": [
-      {
-        "entity_id": "PERS_FEDERAL_JUDGE",
-        "entity_name": "federal judge",
-        "entity_type": "Person",
+        "entity_id": "COMP_SK_HYNIX",
+        "entity_name": "SK Hynix",
+        "entity_type": "Company",
         "role": "SUBJECT"
       },
       {
-        "entity_id": "ORG_TRUMP_ADMINISTRATION",
-        "entity_name": "Trump administration",
+        "entity_id": "ORG_HBM_MARKET",
+        "entity_name": "HBM market",
         "entity_type": "Organization",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 25567,
-    "article_url": "https://www.wired.com/story/a-judge-has-blocked-the-pentagons-attempt-to-blacklist-anthropic/",
+    "article_id": 26787,
+    "article_url": "https://www.investing.com/news/stock-market-news/sk-hynix-considers-intel-for-hbm4e-base-dies-what-are-the-implications-for-tsmc-93CH-4882118",
     "subject": {
-      "name": "US district judge Rita Lin",
+      "name": "SK Hynix",
+      "entity_id": "COMP_SK_HYNIX",
+      "type": "Company",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "DIES",
+      "status": "ONGOING",
+      "polarity": "NEUTRAL",
+      "verb": "considers"
+    },
+    "object": {
+      "name": "Intel",
+      "entity_id": "COMP_INTEL",
+      "type": "Company",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1.0,
+    "evidence": "SK Hynix considers Intel",
+    "evidence_type": "UNKNOWN",
+    "action_type": "DIES",
+    "action_event_type": "Leadership",
+    "action_detail": "considers",
+    "action_status": "ONGOING",
+    "action_polarity": "NEUTRAL",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "COMP_SK_HYNIX",
+        "entity_name": "SK Hynix",
+        "entity_type": "Company",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "COMP_INTEL",
+        "entity_name": "Intel",
+        "entity_type": "Company",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 26787,
+    "article_url": "https://www.investing.com/news/stock-market-news/sk-hynix-considers-intel-for-hbm4e-base-dies-what-are-the-implications-for-tsmc-93CH-4882118",
+    "subject": {
+      "name": "TSMC's 3nm technology",
+      "entity_id": "COMP_TSMCS_3NM_TECHNOLOGY",
+      "type": "Company",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "DIES",
+      "status": "EXPECTED",
+      "polarity": "POSITIVE",
+      "verb": "gain"
+    },
+    "object": {
+      "name": "relevance",
+      "entity_id": "ORG_RELEVANCE",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.9,
+    "evidence": "TSMC's 3nm technology may gain more relevance in high-performance memory sectors.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "DIES",
+    "action_event_type": "Leadership",
+    "action_detail": "gain",
+    "action_status": "EXPECTED",
+    "action_polarity": "POSITIVE",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "COMP_TSMCS_3NM_TECHNOLOGY",
+        "entity_name": "TSMC's 3nm technology",
+        "entity_type": "Company",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_RELEVANCE",
+        "entity_name": "relevance",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 26787,
+    "article_url": "https://www.investing.com/news/stock-market-news/sk-hynix-considers-intel-for-hbm4e-base-dies-what-are-the-implications-for-tsmc-93CH-4882118",
+    "subject": {
+      "name": "SK Hynix partnering with TSMC",
       "entity_id": null,
       "type": "Other",
       "object_type": "UNKNOWN"
     },
     "action": {
-      "type": "SANCTIONS",
-      "status": "COMPLETED",
-      "polarity": "POSITIVE",
-      "verb": "vacated"
+      "type": "DIES",
+      "status": "ONGOING",
+      "polarity": "NEUTRAL",
+      "verb": "partnering"
     },
     "object": {
-      "name": "February 27 decision by defense secretary Pete Hegseth to label Anthropic a “supply-chain risk” and make the company ineligible for federal contracts",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": "February 27",
-      "value": null
-    },
-    "location": {
-      "name": "California",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "The decision handed down by US district judge Rita Lin in California vacated the February 27 decision by defense secretary Pete Hegseth to label Anthropic a “supply-chain risk” and make the company ineligible for federal contracts",
-    "evidence_type": "UNKNOWN",
-    "action_type": "SANCTIONS",
-    "action_event_type": "Economic",
-    "action_detail": "vacated",
-    "action_status": "COMPLETED",
-    "action_polarity": "POSITIVE",
-    "event_time": "February 27",
-    "location_str": "California",
-    "entities": []
-  },
-  {
-    "article_id": 25567,
-    "article_url": "https://www.wired.com/story/a-judge-has-blocked-the-pentagons-attempt-to-blacklist-anthropic/",
-    "subject": {
-      "name": "ruling",
-      "entity_id": "ORG_RULING",
+      "name": "HBM4 base dies",
+      "entity_id": "ORG_HBM4_BASE_DIES",
       "type": "Organization",
       "object_type": "ENTITY"
     },
-    "action": {
-      "type": "SANCTIONS",
-      "status": "COMPLETED",
-      "polarity": "NEGATIVE",
-      "verb": "called"
-    },
-    "object": {
-      "name": "designation amounted to unconstitutional retaliation; position called “arbitrary, capricious, an abuse of discretion, and otherwise not in accordance with law”",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
     "time": {
-      "raw": "Thursday",
+      "raw": null,
       "value": null
     },
     "location": {
-      "name": "N/A",
+      "name": null,
       "entity_id": null,
       "type": null
     },
-    "confidence": 1,
-    "evidence": "The ruling also lifted an additional punitive measure by Hegseth that prevented contractors or suppliers to the US military from doing business with Anthropic, a position Lin called “arbitrary, capricious, an abuse of discretion, and otherwise not in accordance with law.”",
+    "confidence": 1.0,
+    "evidence": "SK Hynix is partnering with TSMC for HBM4 base dies",
     "evidence_type": "UNKNOWN",
-    "action_type": "SANCTIONS",
-    "action_event_type": "Economic",
-    "action_detail": "called",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEGATIVE",
-    "event_time": "Thursday",
-    "location_str": "N/A",
+    "action_type": "DIES",
+    "action_event_type": "Leadership",
+    "action_detail": "partnering",
+    "action_status": "ONGOING",
+    "action_polarity": "NEUTRAL",
+    "event_time": "",
+    "location_str": "",
     "entities": [
       {
-        "entity_id": "ORG_RULING",
-        "entity_name": "ruling",
+        "entity_id": "ORG_HBM4_BASE_DIES",
+        "entity_name": "HBM4 base dies",
         "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_POSITION_CALLED_ARBITRARY",
-        "entity_name": "position called “arbitrary",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      },
-      {
-        "entity_id": "CTRY_CAPRICIOUS",
-        "entity_name": "capricious",
-        "entity_type": "Country",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 25553,
-    "article_url": "https://www.bloomberg.com/news/articles/2026-08-27/india-s-sensex-hit-by-flash-crash-during-unpopular-closing-auction",
-    "subject": {
-      "name": "BSE Sensex",
-      "entity_id": "ORG_BSE_SENSEX",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "CRASHES",
-      "status": "COMPLETED",
-      "polarity": "NEGATIVE",
-      "verb": "plunged"
-    },
-    "object": {
-      "name": "3%",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "AMOUNT"
-    },
-    "time": {
-      "raw": "Thursday",
-      "value": null
-    },
-    "location": {
-      "name": "N/A",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "India’s popular stock benchmark, the BSE Sensex, briefly plunged about 3% during a 20-minute closing auction Thursday",
-    "evidence_type": "UNKNOWN",
-    "action_type": "CRASHES",
-    "action_event_type": "Finance",
-    "action_detail": "plunged",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEGATIVE",
-    "event_time": "Thursday",
-    "location_str": "N/A",
-    "entities": [
-      {
-        "entity_id": "ORG_BSE_SENSEX",
-        "entity_name": "BSE Sensex",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 25561,
-    "article_url": "https://arstechnica.com/tech-policy/2026/08/ai-industry-says-trump-plans-to-tax-chips-in-the-single-dumbest-way-imaginable/",
+    "article_id": 26783,
+    "article_url": "https://www.cnbc.com/2026/08/30/us-iran-strikes-strait-hormuz.html",
     "subject": {
       "name": "Trump",
       "entity_id": "PERS_TRUMP",
@@ -1395,62 +333,166 @@
       "object_type": "ENTITY"
     },
     "action": {
-      "type": "ANNOUNCES",
-      "status": "UNKNOWN",
-      "polarity": "UNKNOWN",
-      "verb": ""
+      "type": "ESCALATES",
+      "status": "ANNOUNCED",
+      "polarity": "NEGATIVE",
+      "verb": "extended"
     },
     "object": {
-      "name": "United States",
-      "entity_id": "CTRY_UNITED_STATES",
-      "type": "Country",
-      "object_type": "ENTITY"
+      "name": "military threats against Iran to Kharg Island",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
     },
     "time": {
-      "raw": null,
+      "raw": "late July",
       "value": null
     },
     "location": {
-      "name": null,
+      "name": "Kharg Island",
       "entity_id": null,
       "type": null
     },
-    "confidence": null,
-    "evidence": "",
+    "confidence": 1,
+    "evidence": "U.S. President Donald Trump extended his military threats against Iran to Kharg Island, the country's main oil export terminal, saying it's \"going to be blown to smithereens!\"",
     "evidence_type": "UNKNOWN",
-    "action_type": "ANNOUNCES",
-    "action_event_type": "Politics",
-    "action_detail": "",
-    "action_status": "UNKNOWN",
-    "action_polarity": "UNKNOWN",
-    "event_time": "",
-    "location_str": "",
+    "action_type": "ESCALATES",
+    "action_event_type": "Military",
+    "action_detail": "extended",
+    "action_status": "ANNOUNCED",
+    "action_polarity": "NEGATIVE",
+    "event_time": "late July",
+    "location_str": "Kharg Island",
     "entities": [
       {
         "entity_id": "PERS_TRUMP",
         "entity_name": "Trump",
         "entity_type": "Person",
         "role": "SUBJECT"
-      },
+      }
+    ]
+  },
+  {
+    "article_id": 26783,
+    "article_url": "https://www.cnbc.com/2026/08/30/us-iran-strikes-strait-hormuz.html",
+    "subject": {
+      "name": "United States",
+      "entity_id": "CTRY_UNITED_STATES",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "ATTACKS",
+      "status": "COMPLETED",
+      "polarity": "NEGATIVE",
+      "verb": "traded attacks"
+    },
+    "object": {
+      "name": "attacks",
+      "entity_id": "ORG_ATTACKS",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "over the weekend",
+      "value": null
+    },
+    "location": {
+      "name": "over the weekend",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "The comments came after the U.S. and Iran traded attacks over the weekend, as hostilities flared anew between the two countries.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "ATTACKS",
+    "action_event_type": "Military",
+    "action_detail": "traded attacks",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEGATIVE",
+    "event_time": "over the weekend",
+    "location_str": "over the weekend",
+    "entities": [
       {
         "entity_id": "CTRY_UNITED_STATES",
         "entity_name": "United States",
         "entity_type": "Country",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_IRN",
+        "entity_name": "Iran, Islamic Republic of",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_ATTACKS",
+        "entity_name": "attacks",
+        "entity_type": "Organization",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 25541,
-    "article_url": "https://www.scmp.com/news/us/us-elections/article/3365509/new-us-mail-voting-rules-take-effect-states-warn-midterm-disruption?utm_source=rss_feed",
+    "article_id": 26783,
+    "article_url": "https://www.cnbc.com/2026/08/30/us-iran-strikes-strait-hormuz.html",
     "subject": {
-      "name": "state and local election officials",
+      "name": "U.S. forces",
+      "entity_id": "CTRY_US_FORCES",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "ESCALATES",
+      "status": "COMPLETED",
+      "polarity": "NEGATIVE",
+      "verb": "struck"
+    },
+    "object": {
+      "name": "two Iranian rocket launchers",
       "entity_id": null,
       "type": "Other",
       "object_type": "UNKNOWN"
     },
+    "time": {
+      "raw": "Sunday",
+      "value": null
+    },
+    "location": {
+      "name": "Larak Island",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "American forces struck two Iranian rocket launchers on Larak Island on Sunday after the military said Revolutionary Guard forces were preparing rockets carrying sea mines for launch into the Strait of Hormuz, U.S. Central Command confirmed to MS NOW.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "ESCALATES",
+    "action_event_type": "Military",
+    "action_detail": "struck",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEGATIVE",
+    "event_time": "Sunday",
+    "location_str": "Larak Island",
+    "entities": [
+      {
+        "entity_id": "CTRY_US_FORCES",
+        "entity_name": "U.S. forces",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 26762,
+    "article_url": "https://www.ft.com/content/9dbf9c9a-b3e2-4701-b584-dca72b349716?syn-25a6b1a6=1",
+    "subject": {
+      "name": "Alejandro Betancourt",
+      "entity_id": "PERS_ALEJANDRO_BETANCOURT",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
     "action": {
-      "type": "WARNS",
+      "type": "OTHER",
       "status": "UNKNOWN",
       "polarity": "UNKNOWN",
       "verb": ""
@@ -1473,8 +515,8 @@
     "confidence": null,
     "evidence": "",
     "evidence_type": "UNKNOWN",
-    "action_type": "WARNS",
-    "action_event_type": "Politics",
+    "action_type": "OTHER",
+    "action_event_type": "General",
     "action_detail": "",
     "action_status": "UNKNOWN",
     "action_polarity": "UNKNOWN",
@@ -1482,14 +524,8 @@
     "location_str": "",
     "entities": [
       {
-        "entity_id": "PERS_STATE",
-        "entity_name": "state",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "PERS_LOCAL_ELECTION_OFFICIALS",
-        "entity_name": "local election officials",
+        "entity_id": "PERS_ALEJANDRO_BETANCOURT",
+        "entity_name": "Alejandro Betancourt",
         "entity_type": "Person",
         "role": "SUBJECT"
       },
@@ -1502,12 +538,67 @@
     ]
   },
   {
-    "article_id": 25546,
-    "article_url": "https://www.cbsnews.com/video/how-trump-renaming-of-lake-ontario-to-lake-america/",
+    "article_id": 26750,
+    "article_url": "https://www.bloomberg.com/news/videos/2026-08-31/us-strikes-iranian-rocket-launchers-video",
     "subject": {
-      "name": "Trump",
-      "entity_id": "PERS_TRUMP",
+      "name": "Wendy Benjaminson",
+      "entity_id": "PERS_WENDY_BENJAMINSON",
       "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "ATTACKS",
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
+    },
+    "object": {
+      "name": "United States",
+      "entity_id": "CTRY_UNITED_STATES",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": null,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "ATTACKS",
+    "action_event_type": "Military",
+    "action_detail": "",
+    "action_status": "UNKNOWN",
+    "action_polarity": "UNKNOWN",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "PERS_WENDY_BENJAMINSON",
+        "entity_name": "Wendy Benjaminson",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_UNITED_STATES",
+        "entity_name": "United States",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 26754,
+    "article_url": "https://news.sky.com/story/google-renames-lake-ontario-as-lake-america-for-us-users-after-trump-order-13579311",
+    "subject": {
+      "name": "Google",
+      "entity_id": "COMP_GOOGLE",
+      "type": "Company",
       "object_type": "ENTITY"
     },
     "action": {
@@ -1543,9 +634,9 @@
     "location_str": "",
     "entities": [
       {
-        "entity_id": "PERS_TRUMP",
-        "entity_name": "Trump",
-        "entity_type": "Person",
+        "entity_id": "COMP_GOOGLE",
+        "entity_name": "Google",
+        "entity_type": "Company",
         "role": "SUBJECT"
       },
       {
@@ -1557,225 +648,11 @@
     ]
   },
   {
-    "article_id": 25539,
-    "article_url": "https://www.bloomberg.com/news/videos/2026-08-27/liv-golf-from-disruptor-to-distressed-asset-video",
+    "article_id": 26732,
+    "article_url": "https://www.cbsnews.com/video/trump-says-us-deal-venezuela-will-boost-oil-reserves/",
     "subject": {
-      "name": "LIV Golf",
-      "entity_id": "ORG_LIV_GOLF",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "COMPLETED",
-      "polarity": "NEGATIVE",
-      "verb": "landed"
-    },
-    "object": {
-      "name": "the rough",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "CONCEPT"
-    },
-    "time": {
-      "raw": "N/A",
-      "value": null
-    },
-    "location": {
-      "name": "N/A",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "LIV Golf instead landed in the rough, part of an abortive effort by Saudi Arabia to exert soft power.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "landed",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEGATIVE",
-    "event_time": "N/A",
-    "location_str": "N/A",
-    "entities": [
-      {
-        "entity_id": "ORG_LIV_GOLF",
-        "entity_name": "LIV Golf",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 25539,
-    "article_url": "https://www.bloomberg.com/news/videos/2026-08-27/liv-golf-from-disruptor-to-distressed-asset-video",
-    "subject": {
-      "name": "LIV's future",
-      "entity_id": "ORG_LIVS_FUTURE",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "UNKNOWN",
-      "polarity": "NEUTRAL",
-      "verb": "is"
-    },
-    "object": {
-      "name": "uncertain",
-      "entity_id": "ORG_UNCERTAIN",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "N/A",
-      "value": null
-    },
-    "location": {
-      "name": "N/A",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 0.9,
-    "evidence": "Now LIV’s future is uncertain amid a search for new funding.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "is",
-    "action_status": "UNKNOWN",
-    "action_polarity": "NEUTRAL",
-    "event_time": "N/A",
-    "location_str": "N/A",
-    "entities": [
-      {
-        "entity_id": "ORG_LIVS_FUTURE",
-        "entity_name": "LIV's future",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_UNCERTAIN",
-        "entity_name": "uncertain",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 25540,
-    "article_url": "https://www.scmp.com/opinion/china-opinion/article/3365093/chinese-cook-middle-east-serves-very-different-anti-war-film?utm_source=rss_feed",
-    "subject": {
-      "name": "AT&T",
-      "entity_id": "COMP_AT_T",
-      "type": "Company",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "UNKNOWN",
-      "polarity": "UNKNOWN",
-      "verb": ""
-    },
-    "object": {
-      "name": "mainland",
-      "entity_id": "CTRY_MAINLAND",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": null,
-    "evidence": "",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "",
-    "action_status": "UNKNOWN",
-    "action_polarity": "UNKNOWN",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "COMP_AT_T",
-        "entity_name": "AT&T",
-        "entity_type": "Company",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_MAINLAND",
-        "entity_name": "mainland",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 25555,
-    "article_url": "https://techcrunch.com/2026/08/27/australian-police-arrest-two-over-teampcp-hacks-targeting-mercor-openai-and-others/",
-    "subject": {
-      "name": "tech companies",
-      "entity_id": "COMP_TECH_COMPANIES",
-      "type": "Company",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "ARRESTS",
-      "status": "UNKNOWN",
-      "polarity": "UNKNOWN",
-      "verb": ""
-    },
-    "object": {
-      "name": "Australian",
-      "entity_id": "CTRY_AUSTRALIAN",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": null,
-    "evidence": "",
-    "evidence_type": "UNKNOWN",
-    "action_type": "ARRESTS",
-    "action_event_type": "Legal",
-    "action_detail": "",
-    "action_status": "UNKNOWN",
-    "action_polarity": "UNKNOWN",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "COMP_TECH_COMPANIES",
-        "entity_name": "tech companies",
-        "entity_type": "Company",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_AUSTRALIAN",
-        "entity_name": "Australian",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 25562,
-    "article_url": "https://www.bbc.co.uk/news/articles/c5y4512mlxdo?at_medium=RSS&at_campaign=rss",
-    "subject": {
-      "name": "Military veterans",
-      "entity_id": "PERS_MILITARY_VETERANS",
+      "name": "Trump",
+      "entity_id": "PERS_TRUMP",
       "type": "Person",
       "object_type": "ENTITY"
     },
@@ -1786,8 +663,8 @@
       "verb": ""
     },
     "object": {
-      "name": "United Kingdom of Great Britain and Northern Ireland",
-      "entity_id": "CTRY_GBR",
+      "name": "United States",
+      "entity_id": "CTRY_UNITED_STATES",
       "type": "Country",
       "object_type": "ENTITY"
     },
@@ -1812,26 +689,26 @@
     "location_str": "",
     "entities": [
       {
-        "entity_id": "PERS_MILITARY_VETERANS",
-        "entity_name": "Military veterans",
+        "entity_id": "PERS_TRUMP",
+        "entity_name": "Trump",
         "entity_type": "Person",
         "role": "SUBJECT"
       },
       {
-        "entity_id": "CTRY_GBR",
-        "entity_name": "United Kingdom of Great Britain and Northern Ireland",
+        "entity_id": "CTRY_UNITED_STATES",
+        "entity_name": "United States",
         "entity_type": "Country",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 25503,
-    "article_url": "https://www.scmp.com/news/world/united-states-canada/article/3365503/us-patriot-missile-shortage-europe-beyond-critical-due-iran-war-officials-say?utm_source=rss_feed",
+    "article_id": 26726,
+    "article_url": "https://www.investing.com/news/commodities-news/oil-prices-climb-after-us-strikes-iranian-launchers-on-larak-island-4882083",
     "subject": {
-      "name": "US military",
-      "entity_id": "ORG_US_MILITARY",
-      "type": "Organization",
+      "name": "Tavily",
+      "entity_id": "PERS_TAVILY",
+      "type": "Person",
       "object_type": "ENTITY"
     },
     "action": {
@@ -1841,8 +718,8 @@
       "verb": ""
     },
     "object": {
-      "name": "Europe",
-      "entity_id": "CTRY_EUROPE",
+      "name": "United States",
+      "entity_id": "CTRY_UNITED_STATES",
       "type": "Country",
       "object_type": "ENTITY"
     },
@@ -1867,141 +744,135 @@
     "location_str": "",
     "entities": [
       {
-        "entity_id": "ORG_US_MILITARY",
-        "entity_name": "US military",
-        "entity_type": "Organization",
+        "entity_id": "PERS_TAVILY",
+        "entity_name": "Tavily",
+        "entity_type": "Person",
         "role": "SUBJECT"
       },
       {
-        "entity_id": "CTRY_EUROPE",
-        "entity_name": "Europe",
+        "entity_id": "CTRY_UNITED_STATES",
+        "entity_name": "United States",
         "entity_type": "Country",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 25549,
-    "article_url": "https://www.engadget.com/2245553/google-brings-trip-planning-features-to-search-ai-mode/",
+    "article_id": 26718,
+    "article_url": "https://www.aljazeera.com/news/liveblog/2026/8/31/iran-war-live-irgc-attacks-us-bases-in-jordan-after-us-bombs-larak-island?traffic_source=rss",
     "subject": {
-      "name": "Google AI Mode",
-      "entity_id": "ORG_GOOGLE_AI_MODE",
+      "name": "United States Central Command",
+      "entity_id": "ORG_US_CENTCOM",
       "type": "Organization",
       "object_type": "ENTITY"
     },
     "action": {
-      "type": "OTHER",
-      "status": "ANNOUNCED",
-      "polarity": "POSITIVE",
-      "verb": "getting"
+      "type": "ATTACKS",
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
     },
     "object": {
-      "name": "trip-planning features",
-      "entity_id": "ORG_TRIP_PLANNING_FEATURES",
-      "type": "Organization",
+      "name": "United States",
+      "entity_id": "CTRY_UNITED_STATES",
+      "type": "Country",
       "object_type": "ENTITY"
     },
     "time": {
-      "raw": "2026-08-27T16:04:10+00:00",
+      "raw": null,
       "value": null
     },
     "location": {
-      "name": "Search's AI Mode",
+      "name": null,
       "entity_id": null,
       "type": null
     },
-    "confidence": 1,
-    "evidence": "Google AI Mode is getting a flight price tracker, hotel booking and a way to view the cost in miles",
+    "confidence": null,
+    "evidence": "",
     "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "getting",
-    "action_status": "ANNOUNCED",
-    "action_polarity": "POSITIVE",
-    "event_time": "2026-08-27T16:04:10+00:00",
-    "location_str": "Search's AI Mode",
+    "action_type": "ATTACKS",
+    "action_event_type": "Military",
+    "action_detail": "",
+    "action_status": "UNKNOWN",
+    "action_polarity": "UNKNOWN",
+    "event_time": "",
+    "location_str": "",
     "entities": [
       {
-        "entity_id": "ORG_GOOGLE_AI_MODE",
-        "entity_name": "Google AI Mode",
+        "entity_id": "ORG_US_CENTCOM",
+        "entity_name": "United States Central Command",
         "entity_type": "Organization",
         "role": "SUBJECT"
       },
       {
-        "entity_id": "ORG_TRIP_PLANNING_FEATURES",
-        "entity_name": "trip-planning features",
-        "entity_type": "Organization",
+        "entity_id": "CTRY_UNITED_STATES",
+        "entity_name": "United States",
+        "entity_type": "Country",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 25549,
-    "article_url": "https://www.engadget.com/2245553/google-brings-trip-planning-features-to-search-ai-mode/",
+    "article_id": 26710,
+    "article_url": "https://www.nbcnews.com/nightly-news/video/u-s-strikes-iran-for-first-time-in-weeks-269077061737",
     "subject": {
-      "name": "Google AI Mode",
-      "entity_id": "ORG_GOOGLE_AI_MODE",
-      "type": "Organization",
+      "name": "Yamiche Alcindor",
+      "entity_id": "PERS_YAMICHE_ALCINDOR",
+      "type": "Person",
       "object_type": "ENTITY"
     },
     "action": {
-      "type": "OTHER",
-      "status": "ANNOUNCED",
-      "polarity": "POSITIVE",
-      "verb": "getting"
+      "type": "ATTACKS",
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
     },
     "object": {
-      "name": "flight price tracker, hotel booking, and a way to view the cost in miles or points",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
+      "name": "United States",
+      "entity_id": "CTRY_UNITED_STATES",
+      "type": "Country",
+      "object_type": "ENTITY"
     },
     "time": {
-      "raw": "2026-08-27T16:04:10+00:00",
+      "raw": null,
       "value": null
     },
     "location": {
-      "name": "Search's AI Mode",
+      "name": null,
       "entity_id": null,
       "type": null
     },
-    "confidence": 1,
-    "evidence": "Google AI Mode is getting a flight price tracker, hotel booking and a way to view the cost in miles or points",
+    "confidence": null,
+    "evidence": "",
     "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "getting",
-    "action_status": "ANNOUNCED",
-    "action_polarity": "POSITIVE",
-    "event_time": "2026-08-27T16:04:10+00:00",
-    "location_str": "Search's AI Mode",
+    "action_type": "ATTACKS",
+    "action_event_type": "Military",
+    "action_detail": "",
+    "action_status": "UNKNOWN",
+    "action_polarity": "UNKNOWN",
+    "event_time": "",
+    "location_str": "",
     "entities": [
       {
-        "entity_id": "ORG_GOOGLE_AI_MODE",
-        "entity_name": "Google AI Mode",
-        "entity_type": "Organization",
+        "entity_id": "PERS_YAMICHE_ALCINDOR",
+        "entity_name": "Yamiche Alcindor",
+        "entity_type": "Person",
         "role": "SUBJECT"
       },
       {
-        "entity_id": "ORG_FLIGHT_PRICE_TRACKER",
-        "entity_name": "flight price tracker",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      },
-      {
-        "entity_id": "ORG_HOTEL_BOOKING",
-        "entity_name": "hotel booking",
-        "entity_type": "Organization",
+        "entity_id": "CTRY_UNITED_STATES",
+        "entity_name": "United States",
+        "entity_type": "Country",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 25558,
-    "article_url": "https://www.gov.uk/government/statistics/announcements/consumer-price-inflation-uk-august-2026-time-series",
+    "article_id": 26693,
+    "article_url": "https://www.cbsnews.com/news/cap-arcona-victim-families-remember-nazi-ship-sunk-with-prisoners-60-minutes-transcript/",
     "subject": {
-      "name": "CPIH",
-      "entity_id": "ORG_CPIH",
+      "name": "Nazi",
+      "entity_id": "ORG_NAZI",
       "type": "Organization",
       "object_type": "ENTITY"
     },
@@ -2012,8 +883,1346 @@
       "verb": ""
     },
     "object": {
-      "name": "United Kingdom of Great Britain and Northern Ireland",
-      "entity_id": "CTRY_GBR",
+      "name": "Cap Arcona",
+      "entity_id": "LOC_CAP_ARCONA",
+      "type": "Location",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": null,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "",
+    "action_status": "UNKNOWN",
+    "action_polarity": "UNKNOWN",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "ORG_NAZI",
+        "entity_name": "Nazi",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "LOC_CAP_ARCONA",
+        "entity_name": "Cap Arcona",
+        "entity_type": "Location",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 26771,
+    "article_url": "https://www.aljazeera.com/news/2026/8/31/niger-mutiny-puts-russias-expanding-role-in-the-sahel-to-the-test?traffic_source=rss",
+    "subject": {
+      "name": "failed uprising in Niamey",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "action": {
+      "type": "TESTS",
+      "status": "COMPLETED",
+      "polarity": "NEGATIVE",
+      "verb": "exposed"
+    },
+    "object": {
+      "name": "tensions in Niger’s military, and the role of the Africa Corps in suppressing the unrest",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
+    },
+    "time": {
+      "raw": "unknown",
+      "value": null
+    },
+    "location": {
+      "name": "Niamey",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1.0,
+    "evidence": "The failed uprising in Niamey exposed tensions in Niger’s military, and the role of the Africa Corps in suppressing the unrest.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "TESTS",
+    "action_event_type": "Technology",
+    "action_detail": "exposed",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEGATIVE",
+    "event_time": "unknown",
+    "location_str": "Niamey",
+    "entities": []
+  },
+  {
+    "article_id": 26771,
+    "article_url": "https://www.aljazeera.com/news/2026/8/31/niger-mutiny-puts-russias-expanding-role-in-the-sahel-to-the-test?traffic_source=rss",
+    "subject": {
+      "name": "Russian personnel",
+      "entity_id": "CTRY_RUSSIAN_PERSONNEL",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "TESTS",
+      "status": "ONGOING",
+      "polarity": "NEUTRAL",
+      "verb": "helping"
+    },
+    "object": {
+      "name": "government forces contain the unrest",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
+    },
+    "time": {
+      "raw": "unknown",
+      "value": null
+    },
+    "location": {
+      "name": "Niger",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.9,
+    "evidence": "with Russian personnel helping government forces contain the unrest.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "TESTS",
+    "action_event_type": "Technology",
+    "action_detail": "helping",
+    "action_status": "ONGOING",
+    "action_polarity": "NEUTRAL",
+    "event_time": "unknown",
+    "location_str": "Niger",
+    "entities": [
+      {
+        "entity_id": "CTRY_RUSSIAN_PERSONNEL",
+        "entity_name": "Russian personnel",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 26771,
+    "article_url": "https://www.aljazeera.com/news/2026/8/31/niger-mutiny-puts-russias-expanding-role-in-the-sahel-to-the-test?traffic_source=rss",
+    "subject": {
+      "name": "Niger’s military government",
+      "entity_id": "CTRY_NIGERS_MILITARY_GOVERNMENT",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "TESTS",
+      "status": "COMPLETED",
+      "polarity": "NEUTRAL",
+      "verb": "contained"
+    },
+    "object": {
+      "name": "an attempted mutiny in the capital",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
+    },
+    "time": {
+      "raw": "unknown",
+      "value": null
+    },
+    "location": {
+      "name": "Niamey",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.95,
+    "evidence": "Niger’s military government has contained an attempted mutiny in the capital, but the uprising has exposed tensions inside an army struggling to contain persistent attacks by armed groups.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "TESTS",
+    "action_event_type": "Technology",
+    "action_detail": "contained",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "unknown",
+    "location_str": "Niamey",
+    "entities": [
+      {
+        "entity_id": "CTRY_NIGERS_MILITARY_GOVERNMENT",
+        "entity_name": "Niger’s military government",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 26687,
+    "article_url": "https://www.france24.com/en/middle-east/20260830-middle-east-live-us-strikes-iran-for-first-time-in-a-month",
+    "subject": {
+      "name": "United States",
+      "entity_id": "CTRY_USA",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "ATTACKS",
+      "status": "COMPLETED",
+      "polarity": "NEUTRAL",
+      "verb": "carried out"
+    },
+    "object": {
+      "name": "air strikes on Iranian rocket launchers",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
+    },
+    "time": {
+      "raw": "Sunday",
+      "value": null
+    },
+    "location": {
+      "name": "Strait of Hormuz",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "The United States said Sunday it had carried out air strikes on Iranian rocket launchers on a small island in the Strait of Hormuz",
+    "evidence_type": "UNKNOWN",
+    "action_type": "ATTACKS",
+    "action_event_type": "Military",
+    "action_detail": "carried out",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "Sunday",
+    "location_str": "Strait of Hormuz",
+    "entities": [
+      {
+        "entity_id": "CTRY_USA",
+        "entity_name": "United States",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 26687,
+    "article_url": "https://www.france24.com/en/middle-east/20260830-middle-east-live-us-strikes-iran-for-first-time-in-a-month",
+    "subject": {
+      "name": "United States",
+      "entity_id": "CTRY_USA",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "ATTACKS",
+      "status": "COMPLETED",
+      "polarity": "NEUTRAL",
+      "verb": "attacked"
+    },
+    "object": {
+      "name": "Iranian rocket launchers",
+      "entity_id": "ORG_IRANIAN_ROCKET_LAUNCHERS",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "Sunday",
+      "value": null
+    },
+    "location": {
+      "name": "a small island in the Strait of Hormuz",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "it had carried out air strikes on Iranian rocket launchers on a small island in the Strait of Hormuz",
+    "evidence_type": "UNKNOWN",
+    "action_type": "ATTACKS",
+    "action_event_type": "Military",
+    "action_detail": "attacked",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "Sunday",
+    "location_str": "a small island in the Strait of Hormuz",
+    "entities": [
+      {
+        "entity_id": "CTRY_USA",
+        "entity_name": "United States",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_IRANIAN_ROCKET_LAUNCHERS",
+        "entity_name": "Iranian rocket launchers",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 26687,
+    "article_url": "https://www.france24.com/en/middle-east/20260830-middle-east-live-us-strikes-iran-for-first-time-in-a-month",
+    "subject": {
+      "name": "United States",
+      "entity_id": "CTRY_USA",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "ATTACKS",
+      "status": "ONGOING",
+      "polarity": "NEUTRAL",
+      "verb": "strike"
+    },
+    "object": {
+      "name": "Iran, Islamic Republic of",
+      "entity_id": "CTRY_IRN",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "since late July",
+      "value": null
+    },
+    "location": {
+      "name": "Strait of Hormuz",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "its first attacks on Iran since late July",
+    "evidence_type": "UNKNOWN",
+    "action_type": "ATTACKS",
+    "action_event_type": "Military",
+    "action_detail": "strike",
+    "action_status": "ONGOING",
+    "action_polarity": "NEUTRAL",
+    "event_time": "since late July",
+    "location_str": "Strait of Hormuz",
+    "entities": [
+      {
+        "entity_id": "CTRY_USA",
+        "entity_name": "United States",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_IRN",
+        "entity_name": "Iran, Islamic Republic of",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 26691,
+    "article_url": "https://www.cbsnews.com/video/cap-arcona-sinking-60-minutes-video-2026-08-30/",
+    "subject": {
+      "name": "The Cap Arcona",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "action": {
+      "type": "ATTACKS",
+      "status": "COMPLETED",
+      "polarity": "POSITIVE",
+      "verb": "attacked"
+    },
+    "object": {
+      "name": "prisoners",
+      "entity_id": "ORG_PRISONERS",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "21M AGO",
+      "value": null
+    },
+    "location": {
+      "name": "near the end of World War II",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.95,
+    "evidence": "Latest Local News",
+    "evidence_type": "UNKNOWN",
+    "action_type": "ATTACKS",
+    "action_event_type": "Military",
+    "action_detail": "attacked",
+    "action_status": "COMPLETED",
+    "action_polarity": "POSITIVE",
+    "event_time": "21M AGO",
+    "location_str": "near the end of World War II",
+    "entities": [
+      {
+        "entity_id": "ORG_PRISONERS",
+        "entity_name": "prisoners",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 26691,
+    "article_url": "https://www.cbsnews.com/video/cap-arcona-sinking-60-minutes-video-2026-08-30/",
+    "subject": {
+      "name": "The Cap Arcona",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "COMPLETED",
+      "polarity": "POSITIVE",
+      "verb": "sank"
+    },
+    "object": {
+      "name": "Seanergy Maritime",
+      "entity_id": "COMP_SEANERGY_MARITIME",
+      "type": "Company",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "21M AGO",
+      "value": null
+    },
+    "location": {
+      "name": "near the end of World War II",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.95,
+    "evidence": "Latest Local News",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "sank",
+    "action_status": "COMPLETED",
+    "action_polarity": "POSITIVE",
+    "event_time": "21M AGO",
+    "location_str": "near the end of World War II",
+    "entities": [
+      {
+        "entity_id": "COMP_SEANERGY_MARITIME",
+        "entity_name": "Seanergy Maritime",
+        "entity_type": "Company",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 26691,
+    "article_url": "https://www.cbsnews.com/video/cap-arcona-sinking-60-minutes-video-2026-08-30/",
+    "subject": {
+      "name": "Thousands of prisoners died",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "action": {
+      "type": "DIES",
+      "status": "COMPLETED",
+      "polarity": "POSITIVE",
+      "verb": "died"
+    },
+    "object": {
+      "name": "prisoners",
+      "entity_id": "ORG_PRISONERS",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "21M AGO",
+      "value": null
+    },
+    "location": {
+      "name": "on board The Cap Arcona",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.95,
+    "evidence": "Latest Local News",
+    "evidence_type": "UNKNOWN",
+    "action_type": "DIES",
+    "action_event_type": "Leadership",
+    "action_detail": "died",
+    "action_status": "COMPLETED",
+    "action_polarity": "POSITIVE",
+    "event_time": "21M AGO",
+    "location_str": "on board The Cap Arcona",
+    "entities": [
+      {
+        "entity_id": "ORG_PRISONERS",
+        "entity_name": "prisoners",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 26770,
+    "article_url": "https://www.investing.com/news/stock-market-news/asia-chip-stocks-fall-as-warsh-revives-ratehike-fears-oil-adds-riskoff-pressure-4882105",
+    "subject": {
+      "name": "Asia chip stocks",
+      "entity_id": "ORG_ASIA_CHIP_STOCKS",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "EXPORT_CONTROL",
+      "status": "COMPLETED",
+      "polarity": "NEGATIVE",
+      "verb": "fall"
+    },
+    "object": {
+      "name": "chip stocks",
+      "entity_id": "ORG_CHIP_STOCKS",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "as Warsh revives rate-hike fears, oil adds risk-off pressure",
+      "value": null
+    },
+    "location": {
+      "name": "Asia",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.95,
+    "evidence": "# Yahoo Finance - Stock Market Live, Quotes, Business & Finance ...",
+    "evidence_type": "UNKNOWN",
+    "action_type": "EXPORT_CONTROL",
+    "action_event_type": "Technology",
+    "action_detail": "fall",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEGATIVE",
+    "event_time": "as Warsh revives rate-hike fears, oil adds risk-off pressure",
+    "location_str": "Asia",
+    "entities": [
+      {
+        "entity_id": "ORG_ASIA_CHIP_STOCKS",
+        "entity_name": "Asia chip stocks",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_CHIP_STOCKS",
+        "entity_name": "chip stocks",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 26770,
+    "article_url": "https://www.investing.com/news/stock-market-news/asia-chip-stocks-fall-as-warsh-revives-ratehike-fears-oil-adds-riskoff-pressure-4882105",
+    "subject": {
+      "name": "Warsh",
+      "entity_id": "PERS_WARSH",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "COMPLETED",
+      "polarity": "NEGATIVE",
+      "verb": "revives"
+    },
+    "object": {
+      "name": "rate-hike fears",
+      "entity_id": "ORG_RATE_HIKE_FEARS",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "as Warsh revives rate-hike fears",
+      "value": null
+    },
+    "location": {
+      "name": "as Warsh revives rate-hike fears, oil adds risk-off pressure",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.95,
+    "evidence": "# Yahoo Finance - Stock Market Live, Quotes, Business & Finance ...",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "revives",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEGATIVE",
+    "event_time": "as Warsh revives rate-hike fears",
+    "location_str": "as Warsh revives rate-hike fears, oil adds risk-off pressure",
+    "entities": [
+      {
+        "entity_id": "PERS_WARSH",
+        "entity_name": "Warsh",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_RATE_HIKE_FEARS",
+        "entity_name": "rate-hike fears",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 26770,
+    "article_url": "https://www.investing.com/news/stock-market-news/asia-chip-stocks-fall-as-warsh-revives-ratehike-fears-oil-adds-riskoff-pressure-4882105",
+    "subject": {
+      "name": "oil",
+      "entity_id": "ORG_OIL",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "COMPLETED",
+      "polarity": "NEGATIVE",
+      "verb": "adds"
+    },
+    "object": {
+      "name": "risk-off pressure",
+      "entity_id": "ORG_RISK_OFF_PRESSURE",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "as Warsh revives rate-hike fears",
+      "value": null
+    },
+    "location": {
+      "name": "as Warsh revives rate-hike fears, oil adds risk-off pressure",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.95,
+    "evidence": "# Yahoo Finance - Stock Market Live, Quotes, Business & Finance ...",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "adds",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEGATIVE",
+    "event_time": "as Warsh revives rate-hike fears",
+    "location_str": "as Warsh revives rate-hike fears, oil adds risk-off pressure",
+    "entities": [
+      {
+        "entity_id": "ORG_OIL",
+        "entity_name": "oil",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_RISK_OFF_PRESSURE",
+        "entity_name": "risk-off pressure",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 26677,
+    "article_url": "https://www.scmp.com/news/world/united-states-canada/article/3365784/lake-ontario-now-called-lake-america-google-maps-us-users-after-trump-order?utm_source=rss_feed",
+    "subject": {
+      "name": "Google",
+      "entity_id": "COMP_GOOGLE",
+      "type": "Company",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "STATES",
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
+    },
+    "object": {
+      "name": "Lake Ontario",
+      "entity_id": "LOC_LAKE_ONTARIO",
+      "type": "Location",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": null,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "STATES",
+    "action_event_type": "Politics",
+    "action_detail": "",
+    "action_status": "UNKNOWN",
+    "action_polarity": "UNKNOWN",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "COMP_GOOGLE",
+        "entity_name": "Google",
+        "entity_type": "Company",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "LOC_LAKE_ONTARIO",
+        "entity_name": "Lake Ontario",
+        "entity_type": "Location",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 26678,
+    "article_url": "https://www.marketwatch.com/story/u-s-stock-futures-flat-as-chances-of-rate-hike-rise-after-warshs-jackson-hole-comments-1f5287f2?mod=mw_rss_topstories",
+    "subject": {
+      "name": "investors",
+      "entity_id": "PERS_INVESTORS",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "RATE_HIKE",
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
+    },
+    "object": {
+      "name": "United States",
+      "entity_id": "CTRY_UNITED_STATES",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": null,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "RATE_HIKE",
+    "action_event_type": "Finance",
+    "action_detail": "",
+    "action_status": "UNKNOWN",
+    "action_polarity": "UNKNOWN",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "PERS_INVESTORS",
+        "entity_name": "investors",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_UNITED_STATES",
+        "entity_name": "United States",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 26689,
+    "article_url": "https://thehill.com/policy/defense/6060116-us-strikes-iranian-rocket-launchers/",
+    "subject": {
+      "name": "U.S. military",
+      "entity_id": "ORG_US_MILITARY",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "ATTACKS",
+      "status": "COMPLETED",
+      "polarity": "POSITIVE",
+      "verb": "struck"
+    },
+    "object": {
+      "name": "Iranian rocket launchers",
+      "entity_id": "ORG_IRANIAN_ROCKET_LAUNCHERS",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "Sunday",
+      "value": null
+    },
+    "location": {
+      "name": "Larak Island",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "U.S. official statement",
+    "evidence_type": "UNKNOWN",
+    "action_type": "ATTACKS",
+    "action_event_type": "Military",
+    "action_detail": "struck",
+    "action_status": "COMPLETED",
+    "action_polarity": "POSITIVE",
+    "event_time": "Sunday",
+    "location_str": "Larak Island",
+    "entities": [
+      {
+        "entity_id": "ORG_US_MILITARY",
+        "entity_name": "U.S. military",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_IRANIAN_ROCKET_LAUNCHERS",
+        "entity_name": "Iranian rocket launchers",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 26688,
+    "article_url": "https://www.bloomberg.com/news/videos/2026-08-30/shien-set-for-long-awaited-hong-kong-ipo-debut",
+    "subject": {
+      "name": "Shein",
+      "entity_id": "ORG_SHEIN",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "IPO",
+      "status": "PLANNED",
+      "polarity": "POSITIVE",
+      "verb": "IPO首秀"
+    },
+    "object": {
+      "name": "",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "time": {
+      "raw": "long-awaited",
+      "value": null
+    },
+    "location": {
+      "name": "Hong Kong",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.8,
+    "evidence": "From a peak valuation of 100 billion dollars to a targeted debut at a fraction of that figure",
+    "evidence_type": "UNKNOWN",
+    "action_type": "IPO",
+    "action_event_type": "Finance",
+    "action_detail": "IPO首秀",
+    "action_status": "PLANNED",
+    "action_polarity": "POSITIVE",
+    "event_time": "long-awaited",
+    "location_str": "Hong Kong",
+    "entities": [
+      {
+        "entity_id": "ORG_SHEIN",
+        "entity_name": "Shein",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 26688,
+    "article_url": "https://www.bloomberg.com/news/videos/2026-08-30/shien-set-for-long-awaited-hong-kong-ipo-debut",
+    "subject": {
+      "name": "Regulatory crackdowns",
+      "entity_id": "ORG_REGULATORY_CRACKDOWNS",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "REPORTS",
+      "status": "ONGOING",
+      "polarity": "NEGATIVE",
+      "verb": "squeeze profit margins"
+    },
+    "object": {
+      "name": "profit margins",
+      "entity_id": "ORG_PROFIT_MARGINS",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.6,
+    "evidence": "as regulatory crackdowns close tax loopholes and squeeze profit margins",
+    "evidence_type": "UNKNOWN",
+    "action_type": "REPORTS",
+    "action_event_type": "Finance",
+    "action_detail": "squeeze profit margins",
+    "action_status": "ONGOING",
+    "action_polarity": "NEGATIVE",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "ORG_REGULATORY_CRACKDOWNS",
+        "entity_name": "Regulatory crackdowns",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_PROFIT_MARGINS",
+        "entity_name": "profit margins",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 26665,
+    "article_url": "https://www.nbcnews.com/politics/congress/ted-cruz-elections-venezuela-oil-maduro-delcy-rodriguez-rcna595110",
+    "subject": {
+      "name": "Sen. Ted Cruz",
+      "entity_id": "PERS_SEN_TED_CRUZ",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "ELECTS",
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
+    },
+    "object": {
+      "name": "Venezuela",
+      "entity_id": "CTRY_VENEZUELA",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": null,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "ELECTS",
+    "action_event_type": "Politics",
+    "action_detail": "",
+    "action_status": "UNKNOWN",
+    "action_polarity": "UNKNOWN",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "PERS_SEN_TED_CRUZ",
+        "entity_name": "Sen. Ted Cruz",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_VENEZUELA",
+        "entity_name": "Venezuela",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 26658,
+    "article_url": "https://www.nbcnews.com/politics/congress/jim-clyburn-impeaching-trump-shouldnt-democrats-priority-win-house-rcna595118",
+    "subject": {
+      "name": "Democrats",
+      "entity_id": "ORG_DEMOCRATS",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "STATES",
+      "status": "PLANNED",
+      "polarity": "NEUTRAL",
+      "verb": "should not prioritize"
+    },
+    "object": {
+      "name": "impeaching President Donald Trump",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "time": {
+      "raw": "upcoming midterm elections",
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1.0,
+    "evidence": "Rep. Jim Clyburn, D-S.C., said that Democrats should not prioritize impeaching President Donald Trump if they win control of the House in the upcoming midterm elections",
+    "evidence_type": "UNKNOWN",
+    "action_type": "STATES",
+    "action_event_type": "Politics",
+    "action_detail": "should not prioritize",
+    "action_status": "PLANNED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "upcoming midterm elections",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "ORG_DEMOCRATS",
+        "entity_name": "Democrats",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 26658,
+    "article_url": "https://www.nbcnews.com/politics/congress/jim-clyburn-impeaching-trump-shouldnt-democrats-priority-win-house-rcna595118",
+    "subject": {
+      "name": "Democrats",
+      "entity_id": "ORG_DEMOCRATS",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "STATES",
+      "status": "PLANNED",
+      "polarity": "POSITIVE",
+      "verb": "should focus on"
+    },
+    "object": {
+      "name": "making life more affordable",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1.0,
+    "evidence": "but instead should focus on making life more affordable",
+    "evidence_type": "UNKNOWN",
+    "action_type": "STATES",
+    "action_event_type": "Politics",
+    "action_detail": "should focus on",
+    "action_status": "PLANNED",
+    "action_polarity": "POSITIVE",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "ORG_DEMOCRATS",
+        "entity_name": "Democrats",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 26659,
+    "article_url": "https://www.scmp.com/news/china/diplomacy/article/3365735/trita-parsi-why-us-air-strikes-strengthened-irans-hand-and-failed-trigger-revolt?utm_source=rss_feed",
+    "subject": {
+      "name": "Trita Parsi",
+      "entity_id": "PERS_TRITA_PARSI",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "ATTACKS",
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
+    },
+    "object": {
+      "name": "Washington-based",
+      "entity_id": "CTRY_WASHINGTON_BASED",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": null,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "ATTACKS",
+    "action_event_type": "Military",
+    "action_detail": "",
+    "action_status": "UNKNOWN",
+    "action_polarity": "UNKNOWN",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "PERS_TRITA_PARSI",
+        "entity_name": "Trita Parsi",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_WASHINGTON_BASED",
+        "entity_name": "Washington-based",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 26661,
+    "article_url": "https://www.bloomberg.com/news/articles/2026-08-30/stock-market-today-dow-s-p-live-updates",
+    "subject": {
+      "name": "Oil",
+      "entity_id": "ORG_OIL",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "SURGES",
+      "status": "COMPLETED",
+      "polarity": "POSITIVE",
+      "verb": "jumped"
+    },
+    "object": {
+      "name": "",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "time": {
+      "raw": "early Asia trading",
+      "value": null
+    },
+    "location": {
+      "name": "early Asia trading",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Oil jumped in early Asia trading as Middle East tensions accelerated",
+    "evidence_type": "UNKNOWN",
+    "action_type": "SURGES",
+    "action_event_type": "Finance",
+    "action_detail": "jumped",
+    "action_status": "COMPLETED",
+    "action_polarity": "POSITIVE",
+    "event_time": "early Asia trading",
+    "location_str": "early Asia trading",
+    "entities": [
+      {
+        "entity_id": "ORG_OIL",
+        "entity_name": "Oil",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 26661,
+    "article_url": "https://www.bloomberg.com/news/articles/2026-08-30/stock-market-today-dow-s-p-live-updates",
+    "subject": {
+      "name": "Dollar",
+      "entity_id": "ORG_DOLLAR",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "SURGES",
+      "status": "COMPLETED",
+      "polarity": "POSITIVE",
+      "verb": "held"
+    },
+    "object": {
+      "name": "",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "the dollar held gains after hawkish comments from Federal Reserve Chair Kevin Warsh fueled bets on a rate hike next month",
+    "evidence_type": "UNKNOWN",
+    "action_type": "SURGES",
+    "action_event_type": "Finance",
+    "action_detail": "held",
+    "action_status": "COMPLETED",
+    "action_polarity": "POSITIVE",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "ORG_DOLLAR",
+        "entity_name": "Dollar",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 26661,
+    "article_url": "https://www.bloomberg.com/news/articles/2026-08-30/stock-market-today-dow-s-p-live-updates",
+    "subject": {
+      "name": "Federal Reserve Chair Kevin Warsh",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "action": {
+      "type": "SURGES",
+      "status": "COMPLETED",
+      "polarity": "NEUTRAL",
+      "verb": "fueled"
+    },
+    "object": {
+      "name": "",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "hawkish comments from Federal Reserve Chair Kevin Warsh fueled bets on a rate hike next month",
+    "evidence_type": "UNKNOWN",
+    "action_type": "SURGES",
+    "action_event_type": "Finance",
+    "action_detail": "fueled",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "",
+    "location_str": "",
+    "entities": []
+  },
+  {
+    "article_id": 26650,
+    "article_url": "https://www.washingtonpost.com/world/2026/08/30/ontarios-premier-urges-thaw-us-canada-trade-war-were-best-friends/",
+    "subject": {
+      "name": "President Donald Trump",
+      "entity_id": "PERS_PRESIDENT_DONALD_TRUMP",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "TARIFFS",
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
+    },
+    "object": {
+      "name": "Ontario",
+      "entity_id": "CTRY_ONTARIO",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": null,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "TARIFFS",
+    "action_event_type": "Economic",
+    "action_detail": "",
+    "action_status": "UNKNOWN",
+    "action_polarity": "UNKNOWN",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "PERS_PRESIDENT_DONALD_TRUMP",
+        "entity_name": "President Donald Trump",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_ONTARIO",
+        "entity_name": "Ontario",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 26636,
+    "article_url": "https://www.bloomberg.com/news/videos/2026-08-30/japan-s-nyk-ceo-on-alternative-routes-amid-iran-war-video",
+    "subject": {
+      "name": "NYK",
+      "entity_id": "COMP_NYK",
+      "type": "Company",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
+    },
+    "object": {
+      "name": "Japanese",
+      "entity_id": "CTRY_JAPANESE",
       "type": "Country",
       "object_type": "ENTITY"
     },
@@ -2038,30 +2247,244 @@
     "location_str": "",
     "entities": [
       {
-        "entity_id": "ORG_CPIH",
-        "entity_name": "CPIH",
-        "entity_type": "Organization",
+        "entity_id": "COMP_NYK",
+        "entity_name": "NYK",
+        "entity_type": "Company",
         "role": "SUBJECT"
       },
       {
-        "entity_id": "CTRY_GBR",
-        "entity_name": "United Kingdom of Great Britain and Northern Ireland",
+        "entity_id": "CTRY_JAPANESE",
+        "entity_name": "Japanese",
         "entity_type": "Country",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 25535,
-    "article_url": "https://www.aljazeera.com/news/liveblog/2026/8/28/iran-war-live-tehran-prepares-conditions-to-open-strait-of-hormuz?traffic_source=rss",
+    "article_id": 26662,
+    "article_url": "https://www.nytimes.com/2026/08/30/us/politics/us-wars-iran-afghanistan.html",
     "subject": {
-      "name": "mediator",
-      "entity_id": "PERS_MEDIATOR",
-      "type": "Person",
+      "name": "United States",
+      "entity_id": "CTRY_USA",
+      "type": "Country",
       "object_type": "ENTITY"
     },
     "action": {
-      "type": "OTHER",
+      "type": "RESIGNS",
+      "status": "ONGOING",
+      "polarity": "NEGATIVE",
+      "verb": "struggles to end"
+    },
+    "object": {
+      "name": "wars",
+      "entity_id": "ORG_WARS",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "five years ago",
+      "value": null
+    },
+    "location": {
+      "name": "Afghanistan and Iran",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "The United States struggles to end its wars due to strategic missteps, ambitious goals, and reluctance to accept defeat, as seen in Afghanistan and ongoing conflicts in Iran.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "RESIGNS",
+    "action_event_type": "Leadership",
+    "action_detail": "struggles to end",
+    "action_status": "ONGOING",
+    "action_polarity": "NEGATIVE",
+    "event_time": "five years ago",
+    "location_str": "Afghanistan and Iran",
+    "entities": [
+      {
+        "entity_id": "CTRY_USA",
+        "entity_name": "United States",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_WARS",
+        "entity_name": "wars",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 26662,
+    "article_url": "https://www.nytimes.com/2026/08/30/us/politics/us-wars-iran-afghanistan.html",
+    "subject": {
+      "name": "longest war",
+      "entity_id": "ORG_LONGEST_WAR",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "RESIGNS",
+      "status": "COMPLETED",
+      "polarity": "NEUTRAL",
+      "verb": "came to an end"
+    },
+    "object": {
+      "name": "longest war",
+      "entity_id": "ORG_LONGEST_WAR",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "five years ago",
+      "value": null
+    },
+    "location": {
+      "name": "N/A",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "The country’s longest war came to an end exactly five years ago.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "RESIGNS",
+    "action_event_type": "Leadership",
+    "action_detail": "came to an end",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "five years ago",
+    "location_str": "N/A",
+    "entities": [
+      {
+        "entity_id": "ORG_LONGEST_WAR",
+        "entity_name": "longest war",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_LONGEST_WAR",
+        "entity_name": "longest war",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 26662,
+    "article_url": "https://www.nytimes.com/2026/08/30/us/politics/us-wars-iran-afghanistan.html",
+    "subject": {
+      "name": "country",
+      "entity_id": "ORG_COUNTRY",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "RESIGNS",
+      "status": "EXPECTED",
+      "polarity": "NEUTRAL",
+      "verb": "offers"
+    },
+    "object": {
+      "name": "lessons",
+      "entity_id": "ORG_LESSONS",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "Today",
+      "value": null
+    },
+    "location": {
+      "name": "Iran",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.9,
+    "evidence": "Today it offers lessons for policymakers seeking to avoid an endless war in Iran.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "RESIGNS",
+    "action_event_type": "Leadership",
+    "action_detail": "offers",
+    "action_status": "EXPECTED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "Today",
+    "location_str": "Iran",
+    "entities": [
+      {
+        "entity_id": "ORG_COUNTRY",
+        "entity_name": "country",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_LESSONS",
+        "entity_name": "lessons",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 26637,
+    "article_url": "https://thehill.com/policy/energy-environment/6059912-freedom-fuel-lawsuit-unpaid-gas/",
+    "subject": {
+      "name": "Freedom Fuel gas stations",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "action": {
+      "type": "SUES",
+      "status": "COMPLETED",
+      "polarity": "NEGATIVE",
+      "verb": "sold"
+    },
+    "object": {
+      "name": "stolen fuel",
+      "entity_id": "ORG_STOLEN_FUEL",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "Aug. 19",
+      "value": null
+    },
+    "location": {
+      "name": "Eastern Pennsylvania",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "The suit, which attorneys for Mansfield Oil Company filed in U.S. District Court in Eastern Pennsylvania on Aug. 19, alleges tha Freedom Fuel gas stations, which the Trump administration promoted last month, sold fuel that its supplier never paid for",
+    "evidence_type": "UNKNOWN",
+    "action_type": "SUES",
+    "action_event_type": "Legal",
+    "action_detail": "sold",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEGATIVE",
+    "event_time": "Aug. 19",
+    "location_str": "Eastern Pennsylvania",
+    "entities": [
+      {
+        "entity_id": "ORG_STOLEN_FUEL",
+        "entity_name": "stolen fuel",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 26626,
+    "article_url": "https://www.scmp.com/news/world/middle-east/article/3365782/us-forces-strike-two-iranian-launchers-irans-larak-island-us-official-says?utm_source=rss_feed",
+    "subject": {
+      "name": "US forces",
+      "entity_id": "ORG_US_FORCES",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "ATTACKS",
       "status": "UNKNOWN",
       "polarity": "UNKNOWN",
       "verb": ""
@@ -2084,8 +2507,8 @@
     "confidence": null,
     "evidence": "",
     "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
+    "action_type": "ATTACKS",
+    "action_event_type": "Military",
     "action_detail": "",
     "action_status": "UNKNOWN",
     "action_polarity": "UNKNOWN",
@@ -2093,9 +2516,9 @@
     "location_str": "",
     "entities": [
       {
-        "entity_id": "PERS_MEDIATOR",
-        "entity_name": "mediator",
-        "entity_type": "Person",
+        "entity_id": "ORG_US_FORCES",
+        "entity_name": "US forces",
+        "entity_type": "Organization",
         "role": "SUBJECT"
       },
       {
@@ -2107,848 +2530,11 @@
     ]
   },
   {
-    "article_id": 25537,
-    "article_url": "https://www.aljazeera.com/video/newsfeed/2026/8/27/bosnian-serb-general-ratko-mladic-has-died?traffic_source=rss",
+    "article_id": 26612,
+    "article_url": "https://www.dw.com/en/iran-war-us-military-strikes-iran-s-larak-island-reports/live-78566992?maca=en-rss-en-all-1573-rdf",
     "subject": {
-      "name": "Ratko Mladic",
-      "entity_id": "PERS_RATKO_MLADIC",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "DIES",
-      "status": "UNKNOWN",
-      "polarity": "UNKNOWN",
-      "verb": ""
-    },
-    "object": {
-      "name": "Bosnia",
-      "entity_id": "CTRY_BOSNIA",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": null,
-    "evidence": "",
-    "evidence_type": "UNKNOWN",
-    "action_type": "DIES",
-    "action_event_type": "Leadership",
-    "action_detail": "",
-    "action_status": "UNKNOWN",
-    "action_polarity": "UNKNOWN",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "PERS_RATKO_MLADIC",
-        "entity_name": "Ratko Mladic",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_BOSNIA",
-        "entity_name": "Bosnia",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      },
-      {
-        "entity_id": "CTRY_HERZEGOVINA",
-        "entity_name": "Herzegovina",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 25530,
-    "article_url": "https://techcrunch.com/2026/08/27/barret-zoph-the-thinking-machines-co-founder-who-defected-to-openai-is-now-at-google/",
-    "subject": {
-      "name": "Barret Zoph",
-      "entity_id": "PERS_BARRET_ZOPH",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "COMPLETED",
-      "polarity": "NEUTRAL",
-      "verb": "joined"
-    },
-    "object": {
-      "name": "Google",
-      "entity_id": "COMP_GOOGLE",
-      "type": "Company",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Zoph has taken a position as vice president of research at Google (which happens to)",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "joined",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "PERS_BARRET_ZOPH",
-        "entity_name": "Barret Zoph",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "COMP_GOOGLE",
-        "entity_name": "Google",
-        "entity_type": "Company",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 25530,
-    "article_url": "https://techcrunch.com/2026/08/27/barret-zoph-the-thinking-machines-co-founder-who-defected-to-openai-is-now-at-google/",
-    "subject": {
-      "name": "Barret Zoph",
-      "entity_id": "PERS_BARRET_ZOPH",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "COMPLETED",
-      "polarity": "NEUTRAL",
-      "verb": "spent"
-    },
-    "object": {
-      "name": "two years",
-      "entity_id": "ORG_TWO_YEARS",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": "OpenAI",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Zoph spent two years at OpenAI and left in October 2024 to co-found Thinking Machines with Mira Murati, who had left the AI lab the month prior.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "spent",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "",
-    "location_str": "OpenAI",
-    "entities": [
-      {
-        "entity_id": "PERS_BARRET_ZOPH",
-        "entity_name": "Barret Zoph",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_TWO_YEARS",
-        "entity_name": "two years",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 25530,
-    "article_url": "https://techcrunch.com/2026/08/27/barret-zoph-the-thinking-machines-co-founder-who-defected-to-openai-is-now-at-google/",
-    "subject": {
-      "name": "Barret Zoph",
-      "entity_id": "PERS_BARRET_ZOPH",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "COMPLETED",
-      "polarity": "NEUTRAL",
-      "verb": "left"
-    },
-    "object": {
-      "name": "OpenAI",
-      "entity_id": "COMP_OPENAI",
-      "type": "Company",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "June",
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "He left the company in June.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "left",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "June",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "PERS_BARRET_ZOPH",
-        "entity_name": "Barret Zoph",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "COMP_OPENAI",
-        "entity_name": "OpenAI",
-        "entity_type": "Company",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 25532,
-    "article_url": "https://www.engadget.com/2245473/most-popular-android-phone-brands-rarely-sold-usa/",
-    "subject": {
-      "name": "Apple",
-      "entity_id": "COMP_APPLE",
-      "type": "Company",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "UNKNOWN",
-      "polarity": "UNKNOWN",
-      "verb": ""
-    },
-    "object": {
-      "name": "United States",
-      "entity_id": "CTRY_UNITED_STATES",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": null,
-    "evidence": "",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "",
-    "action_status": "UNKNOWN",
-    "action_polarity": "UNKNOWN",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "COMP_APPLE",
-        "entity_name": "Apple",
-        "entity_type": "Company",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_UNITED_STATES",
-        "entity_name": "United States",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 25538,
-    "article_url": "https://www.nbcnews.com/nightly-news/video/trump-orders-lake-ontario-renamed-lake-america-268982341878",
-    "subject": {
-      "name": "Trump",
-      "entity_id": "PERS_TRUMP",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "APPOINTS",
-      "status": "UNKNOWN",
-      "polarity": "UNKNOWN",
-      "verb": ""
-    },
-    "object": {
-      "name": "Lake Ontario",
-      "entity_id": "LOC_LAKE_ONTARIO",
-      "type": "Location",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": null,
-    "evidence": "",
-    "evidence_type": "UNKNOWN",
-    "action_type": "APPOINTS",
-    "action_event_type": "Leadership",
-    "action_detail": "",
-    "action_status": "UNKNOWN",
-    "action_polarity": "UNKNOWN",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "PERS_TRUMP",
-        "entity_name": "Trump",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "LOC_LAKE_ONTARIO",
-        "entity_name": "Lake Ontario",
-        "entity_type": "Location",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 25536,
-    "article_url": "https://www.nytimes.com/2026/08/27/us/politics/cia-director-russia-ukraine.html",
-    "subject": {
-      "name": "CIA director",
-      "entity_id": "ORG_CIA_DIRECTOR",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "VISITS",
-      "status": "COMPLETED",
-      "polarity": "NEGATIVE",
-      "verb": "made"
-    },
-    "object": {
-      "name": "critical view of Russia's war in Ukraine and to encourage a peace deal",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": "this week",
-      "value": null
-    },
-    "location": {
-      "name": "Moscow",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "The CIA director made a secret visit to Moscow to convey a critical view of Russia's war in Ukraine and to encourage a peace deal.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "VISITS",
-    "action_event_type": "Diplomacy",
-    "action_detail": "made",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEGATIVE",
-    "event_time": "this week",
-    "location_str": "Moscow",
-    "entities": [
-      {
-        "entity_id": "ORG_CIA_DIRECTOR",
-        "entity_name": "CIA director",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 25536,
-    "article_url": "https://www.nytimes.com/2026/08/27/us/politics/cia-director-russia-ukraine.html",
-    "subject": {
-      "name": "meeting",
-      "entity_id": "ORG_MEETING",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "VISITS",
-      "status": "COMPLETED",
-      "polarity": "NEUTRAL",
-      "verb": "aimed"
-    },
-    "object": {
-      "name": "push the Kremlin to negotiate with Ukraine",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": "this week",
-      "value": null
-    },
-    "location": {
-      "name": "Moscow",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "The meeting aimed to push the Kremlin to negotiate with Ukraine.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "VISITS",
-    "action_event_type": "Diplomacy",
-    "action_detail": "aimed",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "this week",
-    "location_str": "Moscow",
-    "entities": [
-      {
-        "entity_id": "ORG_MEETING",
-        "entity_name": "meeting",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 25536,
-    "article_url": "https://www.nytimes.com/2026/08/27/us/politics/cia-director-russia-ukraine.html",
-    "subject": {
-      "name": "visit",
-      "entity_id": "ORG_VISIT",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "VISITS",
-      "status": "COMPLETED",
-      "polarity": "NEUTRAL",
-      "verb": "made"
-    },
-    "object": {
-      "name": "Russian Federation Government",
-      "entity_id": "ORG_RU_GOVERNMENT",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "unknown",
-      "value": null
-    },
-    "location": {
-      "name": "Moscow",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "The CIA director made a secret visit to Moscow.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "VISITS",
-    "action_event_type": "Diplomacy",
-    "action_detail": "made",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "unknown",
-    "location_str": "Moscow",
-    "entities": [
-      {
-        "entity_id": "ORG_VISIT",
-        "entity_name": "visit",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_RU_GOVERNMENT",
-        "entity_name": "Russian Federation Government",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 25513,
-    "article_url": "https://cleantechnica.com/2026/08/27/oil-sheen-in-cook-inlet-underscores-risks-of-offshore-drilling/",
-    "subject": {
-      "name": "A miles-long sheen",
-      "entity_id": "ORG_A_MILES_LONG_SHEEN",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "REPORTS",
-      "status": "COMPLETED",
-      "polarity": "NEGATIVE",
-      "verb": "reported"
-    },
-    "object": {
-      "name": "sheen",
-      "entity_id": "ORG_SHEEN",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "unknown",
-      "value": null
-    },
-    "location": {
-      "name": "Cook Inlet",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "A miles-long sheen reported near an inactive oil and gas platform in Cook Inlet is raising renewed concerns about the risks posed by aging offshore infrastructure",
-    "evidence_type": "UNKNOWN",
-    "action_type": "REPORTS",
-    "action_event_type": "Finance",
-    "action_detail": "reported",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEGATIVE",
-    "event_time": "unknown",
-    "location_str": "Cook Inlet",
-    "entities": [
-      {
-        "entity_id": "ORG_A_MILES_LONG_SHEEN",
-        "entity_name": "A miles-long sheen",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_SHEEN",
-        "entity_name": "sheen",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 25513,
-    "article_url": "https://cleantechnica.com/2026/08/27/oil-sheen-in-cook-inlet-underscores-risks-of-offshore-drilling/",
-    "subject": {
-      "name": "aging offshore infrastructure",
-      "entity_id": "ORG_AGING_OFFSHORE_INFRASTRUCTURE",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "ONGOING",
-      "polarity": "NEGATIVE",
-      "verb": "pose"
-    },
-    "object": {
-      "name": "risks",
-      "entity_id": "ORG_RISKS",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "unknown",
-      "value": null
-    },
-    "location": {
-      "name": "offshore",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 0.9,
-    "evidence": "raising renewed concerns about the risks posed by aging offshore infrastructure",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "pose",
-    "action_status": "ONGOING",
-    "action_polarity": "NEGATIVE",
-    "event_time": "unknown",
-    "location_str": "offshore",
-    "entities": [
-      {
-        "entity_id": "ORG_AGING_OFFSHORE_INFRASTRUCTURE",
-        "entity_name": "aging offshore infrastructure",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_RISKS",
-        "entity_name": "risks",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 25513,
-    "article_url": "https://cleantechnica.com/2026/08/27/oil-sheen-in-cook-inlet-underscores-risks-of-offshore-drilling/",
-    "subject": {
-      "name": "Trump administration",
-      "entity_id": "ORG_TRUMP_ADMINISTRATION",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "ONGOING",
-      "polarity": "NEUTRAL",
-      "verb": "push"
-    },
-    "object": {
-      "name": "additional offshore oil and gas lease sales",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": "unknown",
-      "value": null
-    },
-    "location": {
-      "name": "region",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 0.9,
-    "evidence": "as the Trump administration and Congress push additional offshore oil and gas lease sales in the region",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "push",
-    "action_status": "ONGOING",
-    "action_polarity": "NEUTRAL",
-    "event_time": "unknown",
-    "location_str": "region",
-    "entities": [
-      {
-        "entity_id": "ORG_TRUMP_ADMINISTRATION",
-        "entity_name": "Trump administration",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_CONGRESS",
-        "entity_name": "Congress",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_ADDITIONAL_OFFSHORE_OIL",
-        "entity_name": "additional offshore oil",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      },
-      {
-        "entity_id": "ORG_GAS_LEASE_SALES",
-        "entity_name": "gas lease sales",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 25505,
-    "article_url": "https://www.france24.com/en/video/20260827-ratko-mladic-former-general-convicted-of-bosnia-genocide-dies",
-    "subject": {
-      "name": "Ratko Mladic",
-      "entity_id": "ORG_RATKO_MLADIC",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "DIES",
-      "status": "COMPLETED",
-      "polarity": "NEGATIVE",
-      "verb": "died"
-    },
-    "object": {
-      "name": "",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "time": {
-      "raw": "Thursday",
-      "value": null
-    },
-    "location": {
-      "name": "U.N. custody",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Ratko Mladic, convicted of genocide for orchestrating the 1995 massacre of at least 8,000 Muslims in a U.N.-designated \"safe area\" of Bosnia, Europe's worst atrocity since World War Two, died on Thursday in U.N. custody.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "DIES",
-    "action_event_type": "Leadership",
-    "action_detail": "died",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEGATIVE",
-    "event_time": "Thursday",
-    "location_str": "U.N. custody",
-    "entities": [
-      {
-        "entity_id": "ORG_RATKO_MLADIC",
-        "entity_name": "Ratko Mladic",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 25506,
-    "article_url": "https://thehill.com/policy/defense/6056203-stars-and-stripes-pentagon-lawsuit-dod/",
-    "subject": {
-      "name": "Three Stars and Stripes staffers",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "action": {
-      "type": "SUES",
-      "status": "COMPLETED",
-      "polarity": "NEGATIVE",
-      "verb": "sued"
-    },
-    "object": {
-      "name": "United States Department of Defense",
-      "entity_id": "ORG_US_DOD",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "Thursday",
-      "value": null
-    },
-    "location": {
-      "name": "federal court",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Three Stars and Stripes staffers sued the Pentagon in federal court Thursday, looking to prevent last week’s firings by the Department of Defense (DOD) at the military-focused newspaper.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "SUES",
-    "action_event_type": "Legal",
-    "action_detail": "sued",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEGATIVE",
-    "event_time": "Thursday",
-    "location_str": "federal court",
-    "entities": [
-      {
-        "entity_id": "ORG_THREE_STARS",
-        "entity_name": "Three Stars",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_STRIPES_STAFFERS",
-        "entity_name": "Stripes staffers",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_US_DOD",
-        "entity_name": "United States Department of Defense",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 25506,
-    "article_url": "https://thehill.com/policy/defense/6056203-stars-and-stripes-pentagon-lawsuit-dod/",
-    "subject": {
-      "name": "Max Lederer, Erik Slavin and Lara Korte",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "action": {
-      "type": "SUES",
-      "status": "COMPLETED",
-      "polarity": "NEUTRAL",
-      "verb": "filed"
-    },
-    "object": {
-      "name": "the complaint",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "CONCEPT"
-    },
-    "time": {
-      "raw": "Thursday",
-      "value": null
-    },
-    "location": {
-      "name": "federal court",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Stars and Stripes publisher Max Lederer, Editor-in-Chief Erik Slavin and reporter Lara Korte filed the complaint",
-    "evidence_type": "UNKNOWN",
-    "action_type": "SUES",
-    "action_event_type": "Legal",
-    "action_detail": "filed",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "Thursday",
-    "location_str": "federal court",
-    "entities": [
-      {
-        "entity_id": "PERS_MAX_LEDERER",
-        "entity_name": "Max Lederer",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "PERS_ERIK_SLAVIN",
-        "entity_name": "Erik Slavin",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "PERS_LARA_KORTE",
-        "entity_name": "Lara Korte",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 25504,
-    "article_url": "https://www.france24.com/en/americas/20260827-us-military-faces-beyond-critical-shortage-of-patriot-missiles-in-europe",
-    "subject": {
-      "name": "NATO",
-      "entity_id": "ORG_NATO",
+      "name": "Revolutionary Guards",
+      "entity_id": "ORG_REVOLUTIONARY_GUARDS",
       "type": "Organization",
       "object_type": "ENTITY"
     },
@@ -2959,8 +2545,8 @@
       "verb": ""
     },
     "object": {
-      "name": "United States",
-      "entity_id": "CTRY_UNITED_STATES",
+      "name": "Iran, Islamic Republic of",
+      "entity_id": "CTRY_IRN",
       "type": "Country",
       "object_type": "ENTITY"
     },
@@ -2985,182 +2571,1643 @@
     "location_str": "",
     "entities": [
       {
-        "entity_id": "ORG_NATO",
-        "entity_name": "NATO",
+        "entity_id": "ORG_REVOLUTIONARY_GUARDS",
+        "entity_name": "Revolutionary Guards",
         "entity_type": "Organization",
         "role": "SUBJECT"
       },
       {
-        "entity_id": "CTRY_UNITED_STATES",
-        "entity_name": "United States",
+        "entity_id": "CTRY_IRN",
+        "entity_name": "Iran, Islamic Republic of",
         "entity_type": "Country",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 25527,
-    "article_url": "https://www.nytimes.com/2026/08/27/briefing/nepal-flood-cia-russia-meeting.html",
+    "article_id": 26639,
+    "article_url": "https://www.dw.com/en/iran-war-us-military-strikes-iran-s-larak-island/live-78566992?maca=en-rss-en-all-1573-rdf",
     "subject": {
-      "name": "Rescuers",
-      "entity_id": "ORG_RESCUERS",
+      "name": "US military",
+      "entity_id": "COMP_US_MILITARY",
+      "type": "Company",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "ATTACKS",
+      "status": "COMPLETED",
+      "polarity": "NEUTRAL",
+      "verb": "conducted"
+    },
+    "object": {
+      "name": "strikes on Iranian rocket launchers",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
+    },
+    "time": {
+      "raw": "over a month",
+      "value": null
+    },
+    "location": {
+      "name": "Strait of Hormuz",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "The attack targeting Iranian rocket launchers in the Strait of Hormuz was the first in over a month.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "ATTACKS",
+    "action_event_type": "Military",
+    "action_detail": "conducted",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "over a month",
+    "location_str": "Strait of Hormuz",
+    "entities": [
+      {
+        "entity_id": "COMP_US_MILITARY",
+        "entity_name": "US military",
+        "entity_type": "Company",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 26639,
+    "article_url": "https://www.dw.com/en/iran-war-us-military-strikes-iran-s-larak-island/live-78566992?maca=en-rss-en-all-1573-rdf",
+    "subject": {
+      "name": "Iran's Revolutionary Guards",
+      "entity_id": "ORG_IRANS_REVOLUTIONARY_GUARDS",
       "type": "Organization",
       "object_type": "ENTITY"
     },
     "action": {
-      "type": "OTHER",
-      "status": "COMPLETED",
-      "polarity": "POSITIVE",
-      "verb": "search"
+      "type": "ATTACKS",
+      "status": "EXPECTED",
+      "polarity": "NEGATIVE",
+      "verb": "vowed"
     },
     "object": {
-      "name": "Himalayan Valleys",
-      "entity_id": "ORG_HIMALAYAN_VALLEYS",
-      "type": "Organization",
+      "name": "retaliation",
+      "entity_id": "LOC_RETALIATION",
+      "type": "Location",
       "object_type": "ENTITY"
     },
     "time": {
-      "raw": "2023-10-05",
+      "raw": "unknown",
       "value": null
     },
     "location": {
-      "name": "After Devastating Flood",
+      "name": "unknown",
       "entity_id": null,
       "type": null
     },
-    "confidence": 0.95,
-    "evidence": "Rescuers Search Himalayan Valleys After Devastating Flood",
+    "confidence": 1,
+    "evidence": "Iran's Revolutionary Guards have vowed retaliation against the attack.",
     "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "search",
-    "action_status": "COMPLETED",
-    "action_polarity": "POSITIVE",
-    "event_time": "2023-10-05",
-    "location_str": "After Devastating Flood",
+    "action_type": "ATTACKS",
+    "action_event_type": "Military",
+    "action_detail": "vowed",
+    "action_status": "EXPECTED",
+    "action_polarity": "NEGATIVE",
+    "event_time": "unknown",
+    "location_str": "unknown",
     "entities": [
       {
-        "entity_id": "ORG_RESCUERS",
-        "entity_name": "Rescuers",
+        "entity_id": "ORG_IRANS_REVOLUTIONARY_GUARDS",
+        "entity_name": "Iran's Revolutionary Guards",
         "entity_type": "Organization",
         "role": "SUBJECT"
       },
       {
-        "entity_id": "ORG_HIMALAYAN_VALLEYS",
-        "entity_name": "Himalayan Valleys",
+        "entity_id": "LOC_RETALIATION",
+        "entity_name": "retaliation",
+        "entity_type": "Location",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 26639,
+    "article_url": "https://www.dw.com/en/iran-war-us-military-strikes-iran-s-larak-island/live-78566992?maca=en-rss-en-all-1573-rdf",
+    "subject": {
+      "name": "US military",
+      "entity_id": "COMP_US_MILITARY",
+      "type": "Company",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "ATTACKS",
+      "status": "COMPLETED",
+      "polarity": "NEUTRAL",
+      "verb": "conducted"
+    },
+    "object": {
+      "name": "strikes on Iran's Larak Island",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
+    },
+    "time": {
+      "raw": "unknown",
+      "value": null
+    },
+    "location": {
+      "name": "Larak Island in the Strait of Hormuz",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "The strikes targeted Iranian rocket launchers on Larak Island in the Strait of Hormuz.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "ATTACKS",
+    "action_event_type": "Military",
+    "action_detail": "conducted",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "unknown",
+    "location_str": "Larak Island in the Strait of Hormuz",
+    "entities": [
+      {
+        "entity_id": "COMP_US_MILITARY",
+        "entity_name": "US military",
+        "entity_type": "Company",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 26620,
+    "article_url": "https://www.ft.com/content/a5a0081f-e998-4c80-b967-cc535cbc4933?syn-25a6b1a6=1",
+    "subject": {
+      "name": "Big Tech profits",
+      "entity_id": "ORG_BIG_TECH_PROFITS",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "REPORTS",
+      "status": "COMPLETED",
+      "polarity": "POSITIVE",
+      "verb": "get"
+    },
+    "object": {
+      "name": "$160bn boost",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "AMOUNT"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1.0,
+    "evidence": "Big Tech profits get $160bn boost from gains on stakes in other AI companies",
+    "evidence_type": "UNKNOWN",
+    "action_type": "REPORTS",
+    "action_event_type": "Finance",
+    "action_detail": "get",
+    "action_status": "COMPLETED",
+    "action_polarity": "POSITIVE",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "ORG_BIG_TECH_PROFITS",
+        "entity_name": "Big Tech profits",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 26620,
+    "article_url": "https://www.ft.com/content/a5a0081f-e998-4c80-b967-cc535cbc4933?syn-25a6b1a6=1",
+    "subject": {
+      "name": "investments in OpenAI, Anthropic and SpaceX",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "action": {
+      "type": "REPORTS",
+      "status": "COMPLETED",
+      "polarity": "NEGATIVE",
+      "verb": "have muddied"
+    },
+    "object": {
+      "name": "tech sector’s earnings metrics",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.9,
+    "evidence": "Analysts say large paper windfalls on investments in OpenAI, Anthropic and SpaceX have muddied the tech sector’s earnings metrics",
+    "evidence_type": "UNKNOWN",
+    "action_type": "REPORTS",
+    "action_event_type": "Finance",
+    "action_detail": "have muddied",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEGATIVE",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "COMP_INVESTMENTS_IN_OPENAI",
+        "entity_name": "investments in OpenAI",
+        "entity_type": "Company",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "COMP_ANTHROPIC",
+        "entity_name": "Anthropic",
+        "entity_type": "Company",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "COMP_SPACEX",
+        "entity_name": "SpaceX",
+        "entity_type": "Company",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 26615,
+    "article_url": "https://www.ft.com/content/f270814f-e836-44e8-80c2-ec1034f80519?syn-25a6b1a6=1",
+    "subject": {
+      "name": "United States",
+      "entity_id": "CTRY_UNITED_STATES",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "LAUNCHES",
+      "status": "COMPLETED",
+      "polarity": "NEUTRAL",
+      "verb": "launched"
+    },
+    "object": {
+      "name": "first strike on Iran",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "time": {
+      "raw": "in weeks",
+      "value": null
+    },
+    "location": {
+      "name": "Strait of Hormuz",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "The military said it struck an island in the Strait of Hormuz to prevent mines being laid in the crucial waterway",
+    "evidence_type": "UNKNOWN",
+    "action_type": "LAUNCHES",
+    "action_event_type": "Technology",
+    "action_detail": "launched",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "in weeks",
+    "location_str": "Strait of Hormuz",
+    "entities": [
+      {
+        "entity_id": "CTRY_UNITED_STATES",
+        "entity_name": "United States",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 26615,
+    "article_url": "https://www.ft.com/content/f270814f-e836-44e8-80c2-ec1034f80519?syn-25a6b1a6=1",
+    "subject": {
+      "name": "military",
+      "entity_id": "ORG_MILITARY",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "ATTACKS",
+      "status": "COMPLETED",
+      "polarity": "NEUTRAL",
+      "verb": "struck"
+    },
+    "object": {
+      "name": "an island",
+      "entity_id": "ORG_AN_ISLAND",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "unknown",
+      "value": null
+    },
+    "location": {
+      "name": "Strait of Hormuz",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.9,
+    "evidence": "The military said it struck an island in the Strait of Hormuz to prevent mines being laid in the crucial waterway",
+    "evidence_type": "UNKNOWN",
+    "action_type": "ATTACKS",
+    "action_event_type": "Military",
+    "action_detail": "struck",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "unknown",
+    "location_str": "Strait of Hormuz",
+    "entities": [
+      {
+        "entity_id": "ORG_MILITARY",
+        "entity_name": "military",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_AN_ISLAND",
+        "entity_name": "an island",
         "entity_type": "Organization",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 25527,
-    "article_url": "https://www.nytimes.com/2026/08/27/briefing/nepal-flood-cia-russia-meeting.html",
+    "article_id": 26617,
+    "article_url": "https://www.aljazeera.com/news/2026/8/30/us-strikes-irans-lark-island-in-first-attack-in-weeks?traffic_source=rss",
     "subject": {
-      "name": "CIA Chief",
-      "entity_id": "ORG_CIA_CHIEF",
+      "name": "Islamic Revolutionary Guard Corps",
+      "entity_id": "ORG_IRGC",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "ATTACKS",
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
+    },
+    "object": {
+      "name": "Iran, Islamic Republic of",
+      "entity_id": "CTRY_IRN",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": null,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "ATTACKS",
+    "action_event_type": "Military",
+    "action_detail": "",
+    "action_status": "UNKNOWN",
+    "action_polarity": "UNKNOWN",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "ORG_IRGC",
+        "entity_name": "Islamic Revolutionary Guard Corps",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_IRN",
+        "entity_name": "Iran, Islamic Republic of",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 26616,
+    "article_url": "https://abcnews.com/International/live-updates/iran-live-updates/?id=135895428",
+    "subject": {
+      "name": "United States forces",
+      "entity_id": "CTRY_UNITED_STATES_FORCES",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "ATTACKS",
+      "status": "COMPLETED",
+      "polarity": "NEUTRAL",
+      "verb": "struck"
+    },
+    "object": {
+      "name": "two Iranian rocket launch sites",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
+    },
+    "time": {
+      "raw": "Sunday",
+      "value": null
+    },
+    "location": {
+      "name": "Larak Island",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "United States forces on Sunday struck two Iranian rocket launch sites on Larak Island, according to a U.S. official.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "ATTACKS",
+    "action_event_type": "Military",
+    "action_detail": "struck",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "Sunday",
+    "location_str": "Larak Island",
+    "entities": [
+      {
+        "entity_id": "CTRY_UNITED_STATES_FORCES",
+        "entity_name": "United States forces",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 26616,
+    "article_url": "https://abcnews.com/International/live-updates/iran-live-updates/?id=135895428",
+    "subject": {
+      "name": "IRGC forces",
+      "entity_id": "ORG_IRGC_FORCES",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "ATTACKS",
+      "status": "ONGOING",
+      "polarity": "NEUTRAL",
+      "verb": "preparing"
+    },
+    "object": {
+      "name": "rockets armed with sea mines",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
+    },
+    "time": {
+      "raw": "Sunday",
+      "value": null
+    },
+    "location": {
+      "name": "Strait of Hormuz",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "IRGC forces were observed to be preparing rockets armed with sea mines for launch into the Strait of Hormuz, according to the official.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "ATTACKS",
+    "action_event_type": "Military",
+    "action_detail": "preparing",
+    "action_status": "ONGOING",
+    "action_polarity": "NEUTRAL",
+    "event_time": "Sunday",
+    "location_str": "Strait of Hormuz",
+    "entities": [
+      {
+        "entity_id": "ORG_IRGC_FORCES",
+        "entity_name": "IRGC forces",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 26616,
+    "article_url": "https://abcnews.com/International/live-updates/iran-live-updates/?id=135895428",
+    "subject": {
+      "name": "Larak Island",
+      "entity_id": "LOC_LARAK_ISLAND",
+      "type": "Location",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "ATTACKS",
+      "status": "COMPLETED",
+      "polarity": "NEUTRAL",
+      "verb": "is"
+    },
+    "object": {
+      "name": "a small Iranian island in the Persian Gulf at the eastern end of the Strait of Hormuz",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
+    },
+    "time": {
+      "raw": "unknown",
+      "value": null
+    },
+    "location": {
+      "name": "Persian Gulf",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Larak Island is a small Iranian island in the Persian Gulf at the eastern end of the Strait of Hormuz.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "ATTACKS",
+    "action_event_type": "Military",
+    "action_detail": "is",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "unknown",
+    "location_str": "Persian Gulf",
+    "entities": [
+      {
+        "entity_id": "LOC_LARAK_ISLAND",
+        "entity_name": "Larak Island",
+        "entity_type": "Location",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 26596,
+    "article_url": "https://thehill.com/policy/transportation/6059843-airfare-to-stabilize-high-fuel/",
+    "subject": {
+      "name": "Airlines for America",
+      "entity_id": "ORG_AIRLINES_FOR_AMERICA",
       "type": "Organization",
       "object_type": "ENTITY"
     },
     "action": {
       "type": "STATES",
-      "status": "EXPECTED",
-      "polarity": "NEGATIVE",
-      "verb": "urge"
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
     },
     "object": {
-      "name": "Russian Federation",
-      "entity_id": "CTRY_RUSSIAN_FEDERATION",
+      "name": "Iran, Islamic Republic of",
+      "entity_id": "CTRY_IRN",
       "type": "Country",
       "object_type": "ENTITY"
     },
     "time": {
-      "raw": "2023-10-05",
+      "raw": null,
       "value": null
     },
     "location": {
-      "name": "to end the war",
+      "name": null,
       "entity_id": null,
       "type": null
     },
-    "confidence": 0.8,
-    "evidence": "CIA chief urges Russia to cut a deal to end the war",
+    "confidence": null,
+    "evidence": "",
     "evidence_type": "UNKNOWN",
     "action_type": "STATES",
     "action_event_type": "Politics",
-    "action_detail": "urge",
-    "action_status": "EXPECTED",
-    "action_polarity": "NEGATIVE",
-    "event_time": "2023-10-05",
-    "location_str": "to end the war",
+    "action_detail": "",
+    "action_status": "UNKNOWN",
+    "action_polarity": "UNKNOWN",
+    "event_time": "",
+    "location_str": "",
     "entities": [
       {
-        "entity_id": "ORG_CIA_CHIEF",
-        "entity_name": "CIA Chief",
+        "entity_id": "ORG_AIRLINES_FOR_AMERICA",
+        "entity_name": "Airlines for America",
         "entity_type": "Organization",
         "role": "SUBJECT"
       },
       {
-        "entity_id": "CTRY_RUSSIAN_FEDERATION",
-        "entity_name": "Russian Federation",
+        "entity_id": "CTRY_IRN",
+        "entity_name": "Iran, Islamic Republic of",
         "entity_type": "Country",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 25527,
-    "article_url": "https://www.nytimes.com/2026/08/27/briefing/nepal-flood-cia-russia-meeting.html",
+    "article_id": 26583,
+    "article_url": "https://thehill.com/homenews/administration/6059809-trump-venezuela-spr-deal/",
     "subject": {
-      "name": "Briefing.com",
-      "entity_id": "ORG_BRIEFINGCOM",
-      "type": "Organization",
+      "name": "Trump",
+      "entity_id": "PERS_TRUMP",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "STATES",
+      "status": "COMPLETED",
+      "polarity": "NEUTRAL",
+      "verb": "said"
+    },
+    "object": {
+      "name": "Strategic Petroleum Reserve (SPR",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "time": {
+      "raw": "Sunday",
+      "value": null
+    },
+    "location": {
+      "name": "N/A",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "President Trump said Sunday the U.S. will “fill up” the Strategic Petroleum Reserve (SPR) as a result of the oil deal his administration reached with the Venezuelan government.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "STATES",
+    "action_event_type": "Politics",
+    "action_detail": "said",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "Sunday",
+    "location_str": "N/A",
+    "entities": [
+      {
+        "entity_id": "PERS_TRUMP",
+        "entity_name": "Trump",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 26583,
+    "article_url": "https://thehill.com/homenews/administration/6059809-trump-venezuela-spr-deal/",
+    "subject": {
+      "name": "United States",
+      "entity_id": "CTRY_UNITED_STATES",
+      "type": "Country",
       "object_type": "ENTITY"
     },
     "action": {
       "type": "OTHER",
-      "status": "ONGOING",
-      "polarity": "POSITIVE",
-      "verb": "provide"
+      "status": "EXPECTED",
+      "polarity": "NEUTRAL",
+      "verb": "fill up"
     },
     "object": {
-      "name": "professional-grade stock",
-      "entity_id": "ORG_PROFESSIONAL_GRADE_STOCK",
+      "name": "Strategic Petroleum Reserve (SPR",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "time": {
+      "raw": "N/A",
+      "value": null
+    },
+    "location": {
+      "name": "N/A",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "\"One of the things I am going to do with the Venezuelan Oil is fill up the Strategic National Reserves,\" Trump wrote",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "fill up",
+    "action_status": "EXPECTED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "N/A",
+    "location_str": "N/A",
+    "entities": [
+      {
+        "entity_id": "CTRY_UNITED_STATES",
+        "entity_name": "United States",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 26568,
+    "article_url": "https://thehill.com/policy/defense/6059759-blumenthal-urges-ukraine-air-defense/",
+    "subject": {
+      "name": "Rep. Richard Blumenthal",
+      "entity_id": "PERS_REP_RICHARD_BLUMENTHAL",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "STATES",
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
+    },
+    "object": {
+      "name": "Ukraine",
+      "entity_id": "CTRY_UKR",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": null,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "STATES",
+    "action_event_type": "Politics",
+    "action_detail": "",
+    "action_status": "UNKNOWN",
+    "action_polarity": "UNKNOWN",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "PERS_REP_RICHARD_BLUMENTHAL",
+        "entity_name": "Rep. Richard Blumenthal",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_UKR",
+        "entity_name": "Ukraine",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 26604,
+    "article_url": "https://www.france24.com/en/middle-east/20260830-us-forces-strike-iranian-launchers-on-larak-island-in-strait-of-hormuz",
+    "subject": {
+      "name": "US forces",
+      "entity_id": "ORG_US_FORCES",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "ATTACKS",
+      "status": "COMPLETED",
+      "polarity": "POSITIVE",
+      "verb": "strike"
+    },
+    "object": {
+      "name": "Iranian rocket launchers",
+      "entity_id": "ORG_IRANIAN_ROCKET_LAUNCHERS",
       "type": "Organization",
       "object_type": "ENTITY"
     },
     "time": {
-      "raw": "For 34 years",
+      "raw": "Sunday",
       "value": null
     },
     "location": {
-      "name": "stock market analysis",
+      "name": "Strait of Hormuz",
       "entity_id": null,
       "type": null
     },
-    "confidence": 0.7,
-    "evidence": "Briefing.com has helped individual investors make more informed decisions by providing professional-grade stock",
+    "confidence": 0.95,
+    "evidence": "US forces struck Iranian rocket launchers on the Strait of Hormuz in the first military action in a month, a US official said Sunday.",
     "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "provide",
-    "action_status": "ONGOING",
+    "action_type": "ATTACKS",
+    "action_event_type": "Military",
+    "action_detail": "strike",
+    "action_status": "COMPLETED",
     "action_polarity": "POSITIVE",
-    "event_time": "For 34 years",
-    "location_str": "stock market analysis",
+    "event_time": "Sunday",
+    "location_str": "Strait of Hormuz",
     "entities": [
       {
-        "entity_id": "ORG_BRIEFINGCOM",
-        "entity_name": "Briefing.com",
+        "entity_id": "ORG_US_FORCES",
+        "entity_name": "US forces",
         "entity_type": "Organization",
         "role": "SUBJECT"
       },
       {
-        "entity_id": "ORG_PROFESSIONAL_GRADE_STOCK",
-        "entity_name": "professional-grade stock",
+        "entity_id": "ORG_IRANIAN_ROCKET_LAUNCHERS",
+        "entity_name": "Iranian rocket launchers",
         "entity_type": "Organization",
         "role": "OBJECT"
       }
     ]
+  },
+  {
+    "article_id": 26558,
+    "article_url": "https://www.scmp.com/news/world/russia-central-asia/article/3365779/ukraine-preparing-further-talks-trump-envoys-zelensky-says?utm_source=rss_feed",
+    "subject": {
+      "name": "Zelensky",
+      "entity_id": "PERS_ZELENSKY",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "STATES",
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
+    },
+    "object": {
+      "name": "Ukraine",
+      "entity_id": "CTRY_UKR",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": null,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "STATES",
+    "action_event_type": "Politics",
+    "action_detail": "",
+    "action_status": "UNKNOWN",
+    "action_polarity": "UNKNOWN",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "PERS_ZELENSKY",
+        "entity_name": "Zelensky",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_UKR",
+        "entity_name": "Ukraine",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 26543,
+    "article_url": "https://www.scmp.com/news/world/europe/article/3365778/icelandic-voters-reject-proposal-restart-negotiations-join-european-union?utm_source=rss_feed",
+    "subject": {
+      "name": "voters",
+      "entity_id": "PERS_VOTERS",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "MEETS",
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
+    },
+    "object": {
+      "name": "Iceland",
+      "entity_id": "CTRY_ISL",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": null,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "MEETS",
+    "action_event_type": "Diplomacy",
+    "action_detail": "",
+    "action_status": "UNKNOWN",
+    "action_polarity": "UNKNOWN",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "PERS_VOTERS",
+        "entity_name": "voters",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_ISL",
+        "entity_name": "Iceland",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 26560,
+    "article_url": "https://www.ft.com/content/c9d10aeb-163e-46a3-b7ca-376ce6be9f8e?syn-25a6b1a6=1",
+    "subject": {
+      "name": "Mykhailo Fedorov",
+      "entity_id": "PERS_MYKHAILO_FEDOROV",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "STATES",
+      "status": "PLANNED",
+      "polarity": "NEUTRAL",
+      "verb": "seeks"
+    },
+    "object": {
+      "name": "western capital",
+      "entity_id": "ORG_WESTERN_CAPITAL",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1.0,
+    "evidence": "Mykhailo Fedorov seeks western capital to build and manage weapons development companies he says will help Kyiv resist Moscow",
+    "evidence_type": "UNKNOWN",
+    "action_type": "STATES",
+    "action_event_type": "Politics",
+    "action_detail": "seeks",
+    "action_status": "PLANNED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "PERS_MYKHAILO_FEDOROV",
+        "entity_name": "Mykhailo Fedorov",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_WESTERN_CAPITAL",
+        "entity_name": "western capital",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 26560,
+    "article_url": "https://www.ft.com/content/c9d10aeb-163e-46a3-b7ca-376ce6be9f8e?syn-25a6b1a6=1",
+    "subject": {
+      "name": "weapons development companies",
+      "entity_id": "COMP_WEAPONS_DEVELOPMENT_COMPANIES",
+      "type": "Company",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "FUNDS",
+      "status": "PLANNED",
+      "polarity": "NEUTRAL",
+      "verb": "build and manage"
+    },
+    "object": {
+      "name": "",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.9,
+    "evidence": "seeks western capital to build and manage weapons development companies",
+    "evidence_type": "UNKNOWN",
+    "action_type": "FUNDS",
+    "action_event_type": "Economic",
+    "action_detail": "build and manage",
+    "action_status": "PLANNED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "COMP_WEAPONS_DEVELOPMENT_COMPANIES",
+        "entity_name": "weapons development companies",
+        "entity_type": "Company",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 26537,
+    "article_url": "https://www.aljazeera.com/news/2026/8/30/google-maps-renames-lake-ontario-after-trumps-decree-on-lake-america?traffic_source=rss",
+    "subject": {
+      "name": "Tech giant",
+      "entity_id": "COMP_TECH_GIANT",
+      "type": "Company",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
+    },
+    "object": {
+      "name": "Lake Ontario",
+      "entity_id": "LOC_LAKE_ONTARIO",
+      "type": "Location",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": null,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "",
+    "action_status": "UNKNOWN",
+    "action_polarity": "UNKNOWN",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "COMP_TECH_GIANT",
+        "entity_name": "Tech giant",
+        "entity_type": "Company",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "LOC_LAKE_ONTARIO",
+        "entity_name": "Lake Ontario",
+        "entity_type": "Location",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 26578,
+    "article_url": "https://www.aljazeera.com/news/2026/8/30/top-officials-from-turkiye-saudi-arabia-pakistan-to-meet-in-istanbul?traffic_source=rss",
+    "subject": {
+      "name": "Top officials from Turkiye, Saudi Arabia, Pakistan",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "action": {
+      "type": "MEETS",
+      "status": "PLANNED",
+      "polarity": "NEUTRAL",
+      "verb": "meet"
+    },
+    "object": {
+      "name": "Istanbul",
+      "entity_id": "LOC_ISTANBUL",
+      "type": "Location",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "Monday",
+      "value": null
+    },
+    "location": {
+      "name": "Istanbul",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Top officials from Turkiye, Saudi Arabia, and Pakistan will gather in Istanbul on Monday for their first meeting since signing the Mecca Joint Defence Agreement earlier this month.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "MEETS",
+    "action_event_type": "Diplomacy",
+    "action_detail": "meet",
+    "action_status": "PLANNED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "Monday",
+    "location_str": "Istanbul",
+    "entities": [
+      {
+        "entity_id": "CTRY_SAU",
+        "entity_name": "Saudi Arabia",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_PAK",
+        "entity_name": "Pakistan",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "LOC_ISTANBUL",
+        "entity_name": "Istanbul",
+        "entity_type": "Location",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 26578,
+    "article_url": "https://www.aljazeera.com/news/2026/8/30/top-officials-from-turkiye-saudi-arabia-pakistan-to-meet-in-istanbul?traffic_source=rss",
+    "subject": {
+      "name": "Foreign, defence ministers and military chiefs from three countries",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "action": {
+      "type": "MEETS",
+      "status": "PLANNED",
+      "polarity": "NEUTRAL",
+      "verb": "meet"
+    },
+    "object": {
+      "name": "First time since signing Mecca pact",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
+    },
+    "time": {
+      "raw": "Earlier this month",
+      "value": null
+    },
+    "location": {
+      "name": "Istanbul",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Foreign, defence ministers and military chiefs from three countries to meet for first time since signing Mecca pact.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "MEETS",
+    "action_event_type": "Diplomacy",
+    "action_detail": "meet",
+    "action_status": "PLANNED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "Earlier this month",
+    "location_str": "Istanbul",
+    "entities": [
+      {
+        "entity_id": "PERS_FOREIGN",
+        "entity_name": "Foreign",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "PERS_DEFENCE_MINISTERS",
+        "entity_name": "defence ministers",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 26578,
+    "article_url": "https://www.aljazeera.com/news/2026/8/30/top-officials-from-turkiye-saudi-arabia-pakistan-to-meet-in-istanbul?traffic_source=rss",
+    "subject": {
+      "name": "Turkish officials",
+      "entity_id": "ORG_TURKISH_OFFICIALS",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "BEATS",
+      "status": "COMPLETED",
+      "polarity": "NEUTRAL",
+      "verb": "said"
+    },
+    "object": {
+      "name": "Meeting attendance",
+      "entity_id": "ORG_MEETING_ATTENDANCE",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "Sunday",
+      "value": null
+    },
+    "location": {
+      "name": "Sunday",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Turkish officials said on Sunday that the meeting will be attended by foreign ministers, defence ministers, and chiefs of staff from the three nations.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "BEATS",
+    "action_event_type": "Finance",
+    "action_detail": "said",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "Sunday",
+    "location_str": "Sunday",
+    "entities": [
+      {
+        "entity_id": "ORG_TURKISH_OFFICIALS",
+        "entity_name": "Turkish officials",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_MEETING_ATTENDANCE",
+        "entity_name": "Meeting attendance",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 26524,
+    "article_url": "https://finance.yahoo.com/energy/articles/trump-says-venezuelan-oil-refill-162145599.html",
+    "subject": {
+      "name": "Trump",
+      "entity_id": "PERS_TRUMP",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "STATES",
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
+    },
+    "object": {
+      "name": "Venezuelan",
+      "entity_id": "CTRY_VENEZUELAN",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": null,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "STATES",
+    "action_event_type": "Politics",
+    "action_detail": "",
+    "action_status": "UNKNOWN",
+    "action_polarity": "UNKNOWN",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "PERS_TRUMP",
+        "entity_name": "Trump",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_VENEZUELAN",
+        "entity_name": "Venezuelan",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 26544,
+    "article_url": "https://www.cbsnews.com/news/russia-sanctions-bill-house-senate-lindsey-graham-richard-blumenthal/",
+    "subject": {
+      "name": "Richard Blumenthal",
+      "entity_id": "PERS_RICHARD_BLUMENTHAL",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "SANCTIONS",
+      "status": "COMPLETED",
+      "polarity": "NEUTRAL",
+      "verb": "urged"
+    },
+    "object": {
+      "name": "House",
+      "entity_id": "ORG_HOUSE",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "Sunday",
+      "value": null
+    },
+    "location": {
+      "name": "Washington",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Democratic Sen. Richard Blumenthal of Connecticut on Sunday urged the House to approve the Senate-passed Russia sanctions bill amid a \"moment of extreme urgency\" in the war in Ukraine.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "SANCTIONS",
+    "action_event_type": "Economic",
+    "action_detail": "urged",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "Sunday",
+    "location_str": "Washington",
+    "entities": [
+      {
+        "entity_id": "PERS_RICHARD_BLUMENTHAL",
+        "entity_name": "Richard Blumenthal",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_HOUSE",
+        "entity_name": "House",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 26544,
+    "article_url": "https://www.cbsnews.com/news/russia-sanctions-bill-house-senate-lindsey-graham-richard-blumenthal/",
+    "subject": {
+      "name": "Russia sanctions bill",
+      "entity_id": "CTRY_RUSSIA_SANCTIONS_BILL",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "SANCTIONS",
+      "status": "COMPLETED",
+      "polarity": "NEUTRAL",
+      "verb": "passed"
+    },
+    "object": {
+      "name": "measure",
+      "entity_id": "ORG_MEASURE",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "earlier this month",
+      "value": null
+    },
+    "location": {
+      "name": "Senate",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "The Senate passed the measure along wide bipartisan margins before leaving town for its August recess earlier this month, in a push that",
+    "evidence_type": "UNKNOWN",
+    "action_type": "SANCTIONS",
+    "action_event_type": "Economic",
+    "action_detail": "passed",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "earlier this month",
+    "location_str": "Senate",
+    "entities": [
+      {
+        "entity_id": "CTRY_RUSSIA_SANCTIONS_BILL",
+        "entity_name": "Russia sanctions bill",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_MEASURE",
+        "entity_name": "measure",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 26544,
+    "article_url": "https://www.cbsnews.com/news/russia-sanctions-bill-house-senate-lindsey-graham-richard-blumenthal/",
+    "subject": {
+      "name": "Blumenthal",
+      "entity_id": "PERS_BLUMENTHAL",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "SANCTIONS",
+      "status": "COMPLETED",
+      "polarity": "POSITIVE",
+      "verb": "said"
+    },
+    "object": {
+      "name": "moment of extreme urgency",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "time": {
+      "raw": "N/A",
+      "value": null
+    },
+    "location": {
+      "name": "N/A",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "\"It is a moment of extreme urgency, for the reason that Putin may try to escalate, but also because Putin is on his heels economically,\" Blumenthal said on \"Face the Nation with Margaret Brennan.\"",
+    "evidence_type": "UNKNOWN",
+    "action_type": "SANCTIONS",
+    "action_event_type": "Economic",
+    "action_detail": "said",
+    "action_status": "COMPLETED",
+    "action_polarity": "POSITIVE",
+    "event_time": "N/A",
+    "location_str": "N/A",
+    "entities": [
+      {
+        "entity_id": "PERS_BLUMENTHAL",
+        "entity_name": "Blumenthal",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 26521,
+    "article_url": "https://www.washingtonpost.com/world/2026/08/30/venezuela-vowed-not-hand-over-its-oil-trump-aims-grab-windfall/",
+    "subject": {
+      "name": "Venezuela",
+      "entity_id": "CTRY_VENEZUELA",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "TRANSFERS",
+      "status": "COMPLETED",
+      "polarity": "NEGATIVE",
+      "verb": "vowed"
+    },
+    "object": {
+      "name": "hand over' its oil",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1.0,
+    "evidence": "Venezuela vowed not to ‘hand over’ its oil.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "TRANSFERS",
+    "action_event_type": "Diplomacy",
+    "action_detail": "vowed",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEGATIVE",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "CTRY_VENEZUELA",
+        "entity_name": "Venezuela",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 26521,
+    "article_url": "https://www.washingtonpost.com/world/2026/08/30/venezuela-vowed-not-hand-over-its-oil-trump-aims-grab-windfall/",
+    "subject": {
+      "name": "United States",
+      "entity_id": "CTRY_USA",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "TRANSFERS",
+      "status": "COMPLETED",
+      "polarity": "POSITIVE",
+      "verb": "cemented"
+    },
+    "object": {
+      "name": "long-term dominance over Venezuela",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "time": {
+      "raw": "January",
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.9,
+    "evidence": "The deal cements the United States’ long-term dominance over Venezuela, which has become a neo-colony since the U.S. military’s capture of former President Nicolás Maduro in January",
+    "evidence_type": "UNKNOWN",
+    "action_type": "TRANSFERS",
+    "action_event_type": "Diplomacy",
+    "action_detail": "cemented",
+    "action_status": "COMPLETED",
+    "action_polarity": "POSITIVE",
+    "event_time": "January",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "CTRY_USA",
+        "entity_name": "United States",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 26520,
+    "article_url": "https://www.cbsnews.com/video/david-becker-says-there-is-no-time-for-trump-executive-order-on-mail-voting-to-be-implemented/",
+    "subject": {
+      "name": "CBS News election analyst David Becker",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "action": {
+      "type": "STATES",
+      "status": "COMPLETED",
+      "polarity": "POSITIVE",
+      "verb": "told"
+    },
+    "object": {
+      "name": "Face the Nation with Margaret Brennan",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
+    },
+    "time": {
+      "raw": "2023-10-19",
+      "value": null
+    },
+    "location": {
+      "name": "United States",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.85,
+    "evidence": "CBS News election analyst David Becker told 'Face the Nation with Margaret Brennan' that there is 'simply no time' to put in place President Trump's executive order restricting mail voting.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "STATES",
+    "action_event_type": "Politics",
+    "action_detail": "told",
+    "action_status": "COMPLETED",
+    "action_polarity": "POSITIVE",
+    "event_time": "2023-10-19",
+    "location_str": "United States",
+    "entities": []
   }
 ]
