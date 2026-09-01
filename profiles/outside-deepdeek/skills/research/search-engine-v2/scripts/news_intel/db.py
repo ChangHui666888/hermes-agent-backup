@@ -591,6 +591,20 @@ def list_events(stage: str = None, event_type: str = None, limit: int = 50,
                     d[k] = json.loads(d[k])
                 except json.JSONDecodeError:
                     pass
+        # v4.4 嵌套 dict 往返重建 (ISS-...): registry 以扁平列存储,
+        # 需在此重建 source/subject/action/object/location, 否则 pusher 读
+        # ev['source']['source_count'] 等全部拿到空 dict → 云端 source_count=0 / subject 缺失。
+        if not isinstance(d.get("source"), dict):
+            d["source"] = {"primary_source_id": d.get("primary_source_id"),
+                           "source_count": d.get("source_count", 0)}
+        if not isinstance(d.get("subject"), dict):
+            d["subject"] = {"name": d.get("subject_name"), "type": d.get("subject_type")}
+        if not isinstance(d.get("action"), dict):
+            d["action"] = {"type": d.get("action_type"), "detail": d.get("action_detail")}
+        if not isinstance(d.get("object"), dict):
+            d["object"] = {"name": d.get("object_name"), "type": d.get("object_type")}
+        if not isinstance(d.get("location"), dict):
+            d["location"] = {"country": d.get("location_country"), "region": None}
         result.append(d)
     return result
 

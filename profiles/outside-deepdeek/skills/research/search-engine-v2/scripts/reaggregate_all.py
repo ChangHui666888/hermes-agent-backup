@@ -105,12 +105,22 @@ def main():
 
     # 5. 推云端
     if not args.no_push:
+        # 复用 config.env (CLOUD_API / INTERNAL_TOKEN); 失败回退 Tailscale 地址
+        try:
+            from config.env import CLOUD_API, INTERNAL_TOKEN
+        except Exception:
+            CLOUD_API = "http://100.107.117.23"
+            INTERNAL_TOKEN = "v8-pipeline-token-2026-xK9mP2sR7wQ"
+        # pusher 在 import 时读 NEWS_API_BASE / NEWS_API_TOKEN, 必须先设 env。
+        # 否则回退 localhost:8000 + 错误 token, 且走 HTTP_PROXY 时被代理返回 502。
+        os.environ["NEWS_API_BASE"] = CLOUD_API
+        os.environ["NEWS_API_TOKEN"] = INTERNAL_TOKEN
         from news_intel.pusher import push_events
         # 分批推送
         CHUNK = 100
         for i in range(0, len(events), CHUNK):
             chunk = events[i:i+CHUNK]
-            result = push_events(chunk)
+            result = push_events(chunk, api_base=CLOUD_API)
             print(f"[push] 批次 {i//CHUNK+1}: {result}")
         print("[push] 推送完成")
     else:

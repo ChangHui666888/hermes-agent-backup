@@ -174,15 +174,10 @@ def _event_to_push_format(ev: dict) -> dict:
         "action": ev.get("action", {}),
         "object": ev.get("object", {}),
 
-        # Location
-        "location_country": ev.get("location", {}).get("country") if isinstance(ev.get("location"), dict) else None,
-
-        # Source
-        "primary_source": ev.get("source", {}).get("primary_source") if isinstance(ev.get("source"), dict) else None,
-        "primary_source_id": ev.get("source", {}).get("primary_source_id") if isinstance(ev.get("source"), dict) else None,
-        "source_authority": ev.get("source", {}).get("authority") if isinstance(ev.get("source"), dict) else 0,
-        "source_count": ev.get("source", {}).get("source_count") if isinstance(ev.get("source"), dict) else 0,
-        "sources": ev.get("source", {}).get("sources", []) if isinstance(ev.get("source"), dict) else [],
+        # Location / Source — 后端 internal.py 读嵌套 ev['location']/ev['source'] dict
+        # (v4.4 契约, 与 auto-pipeline._event_row_to_push 一致; 不能压平成顶层字段, 否则 source_count 恒为 0)
+        "location": ev.get("location", {}) if isinstance(ev.get("location"), dict) else {},
+        "source": ev.get("source", {}) if isinstance(ev.get("source"), dict) else {},
 
         # Articles (raw list)
         "article_count": ev.get("article_count", 0),

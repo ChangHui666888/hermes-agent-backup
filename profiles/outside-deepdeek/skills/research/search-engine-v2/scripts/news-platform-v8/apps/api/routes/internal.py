@@ -86,10 +86,20 @@ def ingest_events(
             :llm_analysis, :first_seen, :last_updated)
         ON CONFLICT (event_id) DO UPDATE SET
             title=EXCLUDED.title, summary=EXCLUDED.summary,
-            stage=EXCLUDED.stage, confidence=EXCLUDED.confidence,
-            coherence=EXCLUDED.coherence, last_updated=EXCLUDED.last_updated,
+            event_type=EXCLUDED.event_type, stage=EXCLUDED.stage,
+            confidence=EXCLUDED.confidence, coherence=EXCLUDED.coherence,
+            subject_name=EXCLUDED.subject_name, subject_type=EXCLUDED.subject_type,
+            action_type=EXCLUDED.action_type, action_detail=EXCLUDED.action_detail,
+            object_name=EXCLUDED.object_name, object_type=EXCLUDED.object_type,
+            location_country=EXCLUDED.location_country,
+            primary_source_id=EXCLUDED.primary_source_id,
+            source_count=EXCLUDED.source_count, article_count=EXCLUDED.article_count,
+            article_ids=EXCLUDED.article_ids, doc_refs=EXCLUDED.doc_refs,
+            actors=EXCLUDED.actors, keywords=EXCLUDED.keywords,
+            related_entities=EXCLUDED.related_entities,
             evidence=EXCLUDED.evidence, source_chain=EXCLUDED.source_chain,
-            timeline=EXCLUDED.timeline, llm_analysis=EXCLUDED.llm_analysis
+            timeline=EXCLUDED.timeline, llm_analysis=EXCLUDED.llm_analysis,
+            first_seen=EXCLUDED.first_seen, last_updated=EXCLUDED.last_updated
     """)
     for ev in events:
         try:
