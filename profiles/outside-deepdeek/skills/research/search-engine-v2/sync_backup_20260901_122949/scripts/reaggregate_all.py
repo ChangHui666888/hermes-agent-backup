@@ -49,9 +49,7 @@ def clear_events():
 
 
 def load_articles():
-    """加载全部 Tier A/B + C 级 CJK 文章 (v4.4.3 中文聚合)"""
-    def _is_cjk(text):
-        return any('一' <= ch <= '鿿' for ch in (text or ""))
+    """加载全部 Tier A/B 有内容的文章"""
     from news_intel.db import get_db
     db = get_db()
     db.row_factory = lambda c, r: dict(zip([col[0] for col in c.description], r))
@@ -62,14 +60,12 @@ def load_articles():
         FROM news_content nc
         JOIN news_intelligence ni ON nc.intel_id = ni.id
         JOIN rss_raw rr ON ni.raw_id = rr.id
-        WHERE (ni.tier IN ('A', 'B') OR ni.tier = 'C')
+        WHERE ni.tier IN ('A', 'B')
+          AND nc.content_md IS NOT NULL AND nc.content_md != ''
         ORDER BY rr.published_at ASC
     """).fetchall()
     db.close()
-    # 只放行 C 级 CJK (避免 2 万篇英文 C 级噪音); A/B 全放行
-    rows = [r for r in rows if r["tier"] in ("A", "B")
-            or _is_cjk((r["title"] or "") + (r["description"] or ""))]
-    print(f"[load] {len(rows)} 篇 (A/B + C级CJK)")
+    print(f"[load] {len(rows)} 篇 Tier A/B 有内容文章")
     return rows
 
 

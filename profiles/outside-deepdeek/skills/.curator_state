@@ -1,9 +1,9 @@
 {
-  "last_report_path": "C:\\Users\\ChangHui\\AppData\\Local\\hermes\\profiles\\outside-deepdeek\\logs\\curator\\20260826-015911",
-  "last_run_at": "2026-08-26T01:59:11.286887+00:00",
-  "last_run_duration_seconds": 280.021632,
+  "last_report_path": "C:\\Users\\ChangHui\\AppData\\Local\\hermes\\profiles\\outside-deepdeek\\logs\\curator\\20260902-025602",
+  "last_run_at": "2026-09-02T02:56:02.710522+00:00",
+  "last_run_duration_seconds": 248.892504,
   "last_run_summary": "auto: no changes; llm: skipped (consolidation off)",
   "last_run_summary_shown_at": null,
   "paused": false,
-  "run_count": 8
+  "run_count": 9
 }

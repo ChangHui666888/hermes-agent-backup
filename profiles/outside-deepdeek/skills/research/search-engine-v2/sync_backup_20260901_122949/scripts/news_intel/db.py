@@ -591,7 +591,7 @@ def list_events(stage: str = None, event_type: str = None, limit: int = 50,
                     d[k] = json.loads(d[k])
                 except json.JSONDecodeError:
                     pass
-        # v4.4 嵌套 dict 往返重建 (ISS-2026-0901): registry 以扁平列存储,
+        # v4.4 嵌套 dict 往返重建 (ISS-...): registry 以扁平列存储,
         # 需在此重建 source/subject/action/object/location, 否则 pusher 读
         # ev['source']['source_count'] 等全部拿到空 dict → 云端 source_count=0 / subject 缺失。
         if not isinstance(d.get("source"), dict):
