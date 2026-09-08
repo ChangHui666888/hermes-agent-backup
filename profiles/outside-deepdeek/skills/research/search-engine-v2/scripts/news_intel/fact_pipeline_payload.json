@@ -1,1088 +1,863 @@
 [
   {
-    "article_id": 29846,
-    "article_url": "https://www.scmp.com/news/asia/east-asia/article/3366573/north-koreas-kim-launches-second-nuclear-destroyer-us-south-korea-japan-drills-start?utm_source=rss_feed",
+    "article_id": 30856,
+    "article_url": "https://www.rfi.fr/cn/%E5%9B%BD%E9%99%85/20260907-%E8%B4%9D%E5%B0%94%E6%A0%BC%E8%8E%B1%E5%BE%B7%E6%95%B0%E5%8D%83%E4%BA%BA%E4%B8%BA%E5%A7%86%E6%8B%89%E8%BF%AA%E5%A5%87%E9%80%81%E8%91%AC-%E6%AC%A7%E7%9B%9F%E8%B0%B4%E8%B4%A3%E7%BE%8E%E5%8C%96%E6%88%98%E7%8A%AF",
     "subject": {
-      "name": "Kim Jong-un",
-      "entity_id": "PERS_KIM_JONG_UN",
-      "type": "Person",
+      "name": "Belgrade",
+      "entity_id": "LOC_BELGRADE",
+      "type": "Location",
       "object_type": "ENTITY"
     },
     "action": {
-      "type": "LAUNCHES",
-      "status": "UNKNOWN",
-      "polarity": "UNKNOWN",
-      "verb": ""
-    },
-    "object": {
-      "name": "United States",
-      "entity_id": "CTRY_UNITED_STATES",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": null,
-    "evidence": "",
-    "evidence_type": "UNKNOWN",
-    "action_type": "LAUNCHES",
-    "action_event_type": "Technology",
-    "action_detail": "",
-    "action_status": "UNKNOWN",
-    "action_polarity": "UNKNOWN",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "PERS_KIM_JONG_UN",
-        "entity_name": "Kim Jong-un",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_UNITED_STATES",
-        "entity_name": "United States",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 29860,
-    "article_url": "https://www.investing.com/news/economic-indicators/japan-reserves-plunge-record-796-billion-after-massive-yen-intervention-4890341",
-    "subject": {
-      "name": "Tavily",
-      "entity_id": "PERS_TAVILY",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "CRASHES",
-      "status": "UNKNOWN",
-      "polarity": "UNKNOWN",
-      "verb": ""
-    },
-    "object": {
-      "name": "Japan",
-      "entity_id": "CTRY_JPN",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": null,
-    "evidence": "",
-    "evidence_type": "UNKNOWN",
-    "action_type": "CRASHES",
-    "action_event_type": "Finance",
-    "action_detail": "",
-    "action_status": "UNKNOWN",
-    "action_polarity": "UNKNOWN",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "PERS_TAVILY",
-        "entity_name": "Tavily",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_JPN",
-        "entity_name": "Japan",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 29756,
-    "article_url": "https://www.cbsnews.com/video/taliban-back-in-control-25-years-after-9-11/",
-    "subject": {
-      "name": "Taliban",
-      "entity_id": "ORG_TALIBAN",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "BANS",
-      "status": "UNKNOWN",
-      "polarity": "UNKNOWN",
-      "verb": ""
-    },
-    "object": {
-      "name": "United States",
-      "entity_id": "CTRY_UNITED_STATES",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": null,
-    "evidence": "",
-    "evidence_type": "UNKNOWN",
-    "action_type": "BANS",
-    "action_event_type": "Legal",
-    "action_detail": "",
-    "action_status": "UNKNOWN",
-    "action_polarity": "UNKNOWN",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "ORG_TALIBAN",
-        "entity_name": "Taliban",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_UNITED_STATES",
-        "entity_name": "United States",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 29755,
-    "article_url": "https://www.scmp.com/business/china-business/article/3366417/chinas-tesla-imitators-have-new-mission-build-affordable-humanoid-robots-consumers?utm_source=rss_feed",
-    "subject": {
-      "name": "China’s ‘Tesla imitators’",
-      "entity_id": "CTRY_CHINAS_TESLA_IMITATORS",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "PLANNED",
+      "type": "ACCUSES",
+      "status": "COMPLETED",
       "polarity": "POSITIVE",
-      "verb": "build"
+      "verb": "参加"
     },
     "object": {
-      "name": "affordable humanoid robots for consumers",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": "March",
-      "value": null
-    },
-    "location": {
-      "name": "China",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 0.9,
-    "evidence": "China’s ‘Tesla imitators’ have a new mission: build affordable humanoid robots for consumers",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "build",
-    "action_status": "PLANNED",
-    "action_polarity": "POSITIVE",
-    "event_time": "March",
-    "location_str": "China",
-    "entities": [
-      {
-        "entity_id": "CTRY_CHINAS_TESLA_IMITATORS",
-        "entity_name": "China’s ‘Tesla imitators’",
-        "entity_type": "Country",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 29755,
-    "article_url": "https://www.scmp.com/business/china-business/article/3366417/chinas-tesla-imitators-have-new-mission-build-affordable-humanoid-robots-consumers?utm_source=rss_feed",
-    "subject": {
-      "name": "William Li (Nio CEO",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "ANNOUNCED",
-      "polarity": "NEUTRAL",
-      "verb": "liken"
-    },
-    "object": {
-      "name": "automotive business to the development of robots",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": "March",
-      "value": null
-    },
-    "location": {
-      "name": "Shanghai",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1.0,
-    "evidence": "When Nio CEO William Li outlined earnings prospects for the Shanghai-based carmaker in March, he could not help but liken the automotive business to the development of robots.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "liken",
-    "action_status": "ANNOUNCED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "March",
-    "location_str": "Shanghai",
-    "entities": []
-  },
-  {
-    "article_id": 29856,
-    "article_url": "https://www.aljazeera.com/video/newsfeed/2026/9/7/eight-year-old-gaza-girl-killed-by-israel-on-first-day-of-school?traffic_source=rss",
-    "subject": {
-      "name": "Wafaa Akila",
-      "entity_id": "ORG_WAFAA_AKILA",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "DIES",
-      "status": "COMPLETED",
-      "polarity": "NEGATIVE",
-      "verb": "killed"
-    },
-    "object": {
-      "name": "eight-year-old girl",
-      "entity_id": "PERS_EIGHT_YEAR_OLD_GIRL",
+      "name": "姆拉迪奇",
+      "entity_id": "PERS_姆拉迪奇",
       "type": "Person",
       "object_type": "ENTITY"
     },
     "time": {
-      "raw": "Sunday (first day of school)",
+      "raw": "周一",
       "value": null
     },
     "location": {
-      "name": "western Gaza",
+      "name": "贝尔格莱德",
       "entity_id": null,
       "type": null
     },
-    "confidence": 1,
-    "evidence": "An eight-year-old girl and her father were killed when an Israeli strike hit their vehicle on her first day of school.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "DIES",
-    "action_event_type": "Leadership",
-    "action_detail": "killed",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEGATIVE",
-    "event_time": "Sunday (first day of school)",
-    "location_str": "western Gaza",
-    "entities": [
-      {
-        "entity_id": "ORG_WAFAA_AKILA",
-        "entity_name": "Wafaa Akila",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "PERS_EIGHT_YEAR_OLD_GIRL",
-        "entity_name": "eight-year-old girl",
-        "entity_type": "Person",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 29856,
-    "article_url": "https://www.aljazeera.com/video/newsfeed/2026/9/7/eight-year-old-gaza-girl-killed-by-israel-on-first-day-of-school?traffic_source=rss",
-    "subject": {
-      "name": "Israeli strike",
-      "entity_id": "CTRY_ISRAELI_STRIKE",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "ATTACKS",
-      "status": "COMPLETED",
-      "polarity": "NEGATIVE",
-      "verb": "hit"
-    },
-    "object": {
-      "name": "vehicle",
-      "entity_id": "ORG_VEHICLE",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "Sunday (first day of school)",
-      "value": null
-    },
-    "location": {
-      "name": "western Gaza",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Wafaa never made it home. She was killed alongside her father by an Israeli strike on their car in western Gaza.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "ATTACKS",
-    "action_event_type": "Military",
-    "action_detail": "hit",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEGATIVE",
-    "event_time": "Sunday (first day of school)",
-    "location_str": "western Gaza",
-    "entities": [
-      {
-        "entity_id": "CTRY_ISRAELI_STRIKE",
-        "entity_name": "Israeli strike",
-        "entity_type": "Country",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_VEHICLE",
-        "entity_name": "vehicle",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 29856,
-    "article_url": "https://www.aljazeera.com/video/newsfeed/2026/9/7/eight-year-old-gaza-girl-killed-by-israel-on-first-day-of-school?traffic_source=rss",
-    "subject": {
-      "name": "Israel",
-      "entity_id": "CTRY_ISR",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "STATES",
-      "status": "ANNOUNCED",
-      "polarity": "NEUTRAL",
-      "verb": "says"
-    },
-    "object": {
-      "name": "strike was targeting a Hamas militant",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": "unknown",
-      "value": null
-    },
-    "location": {
-      "name": "unknown",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 0.9,
-    "evidence": "Israel says it was targeting a Hamas militant.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "STATES",
-    "action_event_type": "Politics",
-    "action_detail": "says",
-    "action_status": "ANNOUNCED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "unknown",
-    "location_str": "unknown",
-    "entities": [
-      {
-        "entity_id": "CTRY_ISR",
-        "entity_name": "Israel",
-        "entity_type": "Country",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 29804,
-    "article_url": "https://www.investing.com/news/economic-indicators/japans-august-foreign-reserves-post-largestever-drop-after-record-intervention-4890332",
-    "subject": {
-      "name": "Tavily",
-      "entity_id": "PERS_TAVILY",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "DROPS",
-      "status": "UNKNOWN",
-      "polarity": "UNKNOWN",
-      "verb": ""
-    },
-    "object": {
-      "name": "Japan",
-      "entity_id": "CTRY_JPN",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": null,
+    "confidence": 0.95,
     "evidence": "",
     "evidence_type": "UNKNOWN",
-    "action_type": "DROPS",
-    "action_event_type": "Finance",
-    "action_detail": "",
-    "action_status": "UNKNOWN",
-    "action_polarity": "UNKNOWN",
-    "event_time": "",
-    "location_str": "",
+    "action_type": "ACCUSES",
+    "action_event_type": "Legal",
+    "action_detail": "参加",
+    "action_status": "COMPLETED",
+    "action_polarity": "POSITIVE",
+    "event_time": "周一",
+    "location_str": "贝尔格莱德",
     "entities": [
       {
-        "entity_id": "PERS_TAVILY",
-        "entity_name": "Tavily",
-        "entity_type": "Person",
+        "entity_id": "LOC_BELGRADE",
+        "entity_name": "Belgrade",
+        "entity_type": "Location",
         "role": "SUBJECT"
       },
       {
-        "entity_id": "CTRY_JPN",
-        "entity_name": "Japan",
-        "entity_type": "Country",
+        "entity_id": "PERS_姆拉迪奇",
+        "entity_name": "姆拉迪奇",
+        "entity_type": "Person",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 29767,
-    "article_url": "https://www.aljazeera.com/news/2026/9/7/north-korea-deploys-warship-capable-of-annihilating-retaliatory-strikes?traffic_source=rss",
+    "article_id": 30856,
+    "article_url": "https://www.rfi.fr/cn/%E5%9B%BD%E9%99%85/20260907-%E8%B4%9D%E5%B0%94%E6%A0%BC%E8%8E%B1%E5%BE%B7%E6%95%B0%E5%8D%83%E4%BA%BA%E4%B8%BA%E5%A7%86%E6%8B%89%E8%BF%AA%E5%A5%87%E9%80%81%E8%91%AC-%E6%AC%A7%E7%9B%9F%E8%B0%B4%E8%B4%A3%E7%BE%8E%E5%8C%96%E6%88%98%E7%8A%AF",
     "subject": {
-      "name": "Korea, Democratic People's Republic of",
-      "entity_id": "CTRY_PRK",
-      "type": "Country",
+      "name": "Brussels",
+      "entity_id": "LOC_BRUSSELS",
+      "type": "Location",
       "object_type": "ENTITY"
     },
     "action": {
-      "type": "ATTACKS",
+      "type": "ACCUSES",
       "status": "COMPLETED",
-      "polarity": "NEUTRAL",
-      "verb": "deploys"
+      "polarity": "NEGATIVE",
+      "verb": "谴责"
     },
     "object": {
-      "name": "warship",
-      "entity_id": "ORG_WARSHIP",
-      "type": "Organization",
+      "name": "任何‘美化’",
+      "entity_id": "PERS_任何美化",
+      "type": "Person",
       "object_type": "ENTITY"
     },
     "time": {
-      "raw": "Sunday",
+      "raw": "未知",
       "value": null
     },
     "location": {
-      "name": "eastern Wonsan Port in Kangwon Province",
+      "name": "布鲁塞尔",
       "entity_id": null,
       "type": null
     },
-    "confidence": 1,
-    "evidence": "North Korean leader Kim Jong Un attended the commissioning of a warship he said could deliver “annihilating retaliatory strikes on an enemy”, citing “constant threats”, according to the state-run Korean Central News Agency (KCNA). The Kang Kon, named after the North Korean military leader who was killed in action during the Korean War, was formally deployed at a ceremony at the eastern Wonsan Port in Kangwon Province on Sunday.",
+    "confidence": 0.95,
+    "evidence": "",
     "evidence_type": "UNKNOWN",
-    "action_type": "ATTACKS",
-    "action_event_type": "Military",
-    "action_detail": "deploys",
+    "action_type": "ACCUSES",
+    "action_event_type": "Legal",
+    "action_detail": "谴责",
     "action_status": "COMPLETED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "Sunday",
-    "location_str": "eastern Wonsan Port in Kangwon Province",
+    "action_polarity": "NEGATIVE",
+    "event_time": "未知",
+    "location_str": "布鲁塞尔",
     "entities": [
       {
-        "entity_id": "CTRY_PRK",
-        "entity_name": "Korea, Democratic People's Republic of",
-        "entity_type": "Country",
+        "entity_id": "LOC_BRUSSELS",
+        "entity_name": "Brussels",
+        "entity_type": "Location",
         "role": "SUBJECT"
       },
       {
-        "entity_id": "ORG_WARSHIP",
-        "entity_name": "warship",
-        "entity_type": "Organization",
+        "entity_id": "PERS_任何美化",
+        "entity_name": "任何‘美化’",
+        "entity_type": "Person",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 29767,
-    "article_url": "https://www.aljazeera.com/news/2026/9/7/north-korea-deploys-warship-capable-of-annihilating-retaliatory-strikes?traffic_source=rss",
+    "article_id": 30946,
+    "article_url": "https://www.rfi.fr/cn/%E5%9B%BD%E9%99%85/20260907-%E6%B3%BD%E8%BF%9E%E6%96%AF%E5%9F%BA%E4%B8%8E%E7%BE%8E%E5%9B%BD%E7%89%B9%E4%BD%BF%E4%BC%9A%E8%B0%88%E5%90%8E%E8%A1%A8%E7%A4%BA%E6%AD%A3%E7%AD%B9%E5%A4%87%E5%90%8E%E7%BB%AD%E8%B0%88%E5%88%A4",
     "subject": {
-      "name": "vessel",
-      "entity_id": "ORG_VESSEL",
-      "type": "Organization",
+      "name": "乌克兰总统",
+      "entity_id": "PERS_乌克兰总统",
+      "type": "Person",
       "object_type": "ENTITY"
     },
     "action": {
-      "type": "ATTACKS",
-      "status": "PLANNED",
-      "polarity": "NEUTRAL",
-      "verb": "form"
+      "type": "MEETS",
+      "status": "COMPLETED",
+      "polarity": "POSITIVE",
+      "verb": "筹备后续谈判"
     },
     "object": {
-      "name": "Pyongyang's nuclear response system",
+      "name": "",
       "entity_id": null,
       "type": "Other",
       "object_type": "UNKNOWN"
     },
     "time": {
-      "raw": "unknown",
+      "raw": "周一",
       "value": null
     },
     "location": {
-      "name": "unknown",
+      "name": "基辅",
       "entity_id": null,
       "type": null
     },
-    "confidence": 0.9,
-    "evidence": "Leader Kim Jong Un says vessel will form part of Pyongyang’s nuclear response system, strengthen naval forces.",
+    "confidence": 0.95,
+    "evidence": "",
     "evidence_type": "UNKNOWN",
-    "action_type": "ATTACKS",
-    "action_event_type": "Military",
-    "action_detail": "form",
-    "action_status": "PLANNED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "unknown",
-    "location_str": "unknown",
+    "action_type": "MEETS",
+    "action_event_type": "Diplomacy",
+    "action_detail": "筹备后续谈判",
+    "action_status": "COMPLETED",
+    "action_polarity": "POSITIVE",
+    "event_time": "周一",
+    "location_str": "基辅",
     "entities": [
       {
-        "entity_id": "ORG_VESSEL",
-        "entity_name": "vessel",
-        "entity_type": "Organization",
+        "entity_id": "PERS_乌克兰总统",
+        "entity_name": "乌克兰总统",
+        "entity_type": "Person",
         "role": "SUBJECT"
       }
     ]
   },
   {
-    "article_id": 29767,
-    "article_url": "https://www.aljazeera.com/news/2026/9/7/north-korea-deploys-warship-capable-of-annihilating-retaliatory-strikes?traffic_source=rss",
+    "article_id": 30946,
+    "article_url": "https://www.rfi.fr/cn/%E5%9B%BD%E9%99%85/20260907-%E6%B3%BD%E8%BF%9E%E6%96%AF%E5%9F%BA%E4%B8%8E%E7%BE%8E%E5%9B%BD%E7%89%B9%E4%BD%BF%E4%BC%9A%E8%B0%88%E5%90%8E%E8%A1%A8%E7%A4%BA%E6%AD%A3%E7%AD%B9%E5%A4%87%E5%90%8E%E7%BB%AD%E8%B0%88%E5%88%A4",
     "subject": {
-      "name": "warship",
-      "entity_id": "ORG_WARSHIP",
-      "type": "Organization",
+      "name": "乌克兰总统",
+      "entity_id": "PERS_乌克兰总统",
+      "type": "Person",
       "object_type": "ENTITY"
     },
     "action": {
-      "type": "ATTACKS",
-      "status": "CONSIDERED",
-      "polarity": "NEGATIVE",
-      "verb": "deliver"
+      "type": "MEETS",
+      "status": "ONGOING",
+      "polarity": "NEUTRAL",
+      "verb": "磋商"
     },
     "object": {
-      "name": "retaliatory strikes",
-      "entity_id": "ORG_RETALIATORY_STRIKES",
-      "type": "Organization",
+      "name": "美国特使",
+      "entity_id": "CTRY_美国特使",
+      "type": "Country",
       "object_type": "ENTITY"
     },
     "time": {
-      "raw": "unknown",
+      "raw": "周一",
       "value": null
     },
     "location": {
-      "name": "unknown",
+      "name": "基辅",
       "entity_id": null,
       "type": null
     },
     "confidence": 0.8,
-    "evidence": "Leader Kim Jong Un says vessel will form part of Pyongyang’s nuclear response system, strengthen naval forces.",
+    "evidence": "",
     "evidence_type": "UNKNOWN",
-    "action_type": "ATTACKS",
-    "action_event_type": "Military",
-    "action_detail": "deliver",
-    "action_status": "CONSIDERED",
-    "action_polarity": "NEGATIVE",
-    "event_time": "unknown",
-    "location_str": "unknown",
+    "action_type": "MEETS",
+    "action_event_type": "Diplomacy",
+    "action_detail": "磋商",
+    "action_status": "ONGOING",
+    "action_polarity": "NEUTRAL",
+    "event_time": "周一",
+    "location_str": "基辅",
     "entities": [
       {
-        "entity_id": "ORG_WARSHIP",
-        "entity_name": "warship",
-        "entity_type": "Organization",
+        "entity_id": "PERS_乌克兰总统",
+        "entity_name": "乌克兰总统",
+        "entity_type": "Person",
         "role": "SUBJECT"
       },
       {
-        "entity_id": "ORG_RETALIATORY_STRIKES",
-        "entity_name": "retaliatory strikes",
-        "entity_type": "Organization",
+        "entity_id": "CTRY_美国特使",
+        "entity_name": "美国特使",
+        "entity_type": "Country",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 29809,
-    "article_url": "https://www.investing.com/news/economy-news/takaichis-reflationist-aide-projects-bank-of-japan-rate-hike-in-september-4890331",
+    "article_id": 30792,
+    "article_url": "https://www.rfi.fr/cn/%E4%B8%AD%E5%9B%BD/20260907-%E7%BE%8E%E5%8A%A0%E8%B4%B8%E6%98%93%E4%BA%89%E7%AB%AF%E5%8D%87%E7%BA%A7-%E7%89%B9%E6%9C%97%E6%99%AE%E5%A8%81%E8%83%81%E5%B0%81%E6%9D%80%E5%BA%9E%E5%B7%B4%E8%BF%AA%E9%A3%9E%E6%9C%BA%E5%9C%A8%E7%BE%8E%E9%94%80%E5%94%AE",
     "subject": {
-      "name": "Bank of Japan",
-      "entity_id": "COMP_BANK_OF_JAPAN",
-      "type": "Company",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "RATE_HIKE",
-      "status": "EXPECTED",
-      "polarity": "NEUTRAL",
-      "verb": "raise"
-    },
-    "object": {
-      "name": "interest rates",
-      "entity_id": "ORG_INTEREST_RATES",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "September",
-      "value": null
-    },
-    "location": {
-      "name": "September",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "The Bank of Japan is expected to raise interest rates in September, according to Takuji Aida, an economic adviser to Prime Minister Sanae Takaichi.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "RATE_HIKE",
-    "action_event_type": "Finance",
-    "action_detail": "raise",
-    "action_status": "EXPECTED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "September",
-    "location_str": "September",
-    "entities": [
-      {
-        "entity_id": "COMP_BANK_OF_JAPAN",
-        "entity_name": "Bank of Japan",
-        "entity_type": "Company",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_INTEREST_RATES",
-        "entity_name": "interest rates",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 29809,
-    "article_url": "https://www.investing.com/news/economy-news/takaichis-reflationist-aide-projects-bank-of-japan-rate-hike-in-september-4890331",
-    "subject": {
-      "name": "Markets",
-      "entity_id": "ORG_MARKETS",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "RATE_HIKE",
-      "status": "EXPECTED",
-      "polarity": "NEUTRAL",
-      "verb": "anticipate"
-    },
-    "object": {
-      "name": "25 basis point increase to 1.25%",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "AMOUNT"
-    },
-    "time": {
-      "raw": "September",
-      "value": null
-    },
-    "location": {
-      "name": "September meeting",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Markets anticipate a 25 basis point increase to 1.25% at the September meeting.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "RATE_HIKE",
-    "action_event_type": "Finance",
-    "action_detail": "anticipate",
-    "action_status": "EXPECTED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "September",
-    "location_str": "September meeting",
-    "entities": [
-      {
-        "entity_id": "ORG_MARKETS",
-        "entity_name": "Markets",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 29809,
-    "article_url": "https://www.investing.com/news/economy-news/takaichis-reflationist-aide-projects-bank-of-japan-rate-hike-in-september-4890331",
-    "subject": {
-      "name": "Takuji Aida",
-      "entity_id": "PERS_TAKUJI_AIDA",
+      "name": "Trump",
+      "entity_id": "PERS_TRUMP",
       "type": "Person",
       "object_type": "ENTITY"
     },
     "action": {
-      "type": "RATE_HIKE",
-      "status": "EXPECTED",
-      "polarity": "POSITIVE",
-      "verb": "supports"
+      "type": "ESCALATES",
+      "status": "DELAYED",
+      "polarity": "NEGATIVE",
+      "verb": "威胁"
     },
     "object": {
-      "name": "hike to counter yen depreciation",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
+      "name": "庞巴迪",
+      "entity_id": "PERS_庞巴迪",
+      "type": "Person",
+      "object_type": "ENTITY"
     },
     "time": {
-      "raw": null,
+      "raw": "2023-09-07",
       "value": null
     },
     "location": {
-      "name": null,
+      "name": "美国",
       "entity_id": null,
       "type": null
     },
-    "confidence": 1,
-    "evidence": "Aida supports this hike to counter yen depreciation.",
+    "confidence": 0.95,
+    "evidence": "",
     "evidence_type": "UNKNOWN",
-    "action_type": "RATE_HIKE",
-    "action_event_type": "Finance",
-    "action_detail": "supports",
-    "action_status": "EXPECTED",
-    "action_polarity": "POSITIVE",
-    "event_time": "",
-    "location_str": "",
+    "action_type": "ESCALATES",
+    "action_event_type": "Military",
+    "action_detail": "威胁",
+    "action_status": "DELAYED",
+    "action_polarity": "NEGATIVE",
+    "event_time": "2023-09-07",
+    "location_str": "美国",
     "entities": [
       {
-        "entity_id": "PERS_TAKUJI_AIDA",
-        "entity_name": "Takuji Aida",
+        "entity_id": "PERS_TRUMP",
+        "entity_name": "Trump",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "PERS_庞巴迪",
+        "entity_name": "庞巴迪",
+        "entity_type": "Person",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 30792,
+    "article_url": "https://www.rfi.fr/cn/%E4%B8%AD%E5%9B%BD/20260907-%E7%BE%8E%E5%8A%A0%E8%B4%B8%E6%98%93%E4%BA%89%E7%AB%AF%E5%8D%87%E7%BA%A7-%E7%89%B9%E6%9C%97%E6%99%AE%E5%A8%81%E8%83%81%E5%B0%81%E6%9D%80%E5%BA%9E%E5%B7%B4%E8%BF%AA%E9%A3%9E%E6%9C%BA%E5%9C%A8%E7%BE%8E%E9%94%80%E5%94%AE",
+    "subject": {
+      "name": "加拿大",
+      "entity_id": "PERS_加拿大",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "TARIFFS",
+      "status": "COMPLETED",
+      "polarity": "NEGATIVE",
+      "verb": "加征关税"
+    },
+    "object": {
+      "name": "",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "time": {
+      "raw": "2023-09-07",
+      "value": null
+    },
+    "location": {
+      "name": "加拿大",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.85,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "TARIFFS",
+    "action_event_type": "Economic",
+    "action_detail": "加征关税",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEGATIVE",
+    "event_time": "2023-09-07",
+    "location_str": "加拿大",
+    "entities": [
+      {
+        "entity_id": "PERS_加拿大",
+        "entity_name": "加拿大",
         "entity_type": "Person",
         "role": "SUBJECT"
       }
     ]
   },
   {
-    "article_id": 29778,
-    "article_url": "https://seekingalpha.com/article/4943448-nvidia-stock-new-upside-catalysts-emerge-why-raising-my-target?source=feed_all_articles",
+    "article_id": 30792,
+    "article_url": "https://www.rfi.fr/cn/%E4%B8%AD%E5%9B%BD/20260907-%E7%BE%8E%E5%8A%A0%E8%B4%B8%E6%98%93%E4%BA%89%E7%AB%AF%E5%8D%87%E7%BA%A7-%E7%89%B9%E6%9C%97%E6%99%AE%E5%A8%81%E8%83%81%E5%B0%81%E6%9D%80%E5%BA%9E%E5%B7%B4%E8%BF%AA%E9%A3%9E%E6%9C%BA%E5%9C%A8%E7%BE%8E%E9%94%80%E5%94%AE",
     "subject": {
-      "name": "CrowdStrike",
-      "entity_id": "COMP_CROWDSTRIKE",
-      "type": "Company",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "MERGES",
-      "status": "COMPLETED",
-      "polarity": "POSITIVE",
-      "verb": "built"
-    },
-    "object": {
-      "name": "SafeMind security models",
-      "entity_id": "ORG_SAFEMIND_SECURITY_MODELS",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "unknown",
-      "value": null
-    },
-    "location": {
-      "name": "NVIDIA Nemotron",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "CrowdStrike built its new SafeMind security models on NVIDIA Nemotron, combining open models with CrowdStrike threat data to help defenders detect threats and respond faster.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "MERGES",
-    "action_event_type": "Finance",
-    "action_detail": "built",
-    "action_status": "COMPLETED",
-    "action_polarity": "POSITIVE",
-    "event_time": "unknown",
-    "location_str": "NVIDIA Nemotron",
-    "entities": [
-      {
-        "entity_id": "COMP_CROWDSTRIKE",
-        "entity_name": "CrowdStrike",
-        "entity_type": "Company",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_SAFEMIND_SECURITY_MODELS",
-        "entity_name": "SafeMind security models",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 29778,
-    "article_url": "https://seekingalpha.com/article/4943448-nvidia-stock-new-upside-catalysts-emerge-why-raising-my-target?source=feed_all_articles",
-    "subject": {
-      "name": "NVIDIA DLSS 5",
-      "entity_id": "COMP_NVIDIA_DLSS_5",
-      "type": "Company",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "MERGES",
-      "status": "EXPECTED",
-      "polarity": "POSITIVE",
-      "verb": "delivers"
-    },
-    "object": {
-      "name": "lifelike lighting and materials with 3D-Guided Neural Rendering",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": "unknown",
-      "value": null
-    },
-    "location": {
-      "name": "unknown",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "NVIDIA DLSS 5 delivers lifelike lighting and materials with 3D-Guided Neural Rendering",
-    "evidence_type": "UNKNOWN",
-    "action_type": "MERGES",
-    "action_event_type": "Finance",
-    "action_detail": "delivers",
-    "action_status": "EXPECTED",
-    "action_polarity": "POSITIVE",
-    "event_time": "unknown",
-    "location_str": "unknown",
-    "entities": [
-      {
-        "entity_id": "COMP_NVIDIA_DLSS_5",
-        "entity_name": "NVIDIA DLSS 5",
-        "entity_type": "Company",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_LIFELIKE_LIGHTING",
-        "entity_name": "lifelike lighting",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 29778,
-    "article_url": "https://seekingalpha.com/article/4943448-nvidia-stock-new-upside-catalysts-emerge-why-raising-my-target?source=feed_all_articles",
-    "subject": {
-      "name": "AWS",
-      "entity_id": "COMP_AWS",
-      "type": "Company",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "MERGES",
-      "status": "ONGOING",
-      "polarity": "POSITIVE",
-      "verb": "deepen integration"
-    },
-    "object": {
-      "name": "two million additional GPUs and next-generation infrastructure for agentic and physical AI",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": "unknown",
-      "value": null
-    },
-    "location": {
-      "name": "AI stack",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "To meet AI demand, AWS and NVIDIA deepen integration across the AI stack, delivering two million additional GPUs and next-generation infrastructure for agentic and physical AI.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "MERGES",
-    "action_event_type": "Finance",
-    "action_detail": "deepen integration",
-    "action_status": "ONGOING",
-    "action_polarity": "POSITIVE",
-    "event_time": "unknown",
-    "location_str": "AI stack",
-    "entities": [
-      {
-        "entity_id": "COMP_AWS",
-        "entity_name": "AWS",
-        "entity_type": "Company",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "COMP_NVIDIA",
-        "entity_name": "NVIDIA",
-        "entity_type": "Company",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_PHYSICAL_AI",
-        "entity_name": "physical AI",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 29790,
-    "article_url": "https://www.washingtonpost.com/world/2026/09/05/us-says-it-hit-3-iranian-oil-tankers-including-one-near-kharg-island/",
-    "subject": {
-      "name": "U.S. Central Command",
-      "entity_id": "ORG_US_CENTRAL_COMMAND",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "ATTACKS",
-      "status": "UNKNOWN",
-      "polarity": "UNKNOWN",
-      "verb": ""
-    },
-    "object": {
-      "name": "Iranian",
-      "entity_id": "CTRY_IRANIAN",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": null,
-    "evidence": "",
-    "evidence_type": "UNKNOWN",
-    "action_type": "ATTACKS",
-    "action_event_type": "Military",
-    "action_detail": "",
-    "action_status": "UNKNOWN",
-    "action_polarity": "UNKNOWN",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "ORG_US_CENTRAL_COMMAND",
-        "entity_name": "U.S. Central Command",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_IRANIAN",
-        "entity_name": "Iranian",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 29773,
-    "article_url": "https://www.aljazeera.com/video/newsfeed/2026/9/6/06-09-sv-germany-afd-wins-saxony-de-fm?traffic_source=rss",
-    "subject": {
-      "name": "AfD",
-      "entity_id": "ORG_AFD",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "UNKNOWN",
-      "polarity": "UNKNOWN",
-      "verb": ""
-    },
-    "object": {
-      "name": "Germany",
-      "entity_id": "CTRY_DEU",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": null,
-    "evidence": "",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "",
-    "action_status": "UNKNOWN",
-    "action_polarity": "UNKNOWN",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "ORG_AFD",
-        "entity_name": "AfD",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_DEU",
-        "entity_name": "Germany",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 29757,
-    "article_url": "https://www.scmp.com/news/china/science/article/3366540/china-will-never-allow-any-country-world-achieve-ai-dominance-victor-gao?utm_source=rss_feed",
-    "subject": {
-      "name": "vice-president",
-      "entity_id": "PERS_VICE_PRESIDENT",
+      "name": "Trump",
+      "entity_id": "PERS_TRUMP",
       "type": "Person",
       "object_type": "ENTITY"
     },
     "action": {
-      "type": "OTHER",
-      "status": "UNKNOWN",
-      "polarity": "UNKNOWN",
-      "verb": ""
+      "type": "ESCALATES",
+      "status": "PLANNED",
+      "polarity": "NEGATIVE",
+      "verb": "威胁"
     },
     "object": {
+      "name": "加拿大",
+      "entity_id": "PERS_加拿大",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "2023-09-07",
+      "value": null
+    },
+    "location": {
+      "name": "美国",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.75,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "ESCALATES",
+    "action_event_type": "Military",
+    "action_detail": "威胁",
+    "action_status": "PLANNED",
+    "action_polarity": "NEGATIVE",
+    "event_time": "2023-09-07",
+    "location_str": "美国",
+    "entities": [
+      {
+        "entity_id": "PERS_TRUMP",
+        "entity_name": "Trump",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "PERS_加拿大",
+        "entity_name": "加拿大",
+        "entity_type": "Person",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 30701,
+    "article_url": "https://www.rfi.fr/cn/%E4%B8%AD%E5%9B%BD/20260907-%E8%8F%B2%E5%BE%8B%E5%AE%BE%E9%98%B2%E9%95%BF-%E7%BE%8E%E9%9F%A9%E5%86%9B%E6%BC%94%E5%87%8F%E5%B0%91-%E4%B8%AD%E5%9B%BD%E6%88%96%E5%B0%86%E4%BC%BA%E6%9C%BA%E8%80%8C%E5%8A%A8",
+    "subject": {
+      "name": "菲律宾国防部长特奥多罗",
+      "entity_id": "ORG_菲律宾国防部长特奥多罗",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "STATES",
+      "status": "COMPLETED",
+      "polarity": "POSITIVE",
+      "verb": "表示"
+    },
+    "object": {
+      "name": "",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "time": {
+      "raw": "周一",
+      "value": null
+    },
+    "location": {
+      "name": "菲律宾",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.95,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "STATES",
+    "action_event_type": "Politics",
+    "action_detail": "表示",
+    "action_status": "COMPLETED",
+    "action_polarity": "POSITIVE",
+    "event_time": "周一",
+    "location_str": "菲律宾",
+    "entities": [
+      {
+        "entity_id": "ORG_菲律宾国防部长特奥多罗",
+        "entity_name": "菲律宾国防部长特奥多罗",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 30701,
+    "article_url": "https://www.rfi.fr/cn/%E4%B8%AD%E5%9B%BD/20260907-%E8%8F%B2%E5%BE%8B%E5%AE%BE%E9%98%B2%E9%95%BF-%E7%BE%8E%E9%9F%A9%E5%86%9B%E6%BC%94%E5%87%8F%E5%B0%91-%E4%B8%AD%E5%9B%BD%E6%88%96%E5%B0%86%E4%BC%BA%E6%9C%BA%E8%80%8C%E5%8A%A8",
+    "subject": {
       "name": "China",
       "entity_id": "CTRY_CHN",
       "type": "Country",
       "object_type": "ENTITY"
     },
+    "action": {
+      "type": "CUTS",
+      "status": "COMPLETED",
+      "polarity": "POSITIVE",
+      "verb": "视为"
+    },
+    "object": {
+      "name": "美韩缩减联合军演",
+      "entity_id": "ORG_美韩缩减联合军演",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "近期",
+      "value": null
+    },
+    "location": {
+      "name": "印太地区",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.85,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "CUTS",
+    "action_event_type": "Economic",
+    "action_detail": "视为",
+    "action_status": "COMPLETED",
+    "action_polarity": "POSITIVE",
+    "event_time": "近期",
+    "location_str": "印太地区",
+    "entities": [
+      {
+        "entity_id": "CTRY_CHN",
+        "entity_name": "China",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_美韩缩减联合军演",
+        "entity_name": "美韩缩减联合军演",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 30701,
+    "article_url": "https://www.rfi.fr/cn/%E4%B8%AD%E5%9B%BD/20260907-%E8%8F%B2%E5%BE%8B%E5%AE%BE%E9%98%B2%E9%95%BF-%E7%BE%8E%E9%9F%A9%E5%86%9B%E6%BC%94%E5%87%8F%E5%B0%91-%E4%B8%AD%E5%9B%BD%E6%88%96%E5%B0%86%E4%BC%BA%E6%9C%BA%E8%80%8C%E5%8A%A8",
+    "subject": {
+      "name": "United States Government",
+      "entity_id": "ORG_US_GOVERNMENT",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "CUTS",
+      "status": "COMPLETED",
+      "polarity": "POSITIVE",
+      "verb": "保证"
+    },
+    "object": {
+      "name": "军事承诺",
+      "entity_id": "PERS_军事承诺",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "周一",
+      "value": null
+    },
+    "location": {
+      "name": "马尼拉",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.75,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "CUTS",
+    "action_event_type": "Economic",
+    "action_detail": "保证",
+    "action_status": "COMPLETED",
+    "action_polarity": "POSITIVE",
+    "event_time": "周一",
+    "location_str": "马尼拉",
+    "entities": [
+      {
+        "entity_id": "ORG_US_GOVERNMENT",
+        "entity_name": "United States Government",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "PERS_军事承诺",
+        "entity_name": "军事承诺",
+        "entity_type": "Person",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 30717,
+    "article_url": "https://www.rfi.fr/cn/%E5%9B%BD%E9%99%85/20260907-%E4%BC%8A%E6%9C%97%E8%AD%A6%E5%91%8A%E9%9F%A9%E5%9B%BD%E5%8B%BF%E4%BB%8B%E5%85%A5%E9%9C%8D%E5%B0%94%E6%9C%A8%E5%85%B9%E6%B5%B7%E5%B3%A1-%E9%A6%96%E5%B0%94%E5%AE%A3%E5%B8%83%E6%94%BE%E7%BC%93%E6%B4%BE%E5%85%B5%E7%AD%B9%E5%A4%87",
+    "subject": {
+      "name": "伊朗外交部",
+      "entity_id": "CTRY_伊朗外交部",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "WARNS",
+      "status": "COMPLETED",
+      "polarity": "NEGATIVE",
+      "verb": "警告"
+    },
+    "object": {
+      "name": "",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "time": {
+      "raw": "周一",
+      "value": null
+    },
+    "location": {
+      "name": "霍尔木兹海峡",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.95,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "WARNS",
+    "action_event_type": "Politics",
+    "action_detail": "警告",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEGATIVE",
+    "event_time": "周一",
+    "location_str": "霍尔木兹海峡",
+    "entities": [
+      {
+        "entity_id": "CTRY_伊朗外交部",
+        "entity_name": "伊朗外交部",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 30717,
+    "article_url": "https://www.rfi.fr/cn/%E5%9B%BD%E9%99%85/20260907-%E4%BC%8A%E6%9C%97%E8%AD%A6%E5%91%8A%E9%9F%A9%E5%9B%BD%E5%8B%BF%E4%BB%8B%E5%85%A5%E9%9C%8D%E5%B0%94%E6%9C%A8%E5%85%B9%E6%B5%B7%E5%B3%A1-%E9%A6%96%E5%B0%94%E5%AE%A3%E5%B8%83%E6%94%BE%E7%BC%93%E6%B4%BE%E5%85%B5%E7%AD%B9%E5%A4%87",
+    "subject": {
+      "name": "Seoul",
+      "entity_id": "LOC_SEOUL",
+      "type": "Location",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "ANNOUNCES",
+      "status": "ONGOING",
+      "polarity": "NEUTRAL",
+      "verb": "放缓派兵筹备"
+    },
+    "object": {
+      "name": "",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "time": {
+      "raw": "近期",
+      "value": null
+    },
+    "location": {
+      "name": "霍尔木兹海峡",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.8,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "ANNOUNCES",
+    "action_event_type": "Politics",
+    "action_detail": "放缓派兵筹备",
+    "action_status": "ONGOING",
+    "action_polarity": "NEUTRAL",
+    "event_time": "近期",
+    "location_str": "霍尔木兹海峡",
+    "entities": [
+      {
+        "entity_id": "LOC_SEOUL",
+        "entity_name": "Seoul",
+        "entity_type": "Location",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 30717,
+    "article_url": "https://www.rfi.fr/cn/%E5%9B%BD%E9%99%85/20260907-%E4%BC%8A%E6%9C%97%E8%AD%A6%E5%91%8A%E9%9F%A9%E5%9B%BD%E5%8B%BF%E4%BB%8B%E5%85%A5%E9%9C%8D%E5%B0%94%E6%9C%A8%E5%85%B9%E6%B5%B7%E5%B3%A1-%E9%A6%96%E5%B0%94%E5%AE%A3%E5%B8%83%E6%94%BE%E7%BC%93%E6%B4%BE%E5%85%B5%E7%AD%B9%E5%A4%87",
+    "subject": {
+      "name": "韩国政府",
+      "entity_id": "ORG_韩国政府",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "ANNOUNCES",
+      "status": "PLANNED",
+      "polarity": "NEUTRAL",
+      "verb": "准备派兵"
+    },
+    "object": {
+      "name": "",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "time": {
+      "raw": "近期",
+      "value": null
+    },
+    "location": {
+      "name": "霍尔木兹海峡",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.75,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "ANNOUNCES",
+    "action_event_type": "Politics",
+    "action_detail": "准备派兵",
+    "action_status": "PLANNED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "近期",
+    "location_str": "霍尔木兹海峡",
+    "entities": [
+      {
+        "entity_id": "ORG_韩国政府",
+        "entity_name": "韩国政府",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 30592,
+    "article_url": "https://www.dw.com/zh/德语媒体：-声调高、棍子小-的特朗普亚太政策/a-78549103?maca=chi-rss-chi-all-1127-rdf",
+    "subject": {
+      "name": "德语媒体",
+      "entity_id": "PERS_德语媒体",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "COMPLETED",
+      "polarity": "POSITIVE",
+      "verb": "评论"
+    },
+    "object": {
+      "name": "文章",
+      "entity_id": "PERS_文章",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "2023-10-15",
+      "value": null
+    },
+    "location": {
+      "name": "德国",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.9,
+    "evidence": "《新苏黎世报》评论认为...，《时代报》评论称...",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "评论",
+    "action_status": "COMPLETED",
+    "action_polarity": "POSITIVE",
+    "event_time": "2023-10-15",
+    "location_str": "德国",
+    "entities": [
+      {
+        "entity_id": "PERS_德语媒体",
+        "entity_name": "德语媒体",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "PERS_文章",
+        "entity_name": "文章",
+        "entity_type": "Person",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 30592,
+    "article_url": "https://www.dw.com/zh/德语媒体：-声调高、棍子小-的特朗普亚太政策/a-78549103?maca=chi-rss-chi-all-1127-rdf",
+    "subject": {
+      "name": "特朗普总统",
+      "entity_id": "PERS_特朗普总统",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "ANNOUNCES",
+      "status": "COMPLETED",
+      "polarity": "POSITIVE",
+      "verb": "宣布"
+    },
+    "object": {
+      "name": "缩减美韩联合军演规模",
+      "entity_id": "ORG_缩减美韩联合军演规模",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "2023-10-15",
+      "value": null
+    },
+    "location": {
+      "name": "美国",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.8,
+    "evidence": "《新苏黎世报》评论认为...",
+    "evidence_type": "UNKNOWN",
+    "action_type": "ANNOUNCES",
+    "action_event_type": "Politics",
+    "action_detail": "宣布",
+    "action_status": "COMPLETED",
+    "action_polarity": "POSITIVE",
+    "event_time": "2023-10-15",
+    "location_str": "美国",
+    "entities": [
+      {
+        "entity_id": "PERS_特朗普总统",
+        "entity_name": "特朗普总统",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_缩减美韩联合军演规模",
+        "entity_name": "缩减美韩联合军演规模",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 30592,
+    "article_url": "https://www.dw.com/zh/德语媒体：-声调高、棍子小-的特朗普亚太政策/a-78549103?maca=chi-rss-chi-all-1127-rdf",
+    "subject": {
+      "name": "China",
+      "entity_id": "CTRY_CHN",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "ONGOING",
+      "polarity": "POSITIVE",
+      "verb": "扩展影响力"
+    },
+    "object": {
+      "name": "",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "time": {
+      "raw": "2023-10-15",
+      "value": null
+    },
+    "location": {
+      "name": "亚太地区",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.7,
+    "evidence": "《新苏黎世报》评论认为...",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "扩展影响力",
+    "action_status": "ONGOING",
+    "action_polarity": "POSITIVE",
+    "event_time": "2023-10-15",
+    "location_str": "亚太地区",
+    "entities": [
+      {
+        "entity_id": "CTRY_CHN",
+        "entity_name": "China",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 31046,
+    "article_url": "https://www.aljazeera.com/news/2026/9/8/russia-strikes-kyiv-as-three-day-pause-during-us-envoy-visits-ends?traffic_source=rss",
+    "subject": {
+      "name": "United States Government",
+      "entity_id": "ORG_US_GOVERNMENT",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "ATTACKS",
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
+    },
+    "object": {
+      "name": "United States",
+      "entity_id": "CTRY_UNITED_STATES",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
     "time": {
       "raw": null,
       "value": null
@@ -1095,8 +870,8 @@
     "confidence": null,
     "evidence": "",
     "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
+    "action_type": "ATTACKS",
+    "action_event_type": "Military",
     "action_detail": "",
     "action_status": "UNKNOWN",
     "action_polarity": "UNKNOWN",
@@ -1104,22 +879,22 @@
     "location_str": "",
     "entities": [
       {
-        "entity_id": "PERS_VICE_PRESIDENT",
-        "entity_name": "vice-president",
-        "entity_type": "Person",
+        "entity_id": "ORG_US_GOVERNMENT",
+        "entity_name": "United States Government",
+        "entity_type": "Organization",
         "role": "SUBJECT"
       },
       {
-        "entity_id": "CTRY_CHN",
-        "entity_name": "China",
+        "entity_id": "CTRY_UNITED_STATES",
+        "entity_name": "United States",
         "entity_type": "Country",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 29760,
-    "article_url": "https://www.aljazeera.com/news/liveblog/2026/9/7/iran-war-live-tehran-to-announce-new-hormuz-shipping-route-in-coming-days?traffic_source=rss",
+    "article_id": 30994,
+    "article_url": "https://www.bloomberg.com/news/articles/2026-09-08/wheat-jumps-as-russia-focused-on-ukraine-war-despite-us-talks",
     "subject": {
       "name": "Tavily",
       "entity_id": "PERS_TAVILY",
@@ -1127,7 +902,166 @@
       "object_type": "ENTITY"
     },
     "action": {
-      "type": "ANNOUNCES",
+      "type": "SURGES",
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
+    },
+    "object": {
+      "name": "Russian Federation",
+      "entity_id": "CTRY_RUSSIAN_FEDERATION",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": null,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "SURGES",
+    "action_event_type": "Finance",
+    "action_detail": "",
+    "action_status": "UNKNOWN",
+    "action_polarity": "UNKNOWN",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "PERS_TAVILY",
+        "entity_name": "Tavily",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_RUSSIAN_FEDERATION",
+        "entity_name": "Russian Federation",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 30990,
+    "article_url": "https://electrek.co/2026/09/07/xpeng-iron-humanoid-robot-production-line/",
+    "subject": {
+      "name": "XPENG",
+      "entity_id": "COMP_XPENG",
+      "type": "Company",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "COMPLETED",
+      "polarity": "NEUTRAL",
+      "verb": "switched on"
+    },
+    "object": {
+      "name": "world’s first automated production line for advanced humanoid robots",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "XPeng has switched on what it calls the world’s first automated production line for advanced humanoid robots",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "switched on",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "COMP_XPENG",
+        "entity_name": "XPENG",
+        "entity_type": "Company",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 30990,
+    "article_url": "https://electrek.co/2026/09/07/xpeng-iron-humanoid-robot-production-line/",
+    "subject": {
+      "name": "IRON robot",
+      "entity_id": "ORG_IRON_ROBOT",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": "walke"
+    },
+    "object": {
+      "name": "IRON robot walke",
+      "entity_id": "ORG_IRON_ROBOT_WALKE",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.9,
+    "evidence": "and its IRON robot walke",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "walke",
+    "action_status": "UNKNOWN",
+    "action_polarity": "UNKNOWN",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "ORG_IRON_ROBOT",
+        "entity_name": "IRON robot",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_IRON_ROBOT_WALKE",
+        "entity_name": "IRON robot walke",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 30995,
+    "article_url": "https://www.aljazeera.com/news/2026/9/8/iaea-warns-over-iran-nuclear-access-as-western-powers-push-un-referral?traffic_source=rss",
+    "subject": {
+      "name": "UN nuclear watchdog",
+      "entity_id": "ORG_UN_NUCLEAR_WATCHDOG",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "WARNS",
       "status": "UNKNOWN",
       "polarity": "UNKNOWN",
       "verb": ""
@@ -1150,7 +1084,7 @@
     "confidence": null,
     "evidence": "",
     "evidence_type": "UNKNOWN",
-    "action_type": "ANNOUNCES",
+    "action_type": "WARNS",
     "action_event_type": "Politics",
     "action_detail": "",
     "action_status": "UNKNOWN",
@@ -1159,9 +1093,9 @@
     "location_str": "",
     "entities": [
       {
-        "entity_id": "PERS_TAVILY",
-        "entity_name": "Tavily",
-        "entity_type": "Person",
+        "entity_id": "ORG_UN_NUCLEAR_WATCHDOG",
+        "entity_name": "UN nuclear watchdog",
+        "entity_type": "Organization",
         "role": "SUBJECT"
       },
       {
@@ -1173,188 +1107,23 @@
     ]
   },
   {
-    "article_id": 29772,
-    "article_url": "https://www.cbsnews.com/live-updates/iran-war-us-trump-diesel-gas-prices-labor-day/",
+    "article_id": 31001,
+    "article_url": "https://www.aljazeera.com/news/2026/9/8/eu-pledges-more-than-200m-to-greenland-amid-trump-threats?traffic_source=rss",
     "subject": {
-      "name": "Iran's parliament speaker",
-      "entity_id": "CTRY_IRANS_PARLIAMENT_SPEAKER",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "ATTACKS",
-      "status": "COMPLETED",
-      "polarity": "NEGATIVE",
-      "verb": "threatened"
-    },
-    "object": {
-      "name": "a \"more intense and more painful response\"",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": "Sunday",
-      "value": null
-    },
-    "location": {
-      "name": "N/A",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1.0,
-    "evidence": "Iran's parliament speaker on Sunday threatened to deliver a \"more intense and more painful response\" to U.S. strikes on Iranian oil tankers",
-    "evidence_type": "UNKNOWN",
-    "action_type": "ATTACKS",
-    "action_event_type": "Military",
-    "action_detail": "threatened",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEGATIVE",
-    "event_time": "Sunday",
-    "location_str": "N/A",
-    "entities": [
-      {
-        "entity_id": "CTRY_IRANS_PARLIAMENT_SPEAKER",
-        "entity_name": "Iran's parliament speaker",
-        "entity_type": "Country",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_A_MORE_INTENSE",
-        "entity_name": "a \"more intense",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      },
-      {
-        "entity_id": "ORG_MORE_PAINFUL_RESPONSE",
-        "entity_name": "more painful response",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 29772,
-    "article_url": "https://www.cbsnews.com/live-updates/iran-war-us-trump-diesel-gas-prices-labor-day/",
-    "subject": {
-      "name": "United States",
-      "entity_id": "CTRY_UNITED_STATES",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "ATTACKS",
-      "status": "COMPLETED",
-      "polarity": "NEUTRAL",
-      "verb": "struck"
-    },
-    "object": {
-      "name": "three Iranian oil tankers",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "time": {
-      "raw": "Saturday",
-      "value": null
-    },
-    "location": {
-      "name": "Persian Gulf and Gulf of Oman",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1.0,
-    "evidence": "On Saturday, the U.S. struck and \"permanently disabled\" three Iranian oil tankers in the Persian Gulf and Gulf of Oman after Iran's Revolutionary Guard had fired ballistic missiles at an aircraft carrier and guided-missile destroyer.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "ATTACKS",
-    "action_event_type": "Military",
-    "action_detail": "struck",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "Saturday",
-    "location_str": "Persian Gulf and Gulf of Oman",
-    "entities": [
-      {
-        "entity_id": "CTRY_UNITED_STATES",
-        "entity_name": "United States",
-        "entity_type": "Country",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 29772,
-    "article_url": "https://www.cbsnews.com/live-updates/iran-war-us-trump-diesel-gas-prices-labor-day/",
-    "subject": {
-      "name": "U.S. warships",
-      "entity_id": "CTRY_US_WARSHIPS",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "ATTACKS",
-      "status": "COMPLETED",
-      "polarity": "NEUTRAL",
-      "verb": "were not struck"
-    },
-    "object": {
-      "name": "no U.S. warships",
-      "entity_id": "CTRY_NO_US_WARSHIPS",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "Saturday",
-      "value": null
-    },
-    "location": {
-      "name": "N/A",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1.0,
-    "evidence": "No U.S. warships were struck in the attack and no one was injured.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "ATTACKS",
-    "action_event_type": "Military",
-    "action_detail": "were not struck",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "Saturday",
-    "location_str": "N/A",
-    "entities": [
-      {
-        "entity_id": "CTRY_US_WARSHIPS",
-        "entity_name": "U.S. warships",
-        "entity_type": "Country",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_NO_US_WARSHIPS",
-        "entity_name": "no U.S. warships",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 29751,
-    "article_url": "https://www.france24.com/en/video/20260906-germany-why-is-the-afd-so-popular-in-saxony-anhalt",
-    "subject": {
-      "name": "AfD",
-      "entity_id": "ORG_AFD",
+      "name": "European Union",
+      "entity_id": "ORG_EUROPEAN_UNION",
       "type": "Organization",
       "object_type": "ENTITY"
     },
     "action": {
-      "type": "PAUSES",
+      "type": "OTHER",
       "status": "UNKNOWN",
       "polarity": "UNKNOWN",
       "verb": ""
     },
     "object": {
-      "name": "Saxony-Anhalt",
-      "entity_id": "LOC_SAXONY_ANHALT",
+      "name": "Brussels",
+      "entity_id": "LOC_BRUSSELS",
       "type": "Location",
       "object_type": "ENTITY"
     },
@@ -1370,8 +1139,8 @@
     "confidence": null,
     "evidence": "",
     "evidence_type": "UNKNOWN",
-    "action_type": "PAUSES",
-    "action_event_type": "Technology",
+    "action_type": "OTHER",
+    "action_event_type": "General",
     "action_detail": "",
     "action_status": "UNKNOWN",
     "action_polarity": "UNKNOWN",
@@ -1379,517 +1148,22 @@
     "location_str": "",
     "entities": [
       {
-        "entity_id": "ORG_AFD",
-        "entity_name": "AfD",
+        "entity_id": "ORG_EUROPEAN_UNION",
+        "entity_name": "European Union",
         "entity_type": "Organization",
         "role": "SUBJECT"
       },
       {
-        "entity_id": "LOC_SAXONY_ANHALT",
-        "entity_name": "Saxony-Anhalt",
+        "entity_id": "LOC_BRUSSELS",
+        "entity_name": "Brussels",
         "entity_type": "Location",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 29764,
-    "article_url": "https://www.ft.com/content/83e08169-69b5-4997-9bf0-e0622e752eda?syn-25a6b1a6=1",
-    "subject": {
-      "name": "Europe",
-      "entity_id": "ORG_EUROPE",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "WARNS",
-      "status": "ONGOING",
-      "polarity": "NEGATIVE",
-      "verb": "struggles"
-    },
-    "object": {
-      "name": "counter Russia's hybrid warfare tactics",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": "unknown",
-      "value": null
-    },
-    "location": {
-      "name": "Europe",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Europe struggles to counter Russia's hybrid warfare tactics, according to defence officials.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "WARNS",
-    "action_event_type": "Politics",
-    "action_detail": "struggles",
-    "action_status": "ONGOING",
-    "action_polarity": "NEGATIVE",
-    "event_time": "unknown",
-    "location_str": "Europe",
-    "entities": [
-      {
-        "entity_id": "ORG_EUROPE",
-        "entity_name": "Europe",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 29764,
-    "article_url": "https://www.ft.com/content/83e08169-69b5-4997-9bf0-e0622e752eda?syn-25a6b1a6=1",
-    "subject": {
-      "name": "NATO",
-      "entity_id": "ORG_NATO",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "WARNS",
-      "status": "ONGOING",
-      "polarity": "NEGATIVE",
-      "verb": "left"
-    },
-    "object": {
-      "name": "limited options",
-      "entity_id": "ORG_LIMITED_OPTIONS",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "unknown",
-      "value": null
-    },
-    "location": {
-      "name": "NATO",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "The Kremlin's aggressive actions have left NATO with limited options.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "WARNS",
-    "action_event_type": "Politics",
-    "action_detail": "left",
-    "action_status": "ONGOING",
-    "action_polarity": "NEGATIVE",
-    "event_time": "unknown",
-    "location_str": "NATO",
-    "entities": [
-      {
-        "entity_id": "ORG_NATO",
-        "entity_name": "NATO",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_LIMITED_OPTIONS",
-        "entity_name": "limited options",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 29764,
-    "article_url": "https://www.ft.com/content/83e08169-69b5-4997-9bf0-e0622e752eda?syn-25a6b1a6=1",
-    "subject": {
-      "name": "Populist surges",
-      "entity_id": "ORG_POPULIST_SURGES",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "WARNS",
-      "status": "EXPECTED",
-      "polarity": "NEGATIVE",
-      "verb": "threaten"
-    },
-    "object": {
-      "name": "European defence coordination",
-      "entity_id": "ORG_EUROPEAN_DEFENCE_COORDINATION",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "unknown",
-      "value": null
-    },
-    "location": {
-      "name": "Europe",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 0.9,
-    "evidence": "Populist surges threaten European defence coordination.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "WARNS",
-    "action_event_type": "Politics",
-    "action_detail": "threaten",
-    "action_status": "EXPECTED",
-    "action_polarity": "NEGATIVE",
-    "event_time": "unknown",
-    "location_str": "Europe",
-    "entities": [
-      {
-        "entity_id": "ORG_POPULIST_SURGES",
-        "entity_name": "Populist surges",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_EUROPEAN_DEFENCE_COORDINATION",
-        "entity_name": "European defence coordination",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 29781,
-    "article_url": "https://www.investing.com/news/stock-market-news/amazon-prime-air-boeing-767-overruns-runway-at-miami-airport-4890317",
-    "subject": {
-      "name": "Amazon Prime Air",
-      "entity_id": "COMP_AMAZON_PRIME_AIR",
-      "type": "Company",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "CRASHES",
-      "status": "UNKNOWN",
-      "polarity": "UNKNOWN",
-      "verb": ""
-    },
-    "object": {
-      "name": "Miami",
-      "entity_id": "LOC_MIAMI",
-      "type": "Location",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": null,
-    "evidence": "",
-    "evidence_type": "UNKNOWN",
-    "action_type": "CRASHES",
-    "action_event_type": "Finance",
-    "action_detail": "",
-    "action_status": "UNKNOWN",
-    "action_polarity": "UNKNOWN",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "COMP_AMAZON_PRIME_AIR",
-        "entity_name": "Amazon Prime Air",
-        "entity_type": "Company",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "LOC_MIAMI",
-        "entity_name": "Miami",
-        "entity_type": "Location",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 29763,
-    "article_url": "https://www.cnbc.com/2026/09/06/meta-google-openai-anthropic-ai-model-fatigue.html",
-    "subject": {
-      "name": "Anthropic",
-      "entity_id": "COMP_ANTHROPIC",
-      "type": "Company",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "COMPLETED",
-      "polarity": "NEUTRAL",
-      "verb": "updated"
-    },
-    "object": {
-      "name": "Fable",
-      "entity_id": "ORG_FABLE",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "this week",
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "First, Anthropic updated Fable and Mythos.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "updated",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "this week",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "COMP_ANTHROPIC",
-        "entity_name": "Anthropic",
-        "entity_type": "Company",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_FABLE",
-        "entity_name": "Fable",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      },
-      {
-        "entity_id": "ORG_MYTHOS",
-        "entity_name": "Mythos",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 29763,
-    "article_url": "https://www.cnbc.com/2026/09/06/meta-google-openai-anthropic-ai-model-fatigue.html",
-    "subject": {
-      "name": "OpenAI",
-      "entity_id": "COMP_OPENAI",
-      "type": "Company",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "COMPLETED",
-      "polarity": "NEUTRAL",
-      "verb": "releasing"
-    },
-    "object": {
-      "name": "GPT-6 Astra",
-      "entity_id": "ORG_GPT_6_ASTRA",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "this week",
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "OpenAI followed suit by releasing GPT-6 Astra.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "releasing",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "this week",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "COMP_OPENAI",
-        "entity_name": "OpenAI",
-        "entity_type": "Company",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_GPT_6_ASTRA",
-        "entity_name": "GPT-6 Astra",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 29763,
-    "article_url": "https://www.cnbc.com/2026/09/06/meta-google-openai-anthropic-ai-model-fatigue.html",
-    "subject": {
-      "name": "NVIDIA",
-      "entity_id": "COMP_NVIDIA",
-      "type": "Company",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "ONGOING",
-      "polarity": "NEUTRAL",
-      "verb": "acquiring"
-    },
-    "object": {
-      "name": "Hugging Face",
-      "entity_id": "ORG_HUGGING_FACE",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "this week",
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "while Nvidia said it's acquiring open-source AI platform Hugging Face.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "acquiring",
-    "action_status": "ONGOING",
-    "action_polarity": "NEUTRAL",
-    "event_time": "this week",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "COMP_NVIDIA",
-        "entity_name": "NVIDIA",
-        "entity_type": "Company",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_HUGGING_FACE",
-        "entity_name": "Hugging Face",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 29753,
-    "article_url": "https://www.reddit.com/r/worldnews/comments/1w957t7/japan_pm_takaichi_urges_removal_of_russia_war/",
-    "subject": {
-      "name": "Takaichi",
-      "entity_id": "PERS_TAKAICHI",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "STATES",
-      "status": "UNKNOWN",
-      "polarity": "UNKNOWN",
-      "verb": ""
-    },
-    "object": {
-      "name": "Japan",
-      "entity_id": "CTRY_JPN",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": null,
-    "evidence": "",
-    "evidence_type": "UNKNOWN",
-    "action_type": "STATES",
-    "action_event_type": "Politics",
-    "action_detail": "",
-    "action_status": "UNKNOWN",
-    "action_polarity": "UNKNOWN",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "PERS_TAKAICHI",
-        "entity_name": "Takaichi",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_JPN",
-        "entity_name": "Japan",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 29762,
-    "article_url": "https://www.bloomberg.com/news/articles/2026-09-06/gold-holds-decline-as-traders-weigh-prospects-for-fed-rate-hike",
-    "subject": {
-      "name": "Tavily",
-      "entity_id": "PERS_TAVILY",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "ATTACKS",
-      "status": "UNKNOWN",
-      "polarity": "UNKNOWN",
-      "verb": ""
-    },
-    "object": {
-      "name": "United States",
-      "entity_id": "CTRY_UNITED_STATES",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": null,
-    "evidence": "",
-    "evidence_type": "UNKNOWN",
-    "action_type": "ATTACKS",
-    "action_event_type": "Military",
-    "action_detail": "",
-    "action_status": "UNKNOWN",
-    "action_polarity": "UNKNOWN",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "PERS_TAVILY",
-        "entity_name": "Tavily",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_UNITED_STATES",
-        "entity_name": "United States",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 29782,
-    "article_url": "https://www.bbc.co.uk/news/articles/c980j5m8mpro?at_medium=RSS&at_campaign=rss",
+    "article_id": 30989,
+    "article_url": "https://www.france24.com/en/europe/20260908-live-russia-resumes-strikes-on-kyiv-after-three-day-halt",
     "subject": {
       "name": "Putin",
       "entity_id": "PERS_PUTIN",
@@ -1897,14 +1171,14 @@
       "object_type": "ENTITY"
     },
     "action": {
-      "type": "FUNDS",
+      "type": "ATTACKS",
       "status": "UNKNOWN",
       "polarity": "UNKNOWN",
       "verb": ""
     },
     "object": {
-      "name": "United States",
-      "entity_id": "CTRY_UNITED_STATES",
+      "name": "Russian Federation",
+      "entity_id": "CTRY_RUSSIAN_FEDERATION",
       "type": "Country",
       "object_type": "ENTITY"
     },
@@ -1920,8 +1194,8 @@
     "confidence": null,
     "evidence": "",
     "evidence_type": "UNKNOWN",
-    "action_type": "FUNDS",
-    "action_event_type": "Economic",
+    "action_type": "ATTACKS",
+    "action_event_type": "Military",
     "action_detail": "",
     "action_status": "UNKNOWN",
     "action_polarity": "UNKNOWN",
@@ -1935,697 +1209,31 @@
         "role": "SUBJECT"
       },
       {
-        "entity_id": "CTRY_UNITED_STATES",
-        "entity_name": "United States",
+        "entity_id": "CTRY_RUSSIAN_FEDERATION",
+        "entity_name": "Russian Federation",
         "entity_type": "Country",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 29770,
-    "article_url": "https://www.nytimes.com/2026/09/06/business/oil-gas-prices-iran-war.html",
+    "article_id": 31004,
+    "article_url": "https://www.japantimes.co.jp/business/2026/09/08/companies/japan-startup-preferred-networks-ipo/",
     "subject": {
-      "name": "Tavily",
-      "entity_id": "PERS_TAVILY",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "ATTACKS",
-      "status": "UNKNOWN",
-      "polarity": "UNKNOWN",
-      "verb": ""
-    },
-    "object": {
-      "name": "United States",
-      "entity_id": "CTRY_UNITED_STATES",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": null,
-    "evidence": "",
-    "evidence_type": "UNKNOWN",
-    "action_type": "ATTACKS",
-    "action_event_type": "Military",
-    "action_detail": "",
-    "action_status": "UNKNOWN",
-    "action_polarity": "UNKNOWN",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "PERS_TAVILY",
-        "entity_name": "Tavily",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_UNITED_STATES",
-        "entity_name": "United States",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 29805,
-    "article_url": "https://www.washingtonpost.com/world/2026/09/06/alternative-germany-looks-big-boost-regional-elections-germany/",
-    "subject": {
-      "name": "Alternative for Germany (AfD) party",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "action": {
-      "type": "ELECTS",
-      "status": "COMPLETED",
-      "polarity": "NEUTRAL",
-      "verb": "polled"
-    },
-    "object": {
-      "name": "first-place",
-      "entity_id": "ORG_FIRST_PLACE",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "election Sunday",
-      "value": null
-    },
-    "location": {
-      "name": "Saxony-Anhalt",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Alternative for Germany, labeled “extremist” by German authorities, polled first in the eastern state of Saxony-Anhalt but still might not control the government.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "ELECTS",
-    "action_event_type": "Politics",
-    "action_detail": "polled",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "election Sunday",
-    "location_str": "Saxony-Anhalt",
-    "entities": [
-      {
-        "entity_id": "ORG_FIRST_PLACE",
-        "entity_name": "first-place",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 29805,
-    "article_url": "https://www.washingtonpost.com/world/2026/09/06/alternative-germany-looks-big-boost-regional-elections-germany/",
-    "subject": {
-      "name": "Alternative for Germany (AfD) party",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "action": {
-      "type": "ELECTS",
-      "status": "COMPLETED",
-      "polarity": "NEGATIVE",
-      "verb": "labeled"
-    },
-    "object": {
-      "name": "right-wing extremist",
-      "entity_id": "ORG_RIGHT_WING_EXTREMIST",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "UNKNOWN",
-      "value": null
-    },
-    "location": {
-      "name": "Germany",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "The nationalist Alternative for Germany (AfD) party — labeled “right-wing extremist” by the country’s domestic intelligence agency and accused by others of xenophobia, antisemitism and Islamophobia — finished first by a wide margin in an election Sunday in the eastern state of Saxony-Anhalt, according to preliminary returns.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "ELECTS",
-    "action_event_type": "Politics",
-    "action_detail": "labeled",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEGATIVE",
-    "event_time": "UNKNOWN",
-    "location_str": "Germany",
-    "entities": [
-      {
-        "entity_id": "ORG_RIGHT_WING_EXTREMIST",
-        "entity_name": "right-wing extremist",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 29805,
-    "article_url": "https://www.washingtonpost.com/world/2026/09/06/alternative-germany-looks-big-boost-regional-elections-germany/",
-    "subject": {
-      "name": "Alternative for Germany (AfD) party",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "action": {
-      "type": "ELECTS",
-      "status": "COMPLETED",
-      "polarity": "NEUTRAL",
-      "verb": "finished"
-    },
-    "object": {
-      "name": "first",
-      "entity_id": "ORG_FIRST",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "election Sunday",
-      "value": null
-    },
-    "location": {
-      "name": "Saxony-Anhalt",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Alternative for Germany, labeled “extremist” by German authorities, polled first in the eastern state of Saxony-Anhalt but still might not control the government.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "ELECTS",
-    "action_event_type": "Politics",
-    "action_detail": "finished",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "election Sunday",
-    "location_str": "Saxony-Anhalt",
-    "entities": [
-      {
-        "entity_id": "ORG_FIRST",
-        "entity_name": "first",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 29800,
-    "article_url": "https://techcrunch.com/2026/09/06/authors-push-back-as-publishers-and-agents-seek-share-of-anthropic-settlement/",
-    "subject": {
-      "name": "Authors",
-      "entity_id": "PERS_AUTHORS",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "CLAIMS",
-      "status": "ONGOING",
-      "polarity": "NEGATIVE",
-      "verb": "push back"
-    },
-    "object": {
-      "name": "publishers",
-      "entity_id": "ORG_PUBLISHERS",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Authors push back as publishers and agents make claims on Anthropic settlement",
-    "evidence_type": "UNKNOWN",
-    "action_type": "CLAIMS",
-    "action_event_type": "Politics",
-    "action_detail": "push back",
-    "action_status": "ONGOING",
-    "action_polarity": "NEGATIVE",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "PERS_AUTHORS",
-        "entity_name": "Authors",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_PUBLISHERS",
-        "entity_name": "publishers",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      },
-      {
-        "entity_id": "ORG_AGENTS",
-        "entity_name": "agents",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 29800,
-    "article_url": "https://techcrunch.com/2026/09/06/authors-push-back-as-publishers-and-agents-seek-share-of-anthropic-settlement/",
-    "subject": {
-      "name": "Authors",
-      "entity_id": "PERS_AUTHORS",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "CLAIMS",
-      "status": "ONGOING",
-      "polarity": "NEGATIVE",
-      "verb": "received"
-    },
-    "object": {
-      "name": "surprising emails",
-      "entity_id": "ORG_SURPRISING_EMAILS",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "this week",
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Some authors hoping to receive their share of Anthropic’s $1.5 billion copyright settlement said they received surprising emails this week — emails informing them that someone else was making a claim on their pay",
-    "evidence_type": "UNKNOWN",
-    "action_type": "CLAIMS",
-    "action_event_type": "Politics",
-    "action_detail": "received",
-    "action_status": "ONGOING",
-    "action_polarity": "NEGATIVE",
-    "event_time": "this week",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "PERS_AUTHORS",
-        "entity_name": "Authors",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_SURPRISING_EMAILS",
-        "entity_name": "surprising emails",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 29800,
-    "article_url": "https://techcrunch.com/2026/09/06/authors-push-back-as-publishers-and-agents-seek-share-of-anthropic-settlement/",
-    "subject": {
-      "name": "Authors",
-      "entity_id": "PERS_AUTHORS",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "CLAIMS",
-      "status": "EXPECTED",
-      "polarity": "POSITIVE",
-      "verb": "hope"
-    },
-    "object": {
-      "name": "share of Anthropic’s $1.5 billion copyright settlement",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Some authors hoping to receive their share of Anthropic’s $1.5 billion copyright settlement said they received surprising emails this week — emails informing them that someone else was making a claim on their pay",
-    "evidence_type": "UNKNOWN",
-    "action_type": "CLAIMS",
-    "action_event_type": "Politics",
-    "action_detail": "hope",
-    "action_status": "EXPECTED",
-    "action_polarity": "POSITIVE",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "PERS_AUTHORS",
-        "entity_name": "Authors",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 29784,
-    "article_url": "https://www.dw.com/en/saxony-anhalt-state-premier-schulze-takes-on-far-right-afd/a-78509861?maca=en-rss-en-all-1573-rdf",
-    "subject": {
-      "name": "AfD",
-      "entity_id": "ORG_AFD",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "PAUSES",
-      "status": "UNKNOWN",
-      "polarity": "UNKNOWN",
-      "verb": ""
-    },
-    "object": {
-      "name": "Saxony-Anhalt",
-      "entity_id": "LOC_SAXONY_ANHALT",
-      "type": "Location",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": null,
-    "evidence": "",
-    "evidence_type": "UNKNOWN",
-    "action_type": "PAUSES",
-    "action_event_type": "Technology",
-    "action_detail": "",
-    "action_status": "UNKNOWN",
-    "action_polarity": "UNKNOWN",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "ORG_AFD",
-        "entity_name": "AfD",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "LOC_SAXONY_ANHALT",
-        "entity_name": "Saxony-Anhalt",
-        "entity_type": "Location",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 29802,
-    "article_url": "https://arstechnica.com/ai/2026/09/anthropics-2-trillion-ipo-puts-powerful-external-trustees-in-spotlight/",
-    "subject": {
-      "name": "Anthropic",
-      "entity_id": "COMP_ANTHROPIC",
+      "name": "Preferred Networks",
+      "entity_id": "COMP_PREFERRED_NETWORKS",
       "type": "Company",
       "object_type": "ENTITY"
     },
     "action": {
       "type": "IPO",
-      "status": "PLANNED",
-      "polarity": "NEUTRAL",
-      "verb": "attempt"
-    },
-    "object": {
-      "name": "$2 trillion",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "AMOUNT"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Anthropic’s prospective public-market investors must reckon with an external group of trustees that control the majority of the AI company’s board, as its planned blockbuster initial public offering forces close scrutiny of its experimental governance structure.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "IPO",
-    "action_event_type": "Finance",
-    "action_detail": "attempt",
-    "action_status": "PLANNED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "COMP_ANTHROPIC",
-        "entity_name": "Anthropic",
-        "entity_type": "Company",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 29802,
-    "article_url": "https://arstechnica.com/ai/2026/09/anthropics-2-trillion-ipo-puts-powerful-external-trustees-in-spotlight/",
-    "subject": {
-      "name": "Long-Term Benefit Trust (LTBT",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "action": {
-      "type": "IPO",
-      "status": "ONGOING",
-      "polarity": "POSITIVE",
-      "verb": "safeguard"
-    },
-    "object": {
-      "name": "lab’s mission of developing AI for the long-term benefit of humanity",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "The company’s Long-Term Benefit Trust (LTBT) is a small group of advisers created to safeguard the lab’s mission of developing AI for the long-term benefit of humanity, even as commercial pressures intensify.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "IPO",
-    "action_event_type": "Finance",
-    "action_detail": "safeguard",
-    "action_status": "ONGOING",
-    "action_polarity": "POSITIVE",
-    "event_time": "",
-    "location_str": "",
-    "entities": []
-  },
-  {
-    "article_id": 29802,
-    "article_url": "https://arstechnica.com/ai/2026/09/anthropics-2-trillion-ipo-puts-powerful-external-trustees-in-spotlight/",
-    "subject": {
-      "name": "LTBT",
-      "entity_id": "ORG_LTBT",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "IPO",
-      "status": "ONGOING",
-      "polarity": "NEUTRAL",
-      "verb": "hold"
-    },
-    "object": {
-      "name": "no equity in Anthropic",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "The trust holds no equity in Anthropic, but has significant influence, with the San Francisco-based company planning to preserve its role after a stock market debut that could value the Claude maker at as much as $2 trillion.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "IPO",
-    "action_event_type": "Finance",
-    "action_detail": "hold",
-    "action_status": "ONGOING",
-    "action_polarity": "NEUTRAL",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "ORG_LTBT",
-        "entity_name": "LTBT",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 29750,
-    "article_url": "https://www.reddit.com/r/worldnews/comments/1w8u2q3/russias_lavrov_calls_accusations_of_moscows/",
-    "subject": {
-      "name": "Russia's Lavrov",
-      "entity_id": "CTRY_RUSSIAS_LAVROV",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "REPORTS",
-      "status": "ANNOUNCED",
-      "polarity": "NEGATIVE",
-      "verb": "calls"
-    },
-    "object": {
-      "name": "accusations of Moscow's involvement in Leipzig drone incident 'start of real war'",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": "2026-09-06",
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Russia's Lavrov calls accusations of Moscow's involvement in Leipzig drone incident 'start of real war'",
-    "evidence_type": "UNKNOWN",
-    "action_type": "REPORTS",
-    "action_event_type": "Finance",
-    "action_detail": "calls",
-    "action_status": "ANNOUNCED",
-    "action_polarity": "NEGATIVE",
-    "event_time": "2026-09-06",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "CTRY_RUSSIAS_LAVROV",
-        "entity_name": "Russia's Lavrov",
-        "entity_type": "Country",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 29750,
-    "article_url": "https://www.reddit.com/r/worldnews/comments/1w8u2q3/russias_lavrov_calls_accusations_of_moscows/",
-    "subject": {
-      "name": "Russian Federation Government",
-      "entity_id": "ORG_RU_GOVERNMENT",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "REPORTS",
-      "status": "UNKNOWN",
-      "polarity": "NEGATIVE",
-      "verb": "involvement"
-    },
-    "object": {
-      "name": "Leipzig drone incident",
-      "entity_id": "ORG_LEIPZIG_DRONE_INCIDENT",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "2026-09-06",
-      "value": null
-    },
-    "location": {
-      "name": "Leipzig",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "accusations of Moscow's involvement in Leipzig drone incident",
-    "evidence_type": "UNKNOWN",
-    "action_type": "REPORTS",
-    "action_event_type": "Finance",
-    "action_detail": "involvement",
-    "action_status": "UNKNOWN",
-    "action_polarity": "NEGATIVE",
-    "event_time": "2026-09-06",
-    "location_str": "Leipzig",
-    "entities": [
-      {
-        "entity_id": "ORG_RU_GOVERNMENT",
-        "entity_name": "Russian Federation Government",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_LEIPZIG_DRONE_INCIDENT",
-        "entity_name": "Leipzig drone incident",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 29776,
-    "article_url": "https://www.dw.com/en/several-killed-in-amazon-cargo-plane-crash-in-miami/a-79107365?maca=en-rss-en-all-1573-rdf",
-    "subject": {
-      "name": "Amazon",
-      "entity_id": "COMP_AMAZON",
-      "type": "Company",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "CRASHES",
       "status": "UNKNOWN",
       "polarity": "UNKNOWN",
       "verb": ""
     },
     "object": {
-      "name": "Miami",
-      "entity_id": "LOC_MIAMI",
+      "name": "Tokyo-based",
+      "entity_id": "LOC_TOKYO_BASED",
       "type": "Location",
       "object_type": "ENTITY"
     },
@@ -2641,7 +1249,7 @@
     "confidence": null,
     "evidence": "",
     "evidence_type": "UNKNOWN",
-    "action_type": "CRASHES",
+    "action_type": "IPO",
     "action_event_type": "Finance",
     "action_detail": "",
     "action_status": "UNKNOWN",
@@ -2650,196 +1258,37 @@
     "location_str": "",
     "entities": [
       {
-        "entity_id": "COMP_AMAZON",
-        "entity_name": "Amazon",
+        "entity_id": "COMP_PREFERRED_NETWORKS",
+        "entity_name": "Preferred Networks",
         "entity_type": "Company",
         "role": "SUBJECT"
       },
       {
-        "entity_id": "LOC_MIAMI",
-        "entity_name": "Miami",
+        "entity_id": "LOC_TOKYO_BASED",
+        "entity_name": "Tokyo-based",
         "entity_type": "Location",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 29752,
-    "article_url": "https://thehill.com/homenews/administration/6073694-live-updates-wright-us-iran-strikes/",
+    "article_id": 31013,
+    "article_url": "https://www.ft.com/content/32bee3d5-f018-4e8e-86cf-7ebe37f6c4a3?syn-25a6b1a6=1",
     "subject": {
-      "name": "Amazon",
-      "entity_id": "COMP_AMAZON",
-      "type": "Company",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "ATTACKS",
-      "status": "UNKNOWN",
-      "polarity": "UNKNOWN",
-      "verb": ""
-    },
-    "object": {
-      "name": "Miami",
-      "entity_id": "LOC_MIAMI",
-      "type": "Location",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": null,
-    "evidence": "",
-    "evidence_type": "UNKNOWN",
-    "action_type": "ATTACKS",
-    "action_event_type": "Military",
-    "action_detail": "",
-    "action_status": "UNKNOWN",
-    "action_polarity": "UNKNOWN",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "COMP_AMAZON",
-        "entity_name": "Amazon",
-        "entity_type": "Company",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "LOC_MIAMI",
-        "entity_name": "Miami",
-        "entity_type": "Location",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 29759,
-    "article_url": "https://www.washingtonpost.com/business/2026/09/06/us-is-not-only-country-grappling-with-soaring-debt/",
-    "subject": {
-      "name": "Climbing borrowing costs",
-      "entity_id": "ORG_CLIMBING_BORROWING_COSTS",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "WARNS",
-      "status": "ONGOING",
-      "polarity": "NEGATIVE",
-      "verb": "become"
-    },
-    "object": {
-      "name": "headache",
-      "entity_id": "ORG_HEADACHE",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "unknown",
-      "value": null
-    },
-    "location": {
-      "name": "bond markets",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Climbing borrowing costs have become a headache for Treasury Secretary Scott Bessent.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "WARNS",
-    "action_event_type": "Politics",
-    "action_detail": "become",
-    "action_status": "ONGOING",
-    "action_polarity": "NEGATIVE",
-    "event_time": "unknown",
-    "location_str": "bond markets",
-    "entities": [
-      {
-        "entity_id": "ORG_CLIMBING_BORROWING_COSTS",
-        "entity_name": "Climbing borrowing costs",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_HEADACHE",
-        "entity_name": "headache",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 29759,
-    "article_url": "https://www.washingtonpost.com/business/2026/09/06/us-is-not-only-country-grappling-with-soaring-debt/",
-    "subject": {
-      "name": "United States",
-      "entity_id": "CTRY_USA",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "WARNS",
-      "status": "ONGOING",
-      "polarity": "NEGATIVE",
-      "verb": "grappling"
-    },
-    "object": {
-      "name": "consequences of soaring government debt",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": "unknown",
-      "value": null
-    },
-    "location": {
-      "name": "unknown",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "But the United States is not the only country grappling with the potentially destabilizing consequences of soaring government debt.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "WARNS",
-    "action_event_type": "Politics",
-    "action_detail": "grappling",
-    "action_status": "ONGOING",
-    "action_polarity": "NEGATIVE",
-    "event_time": "unknown",
-    "location_str": "unknown",
-    "entities": [
-      {
-        "entity_id": "CTRY_USA",
-        "entity_name": "United States",
-        "entity_type": "Country",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 29761,
-    "article_url": "https://abcnews.com/Politics/big-piece-hearts-left-earth-military-families-reflect/story?id=136125152",
-    "subject": {
-      "name": "service members",
-      "entity_id": "PERS_SERVICE_MEMBERS",
+      "name": "leader",
+      "entity_id": "PERS_LEADER",
       "type": "Person",
       "object_type": "ENTITY"
     },
     "action": {
-      "type": "DIES",
+      "type": "IPO",
       "status": "UNKNOWN",
       "polarity": "UNKNOWN",
       "verb": ""
     },
     "object": {
-      "name": "United States",
-      "entity_id": "CTRY_UNITED_STATES",
+      "name": "India",
+      "entity_id": "CTRY_IND",
       "type": "Country",
       "object_type": "ENTITY"
     },
@@ -2855,8 +1304,8 @@
     "confidence": null,
     "evidence": "",
     "evidence_type": "UNKNOWN",
-    "action_type": "DIES",
-    "action_event_type": "Leadership",
+    "action_type": "IPO",
+    "action_event_type": "Finance",
     "action_detail": "",
     "action_status": "UNKNOWN",
     "action_polarity": "UNKNOWN",
@@ -2864,404 +1313,25 @@
     "location_str": "",
     "entities": [
       {
-        "entity_id": "PERS_SERVICE_MEMBERS",
-        "entity_name": "service members",
+        "entity_id": "PERS_LEADER",
+        "entity_name": "leader",
         "entity_type": "Person",
         "role": "SUBJECT"
       },
       {
-        "entity_id": "CTRY_UNITED_STATES",
-        "entity_name": "United States",
+        "entity_id": "CTRY_IND",
+        "entity_name": "India",
         "entity_type": "Country",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 29794,
-    "article_url": "https://www.bloomberg.com/news/articles/2026-09-06/japan-likely-sold-treasuries-to-fund-record-yen-intervention",
+    "article_id": 31010,
+    "article_url": "https://www.japantimes.co.jp/news/2026/09/08/world/politics/lebanon-israel-deadly-strikes/",
     "subject": {
-      "name": "Japan",
-      "entity_id": "CTRY_JPN",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "FUNDS",
-      "status": "EXPECTED",
-      "polarity": "NEUTRAL",
-      "verb": "sold"
-    },
-    "object": {
-      "name": "US Treasuries",
-      "entity_id": "ORG_US_TREASURIES",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "over the past month",
-      "value": null
-    },
-    "location": {
-      "name": "Japan",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 0.95,
-    "evidence": "Japan likely sold a portion of its holdings of foreign securities, including US Treasuries, to finance its record currency intervention over the past month.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "FUNDS",
-    "action_event_type": "Economic",
-    "action_detail": "sold",
-    "action_status": "EXPECTED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "over the past month",
-    "location_str": "Japan",
-    "entities": [
-      {
-        "entity_id": "CTRY_JPN",
-        "entity_name": "Japan",
-        "entity_type": "Country",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_US_TREASURIES",
-        "entity_name": "US Treasuries",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 29794,
-    "article_url": "https://www.bloomberg.com/news/articles/2026-09-06/japan-likely-sold-treasuries-to-fund-record-yen-intervention",
-    "subject": {
-      "name": "Japan",
-      "entity_id": "CTRY_JPN",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "FUNDS",
-      "status": "COMPLETED",
-      "polarity": "NEUTRAL",
-      "verb": "intervened"
-    },
-    "object": {
-      "name": "currency intervention",
-      "entity_id": "ORG_CURRENCY_INTERVENTION",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "over the past month",
-      "value": null
-    },
-    "location": {
-      "name": "N/A",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 0.9,
-    "evidence": "Japan likely sold a portion of its holdings of foreign securities, including US Treasuries, to finance its record currency intervention over the past month.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "FUNDS",
-    "action_event_type": "Economic",
-    "action_detail": "intervened",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "over the past month",
-    "location_str": "N/A",
-    "entities": [
-      {
-        "entity_id": "CTRY_JPN",
-        "entity_name": "Japan",
-        "entity_type": "Country",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_CURRENCY_INTERVENTION",
-        "entity_name": "currency intervention",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 29787,
-    "article_url": "https://www.nbcnews.com/news/us-news/weekend-rundown-september-6-rcna596242",
-    "subject": {
-      "name": "Dawn Vogel",
-      "entity_id": "PERS_DAWN_VOGEL",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "ELECTS",
-      "status": "COMPLETED",
-      "polarity": "NEUTRAL",
-      "verb": "voted"
-    },
-    "object": {
-      "name": "moratorium",
-      "entity_id": "ORG_MORATORIUM",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "earlier this year",
-      "value": null
-    },
-    "location": {
-      "name": "rural Iowa",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Vogel voted earlier this year for a moratorium that temporarily bans data centers from setting up shop in her heavily Republican county, which favored President Donald Trump 63%-35% in 2024.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "ELECTS",
-    "action_event_type": "Politics",
-    "action_detail": "voted",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "earlier this year",
-    "location_str": "rural Iowa",
-    "entities": [
-      {
-        "entity_id": "PERS_DAWN_VOGEL",
-        "entity_name": "Dawn Vogel",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_MORATORIUM",
-        "entity_name": "moratorium",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 29795,
-    "article_url": "https://www.cnbc.com/2026/09/03/treasury-irs-proposal-tax-exempt-schools-charitable-donations.html",
-    "subject": {
-      "name": "U.S. Treasury Department and the IRS",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "action": {
-      "type": "SUES",
-      "status": "ANNOUNCED",
-      "polarity": "NEUTRAL",
-      "verb": "issued"
-    },
-    "object": {
-      "name": "proposed regulations",
-      "entity_id": "ORG_PROPOSED_REGULATIONS",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "Thursday",
-      "value": null
-    },
-    "location": {
-      "name": "Thursday",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "The U.S. Treasury Department and the IRS issued proposed regulations on Thursday to end federal tax-exempt status for thousands of private schools",
-    "evidence_type": "UNKNOWN",
-    "action_type": "SUES",
-    "action_event_type": "Legal",
-    "action_detail": "issued",
-    "action_status": "ANNOUNCED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "Thursday",
-    "location_str": "Thursday",
-    "entities": [
-      {
-        "entity_id": "ORG_US_TREASURY_DEPARTMENT",
-        "entity_name": "U.S. Treasury Department",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_PROPOSED_REGULATIONS",
-        "entity_name": "proposed regulations",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 29795,
-    "article_url": "https://www.cnbc.com/2026/09/03/treasury-irs-proposal-tax-exempt-schools-charitable-donations.html",
-    "subject": {
-      "name": "thousands of private schools",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "action": {
-      "type": "WARNS",
-      "status": "PLANNED",
-      "polarity": "NEGATIVE",
-      "verb": "end"
-    },
-    "object": {
-      "name": "federal tax-exempt status",
-      "entity_id": "ORG_FEDERAL_TAX_EXEMPT_STATUS",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "N/A",
-      "value": null
-    },
-    "location": {
-      "name": "N/A",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 0.9,
-    "evidence": "The U.S. Treasury Department and the IRS issued proposed regulations on Thursday to end federal tax-exempt status for thousands of private schools",
-    "evidence_type": "UNKNOWN",
-    "action_type": "WARNS",
-    "action_event_type": "Politics",
-    "action_detail": "end",
-    "action_status": "PLANNED",
-    "action_polarity": "NEGATIVE",
-    "event_time": "N/A",
-    "location_str": "N/A",
-    "entities": [
-      {
-        "entity_id": "ORG_FEDERAL_TAX_EXEMPT_STATUS",
-        "entity_name": "federal tax-exempt status",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 29795,
-    "article_url": "https://www.cnbc.com/2026/09/03/treasury-irs-proposal-tax-exempt-schools-charitable-donations.html",
-    "subject": {
-      "name": "regulations",
-      "entity_id": "ORG_REGULATIONS",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "WARNS",
-      "status": "EXPECTED",
-      "polarity": "NEGATIVE",
-      "verb": "apply"
-    },
-    "object": {
-      "name": "taxable years",
-      "entity_id": "ORG_TAXABLE_YEARS",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "on or after May 31, 2027",
-      "value": null
-    },
-    "location": {
-      "name": "N/A",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "The regulations, if finalized, would apply to taxable years beginning on or after May 31, 2027.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "WARNS",
-    "action_event_type": "Politics",
-    "action_detail": "apply",
-    "action_status": "EXPECTED",
-    "action_polarity": "NEGATIVE",
-    "event_time": "on or after May 31, 2027",
-    "location_str": "N/A",
-    "entities": [
-      {
-        "entity_id": "ORG_REGULATIONS",
-        "entity_name": "regulations",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_TAXABLE_YEARS",
-        "entity_name": "taxable years",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 29806,
-    "article_url": "https://www.bbc.co.uk/news/videos/c5yegd6ldy6o?at_medium=RSS&at_campaign=rss",
-    "subject": {
-      "name": "AfD",
-      "entity_id": "ORG_AFD",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "ELECTS",
-      "status": "UNKNOWN",
-      "polarity": "UNKNOWN",
-      "verb": ""
-    },
-    "object": {
-      "name": "Saxony-Anhalt",
-      "entity_id": "LOC_SAXONY_ANHALT",
-      "type": "Location",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": null,
-    "evidence": "",
-    "evidence_type": "UNKNOWN",
-    "action_type": "ELECTS",
-    "action_event_type": "Politics",
-    "action_detail": "",
-    "action_status": "UNKNOWN",
-    "action_polarity": "UNKNOWN",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "ORG_AFD",
-        "entity_name": "AfD",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "LOC_SAXONY_ANHALT",
-        "entity_name": "Saxony-Anhalt",
-        "entity_type": "Location",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 29789,
-    "article_url": "https://www.dw.com/en/israeli-strikes-on-lebanon-kill-several-despite-truce/a-79065011?maca=en-rss-en-all-1573-rdf",
-    "subject": {
-      "name": "Joseph Aoun",
-      "entity_id": "PERS_JOSEPH_AOUN",
+      "name": "women",
+      "entity_id": "PERS_WOMEN",
       "type": "Person",
       "object_type": "ENTITY"
     },
@@ -3298,8 +1368,8 @@
     "location_str": "",
     "entities": [
       {
-        "entity_id": "PERS_JOSEPH_AOUN",
-        "entity_name": "Joseph Aoun",
+        "entity_id": "PERS_WOMEN",
+        "entity_name": "women",
         "entity_type": "Person",
         "role": "SUBJECT"
       },
@@ -3312,12 +1382,1336 @@
     ]
   },
   {
-    "article_id": 29798,
-    "article_url": "https://www.aljazeera.com/video/newsfeed/2026/9/6/amazon-prime-plane-overruns-runway-at-miami-airport?traffic_source=rss",
+    "article_id": 30991,
+    "article_url": "https://www.zerohedge.com/political/ubs-calls-brazil-election-extremely-close-bolsonaro-win-would-cement-latinas-political",
     "subject": {
-      "name": "Amazon",
-      "entity_id": "COMP_AMAZON",
+      "name": "UBS",
+      "entity_id": "COMP_UBS",
       "type": "Company",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "ELECTS",
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
+    },
+    "object": {
+      "name": "Brazil",
+      "entity_id": "CTRY_BRA",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": null,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "ELECTS",
+    "action_event_type": "Politics",
+    "action_detail": "",
+    "action_status": "UNKNOWN",
+    "action_polarity": "UNKNOWN",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "COMP_UBS",
+        "entity_name": "UBS",
+        "entity_type": "Company",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_BRA",
+        "entity_name": "Brazil",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 30998,
+    "article_url": "https://www.japantimes.co.jp/news/2026/09/08/asia-pacific/china-humanoid-robots-war/",
+    "subject": {
+      "name": "defense establishment",
+      "entity_id": "ORG_DEFENSE_ESTABLISHMENT",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "DIES",
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
+    },
+    "object": {
+      "name": "China",
+      "entity_id": "CTRY_CHN",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": null,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "DIES",
+    "action_event_type": "Leadership",
+    "action_detail": "",
+    "action_status": "UNKNOWN",
+    "action_polarity": "UNKNOWN",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "ORG_DEFENSE_ESTABLISHMENT",
+        "entity_name": "defense establishment",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_CHN",
+        "entity_name": "China",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 31014,
+    "article_url": "https://www.ft.com/content/dc6c9fe1-c400-490a-a4fe-8b3d5cf3334a?syn-25a6b1a6=1",
+    "subject": {
+      "name": "Oil prices",
+      "entity_id": "ORG_OIL_PRICES",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "ONGOING",
+      "polarity": "NEUTRAL",
+      "verb": "near"
+    },
+    "object": {
+      "name": "$100",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "AMOUNT"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Oil prices near $100 as renewed supply crunch looms",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "near",
+    "action_status": "ONGOING",
+    "action_polarity": "NEUTRAL",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "ORG_OIL_PRICES",
+        "entity_name": "Oil prices",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 30999,
+    "article_url": "https://www.cnbc.com/2026/09/08/oil-prices-today-brent-wti-hormuz-iran-war.html",
+    "subject": {
+      "name": "Oil prices",
+      "entity_id": "ORG_OIL_PRICES",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "COMPLETED",
+      "polarity": "POSITIVE",
+      "verb": "extended gains"
+    },
+    "object": {
+      "name": "",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "time": {
+      "raw": "Tuesday",
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Oil prices extended gains Tuesday, rising for a third straight day, and hovering at six-week highs on worries over escalating Mideast tensions after the U.S. and Iran traded strikes over the weekend.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "extended gains",
+    "action_status": "COMPLETED",
+    "action_polarity": "POSITIVE",
+    "event_time": "Tuesday",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "ORG_OIL_PRICES",
+        "entity_name": "Oil prices",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 30999,
+    "article_url": "https://www.cnbc.com/2026/09/08/oil-prices-today-brent-wti-hormuz-iran-war.html",
+    "subject": {
+      "name": "Futures for international benchmark Brent crude for November delivery",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "COMPLETED",
+      "polarity": "POSITIVE",
+      "verb": "gained"
+    },
+    "object": {
+      "name": "$97.20 a barrel",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "AMOUNT"
+    },
+    "time": {
+      "raw": "Tuesday",
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Futures for international benchmark Brent crude for November delivery gained 0.20% at $97.20 a barrel.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "gained",
+    "action_status": "COMPLETED",
+    "action_polarity": "POSITIVE",
+    "event_time": "Tuesday",
+    "location_str": "",
+    "entities": []
+  },
+  {
+    "article_id": 30999,
+    "article_url": "https://www.cnbc.com/2026/09/08/oil-prices-today-brent-wti-hormuz-iran-war.html",
+    "subject": {
+      "name": "U.S. military",
+      "entity_id": "CTRY_US_MILITARY",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "COMPLETED",
+      "polarity": "NEGATIVE",
+      "verb": "struck"
+    },
+    "object": {
+      "name": "three Iranian oil tankers",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "time": {
+      "raw": "Saturday",
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "The U.S. military struck three Iranian oil tankers on Saturday after Iran launched ballistic missiles at two Navy warships.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "struck",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEGATIVE",
+    "event_time": "Saturday",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "CTRY_US_MILITARY",
+        "entity_name": "U.S. military",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 30996,
+    "article_url": "https://www.nbcnews.com/world/iran/iran-increases-gasoline-price-heaviest-consumers-economy-struggles-rcna596518",
+    "subject": {
+      "name": "Iran, Islamic Republic of",
+      "entity_id": "CTRY_IRN",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "COMPLETED",
+      "polarity": "NEUTRAL",
+      "verb": "introduced"
+    },
+    "object": {
+      "name": "a higher price for its heaviest users of gasoline",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
+    },
+    "time": {
+      "raw": "early Tuesday",
+      "value": null
+    },
+    "location": {
+      "name": "TEHRAN, Iran",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Iran early Tuesday introduced a higher price for its heaviest users of gasoline, state media reported",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "introduced",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "early Tuesday",
+    "location_str": "TEHRAN, Iran",
+    "entities": [
+      {
+        "entity_id": "CTRY_IRN",
+        "entity_name": "Iran, Islamic Republic of",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 30996,
+    "article_url": "https://www.nbcnews.com/world/iran/iran-increases-gasoline-price-heaviest-consumers-economy-struggles-rcna596518",
+    "subject": {
+      "name": "gas price increases",
+      "entity_id": "ORG_GAS_PRICE_INCREASES",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "COMPLETED",
+      "polarity": "NEGATIVE",
+      "verb": "sparked"
+    },
+    "object": {
+      "name": "nationwide protests and a crackdown that reportedly killed over 300 people",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
+    },
+    "time": {
+      "raw": "2019",
+      "value": null
+    },
+    "location": {
+      "name": "Iran",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.9,
+    "evidence": "An increase in 2019 sparked nationwide protests and a crackdown that reportedly killed over 300 people.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "sparked",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEGATIVE",
+    "event_time": "2019",
+    "location_str": "Iran",
+    "entities": [
+      {
+        "entity_id": "ORG_GAS_PRICE_INCREASES",
+        "entity_name": "gas price increases",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_NATIONWIDE_PROTESTS",
+        "entity_name": "nationwide protests",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 30996,
+    "article_url": "https://www.nbcnews.com/world/iran/iran-increases-gasoline-price-heaviest-consumers-economy-struggles-rcna596518",
+    "subject": {
+      "name": "new system",
+      "entity_id": "ORG_NEW_SYSTEM",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "ONGOING",
+      "polarity": "NEUTRAL",
+      "verb": "must pay"
+    },
+    "object": {
+      "name": "100,000 rials (about 7 cents) per liter for those buying more than their quota of 110 liters (29 gallons) a month",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "AMOUNT"
+    },
+    "time": {
+      "raw": "new system",
+      "value": null
+    },
+    "location": {
+      "name": "Iran",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.95,
+    "evidence": "Under the new system, people buying more than their quota of 110 liters (29 gallons) of gasoline a month now must pay 100,000 rials (about 7 cents) per liter, or twice as much as they have been paying sinc",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "must pay",
+    "action_status": "ONGOING",
+    "action_polarity": "NEUTRAL",
+    "event_time": "new system",
+    "location_str": "Iran",
+    "entities": [
+      {
+        "entity_id": "ORG_NEW_SYSTEM",
+        "entity_name": "new system",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 31000,
+    "article_url": "https://www.nytimes.com/2026/09/07/us/miami-crash-emas-buffer-runways.html",
+    "subject": {
+      "name": "Technology involving crushable concrete",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "action": {
+      "type": "CRASHES",
+      "status": "COMPLETED",
+      "polarity": "POSITIVE",
+      "verb": "saving"
+    },
+    "object": {
+      "name": "nearly 500 passenger lives",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "A technology involving crushable concrete has been credited with saving nearly 500 passenger lives by helping halt planes that overshot their landings.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "CRASHES",
+    "action_event_type": "Finance",
+    "action_detail": "saving",
+    "action_status": "COMPLETED",
+    "action_polarity": "POSITIVE",
+    "event_time": "",
+    "location_str": "",
+    "entities": []
+  },
+  {
+    "article_id": 31000,
+    "article_url": "https://www.nytimes.com/2026/09/07/us/miami-crash-emas-buffer-runways.html",
+    "subject": {
+      "name": "Airports in the United States",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "action": {
+      "type": "CRASHES",
+      "status": "ONGOING",
+      "polarity": "NEUTRAL",
+      "verb": "installed"
+    },
+    "object": {
+      "name": "buffer areas of crushable concrete",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
+    },
+    "time": {
+      "raw": "Over the past 30 years",
+      "value": null
+    },
+    "location": {
+      "name": "United States",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Over the past 30 years, an increasing number of airports in the United States have installed buffer areas of crushable concrete at the end of their runways to help stop planes that overshoot their landings before they can crash into anything.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "CRASHES",
+    "action_event_type": "Finance",
+    "action_detail": "installed",
+    "action_status": "ONGOING",
+    "action_polarity": "NEUTRAL",
+    "event_time": "Over the past 30 years",
+    "location_str": "United States",
+    "entities": []
+  },
+  {
+    "article_id": 31000,
+    "article_url": "https://www.nytimes.com/2026/09/07/us/miami-crash-emas-buffer-runways.html",
+    "subject": {
+      "name": "Miami International Airport",
+      "entity_id": "ORG_MIAMI_INTERNATIONAL_AIRPORT",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "CRASHES",
+      "status": "ONGOING",
+      "polarity": "NEGATIVE",
+      "verb": "does not have"
+    },
+    "object": {
+      "name": "such a buffer",
+      "entity_id": "ORG_SUCH_A_BUFFER",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "Sunday",
+      "value": null
+    },
+    "location": {
+      "name": "Miami International Airport",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Miami International Airport, where an Amazon cargo jet overran the runway’s terminus on Sunday, killing five people and injuring five more, does not have such a buffer.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "CRASHES",
+    "action_event_type": "Finance",
+    "action_detail": "does not have",
+    "action_status": "ONGOING",
+    "action_polarity": "NEGATIVE",
+    "event_time": "Sunday",
+    "location_str": "Miami International Airport",
+    "entities": [
+      {
+        "entity_id": "ORG_MIAMI_INTERNATIONAL_AIRPORT",
+        "entity_name": "Miami International Airport",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_SUCH_A_BUFFER",
+        "entity_name": "such a buffer",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 30992,
+    "article_url": "https://www.aa.com.tr/en/asia-pacific/north-korea-denounces-us-japan-south-korea-drills-warns-of-consequences/4050153",
+    "subject": {
+      "name": "Faisal Mahmud",
+      "entity_id": "PERS_FAISAL_MAHMUD",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "WARNS",
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
+    },
+    "object": {
+      "name": "Korea, Democratic People's Republic of",
+      "entity_id": "CTRY_PRK",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": null,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "WARNS",
+    "action_event_type": "Politics",
+    "action_detail": "",
+    "action_status": "UNKNOWN",
+    "action_polarity": "UNKNOWN",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "PERS_FAISAL_MAHMUD",
+        "entity_name": "Faisal Mahmud",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_PRK",
+        "entity_name": "Korea, Democratic People's Republic of",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 30933,
+    "article_url": "https://www.aljazeera.com/news/liveblog/2026/9/8/iran-war-live-qatar-warns-of-industrial-catastrophe-if-crisis-continues?traffic_source=rss",
+    "subject": {
+      "name": "Kpler",
+      "entity_id": "ORG_KPLER",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "TESTS",
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
+    },
+    "object": {
+      "name": "Qatar",
+      "entity_id": "CTRY_QAT",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": null,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "TESTS",
+    "action_event_type": "Technology",
+    "action_detail": "",
+    "action_status": "UNKNOWN",
+    "action_polarity": "UNKNOWN",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "ORG_KPLER",
+        "entity_name": "Kpler",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_QAT",
+        "entity_name": "Qatar",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 30931,
+    "article_url": "https://www.aljazeera.com/news/2026/9/7/israels-removal-of-gaza-rubble-risk-to-war-crimes-evidence-un?traffic_source=rss",
+    "subject": {
+      "name": "International Court of Justice",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
+    },
+    "object": {
+      "name": "Israel",
+      "entity_id": "CTRY_ISR",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": null,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "",
+    "action_status": "UNKNOWN",
+    "action_polarity": "UNKNOWN",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "CTRY_ISR",
+        "entity_name": "Israel",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 31007,
+    "article_url": "https://www.bbc.co.uk/news/articles/cwyzrrd0kp7o?at_medium=RSS&at_campaign=rss",
+    "subject": {
+      "name": "Jakub Pachocki",
+      "entity_id": "PERS_JAKUB_PACHOCKI",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "WARNS",
+      "status": "COMPLETED",
+      "polarity": "NEGATIVE",
+      "verb": "warned"
+    },
+    "object": {
+      "name": "consequences of AI",
+      "entity_id": "ORG_CONSEQUENCES_OF_AI",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "unknown",
+      "value": null
+    },
+    "location": {
+      "name": "unknown",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "OpenAI's chief scientist Jakub Pachocki has called for \"extreme caution\" over AI's runaway progress and warned more intervention may be needed to ensure \"humans remain in control of the future\".",
+    "evidence_type": "UNKNOWN",
+    "action_type": "WARNS",
+    "action_event_type": "Politics",
+    "action_detail": "warned",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEGATIVE",
+    "event_time": "unknown",
+    "location_str": "unknown",
+    "entities": [
+      {
+        "entity_id": "PERS_JAKUB_PACHOCKI",
+        "entity_name": "Jakub Pachocki",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_CONSEQUENCES_OF_AI",
+        "entity_name": "consequences of AI",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 31007,
+    "article_url": "https://www.bbc.co.uk/news/articles/cwyzrrd0kp7o?at_medium=RSS&at_campaign=rss",
+    "subject": {
+      "name": "OpenAI",
+      "entity_id": "COMP_OPENAI",
+      "type": "Company",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "WARNS",
+      "status": "COMPLETED",
+      "polarity": "NEUTRAL",
+      "verb": "released"
+    },
+    "object": {
+      "name": "GPT-6 Astra",
+      "entity_id": "ORG_GPT_6_ASTRA",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "few days after the release of GPT-6 Astra",
+      "value": null
+    },
+    "location": {
+      "name": "unknown",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "The post comes only a few days after the ChatGPT-maker released its latest model GPT-6 Astra, which it called its most powerful product ever.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "WARNS",
+    "action_event_type": "Politics",
+    "action_detail": "released",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "few days after the release of GPT-6 Astra",
+    "location_str": "unknown",
+    "entities": [
+      {
+        "entity_id": "COMP_OPENAI",
+        "entity_name": "OpenAI",
+        "entity_type": "Company",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_GPT_6_ASTRA",
+        "entity_name": "GPT-6 Astra",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 30993,
+    "article_url": "https://www.independent.co.uk/news/world/americas/us-politics/trump-america-flag-canada-truth-social-posts-b3046175.html",
+    "subject": {
+      "name": "President Donald Trump",
+      "entity_id": "PERS_PRESIDENT_DONALD_TRUMP",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "COMPLETED",
+      "polarity": "NEUTRAL",
+      "verb": "posted"
+    },
+    "object": {
+      "name": "an image showing a map where the United States covered all of continental North America and Greenland",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
+    },
+    "time": {
+      "raw": "Monday",
+      "value": null
+    },
+    "location": {
+      "name": "Truth Social",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "President Donald Trump posted an image on Truth Social on Monday showing a map where the United States covered all of continental North America and Greenland",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "posted",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "Monday",
+    "location_str": "Truth Social",
+    "entities": [
+      {
+        "entity_id": "PERS_PRESIDENT_DONALD_TRUMP",
+        "entity_name": "President Donald Trump",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_GRL",
+        "entity_name": "Greenland",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 30993,
+    "article_url": "https://www.independent.co.uk/news/world/americas/us-politics/trump-america-flag-canada-truth-social-posts-b3046175.html",
+    "subject": {
+      "name": "President Donald Trump's posts",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "ONGOING",
+      "polarity": "NEUTRAL",
+      "verb": "bathing"
+    },
+    "object": {
+      "name": "multiple countries in the American flag",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
+    },
+    "time": {
+      "raw": "Monday",
+      "value": null
+    },
+    "location": {
+      "name": "internationally",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.9,
+    "evidence": "# Trump throws fuel on international feuds with Truth Social post bathing multiple countries in the American flag",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "bathing",
+    "action_status": "ONGOING",
+    "action_polarity": "NEUTRAL",
+    "event_time": "Monday",
+    "location_str": "internationally",
+    "entities": []
+  },
+  {
+    "article_id": 30993,
+    "article_url": "https://www.independent.co.uk/news/world/americas/us-politics/trump-america-flag-canada-truth-social-posts-b3046175.html",
+    "subject": {
+      "name": "United States",
+      "entity_id": "CTRY_UNITED_STATES",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "TARIFFS",
+      "status": "ONGOING",
+      "polarity": "NEGATIVE",
+      "verb": "continues"
+    },
+    "object": {
+      "name": "trade war with Canada",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "time": {
+      "raw": "Monday",
+      "value": null
+    },
+    "location": {
+      "name": "North America and Greenland",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "as the U.S. continues its trade war with Canada.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "TARIFFS",
+    "action_event_type": "Economic",
+    "action_detail": "continues",
+    "action_status": "ONGOING",
+    "action_polarity": "NEGATIVE",
+    "event_time": "Monday",
+    "location_str": "North America and Greenland",
+    "entities": [
+      {
+        "entity_id": "CTRY_UNITED_STATES",
+        "entity_name": "United States",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 30954,
+    "article_url": "https://news.sky.com/story/race-driver-ollie-millroy-thanks-rival-loek-hartog-for-saving-his-life-by-pulling-him-from-burning-ferrari-during-china-gt-race-in-shanghai-13582764",
+    "subject": {
+      "name": "British motor racing driver",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "COMPLETED",
+      "polarity": "POSITIVE",
+      "verb": "thanks"
+    },
+    "object": {
+      "name": "rival",
+      "entity_id": "PERS_RIVAL",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "during a race",
+      "value": null
+    },
+    "location": {
+      "name": "China",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "A British motor racing driver says he owes his life to a rival who dragged him from the burning wreckage of his car after he crashed during a race in China.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "thanks",
+    "action_status": "COMPLETED",
+    "action_polarity": "POSITIVE",
+    "event_time": "during a race",
+    "location_str": "China",
+    "entities": [
+      {
+        "entity_id": "PERS_RIVAL",
+        "entity_name": "rival",
+        "entity_type": "Person",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 30954,
+    "article_url": "https://news.sky.com/story/race-driver-ollie-millroy-thanks-rival-loek-hartog-for-saving-his-life-by-pulling-him-from-burning-ferrari-during-china-gt-race-in-shanghai-13582764",
+    "subject": {
+      "name": "rival",
+      "entity_id": "PERS_RIVAL",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "COMPLETED",
+      "polarity": "POSITIVE",
+      "verb": "dragged"
+    },
+    "object": {
+      "name": "driver",
+      "entity_id": "PERS_DRIVER",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "during a race",
+      "value": null
+    },
+    "location": {
+      "name": "burning wreckage of his car",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "A British motor racing driver says he owes his life to a rival who dragged him from the burning wreckage of his car after he crashed during a race in China.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "dragged",
+    "action_status": "COMPLETED",
+    "action_polarity": "POSITIVE",
+    "event_time": "during a race",
+    "location_str": "burning wreckage of his car",
+    "entities": [
+      {
+        "entity_id": "PERS_RIVAL",
+        "entity_name": "rival",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "PERS_DRIVER",
+        "entity_name": "driver",
+        "entity_type": "Person",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 30936,
+    "article_url": "https://www.bbc.co.uk/news/articles/ce8e32n8epeo?at_medium=RSS&at_campaign=rss",
+    "subject": {
+      "name": "Flight recorders",
+      "entity_id": "ORG_FLIGHT_RECORDERS",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "CRASHES",
+      "status": "COMPLETED",
+      "polarity": "NEUTRAL",
+      "verb": "recovered"
+    },
+    "object": {
+      "name": "Flight recorders",
+      "entity_id": "ORG_FLIGHT_RECORDERS",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "unknown",
+      "value": null
+    },
+    "location": {
+      "name": "Miami International Airport",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Flight recorders from the Amazon cargo plane crash near Miami International Airport have been recovered.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "CRASHES",
+    "action_event_type": "Finance",
+    "action_detail": "recovered",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "unknown",
+    "location_str": "Miami International Airport",
+    "entities": [
+      {
+        "entity_id": "ORG_FLIGHT_RECORDERS",
+        "entity_name": "Flight recorders",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_FLIGHT_RECORDERS",
+        "entity_name": "Flight recorders",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 30936,
+    "article_url": "https://www.bbc.co.uk/news/articles/ce8e32n8epeo?at_medium=RSS&at_campaign=rss",
+    "subject": {
+      "name": "Boeing 767-300",
+      "entity_id": "ORG_BOEING_767_300",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "CRASHES",
+      "status": "COMPLETED",
+      "polarity": "NEGATIVE",
+      "verb": "overshot"
+    },
+    "object": {
+      "name": "runway",
+      "entity_id": "ORG_RUNWAY",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "unknown",
+      "value": null
+    },
+    "location": {
+      "name": "Miami International Airport",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Five people were killed and five others seriously injured when the Boeing 767-300 overshot the runway at Miami International Airport.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "CRASHES",
+    "action_event_type": "Finance",
+    "action_detail": "overshot",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEGATIVE",
+    "event_time": "unknown",
+    "location_str": "Miami International Airport",
+    "entities": [
+      {
+        "entity_id": "ORG_BOEING_767_300",
+        "entity_name": "Boeing 767-300",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_RUNWAY",
+        "entity_name": "runway",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 30936,
+    "article_url": "https://www.bbc.co.uk/news/articles/ce8e32n8epeo?at_medium=RSS&at_campaign=rss",
+    "subject": {
+      "name": "Investigation",
+      "entity_id": "ORG_INVESTIGATION",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "CRASHES",
+      "status": "PLANNED",
+      "polarity": "NEUTRAL",
+      "verb": "determine"
+    },
+    "object": {
+      "name": "if the crash could have been prevented",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
+    },
+    "time": {
+      "raw": "unknown",
+      "value": null
+    },
+    "location": {
+      "name": "unknown",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.9,
+    "evidence": "The investigation will determine if the crash could have been prevented.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "CRASHES",
+    "action_event_type": "Finance",
+    "action_detail": "determine",
+    "action_status": "PLANNED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "unknown",
+    "location_str": "unknown",
+    "entities": [
+      {
+        "entity_id": "ORG_INVESTIGATION",
+        "entity_name": "Investigation",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 30924,
+    "article_url": "https://www.bloomberg.com/news/articles/2026-09-07/why-are-japan-s-bond-yields-rising-what-s-driving-the-surge",
+    "subject": {
+      "name": "issuer",
+      "entity_id": "ORG_ISSUER",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "SURGES",
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
+    },
+    "object": {
+      "name": "Japan",
+      "entity_id": "CTRY_JPN",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": null,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "SURGES",
+    "action_event_type": "Finance",
+    "action_detail": "",
+    "action_status": "UNKNOWN",
+    "action_polarity": "UNKNOWN",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "ORG_ISSUER",
+        "entity_name": "issuer",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_JPN",
+        "entity_name": "Japan",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 30915,
+    "article_url": "https://oilprice.com/Alternative-Energy/Nuclear-Power/Uzbekistan-Scales-Back-Nuclear-Cooperation-With-Russia.html",
+    "subject": {
+      "name": "Shavkat Mirziyoyev",
+      "entity_id": "PERS_SHAVKAT_MIRZIYOYEV",
+      "type": "Person",
       "object_type": "ENTITY"
     },
     "action": {
@@ -3327,8 +2721,344 @@
       "verb": ""
     },
     "object": {
+      "name": "Uzbekistan",
+      "entity_id": "CTRY_UZB",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": null,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "",
+    "action_status": "UNKNOWN",
+    "action_polarity": "UNKNOWN",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "PERS_SHAVKAT_MIRZIYOYEV",
+        "entity_name": "Shavkat Mirziyoyev",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_UZB",
+        "entity_name": "Uzbekistan",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 30940,
+    "article_url": "https://www.independent.co.uk/news/world/americas/miami-airport-amazon-plane-crash-investigation-update-b3046218.html",
+    "subject": {
+      "name": "five people",
+      "entity_id": "PERS_FIVE_PEOPLE",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "CRASHES",
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
+    },
+    "object": {
+      "name": "Miami",
+      "entity_id": "LOC_MIAMI",
+      "type": "Location",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": null,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "CRASHES",
+    "action_event_type": "Finance",
+    "action_detail": "",
+    "action_status": "UNKNOWN",
+    "action_polarity": "UNKNOWN",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "PERS_FIVE_PEOPLE",
+        "entity_name": "five people",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "LOC_MIAMI",
+        "entity_name": "Miami",
+        "entity_type": "Location",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 30920,
+    "article_url": "https://www.zerohedge.com/energy/six-nuclear-bills-clear-house-committee-without-single-no-vote",
+    "subject": {
+      "name": "Six Nuclear Bills",
+      "entity_id": "ORG_SIX_NUCLEAR_BILLS",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "ELECTS",
+      "status": "COMPLETED",
+      "polarity": "POSITIVE",
+      "verb": "Clear"
+    },
+    "object": {
+      "name": "House Committee",
+      "entity_id": "ORG_HOUSE_COMMITTEE",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "unknown",
+      "value": null
+    },
+    "location": {
+      "name": "House",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Six Nuclear Bills Clear House Committee Without A Single 'No' Vote",
+    "evidence_type": "UNKNOWN",
+    "action_type": "ELECTS",
+    "action_event_type": "Politics",
+    "action_detail": "Clear",
+    "action_status": "COMPLETED",
+    "action_polarity": "POSITIVE",
+    "event_time": "unknown",
+    "location_str": "House",
+    "entities": [
+      {
+        "entity_id": "ORG_SIX_NUCLEAR_BILLS",
+        "entity_name": "Six Nuclear Bills",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_HOUSE_COMMITTEE",
+        "entity_name": "House Committee",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 30916,
+    "article_url": "https://thehill.com/policy/international/6075212-witkoff-progress-russia-ukraine-talks/",
+    "subject": {
+      "name": "Steve Witkoff",
+      "entity_id": "PERS_STEVE_WITKOFF",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "COMPLETED",
+      "polarity": "POSITIVE",
+      "verb": "touted"
+    },
+    "object": {
+      "name": "substantive progress",
+      "entity_id": "ORG_SUBSTANTIVE_PROGRESS",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "after U.S. talks on the Russia-Ukraine war with both sides",
+      "value": null
+    },
+    "location": {
+      "name": "N/A",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Special envoy Steve Witkoff touted “substantive progress” in the wake of U.S. talks on the Russia-Ukraine war with both sides.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "touted",
+    "action_status": "COMPLETED",
+    "action_polarity": "POSITIVE",
+    "event_time": "after U.S. talks on the Russia-Ukraine war with both sides",
+    "location_str": "N/A",
+    "entities": [
+      {
+        "entity_id": "PERS_STEVE_WITKOFF",
+        "entity_name": "Steve Witkoff",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_SUBSTANTIVE_PROGRESS",
+        "entity_name": "substantive progress",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 30916,
+    "article_url": "https://thehill.com/policy/international/6075212-witkoff-progress-russia-ukraine-talks/",
+    "subject": {
+      "name": "United States negotiators",
+      "entity_id": "CTRY_UNITED_STATES_NEGOTIATORS",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "VISITS",
+      "status": "COMPLETED",
+      "polarity": "NEUTRAL",
+      "verb": "visited"
+    },
+    "object": {
+      "name": "Russian Federation Government",
+      "entity_id": "ORG_RU_GOVERNMENT",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "N/A",
+      "value": null
+    },
+    "location": {
+      "name": "Moscow and Kyiv",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "United States negotiators visited both Moscow and Kyiv in order to facilitate additional dialogue to end the Russia-Ukraine War.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "VISITS",
+    "action_event_type": "Diplomacy",
+    "action_detail": "visited",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "N/A",
+    "location_str": "Moscow and Kyiv",
+    "entities": [
+      {
+        "entity_id": "CTRY_UNITED_STATES_NEGOTIATORS",
+        "entity_name": "United States negotiators",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_RU_GOVERNMENT",
+        "entity_name": "Russian Federation Government",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      },
+      {
+        "entity_id": "LOC_KYIV",
+        "entity_name": "Kyiv",
+        "entity_type": "Location",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 30959,
+    "article_url": "https://www.cbsnews.com/news/amazon-cargo-plane-crash-miami-ntsb-investigation-9-7-2026/",
+    "subject": {
+      "name": "Amazon",
+      "entity_id": "COMP_AMAZON",
+      "type": "Company",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "ATTACKS",
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
+    },
+    "object": {
       "name": "Miami International Airport",
       "entity_id": "LOC_MIAMI_INTERNATIONAL_AIRPORT",
+      "type": "Location",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": null,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "ATTACKS",
+    "action_event_type": "Military",
+    "action_detail": "",
+    "action_status": "UNKNOWN",
+    "action_polarity": "UNKNOWN",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "COMP_AMAZON",
+        "entity_name": "Amazon",
+        "entity_type": "Company",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "LOC_MIAMI_INTERNATIONAL_AIRPORT",
+        "entity_name": "Miami International Airport",
+        "entity_type": "Location",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 30923,
+    "article_url": "https://www.france24.com/en/eiffel-tower-closed-in-row-over-women-removed-for-hindu-group",
+    "subject": {
+      "name": "staff",
+      "entity_id": "PERS_STAFF",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
+    },
+    "object": {
+      "name": "Eiffel Tower",
+      "entity_id": "LOC_EIFFEL_TOWER",
       "type": "Location",
       "object_type": "ENTITY"
     },
@@ -3353,275 +3083,190 @@
     "location_str": "",
     "entities": [
       {
-        "entity_id": "COMP_AMAZON",
-        "entity_name": "Amazon",
-        "entity_type": "Company",
+        "entity_id": "PERS_STAFF",
+        "entity_name": "staff",
+        "entity_type": "Person",
         "role": "SUBJECT"
       },
       {
-        "entity_id": "LOC_MIAMI_INTERNATIONAL_AIRPORT",
-        "entity_name": "Miami International Airport",
+        "entity_id": "LOC_EIFFEL_TOWER",
+        "entity_name": "Eiffel Tower",
         "entity_type": "Location",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 29779,
-    "article_url": "https://techcrunch.com/2026/09/05/seattle-times-and-newsday-are-the-latest-publications-to-sue-openai-and-microsoft/",
+    "article_id": 30945,
+    "article_url": "https://tass.com/world/2183751",
     "subject": {
-      "name": "The Seattle Times and Newsday",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "action": {
-      "type": "SUES",
-      "status": "ATTEMPTED",
-      "polarity": "NEGATIVE",
-      "verb": "sue"
-    },
-    "object": {
-      "name": "OpenAI",
-      "entity_id": "COMP_OPENAI",
-      "type": "Company",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "unknown",
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "A lawsuit filed by The Seattle Times and Newsday argued that with the advent of AI, the journalism industry could become “broken beyond repair.”",
-    "evidence_type": "UNKNOWN",
-    "action_type": "SUES",
-    "action_event_type": "Legal",
-    "action_detail": "sue",
-    "action_status": "ATTEMPTED",
-    "action_polarity": "NEGATIVE",
-    "event_time": "unknown",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "ORG_NEWSDAY",
-        "entity_name": "Newsday",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "COMP_OPENAI",
-        "entity_name": "OpenAI",
-        "entity_type": "Company",
-        "role": "OBJECT"
-      },
-      {
-        "entity_id": "COMP_MICROSOFT",
-        "entity_name": "Microsoft",
-        "entity_type": "Company",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 29779,
-    "article_url": "https://techcrunch.com/2026/09/05/seattle-times-and-newsday-are-the-latest-publications-to-sue-openai-and-microsoft/",
-    "subject": {
-      "name": "Generative AI (e.g., ChatGPT and CoPilot)",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "action": {
-      "type": "SUES",
-      "status": "ONGOING",
-      "polarity": "NEGATIVE",
-      "verb": "consume"
-    },
-    "object": {
-      "name": "human-authored content",
-      "entity_id": "ORG_HUMAN_AUTHORED_CONTENT",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "unknown",
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 0.9,
-    "evidence": "\"AI products like ChatGPT and CoPilot are touted as producers of content, but in fact they are rapacious consumers, devouring human-authored content and delivering back to the world copies and derivative imitations of that same original content they consumed to achieve their commercial objectives,\"",
-    "evidence_type": "UNKNOWN",
-    "action_type": "SUES",
-    "action_event_type": "Legal",
-    "action_detail": "consume",
-    "action_status": "ONGOING",
-    "action_polarity": "NEGATIVE",
-    "event_time": "unknown",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "ORG_GENERATIVE_AI_EG",
-        "entity_name": "Generative AI (e.g.",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_CHATGPT",
-        "entity_name": "ChatGPT",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_COPILOT",
-        "entity_name": "CoPilot",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_HUMAN_AUTHORED_CONTENT",
-        "entity_name": "human-authored content",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 29779,
-    "article_url": "https://techcrunch.com/2026/09/05/seattle-times-and-newsday-are-the-latest-publications-to-sue-openai-and-microsoft/",
-    "subject": {
-      "name": "The New York Times",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "action": {
-      "type": "SUES",
-      "status": "COMPLETED",
-      "polarity": "NEUTRAL",
-      "verb": "sued"
-    },
-    "object": {
-      "name": "OpenAI",
-      "entity_id": "COMP_OPENAI",
-      "type": "Company",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "2023",
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Back in 2023, The New York Times sued OpenAI and its partner/investo",
-    "evidence_type": "UNKNOWN",
-    "action_type": "SUES",
-    "action_event_type": "Legal",
-    "action_detail": "sued",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "2023",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "COMP_OPENAI",
-        "entity_name": "OpenAI",
-        "entity_type": "Company",
-        "role": "OBJECT"
-      },
-      {
-        "entity_id": "ORG_ITS_PARTNERINVESTO",
-        "entity_name": "its partner/investo",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 29769,
-    "article_url": "https://www.investing.com/news/stock-market-news/nvidias-huang-says-agi-has-arrived-after-openais-gpt6-astra-launch-4890329",
-    "subject": {
-      "name": "Jensen Huang",
-      "entity_id": "PERS_JENSEN_HUANG",
+      "name": "Florian Philippot",
+      "entity_id": "PERS_FLORIAN_PHILIPPOT",
       "type": "Person",
       "object_type": "ENTITY"
     },
     "action": {
-      "type": "LAUNCHES",
-      "status": "COMPLETED",
-      "polarity": "NEUTRAL",
-      "verb": "claimed"
+      "type": "STATES",
+      "status": "ANNOUNCED",
+      "polarity": "NEGATIVE",
+      "verb": "expressed"
     },
     "object": {
-      "name": "AGI has arrived",
-      "entity_id": "ORG_AGI_HAS_ARRIVED",
-      "type": "Organization",
-      "object_type": "ENTITY"
+      "name": "opinion that Vladimir Zelensky wants the conflict in Ukraine to continue in order to remain in power and enrich himself",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
     },
     "time": {
-      "raw": "after the launch of OpenAI's GPT-6 Astra",
+      "raw": "September 7",
       "value": null
     },
     "location": {
-      "name": null,
+      "name": "social media page X",
       "entity_id": null,
       "type": null
     },
     "confidence": 1,
-    "evidence": "Nvidia CEO Jensen Huang claimed AGI has arrived following the launch of OpenAI's GPT-6 Astra.",
+    "evidence": "Florian Philippot, leader of France's The Patriots party and candidate in the 2027 French presidential election, has expressed the opinion that Vladimir Zelensky wants the conflict in Ukraine to continue in order to remain in power.",
     "evidence_type": "UNKNOWN",
-    "action_type": "LAUNCHES",
-    "action_event_type": "Technology",
-    "action_detail": "claimed",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "after the launch of OpenAI's GPT-6 Astra",
-    "location_str": "",
+    "action_type": "STATES",
+    "action_event_type": "Politics",
+    "action_detail": "expressed",
+    "action_status": "ANNOUNCED",
+    "action_polarity": "NEGATIVE",
+    "event_time": "September 7",
+    "location_str": "social media page X",
     "entities": [
       {
-        "entity_id": "PERS_JENSEN_HUANG",
-        "entity_name": "Jensen Huang",
+        "entity_id": "PERS_FLORIAN_PHILIPPOT",
+        "entity_name": "Florian Philippot",
         "entity_type": "Person",
         "role": "SUBJECT"
       },
       {
-        "entity_id": "ORG_AGI_HAS_ARRIVED",
-        "entity_name": "AGI has arrived",
+        "entity_id": "ORG_ENRICH_HIMSELF",
+        "entity_name": "enrich himself",
         "entity_type": "Organization",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 29807,
-    "article_url": "https://www.nytimes.com/2026/09/06/world/europe/germany-afd-election-saxony-anhalt.html",
+    "article_id": 30945,
+    "article_url": "https://tass.com/world/2183751",
     "subject": {
-      "name": "AfD",
-      "entity_id": "ORG_AFD",
-      "type": "Organization",
+      "name": "Florian Philippot",
+      "entity_id": "PERS_FLORIAN_PHILIPPOT",
+      "type": "Person",
       "object_type": "ENTITY"
     },
     "action": {
-      "type": "ELECTS",
+      "type": "STATES",
+      "status": "ANNOUNCED",
+      "polarity": "POSITIVE",
+      "verb": "expressed"
+    },
+    "object": {
+      "name": "confidence that France must stop fueling corruption in Ukraine",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
+    },
+    "time": {
+      "raw": "N/A",
+      "value": null
+    },
+    "location": {
+      "name": "N/A",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "\"No weapons and no money for Zelensky,\" The Patriots' leader emphasized.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "STATES",
+    "action_event_type": "Politics",
+    "action_detail": "expressed",
+    "action_status": "ANNOUNCED",
+    "action_polarity": "POSITIVE",
+    "event_time": "N/A",
+    "location_str": "N/A",
+    "entities": [
+      {
+        "entity_id": "PERS_FLORIAN_PHILIPPOT",
+        "entity_name": "Florian Philippot",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 30945,
+    "article_url": "https://tass.com/world/2183751",
+    "subject": {
+      "name": "Russian authorities",
+      "entity_id": "CTRY_RUSSIAN_AUTHORITIES",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "STATES",
+      "status": "ANNOUNCED",
+      "polarity": "NEUTRAL",
+      "verb": "stated"
+    },
+    "object": {
+      "name": "pumping weapons into Kiev will not weaken Moscow's resolve or change the course of the special military operation",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
+    },
+    "time": {
+      "raw": "N/A",
+      "value": null
+    },
+    "location": {
+      "name": "N/A",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Russian authorities have repeatedly stated that pumping weapons into Kiev will not weaken Moscow's resolve or change the course of the special military operation.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "STATES",
+    "action_event_type": "Politics",
+    "action_detail": "stated",
+    "action_status": "ANNOUNCED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "N/A",
+    "location_str": "N/A",
+    "entities": [
+      {
+        "entity_id": "CTRY_RUSSIAN_AUTHORITIES",
+        "entity_name": "Russian authorities",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 30926,
+    "article_url": "https://www.bbc.co.uk/news/articles/c4gj8xx5010o?at_medium=RSS&at_campaign=rss",
+    "subject": {
+      "name": "Trump",
+      "entity_id": "PERS_TRUMP",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "ATTACKS",
       "status": "UNKNOWN",
       "polarity": "UNKNOWN",
       "verb": ""
     },
     "object": {
-      "name": "Germany",
-      "entity_id": "CTRY_DEU",
+      "name": "Canada",
+      "entity_id": "CTRY_CAN",
       "type": "Country",
       "object_type": "ENTITY"
     },
@@ -3637,8 +3282,8 @@
     "confidence": null,
     "evidence": "",
     "evidence_type": "UNKNOWN",
-    "action_type": "ELECTS",
-    "action_event_type": "Politics",
+    "action_type": "ATTACKS",
+    "action_event_type": "Military",
     "action_detail": "",
     "action_status": "UNKNOWN",
     "action_polarity": "UNKNOWN",
@@ -3646,170 +3291,37 @@
     "location_str": "",
     "entities": [
       {
-        "entity_id": "ORG_AFD",
-        "entity_name": "AfD",
-        "entity_type": "Organization",
+        "entity_id": "PERS_TRUMP",
+        "entity_name": "Trump",
+        "entity_type": "Person",
         "role": "SUBJECT"
       },
       {
-        "entity_id": "CTRY_DEU",
-        "entity_name": "Germany",
+        "entity_id": "CTRY_CAN",
+        "entity_name": "Canada",
         "entity_type": "Country",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 29771,
-    "article_url": "https://www.bbc.co.uk/news/articles/cvgypkzgy4wo?at_medium=RSS&at_campaign=rss",
+    "article_id": 30937,
+    "article_url": "https://www.aljazeera.com/economy/2026/9/7/oil-prices-surge-as-us-iran-strikes-intensify-in-strait-of-hormuz?traffic_source=rss",
     "subject": {
-      "name": "Alternative für Deutschland (AfD",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "action": {
-      "type": "ELECTS",
-      "status": "PLANNED",
-      "polarity": "NEUTRAL",
-      "verb": "aiming"
-    },
-    "object": {
-      "name": "majority in the regional parliament of Saxony-Anhalt",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": "this weekend",
-      "value": null
-    },
-    "location": {
-      "name": "Saxony-Anhalt",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "The Alternative für Deutschland party is aiming to secure a majority in the regional parliament of Saxony-Anhalt",
-    "evidence_type": "UNKNOWN",
-    "action_type": "ELECTS",
-    "action_event_type": "Politics",
-    "action_detail": "aiming",
-    "action_status": "PLANNED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "this weekend",
-    "location_str": "Saxony-Anhalt",
-    "entities": []
-  },
-  {
-    "article_id": 29771,
-    "article_url": "https://www.bbc.co.uk/news/articles/cvgypkzgy4wo?at_medium=RSS&at_campaign=rss",
-    "subject": {
-      "name": "AfD winning an outright majority in Saxony-Anhalt",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "action": {
-      "type": "ELECTS",
-      "status": "EXPECTED",
-      "polarity": "NEUTRAL",
-      "verb": "mark"
-    },
-    "object": {
-      "name": "first time a far-right party has held state-level power in the nation's post-war era",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": "post-war era",
-      "value": null
-    },
-    "location": {
-      "name": "Germany",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "An outright win would mark the first time a far-right party has held state-level power in the nation's post-war era.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "ELECTS",
-    "action_event_type": "Politics",
-    "action_detail": "mark",
-    "action_status": "EXPECTED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "post-war era",
-    "location_str": "Germany",
-    "entities": []
-  },
-  {
-    "article_id": 29792,
-    "article_url": "https://www.ft.com/content/6ea98322-96a3-408a-87e4-eb5e4eb05b52",
-    "subject": {
-      "name": "Driscoll exit",
-      "entity_id": "ORG_DRISCOLL_EXIT",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "STATES",
-      "status": "UNKNOWN",
-      "polarity": "NEGATIVE",
-      "verb": "reflects"
-    },
-    "object": {
-      "name": "damage the US military",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "time": {
-      "raw": "UNKNOWN",
-      "value": null
-    },
-    "location": {
-      "name": "UNKNOWN",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 0.5,
-    "evidence": "Driscoll exit reflects damage the defence secretary is doing to the US military",
-    "evidence_type": "UNKNOWN",
-    "action_type": "STATES",
-    "action_event_type": "Politics",
-    "action_detail": "reflects",
-    "action_status": "UNKNOWN",
-    "action_polarity": "NEGATIVE",
-    "event_time": "UNKNOWN",
-    "location_str": "UNKNOWN",
-    "entities": [
-      {
-        "entity_id": "ORG_DRISCOLL_EXIT",
-        "entity_name": "Driscoll exit",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 29688,
-    "article_url": "https://www.washingtonpost.com/world/2026/09/05/witkoff-kushner-arrive-moscow-talks-with-putin/",
-    "subject": {
-      "name": "Steve Witkoff",
-      "entity_id": "PERS_STEVE_WITKOFF",
+      "name": "Americans",
+      "entity_id": "PERS_AMERICANS",
       "type": "Person",
       "object_type": "ENTITY"
     },
     "action": {
-      "type": "MEETS",
+      "type": "ATTACKS",
       "status": "UNKNOWN",
       "polarity": "UNKNOWN",
       "verb": ""
     },
     "object": {
-      "name": "United States",
-      "entity_id": "CTRY_UNITED_STATES",
+      "name": "US-Iran",
+      "entity_id": "CTRY_US_IRAN",
       "type": "Country",
       "object_type": "ENTITY"
     },
@@ -3825,7 +3337,62 @@
     "confidence": null,
     "evidence": "",
     "evidence_type": "UNKNOWN",
-    "action_type": "MEETS",
+    "action_type": "ATTACKS",
+    "action_event_type": "Military",
+    "action_detail": "",
+    "action_status": "UNKNOWN",
+    "action_polarity": "UNKNOWN",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "PERS_AMERICANS",
+        "entity_name": "Americans",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_US_IRAN",
+        "entity_name": "US-Iran",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 30932,
+    "article_url": "https://abcnews.com/Politics/energy-secretary-nuclear-agreement-iran/story?id=136237933",
+    "subject": {
+      "name": "Energy Secretary Chris Wright",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "action": {
+      "type": "AGREES",
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
+    },
+    "object": {
+      "name": "Iran, Islamic Republic of",
+      "entity_id": "CTRY_IRN",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": null,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "AGREES",
     "action_event_type": "Diplomacy",
     "action_detail": "",
     "action_status": "UNKNOWN",
@@ -3834,277 +3401,216 @@
     "location_str": "",
     "entities": [
       {
-        "entity_id": "PERS_STEVE_WITKOFF",
-        "entity_name": "Steve Witkoff",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_UNITED_STATES",
-        "entity_name": "United States",
+        "entity_id": "CTRY_IRN",
+        "entity_name": "Iran, Islamic Republic of",
         "entity_type": "Country",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 29683,
-    "article_url": "https://www.nbcnews.com/now/video/five-dead-five-injured-after-amazon-cargo-plane-overruns-runway-at-miami-airport-269417541574",
+    "article_id": 30951,
+    "article_url": "https://www.ft.com/content/1f71d2d0-d2e2-46da-a96f-99d20936223e?syn-25a6b1a6=1",
     "subject": {
-      "name": "Five people",
-      "entity_id": "PERS_FIVE_PEOPLE",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "DIES",
-      "status": "UNKNOWN",
-      "polarity": "UNKNOWN",
-      "verb": ""
-    },
-    "object": {
-      "name": "Miami",
-      "entity_id": "LOC_MIAMI",
-      "type": "Location",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": null,
-    "evidence": "",
-    "evidence_type": "UNKNOWN",
-    "action_type": "DIES",
-    "action_event_type": "Leadership",
-    "action_detail": "",
-    "action_status": "UNKNOWN",
-    "action_polarity": "UNKNOWN",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "PERS_FIVE_PEOPLE",
-        "entity_name": "Five people",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "LOC_MIAMI",
-        "entity_name": "Miami",
-        "entity_type": "Location",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 29754,
-    "article_url": "https://www.reddit.com/r/worldnews/comments/1w948i6/ukraine_finance_chief_warns_of_tightest_budget/",
-    "subject": {
-      "name": "Ukraine finance chief",
-      "entity_id": "CTRY_UKRAINE_FINANCE_CHIEF",
+      "name": "United Kingdom of Great Britain and Northern Ireland",
+      "entity_id": "CTRY_GBR",
       "type": "Country",
       "object_type": "ENTITY"
     },
     "action": {
-      "type": "WARNS",
-      "status": "ONGOING",
-      "polarity": "NEGATIVE",
-      "verb": "warns"
+      "type": "BANS",
+      "status": "PLANNED",
+      "polarity": "NEUTRAL",
+      "verb": "set to announce"
     },
     "object": {
-      "name": "tightest budget since war started",
+      "name": "trade ban on Israeli settlements in the West Bank",
       "entity_id": null,
       "type": "Other",
       "object_type": "STATEMENT"
     },
     "time": {
-      "raw": "since war started",
+      "raw": "N/A",
       "value": null
     },
     "location": {
-      "name": "Ukraine",
+      "name": "N/A",
       "entity_id": null,
       "type": null
     },
-    "confidence": 1,
-    "evidence": "Ukraine finance chief warns of tightest budget since war started",
+    "confidence": 1.0,
+    "evidence": "UK set to announce trade ban on Israeli settlements in the West Bank",
     "evidence_type": "UNKNOWN",
-    "action_type": "WARNS",
-    "action_event_type": "Politics",
-    "action_detail": "warns",
-    "action_status": "ONGOING",
-    "action_polarity": "NEGATIVE",
-    "event_time": "since war started",
-    "location_str": "Ukraine",
+    "action_type": "BANS",
+    "action_event_type": "Legal",
+    "action_detail": "set to announce",
+    "action_status": "PLANNED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "N/A",
+    "location_str": "N/A",
     "entities": [
       {
-        "entity_id": "CTRY_UKRAINE_FINANCE_CHIEF",
-        "entity_name": "Ukraine finance chief",
+        "entity_id": "CTRY_GBR",
+        "entity_name": "United Kingdom of Great Britain and Northern Ireland",
         "entity_type": "Country",
         "role": "SUBJECT"
       }
     ]
   },
   {
-    "article_id": 29799,
-    "article_url": "https://www.space.com/space-exploration/on-this-day-in-space-september-6-2026",
+    "article_id": 30958,
+    "article_url": "https://www.cnbc.com/2026/09/07/crashed-amazon-cargo-jet-struck-two-vehicles-ended-up-1300-feet-past-runway-ntsb-says.html",
     "subject": {
-      "name": "US Navy",
-      "entity_id": "ORG_US_NAVY",
+      "name": "Amazon cargo jet",
+      "entity_id": "ORG_AMAZON_CARGO_JET",
       "type": "Organization",
       "object_type": "ENTITY"
     },
     "action": {
-      "type": "LAUNCHES",
+      "type": "CRASHES",
       "status": "COMPLETED",
-      "polarity": "NEUTRAL",
-      "verb": "launches"
+      "polarity": "NEGATIVE",
+      "verb": "crashed"
     },
     "object": {
-      "name": "1st V-2 rocket",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "AMOUNT"
-    },
-    "time": {
-      "raw": "Sept. 6, 1947",
-      "value": null
-    },
-    "location": {
-      "name": "sea",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "On Sept. 6, 1947, a V-2 rocket launched from an U.S. Navy aircraft carrier for the first time.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "LAUNCHES",
-    "action_event_type": "Technology",
-    "action_detail": "launches",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "Sept. 6, 1947",
-    "location_str": "sea",
-    "entities": [
-      {
-        "entity_id": "ORG_US_NAVY",
-        "entity_name": "US Navy",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 29799,
-    "article_url": "https://www.space.com/space-exploration/on-this-day-in-space-september-6-2026",
-    "subject": {
-      "name": "V-2 rocket",
-      "entity_id": "ORG_V_2_ROCKET",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "LAUNCHES",
-      "status": "COMPLETED",
-      "polarity": "NEUTRAL",
-      "verb": "launched"
-    },
-    "object": {
-      "name": "V-2 rocket",
-      "entity_id": "ORG_V_2_ROCKET",
+      "name": "two vehicles",
+      "entity_id": "ORG_TWO_VEHICLES",
       "type": "Organization",
       "object_type": "ENTITY"
     },
     "time": {
-      "raw": "Sept. 6, 1947",
+      "raw": "Sunday",
       "value": null
     },
     "location": {
-      "name": "U.S. Navy aircraft carrier",
+      "name": "Miami International Airport",
       "entity_id": null,
       "type": null
     },
     "confidence": 1,
-    "evidence": "a V-2 rocket launched from an U.S. Navy aircraft carrier for the first time.",
+    "evidence": "The Amazon cargo jet that crashed at Miami International Airport on Sunday overran the runway by about 1,300 feet, crashing into vehicles both inside and outside the airport boundary and killing multiple people, a federal official said Monday.",
     "evidence_type": "UNKNOWN",
-    "action_type": "LAUNCHES",
-    "action_event_type": "Technology",
-    "action_detail": "launched",
+    "action_type": "CRASHES",
+    "action_event_type": "Finance",
+    "action_detail": "crashed",
     "action_status": "COMPLETED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "Sept. 6, 1947",
-    "location_str": "U.S. Navy aircraft carrier",
+    "action_polarity": "NEGATIVE",
+    "event_time": "Sunday",
+    "location_str": "Miami International Airport",
     "entities": [
       {
-        "entity_id": "ORG_V_2_ROCKET",
-        "entity_name": "V-2 rocket",
+        "entity_id": "ORG_AMAZON_CARGO_JET",
+        "entity_name": "Amazon cargo jet",
         "entity_type": "Organization",
         "role": "SUBJECT"
       },
       {
-        "entity_id": "ORG_V_2_ROCKET",
-        "entity_name": "V-2 rocket",
+        "entity_id": "ORG_TWO_VEHICLES",
+        "entity_name": "two vehicles",
         "entity_type": "Organization",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 29799,
-    "article_url": "https://www.space.com/space-exploration/on-this-day-in-space-september-6-2026",
+    "article_id": 30958,
+    "article_url": "https://www.cnbc.com/2026/09/07/crashed-amazon-cargo-jet-struck-two-vehicles-ended-up-1300-feet-past-runway-ntsb-says.html",
     "subject": {
-      "name": "Navy ships",
-      "entity_id": "ORG_NAVY_SHIPS",
+      "name": "accident",
+      "entity_id": "ORG_ACCIDENT",
       "type": "Organization",
       "object_type": "ENTITY"
     },
     "action": {
-      "type": "ATTACKS",
-      "status": "CONSIDERED",
-      "polarity": "NEUTRAL",
-      "verb": "could be floating"
+      "type": "CRASHES",
+      "status": "COMPLETED",
+      "polarity": "NEGATIVE",
+      "verb": "killed"
     },
     "object": {
-      "name": "Navy ships",
-      "entity_id": "ORG_NAVY_SHIPS",
+      "name": "at least five people",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "CONCEPT"
+    },
+    "time": {
+      "raw": "Sunday",
+      "value": null
+    },
+    "location": {
+      "name": "Miami International Airport",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "The accident killed at least five people and injured at least five others.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "CRASHES",
+    "action_event_type": "Finance",
+    "action_detail": "killed",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEGATIVE",
+    "event_time": "Sunday",
+    "location_str": "Miami International Airport",
+    "entities": [
+      {
+        "entity_id": "ORG_ACCIDENT",
+        "entity_name": "accident",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 30958,
+    "article_url": "https://www.cnbc.com/2026/09/07/crashed-amazon-cargo-jet-struck-two-vehicles-ended-up-1300-feet-past-runway-ntsb-says.html",
+    "subject": {
+      "name": "Jennifer Homendy",
+      "entity_id": "ORG_JENNIFER_HOMENDY",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "CRASHES",
+      "status": "COMPLETED",
+      "polarity": "NEUTRAL",
+      "verb": "said"
+    },
+    "object": {
+      "name": "utter devastation",
+      "entity_id": "ORG_UTTER_DEVASTATION",
       "type": "Organization",
       "object_type": "ENTITY"
     },
     "time": {
-      "raw": "Sept. 6, 1947",
+      "raw": "Monday",
       "value": null
     },
     "location": {
-      "name": "launch pads",
+      "name": "scene of the accident",
       "entity_id": null,
       "type": null
     },
-    "confidence": 0.9,
-    "evidence": "the test, while unsucessful, did show that Navy ships could be floating launch pads for a new kind of weapon: the ballistic missile.",
+    "confidence": 1,
+    "evidence": "\"There's debris everywhere,\" she said during a press briefing Monday.",
     "evidence_type": "UNKNOWN",
-    "action_type": "ATTACKS",
-    "action_event_type": "Military",
-    "action_detail": "could be floating",
-    "action_status": "CONSIDERED",
+    "action_type": "CRASHES",
+    "action_event_type": "Finance",
+    "action_detail": "said",
+    "action_status": "COMPLETED",
     "action_polarity": "NEUTRAL",
-    "event_time": "Sept. 6, 1947",
-    "location_str": "launch pads",
+    "event_time": "Monday",
+    "location_str": "scene of the accident",
     "entities": [
       {
-        "entity_id": "ORG_NAVY_SHIPS",
-        "entity_name": "Navy ships",
+        "entity_id": "ORG_JENNIFER_HOMENDY",
+        "entity_name": "Jennifer Homendy",
         "entity_type": "Organization",
         "role": "SUBJECT"
       },
       {
-        "entity_id": "ORG_NAVY_SHIPS",
-        "entity_name": "Navy ships",
+        "entity_id": "ORG_UTTER_DEVASTATION",
+        "entity_name": "utter devastation",
         "entity_type": "Organization",
         "role": "OBJECT"
       }
