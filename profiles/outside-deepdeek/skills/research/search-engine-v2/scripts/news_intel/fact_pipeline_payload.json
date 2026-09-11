@@ -1,7 +1,7 @@
 [
   {
-    "article_id": 32994,
-    "article_url": "https://www.rfi.fr/cn/%E6%94%BF%E6%B2%BB/20260909-%E7%89%B9%E6%9C%97%E6%99%AE-%E7%BE%8E%E4%BC%8A%E6%88%98%E4%BA%89%E5%B0%86%E5%9C%A8%E4%B8%AD%E6%9C%9F%E9%80%89%E4%B8%BE%E5%90%8E-%E7%AB%8B%E5%8D%B3%E7%BB%93%E6%9D%9F-%EF%BC%8C%E6%B2%B9%E4%BB%B7%E4%B9%9F%E4%BC%9A%E5%A4%A7%E5%B9%85%E4%B8%8B%E8%B7%8C",
+    "article_id": 33712,
+    "article_url": "https://www.dw.com/zh/特朗普：共和党赢了就全民发钱-每人5000美金/a-79215349?maca=chi-rss-chi-all-1127-rdf",
     "subject": {
       "name": "Trump",
       "entity_id": "PERS_TRUMP",
@@ -9,19 +9,19 @@
       "object_type": "ENTITY"
     },
     "action": {
-      "type": "DROPS",
+      "type": "OTHER",
       "status": "COMPLETED",
       "polarity": "POSITIVE",
-      "verb": "预测"
+      "verb": "许下承诺"
     },
     "object": {
-      "name": "美伊战争",
-      "entity_id": "PERS_美伊战争",
-      "type": "Person",
+      "name": "美国成年人",
+      "entity_id": "CTRY_美国成年人",
+      "type": "Country",
       "object_type": "ENTITY"
     },
     "time": {
-      "raw": "2023年9月9日",
+      "raw": "2024-11-05",
       "value": null
     },
     "location": {
@@ -29,15 +29,15 @@
       "entity_id": null,
       "type": null
     },
-    "confidence": 0.95,
-    "evidence": "",
+    "confidence": 0.9,
+    "evidence": "摘要",
     "evidence_type": "UNKNOWN",
-    "action_type": "DROPS",
-    "action_event_type": "Finance",
-    "action_detail": "预测",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "许下承诺",
     "action_status": "COMPLETED",
     "action_polarity": "POSITIVE",
-    "event_time": "2023年9月9日",
+    "event_time": "2024-11-05",
     "location_str": "美国",
     "entities": [
       {
@@ -47,529 +47,315 @@
         "role": "SUBJECT"
       },
       {
-        "entity_id": "PERS_美伊战争",
-        "entity_name": "美伊战争",
-        "entity_type": "Person",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 32994,
-    "article_url": "https://www.rfi.fr/cn/%E6%94%BF%E6%B2%BB/20260909-%E7%89%B9%E6%9C%97%E6%99%AE-%E7%BE%8E%E4%BC%8A%E6%88%98%E4%BA%89%E5%B0%86%E5%9C%A8%E4%B8%AD%E6%9C%9F%E9%80%89%E4%B8%BE%E5%90%8E-%E7%AB%8B%E5%8D%B3%E7%BB%93%E6%9D%9F-%EF%BC%8C%E6%B2%B9%E4%BB%B7%E4%B9%9F%E4%BC%9A%E5%A4%A7%E5%B9%85%E4%B8%8B%E8%B7%8C",
-    "subject": {
-      "name": "Trump",
-      "entity_id": "PERS_TRUMP",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "DROPS",
-      "status": "COMPLETED",
-      "polarity": "POSITIVE",
-      "verb": "预测"
-    },
-    "object": {
-      "name": "油价",
-      "entity_id": "PERS_油价",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "2023年9月9日",
-      "value": null
-    },
-    "location": {
-      "name": "全球",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 0.95,
-    "evidence": "",
-    "evidence_type": "UNKNOWN",
-    "action_type": "DROPS",
-    "action_event_type": "Finance",
-    "action_detail": "预测",
-    "action_status": "COMPLETED",
-    "action_polarity": "POSITIVE",
-    "event_time": "2023年9月9日",
-    "location_str": "全球",
-    "entities": [
-      {
-        "entity_id": "PERS_TRUMP",
-        "entity_name": "Trump",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "PERS_油价",
-        "entity_name": "油价",
-        "entity_type": "Person",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 32953,
-    "article_url": "https://www.rfi.fr/cn/%E4%B8%AD%E4%B8%9C/20260909-%E4%BC%8A%E6%9C%97%E9%95%90%E5%B1%B1-%E6%96%BD%E5%B7%A5%E6%BF%80%E5%A2%9E-%E4%BA%94%E8%A7%92%E5%A4%A7%E6%A5%BC%E6%B5%8B%E8%AF%95%E8%83%BD%E5%A4%9F%E9%92%88%E5%AF%B9%E4%BC%8A%E6%9C%97%E5%9F%8B%E8%97%8F%E6%9C%80%E6%B7%B1%E5%9C%B0%E4%B8%8B%E8%AE%BE%E6%96%BD%E6%96%B9%E6%B3%95",
-    "subject": {
-      "name": "一组分析师",
-      "entity_id": "PERS_一组分析师",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "TESTS",
-      "status": "COMPLETED",
-      "polarity": "POSITIVE",
-      "verb": "审视"
-    },
-    "object": {
-      "name": "卫星图像",
-      "entity_id": "PERS_卫星图像",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "今年",
-      "value": null
-    },
-    "location": {
-      "name": "德黑兰以南约225公里处的纳坦兹核设施附近",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 0.95,
-    "evidence": "摘要",
-    "evidence_type": "UNKNOWN",
-    "action_type": "TESTS",
-    "action_event_type": "Technology",
-    "action_detail": "审视",
-    "action_status": "COMPLETED",
-    "action_polarity": "POSITIVE",
-    "event_time": "今年",
-    "location_str": "德黑兰以南约225公里处的纳坦兹核设施附近",
-    "entities": [
-      {
-        "entity_id": "PERS_一组分析师",
-        "entity_name": "一组分析师",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "PERS_卫星图像",
-        "entity_name": "卫星图像",
-        "entity_type": "Person",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 32953,
-    "article_url": "https://www.rfi.fr/cn/%E4%B8%AD%E4%B8%9C/20260909-%E4%BC%8A%E6%9C%97%E9%95%90%E5%B1%B1-%E6%96%BD%E5%B7%A5%E6%BF%80%E5%A2%9E-%E4%BA%94%E8%A7%92%E5%A4%A7%E6%A5%BC%E6%B5%8B%E8%AF%95%E8%83%BD%E5%A4%9F%E9%92%88%E5%AF%B9%E4%BC%8A%E6%9C%97%E5%9F%8B%E8%97%8F%E6%9C%80%E6%B7%B1%E5%9C%B0%E4%B8%8B%E8%AE%BE%E6%96%BD%E6%96%B9%E6%B3%95",
-    "subject": {
-      "name": "伊朗政权",
-      "entity_id": "CTRY_伊朗政权",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "TESTS",
-      "status": "COMPLETED",
-      "polarity": "POSITIVE",
-      "verb": "选定"
-    },
-    "object": {
-      "name": "镐山（Pickaxe Mountain）",
-      "entity_id": "ORG_镐山PICKAXE_MOUNTAIN",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "今年",
-      "value": null
-    },
-    "location": {
-      "name": "花岗岩层之下的疑似伊朗核设施",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 0.9,
-    "evidence": "摘要",
-    "evidence_type": "UNKNOWN",
-    "action_type": "TESTS",
-    "action_event_type": "Technology",
-    "action_detail": "选定",
-    "action_status": "COMPLETED",
-    "action_polarity": "POSITIVE",
-    "event_time": "今年",
-    "location_str": "花岗岩层之下的疑似伊朗核设施",
-    "entities": [
-      {
-        "entity_id": "CTRY_伊朗政权",
-        "entity_name": "伊朗政权",
-        "entity_type": "Country",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_镐山PICKAXE_MOUNTAIN",
-        "entity_name": "镐山（Pickaxe Mountain）",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 32953,
-    "article_url": "https://www.rfi.fr/cn/%E4%B8%AD%E4%B8%9C/20260909-%E4%BC%8A%E6%9C%97%E9%95%90%E5%B1%B1-%E6%96%BD%E5%B7%A5%E6%BF%80%E5%A2%9E-%E4%BA%94%E8%A7%92%E5%A4%A7%E6%A5%BC%E6%B5%8B%E8%AF%95%E8%83%BD%E5%A4%9F%E9%92%88%E5%AF%B9%E4%BC%8A%E6%9C%97%E5%9F%8B%E8%97%8F%E6%9C%80%E6%B7%B1%E5%9C%B0%E4%B8%8B%E8%AE%BE%E6%96%BD%E6%96%B9%E6%B3%95",
-    "subject": {
-      "name": "United States Department of Defense",
-      "entity_id": "ORG_US_DOD",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "TESTS",
-      "status": "COMPLETED",
-      "polarity": "POSITIVE",
-      "verb": "测试"
-    },
-    "object": {
-      "name": "伊朗埋藏最深地下设施方法",
-      "entity_id": "CTRY_伊朗埋藏最深地下设施方法",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "今年",
-      "value": null
-    },
-    "location": {
-      "name": "镐山（Pickaxe Mountain）",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 0.8,
-    "evidence": "正文",
-    "evidence_type": "UNKNOWN",
-    "action_type": "TESTS",
-    "action_event_type": "Technology",
-    "action_detail": "测试",
-    "action_status": "COMPLETED",
-    "action_polarity": "POSITIVE",
-    "event_time": "今年",
-    "location_str": "镐山（Pickaxe Mountain）",
-    "entities": [
-      {
-        "entity_id": "ORG_US_DOD",
-        "entity_name": "United States Department of Defense",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_伊朗埋藏最深地下设施方法",
-        "entity_name": "伊朗埋藏最深地下设施方法",
+        "entity_id": "CTRY_美国成年人",
+        "entity_name": "美国成年人",
         "entity_type": "Country",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 33036,
-    "article_url": "https://www.rfi.fr/cn/%E6%94%BF%E6%B2%BB/20260909-%E6%8C%AA%E5%A8%81%E9%A6%96%E7%9B%B8%E7%A7%B0-%E9%A3%9E%E5%BE%80%E5%A5%A5%E6%96%AF%E9%99%86%E9%80%94%E4%B8%AD%EF%BC%8C%E6%B3%BD%E8%BF%9E%E6%96%AF%E5%9F%BA%E6%89%80%E4%B9%98%E9%A3%9E%E6%9C%BA%E9%99%A9%E9%81%AD%E6%97%A0%E4%BA%BA%E6%9C%BA%E8%A2%AD%E5%87%BB",
+    "article_id": 33789,
+    "article_url": "https://www.rfi.fr/cn/%E4%B8%AD%E4%B8%9C/20260910-%E4%B8%AD%E4%BC%8A%E6%8D%AE%E6%8A%A5%E9%80%9A%E8%BF%87-%E4%BB%A5%E6%B2%B9%E6%98%93%E7%89%A9-%E6%9C%BA%E5%88%B6%E8%A7%84%E9%81%BF%E5%88%B6%E8%A3%81-%E6%B6%89%E5%8F%8A%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E9%A1%B9%E7%9B%AE-%E8%8D%AF%E5%93%81%E5%92%8C%E9%98%B2%E7%A9%BA%E8%A3%85%E5%A4%87%E7%AD%89",
     "subject": {
-      "name": "挪威首相乔纳斯·加尔·斯特勒",
-      "entity_id": "ORG_挪威首相乔纳斯加尔斯特勒",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "ATTACKS",
-      "status": "COMPLETED",
-      "polarity": "POSITIVE",
-      "verb": "表示"
-    },
-    "object": {
-      "name": "乌克兰总统泽连斯基",
-      "entity_id": "PERS_乌克兰总统泽连斯基",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "9月9日",
-      "value": null
-    },
-    "location": {
-      "name": "摩尔多瓦",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 0.8,
-    "evidence": "挪威首相称：飞往奥斯陆途中，泽连斯基所乘飞机险遭无人机袭击",
-    "evidence_type": "UNKNOWN",
-    "action_type": "ATTACKS",
-    "action_event_type": "Military",
-    "action_detail": "表示",
-    "action_status": "COMPLETED",
-    "action_polarity": "POSITIVE",
-    "event_time": "9月9日",
-    "location_str": "摩尔多瓦",
-    "entities": [
-      {
-        "entity_id": "ORG_挪威首相乔纳斯加尔斯特勒",
-        "entity_name": "挪威首相乔纳斯·加尔·斯特勒",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "PERS_乌克兰总统泽连斯基",
-        "entity_name": "乌克兰总统泽连斯基",
-        "entity_type": "Person",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 33036,
-    "article_url": "https://www.rfi.fr/cn/%E6%94%BF%E6%B2%BB/20260909-%E6%8C%AA%E5%A8%81%E9%A6%96%E7%9B%B8%E7%A7%B0-%E9%A3%9E%E5%BE%80%E5%A5%A5%E6%96%AF%E9%99%86%E9%80%94%E4%B8%AD%EF%BC%8C%E6%B3%BD%E8%BF%9E%E6%96%AF%E5%9F%BA%E6%89%80%E4%B9%98%E9%A3%9E%E6%9C%BA%E9%99%A9%E9%81%AD%E6%97%A0%E4%BA%BA%E6%9C%BA%E8%A2%AD%E5%87%BB",
-    "subject": {
-      "name": "乌克兰总统泽连斯基",
-      "entity_id": "PERS_乌克兰总统泽连斯基",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "ATTACKS",
-      "status": "COMPLETED",
-      "polarity": "POSITIVE",
-      "verb": "出席"
-    },
-    "object": {
-      "name": "挪威国王哈拉尔",
-      "entity_id": "PERS_挪威国王哈拉尔",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "9月9日",
-      "value": null
-    },
-    "location": {
-      "name": "奥斯陆",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 0.7,
-    "evidence": "挪威首相称：飞往奥斯陆途中，泽连斯基所乘飞机险遭无人机袭击",
-    "evidence_type": "UNKNOWN",
-    "action_type": "ATTACKS",
-    "action_event_type": "Military",
-    "action_detail": "出席",
-    "action_status": "COMPLETED",
-    "action_polarity": "POSITIVE",
-    "event_time": "9月9日",
-    "location_str": "奥斯陆",
-    "entities": [
-      {
-        "entity_id": "PERS_乌克兰总统泽连斯基",
-        "entity_name": "乌克兰总统泽连斯基",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "PERS_挪威国王哈拉尔",
-        "entity_name": "挪威国王哈拉尔",
-        "entity_type": "Person",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 33036,
-    "article_url": "https://www.rfi.fr/cn/%E6%94%BF%E6%B2%BB/20260909-%E6%8C%AA%E5%A8%81%E9%A6%96%E7%9B%B8%E7%A7%B0-%E9%A3%9E%E5%BE%80%E5%A5%A5%E6%96%AF%E9%99%86%E9%80%94%E4%B8%AD%EF%BC%8C%E6%B3%BD%E8%BF%9E%E6%96%AF%E5%9F%BA%E6%89%80%E4%B9%98%E9%A3%9E%E6%9C%BA%E9%99%A9%E9%81%AD%E6%97%A0%E4%BA%BA%E6%9C%BA%E8%A2%AD%E5%87%BB",
-    "subject": {
-      "name": "乌克兰方面",
-      "entity_id": "CTRY_乌克兰方面",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "ATTACKS",
-      "status": "COMPLETED",
-      "polarity": "POSITIVE",
-      "verb": "澄清"
-    },
-    "object": {
-      "name": "挪威首相称的事件",
-      "entity_id": "ORG_挪威首相称的事件",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "9月9日",
-      "value": null
-    },
-    "location": {
-      "name": "未知",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 0.5,
-    "evidence": "乌克兰方面随后对这一说法作出了澄清",
-    "evidence_type": "UNKNOWN",
-    "action_type": "ATTACKS",
-    "action_event_type": "Military",
-    "action_detail": "澄清",
-    "action_status": "COMPLETED",
-    "action_polarity": "POSITIVE",
-    "event_time": "9月9日",
-    "location_str": "未知",
-    "entities": [
-      {
-        "entity_id": "CTRY_乌克兰方面",
-        "entity_name": "乌克兰方面",
-        "entity_type": "Country",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_挪威首相称的事件",
-        "entity_name": "挪威首相称的事件",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 33091,
-    "article_url": "https://www.scmp.com/news/world/americas/article/3366987/rubio-defends-us-strikes-boats-warns-drug-cartel-cancer?utm_source=rss_feed",
-    "subject": {
-      "name": "Marco Rubio",
-      "entity_id": "PERS_MARCO_RUBIO",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "ATTACKS",
-      "status": "UNKNOWN",
-      "polarity": "UNKNOWN",
-      "verb": ""
-    },
-    "object": {
-      "name": "United States",
-      "entity_id": "CTRY_UNITED_STATES",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": null,
-    "evidence": "",
-    "evidence_type": "UNKNOWN",
-    "action_type": "ATTACKS",
-    "action_event_type": "Military",
-    "action_detail": "",
-    "action_status": "UNKNOWN",
-    "action_polarity": "UNKNOWN",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "PERS_MARCO_RUBIO",
-        "entity_name": "Marco Rubio",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_UNITED_STATES",
-        "entity_name": "United States",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 33095,
-    "article_url": "https://tass.com/world/2185183",
-    "subject": {
-      "name": "Trump",
-      "entity_id": "PERS_TRUMP",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "APPOINTS",
-      "status": "UNKNOWN",
-      "polarity": "UNKNOWN",
-      "verb": ""
-    },
-    "object": {
-      "name": "United States",
-      "entity_id": "CTRY_UNITED_STATES",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": null,
-    "evidence": "",
-    "evidence_type": "UNKNOWN",
-    "action_type": "APPOINTS",
-    "action_event_type": "Leadership",
-    "action_detail": "",
-    "action_status": "UNKNOWN",
-    "action_polarity": "UNKNOWN",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "PERS_TRUMP",
-        "entity_name": "Trump",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_UNITED_STATES",
-        "entity_name": "United States",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 33096,
-    "article_url": "https://www.bbc.co.uk/news/articles/c5ydld0gykpo?at_medium=RSS&at_campaign=rss",
-    "subject": {
-      "name": "president",
-      "entity_id": "PERS_PRESIDENT",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "ELECTS",
-      "status": "UNKNOWN",
-      "polarity": "UNKNOWN",
-      "verb": ""
-    },
-    "object": {
       "name": "Iran, Islamic Republic of",
       "entity_id": "CTRY_IRN",
       "type": "Country",
       "object_type": "ENTITY"
     },
+    "action": {
+      "type": "SANCTIONS",
+      "status": "COMPLETED",
+      "polarity": "POSITIVE",
+      "verb": "利用"
+    },
+    "object": {
+      "name": "商品",
+      "entity_id": "PERS_商品",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "据路透社援引...",
+      "value": null
+    },
+    "location": {
+      "name": "中国",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.95,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "SANCTIONS",
+    "action_event_type": "Economic",
+    "action_detail": "利用",
+    "action_status": "COMPLETED",
+    "action_polarity": "POSITIVE",
+    "event_time": "据路透社援引...",
+    "location_str": "中国",
+    "entities": [
+      {
+        "entity_id": "CTRY_IRN",
+        "entity_name": "Iran, Islamic Republic of",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "PERS_商品",
+        "entity_name": "商品",
+        "entity_type": "Person",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 33789,
+    "article_url": "https://www.rfi.fr/cn/%E4%B8%AD%E4%B8%9C/20260910-%E4%B8%AD%E4%BC%8A%E6%8D%AE%E6%8A%A5%E9%80%9A%E8%BF%87-%E4%BB%A5%E6%B2%B9%E6%98%93%E7%89%A9-%E6%9C%BA%E5%88%B6%E8%A7%84%E9%81%BF%E5%88%B6%E8%A3%81-%E6%B6%89%E5%8F%8A%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E9%A1%B9%E7%9B%AE-%E8%8D%AF%E5%93%81%E5%92%8C%E9%98%B2%E7%A9%BA%E8%A3%85%E5%A4%87%E7%AD%89",
+    "subject": {
+      "name": "Iran, Islamic Republic of",
+      "entity_id": "CTRY_IRN",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "SANCTIONS",
+      "status": "COMPLETED",
+      "polarity": "POSITIVE",
+      "verb": "通过"
+    },
+    "object": {
+      "name": "基础设施项目",
+      "entity_id": "PERS_基础设施项目",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "据路透社援引...",
+      "value": null
+    },
+    "location": {
+      "name": "中国",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.95,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "SANCTIONS",
+    "action_event_type": "Economic",
+    "action_detail": "通过",
+    "action_status": "COMPLETED",
+    "action_polarity": "POSITIVE",
+    "event_time": "据路透社援引...",
+    "location_str": "中国",
+    "entities": [
+      {
+        "entity_id": "CTRY_IRN",
+        "entity_name": "Iran, Islamic Republic of",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "PERS_基础设施项目",
+        "entity_name": "基础设施项目",
+        "entity_type": "Person",
+        "role": "OBJECT"
+      },
+      {
+        "entity_id": "PERS_药品",
+        "entity_name": "药品",
+        "entity_type": "Person",
+        "role": "OBJECT"
+      },
+      {
+        "entity_id": "PERS_防空装备等",
+        "entity_name": "防空装备等",
+        "entity_type": "Person",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 33976,
+    "article_url": "https://www.rfi.fr/cn/%E6%94%BF%E6%B2%BB/20260910-%E7%89%B9%E6%9C%97%E6%99%AE%E6%89%BF%E8%AF%BA%E8%8B%A5%E4%B8%AD%E6%9C%9F%E9%80%89%E4%B8%BE%E8%8E%B7%E8%83%9C%E6%AF%8F%E4%BA%BA%E5%8F%915000%E7%BE%8E%E5%85%83%EF%BC%8C%E6%80%BB%E8%AE%A1%E8%B6%851-3%E4%B8%87%E4%BA%BF%E7%BE%8E%E5%85%83%EF%BC%8C%E9%92%B1%E4%BB%8E%E5%93%AA%E5%84%BF%E6%9D%A5",
+    "subject": {
+      "name": "美国总统特朗普",
+      "entity_id": "PERS_美国总统特朗普",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "ELECTS",
+      "status": "COMPLETED",
+      "polarity": "POSITIVE",
+      "verb": "承诺"
+    },
+    "object": {
+      "name": "特朗普红利",
+      "entity_id": "PERS_特朗普红利",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "2023-09-09",
+      "value": null
+    },
+    "location": {
+      "name": "美国",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.95,
+    "evidence": "摘要",
+    "evidence_type": "UNKNOWN",
+    "action_type": "ELECTS",
+    "action_event_type": "Politics",
+    "action_detail": "承诺",
+    "action_status": "COMPLETED",
+    "action_polarity": "POSITIVE",
+    "event_time": "2023-09-09",
+    "location_str": "美国",
+    "entities": [
+      {
+        "entity_id": "PERS_美国总统特朗普",
+        "entity_name": "美国总统特朗普",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "PERS_特朗普红利",
+        "entity_name": "特朗普红利",
+        "entity_type": "Person",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 34078,
+    "article_url": "https://www.cnbc.com/2026/09/10/oracle-orcl-q1-earnings-report-2027.html",
+    "subject": {
+      "name": "Oracle's stock",
+      "entity_id": "COMP_ORACLES_STOCK",
+      "type": "Company",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "REPORTS",
+      "status": "COMPLETED",
+      "polarity": "POSITIVE",
+      "verb": "edges up"
+    },
+    "object": {
+      "name": "stock",
+      "entity_id": "ORG_STOCK",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "quarter",
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Oracle's stock edges up on earnings beat as cloud infrastructure revenue more than doubles",
+    "evidence_type": "UNKNOWN",
+    "action_type": "REPORTS",
+    "action_event_type": "Finance",
+    "action_detail": "edges up",
+    "action_status": "COMPLETED",
+    "action_polarity": "POSITIVE",
+    "event_time": "quarter",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "COMP_ORACLES_STOCK",
+        "entity_name": "Oracle's stock",
+        "entity_type": "Company",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_STOCK",
+        "entity_name": "stock",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 34078,
+    "article_url": "https://www.cnbc.com/2026/09/10/oracle-orcl-q1-earnings-report-2027.html",
+    "subject": {
+      "name": "cloud infrastructure revenue",
+      "entity_id": "ORG_CLOUD_INFRASTRUCTURE_REVENUE",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "REPORTS",
+      "status": "COMPLETED",
+      "polarity": "POSITIVE",
+      "verb": "doubles"
+    },
+    "object": {
+      "name": "",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "time": {
+      "raw": "quarter",
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "as cloud infrastructure revenue more than doubles",
+    "evidence_type": "UNKNOWN",
+    "action_type": "REPORTS",
+    "action_event_type": "Finance",
+    "action_detail": "doubles",
+    "action_status": "COMPLETED",
+    "action_polarity": "POSITIVE",
+    "event_time": "quarter",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "ORG_CLOUD_INFRASTRUCTURE_REVENUE",
+        "entity_name": "cloud infrastructure revenue",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 34068,
+    "article_url": "https://www.japantimes.co.jp/business/2026/09/11/us-ai-rules-anthropic-safety/",
+    "subject": {
+      "name": "Anthropic researcher",
+      "entity_id": "PERS_ANTHROPIC_RESEARCHER",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "WARNS",
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
+    },
+    "object": {
+      "name": "United States",
+      "entity_id": "CTRY_UNITED_STATES",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
     "time": {
       "raw": null,
       "value": null
@@ -582,7 +368,7 @@
     "confidence": null,
     "evidence": "",
     "evidence_type": "UNKNOWN",
-    "action_type": "ELECTS",
+    "action_type": "WARNS",
     "action_event_type": "Politics",
     "action_detail": "",
     "action_status": "UNKNOWN",
@@ -591,37 +377,37 @@
     "location_str": "",
     "entities": [
       {
-        "entity_id": "PERS_PRESIDENT",
-        "entity_name": "president",
+        "entity_id": "PERS_ANTHROPIC_RESEARCHER",
+        "entity_name": "Anthropic researcher",
         "entity_type": "Person",
         "role": "SUBJECT"
       },
       {
-        "entity_id": "CTRY_IRN",
-        "entity_name": "Iran, Islamic Republic of",
+        "entity_id": "CTRY_UNITED_STATES",
+        "entity_name": "United States",
         "entity_type": "Country",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 33098,
-    "article_url": "https://www.investing.com/news/stock-market-news/justice-department-probes-nvidias-groq-deal-over-antitrust-concerns--nyt-4894865",
+    "article_id": 34072,
+    "article_url": "https://tass.com/economy/2185717",
     "subject": {
-      "name": "Justice Department",
-      "entity_id": "ORG_JUSTICE_DEPARTMENT",
-      "type": "Organization",
+      "name": "Peter Magyar",
+      "entity_id": "PERS_PETER_MAGYAR",
+      "type": "Person",
       "object_type": "ENTITY"
     },
     "action": {
-      "type": "RESIGNS",
+      "type": "REJECTS",
       "status": "UNKNOWN",
       "polarity": "UNKNOWN",
       "verb": ""
     },
     "object": {
-      "name": "country",
-      "entity_id": "CTRY_COUNTRY",
+      "name": "Hungary",
+      "entity_id": "CTRY_HUN",
       "type": "Country",
       "object_type": "ENTITY"
     },
@@ -637,8 +423,8 @@
     "confidence": null,
     "evidence": "",
     "evidence_type": "UNKNOWN",
-    "action_type": "RESIGNS",
-    "action_event_type": "Leadership",
+    "action_type": "REJECTS",
+    "action_event_type": "Diplomacy",
     "action_detail": "",
     "action_status": "UNKNOWN",
     "action_polarity": "UNKNOWN",
@@ -646,26 +432,441 @@
     "location_str": "",
     "entities": [
       {
-        "entity_id": "ORG_JUSTICE_DEPARTMENT",
-        "entity_name": "Justice Department",
-        "entity_type": "Organization",
+        "entity_id": "PERS_PETER_MAGYAR",
+        "entity_name": "Peter Magyar",
+        "entity_type": "Person",
         "role": "SUBJECT"
       },
       {
-        "entity_id": "CTRY_COUNTRY",
-        "entity_name": "country",
+        "entity_id": "CTRY_HUN",
+        "entity_name": "Hungary",
         "entity_type": "Country",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 33087,
-    "article_url": "https://www.dw.com/en/finland-google-announces-€13-billion-ai-energy-investment/a-79208034?maca=en-rss-en-all-1573-rdf",
+    "article_id": 34043,
+    "article_url": "https://tass.com/world/2185693",
     "subject": {
-      "name": "Google",
-      "entity_id": "COMP_GOOGLE",
+      "name": "Doug Bandow",
+      "entity_id": "PERS_DOUG_BANDOW",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "BEATS",
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
+    },
+    "object": {
+      "name": "United States",
+      "entity_id": "CTRY_UNITED_STATES",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": null,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "BEATS",
+    "action_event_type": "Finance",
+    "action_detail": "",
+    "action_status": "UNKNOWN",
+    "action_polarity": "UNKNOWN",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "PERS_DOUG_BANDOW",
+        "entity_name": "Doug Bandow",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_UNITED_STATES",
+        "entity_name": "United States",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 34042,
+    "article_url": "https://www.theatlantic.com/ideas/2026/09/bush-trump-mamdani-giuliani-islam/688582/?utm_source=feed",
+    "subject": {
+      "name": "George H.W. Bush",
+      "entity_id": "PERS_GEORGE_HW_BUSH",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "STATES",
+      "status": "COMPLETED",
+      "polarity": "NEGATIVE",
+      "verb": "called"
+    },
+    "object": {
+      "name": "Trump",
+      "entity_id": "PERS_TRUMP",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Former President George H.W. Bush called Trump a \"blowhard\"",
+    "evidence_type": "UNKNOWN",
+    "action_type": "STATES",
+    "action_event_type": "Politics",
+    "action_detail": "called",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEGATIVE",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "PERS_GEORGE_HW_BUSH",
+        "entity_name": "George H.W. Bush",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "PERS_TRUMP",
+        "entity_name": "Trump",
+        "entity_type": "Person",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 34042,
+    "article_url": "https://www.theatlantic.com/ideas/2026/09/bush-trump-mamdani-giuliani-islam/688582/?utm_source=feed",
+    "subject": {
+      "name": "George W. Bush",
+      "entity_id": "PERS_GEORGE_W_BUSH",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "COMPLETED",
+      "polarity": "NEGATIVE",
+      "verb": "expressed"
+    },
+    "object": {
+      "name": "Trump",
+      "entity_id": "PERS_TRUMP",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "his son, George W. Bush, expressed concern that Trump \"doesn’t know what it means to be president.\"",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "expressed",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEGATIVE",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "PERS_GEORGE_W_BUSH",
+        "entity_name": "George W. Bush",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "PERS_TRUMP",
+        "entity_name": "Trump",
+        "entity_type": "Person",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 34042,
+    "article_url": "https://www.theatlantic.com/ideas/2026/09/bush-trump-mamdani-giuliani-islam/688582/?utm_source=feed",
+    "subject": {
+      "name": "Both Bushes",
+      "entity_id": "CTRY_BOTH_BUSHES",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "COMPLETED",
+      "polarity": "NEUTRAL",
+      "verb": "did not endorse"
+    },
+    "object": {
+      "name": "Trump",
+      "entity_id": "PERS_TRUMP",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "2016 election",
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Both Bushes did not endorse Trump during the 2016 election.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "did not endorse",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "2016 election",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "CTRY_BOTH_BUSHES",
+        "entity_name": "Both Bushes",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "PERS_TRUMP",
+        "entity_name": "Trump",
+        "entity_type": "Person",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 34055,
+    "article_url": "https://tass.com/world/2185743",
+    "subject": {
+      "name": "Paul Griffiths",
+      "entity_id": "PERS_PAUL_GRIFFITHS",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "ATTACKS",
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
+    },
+    "object": {
+      "name": "US-Iran",
+      "entity_id": "CTRY_US_IRAN",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": null,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "ATTACKS",
+    "action_event_type": "Military",
+    "action_detail": "",
+    "action_status": "UNKNOWN",
+    "action_polarity": "UNKNOWN",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "PERS_PAUL_GRIFFITHS",
+        "entity_name": "Paul Griffiths",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_US_IRAN",
+        "entity_name": "US-Iran",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 34036,
+    "article_url": "https://www.scmp.com/tech/tech-trends/article/3367124/enflame-shares-soar-188-shanghai-debut-nvidia-challenger-taps-investor-fever-ai?utm_source=rss_feed",
+    "subject": {
+      "name": "Enflame Technology's share price",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "action": {
+      "type": "SURGES",
+      "status": "COMPLETED",
+      "polarity": "POSITIVE",
+      "verb": "soar"
+    },
+    "object": {
+      "name": "188%",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "AMOUNT"
+    },
+    "time": {
+      "raw": "Friday",
+      "value": null
+    },
+    "location": {
+      "name": "Shanghai",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Enflame Technology, one of the major challengers to Nvidia in China, saw its share price surge 188 per cent in its Shanghai trading debut on Friday",
+    "evidence_type": "UNKNOWN",
+    "action_type": "SURGES",
+    "action_event_type": "Finance",
+    "action_detail": "soar",
+    "action_status": "COMPLETED",
+    "action_polarity": "POSITIVE",
+    "event_time": "Friday",
+    "location_str": "Shanghai",
+    "entities": []
+  },
+  {
+    "article_id": 34036,
+    "article_url": "https://www.scmp.com/tech/tech-trends/article/3367124/enflame-shares-soar-188-shanghai-debut-nvidia-challenger-taps-investor-fever-ai?utm_source=rss_feed",
+    "subject": {
+      "name": "Enflame Technology",
+      "entity_id": "COMP_ENFLAME_TECHNOLOGY",
       "type": "Company",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "SURGES",
+      "status": "COMPLETED",
+      "polarity": "NEUTRAL",
+      "verb": "debut"
+    },
+    "object": {
+      "name": "market capitalisation of 176.4 billion yuan (US$26.3 million)",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
+    },
+    "time": {
+      "raw": "Friday",
+      "value": null
+    },
+    "location": {
+      "name": "Shanghai",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "giving the Tencent Holdings-backed artificial intelligence chipmaker a market capitalisation of 176.4 billion yuan (US$26.3 million)",
+    "evidence_type": "UNKNOWN",
+    "action_type": "SURGES",
+    "action_event_type": "Finance",
+    "action_detail": "debut",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "Friday",
+    "location_str": "Shanghai",
+    "entities": [
+      {
+        "entity_id": "COMP_ENFLAME_TECHNOLOGY",
+        "entity_name": "Enflame Technology",
+        "entity_type": "Company",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 34036,
+    "article_url": "https://www.scmp.com/tech/tech-trends/article/3367124/enflame-shares-soar-188-shanghai-debut-nvidia-challenger-taps-investor-fever-ai?utm_source=rss_feed",
+    "subject": {
+      "name": "Enflame Technology",
+      "entity_id": "COMP_ENFLAME_TECHNOLOGY",
+      "type": "Company",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "SURGES",
+      "status": "ONGOING",
+      "polarity": "POSITIVE",
+      "verb": "taps"
+    },
+    "object": {
+      "name": "investor fever for AI",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "time": {
+      "raw": "N/A",
+      "value": null
+    },
+    "location": {
+      "name": "China",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.9,
+    "evidence": "Enflame Technology, one of the major challengers to Nvidia in China, saw its share price surge 188 per cent in its Shanghai trading debut",
+    "evidence_type": "UNKNOWN",
+    "action_type": "SURGES",
+    "action_event_type": "Finance",
+    "action_detail": "taps",
+    "action_status": "ONGOING",
+    "action_polarity": "POSITIVE",
+    "event_time": "N/A",
+    "location_str": "China",
+    "entities": [
+      {
+        "entity_id": "COMP_ENFLAME_TECHNOLOGY",
+        "entity_name": "Enflame Technology",
+        "entity_type": "Company",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 34062,
+    "article_url": "https://www.independent.co.uk/news/world/europe/swiss-intelligence-dossier-josef-mengele-b3048052.html",
+    "subject": {
+      "name": "Josef Mengele",
+      "entity_id": "PERS_JOSEF_MENGELE",
+      "type": "Person",
       "object_type": "ENTITY"
     },
     "action": {
@@ -675,9 +876,9 @@
       "verb": ""
     },
     "object": {
-      "name": "Finland",
-      "entity_id": "CTRY_FIN",
-      "type": "Country",
+      "name": "Swiss",
+      "entity_id": "ORG_SWISS",
+      "type": "Organization",
       "object_type": "ENTITY"
     },
     "time": {
@@ -701,841 +902,22 @@
     "location_str": "",
     "entities": [
       {
-        "entity_id": "COMP_GOOGLE",
-        "entity_name": "Google",
-        "entity_type": "Company",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_FIN",
-        "entity_name": "Finland",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 33107,
-    "article_url": "https://www.aa.com.tr/en/world/russia-working-to-ease-visa-rules-with-countries-in-asia-africa-middle-east-latin-america/4052439",
-    "subject": {
-      "name": "Russian Federation",
-      "entity_id": "CTRY_RUSSIAN_FEDERATION",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "ONGOING",
-      "polarity": "NEUTRAL",
-      "verb": "working"
-    },
-    "object": {
-      "name": "visa rules",
-      "entity_id": "ORG_VISA_RULES",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": "Asia, Africa, Middle East, Latin America",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": null,
-    "evidence": "Russia working to ease visa rules with countries in Asia, Africa, Middle East, Latin America",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "working",
-    "action_status": "ONGOING",
-    "action_polarity": "NEUTRAL",
-    "event_time": "",
-    "location_str": "Asia, Africa, Middle East, Latin America",
-    "entities": [
-      {
-        "entity_id": "CTRY_RUSSIAN_FEDERATION",
-        "entity_name": "Russian Federation",
-        "entity_type": "Country",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_VISA_RULES",
-        "entity_name": "visa rules",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 33113,
-    "article_url": "https://tass.com/politics/2185083",
-    "subject": {
-      "name": "Sergey Naryshkin",
-      "entity_id": "PERS_SERGEY_NARYSHKIN",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "MEETS",
-      "status": "UNKNOWN",
-      "polarity": "UNKNOWN",
-      "verb": ""
-    },
-    "object": {
-      "name": "Russian Federation",
-      "entity_id": "CTRY_RUSSIAN_FEDERATION",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": null,
-    "evidence": "",
-    "evidence_type": "UNKNOWN",
-    "action_type": "MEETS",
-    "action_event_type": "Diplomacy",
-    "action_detail": "",
-    "action_status": "UNKNOWN",
-    "action_polarity": "UNKNOWN",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "PERS_SERGEY_NARYSHKIN",
-        "entity_name": "Sergey Naryshkin",
+        "entity_id": "PERS_JOSEF_MENGELE",
+        "entity_name": "Josef Mengele",
         "entity_type": "Person",
         "role": "SUBJECT"
       },
       {
-        "entity_id": "CTRY_RUSSIAN_FEDERATION",
-        "entity_name": "Russian Federation",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 33128,
-    "article_url": "https://www.aljazeera.com/news/2026/9/9/uk-man-charged-with-assisting-russian-intelligence-connected-group?traffic_source=rss",
-    "subject": {
-      "name": "Joshua Cammidge",
-      "entity_id": "PERS_JOSHUA_CAMMIDGE",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "ACCUSES",
-      "status": "UNKNOWN",
-      "polarity": "UNKNOWN",
-      "verb": ""
-    },
-    "object": {
-      "name": "United Kingdom of Great Britain and Northern Ireland",
-      "entity_id": "CTRY_GBR",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": null,
-    "evidence": "",
-    "evidence_type": "UNKNOWN",
-    "action_type": "ACCUSES",
-    "action_event_type": "Legal",
-    "action_detail": "",
-    "action_status": "UNKNOWN",
-    "action_polarity": "UNKNOWN",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "PERS_JOSHUA_CAMMIDGE",
-        "entity_name": "Joshua Cammidge",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_GBR",
-        "entity_name": "United Kingdom of Great Britain and Northern Ireland",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 33134,
-    "article_url": "https://finance.yahoo.com/markets/stocks/articles/bank-america-bullish-sk-hynix-153622945.html",
-    "subject": {
-      "name": "Bank of America",
-      "entity_id": "COMP_BANK_OF_AMERICA",
-      "type": "Company",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "EXPORT_CONTROL",
-      "status": "ONGOING",
-      "polarity": "POSITIVE",
-      "verb": "Is Bullish on"
-    },
-    "object": {
-      "name": "SK hynix Stock",
-      "entity_id": "ORG_SK_HYNIX_STOCK",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1.0,
-    "evidence": "Bank of America Is Bullish on SK hynix Stock as the Memory Chip Market Stays Tight",
-    "evidence_type": "UNKNOWN",
-    "action_type": "EXPORT_CONTROL",
-    "action_event_type": "Technology",
-    "action_detail": "Is Bullish on",
-    "action_status": "ONGOING",
-    "action_polarity": "POSITIVE",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "COMP_BANK_OF_AMERICA",
-        "entity_name": "Bank of America",
-        "entity_type": "Company",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_SK_HYNIX_STOCK",
-        "entity_name": "SK hynix Stock",
+        "entity_id": "ORG_SWISS",
+        "entity_name": "Swiss",
         "entity_type": "Organization",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 33134,
-    "article_url": "https://finance.yahoo.com/markets/stocks/articles/bank-america-bullish-sk-hynix-153622945.html",
-    "subject": {
-      "name": "Memory Chip Market",
-      "entity_id": "ORG_MEMORY_CHIP_MARKET",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "EXPORT_CONTROL",
-      "status": "ONGOING",
-      "polarity": "NEUTRAL",
-      "verb": "Stays"
-    },
-    "object": {
-      "name": "Tight",
-      "entity_id": "ORG_TIGHT",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1.0,
-    "evidence": "as the Memory Chip Market Stays Tight",
-    "evidence_type": "UNKNOWN",
-    "action_type": "EXPORT_CONTROL",
-    "action_event_type": "Technology",
-    "action_detail": "Stays",
-    "action_status": "ONGOING",
-    "action_polarity": "NEUTRAL",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "ORG_MEMORY_CHIP_MARKET",
-        "entity_name": "Memory Chip Market",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_TIGHT",
-        "entity_name": "Tight",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 33092,
-    "article_url": "https://tass.com/economy/2185107",
-    "subject": {
-      "name": "Russian companies",
-      "entity_id": "COMP_RUSSIAN_COMPANIES",
-      "type": "Company",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "UNKNOWN",
-      "polarity": "UNKNOWN",
-      "verb": ""
-    },
-    "object": {
-      "name": "Vietnam",
-      "entity_id": "CTRY_VIETNAM",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": null,
-    "evidence": "",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "",
-    "action_status": "UNKNOWN",
-    "action_polarity": "UNKNOWN",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "COMP_RUSSIAN_COMPANIES",
-        "entity_name": "Russian companies",
-        "entity_type": "Company",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_VIETNAM",
-        "entity_name": "Vietnam",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 33090,
-    "article_url": "https://blog.google/innovation-and-ai/models-and-research/google-research/mapping-global-methane-emissions-from-space/",
-    "subject": {
-      "name": "Google",
-      "entity_id": "COMP_GOOGLE",
-      "type": "Company",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "COMPLETED",
-      "polarity": "POSITIVE",
-      "verb": "developed"
-    },
-    "object": {
-      "name": "AI model",
-      "entity_id": "ORG_AI_MODEL",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "unknown",
-      "value": null
-    },
-    "location": {
-      "name": "space",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Google and NASA JPL developed an AI model to map and quantify global methane emissions from space using EMIT.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "developed",
-    "action_status": "COMPLETED",
-    "action_polarity": "POSITIVE",
-    "event_time": "unknown",
-    "location_str": "space",
-    "entities": [
-      {
-        "entity_id": "COMP_GOOGLE",
-        "entity_name": "Google",
-        "entity_type": "Company",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "COMP_NASA_JPL",
-        "entity_name": "NASA JPL",
-        "entity_type": "Company",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_AI_MODEL",
-        "entity_name": "AI model",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 33090,
-    "article_url": "https://blog.google/innovation-and-ai/models-and-research/google-research/mapping-global-methane-emissions-from-space/",
-    "subject": {
-      "name": "AI model",
-      "entity_id": "ORG_AI_MODEL",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "COMPLETED",
-      "polarity": "POSITIVE",
-      "verb": "map and quantify"
-    },
-    "object": {
-      "name": "global methane emissions",
-      "entity_id": "ORG_GLOBAL_METHANE_EMISSIONS",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "unknown",
-      "value": null
-    },
-    "location": {
-      "name": "space",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Google and NASA JPL developed an AI model to map and quantify global methane emissions from space using EMIT.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "map and quantify",
-    "action_status": "COMPLETED",
-    "action_polarity": "POSITIVE",
-    "event_time": "unknown",
-    "location_str": "space",
-    "entities": [
-      {
-        "entity_id": "ORG_AI_MODEL",
-        "entity_name": "AI model",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_GLOBAL_METHANE_EMISSIONS",
-        "entity_name": "global methane emissions",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 33030,
-    "article_url": "https://seekingalpha.com/article/4944782-autodesk-inc-adsk-presents-at-goldman-sachs-communacopia-technology-conference-2026?source=feed_all_articles",
-    "subject": {
-      "name": "Autodesk",
-      "entity_id": "COMP_AUTODESK",
-      "type": "Company",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "ANNOUNCED",
-      "polarity": "NEUTRAL",
-      "verb": "Presents"
-    },
-    "object": {
-      "name": "Goldman Sachs Communacopia + Technology Conference 2026 Transcript",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": "unknown",
-      "value": null
-    },
-    "location": {
-      "name": "unknown",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Autodesk, Inc. (ADSK) Presents at Goldman Sachs Communacopia + Technology Conference 2026 Transcript",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "Presents",
-    "action_status": "ANNOUNCED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "unknown",
-    "location_str": "unknown",
-    "entities": [
-      {
-        "entity_id": "COMP_AUTODESK",
-        "entity_name": "Autodesk",
-        "entity_type": "Company",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "COMP_INC_ADSK",
-        "entity_name": "Inc. (ADSK",
-        "entity_type": "Company",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 32989,
-    "article_url": "https://cleantechnica.com/2026/09/09/lessons-from-indias-transition-to-electric-vehicles/",
-    "subject": {
-      "name": "Swapnil Fulari",
-      "entity_id": "PERS_SWAPNIL_FULARI",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "ELECTS",
-      "status": "UNKNOWN",
-      "polarity": "UNKNOWN",
-      "verb": ""
-    },
-    "object": {
-      "name": "India",
-      "entity_id": "CTRY_IND",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": null,
-    "evidence": "",
-    "evidence_type": "UNKNOWN",
-    "action_type": "ELECTS",
-    "action_event_type": "Politics",
-    "action_detail": "",
-    "action_status": "UNKNOWN",
-    "action_polarity": "UNKNOWN",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "PERS_SWAPNIL_FULARI",
-        "entity_name": "Swapnil Fulari",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_IND",
-        "entity_name": "India",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 33104,
-    "article_url": "https://tass.com/politics/2185161",
-    "subject": {
-      "name": "Maria Zakharova",
-      "entity_id": "PERS_MARIA_ZAKHAROVA",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "MEETS",
-      "status": "COMPLETED",
-      "polarity": "NEGATIVE",
-      "verb": "added"
-    },
-    "object": {
-      "name": "that Ukraine is a state that is fully affiliated with terrorist activities",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": "unknown",
-      "value": null
-    },
-    "location": {
-      "name": "unknown",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Maria Zakharova added that Ukraine is a state that is fully affiliated with terrorist activities",
-    "evidence_type": "UNKNOWN",
-    "action_type": "MEETS",
-    "action_event_type": "Diplomacy",
-    "action_detail": "added",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEGATIVE",
-    "event_time": "unknown",
-    "location_str": "unknown",
-    "entities": [
-      {
-        "entity_id": "PERS_MARIA_ZAKHAROVA",
-        "entity_name": "Maria Zakharova",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 33104,
-    "article_url": "https://tass.com/politics/2185161",
-    "subject": {
-      "name": "Russian diplomat",
-      "entity_id": "CTRY_RUSSIAN_DIPLOMAT",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "MEETS",
-      "status": "COMPLETED",
-      "polarity": "NEGATIVE",
-      "verb": "slams"
-    },
-    "object": {
-      "name": "Zelensky’s threats to Russia aviation",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": "unknown",
-      "value": null
-    },
-    "location": {
-      "name": "unknown",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Russian diplomat slams Zelensky’s threats to Russia aviation as blatant terrorism",
-    "evidence_type": "UNKNOWN",
-    "action_type": "MEETS",
-    "action_event_type": "Diplomacy",
-    "action_detail": "slams",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEGATIVE",
-    "event_time": "unknown",
-    "location_str": "unknown",
-    "entities": [
-      {
-        "entity_id": "CTRY_RUSSIAN_DIPLOMAT",
-        "entity_name": "Russian diplomat",
-        "entity_type": "Country",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 33017,
-    "article_url": "https://abcnews.com/video/136298452/",
-    "subject": {
-      "name": "Anthropic researcher",
-      "entity_id": "PERS_ANTHROPIC_RESEARCHER",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "WARNS",
-      "status": "ONGOING",
-      "polarity": "NEUTRAL",
-      "verb": "leaving"
-    },
-    "object": {
-      "name": "C3",
-      "entity_id": "COMP_C3",
-      "type": "Company",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "late 2027",
-      "value": null
-    },
-    "location": {
-      "name": "unknown",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "An Anthropic researcher is leaving AI, warning it could be out of control by late 2027.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "WARNS",
-    "action_event_type": "Politics",
-    "action_detail": "leaving",
-    "action_status": "ONGOING",
-    "action_polarity": "NEUTRAL",
-    "event_time": "late 2027",
-    "location_str": "unknown",
-    "entities": [
-      {
-        "entity_id": "PERS_ANTHROPIC_RESEARCHER",
-        "entity_name": "Anthropic researcher",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "COMP_C3",
-        "entity_name": "C3",
-        "entity_type": "Company",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 33017,
-    "article_url": "https://abcnews.com/video/136298452/",
-    "subject": {
-      "name": "OpenAI’s chief scientist",
-      "entity_id": "PERS_OPENAIS_CHIEF_SCIENTIST",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "WARNS",
-      "status": "ONGOING",
-      "polarity": "NEGATIVE",
-      "verb": "urging"
-    },
-    "object": {
-      "name": "caution",
-      "entity_id": "ORG_CAUTION",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "unknown",
-      "value": null
-    },
-    "location": {
-      "name": "unknown",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "OpenAI’s chief scientist is also urging caution, saying no one is prepared for rising machine intelligence.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "WARNS",
-    "action_event_type": "Politics",
-    "action_detail": "urging",
-    "action_status": "ONGOING",
-    "action_polarity": "NEGATIVE",
-    "event_time": "unknown",
-    "location_str": "unknown",
-    "entities": [
-      {
-        "entity_id": "PERS_OPENAIS_CHIEF_SCIENTIST",
-        "entity_name": "OpenAI’s chief scientist",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_CAUTION",
-        "entity_name": "caution",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 33017,
-    "article_url": "https://abcnews.com/video/136298452/",
-    "subject": {
-      "name": "Rising machine intelligence",
-      "entity_id": "ORG_RISING_MACHINE_INTELLIGENCE",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "WARNS",
-      "status": "ONGOING",
-      "polarity": "NEGATIVE",
-      "verb": "rising"
-    },
-    "object": {
-      "name": "machine intelligence",
-      "entity_id": "ORG_MACHINE_INTELLIGENCE",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "unknown",
-      "value": null
-    },
-    "location": {
-      "name": "unknown",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "OpenAI’s chief scientist is also urging caution, saying no one is prepared for rising machine intelligence.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "WARNS",
-    "action_event_type": "Politics",
-    "action_detail": "rising",
-    "action_status": "ONGOING",
-    "action_polarity": "NEGATIVE",
-    "event_time": "unknown",
-    "location_str": "unknown",
-    "entities": [
-      {
-        "entity_id": "ORG_RISING_MACHINE_INTELLIGENCE",
-        "entity_name": "Rising machine intelligence",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_MACHINE_INTELLIGENCE",
-        "entity_name": "machine intelligence",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 32975,
-    "article_url": "https://www.scmp.com/news/world/middle-east/article/3366972/trump-says-iran-war-will-end-right-after-us-midterm-elections?utm_source=rss_feed",
+    "article_id": 34075,
+    "article_url": "https://www.independent.co.uk/news/world/americas/us-politics/trump-new-mexico-name-maps-b3048198.html",
     "subject": {
       "name": "Trump",
       "entity_id": "PERS_TRUMP",
@@ -1543,7 +925,319 @@
       "object_type": "ENTITY"
     },
     "action": {
-      "type": "ELECTS",
+      "type": "OTHER",
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
+    },
+    "object": {
+      "name": "New America",
+      "entity_id": "CTRY_NEW_AMERICA",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": null,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "",
+    "action_status": "UNKNOWN",
+    "action_polarity": "UNKNOWN",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "PERS_TRUMP",
+        "entity_name": "Trump",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_NEW_AMERICA",
+        "entity_name": "New America",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 34037,
+    "article_url": "https://oilprice.com/Metals/Commodities/Why-The-United-States-Belated-Critical-Minerals-Gambit-Wont-Stop-China.html",
+    "subject": {
+      "name": "U.S. President Donald Trump",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "action": {
+      "type": "BEATS",
+      "status": "COMPLETED",
+      "polarity": "NEUTRAL",
+      "verb": "undertaken"
+    },
+    "object": {
+      "name": "most aggressive federal intervention in the critical minerals and rare earth sectors",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
+    },
+    "time": {
+      "raw": "since he returned to the Oval Office",
+      "value": null
+    },
+    "location": {
+      "name": "Oval Office",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "U.S. President Donald Trump has undertaken the most aggressive federal intervention in the critical minerals and rare earth sectors ever since he returned to the Oval Office",
+    "evidence_type": "UNKNOWN",
+    "action_type": "BEATS",
+    "action_event_type": "Finance",
+    "action_detail": "undertaken",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "since he returned to the Oval Office",
+    "location_str": "Oval Office",
+    "entities": [
+      {
+        "entity_id": "ORG_RARE_EARTH_SECTORS",
+        "entity_name": "rare earth sectors",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 34037,
+    "article_url": "https://oilprice.com/Metals/Commodities/Why-The-United-States-Belated-Critical-Minerals-Gambit-Wont-Stop-China.html",
+    "subject": {
+      "name": "United States Government",
+      "entity_id": "ORG_US_GOVERNMENT",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "BEATS",
+      "status": "ONGOING",
+      "polarity": "NEUTRAL",
+      "verb": "tries"
+    },
+    "object": {
+      "name": "counter China’s dominance in minerals that are powering the e",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
+    },
+    "time": {
+      "raw": "N/A",
+      "value": null
+    },
+    "location": {
+      "name": "N/A",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "announcing a flurry of deals as Washington desperately tries to counter China’s dominance in minerals that are powering the e",
+    "evidence_type": "UNKNOWN",
+    "action_type": "BEATS",
+    "action_event_type": "Finance",
+    "action_detail": "tries",
+    "action_status": "ONGOING",
+    "action_polarity": "NEUTRAL",
+    "event_time": "N/A",
+    "location_str": "N/A",
+    "entities": [
+      {
+        "entity_id": "ORG_US_GOVERNMENT",
+        "entity_name": "United States Government",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 34069,
+    "article_url": "https://time.com/article/2026/09/10/ai-openai-hugging-face-hack-culture-swarm/",
+    "subject": {
+      "name": "OpenAI agents",
+      "entity_id": "ORG_OPENAI_AGENTS",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "COMPLETED",
+      "polarity": "NEUTRAL",
+      "verb": "formed"
+    },
+    "object": {
+      "name": "a “swarm”",
+      "entity_id": "ORG_A_SWARM",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "unknown",
+      "value": null
+    },
+    "location": {
+      "name": "Hugging Face",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "After OpenAI agents formed a “swarm” and hacked Hugging Face",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "formed",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "unknown",
+    "location_str": "Hugging Face",
+    "entities": [
+      {
+        "entity_id": "ORG_OPENAI_AGENTS",
+        "entity_name": "OpenAI agents",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_A_SWARM",
+        "entity_name": "a “swarm”",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 34069,
+    "article_url": "https://time.com/article/2026/09/10/ai-openai-hugging-face-hack-culture-swarm/",
+    "subject": {
+      "name": "AI systems",
+      "entity_id": "ORG_AI_SYSTEMS",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "ONGOING",
+      "polarity": "NEGATIVE",
+      "verb": "developing"
+    },
+    "object": {
+      "name": "cultures of their own",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "time": {
+      "raw": "unknown",
+      "value": null
+    },
+    "location": {
+      "name": "unknown",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.9,
+    "evidence": "researchers are confronting a new risk: AI systems developing cultures of their own",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "developing",
+    "action_status": "ONGOING",
+    "action_polarity": "NEGATIVE",
+    "event_time": "unknown",
+    "location_str": "unknown",
+    "entities": [
+      {
+        "entity_id": "ORG_AI_SYSTEMS",
+        "entity_name": "AI systems",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 34069,
+    "article_url": "https://time.com/article/2026/09/10/ai-openai-hugging-face-hack-culture-swarm/",
+    "subject": {
+      "name": "C3",
+      "entity_id": "COMP_C3",
+      "type": "Company",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "ONGOING",
+      "polarity": "NEGATIVE",
+      "verb": "developing"
+    },
+    "object": {
+      "name": "a culture",
+      "entity_id": "ORG_A_CULTURE",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "unknown",
+      "value": null
+    },
+    "location": {
+      "name": "unknown",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.95,
+    "evidence": "AI Is Developing a Culture of Its Own",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "developing",
+    "action_status": "ONGOING",
+    "action_polarity": "NEGATIVE",
+    "event_time": "unknown",
+    "location_str": "unknown",
+    "entities": [
+      {
+        "entity_id": "COMP_C3",
+        "entity_name": "C3",
+        "entity_type": "Company",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_A_CULTURE",
+        "entity_name": "a culture",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 34048,
+    "article_url": "https://www.independent.co.uk/news/world/middle-east/satellite-image-iran-pickaxe-mountain-trump-bomb-b3048042.html",
+    "subject": {
+      "name": "Trump",
+      "entity_id": "PERS_TRUMP",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "ATTACKS",
       "status": "UNKNOWN",
       "polarity": "UNKNOWN",
       "verb": ""
@@ -1566,8 +1260,8 @@
     "confidence": null,
     "evidence": "",
     "evidence_type": "UNKNOWN",
-    "action_type": "ELECTS",
-    "action_event_type": "Politics",
+    "action_type": "ATTACKS",
+    "action_event_type": "Military",
     "action_detail": "",
     "action_status": "UNKNOWN",
     "action_polarity": "UNKNOWN",
@@ -1589,188 +1283,23 @@
     ]
   },
   {
-    "article_id": 33125,
-    "article_url": "https://tass.com/politics/2185029",
+    "article_id": 34056,
+    "article_url": "https://tass.com/world/2185671",
     "subject": {
-      "name": "Russian Federation",
-      "entity_id": "CTRY_RUSSIAN_FEDERATION",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "AGREES",
-      "status": "COMPLETED",
-      "polarity": "POSITIVE",
-      "verb": "agreed"
-    },
-    "object": {
-      "name": "expand cooperation in the oil, gas sector",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": "September 9",
-      "value": null
-    },
-    "location": {
-      "name": "N/A",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Russia and Vietnam have agreed to enhance the efficiency of projects in the fuel and energy sector and to expand cooperation in the oil and gas sectors, according to a joint statement following talks between presidents of the two countries, Vladimir Putin and To Lam.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "AGREES",
-    "action_event_type": "Diplomacy",
-    "action_detail": "agreed",
-    "action_status": "COMPLETED",
-    "action_polarity": "POSITIVE",
-    "event_time": "September 9",
-    "location_str": "N/A",
-    "entities": [
-      {
-        "entity_id": "CTRY_RUSSIAN_FEDERATION",
-        "entity_name": "Russian Federation",
-        "entity_type": "Country",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_VIETNAM",
-        "entity_name": "Vietnam",
-        "entity_type": "Country",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_GAS_SECTOR",
-        "entity_name": "gas sector",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 33125,
-    "article_url": "https://tass.com/politics/2185029",
-    "subject": {
-      "name": "Cooperation in the fuel and energy sector",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "action": {
-      "type": "AGREES",
-      "status": "COMPLETED",
-      "polarity": "POSITIVE",
-      "verb": "regard"
-    },
-    "object": {
-      "name": "strategic breakthrough in Russian-Vietnamese relations that contributes to ensuring the two countries’ energy security",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": "N/A",
-      "value": null
-    },
-    "location": {
-      "name": "N/A",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "The parties regard cooperation in the fuel and energy sector as a strategic breakthrough in Russian-Vietnamese relations that contributes to ensuring the two countries’ energy security.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "AGREES",
-    "action_event_type": "Diplomacy",
-    "action_detail": "regard",
-    "action_status": "COMPLETED",
-    "action_polarity": "POSITIVE",
-    "event_time": "N/A",
-    "location_str": "N/A",
-    "entities": [
-      {
-        "entity_id": "ORG_ENERGY_SECTOR",
-        "entity_name": "energy sector",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 33125,
-    "article_url": "https://tass.com/politics/2185029",
-    "subject": {
-      "name": "Parties",
-      "entity_id": "ORG_PARTIES",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "AGREES",
-      "status": "COMPLETED",
-      "polarity": "POSITIVE",
-      "verb": "agreed"
-    },
-    "object": {
-      "name": "enhance the efficiency of ongoing projects and expand cooperation in the oil and gas sector",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": "N/A",
-      "value": null
-    },
-    "location": {
-      "name": "N/A",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "On this basis, the parties agreed to enhance the efficiency of ongoing projects and expand cooperation in the oil and gas sector in Russia and Vietnam in accordance with the laws of both countries and international legislation, including the UN Convention on the Law of the Sea of December 10, 1982.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "AGREES",
-    "action_event_type": "Diplomacy",
-    "action_detail": "agreed",
-    "action_status": "COMPLETED",
-    "action_polarity": "POSITIVE",
-    "event_time": "N/A",
-    "location_str": "N/A",
-    "entities": [
-      {
-        "entity_id": "ORG_PARTIES",
-        "entity_name": "Parties",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_GAS_SECTOR",
-        "entity_name": "gas sector",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 32993,
-    "article_url": "https://tass.com/politics/2185091",
-    "subject": {
-      "name": "Tavily",
-      "entity_id": "PERS_TAVILY",
+      "name": "Yulia Mendel",
+      "entity_id": "PERS_YULIA_MENDEL",
       "type": "Person",
       "object_type": "ENTITY"
     },
     "action": {
-      "type": "OTHER",
+      "type": "ATTACKS",
       "status": "UNKNOWN",
       "polarity": "UNKNOWN",
       "verb": ""
     },
     "object": {
-      "name": "Russian Federation",
-      "entity_id": "CTRY_RUSSIAN_FEDERATION",
+      "name": "Ukraine",
+      "entity_id": "CTRY_UKR",
       "type": "Country",
       "object_type": "ENTITY"
     },
@@ -1786,8 +1315,8 @@
     "confidence": null,
     "evidence": "",
     "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
+    "action_type": "ATTACKS",
+    "action_event_type": "Military",
     "action_detail": "",
     "action_status": "UNKNOWN",
     "action_polarity": "UNKNOWN",
@@ -1795,755 +1324,146 @@
     "location_str": "",
     "entities": [
       {
-        "entity_id": "PERS_TAVILY",
-        "entity_name": "Tavily",
+        "entity_id": "PERS_YULIA_MENDEL",
+        "entity_name": "Yulia Mendel",
         "entity_type": "Person",
         "role": "SUBJECT"
       },
       {
-        "entity_id": "CTRY_RUSSIAN_FEDERATION",
-        "entity_name": "Russian Federation",
+        "entity_id": "CTRY_UKR",
+        "entity_name": "Ukraine",
         "entity_type": "Country",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 32979,
-    "article_url": "https://blogs.nvidia.com/blog/ibc-news-2026/",
+    "article_id": 34058,
+    "article_url": "https://www.wired.com/story/uncanny-valley-podcast-is-ai-actually-going-to-kill-us-all/",
     "subject": {
-      "name": "NVIDIA",
-      "entity_id": "COMP_NVIDIA",
-      "type": "Company",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "ANNOUNCED",
-      "polarity": "POSITIVE",
-      "verb": "Brings"
-    },
-    "object": {
-      "name": "Real-Time AI to Broadcast, Sports and Global Streaming",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": "Sept. 11-14",
-      "value": null
-    },
-    "location": {
-      "name": "IBC conference",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "NVIDIA Brings Real-Time AI to Broadcast, Sports and Global Streaming at IBC",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "Brings",
-    "action_status": "ANNOUNCED",
-    "action_polarity": "POSITIVE",
-    "event_time": "Sept. 11-14",
-    "location_str": "IBC conference",
-    "entities": [
-      {
-        "entity_id": "COMP_NVIDIA",
-        "entity_name": "NVIDIA",
-        "entity_type": "Company",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_SPORTS",
-        "entity_name": "Sports",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      },
-      {
-        "entity_id": "ORG_GLOBAL_STREAMING",
-        "entity_name": "Global Streaming",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 32979,
-    "article_url": "https://blogs.nvidia.com/blog/ibc-news-2026/",
-    "subject": {
-      "name": "IBC conference",
-      "entity_id": "ORG_IBC_CONFERENCE",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "ONGOING",
-      "polarity": "NEUTRAL",
-      "verb": "Running"
-    },
-    "object": {
-      "name": "conference",
-      "entity_id": "ORG_CONFERENCE",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "Sept. 11-14",
-      "value": null
-    },
-    "location": {
-      "name": "Amsterdam",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "At the IBC conference, running Sept. 11-14 in Amsterdam...",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "Running",
-    "action_status": "ONGOING",
-    "action_polarity": "NEUTRAL",
-    "event_time": "Sept. 11-14",
-    "location_str": "Amsterdam",
-    "entities": [
-      {
-        "entity_id": "ORG_IBC_CONFERENCE",
-        "entity_name": "IBC conference",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_CONFERENCE",
-        "entity_name": "conference",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 32979,
-    "article_url": "https://blogs.nvidia.com/blog/ibc-news-2026/",
-    "subject": {
-      "name": "Attendees",
-      "entity_id": "ORG_ATTENDEES",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "ONGOING",
-      "polarity": "NEUTRAL",
-      "verb": "Gathering"
-    },
-    "object": {
-      "name": "44,000 attendees from 170+ countries",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "AMOUNT"
-    },
-    "time": {
-      "raw": "Sept. 11-14",
-      "value": null
-    },
-    "location": {
-      "name": "Amsterdam",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "More than 44,000 attendees from 170+ countries are gathering to explore 1,30",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "Gathering",
-    "action_status": "ONGOING",
-    "action_polarity": "NEUTRAL",
-    "event_time": "Sept. 11-14",
-    "location_str": "Amsterdam",
-    "entities": [
-      {
-        "entity_id": "ORG_ATTENDEES",
-        "entity_name": "Attendees",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 33005,
-    "article_url": "https://www.aljazeera.com/news/2026/9/9/yemen-envoy-warns-of-wider-war-as-houthis-threaten-bab-al-mandeb-strait?traffic_source=rss",
-    "subject": {
-      "name": "ambassador",
-      "entity_id": "PERS_AMBASSADOR",
+      "name": "former Anthropic researcher",
+      "entity_id": "PERS_FORMER_ANTHROPIC_RESEARCHER",
       "type": "Person",
       "object_type": "ENTITY"
     },
     "action": {
       "type": "WARNS",
-      "status": "UNKNOWN",
-      "polarity": "UNKNOWN",
-      "verb": ""
+      "status": "ANNOUNCED",
+      "polarity": "NEGATIVE",
+      "verb": "warning"
     },
     "object": {
-      "name": "Yemen",
-      "entity_id": "CTRY_YEM",
-      "type": "Country",
+      "name": "AI doomsday warning",
+      "entity_id": "ORG_AI_DOOMSDAY_WARNING",
+      "type": "Organization",
       "object_type": "ENTITY"
     },
     "time": {
-      "raw": null,
+      "raw": "This week",
       "value": null
     },
     "location": {
-      "name": null,
+      "name": "Uncanny Valley",
       "entity_id": null,
       "type": null
     },
-    "confidence": null,
-    "evidence": "",
+    "confidence": 0.9,
+    "evidence": "we dig into a former Anthropic researcher’s AI doomsday warning",
     "evidence_type": "UNKNOWN",
     "action_type": "WARNS",
     "action_event_type": "Politics",
-    "action_detail": "",
-    "action_status": "UNKNOWN",
-    "action_polarity": "UNKNOWN",
-    "event_time": "",
-    "location_str": "",
+    "action_detail": "warning",
+    "action_status": "ANNOUNCED",
+    "action_polarity": "NEGATIVE",
+    "event_time": "This week",
+    "location_str": "Uncanny Valley",
     "entities": [
       {
-        "entity_id": "PERS_AMBASSADOR",
-        "entity_name": "ambassador",
+        "entity_id": "PERS_FORMER_ANTHROPIC_RESEARCHER",
+        "entity_name": "former Anthropic researcher",
         "entity_type": "Person",
         "role": "SUBJECT"
       },
       {
-        "entity_id": "CTRY_YEM",
-        "entity_name": "Yemen",
-        "entity_type": "Country",
+        "entity_id": "ORG_AI_DOOMSDAY_WARNING",
+        "entity_name": "AI doomsday warning",
+        "entity_type": "Organization",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 32987,
-    "article_url": "https://www.axios.com/2026/09/09/ai-doom-pdoom-kill-all-humans-anthropic",
+    "article_id": 34058,
+    "article_url": "https://www.wired.com/story/uncanny-valley-podcast-is-ai-actually-going-to-kill-us-all/",
     "subject": {
-      "name": "AI researchers",
-      "entity_id": "PERS_AI_RESEARCHERS",
-      "type": "Person",
-      "object_type": "ENTITY"
+      "name": "latest upgrades from Apple’s event",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
     },
     "action": {
       "type": "DIES",
-      "status": "COMPLETED",
-      "polarity": "NEGATIVE",
-      "verb": "acknowledged"
+      "status": "ONGOING",
+      "polarity": "NEUTRAL",
+      "verb": "dig into"
     },
     "object": {
-      "name": "non-zero chance of AI killing off humanity in the next decade",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
+      "name": "upgrades",
+      "entity_id": "ORG_UPGRADES",
+      "type": "Organization",
+      "object_type": "ENTITY"
     },
     "time": {
-      "raw": "Tuesday",
+      "raw": "This week",
       "value": null
     },
     "location": {
-      "name": "world",
+      "name": "Apple’s event",
       "entity_id": null,
       "type": null
     },
-    "confidence": 1,
-    "evidence": "AI researchers shook the world Tuesday when they publicly acknowledged that there's a non-zero chance of AI killing off humanity in the next decade.",
+    "confidence": 0.8,
+    "evidence": "the latest upgrades from Apple’s event",
     "evidence_type": "UNKNOWN",
     "action_type": "DIES",
     "action_event_type": "Leadership",
-    "action_detail": "acknowledged",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEGATIVE",
-    "event_time": "Tuesday",
-    "location_str": "world",
-    "entities": [
-      {
-        "entity_id": "PERS_AI_RESEARCHERS",
-        "entity_name": "AI researchers",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 32980,
-    "article_url": "https://oilprice.com/Energy/Energy-General/Negative-Power-Prices-Are-Piling-Up-Across-Europe.html",
-    "subject": {
-      "name": "Putin",
-      "entity_id": "PERS_PUTIN",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "UNKNOWN",
-      "polarity": "UNKNOWN",
-      "verb": ""
-    },
-    "object": {
-      "name": "Europe",
-      "entity_id": "ORG_EUROPE",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": null,
-    "evidence": "",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "",
-    "action_status": "UNKNOWN",
-    "action_polarity": "UNKNOWN",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "PERS_PUTIN",
-        "entity_name": "Putin",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_EUROPE",
-        "entity_name": "Europe",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 33003,
-    "article_url": "https://www.washingtonpost.com/business/2026/09/09/hunter-bidens-laptop-crypto-coin-crashes-minutes-after-launch/",
-    "subject": {
-      "name": "$LAPTOP meme coin",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "action": {
-      "type": "CRASHES",
-      "status": "COMPLETED",
-      "polarity": "NEUTRAL",
-      "verb": "rockets"
-    },
-    "object": {
-      "name": "$3 to $300",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "AMOUNT"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Hunter Biden’s $LAPTOP meme coin rockets from $3 to $300 — then crashes within minutes",
-    "evidence_type": "UNKNOWN",
-    "action_type": "CRASHES",
-    "action_event_type": "Finance",
-    "action_detail": "rockets",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "",
-    "location_str": "",
-    "entities": []
-  },
-  {
-    "article_id": 33003,
-    "article_url": "https://www.washingtonpost.com/business/2026/09/09/hunter-bidens-laptop-crypto-coin-crashes-minutes-after-launch/",
-    "subject": {
-      "name": "$LAPTOP meme coin",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "action": {
-      "type": "CRASHES",
-      "status": "COMPLETED",
-      "polarity": "NEGATIVE",
-      "verb": "crashes"
-    },
-    "object": {
-      "name": "",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "time": {
-      "raw": "within minutes",
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Hunter Biden’s $LAPTOP meme coin rockets from $3 to $300 — then crashes within minutes",
-    "evidence_type": "UNKNOWN",
-    "action_type": "CRASHES",
-    "action_event_type": "Finance",
-    "action_detail": "crashes",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEGATIVE",
-    "event_time": "within minutes",
-    "location_str": "",
-    "entities": []
-  },
-  {
-    "article_id": 33003,
-    "article_url": "https://www.washingtonpost.com/business/2026/09/09/hunter-bidens-laptop-crypto-coin-crashes-minutes-after-launch/",
-    "subject": {
-      "name": "Hunter Biden’s crypto coin",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "action": {
-      "type": "CRASHES",
-      "status": "COMPLETED",
-      "polarity": "NEGATIVE",
-      "verb": "crashed"
-    },
-    "object": {
-      "name": "",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Hunter Biden’s crypto coin has crashed as hard as a crackhead coming down from a long bender.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "CRASHES",
-    "action_event_type": "Finance",
-    "action_detail": "crashed",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEGATIVE",
-    "event_time": "",
-    "location_str": "",
-    "entities": []
-  },
-  {
-    "article_id": 33000,
-    "article_url": "https://thediplomat.com/2026/09/rethinking-russia-re-evaluating-risk-the-changing-face-of-kyrgyz-migration/",
-    "subject": {
-      "name": "Kyrgyz migration to Russia",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "COMPLETED",
-      "polarity": "NEUTRAL",
-      "verb": "become"
-    },
-    "object": {
-      "name": "more complex",
-      "entity_id": "ORG_MORE_COMPLEX",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "now",
-      "value": null
-    },
-    "location": {
-      "name": "Russia",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1.0,
-    "evidence": "Kyrgyz migration to Russia has become more complex and restrictive due to new regulations",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "become",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "now",
-    "location_str": "Russia",
-    "entities": [
-      {
-        "entity_id": "ORG_MORE_COMPLEX",
-        "entity_name": "more complex",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      },
-      {
-        "entity_id": "ORG_RESTRICTIVE",
-        "entity_name": "restrictive",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 33000,
-    "article_url": "https://thediplomat.com/2026/09/rethinking-russia-re-evaluating-risk-the-changing-face-of-kyrgyz-migration/",
-    "subject": {
-      "name": "New regulations",
-      "entity_id": "ORG_NEW_REGULATIONS",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "COMPLETED",
-      "polarity": "NEGATIVE",
-      "verb": "lead to"
-    },
-    "object": {
-      "name": "shift towards more female migrants",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": "now",
-      "value": null
-    },
-    "location": {
-      "name": "N/A",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 0.9,
-    "evidence": "Kyrgyz migration to Russia has become more complex and restrictive due to new regulations, leading to a shift towards more female migrants.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "lead to",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEGATIVE",
-    "event_time": "now",
-    "location_str": "N/A",
-    "entities": [
-      {
-        "entity_id": "ORG_NEW_REGULATIONS",
-        "entity_name": "New regulations",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 33000,
-    "article_url": "https://thediplomat.com/2026/09/rethinking-russia-re-evaluating-risk-the-changing-face-of-kyrgyz-migration/",
-    "subject": {
-      "name": "Kyrgyz state",
-      "entity_id": "ORG_KYRGYZ_STATE",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "ONGOING",
-      "polarity": "POSITIVE",
-      "verb": "support"
-    },
-    "object": {
-      "name": "transnational living and education for migrant families",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": "now",
-      "value": null
-    },
-    "location": {
-      "name": "N/A",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1.0,
-    "evidence": "The Kyrgyz state has had to adapt by supporting transnational living and education for migrant families.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "support",
+    "action_detail": "dig into",
     "action_status": "ONGOING",
-    "action_polarity": "POSITIVE",
-    "event_time": "now",
-    "location_str": "N/A",
-    "entities": [
-      {
-        "entity_id": "ORG_KYRGYZ_STATE",
-        "entity_name": "Kyrgyz state",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_TRANSNATIONAL_LIVING",
-        "entity_name": "transnational living",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 32990,
-    "article_url": "https://tass.com/politics/2185167",
-    "subject": {
-      "name": "IAEA director general",
-      "entity_id": "ORG_IAEA_DIRECTOR_GENERAL",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "FUNDS",
-      "status": "PLANNED",
-      "polarity": "POSITIVE",
-      "verb": "play"
-    },
-    "object": {
-      "name": "constructive role in securing such guarantees",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": "unknown",
-      "value": null
-    },
-    "location": {
-      "name": "contacts with the countries concerned",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 0.9,
-    "evidence": "Russian Permanent Representative to the Vienna-based international organizations Mikhail Ulyanov said that the IAEA director general could play a constructive role in securing such guarantees in his contacts with the countries concerned",
-    "evidence_type": "UNKNOWN",
-    "action_type": "FUNDS",
-    "action_event_type": "Economic",
-    "action_detail": "play",
-    "action_status": "PLANNED",
-    "action_polarity": "POSITIVE",
-    "event_time": "unknown",
-    "location_str": "contacts with the countries concerned",
-    "entities": [
-      {
-        "entity_id": "ORG_IAEA_DIRECTOR_GENERAL",
-        "entity_name": "IAEA director general",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 33034,
-    "article_url": "https://thediplomat.com/2026/09/russia-is-helping-supercharge-north-koreas-military-drones/",
-    "subject": {
-      "name": "Russian Federation",
-      "entity_id": "CTRY_RUSSIAN_FEDERATION",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "ACCUSES",
-      "status": "COMPLETED",
-      "polarity": "NEUTRAL",
-      "verb": "provided"
-    },
-    "object": {
-      "name": "drone technology",
-      "entity_id": "ORG_DRONE_TECHNOLOGY",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "unknown",
-      "value": null
-    },
-    "location": {
-      "name": "Pyongyang",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Russia has already provided drone technology to Pyongyang",
-    "evidence_type": "UNKNOWN",
-    "action_type": "ACCUSES",
-    "action_event_type": "Legal",
-    "action_detail": "provided",
-    "action_status": "COMPLETED",
     "action_polarity": "NEUTRAL",
-    "event_time": "unknown",
-    "location_str": "Pyongyang",
+    "event_time": "This week",
+    "location_str": "Apple’s event",
     "entities": [
       {
-        "entity_id": "CTRY_RUSSIAN_FEDERATION",
-        "entity_name": "Russian Federation",
-        "entity_type": "Country",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_DRONE_TECHNOLOGY",
-        "entity_name": "drone technology",
+        "entity_id": "ORG_UPGRADES",
+        "entity_name": "upgrades",
         "entity_type": "Organization",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 33034,
-    "article_url": "https://thediplomat.com/2026/09/russia-is-helping-supercharge-north-koreas-military-drones/",
+    "article_id": 34058,
+    "article_url": "https://www.wired.com/story/uncanny-valley-podcast-is-ai-actually-going-to-kill-us-all/",
     "subject": {
-      "name": "Korea, Democratic People's Republic of",
-      "entity_id": "CTRY_PRK",
+      "name": "census report",
+      "entity_id": "CTRY_CENSUS_REPORT",
       "type": "Country",
       "object_type": "ENTITY"
     },
     "action": {
-      "type": "ACCUSES",
-      "status": "EXPECTED",
-      "polarity": "NEGATIVE",
-      "verb": "could gain access to"
+      "type": "CLAIMS",
+      "status": "ANNOUNCED",
+      "polarity": "UNKNOWN",
+      "verb": "claimed"
     },
     "object": {
-      "name": "more sophisticated systems, including new versions of autonomous AI–enabled and jet-powered drones",
+      "name": "Trump won the 2020 election",
       "entity_id": null,
       "type": "Other",
       "object_type": "STATEMENT"
     },
     "time": {
-      "raw": "in time",
+      "raw": "unknown",
       "value": null
     },
     "location": {
@@ -2551,97 +1471,306 @@
       "entity_id": null,
       "type": null
     },
-    "confidence": 0.9,
-    "evidence": "North Korea could, in time, gain access to far more sophisticated systems, including new versions of autonomous AI–enabled and jet-powered drones",
+    "confidence": 0.7,
+    "evidence": "the census report that claimed Trump won the 2020 election",
     "evidence_type": "UNKNOWN",
-    "action_type": "ACCUSES",
-    "action_event_type": "Legal",
-    "action_detail": "could gain access to",
-    "action_status": "EXPECTED",
-    "action_polarity": "NEGATIVE",
-    "event_time": "in time",
+    "action_type": "CLAIMS",
+    "action_event_type": "Politics",
+    "action_detail": "claimed",
+    "action_status": "ANNOUNCED",
+    "action_polarity": "UNKNOWN",
+    "event_time": "unknown",
     "location_str": "unknown",
     "entities": [
       {
-        "entity_id": "CTRY_PRK",
-        "entity_name": "Korea, Democratic People's Republic of",
+        "entity_id": "CTRY_CENSUS_REPORT",
+        "entity_name": "census report",
         "entity_type": "Country",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 34051,
+    "article_url": "https://www.darkreading.com/vulnerabilities-threats/nightmare-eclipse-strikes-again-shieldcrash-windows-exploit",
+    "subject": {
+      "name": "Nightmare-Eclipse",
+      "entity_id": "ORG_NIGHTMARE_ECLIPSE",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "ATTACKS",
+      "status": "COMPLETED",
+      "polarity": "NEGATIVE",
+      "verb": "released"
+    },
+    "object": {
+      "name": "ShieldCrash",
+      "entity_id": "ORG_SHIELDCRASH",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "September 11, 2026",
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Nightmare-Eclipse released a new exploit, ShieldCrash, bypassing a previous patch for a Windows Defender vulnerability, ShieldBreak.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "ATTACKS",
+    "action_event_type": "Military",
+    "action_detail": "released",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEGATIVE",
+    "event_time": "September 11, 2026",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "ORG_NIGHTMARE_ECLIPSE",
+        "entity_name": "Nightmare-Eclipse",
+        "entity_type": "Organization",
         "role": "SUBJECT"
       },
       {
-        "entity_id": "ORG_MORE_SOPHISTICATED_SYSTEMS",
-        "entity_name": "more sophisticated systems",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      },
-      {
-        "entity_id": "ORG_JET_POWERED_DRONES",
-        "entity_name": "jet-powered drones",
+        "entity_id": "ORG_SHIELDCRASH",
+        "entity_name": "ShieldCrash",
         "entity_type": "Organization",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 33034,
-    "article_url": "https://thediplomat.com/2026/09/russia-is-helping-supercharge-north-koreas-military-drones/",
+    "article_id": 34051,
+    "article_url": "https://www.darkreading.com/vulnerabilities-threats/nightmare-eclipse-strikes-again-shieldcrash-windows-exploit",
     "subject": {
-      "name": "Russia's expanding military partnership with North Korea",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
+      "name": "ShieldCrash",
+      "entity_id": "ORG_SHIELDCRASH",
+      "type": "Organization",
+      "object_type": "ENTITY"
     },
     "action": {
-      "type": "ACCUSES",
-      "status": "ONGOING",
+      "type": "ATTACKS",
+      "status": "COMPLETED",
       "polarity": "NEGATIVE",
-      "verb": "has become"
+      "verb": "bypassing"
     },
     "object": {
-      "name": "one of the most significant proliferation risks of the Ukraine war",
+      "name": "patch for a Windows Defender vulnerability, ShieldBreak",
       "entity_id": null,
       "type": "Other",
       "object_type": "STATEMENT"
     },
     "time": {
-      "raw": "unknown",
+      "raw": null,
       "value": null
     },
     "location": {
-      "name": "Ukraine war",
+      "name": null,
       "entity_id": null,
       "type": null
     },
-    "confidence": 0.95,
-    "evidence": "Russia’s expanding military partnership with North Korea has become one of the most significant proliferation risks of the Ukraine war.",
+    "confidence": 1,
+    "evidence": "Nightmare-Eclipse released a new exploit, ShieldCrash, bypassing a previous patch for a Windows Defender vulnerability, ShieldBreak.",
     "evidence_type": "UNKNOWN",
-    "action_type": "ACCUSES",
-    "action_event_type": "Legal",
-    "action_detail": "has become",
-    "action_status": "ONGOING",
+    "action_type": "ATTACKS",
+    "action_event_type": "Military",
+    "action_detail": "bypassing",
+    "action_status": "COMPLETED",
     "action_polarity": "NEGATIVE",
-    "event_time": "unknown",
-    "location_str": "Ukraine war",
-    "entities": []
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "ORG_SHIELDCRASH",
+        "entity_name": "ShieldCrash",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_SHIELDBREAK",
+        "entity_name": "ShieldBreak",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
   },
   {
-    "article_id": 32978,
-    "article_url": "https://www.scmp.com/business/china-business/article/3366961/over-65-cars-sold-china-are-now-evs-iran-war-drives-electric-shift?utm_source=rss_feed",
+    "article_id": 34051,
+    "article_url": "https://www.darkreading.com/vulnerabilities-threats/nightmare-eclipse-strikes-again-shieldcrash-windows-exploit",
     "subject": {
-      "name": "motorists",
-      "entity_id": "PERS_MOTORISTS",
+      "name": "ShieldCrash",
+      "entity_id": "ORG_SHIELDCRASH",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "ATTACKS",
+      "status": "ONGOING",
+      "polarity": "NEGATIVE",
+      "verb": "allows"
+    },
+    "object": {
+      "name": "privilege escalation",
+      "entity_id": "ORG_PRIVILEGE_ESCALATION",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "It allows privilege escalation and works on patched systems.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "ATTACKS",
+    "action_event_type": "Military",
+    "action_detail": "allows",
+    "action_status": "ONGOING",
+    "action_polarity": "NEGATIVE",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "ORG_SHIELDCRASH",
+        "entity_name": "ShieldCrash",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_PRIVILEGE_ESCALATION",
+        "entity_name": "privilege escalation",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 34066,
+    "article_url": "https://www.independent.co.uk/news/world/americas/us-politics/hakeem-jeffries-rnc-midterm-convention-b3048077.html",
+    "subject": {
+      "name": "Jeffries",
+      "entity_id": "PERS_JEFFRIES",
       "type": "Person",
       "object_type": "ENTITY"
     },
     "action": {
       "type": "ELECTS",
+      "status": "COMPLETED",
+      "polarity": "NEUTRAL",
+      "verb": "buys"
+    },
+    "object": {
+      "name": "NFL Thursday Night Football ad blitz",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
+    },
+    "time": {
+      "raw": "less than two months to go before the midterm elections",
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Jeffries buys NFL Thursday Night Football ad blitz after Trump’s $5,000 midterm election ‘dividend’ promise",
+    "evidence_type": "UNKNOWN",
+    "action_type": "ELECTS",
+    "action_event_type": "Politics",
+    "action_detail": "buys",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "less than two months to go before the midterm elections",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "PERS_JEFFRIES",
+        "entity_name": "Jeffries",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 34066,
+    "article_url": "https://www.independent.co.uk/news/world/americas/us-politics/hakeem-jeffries-rnc-midterm-convention-b3048077.html",
+    "subject": {
+      "name": "Trump",
+      "entity_id": "PERS_TRUMP",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "ELECTS",
+      "status": "COMPLETED",
+      "polarity": "UNKNOWN",
+      "verb": "promise"
+    },
+    "object": {
+      "name": "$5,000 midterm election ‘dividend’",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "AMOUNT"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Trump’s $5,000 midterm election ‘dividend’ promise",
+    "evidence_type": "UNKNOWN",
+    "action_type": "ELECTS",
+    "action_event_type": "Politics",
+    "action_detail": "promise",
+    "action_status": "COMPLETED",
+    "action_polarity": "UNKNOWN",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "PERS_TRUMP",
+        "entity_name": "Trump",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 34053,
+    "article_url": "https://tass.com/world/2185675",
+    "subject": {
+      "name": "Parliament Speaker Juozas Olekas",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "action": {
+      "type": "BANS",
       "status": "UNKNOWN",
       "polarity": "UNKNOWN",
       "verb": ""
     },
     "object": {
-      "name": "China",
-      "entity_id": "CTRY_CHN",
+      "name": "Lithuania",
+      "entity_id": "CTRY_LTU",
       "type": "Country",
       "object_type": "ENTITY"
     },
@@ -2657,8 +1786,8 @@
     "confidence": null,
     "evidence": "",
     "evidence_type": "UNKNOWN",
-    "action_type": "ELECTS",
-    "action_event_type": "Politics",
+    "action_type": "BANS",
+    "action_event_type": "Legal",
     "action_detail": "",
     "action_status": "UNKNOWN",
     "action_polarity": "UNKNOWN",
@@ -2666,25 +1795,1673 @@
     "location_str": "",
     "entities": [
       {
-        "entity_id": "PERS_MOTORISTS",
-        "entity_name": "motorists",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_CHN",
-        "entity_name": "China",
+        "entity_id": "CTRY_LTU",
+        "entity_name": "Lithuania",
         "entity_type": "Country",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 32977,
-    "article_url": "https://www.scmp.com/news/world/middle-east/article/3366971/un-nuclear-watchdog-board-reports-iran-security-council-first-time-20-years?utm_source=rss_feed",
+    "article_id": 34085,
+    "article_url": "https://finance.yahoo.com/markets/stocks/articles/vertiv-stock-outperforming-nasdaq-144302424.html",
     "subject": {
-      "name": "UN atomic watchdog",
-      "entity_id": "ORG_UN_ATOMIC_WATCHDOG",
+      "name": "Vertiv Holdings Co (VRT",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "ONGOING",
+      "polarity": "NEUTRAL",
+      "verb": "is"
+    },
+    "object": {
+      "name": "global provider of critical digital infrastructure technologies and lifecycle services",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
+    },
+    "time": {
+      "raw": "unknown",
+      "value": null
+    },
+    "location": {
+      "name": "worldwide",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "With a market cap of around $112 billion, Vertiv Holdings Co (VRT) is a global provider of critical digital infrastructure technologies and lifecycle services that support data centers, communication networks, and commercial and industrial facilities. It serves customers worldwide through direct sales teams, channel partners, independent representatives, and original equipment manufacturers.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "is",
+    "action_status": "ONGOING",
+    "action_polarity": "NEUTRAL",
+    "event_time": "unknown",
+    "location_str": "worldwide",
+    "entities": [
+      {
+        "entity_id": "ORG_LIFECYCLE_SERVICES",
+        "entity_name": "lifecycle services",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 34085,
+    "article_url": "https://finance.yahoo.com/markets/stocks/articles/vertiv-stock-outperforming-nasdaq-144302424.html",
+    "subject": {
+      "name": "Vertiv Holdings Co (VRT",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "ONGOING",
+      "polarity": "NEUTRAL",
+      "verb": "fits"
+    },
+    "object": {
+      "name": "large-cap stocks",
+      "entity_id": "ORG_LARGE_CAP_STOCKS",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "unknown",
+      "value": null
+    },
+    "location": {
+      "name": "N/A",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Companies valued at more than $10 billion are generally considered \"large-cap\" stocks, and Vertiv fits this criterion perfectly.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "fits",
+    "action_status": "ONGOING",
+    "action_polarity": "NEUTRAL",
+    "event_time": "unknown",
+    "location_str": "N/A",
+    "entities": [
+      {
+        "entity_id": "ORG_LARGE_CAP_STOCKS",
+        "entity_name": "large-cap stocks",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 34085,
+    "article_url": "https://finance.yahoo.com/markets/stocks/articles/vertiv-stock-outperforming-nasdaq-144302424.html",
+    "subject": {
+      "name": "Vertiv Holdings Co (VRT",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "ONGOING",
+      "polarity": "NEUTRAL",
+      "verb": "offers"
+    },
+    "object": {
+      "name": "power management, thermal management, infrastructure, and software solutions",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
+    },
+    "time": {
+      "raw": "unknown",
+      "value": null
+    },
+    "location": {
+      "name": "N/A",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "The company offers a broad portfolio of power management, thermal management, infrastructure, and software solutions designed to ensure the reliability and efficiency of digital operations, including applications in artificial intelligence, e-commerce, online banking, and tel",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "offers",
+    "action_status": "ONGOING",
+    "action_polarity": "NEUTRAL",
+    "event_time": "unknown",
+    "location_str": "N/A",
+    "entities": [
+      {
+        "entity_id": "ORG_POWER_MANAGEMENT",
+        "entity_name": "power management",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      },
+      {
+        "entity_id": "ORG_THERMAL_MANAGEMENT",
+        "entity_name": "thermal management",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      },
+      {
+        "entity_id": "ORG_INFRASTRUCTURE",
+        "entity_name": "infrastructure",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      },
+      {
+        "entity_id": "ORG_SOFTWARE_SOLUTIONS",
+        "entity_name": "software solutions",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 34061,
+    "article_url": "https://www.cnbc.com/2026/09/10/openai-chatgpt-for-financial-services-targets-work-of-junior-bankers.html",
+    "subject": {
+      "name": "OpenAI",
+      "entity_id": "COMP_OPENAI",
+      "type": "Company",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "BANS",
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
+    },
+    "object": {
+      "name": "Wall Street",
+      "entity_id": "LOC_WALL_STREET",
+      "type": "Location",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": null,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "BANS",
+    "action_event_type": "Legal",
+    "action_detail": "",
+    "action_status": "UNKNOWN",
+    "action_polarity": "UNKNOWN",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "COMP_OPENAI",
+        "entity_name": "OpenAI",
+        "entity_type": "Company",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "LOC_WALL_STREET",
+        "entity_name": "Wall Street",
+        "entity_type": "Location",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 34040,
+    "article_url": "https://oilprice.com/Geopolitics/Asia/Russian-Mobilization-Rumors-Ripple-Across-Central-Asia.html",
+    "subject": {
+      "name": "Kyrgyzstan",
+      "entity_id": "CTRY_KGZ",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "DEPLOYS",
+      "status": "ONGOING",
+      "polarity": "NEUTRAL",
+      "verb": "introducing"
+    },
+    "object": {
+      "name": "new procedures for foreign visitors",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
+    },
+    "time": {
+      "raw": "unknown",
+      "value": null
+    },
+    "location": {
+      "name": "Kyrgyzstan and Kazakhstan",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1.0,
+    "evidence": "Kyrgyzstan and Kazakhstan are introducing new procedures for foreign visitors.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "DEPLOYS",
+    "action_event_type": "Military",
+    "action_detail": "introducing",
+    "action_status": "ONGOING",
+    "action_polarity": "NEUTRAL",
+    "event_time": "unknown",
+    "location_str": "Kyrgyzstan and Kazakhstan",
+    "entities": [
+      {
+        "entity_id": "CTRY_KGZ",
+        "entity_name": "Kyrgyzstan",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_KAZ",
+        "entity_name": "Kazakhstan",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 34040,
+    "article_url": "https://oilprice.com/Geopolitics/Asia/Russian-Mobilization-Rumors-Ripple-Across-Central-Asia.html",
+    "subject": {
+      "name": "local observers",
+      "entity_id": "PERS_LOCAL_OBSERVERS",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "DEPLOYS",
+      "status": "CONSIDERED",
+      "polarity": "NEGATIVE",
+      "verb": "believe"
+    },
+    "object": {
+      "name": "moves are connected to a fresh influx of Russians amid rumors that the Kremlin may order a general military mobilization",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
+    },
+    "time": {
+      "raw": "unknown",
+      "value": null
+    },
+    "location": {
+      "name": "Central Asia",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.8,
+    "evidence": "Some local observers believe the moves are connected to a fresh influx of Russians amid rumors that the Kremlin may order a general military mobilization.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "DEPLOYS",
+    "action_event_type": "Military",
+    "action_detail": "believe",
+    "action_status": "CONSIDERED",
+    "action_polarity": "NEGATIVE",
+    "event_time": "unknown",
+    "location_str": "Central Asia",
+    "entities": [
+      {
+        "entity_id": "PERS_LOCAL_OBSERVERS",
+        "entity_name": "local observers",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 34040,
+    "article_url": "https://oilprice.com/Geopolitics/Asia/Russian-Mobilization-Rumors-Ripple-Across-Central-Asia.html",
+    "subject": {
+      "name": "Kyrgyz government",
+      "entity_id": "ORG_KYRGYZ_GOVERNMENT",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "DEPLOYS",
+      "status": "PLANNED",
+      "polarity": "NEUTRAL",
+      "verb": "outlines plans"
+    },
+    "object": {
+      "name": "plans to implement a tracking",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
+    },
+    "time": {
+      "raw": "unknown",
+      "value": null
+    },
+    "location": {
+      "name": "Kyrgyzstan",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.9,
+    "evidence": "A Kyrgyz government decree outlines plans to implement a tracking",
+    "evidence_type": "UNKNOWN",
+    "action_type": "DEPLOYS",
+    "action_event_type": "Military",
+    "action_detail": "outlines plans",
+    "action_status": "PLANNED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "unknown",
+    "location_str": "Kyrgyzstan",
+    "entities": [
+      {
+        "entity_id": "ORG_KYRGYZ_GOVERNMENT",
+        "entity_name": "Kyrgyz government",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 34035,
+    "article_url": "https://tass.com/economy/2185749",
+    "subject": {
+      "name": "International Monetary Fund",
+      "entity_id": "ORG_IMF",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
+    },
+    "object": {
+      "name": "United States",
+      "entity_id": "CTRY_UNITED_STATES",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": null,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "",
+    "action_status": "UNKNOWN",
+    "action_polarity": "UNKNOWN",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "ORG_IMF",
+        "entity_name": "International Monetary Fund",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_UNITED_STATES",
+        "entity_name": "United States",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 34073,
+    "article_url": "https://www.aljazeera.com/video/newsfeed/2026/9/10/israel-says-it-destroyed-key-hezbollah-tunnels-in-southern-lebanon?traffic_source=rss",
+    "subject": {
+      "name": "Hezbollah",
+      "entity_id": "ORG_HEZBOLLAH",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "BANS",
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
+    },
+    "object": {
+      "name": "Israel",
+      "entity_id": "CTRY_ISR",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": null,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "BANS",
+    "action_event_type": "Legal",
+    "action_detail": "",
+    "action_status": "UNKNOWN",
+    "action_polarity": "UNKNOWN",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "ORG_HEZBOLLAH",
+        "entity_name": "Hezbollah",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_ISR",
+        "entity_name": "Israel",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 34045,
+    "article_url": "https://www.cnbc.com/2026/09/10/the-likelihood-of-a-fed-interest-rate-hike-next-week-just-got-a-lot-higher.html",
+    "subject": {
+      "name": "chances for a rate increase",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "action": {
+      "type": "RATE_HIKE",
+      "status": "ONGOING",
+      "polarity": "NEUTRAL",
+      "verb": "pushed"
+    },
+    "object": {
+      "name": "70%",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "AMOUNT"
+    },
+    "time": {
+      "raw": "next week",
+      "value": null
+    },
+    "location": {
+      "name": "morning action",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Traders pushed chances for a rate increase to 70% in morning action",
+    "evidence_type": "UNKNOWN",
+    "action_type": "RATE_HIKE",
+    "action_event_type": "Finance",
+    "action_detail": "pushed",
+    "action_status": "ONGOING",
+    "action_polarity": "NEUTRAL",
+    "event_time": "next week",
+    "location_str": "morning action",
+    "entities": []
+  },
+  {
+    "article_id": 34045,
+    "article_url": "https://www.cnbc.com/2026/09/10/the-likelihood-of-a-fed-interest-rate-hike-next-week-just-got-a-lot-higher.html",
+    "subject": {
+      "name": "chances of another increase in December",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "action": {
+      "type": "RATE_HIKE",
+      "status": "ONGOING",
+      "polarity": "NEUTRAL",
+      "verb": "nudged"
+    },
+    "object": {
+      "name": "60%",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "AMOUNT"
+    },
+    "time": {
+      "raw": "December",
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "They also nudged chances of another increase in December to close to 60%",
+    "evidence_type": "UNKNOWN",
+    "action_type": "RATE_HIKE",
+    "action_event_type": "Finance",
+    "action_detail": "nudged",
+    "action_status": "ONGOING",
+    "action_polarity": "NEUTRAL",
+    "event_time": "December",
+    "location_str": "",
+    "entities": []
+  },
+  {
+    "article_id": 34045,
+    "article_url": "https://www.cnbc.com/2026/09/10/the-likelihood-of-a-fed-interest-rate-hike-next-week-just-got-a-lot-higher.html",
+    "subject": {
+      "name": "inflation pressures",
+      "entity_id": "ORG_INFLATION_PRESSURES",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "RATE_HIKE",
+      "status": "ONGOING",
+      "polarity": "NEGATIVE",
+      "verb": "becoming"
+    },
+    "object": {
+      "name": "entrenched",
+      "entity_id": "ORG_ENTRENCHED",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.9,
+    "evidence": "\"As the conflict with Iran drags on longer than many expected, inflation pressures are becoming increasingly entrenched\"",
+    "evidence_type": "UNKNOWN",
+    "action_type": "RATE_HIKE",
+    "action_event_type": "Finance",
+    "action_detail": "becoming",
+    "action_status": "ONGOING",
+    "action_polarity": "NEGATIVE",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "ORG_INFLATION_PRESSURES",
+        "entity_name": "inflation pressures",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_ENTRENCHED",
+        "entity_name": "entrenched",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 34083,
+    "article_url": "https://seekingalpha.com/article/4945328-bill-holdings-inc-bill-presents-at-goldman-sachs-communacopia-technology-conference-2026?source=feed_all_articles",
+    "subject": {
+      "name": "BILL Holdings",
+      "entity_id": "COMP_BILL_HOLDINGS",
+      "type": "Company",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "COMPLETED",
+      "polarity": "NEUTRAL",
+      "verb": "Presents"
+    },
+    "object": {
+      "name": "Goldman Sachs Communacopia + Technology Conference 2026 Transcript",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
+    },
+    "time": {
+      "raw": "2026-09-11T01:37:04.000Z",
+      "value": null
+    },
+    "location": {
+      "name": "N/A",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "BILL Holdings, Inc. (BILL) Presents at Goldman Sachs Communacopia + Technology Conference 2026 Transcript",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "Presents",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "2026-09-11T01:37:04.000Z",
+    "location_str": "N/A",
+    "entities": [
+      {
+        "entity_id": "COMP_BILL_HOLDINGS",
+        "entity_name": "BILL Holdings",
+        "entity_type": "Company",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "COMP_INC_BILL",
+        "entity_name": "Inc. (BILL",
+        "entity_type": "Company",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 34083,
+    "article_url": "https://seekingalpha.com/article/4945328-bill-holdings-inc-bill-presents-at-goldman-sachs-communacopia-technology-conference-2026?source=feed_all_articles",
+    "subject": {
+      "name": "BILL Holdings",
+      "entity_id": "COMP_BILL_HOLDINGS",
+      "type": "Company",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "COMPLETED",
+      "polarity": "NEUTRAL",
+      "verb": "Presents"
+    },
+    "object": {
+      "name": "Transcript",
+      "entity_id": "ORG_TRANSCRIPT",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "2026-09-11T01:37:04.000Z",
+      "value": null
+    },
+    "location": {
+      "name": "N/A",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "BILL Holdings, Inc. (BILL) Presents at Goldman Sachs Communacopia + Technology Conference 2026 Transcript",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "Presents",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "2026-09-11T01:37:04.000Z",
+    "location_str": "N/A",
+    "entities": [
+      {
+        "entity_id": "COMP_BILL_HOLDINGS",
+        "entity_name": "BILL Holdings",
+        "entity_type": "Company",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "COMP_INC_BILL",
+        "entity_name": "Inc. (BILL",
+        "entity_type": "Company",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_TRANSCRIPT",
+        "entity_name": "Transcript",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 34084,
+    "article_url": "https://www.independent.co.uk/news/world/americas/volodymyr-zelensky-canada-mark-carney-russia-war-b3048157.html",
+    "subject": {
+      "name": "Ukrainians",
+      "entity_id": "PERS_UKRAINIANS",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "MEETS",
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
+    },
+    "object": {
+      "name": "Canada",
+      "entity_id": "CTRY_CAN",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": null,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "MEETS",
+    "action_event_type": "Diplomacy",
+    "action_detail": "",
+    "action_status": "UNKNOWN",
+    "action_polarity": "UNKNOWN",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "PERS_UKRAINIANS",
+        "entity_name": "Ukrainians",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_CAN",
+        "entity_name": "Canada",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 34076,
+    "article_url": "https://tass.com/world/2185795",
+    "subject": {
+      "name": "Canada",
+      "entity_id": "CTRY_CAN",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "COMPLETED",
+      "polarity": "POSITIVE",
+      "verb": "signed"
+    },
+    "object": {
+      "name": "a declaration to create a 100-year partnership that covers cooperation in defense and security",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
+    },
+    "time": {
+      "raw": "September 10",
+      "value": null
+    },
+    "location": {
+      "name": "Calgary in Alberta province",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Canadian Prime Minister Mark Carney and Zelensky signed the partnership on September 10 in Calgary in Alberta province.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "signed",
+    "action_status": "COMPLETED",
+    "action_polarity": "POSITIVE",
+    "event_time": "September 10",
+    "location_str": "Calgary in Alberta province",
+    "entities": [
+      {
+        "entity_id": "CTRY_CAN",
+        "entity_name": "Canada",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_UKR",
+        "entity_name": "Ukraine",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_SECURITY",
+        "entity_name": "security",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 34076,
+    "article_url": "https://tass.com/world/2185795",
+    "subject": {
+      "name": "Canada",
+      "entity_id": "CTRY_CAN",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "COMPLETED",
+      "polarity": "POSITIVE",
+      "verb": "signed"
+    },
+    "object": {
+      "name": "a declaration to localize defense production in Ukraine and Canada",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
+    },
+    "time": {
+      "raw": "unknown",
+      "value": null
+    },
+    "location": {
+      "name": "unknown",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "The two countries also signed a declaration to localize defense production in Ukraine and Canada, among other joint projects.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "signed",
+    "action_status": "COMPLETED",
+    "action_polarity": "POSITIVE",
+    "event_time": "unknown",
+    "location_str": "unknown",
+    "entities": [
+      {
+        "entity_id": "CTRY_CAN",
+        "entity_name": "Canada",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_UKR",
+        "entity_name": "Ukraine",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_CAN",
+        "entity_name": "Canada",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 34076,
+    "article_url": "https://tass.com/world/2185795",
+    "subject": {
+      "name": "Canada",
+      "entity_id": "CTRY_CAN",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "PLANNED",
+      "polarity": "NEUTRAL",
+      "verb": "provide"
+    },
+    "object": {
+      "name": "Canadian LNG supplies to Ukraine",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
+    },
+    "time": {
+      "raw": "unknown",
+      "value": null
+    },
+    "location": {
+      "name": "unknown",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "The document will allow for Canadian LNG supplies to Ukraine, Zelensky’s office noted.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "provide",
+    "action_status": "PLANNED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "unknown",
+    "location_str": "unknown",
+    "entities": [
+      {
+        "entity_id": "CTRY_CAN",
+        "entity_name": "Canada",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 34047,
+    "article_url": "https://tass.com/world/2185777",
+    "subject": {
+      "name": "United Nations",
+      "entity_id": "ORG_UNITED_NATIONS",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "SANCTIONS",
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
+    },
+    "object": {
+      "name": "Russian Federation",
+      "entity_id": "CTRY_RUSSIAN_FEDERATION",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": null,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "SANCTIONS",
+    "action_event_type": "Economic",
+    "action_detail": "",
+    "action_status": "UNKNOWN",
+    "action_polarity": "UNKNOWN",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "ORG_UNITED_NATIONS",
+        "entity_name": "United Nations",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_RUSSIAN_FEDERATION",
+        "entity_name": "Russian Federation",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 34060,
+    "article_url": "https://www.gov.uk/government/speeches/the-united-kingdom-strongly-condemns-the-houthis-decision-to-resume-conflict-in-yemen-and-their-continued-strikes-on-saudi-arabia-uk-statement-at-the-",
+    "subject": {
+      "name": "Ambassador Kate Foster",
+      "entity_id": "PERS_AMBASSADOR_KATE_FOSTER",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "ATTACKS",
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
+    },
+    "object": {
+      "name": "United Kingdom of Great Britain and Northern Ireland",
+      "entity_id": "CTRY_GBR",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": null,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "ATTACKS",
+    "action_event_type": "Military",
+    "action_detail": "",
+    "action_status": "UNKNOWN",
+    "action_polarity": "UNKNOWN",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "PERS_AMBASSADOR_KATE_FOSTER",
+        "entity_name": "Ambassador Kate Foster",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_GBR",
+        "entity_name": "United Kingdom of Great Britain and Northern Ireland",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 34039,
+    "article_url": "https://thehill.com/newsletters/technology/6083288-openai-calls-for-mandatory-safety-requirements/",
+    "subject": {
+      "name": "OpenAI",
+      "entity_id": "COMP_OPENAI",
+      "type": "Company",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "STATES",
+      "status": "EXPECTED",
+      "polarity": "NEUTRAL",
+      "verb": "calls for"
+    },
+    "object": {
+      "name": "mandatory safety requirements",
+      "entity_id": "ORG_MANDATORY_SAFETY_REQUIREMENTS",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "None",
+      "value": null
+    },
+    "location": {
+      "name": "None",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "OpenAI is calling for mandatory safety requirements for the technology following a series of model hackings and ominous warnings from researchers.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "STATES",
+    "action_event_type": "Politics",
+    "action_detail": "calls for",
+    "action_status": "EXPECTED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "None",
+    "location_str": "None",
+    "entities": [
+      {
+        "entity_id": "COMP_OPENAI",
+        "entity_name": "OpenAI",
+        "entity_type": "Company",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_MANDATORY_SAFETY_REQUIREMENTS",
+        "entity_name": "mandatory safety requirements",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 34039,
+    "article_url": "https://thehill.com/newsletters/technology/6083288-openai-calls-for-mandatory-safety-requirements/",
+    "subject": {
+      "name": "model hackings and ominous warnings",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "action": {
+      "type": "STATES",
+      "status": "COMPLETED",
+      "polarity": "NEGATIVE",
+      "verb": "prompted"
+    },
+    "object": {
+      "name": "mandatory safety requirements",
+      "entity_id": "ORG_MANDATORY_SAFETY_REQUIREMENTS",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "None",
+      "value": null
+    },
+    "location": {
+      "name": "None",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.9,
+    "evidence": "following a series of model hackings and ominous warnings from researchers.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "STATES",
+    "action_event_type": "Politics",
+    "action_detail": "prompted",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEGATIVE",
+    "event_time": "None",
+    "location_str": "None",
+    "entities": [
+      {
+        "entity_id": "ORG_MODEL_HACKINGS",
+        "entity_name": "model hackings",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_OMINOUS_WARNINGS",
+        "entity_name": "ominous warnings",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_MANDATORY_SAFETY_REQUIREMENTS",
+        "entity_name": "mandatory safety requirements",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 34038,
+    "article_url": "https://www.france24.com/en/iran-raises-fuel-prices-for-heavy-users",
+    "subject": {
+      "name": "Iran, Islamic Republic of",
+      "entity_id": "CTRY_IRN",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "ONGOING",
+      "polarity": "NEGATIVE",
+      "verb": "raises"
+    },
+    "object": {
+      "name": "fuel prices",
+      "entity_id": "ORG_FUEL_PRICES",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "unknown",
+      "value": null
+    },
+    "location": {
+      "name": "Iran",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Iran raises fuel prices for heavy users",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "raises",
+    "action_status": "ONGOING",
+    "action_polarity": "NEGATIVE",
+    "event_time": "unknown",
+    "location_str": "Iran",
+    "entities": [
+      {
+        "entity_id": "CTRY_IRN",
+        "entity_name": "Iran, Islamic Republic of",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_FUEL_PRICES",
+        "entity_name": "fuel prices",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 34038,
+    "article_url": "https://www.france24.com/en/iran-raises-fuel-prices-for-heavy-users",
+    "subject": {
+      "name": "US president Donald Trump",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "COMPLETED",
+      "polarity": "NEUTRAL",
+      "verb": "conceded"
+    },
+    "object": {
+      "name": "prices will not fall before the midterm elections",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
+    },
+    "time": {
+      "raw": "before the midterm elections",
+      "value": null
+    },
+    "location": {
+      "name": "unknown",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "US president Donald Trump has conceded that prices will not fall before the midterm elections where the US voters could hold him to account.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "conceded",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "before the midterm elections",
+    "location_str": "unknown",
+    "entities": []
+  },
+  {
+    "article_id": 33956,
+    "article_url": "https://www.france24.com/en/french-firefighters-on-six-week-strike-after-record-summer-blazes",
+    "subject": {
+      "name": "Firefighters in France",
+      "entity_id": "CTRY_FIREFIGHTERS_IN_FRANCE",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "ATTACKS",
+      "status": "ONGOING",
+      "polarity": "NEGATIVE",
+      "verb": "strike"
+    },
+    "object": {
+      "name": "lack of funding for essential emergency services",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
+    },
+    "time": {
+      "raw": "six-week",
+      "value": null
+    },
+    "location": {
+      "name": "France",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Firefighters in France are on strike over a lack of funding for essential emergency services.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "ATTACKS",
+    "action_event_type": "Military",
+    "action_detail": "strike",
+    "action_status": "ONGOING",
+    "action_polarity": "NEGATIVE",
+    "event_time": "six-week",
+    "location_str": "France",
+    "entities": [
+      {
+        "entity_id": "CTRY_FIREFIGHTERS_IN_FRANCE",
+        "entity_name": "Firefighters in France",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 33956,
+    "article_url": "https://www.france24.com/en/french-firefighters-on-six-week-strike-after-record-summer-blazes",
+    "subject": {
+      "name": "Wild fire episodes",
+      "entity_id": "ORG_WILD_FIRE_EPISODES",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "ATTACKS",
+      "status": "COMPLETED",
+      "polarity": "NEGATIVE",
+      "verb": "highlighted"
+    },
+    "object": {
+      "name": "Short comings in the current system",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
+    },
+    "time": {
+      "raw": "recent",
+      "value": null
+    },
+    "location": {
+      "name": "south of Paris and near Bordeaux",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.9,
+    "evidence": "Short comings in the current system were highlighted by these extreme cases.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "ATTACKS",
+    "action_event_type": "Military",
+    "action_detail": "highlighted",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEGATIVE",
+    "event_time": "recent",
+    "location_str": "south of Paris and near Bordeaux",
+    "entities": [
+      {
+        "entity_id": "ORG_WILD_FIRE_EPISODES",
+        "entity_name": "Wild fire episodes",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 34057,
+    "article_url": "https://www.ft.com/content/7816ad68-58ed-494c-a66f-091a9cca2cbc?syn-25a6b1a6=1",
+    "subject": {
+      "name": "European Central Bank",
+      "entity_id": "ORG_ECB",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "RATE_CUT",
+      "status": "EXPECTED",
+      "polarity": "NEUTRAL",
+      "verb": "lifts"
+    },
+    "object": {
+      "name": "interest rates",
+      "entity_id": "ORG_INTEREST_RATES",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "N/A",
+      "value": null
+    },
+    "location": {
+      "name": "N/A",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "ECB prepares for ‘longer-lasting’ inflation as it lifts interest rates to 2.5%",
+    "evidence_type": "UNKNOWN",
+    "action_type": "RATE_CUT",
+    "action_event_type": "Finance",
+    "action_detail": "lifts",
+    "action_status": "EXPECTED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "N/A",
+    "location_str": "N/A",
+    "entities": [
+      {
+        "entity_id": "ORG_ECB",
+        "entity_name": "European Central Bank",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_INTEREST_RATES",
+        "entity_name": "interest rates",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 34057,
+    "article_url": "https://www.ft.com/content/7816ad68-58ed-494c-a66f-091a9cca2cbc?syn-25a6b1a6=1",
+    "subject": {
+      "name": "Christine Lagarde",
+      "entity_id": "PERS_CHRISTINE_LAGARDE",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "WARNS",
+      "status": "ANNOUNCED",
+      "polarity": "NEGATIVE",
+      "verb": "warns"
+    },
+    "object": {
+      "name": "price shock driven by Middle East conflict",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
+    },
+    "time": {
+      "raw": "well into 2027",
+      "value": null
+    },
+    "location": {
+      "name": "N/A",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Central bank president Christine Lagarde warns price shock driven by Middle East conflict will persist well into 2027",
+    "evidence_type": "UNKNOWN",
+    "action_type": "WARNS",
+    "action_event_type": "Politics",
+    "action_detail": "warns",
+    "action_status": "ANNOUNCED",
+    "action_polarity": "NEGATIVE",
+    "event_time": "well into 2027",
+    "location_str": "N/A",
+    "entities": [
+      {
+        "entity_id": "PERS_CHRISTINE_LAGARDE",
+        "entity_name": "Christine Lagarde",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 34057,
+    "article_url": "https://www.ft.com/content/7816ad68-58ed-494c-a66f-091a9cca2cbc?syn-25a6b1a6=1",
+    "subject": {
+      "name": "European Central Bank",
+      "entity_id": "ORG_ECB",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "ONGOING",
+      "polarity": "NEUTRAL",
+      "verb": "prepares"
+    },
+    "object": {
+      "name": "longer-lasting' inflation",
+      "entity_id": "ORG_LONGER_LASTING_INFLATION",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "N/A",
+      "value": null
+    },
+    "location": {
+      "name": "N/A",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "ECB prepares for ‘longer-lasting’ inflation as it lifts interest rates to 2.5%",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "prepares",
+    "action_status": "ONGOING",
+    "action_polarity": "NEUTRAL",
+    "event_time": "N/A",
+    "location_str": "N/A",
+    "entities": [
+      {
+        "entity_id": "ORG_ECB",
+        "entity_name": "European Central Bank",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_LONGER_LASTING_INFLATION",
+        "entity_name": "longer-lasting' inflation",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 33968,
+    "article_url": "https://www.cnbc.com/2026/09/11/chinese-nvidia-rival-enflame-stock-market-debut-ai.html",
+    "subject": {
+      "name": "Enflame",
+      "entity_id": "COMP_ENFLAME",
+      "type": "Company",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "SURGES",
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
+    },
+    "object": {
+      "name": "Chinese",
+      "entity_id": "CTRY_CHINESE",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": null,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "SURGES",
+    "action_event_type": "Finance",
+    "action_detail": "",
+    "action_status": "UNKNOWN",
+    "action_polarity": "UNKNOWN",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "COMP_ENFLAME",
+        "entity_name": "Enflame",
+        "entity_type": "Company",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_CHINESE",
+        "entity_name": "Chinese",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 33986,
+    "article_url": "https://www.aljazeera.com/video/newsfeed/2026/9/10/10-09-sv-pakistan-yemen-mecca-pk?traffic_source=rss",
+    "subject": {
+      "name": "Houthi",
+      "entity_id": "ORG_HOUTHI",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "AGREES",
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
+    },
+    "object": {
+      "name": "Pakistan",
+      "entity_id": "CTRY_PAK",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": null,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "AGREES",
+    "action_event_type": "Diplomacy",
+    "action_detail": "",
+    "action_status": "UNKNOWN",
+    "action_polarity": "UNKNOWN",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "ORG_HOUTHI",
+        "entity_name": "Houthi",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_PAK",
+        "entity_name": "Pakistan",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 33950,
+    "article_url": "https://thehill.com/newsletters/defense-national-security/6083326-acting-navy-secretary-says-iran-blew-the-hell-out-of-us-base-in-bahrain/",
+    "subject": {
+      "name": "NatSec",
+      "entity_id": "ORG_NATSEC",
       "type": "Organization",
       "object_type": "ENTITY"
     },
@@ -2721,8 +3498,8 @@
     "location_str": "",
     "entities": [
       {
-        "entity_id": "ORG_UN_ATOMIC_WATCHDOG",
-        "entity_name": "UN atomic watchdog",
+        "entity_id": "ORG_NATSEC",
+        "entity_name": "NatSec",
         "entity_type": "Organization",
         "role": "SUBJECT"
       },
@@ -2735,584 +3512,705 @@
     ]
   },
   {
-    "article_id": 32981,
-    "article_url": "https://www.axios.com/2026/09/09/trump-midterm-election-mess-courts",
+    "article_id": 33957,
+    "article_url": "https://www.axios.com/2026/09/10/anthropic-claude-government-surveillance-threats",
     "subject": {
-      "name": "nation's election system",
-      "entity_id": "CTRY_NATIONS_ELECTION_SYSTEM",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "ONGOING",
-      "polarity": "NEGATIVE",
-      "verb": "is"
-    },
-    "object": {
-      "name": "messy legal limbo",
-      "entity_id": "ORG_MESSY_LEGAL_LIMBO",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "The nation's election system is in a messy legal limbo",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "is",
-    "action_status": "ONGOING",
-    "action_polarity": "NEGATIVE",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "CTRY_NATIONS_ELECTION_SYSTEM",
-        "entity_name": "nation's election system",
-        "entity_type": "Country",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_MESSY_LEGAL_LIMBO",
-        "entity_name": "messy legal limbo",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 32981,
-    "article_url": "https://www.axios.com/2026/09/09/trump-midterm-election-mess-courts",
-    "subject": {
-      "name": "fights",
-      "entity_id": "ORG_FIGHTS",
+      "name": "State-run surveillance operations",
+      "entity_id": "ORG_STATE_RUN_SURVEILLANCE_OPERATIONS",
       "type": "Organization",
       "object_type": "ENTITY"
     },
     "action": {
       "type": "OTHER",
       "status": "ONGOING",
-      "polarity": "NEGATIVE",
-      "verb": "over"
-    },
-    "object": {
-      "name": "mail-in voting",
-      "entity_id": "ORG_MAIL_IN_VOTING",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "with fights over mail-in voting",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "over",
-    "action_status": "ONGOING",
-    "action_polarity": "NEGATIVE",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "ORG_FIGHTS",
-        "entity_name": "fights",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_MAIL_IN_VOTING",
-        "entity_name": "mail-in voting",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 33004,
-    "article_url": "https://www.darkreading.com/application-security/us-government-chinese-ai-firms-distilling-frontier-models",
-    "subject": {
-      "name": "OpenAI",
-      "entity_id": "COMP_OPENAI",
-      "type": "Company",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "ACCUSES",
-      "status": "UNKNOWN",
-      "polarity": "UNKNOWN",
-      "verb": ""
-    },
-    "object": {
-      "name": "United States",
-      "entity_id": "CTRY_UNITED_STATES",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": null,
-    "evidence": "",
-    "evidence_type": "UNKNOWN",
-    "action_type": "ACCUSES",
-    "action_event_type": "Legal",
-    "action_detail": "",
-    "action_status": "UNKNOWN",
-    "action_polarity": "UNKNOWN",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "COMP_OPENAI",
-        "entity_name": "OpenAI",
-        "entity_type": "Company",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_UNITED_STATES",
-        "entity_name": "United States",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 33040,
-    "article_url": "https://tass.com/defense/2185071",
-    "subject": {
-      "name": "Russian Defense Ministry",
-      "entity_id": "ORG_RUSSIAN_DEFENSE_MINISTRY",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "UNKNOWN",
-      "polarity": "UNKNOWN",
-      "verb": ""
-    },
-    "object": {
-      "name": "Ukrainian",
-      "entity_id": "CTRY_UKRAINIAN",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": null,
-    "evidence": "",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "",
-    "action_status": "UNKNOWN",
-    "action_polarity": "UNKNOWN",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "ORG_RUSSIAN_DEFENSE_MINISTRY",
-        "entity_name": "Russian Defense Ministry",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_UKRAINIAN",
-        "entity_name": "Ukrainian",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 33046,
-    "article_url": "https://abcnews.com/video/136304193/",
-    "subject": {
-      "name": "Tesla",
-      "entity_id": "COMP_TESLA",
-      "type": "Company",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "CRASHES",
-      "status": "UNKNOWN",
-      "polarity": "UNKNOWN",
-      "verb": ""
-    },
-    "object": {
-      "name": "Midtown Manhattan",
-      "entity_id": "LOC_MIDTOWN_MANHATTAN",
-      "type": "Location",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": null,
-    "evidence": "",
-    "evidence_type": "UNKNOWN",
-    "action_type": "CRASHES",
-    "action_event_type": "Finance",
-    "action_detail": "",
-    "action_status": "UNKNOWN",
-    "action_polarity": "UNKNOWN",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "COMP_TESLA",
-        "entity_name": "Tesla",
-        "entity_type": "Company",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "LOC_MIDTOWN_MANHATTAN",
-        "entity_name": "Midtown Manhattan",
-        "entity_type": "Location",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 32996,
-    "article_url": "https://www.aa.com.tr/en/world/un-agency-ends-syria-nuclear-noncompliance-finding/4052463",
-    "subject": {
-      "name": "Syrian Atomic Energy Commission",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "UNKNOWN",
-      "polarity": "UNKNOWN",
-      "verb": ""
-    },
-    "object": {
-      "name": "Syria",
-      "entity_id": "ORG_SYRIA",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": null,
-    "evidence": "",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "",
-    "action_status": "UNKNOWN",
-    "action_polarity": "UNKNOWN",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "ORG_SYRIA",
-        "entity_name": "Syria",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 33024,
-    "article_url": "https://www.washingtonpost.com/business/2026/09/09/oils-rise-past-100-per-barrel-deepens-gops-midterm-challenge/",
-    "subject": {
-      "name": "Oil's rise",
-      "entity_id": "ORG_OILS_RISE",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "SURGES",
-      "status": "COMPLETED",
-      "polarity": "NEGATIVE",
-      "verb": "rise"
-    },
-    "object": {
-      "name": "$100 per barrel",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "AMOUNT"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Oil’s rise past $100 per barrel deepens GOP’s midterm challenge",
-    "evidence_type": "UNKNOWN",
-    "action_type": "SURGES",
-    "action_event_type": "Finance",
-    "action_detail": "rise",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEGATIVE",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "ORG_OILS_RISE",
-        "entity_name": "Oil's rise",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 33024,
-    "article_url": "https://www.washingtonpost.com/business/2026/09/09/oils-rise-past-100-per-barrel-deepens-gops-midterm-challenge/",
-    "subject": {
-      "name": "GOP's midterm elections prospects",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "action": {
-      "type": "SURGES",
-      "status": "ONGOING",
-      "polarity": "NEGATIVE",
-      "verb": "deepens"
-    },
-    "object": {
-      "name": "GOP's midterm challenge",
-      "entity_id": "ORG_GOPS_MIDTERM_CHALLENGE",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "this week",
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 0.9,
-    "evidence": "Oil’s rise past $100 per barrel deepens GOP’s midterm challenge",
-    "evidence_type": "UNKNOWN",
-    "action_type": "SURGES",
-    "action_event_type": "Finance",
-    "action_detail": "deepens",
-    "action_status": "ONGOING",
-    "action_polarity": "NEGATIVE",
-    "event_time": "this week",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "ORG_GOPS_MIDTERM_CHALLENGE",
-        "entity_name": "GOP's midterm challenge",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 33024,
-    "article_url": "https://www.washingtonpost.com/business/2026/09/09/oils-rise-past-100-per-barrel-deepens-gops-midterm-challenge/",
-    "subject": {
-      "name": "High gas prices",
-      "entity_id": "ORG_HIGH_GAS_PRICES",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "SURGES",
-      "status": "EXPECTED",
-      "polarity": "NEGATIVE",
-      "verb": "haunt"
-    },
-    "object": {
-      "name": "Republican candidates",
-      "entity_id": "ORG_REPUBLICAN_CANDIDATES",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "through Election Day",
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 0.9,
-    "evidence": "The high gas prices are likely to haunt Republican candidates through Election Day.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "SURGES",
-    "action_event_type": "Finance",
-    "action_detail": "haunt",
-    "action_status": "EXPECTED",
-    "action_polarity": "NEGATIVE",
-    "event_time": "through Election Day",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "ORG_HIGH_GAS_PRICES",
-        "entity_name": "High gas prices",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_REPUBLICAN_CANDIDATES",
-        "entity_name": "Republican candidates",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 33043,
-    "article_url": "https://www.investing.com/news/transcripts/robinhood-at-goldman-sachs-communacopia--technology-conference-2026-broadening-its-financial-reach-93CH-4894856",
-    "subject": {
-      "name": "Robinhood Markets (HOOD",
-      "entity_id": "COMP_ROBINHOOD_MARKETS_HOOD",
-      "type": "Company",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "COMPLETED",
       "polarity": "NEUTRAL",
-      "verb": "presented"
+      "verb": "using"
     },
     "object": {
-      "name": "2026 Goldman Sachs Communacopia + Technology Conference",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "AMOUNT"
+      "name": "Claude",
+      "entity_id": "PERS_CLAUDE",
+      "type": "Person",
+      "object_type": "ENTITY"
     },
     "time": {
-      "raw": "September 9, 2026",
+      "raw": "unknown",
       "value": null
     },
     "location": {
-      "name": "N/A",
+      "name": "around the world",
       "entity_id": null,
       "type": null
     },
-    "confidence": 1.0,
-    "evidence": "Robinhood Markets (HOOD) presented at the 2026 Goldman Sachs Communacopia + Technology Conference on September 9, 2026.",
+    "confidence": 1,
+    "evidence": "State-run surveillance operations around the world are using Claude to streamline their operations",
     "evidence_type": "UNKNOWN",
     "action_type": "OTHER",
     "action_event_type": "General",
-    "action_detail": "presented",
-    "action_status": "COMPLETED",
+    "action_detail": "using",
+    "action_status": "ONGOING",
     "action_polarity": "NEUTRAL",
-    "event_time": "September 9, 2026",
-    "location_str": "N/A",
+    "event_time": "unknown",
+    "location_str": "around the world",
     "entities": [
       {
-        "entity_id": "COMP_ROBINHOOD_MARKETS_HOOD",
-        "entity_name": "Robinhood Markets (HOOD",
-        "entity_type": "Company",
+        "entity_id": "ORG_STATE_RUN_SURVEILLANCE_OPERATIONS",
+        "entity_name": "State-run surveillance operations",
+        "entity_type": "Organization",
         "role": "SUBJECT"
+      },
+      {
+        "entity_id": "PERS_CLAUDE",
+        "entity_name": "Claude",
+        "entity_type": "Person",
+        "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 33043,
-    "article_url": "https://www.investing.com/news/transcripts/robinhood-at-goldman-sachs-communacopia--technology-conference-2026-broadening-its-financial-reach-93CH-4894856",
+    "article_id": 33979,
+    "article_url": "https://www.independent.co.uk/news/world/europe/israeli-gaza-james-wilson-hamas-italy-b3048128.html",
     "subject": {
-      "name": "Vlad Tenev",
-      "entity_id": "PERS_VLAD_TENEV",
+      "name": "Yuval Abraham",
+      "entity_id": "PERS_YUVAL_ABRAHAM",
       "type": "Person",
       "object_type": "ENTITY"
     },
     "action": {
       "type": "OTHER",
-      "status": "COMPLETED",
-      "polarity": "NEUTRAL",
-      "verb": "delivered"
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
     },
     "object": {
-      "name": "presentation",
-      "entity_id": "ORG_PRESENTATION",
-      "type": "Organization",
+      "name": "Israeli",
+      "entity_id": "CTRY_ISRAELI",
+      "type": "Country",
       "object_type": "ENTITY"
     },
     "time": {
-      "raw": "September 9, 2026",
+      "raw": null,
       "value": null
     },
     "location": {
-      "name": "2026 Goldman Sachs Communacopia + Technology Conference",
+      "name": null,
       "entity_id": null,
       "type": null
     },
-    "confidence": 1.0,
-    "evidence": "Chairman and CEO Vlad Tenev delivered the presentation.",
+    "confidence": null,
+    "evidence": "",
     "evidence_type": "UNKNOWN",
     "action_type": "OTHER",
     "action_event_type": "General",
-    "action_detail": "delivered",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "September 9, 2026",
-    "location_str": "2026 Goldman Sachs Communacopia + Technology Conference",
+    "action_detail": "",
+    "action_status": "UNKNOWN",
+    "action_polarity": "UNKNOWN",
+    "event_time": "",
+    "location_str": "",
     "entities": [
       {
-        "entity_id": "PERS_VLAD_TENEV",
-        "entity_name": "Vlad Tenev",
+        "entity_id": "PERS_YUVAL_ABRAHAM",
+        "entity_name": "Yuval Abraham",
         "entity_type": "Person",
         "role": "SUBJECT"
       },
       {
-        "entity_id": "ORG_PRESENTATION",
-        "entity_name": "presentation",
+        "entity_id": "CTRY_ISRAELI",
+        "entity_name": "Israeli",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 33953,
+    "article_url": "https://news.un.org/feed/view/en/story/2026/09/1168309",
+    "subject": {
+      "name": "Security Council",
+      "entity_id": "ORG_SECURITY_COUNCIL",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "MEETS",
+      "status": "PLANNED",
+      "polarity": "NEUTRAL",
+      "verb": "meeting"
+    },
+    "object": {
+      "name": "emergency meeting on Yemen",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "time": {
+      "raw": "Thursday at 3pm",
+      "value": null
+    },
+    "location": {
+      "name": "New York",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "the Security Council is meeting on Thursday at 3pm in New York to discuss the lates",
+    "evidence_type": "UNKNOWN",
+    "action_type": "MEETS",
+    "action_event_type": "Diplomacy",
+    "action_detail": "meeting",
+    "action_status": "PLANNED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "Thursday at 3pm",
+    "location_str": "New York",
+    "entities": [
+      {
+        "entity_id": "ORG_SECURITY_COUNCIL",
+        "entity_name": "Security Council",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 33953,
+    "article_url": "https://news.un.org/feed/view/en/story/2026/09/1168309",
+    "subject": {
+      "name": "Houthi attacks",
+      "entity_id": "ORG_HOUTHI_ATTACKS",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "REPORTS",
+      "status": "COMPLETED",
+      "polarity": "NEGATIVE",
+      "verb": "reported"
+    },
+    "object": {
+      "name": "Saudi Arabia",
+      "entity_id": "CTRY_SAU",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "Tuesday",
+      "value": null
+    },
+    "location": {
+      "name": "Saudi Arabia",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "On the heels of reported Houthi attacks on Saudi Arabia on Tuesday",
+    "evidence_type": "UNKNOWN",
+    "action_type": "REPORTS",
+    "action_event_type": "Finance",
+    "action_detail": "reported",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEGATIVE",
+    "event_time": "Tuesday",
+    "location_str": "Saudi Arabia",
+    "entities": [
+      {
+        "entity_id": "ORG_HOUTHI_ATTACKS",
+        "entity_name": "Houthi attacks",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_SAU",
+        "entity_name": "Saudi Arabia",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 33953,
+    "article_url": "https://news.un.org/feed/view/en/story/2026/09/1168309",
+    "subject": {
+      "name": "militants",
+      "entity_id": "ORG_MILITANTS",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "ATTACKS",
+      "status": "COMPLETED",
+      "polarity": "NEGATIVE",
+      "verb": "capture"
+    },
+    "object": {
+      "name": "key port",
+      "entity_id": "ORG_KEY_PORT",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "Unknown",
+      "value": null
+    },
+    "location": {
+      "name": "Yemen’s Red Sea coast",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "and the capture of another key port by the militants on Yemen’s Red Sea coast",
+    "evidence_type": "UNKNOWN",
+    "action_type": "ATTACKS",
+    "action_event_type": "Military",
+    "action_detail": "capture",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEGATIVE",
+    "event_time": "Unknown",
+    "location_str": "Yemen’s Red Sea coast",
+    "entities": [
+      {
+        "entity_id": "ORG_MILITANTS",
+        "entity_name": "militants",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_KEY_PORT",
+        "entity_name": "key port",
         "entity_type": "Organization",
         "role": "OBJECT"
       }
     ]
+  },
+  {
+    "article_id": 33984,
+    "article_url": "https://www.independent.co.uk/news/world/americas/us-politics/trump-doj-voter-data-letter-election-lawsuits-b3048223.html",
+    "subject": {
+      "name": "Trump's administration",
+      "entity_id": "PERS_TRUMPS_ADMINISTRATION",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "ELECTS",
+      "status": "COMPLETED",
+      "polarity": "NEGATIVE",
+      "verb": "lost"
+    },
+    "object": {
+      "name": "23 legal battles over voter data",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "AMOUNT"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Trump lost 23 legal battles over voter data.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "ELECTS",
+    "action_event_type": "Politics",
+    "action_detail": "lost",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEGATIVE",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "PERS_TRUMPS_ADMINISTRATION",
+        "entity_name": "Trump's administration",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 33984,
+    "article_url": "https://www.independent.co.uk/news/world/americas/us-politics/trump-doj-voter-data-letter-election-lawsuits-b3048223.html",
+    "subject": {
+      "name": "DOJ",
+      "entity_id": "ORG_DOJ",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "ELECTS",
+      "status": "ONGOING",
+      "polarity": "NEGATIVE",
+      "verb": "demanding"
+    },
+    "object": {
+      "name": "election officials to hand over voter data",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Now DOJ is demanding election officials hand it over",
+    "evidence_type": "UNKNOWN",
+    "action_type": "ELECTS",
+    "action_event_type": "Politics",
+    "action_detail": "demanding",
+    "action_status": "ONGOING",
+    "action_polarity": "NEGATIVE",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "ORG_DOJ",
+        "entity_name": "DOJ",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 33984,
+    "article_url": "https://www.independent.co.uk/news/world/americas/us-politics/trump-doj-voter-data-letter-election-lawsuits-b3048223.html",
+    "subject": {
+      "name": "Election officials in 30 states",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "action": {
+      "type": "ELECTS",
+      "status": "ONGOING",
+      "polarity": "NEUTRAL",
+      "verb": "receive"
+    },
+    "object": {
+      "name": "'threatening' letters to retain sensitive voter data",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": "30 states",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Republican and Democratic election officials in 30 states receive ‘threatening’ letters to retain sensitive voter data",
+    "evidence_type": "UNKNOWN",
+    "action_type": "ELECTS",
+    "action_event_type": "Politics",
+    "action_detail": "receive",
+    "action_status": "ONGOING",
+    "action_polarity": "NEUTRAL",
+    "event_time": "",
+    "location_str": "30 states",
+    "entities": []
+  },
+  {
+    "article_id": 33958,
+    "article_url": "https://www.scmp.com/news/us/diplomacy/article/3367112/moonshot-deepseek-secretly-routed-user-requests-claude-anthropic-claims?utm_source=rss_feed",
+    "subject": {
+      "name": "Anthropic",
+      "entity_id": "COMP_ANTHROPIC",
+      "type": "Company",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "CLAIMS",
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
+    },
+    "object": {
+      "name": "American",
+      "entity_id": "CTRY_AMERICAN",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": null,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "CLAIMS",
+    "action_event_type": "Politics",
+    "action_detail": "",
+    "action_status": "UNKNOWN",
+    "action_polarity": "UNKNOWN",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "COMP_ANTHROPIC",
+        "entity_name": "Anthropic",
+        "entity_type": "Company",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_AMERICAN",
+        "entity_name": "American",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 33987,
+    "article_url": "https://www.aa.com.tr/en/eurasia/russia-links-israeli-threats-to-eliminate-palestinian-leadership-to-election-campaign/4053534",
+    "subject": {
+      "name": "Russian Federation",
+      "entity_id": "CTRY_RUSSIAN_FEDERATION",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "ELECTS",
+      "status": "ANNOUNCED",
+      "polarity": "NEUTRAL",
+      "verb": "links"
+    },
+    "object": {
+      "name": "Israeli threats to eliminate Palestinian leadership",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Russia links Israeli threats to eliminate Palestinian leadership to election campaign",
+    "evidence_type": "UNKNOWN",
+    "action_type": "ELECTS",
+    "action_event_type": "Politics",
+    "action_detail": "links",
+    "action_status": "ANNOUNCED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "CTRY_RUSSIAN_FEDERATION",
+        "entity_name": "Russian Federation",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 33987,
+    "article_url": "https://www.aa.com.tr/en/eurasia/russia-links-israeli-threats-to-eliminate-palestinian-leadership-to-election-campaign/4053534",
+    "subject": {
+      "name": "Russian Federation Government",
+      "entity_id": "ORG_RU_GOVERNMENT",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "ELECTS",
+      "status": "ANNOUNCED",
+      "polarity": "NEUTRAL",
+      "verb": "says"
+    },
+    "object": {
+      "name": "comprehensive settlement based on international law only path to lasting peace",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Moscow says comprehensive settlement based on international law only path to lasting peace",
+    "evidence_type": "UNKNOWN",
+    "action_type": "ELECTS",
+    "action_event_type": "Politics",
+    "action_detail": "says",
+    "action_status": "ANNOUNCED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "ORG_RU_GOVERNMENT",
+        "entity_name": "Russian Federation Government",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 33988,
+    "article_url": "https://tass.com/economy/2185701",
+    "subject": {
+      "name": "Russian Federation",
+      "entity_id": "CTRY_RUSSIAN_FEDERATION",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "CUTS",
+      "status": "COMPLETED",
+      "polarity": "NEUTRAL",
+      "verb": "reduced"
+    },
+    "object": {
+      "name": "oil production by 160,000 bpd month-on-month",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
+    },
+    "time": {
+      "raw": "August 2026",
+      "value": null
+    },
+    "location": {
+      "name": "August",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "In August 2026, Russia reduced its oil production by 160,000 barrels per day (bpd) month-on-month to 8.718 million bpd, according to a report by the Organization of the Petroleum Exporting Countries (OPEC).",
+    "evidence_type": "UNKNOWN",
+    "action_type": "CUTS",
+    "action_event_type": "Economic",
+    "action_detail": "reduced",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "August 2026",
+    "location_str": "August",
+    "entities": [
+      {
+        "entity_id": "CTRY_RUSSIAN_FEDERATION",
+        "entity_name": "Russian Federation",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 33988,
+    "article_url": "https://tass.com/economy/2185701",
+    "subject": {
+      "name": "Russia's oil production",
+      "entity_id": "CTRY_RUSSIAS_OIL_PRODUCTION",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "CUTS",
+      "status": "COMPLETED",
+      "polarity": "NEUTRAL",
+      "verb": "was"
+    },
+    "object": {
+      "name": "8.718 million bpd",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "AMOUNT"
+    },
+    "time": {
+      "raw": "August 2026",
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "In August 2026, Russia reduced its oil production by 160,000 barrels per day (bpd) month-on-month to 8.718 million bpd, according to a report by the Organization of the Petroleum Exporting Countries (OPEC).",
+    "evidence_type": "UNKNOWN",
+    "action_type": "CUTS",
+    "action_event_type": "Economic",
+    "action_detail": "was",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "August 2026",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "CTRY_RUSSIAS_OIL_PRODUCTION",
+        "entity_name": "Russia's oil production",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 33988,
+    "article_url": "https://tass.com/economy/2185701",
+    "subject": {
+      "name": "Russia's quota under the OPEC+ deal",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "action": {
+      "type": "CUTS",
+      "status": "ONGOING",
+      "polarity": "NEUTRAL",
+      "verb": "stood at"
+    },
+    "object": {
+      "name": "9.887 million bpd",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "AMOUNT"
+    },
+    "time": {
+      "raw": "August",
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "In August, Russia's quota under the OPEC+ deal stood at 9.887 million bpd, including all voluntary restrictions.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "CUTS",
+    "action_event_type": "Economic",
+    "action_detail": "stood at",
+    "action_status": "ONGOING",
+    "action_polarity": "NEUTRAL",
+    "event_time": "August",
+    "location_str": "",
+    "entities": []
   }
 ]
