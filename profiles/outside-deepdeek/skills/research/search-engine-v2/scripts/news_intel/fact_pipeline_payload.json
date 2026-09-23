@@ -1,65 +1,676 @@
 [
   {
-    "article_id": 42998,
-    "article_url": "https://www.rfi.fr/cn/%E6%AC%A7%E6%B4%B2/20260921-%E6%AC%A7%E7%9B%9F%E5%87%86%E5%A4%87%E8%A7%A3%E9%99%A4%E5%AF%B9%E4%B8%A4%E5%90%8D%E4%BF%84%E5%AF%A1%E5%A4%B4%E7%9A%84%E5%88%B6%E8%A3%81",
+    "article_id": 44047,
+    "article_url": "https://www.rfi.fr/cn/%E6%B3%95%E5%9B%BD/20260922-%E7%87%83%E6%B2%B9-%E6%B3%95%E6%94%BF%E5%BA%9C%E5%BB%B6%E9%95%BF%E5%B9%B6%E6%89%A9%E5%A4%A7%E8%A1%A5%E8%B4%B4%E8%8C%83%E5%9B%B4",
     "subject": {
-      "name": "乌克兰外交部长",
-      "entity_id": "PERS_乌克兰外交部长",
+      "name": "政府",
+      "entity_id": "ORG_政府",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "GROWS",
+      "status": "COMPLETED",
+      "polarity": "POSITIVE",
+      "verb": "延长"
+    },
+    "object": {
+      "name": "高里程驾驶者",
+      "entity_id": "PERS_高里程驾驶者",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "周二",
+      "value": null
+    },
+    "location": {
+      "name": "法国",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1.0,
+    "evidence": "摘要",
+    "evidence_type": "UNKNOWN",
+    "action_type": "GROWS",
+    "action_event_type": "Economic",
+    "action_detail": "延长",
+    "action_status": "COMPLETED",
+    "action_polarity": "POSITIVE",
+    "event_time": "周二",
+    "location_str": "法国",
+    "entities": [
+      {
+        "entity_id": "ORG_政府",
+        "entity_name": "政府",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "PERS_高里程驾驶者",
+        "entity_name": "高里程驾驶者",
+        "entity_type": "Person",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 44047,
+    "article_url": "https://www.rfi.fr/cn/%E6%B3%95%E5%9B%BD/20260922-%E7%87%83%E6%B2%B9-%E6%B3%95%E6%94%BF%E5%BA%9C%E5%BB%B6%E9%95%BF%E5%B9%B6%E6%89%A9%E5%A4%A7%E8%A1%A5%E8%B4%B4%E8%8C%83%E5%9B%B4",
+    "subject": {
+      "name": "政府",
+      "entity_id": "ORG_政府",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "GROWS",
+      "status": "COMPLETED",
+      "polarity": "POSITIVE",
+      "verb": "扩大"
+    },
+    "object": {
+      "name": "经济援助计划",
+      "entity_id": "PERS_经济援助计划",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "周二",
+      "value": null
+    },
+    "location": {
+      "name": "法国",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1.0,
+    "evidence": "正文",
+    "evidence_type": "UNKNOWN",
+    "action_type": "GROWS",
+    "action_event_type": "Economic",
+    "action_detail": "扩大",
+    "action_status": "COMPLETED",
+    "action_polarity": "POSITIVE",
+    "event_time": "周二",
+    "location_str": "法国",
+    "entities": [
+      {
+        "entity_id": "ORG_政府",
+        "entity_name": "政府",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "PERS_经济援助计划",
+        "entity_name": "经济援助计划",
+        "entity_type": "Person",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 44047,
+    "article_url": "https://www.rfi.fr/cn/%E6%B3%95%E5%9B%BD/20260922-%E7%87%83%E6%B2%B9-%E6%B3%95%E6%94%BF%E5%BA%9C%E5%BB%B6%E9%95%BF%E5%B9%B6%E6%89%A9%E5%A4%A7%E8%A1%A5%E8%B4%B4%E8%8C%83%E5%9B%B4",
+    "subject": {
+      "name": "政府",
+      "entity_id": "ORG_政府",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "GROWS",
+      "status": "COMPLETED",
+      "polarity": "POSITIVE",
+      "verb": "延长"
+    },
+    "object": {
+      "name": "经济援助计划",
+      "entity_id": "PERS_经济援助计划",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "周二",
+      "value": null
+    },
+    "location": {
+      "name": "法国",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1.0,
+    "evidence": "摘要",
+    "evidence_type": "UNKNOWN",
+    "action_type": "GROWS",
+    "action_event_type": "Economic",
+    "action_detail": "延长",
+    "action_status": "COMPLETED",
+    "action_polarity": "POSITIVE",
+    "event_time": "周二",
+    "location_str": "法国",
+    "entities": [
+      {
+        "entity_id": "ORG_政府",
+        "entity_name": "政府",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "PERS_经济援助计划",
+        "entity_name": "经济援助计划",
+        "entity_type": "Person",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 44051,
+    "article_url": "https://www.rfi.fr/cn/%E6%AC%A7%E6%B4%B2/20260922-%E6%B3%95%E5%9B%BD%E6%96%BD%E5%8E%8B%E6%AC%A7%E7%9B%9F%E8%A7%A3%E7%A6%81%E4%BF%84%E5%AF%8C%E8%B1%AA%E6%88%90%E5%8A%9F",
+    "subject": {
+      "name": "欧盟成员国",
+      "entity_id": "PERS_欧盟成员国",
       "type": "Person",
       "object_type": "ENTITY"
     },
     "action": {
       "type": "SANCTIONS",
-      "status": "EXPECTED",
-      "polarity": "NEGATIVE",
-      "verb": "警告"
+      "status": "COMPLETED",
+      "polarity": "POSITIVE",
+      "verb": "延长制裁"
     },
     "object": {
-      "name": "移除两名俄罗斯寡头",
-      "entity_id": "CTRY_移除两名俄罗斯寡头",
+      "name": "俄罗斯企业",
+      "entity_id": "CTRY_俄罗斯企业",
       "type": "Country",
       "object_type": "ENTITY"
     },
     "time": {
-      "raw": "协议正式宣布之前",
+      "raw": "周二",
       "value": null
     },
     "location": {
-      "name": "乌克兰",
+      "name": "欧盟",
       "entity_id": null,
       "type": null
     },
-    "confidence": 0.75,
-    "evidence": "",
+    "confidence": 0.9,
+    "evidence": "摘要",
     "evidence_type": "UNKNOWN",
     "action_type": "SANCTIONS",
     "action_event_type": "Economic",
-    "action_detail": "警告",
-    "action_status": "EXPECTED",
-    "action_polarity": "NEGATIVE",
-    "event_time": "协议正式宣布之前",
-    "location_str": "乌克兰",
+    "action_detail": "延长制裁",
+    "action_status": "COMPLETED",
+    "action_polarity": "POSITIVE",
+    "event_time": "周二",
+    "location_str": "欧盟",
     "entities": [
       {
-        "entity_id": "PERS_乌克兰外交部长",
-        "entity_name": "乌克兰外交部长",
+        "entity_id": "PERS_欧盟成员国",
+        "entity_name": "欧盟成员国",
         "entity_type": "Person",
         "role": "SUBJECT"
       },
       {
-        "entity_id": "CTRY_移除两名俄罗斯寡头",
-        "entity_name": "移除两名俄罗斯寡头",
+        "entity_id": "CTRY_俄罗斯企业",
+        "entity_name": "俄罗斯企业",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      },
+      {
+        "entity_id": "PERS_个人",
+        "entity_name": "个人",
+        "entity_type": "Person",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 44051,
+    "article_url": "https://www.rfi.fr/cn/%E6%AC%A7%E6%B4%B2/20260922-%E6%B3%95%E5%9B%BD%E6%96%BD%E5%8E%8B%E6%AC%A7%E7%9B%9F%E8%A7%A3%E7%A6%81%E4%BF%84%E5%AF%8C%E8%B1%AA%E6%88%90%E5%8A%9F",
+    "subject": {
+      "name": "France",
+      "entity_id": "CTRY_FRA",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "COMPLETED",
+      "polarity": "POSITIVE",
+      "verb": "施压"
+    },
+    "object": {
+      "name": "European Union",
+      "entity_id": "ORG_EU",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "周二",
+      "value": null
+    },
+    "location": {
+      "name": "法国",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.8,
+    "evidence": "正文",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "施压",
+    "action_status": "COMPLETED",
+    "action_polarity": "POSITIVE",
+    "event_time": "周二",
+    "location_str": "法国",
+    "entities": [
+      {
+        "entity_id": "CTRY_FRA",
+        "entity_name": "France",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_EU",
+        "entity_name": "European Union",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 44051,
+    "article_url": "https://www.rfi.fr/cn/%E6%AC%A7%E6%B4%B2/20260922-%E6%B3%95%E5%9B%BD%E6%96%BD%E5%8E%8B%E6%AC%A7%E7%9B%9F%E8%A7%A3%E7%A6%81%E4%BF%84%E5%AF%8C%E8%B1%AA%E6%88%90%E5%8A%9F",
+    "subject": {
+      "name": "Luxembourg",
+      "entity_id": "LOC_LUXEMBOURG",
+      "type": "Location",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "STATES",
+      "status": "COMPLETED",
+      "polarity": "POSITIVE",
+      "verb": "游说"
+    },
+    "object": {
+      "name": "European Union",
+      "entity_id": "ORG_EU",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "周二",
+      "value": null
+    },
+    "location": {
+      "name": "卢森堡",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.7,
+    "evidence": "正文",
+    "evidence_type": "UNKNOWN",
+    "action_type": "STATES",
+    "action_event_type": "Politics",
+    "action_detail": "游说",
+    "action_status": "COMPLETED",
+    "action_polarity": "POSITIVE",
+    "event_time": "周二",
+    "location_str": "卢森堡",
+    "entities": [
+      {
+        "entity_id": "LOC_LUXEMBOURG",
+        "entity_name": "Luxembourg",
+        "entity_type": "Location",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_EU",
+        "entity_name": "European Union",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 44100,
+    "article_url": "https://www.rfi.fr/cn/%E5%9B%BD%E9%99%85/20260922-%E7%89%B9%E6%9C%97%E6%99%AE-%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%BA%94%E6%94%B9%E7%A7%B0-%E8%B6%85%E7%BA%A7%E6%99%BA%E8%83%BD",
+    "subject": {
+      "name": "美国总统特朗普",
+      "entity_id": "PERS_美国总统特朗普",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "REJECTS",
+      "status": "COMPLETED",
+      "polarity": "NEGATIVE",
+      "verb": "拒绝"
+    },
+    "object": {
+      "name": "有关对人工智能实施国际监管的呼吁",
+      "entity_id": "ORG_有关对人工智能实施国际监管的呼吁",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "周二",
+      "value": null
+    },
+    "location": {
+      "name": "联合国大会",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.9,
+    "evidence": "摘要",
+    "evidence_type": "UNKNOWN",
+    "action_type": "REJECTS",
+    "action_event_type": "Diplomacy",
+    "action_detail": "拒绝",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEGATIVE",
+    "event_time": "周二",
+    "location_str": "联合国大会",
+    "entities": [
+      {
+        "entity_id": "PERS_美国总统特朗普",
+        "entity_name": "美国总统特朗普",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_有关对人工智能实施国际监管的呼吁",
+        "entity_name": "有关对人工智能实施国际监管的呼吁",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 44100,
+    "article_url": "https://www.rfi.fr/cn/%E5%9B%BD%E9%99%85/20260922-%E7%89%B9%E6%9C%97%E6%99%AE-%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%BA%94%E6%94%B9%E7%A7%B0-%E8%B6%85%E7%BA%A7%E6%99%BA%E8%83%BD",
+    "subject": {
+      "name": "United States Government",
+      "entity_id": "ORG_US_GOVERNMENT",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "STATES",
+      "status": "COMPLETED",
+      "polarity": "POSITIVE",
+      "verb": "使用"
+    },
+    "object": {
+      "name": "超级智能",
+      "entity_id": "PERS_超级智能",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "今后",
+      "value": null
+    },
+    "location": {
+      "name": "对外沟通",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.8,
+    "evidence": "摘要",
+    "evidence_type": "UNKNOWN",
+    "action_type": "STATES",
+    "action_event_type": "Politics",
+    "action_detail": "使用",
+    "action_status": "COMPLETED",
+    "action_polarity": "POSITIVE",
+    "event_time": "今后",
+    "location_str": "对外沟通",
+    "entities": [
+      {
+        "entity_id": "ORG_US_GOVERNMENT",
+        "entity_name": "United States Government",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "PERS_超级智能",
+        "entity_name": "超级智能",
+        "entity_type": "Person",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 43738,
+    "article_url": "https://www.dw.com/zh/特朗普将敦促泽连斯基暂停袭击俄罗斯炼油厂/a-79375140?maca=chi-rss-chi-all-1127-rdf",
+    "subject": {
+      "name": "Trump",
+      "entity_id": "PERS_TRUMP",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "ATTACKS",
+      "status": "COMPLETED",
+      "polarity": "POSITIVE",
+      "verb": "敦促"
+    },
+    "object": {
+      "name": "Zelensky",
+      "entity_id": "PERS_ZELENSKY",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "2026年9月22日",
+      "value": null
+    },
+    "location": {
+      "name": "纽约",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.95,
+    "evidence": "摘要",
+    "evidence_type": "UNKNOWN",
+    "action_type": "ATTACKS",
+    "action_event_type": "Military",
+    "action_detail": "敦促",
+    "action_status": "COMPLETED",
+    "action_polarity": "POSITIVE",
+    "event_time": "2026年9月22日",
+    "location_str": "纽约",
+    "entities": [
+      {
+        "entity_id": "PERS_TRUMP",
+        "entity_name": "Trump",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "PERS_ZELENSKY",
+        "entity_name": "Zelensky",
+        "entity_type": "Person",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 43738,
+    "article_url": "https://www.dw.com/zh/特朗普将敦促泽连斯基暂停袭击俄罗斯炼油厂/a-79375140?maca=chi-rss-chi-all-1127-rdf",
+    "subject": {
+      "name": "Trump",
+      "entity_id": "PERS_TRUMP",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "ATTACKS",
+      "status": "COMPLETED",
+      "polarity": "NEGATIVE",
+      "verb": "归咎"
+    },
+    "object": {
+      "name": "Kyiv",
+      "entity_id": "LOC_KYIV",
+      "type": "Location",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "周一",
+      "value": null
+    },
+    "location": {
+      "name": "美国",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.85,
+    "evidence": "正文",
+    "evidence_type": "UNKNOWN",
+    "action_type": "ATTACKS",
+    "action_event_type": "Military",
+    "action_detail": "归咎",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEGATIVE",
+    "event_time": "周一",
+    "location_str": "美国",
+    "entities": [
+      {
+        "entity_id": "PERS_TRUMP",
+        "entity_name": "Trump",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "LOC_KYIV",
+        "entity_name": "Kyiv",
+        "entity_type": "Location",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 43738,
+    "article_url": "https://www.dw.com/zh/特朗普将敦促泽连斯基暂停袭击俄罗斯炼油厂/a-79375140?maca=chi-rss-chi-all-1127-rdf",
+    "subject": {
+      "name": "Zelensky",
+      "entity_id": "PERS_ZELENSKY",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "ATTACKS",
+      "status": "COMPLETED",
+      "polarity": "POSITIVE",
+      "verb": "访美"
+    },
+    "object": {
+      "name": "United States",
+      "entity_id": "CTRY_USA",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "2026年9月22日",
+      "value": null
+    },
+    "location": {
+      "name": "纽约",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.75,
+    "evidence": "正文",
+    "evidence_type": "UNKNOWN",
+    "action_type": "ATTACKS",
+    "action_event_type": "Military",
+    "action_detail": "访美",
+    "action_status": "COMPLETED",
+    "action_polarity": "POSITIVE",
+    "event_time": "2026年9月22日",
+    "location_str": "纽约",
+    "entities": [
+      {
+        "entity_id": "PERS_ZELENSKY",
+        "entity_name": "Zelensky",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_USA",
+        "entity_name": "United States",
         "entity_type": "Country",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 43050,
-    "article_url": "https://www.rfi.fr/cn/%E7%BE%8E%E6%B4%B2/20260921-%E4%BC%8A%E6%9C%97%E8%88%AA%E7%A9%BA%E5%85%AC%E5%8F%B8%E5%B0%86%E8%A2%AB%E8%BF%AB%E5%81%9C%E6%AD%A2%E8%BF%90%E8%90%A5",
+    "article_id": 44040,
+    "article_url": "https://www.rfi.fr/cn/%E5%9B%BD%E9%99%85/20260922-%E7%89%B9%E6%9C%97%E6%99%AE%E8%81%94%E5%90%88%E5%9B%BD%E5%A4%A7%E4%BC%9A%E6%BC%94%E8%AE%B2%E5%A8%81%E8%83%81%E5%8F%AF-%E6%91%A7%E6%AF%81-%E4%BC%8A%E6%9C%97",
     "subject": {
-      "name": "美国财政部长斯科特·贝森特",
-      "entity_id": "PERS_美国财政部长斯科特贝森特",
+      "name": "美国总统特朗普",
+      "entity_id": "PERS_美国总统特朗普",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "COMPLETED",
+      "polarity": "POSITIVE",
+      "verb": "辩护"
+    },
+    "object": {
+      "name": "以色列对伊朗的军事行动",
+      "entity_id": "CTRY_以色列对伊朗的军事行动",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "22日",
+      "value": null
+    },
+    "location": {
+      "name": "联合国大会",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.95,
+    "evidence": "摘要",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "辩护",
+    "action_status": "COMPLETED",
+    "action_polarity": "POSITIVE",
+    "event_time": "22日",
+    "location_str": "联合国大会",
+    "entities": [
+      {
+        "entity_id": "PERS_美国总统特朗普",
+        "entity_name": "美国总统特朗普",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_以色列对伊朗的军事行动",
+        "entity_name": "以色列对伊朗的军事行动",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 44040,
+    "article_url": "https://www.rfi.fr/cn/%E5%9B%BD%E9%99%85/20260922-%E7%89%B9%E6%9C%97%E6%99%AE%E8%81%94%E5%90%88%E5%9B%BD%E5%A4%A7%E4%BC%9A%E6%BC%94%E8%AE%B2%E5%A8%81%E8%83%81%E5%8F%AF-%E6%91%A7%E6%AF%81-%E4%BC%8A%E6%9C%97",
+    "subject": {
+      "name": "美国总统特朗普",
+      "entity_id": "PERS_美国总统特朗普",
       "type": "Person",
       "object_type": "ENTITY"
     },
@@ -70,499 +681,120 @@
       "verb": "警告"
     },
     "object": {
-      "name": "伊朗航空公司",
-      "entity_id": "CTRY_伊朗航空公司",
+      "name": "Iran, Islamic Republic of",
+      "entity_id": "CTRY_IRN",
       "type": "Country",
       "object_type": "ENTITY"
     },
     "time": {
-      "raw": "周一",
+      "raw": "22日",
       "value": null
     },
     "location": {
-      "name": "德黑兰",
+      "name": "联合国大会",
       "entity_id": null,
       "type": null
     },
-    "confidence": 0.9,
-    "evidence": "美国财政部长斯科特·贝森特周一警告称，由于特朗普政府寻求继续向德黑兰施压，伊朗航空公司将在两天内因美国制裁而面临运营困难。贝森特在接受CNBC采访时断言，9月23日，'伊朗航空公司将无法正常运营'",
+    "confidence": 0.85,
+    "evidence": "正文",
     "evidence_type": "UNKNOWN",
     "action_type": "WARNS",
     "action_event_type": "Politics",
     "action_detail": "警告",
     "action_status": "COMPLETED",
     "action_polarity": "POSITIVE",
-    "event_time": "周一",
-    "location_str": "德黑兰",
+    "event_time": "22日",
+    "location_str": "联合国大会",
     "entities": [
       {
-        "entity_id": "PERS_美国财政部长斯科特贝森特",
-        "entity_name": "美国财政部长斯科特·贝森特",
+        "entity_id": "PERS_美国总统特朗普",
+        "entity_name": "美国总统特朗普",
         "entity_type": "Person",
         "role": "SUBJECT"
       },
       {
-        "entity_id": "CTRY_伊朗航空公司",
-        "entity_name": "伊朗航空公司",
+        "entity_id": "CTRY_IRN",
+        "entity_name": "Iran, Islamic Republic of",
         "entity_type": "Country",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 43050,
-    "article_url": "https://www.rfi.fr/cn/%E7%BE%8E%E6%B4%B2/20260921-%E4%BC%8A%E6%9C%97%E8%88%AA%E7%A9%BA%E5%85%AC%E5%8F%B8%E5%B0%86%E8%A2%AB%E8%BF%AB%E5%81%9C%E6%AD%A2%E8%BF%90%E8%90%A5",
+    "article_id": 44040,
+    "article_url": "https://www.rfi.fr/cn/%E5%9B%BD%E9%99%85/20260922-%E7%89%B9%E6%9C%97%E6%99%AE%E8%81%94%E5%90%88%E5%9B%BD%E5%A4%A7%E4%BC%9A%E6%BC%94%E8%AE%B2%E5%A8%81%E8%83%81%E5%8F%AF-%E6%91%A7%E6%AF%81-%E4%BC%8A%E6%9C%97",
     "subject": {
-      "name": "伊朗航空公司",
-      "entity_id": "CTRY_伊朗航空公司",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "COMPLETED",
-      "polarity": "NEGATIVE",
-      "verb": "被迫停止运营"
-    },
-    "object": {
-      "name": "",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "time": {
-      "raw": "9月23日",
-      "value": null
-    },
-    "location": {
-      "name": "德黑兰",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 0.8,
-    "evidence": "美国财政部长斯科特·贝森特周一警告称，由于特朗普政府寻求继续向德黑兰施压，伊朗航空公司将在两天内因美国制裁而面临运营困难。贝森特在接受CNBC采访时断言，9月23日，'伊朗航空公司将无法正常运营'",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "被迫停止运营",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEGATIVE",
-    "event_time": "9月23日",
-    "location_str": "德黑兰",
-    "entities": [
-      {
-        "entity_id": "CTRY_伊朗航空公司",
-        "entity_name": "伊朗航空公司",
-        "entity_type": "Country",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 43050,
-    "article_url": "https://www.rfi.fr/cn/%E7%BE%8E%E6%B4%B2/20260921-%E4%BC%8A%E6%9C%97%E8%88%AA%E7%A9%BA%E5%85%AC%E5%8F%B8%E5%B0%86%E8%A2%AB%E8%BF%AB%E5%81%9C%E6%AD%A2%E8%BF%90%E8%90%A5",
-    "subject": {
-      "name": "特朗普政府",
-      "entity_id": "ORG_特朗普政府",
-      "type": "Organization",
+      "name": "美国总统特朗普",
+      "entity_id": "PERS_美国总统特朗普",
+      "type": "Person",
       "object_type": "ENTITY"
     },
     "action": {
       "type": "OTHER",
       "status": "COMPLETED",
       "polarity": "POSITIVE",
-      "verb": "施压"
+      "verb": "提出选择"
     },
     "object": {
-      "name": "伊朗航空公司",
-      "entity_id": "CTRY_伊朗航空公司",
+      "name": "Iran, Islamic Republic of",
+      "entity_id": "CTRY_IRN",
       "type": "Country",
       "object_type": "ENTITY"
     },
     "time": {
-      "raw": "周一",
+      "raw": "22日",
       "value": null
     },
     "location": {
-      "name": "德黑兰",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 0.7,
-    "evidence": "美国财政部长斯科特·贝森特周一警告称，由于特朗普政府寻求继续向德黑兰施压，伊朗航空公司将在两天内因美国制裁而面临运营困难。贝森特在接受CNBC采访时断言，9月23日，'伊朗航空公司将无法正常运营'",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "施压",
-    "action_status": "COMPLETED",
-    "action_polarity": "POSITIVE",
-    "event_time": "周一",
-    "location_str": "德黑兰",
-    "entities": [
-      {
-        "entity_id": "ORG_特朗普政府",
-        "entity_name": "特朗普政府",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_伊朗航空公司",
-        "entity_name": "伊朗航空公司",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 43031,
-    "article_url": "https://www.rfi.fr/cn/%E6%AC%A7%E6%B4%B2/20260921-%E6%99%AE%E4%BA%AC%E6%94%BF%E5%85%9A%E8%B5%A2%E5%BE%97%E5%88%9B%E7%BA%AA%E5%BD%95%E5%B8%AD%E4%BD%8D",
-    "subject": {
-      "name": "统一俄罗斯党",
-      "entity_id": "CTRY_统一俄罗斯党",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "COMPLETED",
-      "polarity": "POSITIVE",
-      "verb": "赢得"
-    },
-    "object": {
-      "name": "席位",
-      "entity_id": "PERS_席位",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "为期三天",
-      "value": null
-    },
-    "location": {
-      "name": "议会选举",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1.0,
-    "evidence": "直接引用摘要",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "赢得",
-    "action_status": "COMPLETED",
-    "action_polarity": "POSITIVE",
-    "event_time": "为期三天",
-    "location_str": "议会选举",
-    "entities": [
-      {
-        "entity_id": "CTRY_统一俄罗斯党",
-        "entity_name": "统一俄罗斯党",
-        "entity_type": "Country",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "PERS_席位",
-        "entity_name": "席位",
-        "entity_type": "Person",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 43031,
-    "article_url": "https://www.rfi.fr/cn/%E6%AC%A7%E6%B4%B2/20260921-%E6%99%AE%E4%BA%AC%E6%94%BF%E5%85%9A%E8%B5%A2%E5%BE%97%E5%88%9B%E7%BA%AA%E5%BD%95%E5%B8%AD%E4%BD%8D",
-    "subject": {
-      "name": "基辅方面",
-      "entity_id": "PERS_基辅方面",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "ATTACKS",
-      "status": "ONGOING",
-      "polarity": "NEGATIVE",
-      "verb": "发动"
-    },
-    "object": {
-      "name": "攻击",
-      "entity_id": "PERS_攻击",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "此次选举期间",
-      "value": null
-    },
-    "location": {
-      "name": "乌克兰领土",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 0.9,
-    "evidence": "摘要",
-    "evidence_type": "UNKNOWN",
-    "action_type": "ATTACKS",
-    "action_event_type": "Military",
-    "action_detail": "发动",
-    "action_status": "ONGOING",
-    "action_polarity": "NEGATIVE",
-    "event_time": "此次选举期间",
-    "location_str": "乌克兰领土",
-    "entities": [
-      {
-        "entity_id": "PERS_基辅方面",
-        "entity_name": "基辅方面",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "PERS_攻击",
-        "entity_name": "攻击",
-        "entity_type": "Person",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 43031,
-    "article_url": "https://www.rfi.fr/cn/%E6%AC%A7%E6%B4%B2/20260921-%E6%99%AE%E4%BA%AC%E6%94%BF%E5%85%9A%E8%B5%A2%E5%BE%97%E5%88%9B%E7%BA%AA%E5%BD%95%E5%B8%AD%E4%BD%8D",
-    "subject": {
-      "name": "亚布洛科（Yabloko）",
-      "entity_id": "ORG_亚布洛科YABLOKO",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "BANS",
-      "status": "COMPLETED",
-      "polarity": "NEGATIVE",
-      "verb": "被禁止参加"
-    },
-    "object": {
-      "name": "全国选举",
-      "entity_id": "PERS_全国选举",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "此次选举",
-      "value": null
-    },
-    "location": {
-      "name": "乌克兰领土",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 0.8,
-    "evidence": "摘要",
-    "evidence_type": "UNKNOWN",
-    "action_type": "BANS",
-    "action_event_type": "Legal",
-    "action_detail": "被禁止参加",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEGATIVE",
-    "event_time": "此次选举",
-    "location_str": "乌克兰领土",
-    "entities": [
-      {
-        "entity_id": "ORG_亚布洛科YABLOKO",
-        "entity_name": "亚布洛科（Yabloko）",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "PERS_全国选举",
-        "entity_name": "全国选举",
-        "entity_type": "Person",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 42988,
-    "article_url": "https://www.rfi.fr/cn/%E4%BA%9A%E6%B4%B2/20260921-%E7%BE%8E%E6%8B%92%E5%8F%91%E7%AD%BE%E8%AF%81-%E4%BC%8A%E6%9C%97%E6%80%BB%E7%BB%9F%E9%80%9A%E4%BF%A1%E5%9B%A2%E9%98%9F%E6%97%A0%E6%B3%95%E5%87%BA%E5%B8%AD%E8%81%94%E5%90%88%E5%9B%BD%E5%A4%A7%E4%BC%9A",
-    "subject": {
-      "name": "United States",
-      "entity_id": "CTRY_USA",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "COMPLETED",
-      "polarity": "NEGATIVE",
-      "verb": "拒发签证"
-    },
-    "object": {
-      "name": "部分代表团成员",
-      "entity_id": "ORG_部分代表团成员",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "周一",
-      "value": null
-    },
-    "location": {
-      "name": "伊朗",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 0.95,
-    "evidence": "",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "拒发签证",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEGATIVE",
-    "event_time": "周一",
-    "location_str": "伊朗",
-    "entities": [
-      {
-        "entity_id": "CTRY_USA",
-        "entity_name": "United States",
-        "entity_type": "Country",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_部分代表团成员",
-        "entity_name": "部分代表团成员",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 42988,
-    "article_url": "https://www.rfi.fr/cn/%E4%BA%9A%E6%B4%B2/20260921-%E7%BE%8E%E6%8B%92%E5%8F%91%E7%AD%BE%E8%AF%81-%E4%BC%8A%E6%9C%97%E6%80%BB%E7%BB%9F%E9%80%9A%E4%BF%A1%E5%9B%A2%E9%98%9F%E6%97%A0%E6%B3%95%E5%87%BA%E5%B8%AD%E8%81%94%E5%90%88%E5%9B%BD%E5%A4%A7%E4%BC%9A",
-    "subject": {
-      "name": "伊朗总统马苏德·佩泽希齐扬",
-      "entity_id": "PERS_伊朗总统马苏德佩泽希齐扬",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "PLANNED",
-      "polarity": "NEUTRAL",
-      "verb": "出席联合国大会"
-    },
-    "object": {
       "name": "联合国大会",
-      "entity_id": "PERS_联合国大会",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "周二",
-      "value": null
-    },
-    "location": {
-      "name": "纽约",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 0.8,
-    "evidence": "",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "出席联合国大会",
-    "action_status": "PLANNED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "周二",
-    "location_str": "纽约",
-    "entities": [
-      {
-        "entity_id": "PERS_伊朗总统马苏德佩泽希齐扬",
-        "entity_name": "伊朗总统马苏德·佩泽希齐扬",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "PERS_联合国大会",
-        "entity_name": "联合国大会",
-        "entity_type": "Person",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 42988,
-    "article_url": "https://www.rfi.fr/cn/%E4%BA%9A%E6%B4%B2/20260921-%E7%BE%8E%E6%8B%92%E5%8F%91%E7%AD%BE%E8%AF%81-%E4%BC%8A%E6%9C%97%E6%80%BB%E7%BB%9F%E9%80%9A%E4%BF%A1%E5%9B%A2%E9%98%9F%E6%97%A0%E6%B3%95%E5%87%BA%E5%B8%AD%E8%81%94%E5%90%88%E5%9B%BD%E5%A4%A7%E4%BC%9A",
-    "subject": {
-      "name": "伊朗媒体",
-      "entity_id": "CTRY_伊朗媒体",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "EXPECTED",
-      "polarity": "NEUTRAL",
-      "verb": "报道"
-    },
-    "object": {
-      "name": "United States",
-      "entity_id": "CTRY_USA",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "周一",
-      "value": null
-    },
-    "location": {
-      "name": "伊朗",
       "entity_id": null,
       "type": null
     },
     "confidence": 0.75,
-    "evidence": "",
+    "evidence": "正文",
     "evidence_type": "UNKNOWN",
     "action_type": "OTHER",
     "action_event_type": "General",
-    "action_detail": "报道",
-    "action_status": "EXPECTED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "周一",
-    "location_str": "伊朗",
+    "action_detail": "提出选择",
+    "action_status": "COMPLETED",
+    "action_polarity": "POSITIVE",
+    "event_time": "22日",
+    "location_str": "联合国大会",
     "entities": [
       {
-        "entity_id": "CTRY_伊朗媒体",
-        "entity_name": "伊朗媒体",
-        "entity_type": "Country",
+        "entity_id": "PERS_美国总统特朗普",
+        "entity_name": "美国总统特朗普",
+        "entity_type": "Person",
         "role": "SUBJECT"
       },
       {
-        "entity_id": "CTRY_USA",
-        "entity_name": "United States",
+        "entity_id": "CTRY_IRN",
+        "entity_name": "Iran, Islamic Republic of",
         "entity_type": "Country",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 42932,
-    "article_url": "https://www.rfi.fr/cn/%E5%9B%BD%E9%99%85/20260921-%E8%8F%B2%E9%98%B2%E9%95%BF-%E7%A7%B0%E4%B8%AD%E5%9B%BD%E6%B5%B7%E8%AD%A6%E8%89%87%E6%92%9E%E5%87%BB%E8%8F%B2%E8%88%B9%E5%8F%AA%E6%98%AF%E6%AD%A3%E5%BD%93%E7%9A%84%E8%8F%B2%E5%BE%8B%E5%AE%BE%E4%BA%BA%E5%8F%9B%E5%9B%BD-%E6%AD%A3%E5%88%B6%E5%AE%9A%E7%B1%BB%E4%BC%BC%E4%BA%8B%E4%BB%B6%E5%BA%94%E5%AF%B9%E6%96%B9%E6%A1%88",
+    "article_id": 44149,
+    "article_url": "https://www.aljazeera.com/video/newsfeed/2026/9/23/uk-prime-minister-vows-not-to-stand-by-as-palestinians-suffer?traffic_source=rss",
     "subject": {
-      "name": "菲律宾国防部长特奥多罗",
-      "entity_id": "ORG_菲律宾国防部长特奥多罗",
-      "type": "Organization",
+      "name": "Burnham",
+      "entity_id": "PERS_BURNHAM",
+      "type": "Person",
       "object_type": "ENTITY"
     },
     "action": {
       "type": "STATES",
-      "status": "COMPLETED",
-      "polarity": "POSITIVE",
-      "verb": "称"
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
     },
     "object": {
-      "name": "",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
+      "name": "United Kingdom of Great Britain and Northern Ireland",
+      "entity_id": "CTRY_GBR",
+      "type": "Country",
+      "object_type": "ENTITY"
     },
     "time": {
       "raw": null,
@@ -578,318 +810,6 @@
     "evidence_type": "UNKNOWN",
     "action_type": "STATES",
     "action_event_type": "Politics",
-    "action_detail": "称",
-    "action_status": "COMPLETED",
-    "action_polarity": "POSITIVE",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "ORG_菲律宾国防部长特奥多罗",
-        "entity_name": "菲律宾国防部长特奥多罗",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 42932,
-    "article_url": "https://www.rfi.fr/cn/%E5%9B%BD%E9%99%85/20260921-%E8%8F%B2%E9%98%B2%E9%95%BF-%E7%A7%B0%E4%B8%AD%E5%9B%BD%E6%B5%B7%E8%AD%A6%E8%89%87%E6%92%9E%E5%87%BB%E8%8F%B2%E8%88%B9%E5%8F%AA%E6%98%AF%E6%AD%A3%E5%BD%93%E7%9A%84%E8%8F%B2%E5%BE%8B%E5%AE%BE%E4%BA%BA%E5%8F%9B%E5%9B%BD-%E6%AD%A3%E5%88%B6%E5%AE%9A%E7%B1%BB%E4%BC%BC%E4%BA%8B%E4%BB%B6%E5%BA%94%E5%AF%B9%E6%96%B9%E6%A1%88",
-    "subject": {
-      "name": "",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "action": {
-      "type": "ANNOUNCES",
-      "status": "UNKNOWN",
-      "polarity": "UNKNOWN",
-      "verb": ""
-    },
-    "object": {
-      "name": "中国海警艇",
-      "entity_id": "CTRY_中国海警艇",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "9月18日",
-      "value": null
-    },
-    "location": {
-      "name": "巴拉望岛附近海域",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 0.95,
-    "evidence": "正文",
-    "evidence_type": "UNKNOWN",
-    "action_type": "ANNOUNCES",
-    "action_event_type": "Politics",
-    "action_detail": "",
-    "action_status": "UNKNOWN",
-    "action_polarity": "UNKNOWN",
-    "event_time": "9月18日",
-    "location_str": "巴拉望岛附近海域",
-    "entities": [
-      {
-        "entity_id": "CTRY_中国海警艇",
-        "entity_name": "中国海警艇",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 42932,
-    "article_url": "https://www.rfi.fr/cn/%E5%9B%BD%E9%99%85/20260921-%E8%8F%B2%E9%98%B2%E9%95%BF-%E7%A7%B0%E4%B8%AD%E5%9B%BD%E6%B5%B7%E8%AD%A6%E8%89%87%E6%92%9E%E5%87%BB%E8%8F%B2%E8%88%B9%E5%8F%AA%E6%98%AF%E6%AD%A3%E5%BD%93%E7%9A%84%E8%8F%B2%E5%BE%8B%E5%AE%BE%E4%BA%BA%E5%8F%9B%E5%9B%BD-%E6%AD%A3%E5%88%B6%E5%AE%9A%E7%B1%BB%E4%BC%BC%E4%BA%8B%E4%BB%B6%E5%BA%94%E5%AF%B9%E6%96%B9%E6%A1%88",
-    "subject": {
-      "name": "菲律宾农业部下属的渔业",
-      "entity_id": "ORG_菲律宾农业部下属的渔业",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "ANNOUNCES",
-      "status": "COMPLETED",
-      "polarity": "NEGATIVE",
-      "verb": "被撞"
-    },
-    "object": {
-      "name": "",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": null,
-    "evidence": "",
-    "evidence_type": "UNKNOWN",
-    "action_type": "ANNOUNCES",
-    "action_event_type": "Politics",
-    "action_detail": "被撞",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEGATIVE",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "ORG_菲律宾农业部下属的渔业",
-        "entity_name": "菲律宾农业部下属的渔业",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_水产资源局",
-        "entity_name": "水产资源局",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 42959,
-    "article_url": "https://www.rfi.fr/cn/%E5%9B%BD%E9%99%85/20260921-%E7%89%B9%E6%9C%97%E6%99%AE%E8%A6%81%E4%B9%B0%E7%99%BD%E4%BF%84%E7%BD%97%E6%96%AF%E9%92%BE%E8%82%A5%EF%BC%8C-%E7%AB%8B%E9%99%B6%E5%AE%9B%E8%A6%81%E7%BB%A7%E7%BB%AD%E5%88%B6%E8%A3%81%E7%99%BD%E4%BF%84%E7%BD%97%E6%96%AF",
-    "subject": {
-      "name": "立陶宛外交部长",
-      "entity_id": "PERS_立陶宛外交部长",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "SANCTIONS",
-      "status": "ANNOUNCED",
-      "polarity": "POSITIVE",
-      "verb": "表示"
-    },
-    "object": {
-      "name": "",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "time": {
-      "raw": "周一",
-      "value": null
-    },
-    "location": {
-      "name": "立陶宛",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 0.9,
-    "evidence": "立陶宛外交部长周一表示，欧盟没有理由放宽对白俄罗斯的制裁，理由是亚历山大·卢卡申科（Alexander Lukashenko）总统的政府继续镇压反对派、侵犯人权并支持俄罗斯在乌克兰发动的战争。",
-    "evidence_type": "UNKNOWN",
-    "action_type": "SANCTIONS",
-    "action_event_type": "Economic",
-    "action_detail": "表示",
-    "action_status": "ANNOUNCED",
-    "action_polarity": "POSITIVE",
-    "event_time": "周一",
-    "location_str": "立陶宛",
-    "entities": [
-      {
-        "entity_id": "PERS_立陶宛外交部长",
-        "entity_name": "立陶宛外交部长",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 42959,
-    "article_url": "https://www.rfi.fr/cn/%E5%9B%BD%E9%99%85/20260921-%E7%89%B9%E6%9C%97%E6%99%AE%E8%A6%81%E4%B9%B0%E7%99%BD%E4%BF%84%E7%BD%97%E6%96%AF%E9%92%BE%E8%82%A5%EF%BC%8C-%E7%AB%8B%E9%99%B6%E5%AE%9B%E8%A6%81%E7%BB%A7%E7%BB%AD%E5%88%B6%E8%A3%81%E7%99%BD%E4%BF%84%E7%BD%97%E6%96%AF",
-    "subject": {
-      "name": "Trump",
-      "entity_id": "PERS_TRUMP",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "SANCTIONS",
-      "status": "PLANNED",
-      "polarity": "POSITIVE",
-      "verb": "要买"
-    },
-    "object": {
-      "name": "白俄罗斯钾肥",
-      "entity_id": "CTRY_白俄罗斯钾肥",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "未指定",
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 0.8,
-    "evidence": "特朗普要买白俄罗斯钾肥。",
-    "evidence_type": "UNKNOWN",
-    "action_type": "SANCTIONS",
-    "action_event_type": "Economic",
-    "action_detail": "要买",
-    "action_status": "PLANNED",
-    "action_polarity": "POSITIVE",
-    "event_time": "未指定",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "PERS_TRUMP",
-        "entity_name": "Trump",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_白俄罗斯钾肥",
-        "entity_name": "白俄罗斯钾肥",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 42959,
-    "article_url": "https://www.rfi.fr/cn/%E5%9B%BD%E9%99%85/20260921-%E7%89%B9%E6%9C%97%E6%99%AE%E8%A6%81%E4%B9%B0%E7%99%BD%E4%BF%84%E7%BD%97%E6%96%AF%E9%92%BE%E8%82%A5%EF%BC%8C-%E7%AB%8B%E9%99%B6%E5%AE%9B%E8%A6%81%E7%BB%A7%E7%BB%AD%E5%88%B6%E8%A3%81%E7%99%BD%E4%BF%84%E7%BD%97%E6%96%AF",
-    "subject": {
-      "name": "立陶宛",
-      "entity_id": "PERS_立陶宛",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "SANCTIONS",
-      "status": "ONGOING",
-      "polarity": "NEGATIVE",
-      "verb": "继续制裁"
-    },
-    "object": {
-      "name": "白俄罗斯",
-      "entity_id": "CTRY_白俄罗斯",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "未指定",
-      "value": null
-    },
-    "location": {
-      "name": "立陶宛",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 0.7,
-    "evidence": "立陶宛要继续制裁白俄罗斯。",
-    "evidence_type": "UNKNOWN",
-    "action_type": "SANCTIONS",
-    "action_event_type": "Economic",
-    "action_detail": "继续制裁",
-    "action_status": "ONGOING",
-    "action_polarity": "NEGATIVE",
-    "event_time": "未指定",
-    "location_str": "立陶宛",
-    "entities": [
-      {
-        "entity_id": "PERS_立陶宛",
-        "entity_name": "立陶宛",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_白俄罗斯",
-        "entity_name": "白俄罗斯",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 43156,
-    "article_url": "https://www.aljazeera.com/news/2026/9/22/brazil-election-lula-and-flavio-bolsonaro-tied-in-latest-polls?traffic_source=rss",
-    "subject": {
-      "name": "Luiz Inacio Lula da Silva",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "action": {
-      "type": "ELECTS",
-      "status": "UNKNOWN",
-      "polarity": "UNKNOWN",
-      "verb": ""
-    },
-    "object": {
-      "name": "Brazil",
-      "entity_id": "CTRY_BRA",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": null,
-    "evidence": "",
-    "evidence_type": "UNKNOWN",
-    "action_type": "ELECTS",
-    "action_event_type": "Politics",
     "action_detail": "",
     "action_status": "UNKNOWN",
     "action_polarity": "UNKNOWN",
@@ -897,24 +817,85 @@
     "location_str": "",
     "entities": [
       {
-        "entity_id": "CTRY_BRA",
-        "entity_name": "Brazil",
+        "entity_id": "PERS_BURNHAM",
+        "entity_name": "Burnham",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_GBR",
+        "entity_name": "United Kingdom of Great Britain and Northern Ireland",
         "entity_type": "Country",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 43128,
-    "article_url": "https://abcnews.com/Politics/trump-address-general-assembly-iran-war-looms-large/story?id=136621201",
+    "article_id": 44128,
+    "article_url": "https://blogs.nvidia.com/blog/ai-day-singapore/",
     "subject": {
-      "name": "president",
-      "entity_id": "PERS_PRESIDENT",
-      "type": "Person",
+      "name": "NVIDIA",
+      "entity_id": "COMP_NVIDIA",
+      "type": "Company",
       "object_type": "ENTITY"
     },
     "action": {
       "type": "OTHER",
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
+    },
+    "object": {
+      "name": "Singapore",
+      "entity_id": "CTRY_SGP",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": null,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "",
+    "action_status": "UNKNOWN",
+    "action_polarity": "UNKNOWN",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "COMP_NVIDIA",
+        "entity_name": "NVIDIA",
+        "entity_type": "Company",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_SGP",
+        "entity_name": "Singapore",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 44141,
+    "article_url": "https://www.investing.com/news/economy-news/dollar-holds-near-2month-high-as-markets-weigh-rate-hikes-iran-diplomacy-4912004",
+    "subject": {
+      "name": "Tavily",
+      "entity_id": "PERS_TAVILY",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "RATE_HIKE",
       "status": "UNKNOWN",
       "polarity": "UNKNOWN",
       "verb": ""
@@ -937,173 +918,8 @@
     "confidence": null,
     "evidence": "",
     "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "",
-    "action_status": "UNKNOWN",
-    "action_polarity": "UNKNOWN",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "PERS_PRESIDENT",
-        "entity_name": "president",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_IRN",
-        "entity_name": "Iran, Islamic Republic of",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 43141,
-    "article_url": "https://www.investing.com/news/stock-market-news/asia-chip-stocks-soar-after-wall-street-ai-rally-lg-jumps-on-nvidia-cooling-nod-4909837",
-    "subject": {
-      "name": "LG",
-      "entity_id": "COMP_LG",
-      "type": "Company",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "SURGES",
-      "status": "UNKNOWN",
-      "polarity": "UNKNOWN",
-      "verb": ""
-    },
-    "object": {
-      "name": "Asia",
-      "entity_id": "CTRY_ASIA",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": null,
-    "evidence": "",
-    "evidence_type": "UNKNOWN",
-    "action_type": "SURGES",
+    "action_type": "RATE_HIKE",
     "action_event_type": "Finance",
-    "action_detail": "",
-    "action_status": "UNKNOWN",
-    "action_polarity": "UNKNOWN",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "COMP_LG",
-        "entity_name": "LG",
-        "entity_type": "Company",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_ASIA",
-        "entity_name": "Asia",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 43137,
-    "article_url": "https://www.aljazeera.com/news/2026/9/22/canadas-bc-sues-openai-over-chatgpt-role-in-tumbler-ridge-school-shooting?traffic_source=rss",
-    "subject": {
-      "name": "ChatGPT",
-      "entity_id": "COMP_CHATGPT",
-      "type": "Company",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "SUES",
-      "status": "UNKNOWN",
-      "polarity": "UNKNOWN",
-      "verb": ""
-    },
-    "object": {
-      "name": "British Columbia",
-      "entity_id": "CTRY_BRITISH_COLUMBIA",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": null,
-    "evidence": "",
-    "evidence_type": "UNKNOWN",
-    "action_type": "SUES",
-    "action_event_type": "Legal",
-    "action_detail": "",
-    "action_status": "UNKNOWN",
-    "action_polarity": "UNKNOWN",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "COMP_CHATGPT",
-        "entity_name": "ChatGPT",
-        "entity_type": "Company",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_BRITISH_COLUMBIA",
-        "entity_name": "British Columbia",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 43132,
-    "article_url": "https://www.ft.com/content/e6f2c05a-ea91-458c-8842-25913d3e4cac?syn-25a6b1a6=1",
-    "subject": {
-      "name": "Tavily",
-      "entity_id": "PERS_TAVILY",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "UNKNOWN",
-      "polarity": "UNKNOWN",
-      "verb": ""
-    },
-    "object": {
-      "name": "China",
-      "entity_id": "CTRY_CHN",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": null,
-    "evidence": "",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
     "action_detail": "",
     "action_status": "UNKNOWN",
     "action_polarity": "UNKNOWN",
@@ -1117,31 +933,31 @@
         "role": "SUBJECT"
       },
       {
-        "entity_id": "CTRY_CHN",
-        "entity_name": "China",
+        "entity_id": "CTRY_IRN",
+        "entity_name": "Iran, Islamic Republic of",
         "entity_type": "Country",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 43131,
-    "article_url": "https://tass.com/world/2190831",
+    "article_id": 44129,
+    "article_url": "https://www.bloomberg.com/news/articles/2026-09-23/india-s-nse-ipo-how-the-national-stock-exchange-listing-will-work",
     "subject": {
-      "name": "news agency",
-      "entity_id": "ORG_NEWS_AGENCY",
-      "type": "Organization",
+      "name": "investors",
+      "entity_id": "PERS_INVESTORS",
+      "type": "Person",
       "object_type": "ENTITY"
     },
     "action": {
-      "type": "OTHER",
+      "type": "IPO",
       "status": "UNKNOWN",
       "polarity": "UNKNOWN",
       "verb": ""
     },
     "object": {
-      "name": "United States",
-      "entity_id": "CTRY_UNITED_STATES",
+      "name": "India",
+      "entity_id": "CTRY_IND",
       "type": "Country",
       "object_type": "ENTITY"
     },
@@ -1157,8 +973,8 @@
     "confidence": null,
     "evidence": "",
     "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
+    "action_type": "IPO",
+    "action_event_type": "Finance",
     "action_detail": "",
     "action_status": "UNKNOWN",
     "action_polarity": "UNKNOWN",
@@ -1166,130 +982,26 @@
     "location_str": "",
     "entities": [
       {
-        "entity_id": "ORG_NEWS_AGENCY",
-        "entity_name": "news agency",
-        "entity_type": "Organization",
+        "entity_id": "PERS_INVESTORS",
+        "entity_name": "investors",
+        "entity_type": "Person",
         "role": "SUBJECT"
       },
       {
-        "entity_id": "CTRY_UNITED_STATES",
-        "entity_name": "United States",
+        "entity_id": "CTRY_IND",
+        "entity_name": "India",
         "entity_type": "Country",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 43114,
-    "article_url": "https://www.investing.com/news/stock-market-news/lg-electronics-shares-surge-5-after-nvidia-qualifies-ai-cooling-unit-4909819",
+    "article_id": 44139,
+    "article_url": "https://www.investing.com/news/stock-market-news/gold-rises-as-oil-slide-eases-fed-hike-fears-iran-talks-stay-in-focus-4911978",
     "subject": {
-      "name": "LG Electronics shares",
-      "entity_id": "COMP_LG_ELECTRONICS_SHARES",
-      "type": "Company",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "SURGES",
-      "status": "COMPLETED",
-      "polarity": "POSITIVE",
-      "verb": "surged"
-    },
-    "object": {
-      "name": "6%",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "AMOUNT"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "LG Electronics shares surged 6% after Nvidia qualifies AI cooling unit",
-    "evidence_type": "UNKNOWN",
-    "action_type": "SURGES",
-    "action_event_type": "Finance",
-    "action_detail": "surged",
-    "action_status": "COMPLETED",
-    "action_polarity": "POSITIVE",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "COMP_LG_ELECTRONICS_SHARES",
-        "entity_name": "LG Electronics shares",
-        "entity_type": "Company",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 43114,
-    "article_url": "https://www.investing.com/news/stock-market-news/lg-electronics-shares-surge-5-after-nvidia-qualifies-ai-cooling-unit-4909819",
-    "subject": {
-      "name": "NVIDIA",
-      "entity_id": "COMP_NVIDIA",
-      "type": "Company",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "SURGES",
-      "status": "COMPLETED",
-      "polarity": "POSITIVE",
-      "verb": "qualifies"
-    },
-    "object": {
-      "name": "AI cooling unit",
-      "entity_id": "ORG_AI_COOLING_UNIT",
+      "name": "Federal Reserve",
+      "entity_id": "ORG_FEDERAL_RESERVE",
       "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "after Nvidia qualifies AI cooling unit",
-    "evidence_type": "UNKNOWN",
-    "action_type": "SURGES",
-    "action_event_type": "Finance",
-    "action_detail": "qualifies",
-    "action_status": "COMPLETED",
-    "action_polarity": "POSITIVE",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "COMP_NVIDIA",
-        "entity_name": "NVIDIA",
-        "entity_type": "Company",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_AI_COOLING_UNIT",
-        "entity_name": "AI cooling unit",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 43106,
-    "article_url": "https://www.investing.com/news/commodities-news/gold-rises-as-oil-slide-eases-inflation-fears-trump-signals-iran-talks-4909810",
-    "subject": {
-      "name": "Trump",
-      "entity_id": "PERS_TRUMP",
-      "type": "Person",
       "object_type": "ENTITY"
     },
     "action": {
@@ -1325,9 +1037,9 @@
     "location_str": "",
     "entities": [
       {
-        "entity_id": "PERS_TRUMP",
-        "entity_name": "Trump",
-        "entity_type": "Person",
+        "entity_id": "ORG_FEDERAL_RESERVE",
+        "entity_name": "Federal Reserve",
+        "entity_type": "Organization",
         "role": "SUBJECT"
       },
       {
@@ -1339,444 +1051,16 @@
     ]
   },
   {
-    "article_id": 43107,
-    "article_url": "https://www.bbc.co.uk/news/articles/cqlykpe4dk0yo?at_medium=RSS&at_campaign=rss",
+    "article_id": 44082,
+    "article_url": "https://www.aljazeera.com/video/newsfeed/2026/9/23/iranian-president-masoud-pezeshkian-arrives-in-new-york-for-unga?traffic_source=rss",
     "subject": {
-      "name": "prime minister",
-      "entity_id": "PERS_PRIME_MINISTER",
+      "name": "Masoud Pezeshkian",
+      "entity_id": "PERS_MASOUD_PEZESHKIAN",
       "type": "Person",
       "object_type": "ENTITY"
     },
     "action": {
-      "type": "STATES",
-      "status": "UNKNOWN",
-      "polarity": "UNKNOWN",
-      "verb": ""
-    },
-    "object": {
-      "name": "Saudi Arabia",
-      "entity_id": "CTRY_SAU",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": null,
-    "evidence": "",
-    "evidence_type": "UNKNOWN",
-    "action_type": "STATES",
-    "action_event_type": "Politics",
-    "action_detail": "",
-    "action_status": "UNKNOWN",
-    "action_polarity": "UNKNOWN",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "PERS_PRIME_MINISTER",
-        "entity_name": "prime minister",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_SAU",
-        "entity_name": "Saudi Arabia",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 43104,
-    "article_url": "https://www.investing.com/news/economy-news/bank-of-korea-to-assess-inflation-growth-for-rate-hikes-board-member-says-4909823",
-    "subject": {
-      "name": "Bank of Korea",
-      "entity_id": "ORG_BANK_OF_KOREA",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "RATE_HIKE",
-      "status": "PLANNED",
-      "polarity": "NEUTRAL",
-      "verb": "assess"
-    },
-    "object": {
-      "name": "inflation",
-      "entity_id": "ORG_INFLATION",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1.0,
-    "evidence": "The Bank of Korea plans to assess inflation and economic growth to decide on further rate hikes.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "RATE_HIKE",
-    "action_event_type": "Finance",
-    "action_detail": "assess",
-    "action_status": "PLANNED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "ORG_BANK_OF_KOREA",
-        "entity_name": "Bank of Korea",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_INFLATION",
-        "entity_name": "inflation",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      },
-      {
-        "entity_id": "ORG_ECONOMIC_GROWTH",
-        "entity_name": "economic growth",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 43104,
-    "article_url": "https://www.investing.com/news/economy-news/bank-of-korea-to-assess-inflation-growth-for-rate-hikes-board-member-says-4909823",
-    "subject": {
-      "name": "growth",
-      "entity_id": "ORG_GROWTH",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "RATE_HIKE",
-      "status": "EXPECTED",
-      "polarity": "NEUTRAL",
-      "verb": "continue"
-    },
-    "object": {
-      "name": "",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 0.9,
-    "evidence": "Robust growth and elevated inflation are expected to continue.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "RATE_HIKE",
-    "action_event_type": "Finance",
-    "action_detail": "continue",
-    "action_status": "EXPECTED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "ORG_GROWTH",
-        "entity_name": "growth",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_INFLATION",
-        "entity_name": "inflation",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 43105,
-    "article_url": "https://www.independent.co.uk/news/world/americas/us-politics/democrats-cash-shortage-trump-midterms-b3053935.html",
-    "subject": {
-      "name": "Republicans",
-      "entity_id": "ORG_REPUBLICANS",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "WARNS",
-      "status": "COMPLETED",
-      "polarity": "NEUTRAL",
-      "verb": "holding"
-    },
-    "object": {
-      "name": "nearly $200 million spending lead on television advertising",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": "through Election Day",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": null,
-    "evidence": "Ad-tracking data shows Republicans holding a nearly $200 million spending lead on television advertising through Election Day",
-    "evidence_type": "UNKNOWN",
-    "action_type": "WARNS",
-    "action_event_type": "Politics",
-    "action_detail": "holding",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "",
-    "location_str": "through Election Day",
-    "entities": [
-      {
-        "entity_id": "ORG_REPUBLICANS",
-        "entity_name": "Republicans",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 43105,
-    "article_url": "https://www.independent.co.uk/news/world/americas/us-politics/democrats-cash-shortage-trump-midterms-b3053935.html",
-    "subject": {
-      "name": "Democrats",
-      "entity_id": "ORG_DEMOCRATS",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "WARNS",
-      "status": "ONGOING",
-      "polarity": "NEGATIVE",
-      "verb": "warn"
-    },
-    "object": {
-      "name": "running out of money and can’t keep up with Trump before the midterms",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": "before the midterms",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": null,
-    "evidence": "# Democrats warn they are running out of money and can’t keep up with Trump before the midterms",
-    "evidence_type": "UNKNOWN",
-    "action_type": "WARNS",
-    "action_event_type": "Politics",
-    "action_detail": "warn",
-    "action_status": "ONGOING",
-    "action_polarity": "NEGATIVE",
-    "event_time": "",
-    "location_str": "before the midterms",
-    "entities": [
-      {
-        "entity_id": "ORG_DEMOCRATS",
-        "entity_name": "Democrats",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 43105,
-    "article_url": "https://www.independent.co.uk/news/world/americas/us-politics/democrats-cash-shortage-trump-midterms-b3053935.html",
-    "subject": {
-      "name": "Republicans",
-      "entity_id": "ORG_REPUBLICANS",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "WARNS",
-      "status": "PLANNED",
-      "polarity": "NEUTRAL",
-      "verb": "spend"
-    },
-    "object": {
-      "name": "$682 million",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "AMOUNT"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": "Monday through Election Day across all House and Senate races nationwide",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": null,
-    "evidence": "Republicans are scheduled to spend $682 million on advertising from Monday through Election Day across all House and Senate races nationwide.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "WARNS",
-    "action_event_type": "Politics",
-    "action_detail": "spend",
-    "action_status": "PLANNED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "",
-    "location_str": "Monday through Election Day across all House and Senate races nationwide",
-    "entities": [
-      {
-        "entity_id": "ORG_REPUBLICANS",
-        "entity_name": "Republicans",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 43102,
-    "article_url": "https://www.ft.com/content/30d2f29b-e750-4a90-9e8d-b1a7f14e4908?syn-25a6b1a6=1",
-    "subject": {
-      "name": "British Columbia",
-      "entity_id": "CTRY_BRITISH_COLUMBIA",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "SUES",
-      "status": "ONGOING",
-      "polarity": "NEGATIVE",
-      "verb": "claims"
-    },
-    "object": {
-      "name": "ChatGPT maker",
-      "entity_id": "ORG_CHATGPT_MAKER",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "unknown",
-      "value": null
-    },
-    "location": {
-      "name": "British Columbia",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "British Columbia claims the ChatGPT maker failed to act after attacker’s account was flagged",
-    "evidence_type": "UNKNOWN",
-    "action_type": "SUES",
-    "action_event_type": "Legal",
-    "action_detail": "claims",
-    "action_status": "ONGOING",
-    "action_polarity": "NEGATIVE",
-    "event_time": "unknown",
-    "location_str": "British Columbia",
-    "entities": [
-      {
-        "entity_id": "CTRY_BRITISH_COLUMBIA",
-        "entity_name": "British Columbia",
-        "entity_type": "Country",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_CHATGPT_MAKER",
-        "entity_name": "ChatGPT maker",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 43110,
-    "article_url": "https://www.japantimes.co.jp/news/2026/09/22/asia-pacific/politics/china-generals-party-corruption/",
-    "subject": {
-      "name": "Zhang Youxia",
-      "entity_id": "PERS_ZHANG_YOUXIA",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "BEATS",
-      "status": "UNKNOWN",
-      "polarity": "UNKNOWN",
-      "verb": ""
-    },
-    "object": {
-      "name": "China",
-      "entity_id": "CTRY_CHN",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": null,
-    "evidence": "",
-    "evidence_type": "UNKNOWN",
-    "action_type": "BEATS",
-    "action_event_type": "Finance",
-    "action_detail": "",
-    "action_status": "UNKNOWN",
-    "action_polarity": "UNKNOWN",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "PERS_ZHANG_YOUXIA",
-        "entity_name": "Zhang Youxia",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_CHN",
-        "entity_name": "China",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 43098,
-    "article_url": "https://www.ft.com/content/68d4f774-fbcb-48b3-9cd2-00b281d1beb6",
-    "subject": {
-      "name": "Republican president",
-      "entity_id": "PERS_REPUBLICAN_PRESIDENT",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "ATTACKS",
+      "type": "OTHER",
       "status": "UNKNOWN",
       "polarity": "UNKNOWN",
       "verb": ""
@@ -1799,8 +1083,8 @@
     "confidence": null,
     "evidence": "",
     "evidence_type": "UNKNOWN",
-    "action_type": "ATTACKS",
-    "action_event_type": "Military",
+    "action_type": "OTHER",
+    "action_event_type": "General",
     "action_detail": "",
     "action_status": "UNKNOWN",
     "action_polarity": "UNKNOWN",
@@ -1808,8 +1092,8 @@
     "location_str": "",
     "entities": [
       {
-        "entity_id": "PERS_REPUBLICAN_PRESIDENT",
-        "entity_name": "Republican president",
+        "entity_id": "PERS_MASOUD_PEZESHKIAN",
+        "entity_name": "Masoud Pezeshkian",
         "entity_type": "Person",
         "role": "SUBJECT"
       },
@@ -1822,8 +1106,118 @@
     ]
   },
   {
-    "article_id": 43027,
-    "article_url": "https://www.aljazeera.com/video/newsfeed/2026/9/22/aje-onl-nf_trump-returns-to-the-un-what-will-he-say-210926?traffic_source=rss",
+    "article_id": 44089,
+    "article_url": "https://www.aljazeera.com/news/2026/9/23/zelenskyy-says-ukraine-ready-for-energy-truce-with-russia-after-trump-talks?traffic_source=rss",
+    "subject": {
+      "name": "Zelensky",
+      "entity_id": "PERS_ZELENSKY",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "CEASEFIRE",
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
+    },
+    "object": {
+      "name": "Ukraine",
+      "entity_id": "CTRY_UKR",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": null,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "CEASEFIRE",
+    "action_event_type": "Diplomacy",
+    "action_detail": "",
+    "action_status": "UNKNOWN",
+    "action_polarity": "UNKNOWN",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "PERS_ZELENSKY",
+        "entity_name": "Zelensky",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_UKR",
+        "entity_name": "Ukraine",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 44102,
+    "article_url": "https://www.investing.com/news/commodities-news/oil-extends-losses-as-trump-signals-progress-in-usiran-talks-4911933",
+    "subject": {
+      "name": "Trump",
+      "entity_id": "PERS_TRUMP",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
+    },
+    "object": {
+      "name": "United States",
+      "entity_id": "CTRY_UNITED_STATES",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": null,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "",
+    "action_status": "UNKNOWN",
+    "action_polarity": "UNKNOWN",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "PERS_TRUMP",
+        "entity_name": "Trump",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_UNITED_STATES",
+        "entity_name": "United States",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 44107,
+    "article_url": "https://tass.com/world/2191369",
     "subject": {
       "name": "Trump",
       "entity_id": "PERS_TRUMP",
@@ -1837,8 +1231,8 @@
       "verb": ""
     },
     "object": {
-      "name": "Iran, Islamic Republic of",
-      "entity_id": "CTRY_IRN",
+      "name": "Ukraine",
+      "entity_id": "CTRY_UKR",
       "type": "Country",
       "object_type": "ENTITY"
     },
@@ -1869,142 +1263,344 @@
         "role": "SUBJECT"
       },
       {
-        "entity_id": "CTRY_IRN",
-        "entity_name": "Iran, Islamic Republic of",
+        "entity_id": "CTRY_UKR",
+        "entity_name": "Ukraine",
         "entity_type": "Country",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 43095,
-    "article_url": "https://dev.to/_2cc42b5afe889a48a1562/beyond-bigger-models-toward-a-modular-cognitive-architecture-42no",
+    "article_id": 44094,
+    "article_url": "https://www.japantimes.co.jp/news/2026/09/23/world/politics/turkey-cop31-summit/",
     "subject": {
-      "name": "AI Systems",
-      "entity_id": "ORG_AI_SYSTEMS",
+      "name": "Murat Kurum",
+      "entity_id": "ORG_MURAT_KURUM",
       "type": "Organization",
       "object_type": "ENTITY"
     },
     "action": {
-      "type": "ATTACKS",
-      "status": "EXPECTED",
+      "type": "SUES",
+      "status": "ATTEMPTED",
       "polarity": "NEUTRAL",
-      "verb": "Design"
+      "verb": "appealed"
     },
     "object": {
-      "name": "Successors",
-      "entity_id": "ORG_SUCCESSORS",
-      "type": "Organization",
+      "name": "global business leaders",
+      "entity_id": "PERS_GLOBAL_BUSINESS_LEADERS",
+      "type": "Person",
       "object_type": "ENTITY"
     },
     "time": {
-      "raw": null,
+      "raw": "Tuesday",
       "value": null
     },
     "location": {
-      "name": null,
+      "name": "New York",
       "entity_id": null,
       "type": null
     },
     "confidence": 1,
-    "evidence": "AI Systems That May Eventually Design Their Successors",
+    "evidence": "Murat Kurum, Turkey’s environment minister and COP31 president, said Tuesday during a speech at the COP31 Global Business Forum — New York Dialogue.",
     "evidence_type": "UNKNOWN",
-    "action_type": "ATTACKS",
-    "action_event_type": "Military",
-    "action_detail": "Design",
-    "action_status": "EXPECTED",
+    "action_type": "SUES",
+    "action_event_type": "Legal",
+    "action_detail": "appealed",
+    "action_status": "ATTEMPTED",
     "action_polarity": "NEUTRAL",
-    "event_time": "",
-    "location_str": "",
+    "event_time": "Tuesday",
+    "location_str": "New York",
     "entities": [
       {
-        "entity_id": "ORG_AI_SYSTEMS",
-        "entity_name": "AI Systems",
+        "entity_id": "ORG_MURAT_KURUM",
+        "entity_name": "Murat Kurum",
         "entity_type": "Organization",
         "role": "SUBJECT"
       },
       {
-        "entity_id": "ORG_SUCCESSORS",
-        "entity_name": "Successors",
-        "entity_type": "Organization",
+        "entity_id": "PERS_GLOBAL_BUSINESS_LEADERS",
+        "entity_name": "global business leaders",
+        "entity_type": "Person",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 43095,
-    "article_url": "https://dev.to/_2cc42b5afe889a48a1562/beyond-bigger-models-toward-a-modular-cognitive-architecture-42no",
+    "article_id": 44094,
+    "article_url": "https://www.japantimes.co.jp/news/2026/09/23/world/politics/turkey-cop31-summit/",
     "subject": {
-      "name": "Reasoning",
-      "entity_id": "ORG_REASONING",
+      "name": "Turkey",
+      "entity_id": "ORG_TURKEY",
       "type": "Organization",
       "object_type": "ENTITY"
     },
     "action": {
-      "type": "ATTACKS",
+      "type": "MEETS",
       "status": "ONGOING",
       "polarity": "NEUTRAL",
-      "verb": "Shift"
+      "verb": "hosting"
     },
     "object": {
-      "name": "Exception-Driven Reasoning",
-      "entity_id": "ORG_EXCEPTION_DRIVEN_REASONING",
+      "name": "November talks",
+      "entity_id": "ORG_NOVEMBER_TALKS",
       "type": "Organization",
       "object_type": "ENTITY"
     },
     "time": {
-      "raw": null,
+      "raw": "November",
       "value": null
     },
     "location": {
-      "name": null,
+      "name": "Antalya",
       "entity_id": null,
       "type": null
     },
     "confidence": 1,
-    "evidence": "From Exception-Driven Reasoning to AI Systems That May Eventually Design Their Successors",
+    "evidence": "Turkey is hosting the November talks in the city of Antalya in partnership with Australia, which is leading negotiations.",
     "evidence_type": "UNKNOWN",
-    "action_type": "ATTACKS",
-    "action_event_type": "Military",
-    "action_detail": "Shift",
+    "action_type": "MEETS",
+    "action_event_type": "Diplomacy",
+    "action_detail": "hosting",
     "action_status": "ONGOING",
     "action_polarity": "NEUTRAL",
-    "event_time": "",
-    "location_str": "",
+    "event_time": "November",
+    "location_str": "Antalya",
     "entities": [
       {
-        "entity_id": "ORG_REASONING",
-        "entity_name": "Reasoning",
+        "entity_id": "ORG_TURKEY",
+        "entity_name": "Turkey",
         "entity_type": "Organization",
         "role": "SUBJECT"
       },
       {
-        "entity_id": "ORG_EXCEPTION_DRIVEN_REASONING",
-        "entity_name": "Exception-Driven Reasoning",
+        "entity_id": "ORG_NOVEMBER_TALKS",
+        "entity_name": "November talks",
         "entity_type": "Organization",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 43095,
-    "article_url": "https://dev.to/_2cc42b5afe889a48a1562/beyond-bigger-models-toward-a-modular-cognitive-architecture-42no",
+    "article_id": 44094,
+    "article_url": "https://www.japantimes.co.jp/news/2026/09/23/world/politics/turkey-cop31-summit/",
     "subject": {
-      "name": "Architecture",
-      "entity_id": "ORG_ARCHITECTURE",
+      "name": "Murat Kurum",
+      "entity_id": "ORG_MURAT_KURUM",
       "type": "Organization",
       "object_type": "ENTITY"
     },
     "action": {
-      "type": "ATTACKS",
-      "status": "PLANNED",
+      "type": "MEETS",
+      "status": "COMPLETED",
       "polarity": "NEUTRAL",
-      "verb": "Toward"
+      "verb": "laid out"
     },
     "object": {
-      "name": "Modular Cognitive Architecture",
-      "entity_id": "ORG_MODULAR_COGNITIVE_ARCHITECTURE",
+      "name": "agenda for the summit",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "time": {
+      "raw": "Tuesday",
+      "value": null
+    },
+    "location": {
+      "name": "COP31 Global Business Forum — New York Dialogue",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "In his speech, Kurum laid out the agenda for the summit, including six global targets spanning areas from municipal waste to green industrialization.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "MEETS",
+    "action_event_type": "Diplomacy",
+    "action_detail": "laid out",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "Tuesday",
+    "location_str": "COP31 Global Business Forum — New York Dialogue",
+    "entities": [
+      {
+        "entity_id": "ORG_MURAT_KURUM",
+        "entity_name": "Murat Kurum",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 44085,
+    "article_url": "https://www.aa.com.tr/en/world/bosnian-presidency-chairman-warns-un-general-assembly-over-silence-amid-gaza-genocide/4065632",
+    "subject": {
+      "name": "Denis Becirovic",
+      "entity_id": "PERS_DENIS_BECIROVIC",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "WARNS",
+      "status": "COMPLETED",
+      "polarity": "NEGATIVE",
+      "verb": "warned"
+    },
+    "object": {
+      "name": "UN General Assembly",
+      "entity_id": "ORG_UN_GENERAL_ASSEMBLY",
       "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "Tuesday",
+      "value": null
+    },
+    "location": {
+      "name": "New York",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "The chairman of the Presidency of Bosnia and Herzegovina warned the UN General Assembly on Tuesday that the international community has failed to respond adequately to the genocide committed against Palestinians in Gaza.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "WARNS",
+    "action_event_type": "Politics",
+    "action_detail": "warned",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEGATIVE",
+    "event_time": "Tuesday",
+    "location_str": "New York",
+    "entities": [
+      {
+        "entity_id": "PERS_DENIS_BECIROVIC",
+        "entity_name": "Denis Becirovic",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_UN_GENERAL_ASSEMBLY",
+        "entity_name": "UN General Assembly",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 44085,
+    "article_url": "https://www.aa.com.tr/en/world/bosnian-presidency-chairman-warns-un-general-assembly-over-silence-amid-gaza-genocide/4065632",
+    "subject": {
+      "name": "international community",
+      "entity_id": "ORG_INTERNATIONAL_COMMUNITY",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "WARNS",
+      "status": "COMPLETED",
+      "polarity": "NEGATIVE",
+      "verb": "failed"
+    },
+    "object": {
+      "name": "respond adequately to the genocide committed against Palestinians in Gaza",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
+    },
+    "time": {
+      "raw": "N/A",
+      "value": null
+    },
+    "location": {
+      "name": "Gaza",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "The chairman of the Presidency of Bosnia and Herzegovina warned the UN General Assembly on Tuesday that the international community has failed to respond adequately to the genocide committed against Palestinians in Gaza.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "WARNS",
+    "action_event_type": "Politics",
+    "action_detail": "failed",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEGATIVE",
+    "event_time": "N/A",
+    "location_str": "Gaza",
+    "entities": [
+      {
+        "entity_id": "ORG_INTERNATIONAL_COMMUNITY",
+        "entity_name": "international community",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 44085,
+    "article_url": "https://www.aa.com.tr/en/world/bosnian-presidency-chairman-warns-un-general-assembly-over-silence-amid-gaza-genocide/4065632",
+    "subject": {
+      "name": "Denis Becirovic",
+      "entity_id": "PERS_DENIS_BECIROVIC",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "WARNS",
+      "status": "COMPLETED",
+      "polarity": "NEGATIVE",
+      "verb": "stressed"
+    },
+    "object": {
+      "name": "nations cannot remain passive in the face of widespread injustice, drawing direct parallels between modern conflicts and the atrocities inflicted upon his own country during the 1990s",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
+    },
+    "time": {
+      "raw": "N/A",
+      "value": null
+    },
+    "location": {
+      "name": "UN General Assembly",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.9,
+    "evidence": "Addressing world leaders in New York during the 81st session of the assembly, Denis Becirovic stressed that nations cannot remain passive in the face of widespread injustice, drawing direct parallels between modern conflicts and the atrocities inflicted upon his own country during the 1990s.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "WARNS",
+    "action_event_type": "Politics",
+    "action_detail": "stressed",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEGATIVE",
+    "event_time": "N/A",
+    "location_str": "UN General Assembly",
+    "entities": [
+      {
+        "entity_id": "PERS_DENIS_BECIROVIC",
+        "entity_name": "Denis Becirovic",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 44084,
+    "article_url": "https://www.independent.co.uk/news/world/europe/vladimir-putin-ukraine-nato-estonia-europe-b3054559.html",
+    "subject": {
+      "name": "NATO",
+      "entity_id": "ORG_NATO",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "WARNS",
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
+    },
+    "object": {
+      "name": "Europe",
+      "entity_id": "CTRY_EUROPE",
+      "type": "Country",
       "object_type": "ENTITY"
     },
     "time": {
@@ -2016,37 +1612,195 @@
       "entity_id": null,
       "type": null
     },
-    "confidence": 1,
-    "evidence": "Beyond Bigger Models: Toward a Modular Cognitive Architecture",
+    "confidence": null,
+    "evidence": "",
     "evidence_type": "UNKNOWN",
-    "action_type": "ATTACKS",
-    "action_event_type": "Military",
-    "action_detail": "Toward",
-    "action_status": "PLANNED",
-    "action_polarity": "NEUTRAL",
+    "action_type": "WARNS",
+    "action_event_type": "Politics",
+    "action_detail": "",
+    "action_status": "UNKNOWN",
+    "action_polarity": "UNKNOWN",
     "event_time": "",
     "location_str": "",
     "entities": [
       {
-        "entity_id": "ORG_ARCHITECTURE",
-        "entity_name": "Architecture",
+        "entity_id": "ORG_NATO",
+        "entity_name": "NATO",
         "entity_type": "Organization",
         "role": "SUBJECT"
       },
       {
-        "entity_id": "ORG_MODULAR_COGNITIVE_ARCHITECTURE",
-        "entity_name": "Modular Cognitive Architecture",
+        "entity_id": "CTRY_EUROPE",
+        "entity_name": "Europe",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 44080,
+    "article_url": "https://oilprice.com/Energy/Crude-Oil/Saudi-Pipeline-Restart-Fails-to-End-Oil-Market-Tightness.html",
+    "subject": {
+      "name": "Saudi pipeline flows",
+      "entity_id": "CTRY_SAUDI_PIPELINE_FLOWS",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "SURGES",
+      "status": "COMPLETED",
+      "polarity": "NEUTRAL",
+      "verb": "resume"
+    },
+    "object": {
+      "name": "pipeline flows",
+      "entity_id": "ORG_PIPELINE_FLOWS",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "unknown",
+      "value": null
+    },
+    "location": {
+      "name": "Saudi Arabia",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Saudi pipeline flows resume",
+    "evidence_type": "UNKNOWN",
+    "action_type": "SURGES",
+    "action_event_type": "Finance",
+    "action_detail": "resume",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "unknown",
+    "location_str": "Saudi Arabia",
+    "entities": [
+      {
+        "entity_id": "CTRY_SAUDI_PIPELINE_FLOWS",
+        "entity_name": "Saudi pipeline flows",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_PIPELINE_FLOWS",
+        "entity_name": "pipeline flows",
         "entity_type": "Organization",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 43057,
-    "article_url": "https://www.ft.com/content/f0b37ddf-3a4f-4631-b664-887b0cdd281c?syn-25a6b1a6=1",
+    "article_id": 44080,
+    "article_url": "https://oilprice.com/Energy/Crude-Oil/Saudi-Pipeline-Restart-Fails-to-End-Oil-Market-Tightness.html",
     "subject": {
-      "name": "chancellor",
-      "entity_id": "PERS_CHANCELLOR",
+      "name": "freight",
+      "entity_id": "ORG_FREIGHT",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "SURGES",
+      "status": "ONGOING",
+      "polarity": "NEGATIVE",
+      "verb": "soar"
+    },
+    "object": {
+      "name": "prices",
+      "entity_id": "ORG_PRICES",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "unknown",
+      "value": null
+    },
+    "location": {
+      "name": "unknown",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "soaring freight and diesel prices signal persistent oil market tightness",
+    "evidence_type": "UNKNOWN",
+    "action_type": "SURGES",
+    "action_event_type": "Finance",
+    "action_detail": "soar",
+    "action_status": "ONGOING",
+    "action_polarity": "NEGATIVE",
+    "event_time": "unknown",
+    "location_str": "unknown",
+    "entities": [
+      {
+        "entity_id": "ORG_FREIGHT",
+        "entity_name": "freight",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_DIESEL_PRICES",
+        "entity_name": "diesel prices",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_PRICES",
+        "entity_name": "prices",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 44080,
+    "article_url": "https://oilprice.com/Energy/Crude-Oil/Saudi-Pipeline-Restart-Fails-to-End-Oil-Market-Tightness.html",
+    "subject": {
+      "name": "costs of VLCC tankers",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "ONGOING",
+      "polarity": "NEUTRAL",
+      "verb": "continue to push"
+    },
+    "object": {
+      "name": "costs of VLCC tankers",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "time": {
+      "raw": "unknown",
+      "value": null
+    },
+    "location": {
+      "name": "unknown",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.9,
+    "evidence": "costs of VLCC tankers continue to push",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "continue to push",
+    "action_status": "ONGOING",
+    "action_polarity": "NEUTRAL",
+    "event_time": "unknown",
+    "location_str": "unknown",
+    "entities": []
+  },
+  {
+    "article_id": 44088,
+    "article_url": "https://tass.com/world/2191339",
+    "subject": {
+      "name": "Vladimir Zelensky",
+      "entity_id": "PERS_VLADIMIR_ZELENSKY",
       "type": "Person",
       "object_type": "ENTITY"
     },
@@ -2057,8 +1811,8 @@
       "verb": ""
     },
     "object": {
-      "name": "Germany",
-      "entity_id": "CTRY_DEU",
+      "name": "Ukraine",
+      "entity_id": "CTRY_UKR",
       "type": "Country",
       "object_type": "ENTITY"
     },
@@ -2083,244 +1837,311 @@
     "location_str": "",
     "entities": [
       {
-        "entity_id": "PERS_CHANCELLOR",
-        "entity_name": "chancellor",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_DEU",
-        "entity_name": "Germany",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 43017,
-    "article_url": "https://www.zerohedge.com/energy/saudi-arabia-reroutes-oil-exports-houthi-strikes-target-yanbu",
-    "subject": {
-      "name": "Saudi Arabia",
-      "entity_id": "CTRY_SAU",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "ATTACKS",
-      "status": "ONGOING",
-      "polarity": "NEUTRAL",
-      "verb": "Reroutes"
-    },
-    "object": {
-      "name": "Oil Exports",
-      "entity_id": "ORG_OIL_EXPORTS",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "unknown",
-      "value": null
-    },
-    "location": {
-      "name": "Yanbu",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Saudi Arabia Reroutes Oil Exports As Houthi Strikes Target Yanbu",
-    "evidence_type": "UNKNOWN",
-    "action_type": "ATTACKS",
-    "action_event_type": "Military",
-    "action_detail": "Reroutes",
-    "action_status": "ONGOING",
-    "action_polarity": "NEUTRAL",
-    "event_time": "unknown",
-    "location_str": "Yanbu",
-    "entities": [
-      {
-        "entity_id": "CTRY_SAU",
-        "entity_name": "Saudi Arabia",
-        "entity_type": "Country",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_OIL_EXPORTS",
-        "entity_name": "Oil Exports",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 43113,
-    "article_url": "https://tass.com/world/2190819",
-    "subject": {
-      "name": "conflict in Ukraine",
-      "entity_id": "ORG_CONFLICT_IN_UKRAINE",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "COMPLETED",
-      "polarity": "NEGATIVE",
-      "verb": "been"
-    },
-    "object": {
-      "name": "international conflicts to solve",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "time": {
-      "raw": "September 22",
-      "value": null
-    },
-    "location": {
-      "name": "Ukraine",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "The conflict in Ukraine has been by far the toughest of the international conflicts to solve, said US Vice President JD Vance.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "been",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEGATIVE",
-    "event_time": "September 22",
-    "location_str": "Ukraine",
-    "entities": [
-      {
-        "entity_id": "ORG_CONFLICT_IN_UKRAINE",
-        "entity_name": "conflict in Ukraine",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 43113,
-    "article_url": "https://tass.com/world/2190819",
-    "subject": {
-      "name": "US Vice President JD Vance",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "ONGOING",
-      "polarity": "NEUTRAL",
-      "verb": "noted"
-    },
-    "object": {
-      "name": "progress",
-      "entity_id": "ORG_PROGRESS",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "September 22",
-      "value": null
-    },
-    "location": {
-      "name": "WASHINGTON",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "US Vice President JD Vance noted that there are reasons to expect progress after a contact between Trump and Vladimir Zelensky scheduled for September 22.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "noted",
-    "action_status": "ONGOING",
-    "action_polarity": "NEUTRAL",
-    "event_time": "September 22",
-    "location_str": "WASHINGTON",
-    "entities": [
-      {
-        "entity_id": "ORG_PROGRESS",
-        "entity_name": "progress",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 43113,
-    "article_url": "https://tass.com/world/2190819",
-    "subject": {
-      "name": "contact between Trump and Vladimir Zelensky",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "COMPLETED",
-      "polarity": "NEUTRAL",
-      "verb": "scheduled"
-    },
-    "object": {
-      "name": "September 22",
-      "entity_id": "ORG_SEPTEMBER_22",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "September 22",
-      "value": null
-    },
-    "location": {
-      "name": "N/A",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "There are reasons to expect progress after a contact between Trump and Vladimir Zelensky scheduled for September 22, he noted.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "scheduled",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "September 22",
-    "location_str": "N/A",
-    "entities": [
-      {
-        "entity_id": "PERS_CONTACT_BETWEEN_TRUMP",
-        "entity_name": "contact between Trump",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      },
-      {
         "entity_id": "PERS_VLADIMIR_ZELENSKY",
         "entity_name": "Vladimir Zelensky",
         "entity_type": "Person",
         "role": "SUBJECT"
       },
       {
-        "entity_id": "ORG_SEPTEMBER_22",
-        "entity_name": "September 22",
+        "entity_id": "CTRY_UKR",
+        "entity_name": "Ukraine",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 44093,
+    "article_url": "https://tass.com/world/2191309",
+    "subject": {
+      "name": "TASS",
+      "entity_id": "ORG_TASS",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
+    },
+    "object": {
+      "name": "United States",
+      "entity_id": "CTRY_UNITED_STATES",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": null,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "",
+    "action_status": "UNKNOWN",
+    "action_polarity": "UNKNOWN",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "ORG_TASS",
+        "entity_name": "TASS",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_UNITED_STATES",
+        "entity_name": "United States",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 44087,
+    "article_url": "https://www.independent.co.uk/news/world/americas/us-politics/trump-china-ai-state-dinner-b3054477.html",
+    "subject": {
+      "name": "Jensen Huang",
+      "entity_id": "PERS_JENSEN_HUANG",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "REPORTS",
+      "status": "EXPECTED",
+      "polarity": "NEUTRAL",
+      "verb": "expected to attend"
+    },
+    "object": {
+      "name": "Trump-China state dinner",
+      "entity_id": "ORG_TRUMP_CHINA_STATE_DINNER",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "this week",
+      "value": null
+    },
+    "location": {
+      "name": "White House",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Nvidia CEO Jensen Huang and Google CEO Sundar Pichai are also expected to attend",
+    "evidence_type": "UNKNOWN",
+    "action_type": "REPORTS",
+    "action_event_type": "Finance",
+    "action_detail": "expected to attend",
+    "action_status": "EXPECTED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "this week",
+    "location_str": "White House",
+    "entities": [
+      {
+        "entity_id": "PERS_JENSEN_HUANG",
+        "entity_name": "Jensen Huang",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_TRUMP_CHINA_STATE_DINNER",
+        "entity_name": "Trump-China state dinner",
         "entity_type": "Organization",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 43013,
-    "article_url": "https://thehill.com/newsletters/defense-national-security/6102932-gop-nominees-call-end-iran-war-while-campaign-trail/",
+    "article_id": 44087,
+    "article_url": "https://www.independent.co.uk/news/world/americas/us-politics/trump-china-ai-state-dinner-b3054477.html",
     "subject": {
-      "name": "NatSec",
-      "entity_id": "ORG_NATSEC",
+      "name": "Sundar Pichai",
+      "entity_id": "PERS_SUNDAR_PICHAI",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "REPORTS",
+      "status": "EXPECTED",
+      "polarity": "NEUTRAL",
+      "verb": "expected to attend"
+    },
+    "object": {
+      "name": "Trump-China state dinner",
+      "entity_id": "ORG_TRUMP_CHINA_STATE_DINNER",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "this week",
+      "value": null
+    },
+    "location": {
+      "name": "White House",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Nvidia CEO Jensen Huang and Google CEO Sundar Pichai are also expected to attend",
+    "evidence_type": "UNKNOWN",
+    "action_type": "REPORTS",
+    "action_event_type": "Finance",
+    "action_detail": "expected to attend",
+    "action_status": "EXPECTED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "this week",
+    "location_str": "White House",
+    "entities": [
+      {
+        "entity_id": "PERS_SUNDAR_PICHAI",
+        "entity_name": "Sundar Pichai",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_TRUMP_CHINA_STATE_DINNER",
+        "entity_name": "Trump-China state dinner",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 44087,
+    "article_url": "https://www.independent.co.uk/news/world/americas/us-politics/trump-china-ai-state-dinner-b3054477.html",
+    "subject": {
+      "name": "Sam Altman and Greg Brockman",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "action": {
+      "type": "REPORTS",
+      "status": "EXPECTED",
+      "polarity": "NEUTRAL",
+      "verb": "joining"
+    },
+    "object": {
+      "name": "state dinner",
+      "entity_id": "ORG_STATE_DINNER",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "this week",
+      "value": null
+    },
+    "location": {
+      "name": "White House",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "U.S. President Donald Trump and Chinese President Xi Jinping will be joined by OpenAI CEO Sam Altman and President Greg Brockman during a state dinner at the White House this week, according to a new report.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "REPORTS",
+    "action_event_type": "Finance",
+    "action_detail": "joining",
+    "action_status": "EXPECTED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "this week",
+    "location_str": "White House",
+    "entities": [
+      {
+        "entity_id": "PERS_SAM_ALTMAN",
+        "entity_name": "Sam Altman",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "PERS_GREG_BROCKMAN",
+        "entity_name": "Greg Brockman",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_STATE_DINNER",
+        "entity_name": "state dinner",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 44050,
+    "article_url": "https://seekingalpha.com/article/4948815-cancom-se-cccmf-presents-at-berenberg-and-goldman-sachs-15th-german-corporate-conference-2026?source=feed_all_articles",
+    "subject": {
+      "name": "Cancom SE",
+      "entity_id": "ORG_CANCOM_SE",
       "type": "Organization",
       "object_type": "ENTITY"
     },
     "action": {
-      "type": "STATES",
+      "type": "CRASHES",
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
+    },
+    "object": {
+      "name": "Berenberg",
+      "entity_id": "LOC_BERENBERG",
+      "type": "Location",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": null,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "CRASHES",
+    "action_event_type": "Finance",
+    "action_detail": "",
+    "action_status": "UNKNOWN",
+    "action_polarity": "UNKNOWN",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "ORG_CANCOM_SE",
+        "entity_name": "Cancom SE",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "LOC_BERENBERG",
+        "entity_name": "Berenberg",
+        "entity_type": "Location",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 44019,
+    "article_url": "https://www.independent.co.uk/news/world/americas/us-politics/republicans-trump-midterms-iran-gas-b3054417.html",
+    "subject": {
+      "name": "GOP",
+      "entity_id": "ORG_GOP",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
       "status": "UNKNOWN",
       "polarity": "UNKNOWN",
       "verb": ""
@@ -2343,8 +2164,8 @@
     "confidence": null,
     "evidence": "",
     "evidence_type": "UNKNOWN",
-    "action_type": "STATES",
-    "action_event_type": "Politics",
+    "action_type": "OTHER",
+    "action_event_type": "General",
     "action_detail": "",
     "action_status": "UNKNOWN",
     "action_polarity": "UNKNOWN",
@@ -2352,8 +2173,8 @@
     "location_str": "",
     "entities": [
       {
-        "entity_id": "ORG_NATSEC",
-        "entity_name": "NatSec",
+        "entity_id": "ORG_GOP",
+        "entity_name": "GOP",
         "entity_type": "Organization",
         "role": "SUBJECT"
       },
@@ -2366,12 +2187,1149 @@
     ]
   },
   {
-    "article_id": 43009,
-    "article_url": "https://www.scmp.com/news/us/diplomacy/article/3368311/us-china-need-nuclear-style-ai-safeguards-congressman-says-xi-trump-summit?utm_source=rss_feed",
+    "article_id": 44037,
+    "article_url": "https://www.theatlantic.com/newsletters/2026/09/normal-places-store-military-grade-weapons-trump-arch/688745/?utm_source=feed",
     "subject": {
-      "name": "Ro Khanna",
-      "entity_id": "PERS_RO_KHANNA",
+      "name": "Trump’s Arch",
+      "entity_id": "PERS_TRUMPS_ARCH",
       "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "PLANNED",
+      "polarity": "NEUTRAL",
+      "verb": "Store"
+    },
+    "object": {
+      "name": "Military-Grade Weapons",
+      "entity_id": "ORG_MILITARY_GRADE_WEAPONS",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "2026-09-22T21:59:00Z",
+      "value": null
+    },
+    "location": {
+      "name": "Trump’s Arch",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1.0,
+    "evidence": "Oh, Good, Trump’s Arch Will Store Military-Grade Weapons",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "Store",
+    "action_status": "PLANNED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "2026-09-22T21:59:00Z",
+    "location_str": "Trump’s Arch",
+    "entities": [
+      {
+        "entity_id": "PERS_TRUMPS_ARCH",
+        "entity_name": "Trump’s Arch",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_MILITARY_GRADE_WEAPONS",
+        "entity_name": "Military-Grade Weapons",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 44037,
+    "article_url": "https://www.theatlantic.com/newsletters/2026/09/normal-places-store-military-grade-weapons-trump-arch/688745/?utm_source=feed",
+    "subject": {
+      "name": "Munitions",
+      "entity_id": "ORG_MUNITIONS",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "PLANNED",
+      "polarity": "NEUTRAL",
+      "verb": "Store"
+    },
+    "object": {
+      "name": "Munitions",
+      "entity_id": "ORG_MUNITIONS",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "2026-09-22T21:59:00Z",
+      "value": null
+    },
+    "location": {
+      "name": "13 other very normal places",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.8,
+    "evidence": "Here are 13 other very normal places to store munitions.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "Store",
+    "action_status": "PLANNED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "2026-09-22T21:59:00Z",
+    "location_str": "13 other very normal places",
+    "entities": [
+      {
+        "entity_id": "ORG_MUNITIONS",
+        "entity_name": "Munitions",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_MUNITIONS",
+        "entity_name": "Munitions",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 44103,
+    "article_url": "https://tass.com/politics/2191365",
+    "subject": {
+      "name": "Sergey Lavrov and Marco Rubio",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "PLANNED",
+      "polarity": "NEUTRAL",
+      "verb": "discuss"
+    },
+    "object": {
+      "name": "cooperation between the two countries",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
+    },
+    "time": {
+      "raw": "during their upcoming contacts on the sidelines of the high-level week of the UN General Assembly",
+      "value": null
+    },
+    "location": {
+      "name": "United Nations",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Russian Foreign Minister Sergey Lavrov and US Secretary of State Marco Rubio may discuss cooperation between the two countries at the United Nations during their upcoming contacts on the sidelines of the high-level week of the UN General Assembly, the Russian Foreign Ministry said.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "discuss",
+    "action_status": "PLANNED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "during their upcoming contacts on the sidelines of the high-level week of the UN General Assembly",
+    "location_str": "United Nations",
+    "entities": [
+      {
+        "entity_id": "PERS_SERGEY_LAVROV",
+        "entity_name": "Sergey Lavrov",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "PERS_MARCO_RUBIO",
+        "entity_name": "Marco Rubio",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 44103,
+    "article_url": "https://tass.com/politics/2191365",
+    "subject": {
+      "name": "Russia and the United States",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "EXPECTED",
+      "polarity": "POSITIVE",
+      "verb": "developing cooperation"
+    },
+    "object": {
+      "name": "potential",
+      "entity_id": "ORG_POTENTIAL",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "unknown",
+      "value": null
+    },
+    "location": {
+      "name": "United Nations Security Council",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.9,
+    "evidence": "As permanent members of its Security Council, Russia and the United States have enormous potential for developing cooperation.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "developing cooperation",
+    "action_status": "EXPECTED",
+    "action_polarity": "POSITIVE",
+    "event_time": "unknown",
+    "location_str": "United Nations Security Council",
+    "entities": [
+      {
+        "entity_id": "CTRY_RUSSIAN_FEDERATION",
+        "entity_name": "Russian Federation",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_POTENTIAL",
+        "entity_name": "potential",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 44103,
+    "article_url": "https://tass.com/politics/2191365",
+    "subject": {
+      "name": "Washington’s policy at the United Nations",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "ONGOING",
+      "polarity": "NEUTRAL",
+      "verb": "become"
+    },
+    "object": {
+      "name": "more pragmatic",
+      "entity_id": "ORG_MORE_PRAGMATIC",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "after Donald Trump returned to the White House",
+      "value": null
+    },
+    "location": {
+      "name": "United Nations",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.9,
+    "evidence": "\"Washington’s policy at the United Nations has become MOSCOW, September 23. /TASS/.\"",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "become",
+    "action_status": "ONGOING",
+    "action_polarity": "NEUTRAL",
+    "event_time": "after Donald Trump returned to the White House",
+    "location_str": "United Nations",
+    "entities": [
+      {
+        "entity_id": "ORG_MORE_PRAGMATIC",
+        "entity_name": "more pragmatic",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 44014,
+    "article_url": "https://oilprice.com/Energy/Energy-General/Nuclear-Safety-Brings-America-Into-Russias-Uzbek-Energy-Project.html",
+    "subject": {
+      "name": "Uzbekistan",
+      "entity_id": "CTRY_UZB",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "ONGOING",
+      "polarity": "NEUTRAL",
+      "verb": "turning to"
+    },
+    "object": {
+      "name": "United States",
+      "entity_id": "CTRY_USA",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "recent general conference session of the International Atomic Energy Agency",
+      "value": null
+    },
+    "location": {
+      "name": "Vienna",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "US and Uzbek officials signed a memorandum",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "turning to",
+    "action_status": "ONGOING",
+    "action_polarity": "NEUTRAL",
+    "event_time": "recent general conference session of the International Atomic Energy Agency",
+    "location_str": "Vienna",
+    "entities": [
+      {
+        "entity_id": "CTRY_UZB",
+        "entity_name": "Uzbekistan",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_USA",
+        "entity_name": "United States",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 44014,
+    "article_url": "https://oilprice.com/Energy/Energy-General/Nuclear-Safety-Brings-America-Into-Russias-Uzbek-Energy-Project.html",
+    "subject": {
+      "name": "United States",
+      "entity_id": "CTRY_UNITED_STATES",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "COMPLETED",
+      "polarity": "NEUTRAL",
+      "verb": "signed"
+    },
+    "object": {
+      "name": "memorandum",
+      "entity_id": "ORG_MEMORANDUM",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": "recent general conference session of the International Atomic Energy Agency",
+      "value": null
+    },
+    "location": {
+      "name": "Vienna",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "US and Uzbek officials signed a memorandum",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "signed",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "recent general conference session of the International Atomic Energy Agency",
+    "location_str": "Vienna",
+    "entities": [
+      {
+        "entity_id": "CTRY_UNITED_STATES",
+        "entity_name": "United States",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "PERS_UZBEK_OFFICIALS",
+        "entity_name": "Uzbek officials",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_MEMORANDUM",
+        "entity_name": "memorandum",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 44036,
+    "article_url": "https://tass.com/politics/2191285",
+    "subject": {
+      "name": "Maria Zakharova",
+      "entity_id": "PERS_MARIA_ZAKHAROVA",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
+    },
+    "object": {
+      "name": "Russian Federation",
+      "entity_id": "CTRY_RUSSIAN_FEDERATION",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": null,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "",
+    "action_status": "UNKNOWN",
+    "action_polarity": "UNKNOWN",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "PERS_MARIA_ZAKHAROVA",
+        "entity_name": "Maria Zakharova",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_RUSSIAN_FEDERATION",
+        "entity_name": "Russian Federation",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 44038,
+    "article_url": "https://www.japantimes.co.jp/news/2026/09/23/world/politics/trump-bases-greenland-deal/",
+    "subject": {
+      "name": "Trump",
+      "entity_id": "PERS_TRUMP",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "COMPLETED",
+      "polarity": "NEUTRAL",
+      "verb": "signed"
+    },
+    "object": {
+      "name": "security deal with Denmark and Greenland to end a bitter dispute over the Arctic island",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
+    },
+    "time": {
+      "raw": "Tuesday",
+      "value": null
+    },
+    "location": {
+      "name": "New York",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Donald Trump signed a security deal with Denmark and Greenland to end a bitter dispute over the Arctic island, saying the U.S. will start building two “very major military bases” on the territory.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "signed",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "Tuesday",
+    "location_str": "New York",
+    "entities": [
+      {
+        "entity_id": "PERS_TRUMP",
+        "entity_name": "Trump",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 44038,
+    "article_url": "https://www.japantimes.co.jp/news/2026/09/23/world/politics/trump-bases-greenland-deal/",
+    "subject": {
+      "name": "United States",
+      "entity_id": "CTRY_UNITED_STATES",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "PLANNED",
+      "polarity": "NEUTRAL",
+      "verb": "will start building"
+    },
+    "object": {
+      "name": "two “very major military bases”",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
+    },
+    "time": {
+      "raw": "N/A",
+      "value": null
+    },
+    "location": {
+      "name": "Greenland",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "saying the U.S. will start building two “very major military bases” on the territory.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "will start building",
+    "action_status": "PLANNED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "N/A",
+    "location_str": "Greenland",
+    "entities": [
+      {
+        "entity_id": "CTRY_UNITED_STATES",
+        "entity_name": "United States",
+        "entity_type": "Country",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 44038,
+    "article_url": "https://www.japantimes.co.jp/news/2026/09/23/world/politics/trump-bases-greenland-deal/",
+    "subject": {
+      "name": "Agreement",
+      "entity_id": "ORG_AGREEMENT",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "EXPECTED",
+      "polarity": "NEUTRAL",
+      "verb": "will give"
+    },
+    "object": {
+      "name": "permanent control over security and all other needs on that territory",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
+    },
+    "time": {
+      "raw": "N/A",
+      "value": null
+    },
+    "location": {
+      "name": "Greenland",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 0.9,
+    "evidence": "The agreement will give the U.S. “permanent control over security and all other needs on that territory,” Trump said earlier on Tuesday at the U.N. General Assembly.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "will give",
+    "action_status": "EXPECTED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "N/A",
+    "location_str": "Greenland",
+    "entities": [
+      {
+        "entity_id": "ORG_AGREEMENT",
+        "entity_name": "Agreement",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 44015,
+    "article_url": "https://oilprice.com/Energy/Natural-Gas/Washington-Needs-This-LNG-Deal-More-Than-Beijing-Does.html",
+    "subject": {
+      "name": "Xi",
+      "entity_id": "PERS_XI",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
+    },
+    "object": {
+      "name": "United States Government",
+      "entity_id": "ORG_US_GOVERNMENT",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": null,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "",
+    "action_status": "UNKNOWN",
+    "action_polarity": "UNKNOWN",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "PERS_XI",
+        "entity_name": "Xi",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_US_GOVERNMENT",
+        "entity_name": "United States Government",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 44026,
+    "article_url": "https://www.aa.com.tr/en/americas/zelenskyy-says-trump-did-not-demand-ukraine-to-unilaterally-halt-strikes-on-russian-energy-infrastracture/4065391",
+    "subject": {
+      "name": "Ukrainian president",
+      "entity_id": "PERS_UKRAINIAN_PRESIDENT",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "ATTACKS",
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
+    },
+    "object": {
+      "name": "United States",
+      "entity_id": "CTRY_UNITED_STATES",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": null,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "ATTACKS",
+    "action_event_type": "Military",
+    "action_detail": "",
+    "action_status": "UNKNOWN",
+    "action_polarity": "UNKNOWN",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "PERS_UKRAINIAN_PRESIDENT",
+        "entity_name": "Ukrainian president",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_UNITED_STATES",
+        "entity_name": "United States",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 44023,
+    "article_url": "https://www.independent.co.uk/news/world/americas/us-politics/trump-iran-poll-midterms-voters-b3054430.html",
+    "subject": {
+      "name": "Trump",
+      "entity_id": "PERS_TRUMP",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
+    },
+    "object": {
+      "name": "Iran, Islamic Republic of",
+      "entity_id": "CTRY_IRN",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": null,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "",
+    "action_status": "UNKNOWN",
+    "action_polarity": "UNKNOWN",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "PERS_TRUMP",
+        "entity_name": "Trump",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_IRN",
+        "entity_name": "Iran, Islamic Republic of",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 44024,
+    "article_url": "https://www.independent.co.uk/news/world/americas/us-politics/iran-war-troops-death-trump-b3054537.html",
+    "subject": {
+      "name": "Defense Department",
+      "entity_id": "ORG_DEFENSE_DEPARTMENT",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "DIES",
+      "status": "UNKNOWN",
+      "polarity": "UNKNOWN",
+      "verb": ""
+    },
+    "object": {
+      "name": "United States",
+      "entity_id": "CTRY_UNITED_STATES",
+      "type": "Country",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": null,
+    "evidence": "",
+    "evidence_type": "UNKNOWN",
+    "action_type": "DIES",
+    "action_event_type": "Leadership",
+    "action_detail": "",
+    "action_status": "UNKNOWN",
+    "action_polarity": "UNKNOWN",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "ORG_DEFENSE_DEPARTMENT",
+        "entity_name": "Defense Department",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "CTRY_UNITED_STATES",
+        "entity_name": "United States",
+        "entity_type": "Country",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 44044,
+    "article_url": "https://www.coindesk.com/policy/2026/09/22/democrats-chose-visceral-hatred-for-donald-trump-over-crypto-clarity-act-lummis-says",
+    "subject": {
+      "name": "Senator Cynthia Lummis",
+      "entity_id": "PERS_SENATOR_CYNTHIA_LUMMIS",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "STATES",
+      "status": "ANNOUNCED",
+      "polarity": "NEGATIVE",
+      "verb": "said"
+    },
+    "object": {
+      "name": "crypto Clarity Act",
+      "entity_id": "ORG_CRYPTO_CLARITY_ACT",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": "WASHINGTON, D.C.",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": null,
+    "evidence": "Senator Cynthia Lummis said she was \"dismayed, dumbfounded and saddened\" that the Senate couldn't advance a key procedural vote for crypto market structure legislation last week.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "STATES",
+    "action_event_type": "Politics",
+    "action_detail": "said",
+    "action_status": "ANNOUNCED",
+    "action_polarity": "NEGATIVE",
+    "event_time": "",
+    "location_str": "WASHINGTON, D.C.",
+    "entities": [
+      {
+        "entity_id": "PERS_SENATOR_CYNTHIA_LUMMIS",
+        "entity_name": "Senator Cynthia Lummis",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_CRYPTO_CLARITY_ACT",
+        "entity_name": "crypto Clarity Act",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 44044,
+    "article_url": "https://www.coindesk.com/policy/2026/09/22/democrats-chose-visceral-hatred-for-donald-trump-over-crypto-clarity-act-lummis-says",
+    "subject": {
+      "name": "Senator Cynthia Lummis",
+      "entity_id": "PERS_SENATOR_CYNTHIA_LUMMIS",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "STATES",
+      "status": "ANNOUNCED",
+      "polarity": "NEGATIVE",
+      "verb": "blamed"
+    },
+    "object": {
+      "name": "Democrats",
+      "entity_id": "ORG_DEMOCRATS",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": "Tuesday at CoinDesk's Policy & Regulation event",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": null,
+    "evidence": "Lummis blamed Democrats for the bill's failure at an appearance Tuesday at CoinDesk's Policy & Regulation event",
+    "evidence_type": "UNKNOWN",
+    "action_type": "STATES",
+    "action_event_type": "Politics",
+    "action_detail": "blamed",
+    "action_status": "ANNOUNCED",
+    "action_polarity": "NEGATIVE",
+    "event_time": "",
+    "location_str": "Tuesday at CoinDesk's Policy & Regulation event",
+    "entities": [
+      {
+        "entity_id": "PERS_SENATOR_CYNTHIA_LUMMIS",
+        "entity_name": "Senator Cynthia Lummis",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_DEMOCRATS",
+        "entity_name": "Democrats",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 44044,
+    "article_url": "https://www.coindesk.com/policy/2026/09/22/democrats-chose-visceral-hatred-for-donald-trump-over-crypto-clarity-act-lummis-says",
+    "subject": {
+      "name": "BILL",
+      "entity_id": "COMP_BILL",
+      "type": "Company",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "STATES",
+      "status": "COMPLETED",
+      "polarity": "NEGATIVE",
+      "verb": "failed"
+    },
+    "object": {
+      "name": "crypto market structure legislation",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "UNKNOWN"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": "Senate",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": null,
+    "evidence": "she was \"dismayed, dumbfounded and saddened\" that the Senate couldn't advance a key procedural vote for crypto market structure legislation last week.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "STATES",
+    "action_event_type": "Politics",
+    "action_detail": "failed",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEGATIVE",
+    "event_time": "",
+    "location_str": "Senate",
+    "entities": [
+      {
+        "entity_id": "COMP_BILL",
+        "entity_name": "BILL",
+        "entity_type": "Company",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 44016,
+    "article_url": "https://aws.amazon.com/blogs/aws/introducing-amazon-cloudwatch-omni-ai-powered-observability-for-generative-ai-and-agentic-workloads/",
+    "subject": {
+      "name": "Amazon CloudWatch Omni",
+      "entity_id": "ORG_AMAZON_CLOUDWATCH_OMNI",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "ANNOUNCED",
+      "polarity": "POSITIVE",
+      "verb": "delivers"
+    },
+    "object": {
+      "name": "AI-powered observability",
+      "entity_id": "ORG_AI_POWERED_OBSERVABILITY",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Learn how Amazon CloudWatch Omni delivers AI-powered observability purpose-built for generative AI and agentic workloads.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "delivers",
+    "action_status": "ANNOUNCED",
+    "action_polarity": "POSITIVE",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "ORG_AMAZON_CLOUDWATCH_OMNI",
+        "entity_name": "Amazon CloudWatch Omni",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_AI_POWERED_OBSERVABILITY",
+        "entity_name": "AI-powered observability",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 44016,
+    "article_url": "https://aws.amazon.com/blogs/aws/introducing-amazon-cloudwatch-omni-ai-powered-observability-for-generative-ai-and-agentic-workloads/",
+    "subject": {
+      "name": "Amazon CloudWatch Omni",
+      "entity_id": "ORG_AMAZON_CLOUDWATCH_OMNI",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "EXPECTED",
+      "polarity": "POSITIVE",
+      "verb": "allows"
+    },
+    "object": {
+      "name": "Tracing, evaluating, and experimenting with AI agents",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": null,
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Trace, evaluate, and experiment with AI agents across any framework—directly from your IDE or a standalone web experience—using open standards and built-in evaluators for quality",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "allows",
+    "action_status": "EXPECTED",
+    "action_polarity": "POSITIVE",
+    "event_time": "",
+    "location_str": "",
+    "entities": [
+      {
+        "entity_id": "ORG_AMAZON_CLOUDWATCH_OMNI",
+        "entity_name": "Amazon CloudWatch Omni",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_TRACING",
+        "entity_name": "Tracing",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      },
+      {
+        "entity_id": "ORG_EVALUATING",
+        "entity_name": "evaluating",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 44016,
+    "article_url": "https://aws.amazon.com/blogs/aws/introducing-amazon-cloudwatch-omni-ai-powered-observability-for-generative-ai-and-agentic-workloads/",
+    "subject": {
+      "name": "AI agents",
+      "entity_id": "ORG_AI_AGENTS",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "OTHER",
+      "status": "PLANNED",
+      "polarity": "POSITIVE",
+      "verb": "experiment"
+    },
+    "object": {
+      "name": "AI agents",
+      "entity_id": "ORG_AI_AGENTS",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "time": {
+      "raw": null,
+      "value": null
+    },
+    "location": {
+      "name": "IDE or a standalone web experience",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Trace, evaluate, and experiment with AI agents across any framework—directly from your IDE or a standalone web experience—using open standards and built-in evaluators for quality",
+    "evidence_type": "UNKNOWN",
+    "action_type": "OTHER",
+    "action_event_type": "General",
+    "action_detail": "experiment",
+    "action_status": "PLANNED",
+    "action_polarity": "POSITIVE",
+    "event_time": "",
+    "location_str": "IDE or a standalone web experience",
+    "entities": [
+      {
+        "entity_id": "ORG_AI_AGENTS",
+        "entity_name": "AI agents",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_AI_AGENTS",
+        "entity_name": "AI agents",
+        "entity_type": "Organization",
+        "role": "OBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 44029,
+    "article_url": "https://thediplomat.com/2026/09/sco-brics-trump-xi-what-does-the-spate-of-summits-mean-for-india/",
+    "subject": {
+      "name": "Shanghai Cooperation Organization",
+      "entity_id": "ORG_SHANGHAI_COOPERATION_ORGANIZATION",
+      "type": "Organization",
       "object_type": "ENTITY"
     },
     "action": {
@@ -2381,8 +3339,8 @@
       "verb": ""
     },
     "object": {
-      "name": "United States",
-      "entity_id": "CTRY_UNITED_STATES",
+      "name": "India",
+      "entity_id": "CTRY_IND",
       "type": "Country",
       "object_type": "ENTITY"
     },
@@ -2407,305 +3365,91 @@
     "location_str": "",
     "entities": [
       {
-        "entity_id": "PERS_RO_KHANNA",
-        "entity_name": "Ro Khanna",
-        "entity_type": "Person",
+        "entity_id": "ORG_SHANGHAI_COOPERATION_ORGANIZATION",
+        "entity_name": "Shanghai Cooperation Organization",
+        "entity_type": "Organization",
         "role": "SUBJECT"
       },
       {
-        "entity_id": "CTRY_UNITED_STATES",
-        "entity_name": "United States",
+        "entity_id": "CTRY_IND",
+        "entity_name": "India",
         "entity_type": "Country",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 43040,
-    "article_url": "https://www.ft.com/content/23da023b-8be8-433d-9b11-49bc825076c9?syn-25a6b1a6=1",
+    "article_id": 44022,
+    "article_url": "https://tass.com/world/2191341",
     "subject": {
-      "name": "Crackdown 3",
-      "entity_id": "ORG_CRACKDOWN_3",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "IPO",
-      "status": "ANNOUNCED",
-      "polarity": "NEUTRAL",
-      "verb": "features"
-    },
-    "object": {
-      "name": "a brand new story Campaign",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": "unknown",
-      "value": null
-    },
-    "location": {
-      "name": "unknown",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1.0,
-    "evidence": "Crackdown 3 features a brand new story Campaign that you can play alone or with a friend in two-player co-op over Xbox Live.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "IPO",
-    "action_event_type": "Finance",
-    "action_detail": "features",
-    "action_status": "ANNOUNCED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "unknown",
-    "location_str": "unknown",
-    "entities": [
-      {
-        "entity_id": "ORG_CRACKDOWN_3",
-        "entity_name": "Crackdown 3",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 43040,
-    "article_url": "https://www.ft.com/content/23da023b-8be8-433d-9b11-49bc825076c9?syn-25a6b1a6=1",
-    "subject": {
-      "name": "Campaign",
-      "entity_id": "ORG_CAMPAIGN",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "IPO",
-      "status": "PLANNED",
-      "polarity": "NEUTRAL",
-      "verb": "explore"
-    },
-    "object": {
-      "name": "the dangerous streets and treacherous heights of the island metropolis, “New Providence”",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": "unknown",
-      "value": null
-    },
-    "location": {
-      "name": "New Providence",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1.0,
-    "evidence": "Explore the dangerous streets and treacherous heights of the island metropolis, “New Providence”.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "IPO",
-    "action_event_type": "Finance",
-    "action_detail": "explore",
-    "action_status": "PLANNED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "unknown",
-    "location_str": "New Providence",
-    "entities": [
-      {
-        "entity_id": "ORG_CAMPAIGN",
-        "entity_name": "Campaign",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_NEW_PROVIDENCE",
-        "entity_name": "“New Providence”",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 43040,
-    "article_url": "https://www.ft.com/content/23da023b-8be8-433d-9b11-49bc825076c9?syn-25a6b1a6=1",
-    "subject": {
-      "name": "Agency",
-      "entity_id": "ORG_AGENCY",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "IPO",
-      "status": "PLANNED",
-      "polarity": "POSITIVE",
-      "verb": "liberate"
-    },
-    "object": {
-      "name": "New Providence",
-      "entity_id": "ORG_NEW_PROVIDENCE",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "unknown",
-      "value": null
-    },
-    "location": {
-      "name": "unknown",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 0.9,
-    "evidence": "it’s up to the Agency to liberate New Providence and stop",
-    "evidence_type": "UNKNOWN",
-    "action_type": "IPO",
-    "action_event_type": "Finance",
-    "action_detail": "liberate",
-    "action_status": "PLANNED",
-    "action_polarity": "POSITIVE",
-    "event_time": "unknown",
-    "location_str": "unknown",
-    "entities": [
-      {
-        "entity_id": "ORG_AGENCY",
-        "entity_name": "Agency",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_NEW_PROVIDENCE",
-        "entity_name": "New Providence",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 43039,
-    "article_url": "https://www.washingtonpost.com/politics/2026/09/21/trump-seeks-fertilizer-deal-with-russia-ally-belarus-amid-canadian-tensions/",
-    "subject": {
-      "name": "United States",
-      "entity_id": "CTRY_USA",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "STATES",
-      "status": "ONGOING",
-      "polarity": "NEUTRAL",
-      "verb": "seeking"
-    },
-    "object": {
-      "name": "fertilizer from Belarus and rely less on Canada",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": "Monday",
-      "value": null
-    },
-    "location": {
-      "name": "N/A",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "The United States is seeking to broker a deal to purchase fertilizer from Belarus and rely less on Canada, the U.S. ally with which the White House has repeatedly tangled, President Donald Trump said Monday.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "STATES",
-    "action_event_type": "Politics",
-    "action_detail": "seeking",
-    "action_status": "ONGOING",
-    "action_polarity": "NEUTRAL",
-    "event_time": "Monday",
-    "location_str": "N/A",
-    "entities": [
-      {
-        "entity_id": "CTRY_USA",
-        "entity_name": "United States",
-        "entity_type": "Country",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_FERTILIZER_FROM_BELARUS",
-        "entity_name": "fertilizer from Belarus",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 43039,
-    "article_url": "https://www.washingtonpost.com/politics/2026/09/21/trump-seeks-fertilizer-deal-with-russia-ally-belarus-amid-canadian-tensions/",
-    "subject": {
-      "name": "proposed potash purchases",
-      "entity_id": "ORG_PROPOSED_POTASH_PURCHASES",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "STATES",
-      "status": "PLANNED",
-      "polarity": "NEUTRAL",
-      "verb": "expand"
-    },
-    "object": {
-      "name": "trade with a country that helped Moscow launch its invasion of Ukraine",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": "N/A",
-      "value": null
-    },
-    "location": {
-      "name": "N/A",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "The proposed potash purchases would expand trade with a country that helped Moscow launch its invasion of Ukraine.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "STATES",
-    "action_event_type": "Politics",
-    "action_detail": "expand",
-    "action_status": "PLANNED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "N/A",
-    "location_str": "N/A",
-    "entities": [
-      {
-        "entity_id": "ORG_PROPOSED_POTASH_PURCHASES",
-        "entity_name": "proposed potash purchases",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 43039,
-    "article_url": "https://www.washingtonpost.com/politics/2026/09/21/trump-seeks-fertilizer-deal-with-russia-ally-belarus-amid-canadian-tensions/",
-    "subject": {
-      "name": "President Donald Trump",
-      "entity_id": "PERS_PRESIDENT_DONALD_TRUMP",
+      "name": "Vladimir Zelensky",
+      "entity_id": "PERS_VLADIMIR_ZELENSKY",
       "type": "Person",
       "object_type": "ENTITY"
     },
     "action": {
-      "type": "STATES",
+      "type": "ATTACKS",
+      "status": "COMPLETED",
+      "polarity": "NEUTRAL",
+      "verb": "noted"
+    },
+    "object": {
+      "name": "shortage of missiles for Patriots",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
+    },
+    "time": {
+      "raw": "September 22",
+      "value": null
+    },
+    "location": {
+      "name": "Ukraine",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "Vladimir Zelensky noted that Ukraine has a shortage of missiles for Patriots MOSCOW, September 22. /TASS/.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "ATTACKS",
+    "action_event_type": "Military",
+    "action_detail": "noted",
+    "action_status": "COMPLETED",
+    "action_polarity": "NEUTRAL",
+    "event_time": "September 22",
+    "location_str": "Ukraine",
+    "entities": [
+      {
+        "entity_id": "PERS_VLADIMIR_ZELENSKY",
+        "entity_name": "Vladimir Zelensky",
+        "entity_type": "Person",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 44022,
+    "article_url": "https://tass.com/world/2191341",
+    "subject": {
+      "name": "Vladimir Zelensky",
+      "entity_id": "PERS_VLADIMIR_ZELENSKY",
+      "type": "Person",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "ATTACKS",
       "status": "COMPLETED",
       "polarity": "NEUTRAL",
       "verb": "said"
     },
     "object": {
-      "name": "deal",
-      "entity_id": "ORG_DEAL",
-      "type": "Organization",
-      "object_type": "ENTITY"
+      "name": "no clear answer from US President Donald Trump",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
     },
     "time": {
-      "raw": "Monday",
+      "raw": "N/A",
       "value": null
     },
     "location": {
@@ -2714,1181 +3458,234 @@
       "type": null
     },
     "confidence": 1,
-    "evidence": "The United States is seeking to broker a deal to purchase fertilizer from Belarus and rely less on Canada, the U.S. ally with which the White House has repeatedly tangled, President Donald Trump said Monday.",
+    "evidence": "\"I did not receive a concrete response to the request to help with missiles for Patriots,\" Zelensky said at a press conference.",
     "evidence_type": "UNKNOWN",
-    "action_type": "STATES",
-    "action_event_type": "Politics",
+    "action_type": "ATTACKS",
+    "action_event_type": "Military",
     "action_detail": "said",
     "action_status": "COMPLETED",
     "action_polarity": "NEUTRAL",
-    "event_time": "Monday",
+    "event_time": "N/A",
     "location_str": "N/A",
     "entities": [
       {
-        "entity_id": "PERS_PRESIDENT_DONALD_TRUMP",
-        "entity_name": "President Donald Trump",
+        "entity_id": "PERS_VLADIMIR_ZELENSKY",
+        "entity_name": "Vladimir Zelensky",
         "entity_type": "Person",
         "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_DEAL",
-        "entity_name": "deal",
-        "entity_type": "Organization",
-        "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 43024,
-    "article_url": "https://www.independent.co.uk/news/world/americas/us-politics/trump-approval-rating-career-low-new-poll-b3053840.html",
+    "article_id": 44022,
+    "article_url": "https://tass.com/world/2191341",
     "subject": {
-      "name": "Public support for President Donald Trump",
+      "name": "EU countries",
+      "entity_id": "ORG_EU_COUNTRIES",
+      "type": "Organization",
+      "object_type": "ENTITY"
+    },
+    "action": {
+      "type": "ATTACKS",
+      "status": "COMPLETED",
+      "polarity": "POSITIVE",
+      "verb": "approved"
+    },
+    "object": {
+      "name": "exception to purchase Patriot missiles using EU funding",
+      "entity_id": null,
+      "type": "Other",
+      "object_type": "STATEMENT"
+    },
+    "time": {
+      "raw": "September 8",
+      "value": null
+    },
+    "location": {
+      "name": "N/A",
+      "entity_id": null,
+      "type": null
+    },
+    "confidence": 1,
+    "evidence": "On September 8, EU countries approved an exception that allows Ukraine to purchase missiles for Patriot systems using funds from the EU’s 90 billion euro funding program.",
+    "evidence_type": "UNKNOWN",
+    "action_type": "ATTACKS",
+    "action_event_type": "Military",
+    "action_detail": "approved",
+    "action_status": "COMPLETED",
+    "action_polarity": "POSITIVE",
+    "event_time": "September 8",
+    "location_str": "N/A",
+    "entities": [
+      {
+        "entity_id": "ORG_EU_COUNTRIES",
+        "entity_name": "EU countries",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      }
+    ]
+  },
+  {
+    "article_id": 44017,
+    "article_url": "https://oilprice.com/Energy/Energy-General/Is-Chinas-Secret-Power-Advantage-About-To-Trigger-An-89-Crash-In-US-AI-Stock.html",
+    "subject": {
+      "name": "China's Secret Power Advantage",
       "entity_id": null,
       "type": "Other",
       "object_type": "UNKNOWN"
     },
     "action": {
-      "type": "APPROVES",
-      "status": "COMPLETED",
+      "type": "CRASHES",
+      "status": "PLANNED",
       "polarity": "NEGATIVE",
-      "verb": "fallen"
+      "verb": "trigger"
     },
     "object": {
-      "name": "32 percent",
+      "name": "89% Crash In U.S. AI Stock",
       "entity_id": null,
       "type": "Other",
       "object_type": "AMOUNT"
     },
     "time": {
-      "raw": "new poll",
+      "raw": "unknown",
       "value": null
     },
     "location": {
-      "name": null,
+      "name": "U.S.",
       "entity_id": null,
       "type": null
     },
-    "confidence": 1,
-    "evidence": "Public support for President Donald Trump has fallen to 32 percent—the lowest mark of his political career—as members of his own Republican party express growing discontent with his handling of the cost of living amid the unpopular war in Iran, a new *Reuters*/Ipsos poll has revealed.",
+    "confidence": 0.5,
+    "evidence": "Is China’s Secret Power Advantage About To Trigger An 89% Crash In U.S. AI Stock",
     "evidence_type": "UNKNOWN",
-    "action_type": "APPROVES",
-    "action_event_type": "Politics",
-    "action_detail": "fallen",
-    "action_status": "COMPLETED",
+    "action_type": "CRASHES",
+    "action_event_type": "Finance",
+    "action_detail": "trigger",
+    "action_status": "PLANNED",
     "action_polarity": "NEGATIVE",
-    "event_time": "new poll",
-    "location_str": "",
+    "event_time": "unknown",
+    "location_str": "U.S.",
     "entities": []
   },
   {
-    "article_id": 43024,
-    "article_url": "https://www.independent.co.uk/news/world/americas/us-politics/trump-approval-rating-career-low-new-poll-b3053840.html",
+    "article_id": 44017,
+    "article_url": "https://oilprice.com/Energy/Energy-General/Is-Chinas-Secret-Power-Advantage-About-To-Trigger-An-89-Crash-In-US-AI-Stock.html",
     "subject": {
-      "name": "Dissatisfaction among Republicans",
-      "entity_id": "ORG_DISSATISFACTION_AMONG_REPUBLICANS",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "APPROVES",
-      "status": "COMPLETED",
-      "polarity": "NEGATIVE",
-      "verb": "mounted"
-    },
-    "object": {
-      "name": "cost of living amid the unpopular war in Iran",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
-    },
-    "time": {
-      "raw": "since Trump began the war with Iran in February",
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Dissatisfaction among Republicans has mounted since Trump began the war with Iran in February, driving gasoline and diesel prices upward",
-    "evidence_type": "UNKNOWN",
-    "action_type": "APPROVES",
-    "action_event_type": "Politics",
-    "action_detail": "mounted",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEGATIVE",
-    "event_time": "since Trump began the war with Iran in February",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "ORG_DISSATISFACTION_AMONG_REPUBLICANS",
-        "entity_name": "Dissatisfaction among Republicans",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 43024,
-    "article_url": "https://www.independent.co.uk/news/world/americas/us-politics/trump-approval-rating-career-low-new-poll-b3053840.html",
-    "subject": {
-      "name": "Overall approval rating",
-      "entity_id": "ORG_OVERALL_APPROVAL_RATING",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "DROPS",
-      "status": "COMPLETED",
-      "polarity": "NEGATIVE",
-      "verb": "dropped"
-    },
-    "object": {
-      "name": "32 percent",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "AMOUNT"
-    },
-    "time": {
-      "raw": "new poll",
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Public support for President Donald Trump has fallen to 32 percent—the lowest mark of his political career—as members of his own Republican party express growing discontent with his handling of the cost of living amid the unpopular war in Iran, a new *Reuters*/Ipsos poll has revealed.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "DROPS",
-    "action_event_type": "Finance",
-    "action_detail": "dropped",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEGATIVE",
-    "event_time": "new poll",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "ORG_OVERALL_APPROVAL_RATING",
-        "entity_name": "Overall approval rating",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 43012,
-    "article_url": "https://www.bloomberg.com/news/videos/2026-09-21/oil-settles-near-100-as-hormuz-flows-stunt-rally-video",
-    "subject": {
-      "name": "Oil",
-      "entity_id": "ORG_OIL",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "SURGES",
-      "status": "COMPLETED",
-      "polarity": "NEGATIVE",
-      "verb": "fell"
-    },
-    "object": {
-      "name": "$100 a barrel",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "AMOUNT"
-    },
-    "time": {
-      "raw": "Monday",
-      "value": null
-    },
-    "location": {
-      "name": "N/A",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1.0,
-    "evidence": "Oil fell Monday, settling near $100 a barrel, on signs Saudi Arabia is boosting exports via the key Strait of Hormuz and fresh hopes for diplomatic progress in the Iran war.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "SURGES",
-    "action_event_type": "Finance",
-    "action_detail": "fell",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEGATIVE",
-    "event_time": "Monday",
-    "location_str": "N/A",
-    "entities": [
-      {
-        "entity_id": "ORG_OIL",
-        "entity_name": "Oil",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 43012,
-    "article_url": "https://www.bloomberg.com/news/videos/2026-09-21/oil-settles-near-100-as-hormuz-flows-stunt-rally-video",
-    "subject": {
-      "name": "Brent",
-      "entity_id": "ORG_BRENT",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "DROPS",
-      "status": "COMPLETED",
-      "polarity": "NEGATIVE",
-      "verb": "declined"
-    },
-    "object": {
-      "name": "3.4%",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "AMOUNT"
-    },
-    "time": {
-      "raw": "fourth session",
-      "value": null
-    },
-    "location": {
-      "name": "N/A",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1.0,
-    "evidence": "Brent, the global benchmark, declined for a fourth session, settling 3.4% lower.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "DROPS",
-    "action_event_type": "Finance",
-    "action_detail": "declined",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEGATIVE",
-    "event_time": "fourth session",
-    "location_str": "N/A",
-    "entities": [
-      {
-        "entity_id": "ORG_BRENT",
-        "entity_name": "Brent",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 43012,
-    "article_url": "https://www.bloomberg.com/news/videos/2026-09-21/oil-settles-near-100-as-hormuz-flows-stunt-rally-video",
-    "subject": {
-      "name": "Oil",
-      "entity_id": "ORG_OIL",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "SURGES",
-      "status": "COMPLETED",
-      "polarity": "NEUTRAL",
-      "verb": "settling"
-    },
-    "object": {
-      "name": "$100 a barrel",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "AMOUNT"
-    },
-    "time": {
-      "raw": "Monday",
-      "value": null
-    },
-    "location": {
-      "name": "N/A",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1.0,
-    "evidence": "Oil fell Monday, settling near $100 a barrel, on signs Saudi Arabia is boosting exports via the key Strait of Hormuz and fresh hopes for diplomatic progress in the Iran war.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "SURGES",
-    "action_event_type": "Finance",
-    "action_detail": "settling",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "Monday",
-    "location_str": "N/A",
-    "entities": [
-      {
-        "entity_id": "ORG_OIL",
-        "entity_name": "Oil",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 43030,
-    "article_url": "https://finance.yahoo.com/economy/policy/article/this-could-be-something-more-substantial-wall-street-braces-for-more-fed-rate-hikes-123400710.html",
-    "subject": {
-      "name": "Federal Reserve",
-      "entity_id": "ORG_FEDERAL_RESERVE",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "RATE_HIKE",
-      "status": "UNKNOWN",
-      "polarity": "UNKNOWN",
-      "verb": ""
-    },
-    "object": {
-      "name": "Wall Street",
-      "entity_id": "LOC_WALL_STREET",
-      "type": "Location",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": null,
-    "evidence": "",
-    "evidence_type": "UNKNOWN",
-    "action_type": "RATE_HIKE",
-    "action_event_type": "Finance",
-    "action_detail": "",
-    "action_status": "UNKNOWN",
-    "action_polarity": "UNKNOWN",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "ORG_FEDERAL_RESERVE",
-        "entity_name": "Federal Reserve",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "LOC_WALL_STREET",
-        "entity_name": "Wall Street",
-        "entity_type": "Location",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 43015,
-    "article_url": "https://oilprice.com/Energy/Crude-Oil/Where-Is-OPEC-Riyadh-and-Moscows-Silence-Is-Becoming-Deafening.html",
-    "subject": {
-      "name": "OPEC+",
-      "entity_id": "ORG_OPEC",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "ONGOING",
-      "polarity": "NEUTRAL",
-      "verb": "silence"
-    },
-    "object": {
-      "name": "OPEC+",
-      "entity_id": "ORG_OPEC",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "last decades",
-      "value": null
-    },
-    "location": {
-      "name": "N/A",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "The last decades of silence from the world’s leading oil group, OPEC, or its derivative, OPEC+",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "silence",
-    "action_status": "ONGOING",
-    "action_polarity": "NEUTRAL",
-    "event_time": "last decades",
-    "location_str": "N/A",
-    "entities": [
-      {
-        "entity_id": "ORG_OPEC",
-        "entity_name": "OPEC+",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_OPEC",
-        "entity_name": "OPEC+",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 43051,
-    "article_url": "https://www.investing.com/news/company-news/cathie-woods-ark-stock-trades-meta-bought-crowdstrike-sold-93CH-4909768",
-    "subject": {
-      "name": "Ark Invest",
-      "entity_id": "COMP_ARK_INVEST",
-      "type": "Company",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "ATTACKS",
-      "status": "COMPLETED",
-      "polarity": "NEUTRAL",
-      "verb": "sold"
-    },
-    "object": {
-      "name": "CrowdStrike shares",
-      "entity_id": "COMP_CROWDSTRIKE_SHARES",
-      "type": "Company",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "N/A",
-      "value": null
-    },
-    "location": {
-      "name": "N/A",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Cathie Wood's Ark Invest sold shares of CrowdStrike and bought shares of Cerebras Systems and Meta Platforms.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "ATTACKS",
-    "action_event_type": "Military",
-    "action_detail": "sold",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "N/A",
-    "location_str": "N/A",
-    "entities": [
-      {
-        "entity_id": "COMP_ARK_INVEST",
-        "entity_name": "Ark Invest",
-        "entity_type": "Company",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "COMP_CROWDSTRIKE_SHARES",
-        "entity_name": "CrowdStrike shares",
-        "entity_type": "Company",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 43051,
-    "article_url": "https://www.investing.com/news/company-news/cathie-woods-ark-stock-trades-meta-bought-crowdstrike-sold-93CH-4909768",
-    "subject": {
-      "name": "Ark Invest",
-      "entity_id": "COMP_ARK_INVEST",
-      "type": "Company",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "ATTACKS",
-      "status": "COMPLETED",
-      "polarity": "NEUTRAL",
-      "verb": "bought"
-    },
-    "object": {
-      "name": "$17.2 million worth of Cerebras stock",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "AMOUNT"
-    },
-    "time": {
-      "raw": "N/A",
-      "value": null
-    },
-    "location": {
-      "name": "N/A",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Ark sold 14,339 CrowdStrike shares and purchased $17.2 million worth of Cerebras stock.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "ATTACKS",
-    "action_event_type": "Military",
-    "action_detail": "bought",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "N/A",
-    "location_str": "N/A",
-    "entities": [
-      {
-        "entity_id": "COMP_ARK_INVEST",
-        "entity_name": "Ark Invest",
-        "entity_type": "Company",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 43051,
-    "article_url": "https://www.investing.com/news/company-news/cathie-woods-ark-stock-trades-meta-bought-crowdstrike-sold-93CH-4909768",
-    "subject": {
-      "name": "Ark Invest",
-      "entity_id": "COMP_ARK_INVEST",
-      "type": "Company",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "ATTACKS",
-      "status": "COMPLETED",
-      "polarity": "NEUTRAL",
-      "verb": "bought"
-    },
-    "object": {
-      "name": "Meta Platforms shares",
-      "entity_id": "COMP_META_PLATFORMS_SHARES",
-      "type": "Company",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "N/A",
-      "value": null
-    },
-    "location": {
-      "name": "N/A",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Cathie Wood's Ark Invest sold shares of CrowdStrike and bought shares of Cerebras Systems and Meta Platforms.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "ATTACKS",
-    "action_event_type": "Military",
-    "action_detail": "bought",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "N/A",
-    "location_str": "N/A",
-    "entities": [
-      {
-        "entity_id": "COMP_ARK_INVEST",
-        "entity_name": "Ark Invest",
-        "entity_type": "Company",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "COMP_META_PLATFORMS_SHARES",
-        "entity_name": "Meta Platforms shares",
-        "entity_type": "Company",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 43044,
-    "article_url": "https://thediplomat.com/2026/09/ahead-of-trump-xi-summit-north-korea-launches-more-missiles/",
-    "subject": {
-      "name": "Joint Chiefs of Staff",
+      "name": "World's governments, business and media",
       "entity_id": null,
       "type": "Other",
       "object_type": "UNKNOWN"
     },
     "action": {
-      "type": "ATTACKS",
-      "status": "UNKNOWN",
-      "polarity": "UNKNOWN",
-      "verb": ""
-    },
-    "object": {
-      "name": "Korea, Democratic People's Republic of",
-      "entity_id": "CTRY_PRK",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": null,
-    "evidence": "",
-    "evidence_type": "UNKNOWN",
-    "action_type": "ATTACKS",
-    "action_event_type": "Military",
-    "action_detail": "",
-    "action_status": "UNKNOWN",
-    "action_polarity": "UNKNOWN",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "CTRY_PRK",
-        "entity_name": "Korea, Democratic People's Republic of",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 43026,
-    "article_url": "https://www.nbcnews.com/politics/2026-election/iowa-gop-senate-candidate-ashley-hinson-calls-iran-war-end-rcna599041",
-    "subject": {
-      "name": "Rep. Ashley Hinson",
-      "entity_id": "PERS_REP_ASHLEY_HINSON",
-      "type": "Person",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "STATES",
-      "status": "UNKNOWN",
-      "polarity": "UNKNOWN",
-      "verb": ""
-    },
-    "object": {
-      "name": "Iran, Islamic Republic of",
-      "entity_id": "CTRY_IRN",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": null,
-    "evidence": "",
-    "evidence_type": "UNKNOWN",
-    "action_type": "STATES",
-    "action_event_type": "Politics",
-    "action_detail": "",
-    "action_status": "UNKNOWN",
-    "action_polarity": "UNKNOWN",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "PERS_REP_ASHLEY_HINSON",
-        "entity_name": "Rep. Ashley Hinson",
-        "entity_type": "Person",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_IRN",
-        "entity_name": "Iran, Islamic Republic of",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 43052,
-    "article_url": "https://www.cnbc.com/2026/09/21/meta-muse-personal-ai-agent-downloads.html",
-    "subject": {
-      "name": "Meta's Muse AI personal agent tool",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "UNKNOWN"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "COMPLETED",
-      "polarity": "POSITIVE",
-      "verb": "had"
-    },
-    "object": {
-      "name": "730,000 and 2.5 million downloads",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "AMOUNT"
-    },
-    "time": {
-      "raw": "roughly five-day and thirteen-day time frames after its launch",
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Meta's Muse AI personal agent tool had 730,000 and 2.5 million downloads over the roughly five-day and thirteen-day time frames after its launch.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "had",
-    "action_status": "COMPLETED",
-    "action_polarity": "POSITIVE",
-    "event_time": "roughly five-day and thirteen-day time frames after its launch",
-    "location_str": "",
-    "entities": []
-  },
-  {
-    "article_id": 43052,
-    "article_url": "https://www.cnbc.com/2026/09/21/meta-muse-personal-ai-agent-downloads.html",
-    "subject": {
-      "name": "Meta's Muse app",
-      "entity_id": "COMP_METAS_MUSE_APP",
-      "type": "Company",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
-      "status": "COMPLETED",
-      "polarity": "POSITIVE",
-      "verb": "overtook"
-    },
-    "object": {
-      "name": "ChatGPT",
-      "entity_id": "ORG_CHATGPT",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "Friday",
-      "value": null
-    },
-    "location": {
-      "name": "Apple's iOS app store for the category of free smartphone programs in the U.S.",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "The Muse app overtook ChatGPT as the leading iOS free app in the U.S. on Friday, and racked up 730,000 downloads over about five days after it launched on Sep. 8, according to the analytics firm Sensor Tower.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "overtook",
-    "action_status": "COMPLETED",
-    "action_polarity": "POSITIVE",
-    "event_time": "Friday",
-    "location_str": "Apple's iOS app store for the category of free smartphone programs in the U.S.",
-    "entities": [
-      {
-        "entity_id": "COMP_METAS_MUSE_APP",
-        "entity_name": "Meta's Muse app",
-        "entity_type": "Company",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_CHATGPT",
-        "entity_name": "ChatGPT",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 43052,
-    "article_url": "https://www.cnbc.com/2026/09/21/meta-muse-personal-ai-agent-downloads.html",
-    "subject": {
-      "name": "Muse app",
-      "entity_id": "ORG_MUSE_APP",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "OTHER",
+      "type": "CRASHES",
       "status": "ONGOING",
-      "polarity": "POSITIVE",
-      "verb": "is ahead of"
+      "polarity": "NEGATIVE",
+      "verb": "focus"
     },
     "object": {
-      "name": "ChatGPT, Polymarket and Kashi, Claude and Grok AI, and Meta AI app",
+      "name": "dangers it poses to jobs, democracy and even the future of humanity itself",
       "entity_id": null,
       "type": "Other",
       "object_type": "STATEMENT"
     },
     "time": {
-      "raw": "as of Monday",
+      "raw": "unknown",
       "value": null
     },
     "location": {
-      "name": "Apple's iOS app store",
+      "name": "unknown",
       "entity_id": null,
       "type": null
     },
     "confidence": 1,
-    "evidence": "As of Monday, Muse has logged over 2.5 million downloads since its debut, the market intelligence company said.",
+    "evidence": "The current focus of the world’s governments, business and media when it comes to artificial intelligence (AI) is on the dangers it poses to jobs, democracy and even the future of humanity itself",
     "evidence_type": "UNKNOWN",
-    "action_type": "OTHER",
-    "action_event_type": "General",
-    "action_detail": "is ahead of",
-    "action_status": "ONGOING",
-    "action_polarity": "POSITIVE",
-    "event_time": "as of Monday",
-    "location_str": "Apple's iOS app store",
-    "entities": [
-      {
-        "entity_id": "ORG_MUSE_APP",
-        "entity_name": "Muse app",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "ORG_CHATGPT",
-        "entity_name": "ChatGPT",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      },
-      {
-        "entity_id": "ORG_POLYMARKET",
-        "entity_name": "Polymarket",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      },
-      {
-        "entity_id": "ORG_KASHI",
-        "entity_name": "Kashi",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      },
-      {
-        "entity_id": "ORG_CLAUDE",
-        "entity_name": "Claude",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      },
-      {
-        "entity_id": "ORG_GROK_AI",
-        "entity_name": "Grok AI",
-        "entity_type": "Organization",
-        "role": "OBJECT"
-      },
-      {
-        "entity_id": "COMP_META_AI_APP",
-        "entity_name": "Meta AI app",
-        "entity_type": "Company",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 43058,
-    "article_url": "https://www.cnbc.com/2026/09/21/volkswagens-latest-profit-warning-compounds-exit-from-blue-chip-index.html",
-    "subject": {
-      "name": "Volkswagen shares",
-      "entity_id": "COMP_VOLKSWAGEN_SHARES",
-      "type": "Company",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "REPORTS",
-      "status": "COMPLETED",
-      "polarity": "NEGATIVE",
-      "verb": "dipped"
-    },
-    "object": {
-      "name": "shares",
-      "entity_id": "ORG_SHARES",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "Monday",
-      "value": null
-    },
-    "location": {
-      "name": "Monday",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Volkswagen shares dipped on Monday after another profit warning issued by the embattled German carmaker was followed by its departure from Europe's blue-chip index.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "REPORTS",
+    "action_type": "CRASHES",
     "action_event_type": "Finance",
-    "action_detail": "dipped",
-    "action_status": "COMPLETED",
+    "action_detail": "focus",
+    "action_status": "ONGOING",
     "action_polarity": "NEGATIVE",
-    "event_time": "Monday",
-    "location_str": "Monday",
+    "event_time": "unknown",
+    "location_str": "unknown",
     "entities": [
       {
-        "entity_id": "COMP_VOLKSWAGEN_SHARES",
-        "entity_name": "Volkswagen shares",
-        "entity_type": "Company",
+        "entity_id": "ORG_WORLDS_GOVERNMENTS",
+        "entity_name": "World's governments",
+        "entity_type": "Organization",
         "role": "SUBJECT"
       },
       {
-        "entity_id": "ORG_SHARES",
-        "entity_name": "shares",
+        "entity_id": "ORG_BUSINESS",
+        "entity_name": "business",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_MEDIA",
+        "entity_name": "media",
+        "entity_type": "Organization",
+        "role": "SUBJECT"
+      },
+      {
+        "entity_id": "ORG_DEMOCRACY",
+        "entity_name": "democracy",
         "entity_type": "Organization",
         "role": "OBJECT"
       }
     ]
   },
   {
-    "article_id": 43058,
-    "article_url": "https://www.cnbc.com/2026/09/21/volkswagens-latest-profit-warning-compounds-exit-from-blue-chip-index.html",
+    "article_id": 44017,
+    "article_url": "https://oilprice.com/Energy/Energy-General/Is-Chinas-Secret-Power-Advantage-About-To-Trigger-An-89-Crash-In-US-AI-Stock.html",
     "subject": {
-      "name": "Volkswagen",
-      "entity_id": "COMP_VOLKSWAGEN",
-      "type": "Company",
+      "name": "fears",
+      "entity_id": "ORG_FEARS",
+      "type": "Organization",
       "object_type": "ENTITY"
     },
     "action": {
-      "type": "REPORTS",
-      "status": "COMPLETED",
-      "polarity": "NEUTRAL",
-      "verb": "departed"
-    },
-    "object": {
-      "name": "Europe's blue-chip index",
-      "entity_id": "CTRY_EUROPES_BLUE_CHIP_INDEX",
-      "type": "Country",
-      "object_type": "ENTITY"
-    },
-    "time": {
-      "raw": "Monday",
-      "value": null
-    },
-    "location": {
-      "name": "Europe",
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Volkswagen shares dipped on Monday after another profit warning issued by the embattled German carmaker was followed by its departure from Europe's blue-chip index.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "REPORTS",
-    "action_event_type": "Finance",
-    "action_detail": "departed",
-    "action_status": "COMPLETED",
-    "action_polarity": "NEUTRAL",
-    "event_time": "Monday",
-    "location_str": "Europe",
-    "entities": [
-      {
-        "entity_id": "COMP_VOLKSWAGEN",
-        "entity_name": "Volkswagen",
-        "entity_type": "Company",
-        "role": "SUBJECT"
-      },
-      {
-        "entity_id": "CTRY_EUROPES_BLUE_CHIP_INDEX",
-        "entity_name": "Europe's blue-chip index",
-        "entity_type": "Country",
-        "role": "OBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 43058,
-    "article_url": "https://www.cnbc.com/2026/09/21/volkswagens-latest-profit-warning-compounds-exit-from-blue-chip-index.html",
-    "subject": {
-      "name": "Volkswagen",
-      "entity_id": "COMP_VOLKSWAGEN",
-      "type": "Company",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "REPORTS",
-      "status": "COMPLETED",
+      "type": "CRASHES",
+      "status": "ONGOING",
       "polarity": "NEGATIVE",
-      "verb": "downgraded"
+      "verb": "crystallise"
     },
     "object": {
-      "name": "expected operating return on sales to 1%",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "STATEMENT"
+      "name": "fears",
+      "entity_id": "ORG_FEARS",
+      "type": "Organization",
+      "object_type": "ENTITY"
     },
     "time": {
-      "raw": "N/A",
+      "raw": "unknown",
       "value": null
     },
     "location": {
-      "name": "N/A",
+      "name": "unknown",
       "entity_id": null,
       "type": null
     },
     "confidence": 1,
-    "evidence": "It blamed an impairment related to its large holding in Porsche, a \"further deterioration\" in the market environment – particularly in China – and restructuring expenses.",
+    "evidence": "For many of a certain generation, these fears crystallise in the cold but relentlessly courteous voice",
     "evidence_type": "UNKNOWN",
-    "action_type": "REPORTS",
+    "action_type": "CRASHES",
     "action_event_type": "Finance",
-    "action_detail": "downgraded",
-    "action_status": "COMPLETED",
+    "action_detail": "crystallise",
+    "action_status": "ONGOING",
     "action_polarity": "NEGATIVE",
-    "event_time": "N/A",
-    "location_str": "N/A",
+    "event_time": "unknown",
+    "location_str": "unknown",
     "entities": [
       {
-        "entity_id": "COMP_VOLKSWAGEN",
-        "entity_name": "Volkswagen",
-        "entity_type": "Company",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 43054,
-    "article_url": "https://www.cnbc.com/2026/09/21/intel-surges-12percent-as-cpu-stocks-rally-heres-whats-driving-the-move.html",
-    "subject": {
-      "name": "Intel stocks",
-      "entity_id": "ORG_INTEL_STOCKS",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "SURGES",
-      "status": "ONGOING",
-      "polarity": "POSITIVE",
-      "verb": "surges"
-    },
-    "object": {
-      "name": "12%",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "AMOUNT"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Intel surges 12% as CPU stocks rally.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "SURGES",
-    "action_event_type": "Finance",
-    "action_detail": "surges",
-    "action_status": "ONGOING",
-    "action_polarity": "POSITIVE",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "ORG_INTEL_STOCKS",
-        "entity_name": "Intel stocks",
+        "entity_id": "ORG_FEARS",
+        "entity_name": "fears",
         "entity_type": "Organization",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 43054,
-    "article_url": "https://www.cnbc.com/2026/09/21/intel-surges-12percent-as-cpu-stocks-rally-heres-whats-driving-the-move.html",
-    "subject": {
-      "name": "Nasdaq Composite",
-      "entity_id": "ORG_NASDAQ_COMPOSITE",
-      "type": "Organization",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "SURGES",
-      "status": "ONGOING",
-      "polarity": "POSITIVE",
-      "verb": "is up"
-    },
-    "object": {
-      "name": "2%",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "AMOUNT"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "The tech-heavy Nasdaq Composite is up about 2%, led by huge gains in some AI stocks",
-    "evidence_type": "UNKNOWN",
-    "action_type": "SURGES",
-    "action_event_type": "Finance",
-    "action_detail": "is up",
-    "action_status": "ONGOING",
-    "action_polarity": "POSITIVE",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "ORG_NASDAQ_COMPOSITE",
-        "entity_name": "Nasdaq Composite",
-        "entity_type": "Organization",
-        "role": "SUBJECT"
-      }
-    ]
-  },
-  {
-    "article_id": 43054,
-    "article_url": "https://www.cnbc.com/2026/09/21/intel-surges-12percent-as-cpu-stocks-rally-heres-whats-driving-the-move.html",
-    "subject": {
-      "name": "SentinelOne",
-      "entity_id": "COMP_SENTINELONE",
-      "type": "Company",
-      "object_type": "ENTITY"
-    },
-    "action": {
-      "type": "SURGES",
-      "status": "ONGOING",
-      "polarity": "POSITIVE",
-      "verb": "is up"
-    },
-    "object": {
-      "name": "1.3%",
-      "entity_id": null,
-      "type": "Other",
-      "object_type": "AMOUNT"
-    },
-    "time": {
-      "raw": null,
-      "value": null
-    },
-    "location": {
-      "name": null,
-      "entity_id": null,
-      "type": null
-    },
-    "confidence": 1,
-    "evidence": "Meanwhile, the S & P 500 is up 1.3%.",
-    "evidence_type": "UNKNOWN",
-    "action_type": "SURGES",
-    "action_event_type": "Finance",
-    "action_detail": "is up",
-    "action_status": "ONGOING",
-    "action_polarity": "POSITIVE",
-    "event_time": "",
-    "location_str": "",
-    "entities": [
-      {
-        "entity_id": "COMP_SENTINELONE",
-        "entity_name": "SentinelOne",
-        "entity_type": "Company",
         "role": "SUBJECT"
       },
       {
-        "entity_id": "ORG_P_500",
-        "entity_name": "P 500",
+        "entity_id": "ORG_FEARS",
+        "entity_name": "fears",
         "entity_type": "Organization",
-        "role": "SUBJECT"
+        "role": "OBJECT"
       }
     ]
   }
