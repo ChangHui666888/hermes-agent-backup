@@ -1,4 +1,4 @@
-Anthropic provider configured with proxy: Windows system proxy 127.0.0.1:10808 (Clash/V2Ray). API key updated and working through Hermes gateway after setting HTTPS_PROXY env var and restarting.
+Anthropic provider 走 Windows 系统代理 127.0.0.1:10808(Clash)，需设 HTTPS_PROXY 后重启 Hermes 才生效。
 §
 多智能体项目(开发运维/舆情自媒体/金融投资三飞轮): 环境权威文件=workspace\ENVIRONMENT.md。角色载体=每角色1个Hermes profile。调度=Kanban。决策合并: 副总+秘书长=总控C0; 记录员+巡检员=监审员A1(只读, 只能看/记/报/备)。
 §
@@ -14,6 +14,6 @@ Cascade 策略链优先级：direct(1) → archive(1) → google_cache(1) → sc
 §
 Windows 兼容要点：os.kill(pid,0) 不支持（WinError 87），改用文件 mtime + BATCH_TIMEOUT 做进程锁。httpx 0.28 http2=True 有 SSL 间歇超时，设为 http2=False。SOCKS5 代理稳定，HTTP CONNECT 代理不稳定。Jina/Tavily 需通过 subprocess curl -4 调用绕过 httpx SSL 问题。
 §
-本机 IE 模型环境(2026-08): transformers 5.13.1 + gliner 0.2.28 + torch 2.13 CPU 装在系统 Python311(C:\Users\ChangHui\AppData\Local\Programs\Python\Python311), 不在 hermes venv。HF_ENDPOINT=https://hf-mirror.com 与 NO_PROXY=hf-mirror.com,huggingface.co 已持久化(setx+.env)。GLiNER small-v1 与 REBEL large 已本地化(~/.cache/huggingface/hub + ~/models/)。坑: hf-mirror 走代理卡死(663B/s), 必须 unset 代理直连(9.7MB/s); gliner from_pretrained 只认 HF 缓存结构不认本地路径。
+本机 IE 模型环境: transformers+gliner+torch(CPU) 装在系统 Python311(不在 hermes venv); HF_ENDPOINT=hf-mirror.com + NO_PROXY 已持久化; GLiNER small-v1 与 REBEL large 已本地化。坑: hf-mirror 走代理卡死(必须 unset 代理直连); gliner from_pretrained 只认 HF 缓存结构不认本地路径。
 §
-视频剪辑点工具: workspace\scene-splitter (PySceneDetect 0.7.1 + FastAPI + 独立 .venv, 端口8765, start.bat 启动)。bundle(8777) 已加 /splitter 反代 + iframe 卡片共用同一前端。默认素材目录 D:\Douyin\MV\待分段\douyin_阿木（山野），产物输出到 <视频名>_clips。
+workspace 工具链(共用 8777 前端): bundle(网关8777, 抖音CDP9335, 成品 state\downloads\douyin_<作者>) + scene-splitter(8765→/splitter/, 产物 <视频名>_clips) + watermark-cleaner(8778→/watermark/)。坑1: Hermes 环境导出 PORT=8648, 从 Hermes 会话重启 bundle 网关必须显式 set PORT=8777, 否则绑 127.0.0.1:8648 劫持 Hermes Studio → "Error: Connection error"。坑2: bundle\bin\ffmpeg 只有 ffmpeg.exe(9.0.1 essentials, 无 ffprobe), ffprobe 须独立解析。抖音作者名取 aweme/detail 接口(权威), 扫页面文字会拿推荐位作者; cdp.evaluate 注入 JS 禁写正则(模板转义会静默失效)。默认剪辑素材 D:\Douyin\MV\待分段\douyin_阿木（山野）。
